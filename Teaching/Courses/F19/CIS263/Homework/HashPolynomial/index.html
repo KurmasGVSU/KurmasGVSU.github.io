@@ -1,0 +1,264 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CIS 263 Homework 3 Hash</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    code {
+      background: #f0f0ff;
+    }
+  </style>
+</head>
+
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 263</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Hash</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2019</h1></td>
+  </tr>
+</table>
+
+  <h2>Insertion and Rehashing</h2>
+
+  Step through various hash table algorithms "by hand" and insert the following input 23, 68, 38, 75, 42, 53, 89, 91,
+  45 into a hash table of size 11. Keep the load factor &le; 70% (except for quadratic probing that requires load factor
+  below 50%). Rehash the table by increasing the size to 23 when the load factor exceeds the threshold.
+
+  Show the resulting tables using different collision resolution strategies:
+  <ol>
+    <li> Separate chaining
+    <li> Linear probing
+    <li> Quadratic probing (remember to keep the load factor below 50\%)
+    <li> Double hash with the second hash function <code>h(x) = M - (x mod M)</code>, where <code>M</code>
+      is the largest prime number smaller than the table size (
+      <code>M = 7</code> when table size is
+      <code>11</code>; <code>M = 19</code> when table size is
+      <code>23</code>
+    </li>
+  </ol>
+
+  You need not write any code for this algorithm. Just submit diagrams of the resulting hash table state. Your
+  diagrams should be similar to zyBook Figures 5.2.3 and Figures 5.3.8.
+
+  <p>(This exercise prepared by Prof. Dulimarta.)</p>
+
+
+  <h2>Using Hash Tables</h2>
+
+  <p>Use this GitHub Classroom link to get started: <a href='https://classroom.github.com/a/UFwvldBk'><code>classroom.github.com/a/UFwvldBk</code></a>.</p>
+
+  <p>A polynomial is <em>sparse</em> if it has few terms relative to its max degree. For example, <code>15x^1000 +
+    23x^501 + 3x^2 + 2</code> would be sparse because all but four of the 1001 coefficients are 0.</p>
+
+  <p class="listHeader">To multiply two polynomials, you (1) multiply all pairs of terms, then (2) combine
+    like terms.
+  <ul>
+    <li> One way to combine the like terms is to calculate all the terms, sort them (which could be slow), then combine
+      them.
+    </li>
+    <li> Another approach is to store the result in a hash table and combine terms as you go along.</li>
+  </ul>
+
+  <p>Implement both methods (by completing <code>Polynomial.hpp</code>) and report
+    which is faster and by how much. Specifically, choose several large inputs, time the both the fast and slow
+    multiply algorithms and report the results. (Before running the tests, you may want to re-compile
+    your code with the <code>-O3</code> flag.)
+  </p>
+
+  <p>(This is exercise 5.13 from the Weis text using starter code prepared by Prof. Dulimarta.)</p>
+
+
+  <h2>Submission and grading</h2>
+
+  <ul>
+    <li>Submit the written problems in class.</li>
+    <li>Make sure all relevant code (including unit tests) is checked in to GitHub by the due date.</li>
+    <li>Place the code to be graded is on the <code>master</code> branch.
+    </li>
+    <li>You are expected to fix and re-submit buggy code. Because your code will eventually be correct, your grade
+      will be based primarily on timeliness.
+    </li>
+    <li>There is a penalty for each buggy submission.</li>
+  </ul>
+
+  <hr>
+  <p>Updated Tuesday, 1 October 2019, 9:01 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>

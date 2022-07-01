@@ -1,0 +1,374 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="express-api">Express API</h1>
+
+<ul>
+  <li>Look at <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/JavaScript/blogAPI">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/JavaScript/blogAPI</a></li>
+  <li>Similar to the <code>expressMVC</code> example with a few changes
+    <ul>
+      <li>Port is changed to 3001.  (Needs to run on a different port than React server)</li>
+      <li><code>bodyParser</code> is JSON instead of <code>urlencoded</code></li>
+      <li>Using <code>cors</code> package (instead of just adding the header)</li>
+    </ul>
+  </li>
+  <li>I wrote a single method to automatically create all CRUD routes
+    <ul>
+      <li>Makes it easier to add more resources later (e.g., blog posts)</li>
+      <li>Additional resources take one line.  (Or can re-use method in other apps)</li>
+    </ul>
+  </li>
+  <li>When calling <code>res.send</code> with objects, they are automatically converted to JSON</li>
+  <li><code>AuthorDB.create</code> returns the id of the newly created object
+    <ul>
+      <li>The <code>lastID</code> variable is unique to Sqlite3.</li>
+    </ul>
+  </li>
+  <li>Notice that <code>this.db.run</code> uses the <code>function</code> syntax, not the <code>() =&gt; </code> syntax.  This is because the <code>() =&gt;</code> syntax won’t set up the <code>this</code> variable properly.
+    <ul>
+      <li>This is one of the few cases where the difference between <code>function</code> and <code>() =&gt;</code> syntax matters.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="more-verbs">More Verbs</h2>
+
+<ul>
+  <li>Complete list of HTTP verbs:
+    <ul>
+      <li>GET</li>
+      <li>HEAD</li>
+      <li>POST</li>
+      <li>PUT</li>
+      <li>DELETE</li>
+      <li>CONNECT</li>
+      <li>OPTIONS</li>
+      <li>TRACE</li>
+      <li>PATCH</li>
+    </ul>
+  </li>
+  <li>Typical API verbs
+    <ul>
+      <li>GET</li>
+      <li>POST: Post new data</li>
+      <li>PUT:  Put replacement data</li>
+      <li>PATCH: Patch an entry (i.e., only change part of it.)</li>
+      <li>DELETE</li>
+    </ul>
+  </li>
+  <li>Use <code>PUT</code> when you are sending the entire object to be replaced.
+    <ul>
+      <li>This is what <code>blogAPI</code> does.</li>
+    </ul>
+  </li>
+  <li>Use <code>PATCH</code> if you are sending only the fields that are changing.</li>
+  <li>Remember, only <code>GET</code> and <code>POST</code> can be sent directly from a web page.
+    <ul>
+      <li><code>PUT</code>, <code>PATH</code>, <code>DELETE</code> etc, can only be sent using JavaScript.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="status-codes">Status Codes</h2>
+<ul>
+  <li>500 “Internal Server Error.”  If you server code crashes.  For example:
+    <ul>
+      <li>Null Pointer Exception</li>
+      <li>Divide by Zero error.</li>
+      <li>Other unhandled exception.</li>
+      <li>(Rails sends a 500 if a DB command fails because you didn’t check that all constraints were satisfied first.)</li>
+    </ul>
+  </li>
+  <li>422 “Unprocessable Entry”: Data is well-formed, but invalid.  (For example, the Author’s email is not unique)</li>
+  <li>204 “No Content” Used for calls like <code>update</code> and <code>delete</code> where there isn’t anything else to say but “success”</li>
+  <li>Look at <code>API.jsx</code>.
+    <ul>
+      <li>Notice that it checks explicitly for status.</li>
+      <li>API calls return a promise.</li>
+      <li>Anything <code>return</code>ed is passed to the <code>then</code> block.</li>
+      <li>If a <code>throw</code> is called anywhere, the <code>catch</code> block is run.</li>
+      <li>See <code>Authors.jsx</code> in <code>react-blog-complete</code></li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

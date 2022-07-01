@@ -1,0 +1,340 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Subtract/Slt Project</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    th {
+      text-align: left;
+      padding-right: 15px;
+    }
+
+    table.componentDescription td {
+      vertical-align: top;
+      text-align: left;
+    }
+
+    table.grading td {
+      padding-right: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Project 2: Build a Subtractor and Comparator</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2021</h1></td>
+  </tr>
+</table>
+
+
+
+<p class="listHeader">
+  Extend your signed adder from the previous project to build</p>
+<ul>
+  <li>a circuit than can both add and subtract, and</li>
+  <li>a circuit that can compare signed and unsigned integers.</li>
+</ul>
+
+<h2 class='listHeader'>Setup</h2>
+
+<ol>
+  <li>Follow <a href='https://classroom.github.com/g/Gj5n_Lih'>this GitHub Classroom link</a> to create a repository for the project.</li>
+  <li>Copy your adder from Project 1 into this new repo.</li>
+  </ol>
+
+<h2>Task 1: Adder/Subtractor</h2>
+
+
+<p>Build a circuit that can do both addition and subtraction. Specifically, surround your adder with 
+   additional gates so that it performs both addition and subtraction. This circuit should contain <em>one</em> adder only. 
+   Be sure to ask for clarification if you don't understand this requirement. </p>
+
+<p>Place your Adder/Subtractor in <code>SignedAddSubtract_16bit.jls</code>. 
+ Do not change the names of the input or output pins.</p>
+
+<p>The <code>Op</code> input specifies whether to perform addition or subtraction.
+  (<code>1</code> means subtract, <code>0</code> means add).</p>
+
+<p>The  <code>CarryOut</code> and <code>Overflow</code> outputs should simply be the carry out and overflow from your 
+  adder. Unsigned subtraction cannot overflow. Unsigned subtraction that generates a negative result is not considered
+  "overflow".</p>
+
+<p>You may use <code>SampleSigned16BitAddSubtractTest.java</code> as a
+  basis for your own tests. <b>Warning!</b> This test class is incomplete. Don't assume that a circuit that
+  passes this sample test will pass all of my tests.
+
+<h2>Task 2: Set if Less Than</h2>
+
+<p>Build a circuit that can compare two integers.  It must support both signed and unsigned comparisons.</p>
+
+<p class="listHeader">Use your adder/subtractor as a starting point and leverage the fact that</p>
+
+<ul>
+  <li>if <code>A &lt; B</code>, then <code>A - B &lt; 0</code>, and</li>
+  <li>if <code>A &ge; B</code>, then <code>A - B &ge; 0</code>.
+</ul>
+
+<p>Be aware, however, that this algorithm works only as long as <code>A - B</code> doesn't overflow. You'll need to
+  think about the conditions under which <code>A - B</code> might overflow and use alternate techniques for comparing
+  <code>A</code> and <code>B</code> in this case.  (Hint:  Don't try to detect and react to overflow.  That doesn't 
+  tend to work well.  Instead, think about the conditions under which you might have an overflow.)</p>
+
+<p>Place your comparison circuit in <code>Slt_16bit.jls</code>. 
+ Do not change the names of the input or output pins.</p>
+
+<p>You may use <code>SampleSlt16BitTest.java</code> as a
+  basis for your own tests. <b>Warning!</b> This test script is incomplete. Don't assume that a circuit that
+  passes this sample test will pass all of my tests.
+
+
+<h2 class="listHeader">Rules</h2>
+
+<ol>
+  <li>You are strongly encouraged to work in groups of <b>two</b>. You may work alone only <em>with permission of the
+    instructor</em>.
+  </li>
+
+  <li>The simulator comes with a built-in adder. You may <em>not</em> use
+    the built-in adder.
+  </li>
+
+  <li>To build the required circuits, you will probably find it useful to
+    design and build several subcircuits. These subcircuits may have any
+    interface you choose; however, you are responsible for testing them.
+  </li>
+
+  <li>You must write all of your own chips. In other words, you may not
+    share "internal" chips with your classmates, or download them off the
+    Internet.
+  </li>
+
+  <li>Be sure to test your components thoroughly. Just because it passes
+    the test included here doesn't mean it will pass <em>my</em> test.
+  </li>
+
+  <li>You may use the built-in mux component.</li>
+</ol>
+
+
+<h2 class="listHeader">Hints and shortcuts</h2>
+
+<ul>
+  <li>Remember, JLS inserts the code for sub-circuits directly into the
+    circuits into which they are imported. Thus, changes to sub-circuits
+    are not seen by the circuits that contain them. If you discover a bug
+    in a sub-circuit, you must delete and re-import that sub-circuit into
+    the parent. (Again, test your subcircuits thoroughly before importing
+    them!)
+  </li>
+
+  <li>Remember that no software is perfect. This includes <code>JLS</code>
+    and <code>DLUnit</code>. Commit and push your circuits often.
+  </li>
+
+  <li>Remember to test your circuits thoroughly. 
+  My sample test file will not catch several common mistakes.</li>
+</ul>
+
+<h2><a id="Grading">Grading</a></h2>
+
+<p> <span class='inline-important'>You are expected to revise your circuits and analysis documents until 
+<em>both</em> (1) the automated tests pass, <em>and</em> (2) your circuit design and layout have earned a score of "E" or "M".</span> 
+Project "Late Days" will accumulate until both requirements have been satisfied.  Remember:  There are two separate sets of tests to run.
+
+<p>You can accumulate up to -1 Late Days if you project meets all requirements before the deadline. 
+ (Negative Late Days can be used to offset any Late Days acquired on other projects or labs.)
+
+<h2>Deliverables</h2>
+
+<p class="listHeader">To submit your project:</p>
+
+<ol>
+  <li>Add a text box to your <code>jls</code> files that includes the names of everybody on the team.
+  </li>
+   <li>Commit and push your code.</li>
+   <li>When your code passes all my tests, add <code>[Grade Me]</code> to the commit message.</li>
+    </ul>
+
+</ol>
+
+<hr>
+<p>Updated Friday, 24 September 2021, 10:57 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>
+

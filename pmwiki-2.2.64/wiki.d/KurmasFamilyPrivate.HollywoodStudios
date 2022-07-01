@@ -1,0 +1,50 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10.4; en-US; rv:1.9.1.8) Gecko/20100202 Firefox/3.5.8
+author=
+csum=
+ctime=1273622625
+host=68.188.218.51
+name=KurmasFamilyPrivate.HollywoodStudios
+rev=13
+targets=
+text=Tuesday, May 25, 2010%0a9:00 am - 10:00 pm%0a%0aarrive: at 8:30 am%0a%0aItinerary%0a||border=1%0a|| View # || Map # || Attraction Name || Additional Notes ||%0a|| 1 || # 10 || Toy Story Mania || FP (before 10:30 am or after 6 pm ||%0a|| || #18 || Tower of Terror || FP -- Z only, before 9:30 am, after 6 pm ||%0a|| 2 || # 15 || Playhouse Disney || %0a|| || #13 || Voyage of Little Mermaid || FP -- if choose to go see Playhouse Disney ||%0a|| 3 || # 5 || Star Tours || FP -- Z only, first 90 minutes or FP ||%0a|| 4 || # 7 || Honey, I Shrunk the Kids Movie Set || Explore -- Andrew might be too young for this. ||%0a|| 5 || || Lunch ||%0a|| 6 || || Break ||%0a|| 7 || # 16 || Beauty and Beast Show || %0a|| 8 || # 8 || Lights! Motors! Action Stunt Show || FP -- after 4 pm or FP ||%0a|| 9 || # 9 || Backlot Tour ||%0a|| 10 || || Dinner ||%0a|| 11 || # 19 || Fantasmic || arrive 30 - 60 minutes early, begins at 9pm ||       %0a%0a%0aAdditional things we want to see and do:%0a||border=1%0a|| * || # 17 || Rock 'n Roller Coaster || FP -- Z only, -- Before 10am or hour before close ||%0a|| * ||  ||  Block Party Bash Parade || 3 pm ||%0a|| * || # 2 || American Idol Experience ||  %0a%0a
+time=1273708783
+author:1273708783=
+diff:1273708783:1273624633:=14c14%0a%3c || 4 || # 7 || Honey, I Shrunk the Kids Movie Set || Explore -- Andrew might be too young for this. ||%0a---%0a> || 4 || # 7 || Honey, I Shrunk the Kids Movie Set || Explore ||%0a
+host:1273708783=68.188.218.51
+author:1273624633=
+diff:1273624633:1273624589:=18c18%0a%3c || 8 || # 8 || Lights! Motors! Action Stunt Show || FP -- after 4 pm or FP ||%0a---%0a> || 8 || # 8 || Lights! Motors! Action Stunt Show || FP -- after 4 pm ||%0a
+host:1273624633=68.188.218.51
+author:1273624589=
+diff:1273624589:1273624481:=18c18%0a%3c || 8 || # 8 || Lights! Motors! Action Stunt Show || FP -- after 4 pm ||%0a---%0a> || 8 || # 8 || Lights! Motors! Action Stunt Show || after 4 pm ||%0a
+host:1273624589=68.188.218.51
+author:1273624481=
+diff:1273624481:1273624381:=26c26%0a%3c || * || # 17 || Rock 'n Roller Coaster || FP -- Z only, -- Before 10am or hour before close ||%0a---%0a> || * || # 17 || Rock 'n Roller Coaster || (Fast pass) -- Before 10am or hour before close ||%0a
+host:1273624481=68.188.218.51
+author:1273624381=
+diff:1273624381:1273624332:=
+host:1273624381=68.188.218.51
+author:1273624332=
+diff:1273624332:1273624267:=26,29c26,29%0a%3c || * || # 17 || Rock 'n Roller Coaster || (Fast pass) -- Before 10am or hour before close ||%0a%3c || * ||  ||  Block Party Bash Parade || 3 pm ||%0a%3c || * || # 2 || American Idol Experience ||  %0a%3c %0a---%0a> || || # 17 || Rock 'n Roller Coaster || (Fast pass) -- Before 10am or hour before close ||%0a> || ||  ||  Block Party Bash Parade || 3 pm ||%0a> || || # 2 || American Idol Experience ||  %0a> %0a
+host:1273624332=68.188.218.51
+author:1273624267=
+diff:1273624267:1273624230:=25c25%0a%3c ||border=1%0a---%0a> ||border+1%0a
+host:1273624267=68.188.218.51
+author:1273624230=
+diff:1273624230:1273624013:=25,29c25,28%0a%3c ||border+1%0a%3c || || # 17 || Rock 'n Roller Coaster || (Fast pass) -- Before 10am or hour before close ||%0a%3c || ||  ||  Block Party Bash Parade || 3 pm ||%0a%3c || || # 2 || American Idol Experience ||  %0a%3c %0a---%0a> # 17 Rock 'n Roller Coaster (Fast pass) -- Before 10am or hour before close%0a>         Block Party Bash Parade                -- 3 pm%0a> # 2   American Idol Experience               -- %0a> %0a
+host:1273624230=68.188.218.51
+author:1273624013=
+diff:1273624013:1273623963:=16c16%0a%3c || 6 || || Break ||%0a---%0a> || 6 || Break ||%0a20c20%0a%3c || 10 || || Dinner ||%0a---%0a> || 10 || Dinner ||%0a
+host:1273624013=68.188.218.51
+author:1273623963=
+diff:1273623963:1273623915:=7c7%0a%3c ||border=1%0a---%0a> || Border = 1 ||%0a20c20%0a%3c || 10 || Dinner ||%0a---%0a> || 10 || Dinner%0a
+host:1273623963=68.188.218.51
+author:1273623915=
+diff:1273623915:1273623872:=7d6%0a%3c || Border = 1 ||%0a15,16c14,15%0a%3c || 5 || || Lunch ||%0a%3c || 6 || Break ||%0a---%0a> || 5 || || Lunch%0a> || 6 || Break%0a
+host:1273623915=68.188.218.51
+author:1273623872=
+diff:1273623872:1273622625:=6,27d5%0a%3c Itinerary%0a%3c || View # || Map # || Attraction Name || Additional Notes ||%0a%3c || 1 || # 10 || Toy Story Mania || FP (before 10:30 am or after 6 pm ||%0a%3c || || #18 || Tower of Terror || FP -- Z only, before 9:30 am, after 6 pm ||%0a%3c || 2 || # 15 || Playhouse Disney || %0a%3c || || #13 || Voyage of Little Mermaid || FP -- if choose to go see Playhouse Disney ||%0a%3c || 3 || # 5 || Star Tours || FP -- Z only, first 90 minutes or FP ||%0a%3c || 4 || # 7 || Honey, I Shrunk the Kids Movie Set || Explore ||%0a%3c || 5 || || Lunch%0a%3c || 6 || Break%0a%3c || 7 || # 16 || Beauty and Beast Show || %0a%3c || 8 || # 8 || Lights! Motors! Action Stunt Show || after 4 pm ||%0a%3c || 9 || # 9 || Backlot Tour ||%0a%3c || 10 || Dinner%0a%3c || 11 || # 19 || Fantasmic || arrive 30 - 60 minutes early, begins at 9pm ||       %0a%3c %0a%3c %0a%3c Additional things we want to see and do:%0a%3c # 17 Rock 'n Roller Coaster (Fast pass) -- Before 10am or hour before close%0a%3c         Block Party Bash Parade                -- 3 pm%0a%3c # 2   American Idol Experience               -- %0a%3c %0a
+host:1273623872=68.188.218.51
+author:1273622625=
+diff:1273622625:1273622625:=1,5d0%0a%3c Tuesday, May 25, 2010%0a%3c 9:00 am - 10:00 pm%0a%3c %0a%3c arrive: at 8:30 am%0a%3c %0a
+host:1273622625=68.188.218.51

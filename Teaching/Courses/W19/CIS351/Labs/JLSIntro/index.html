@@ -1,0 +1,397 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Introduction to JLS</title>
+  <style type="text/css">
+    /* Formatting for lists */
+
+.important {
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.nobreak {
+    white-space: nowrap;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #073c88;
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .inline-instruction {
+      background: #EEEEEE;
+      color: blueviolet;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body>
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Introduction to JLS</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2019</h1></td>
+  </tr>
+</table>
+
+<p>Although breadboards are a lot of fun to
+  <del>play</del>
+  experiment with, it is very difficult to build anything but very small circuits. (More accurately, it is almost
+  impossible to debug circuits with more than 10 or 15 wires.) Therefore, you will use simulation software when
+  designing and building larger circuits. In particular, this you will be using a circuit simulator from
+  <a href="http://www.cs.mtu.edu/~pop" target="_top">Dave Poplawski</a>
+  at
+  <a href="http://www.cs.mtu.edu" target="_top">Michigan Tech</a>
+  named <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/Tools/JLS.jar'><em>JLS</em></a>
+  (<em>J</em>ava
+  <em>L</em>ogic
+  <em>S</em>imulator).
+</p>
+
+<p class="listHeader">The primary objectives for this lab are</p>
+
+<ul>
+  <li>to get <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/Tools/JLS.jar'><code>JLS</code></a> set up in your environment,</li>
+  <li>to learn how to use JLS,</li>
+  <li>to learn how to test your circuits using
+    <a href='http://www.cis.gvsu.edu/~kurmasz/Software/DLUnit'><code>DLUnit</code></a>, and
+  </li>
+  <li>to build a circuit using JLS.
+</ul>
+
+<h2>Pre-lab</h2>
+
+<p>As soon as you arrive in lab, demonstrate that you have created at least one circuit using JLS.</p>
+
+<h2>Set up JLS</h2>
+
+<span class="important"><b>Important</b>: If you are a GVSU student, please follow the instructions below to obtain a
+  copy
+  of <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/Tools/JLS.jar'><code>JLS</code></a>. Please <b><em>Do not</em></b> email Prof. Poplawski
+  to ask for a copy.</span>
+
+<p>The <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/Tools/JLS.jar'><code>JLS</code></a>
+  simulator is written in Java and can, therefore, be installed in
+  user space and run on almost any machine with the Java 5.0 run-time
+  environment. One exception: You may need a two-button mouse to run JLS
+  on a Mac. (Java for the Mac does not process ctrl-click as a right-click
+  in the way Windows and Linux do. Many important features now have
+  keyboard shortcuts; but, you may find yourself in need of a feature
+  accessible only with a right-click.)</p>
+
+
+<p>All the JLS code is contained in <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/Tools/JLS.jar'><code>JLS.jar</code></a>. If you are using
+  the EOS lab, you will find it in <code>/home/kurmasz/public/bin</code>. The easiest way to run JLS is to put
+  this directory in your path. (For most of you, the best way to do this is to add the
+  line <code class="inline-instruction nobreak">export&nbsp;PATH=$PATH:/home/kurmasz/public/bin</code> to the
+  end of your <code>.bashrc</code>.) There is a script named <code>jls</code> in this directory that sets up the java
+  classpath and launches JLS. This directory also contains other scripts that will make your life in this course much
+  easier. If you object to adding this directory to your path, you can also launch JLS with this
+  command:<br><code class="inline-instruction nobreak">java&nbsp;-jar&nbsp;/home/kurmasz/public/bin/JLS.jar
+  /JLS.jar</code>.
+
+<p>To run JLS on your own machine, download
+  <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/Tools/JLS.jar'><code>JLS.jar</code></a>. You
+  run JLS by typing <code>java -jar <em>jlsDir</em>/JLS.jar</code>,
+  where <code><em>jlsDir</em></code> is the directory into which you saved
+  <code>JLS.jar</code>.
+
+
+<p>Regardless of where you run JLS, make sure you have the latest
+  version: 4.1.7 (built 16 September 2016).
+
+
+<h2>Learn how to use JLS</h2>
+
+<p>Begin by working through the "Introduction", "Full&nbsp;Adder", and
+  "Sign&nbsp;Extender" tutorials. (You may also want to complete the 4-Bit
+  Counter tutorial when we get to registers.) You will find all the
+  tutorials in the <code class="nobreak">Help->Tutorials</code> menu.</p>
+
+<p class="listHeader">As you work through the tutorial, pay special attention to the
+  following details:</p>
+<ul>
+  <li>Name your half adder <code>HalfAdder.jls</code>, <em>not</em> <code>ha</code>
+    as suggested by the tutorial.
+  </li>
+  <li>Name your sum output <code>Sum</code>, <em>not</em> <code>SUM</code>
+    as suggested by the tutorial.
+  </li>
+  <li>Name your full adder <code>FullAdder.jls</code>, <em>not</em> <code>fa</code>
+    as suggested by the tutorial.
+  </li>
+  <li>Importing a sub-circuit inserts a <em>copy</em> of the imported
+    sub-circuit into the circuit you are creating. As a result, if you
+    later discover a bug in your sub-circuit, you must re-import that
+    sub-circuit everywhere. It is not sufficient to simply fix the bug in
+    the sub-circuit's <code>jls</code> file. Moral: Thoroughly test your
+    sub-circuits before importing them.
+  </li>
+</ul>
+
+<p> When you are finished, save your half-adder in a file named
+  <code>HalfAdder.jls</code>. Make sure the inputs are
+  named "<code>A</code>" and "<code>B</code>", and the outputs are
+  named "<code>Sum</code>" and "<code>Carry</code>".
+  The program I use to help test your circuits requires the circuits to
+  present a known interface. (In other words, the program needs to know
+  what the input and output pins are named.) If you do not conform to the
+  specified interface (i.e., the given circuit and input names), I will
+  probably not grade your circuit.</p>
+
+
+<h2>Learn how to test JLS circuits</h2>
+
+<p>After completing a circuit, your first order of business should be to
+  test it by setting the values of the input pins and examining the values
+  of the output pins. In fact, it is a good idea to test sub-circuits as
+  you build them.</p>
+
+<p>When you have finished building the full adder (as described in the
+  tutorial):</p>
+
+<ol>
+  <li>Add input pins named <code>InputA</code>, <code>InputB</code>, and
+    <code>CarryIn</code>.
+  </li>
+  <li>Add a "generate test signals" element. (This element is on the
+    toolbar to the right of the "pause" element.). Set appropriate values
+    for the three input pins. (As an example, one line may look like this:
+    <code>InputA 1 end</code>.)
+  </li>
+  <li>Add watches to all the output pins.</li>
+  <li>Place probes on the "Carry" outputs of each component half adder.</li>
+  <li>Open the simulator window, run the simulation, and verify that the
+    resulting output is correct.
+  </li>
+  <li>Change the scale factor from 1 to 5 and observe what happens.</li>
+</ol>
+
+<p>Using the simulator window is a good way to check a few example
+  input/output pairs, or to track down bugs; however, trying to thoroughly
+  test a circuit using this technique would be very tedious and time
+  consuming. Therefore, we provide <code>DLUnit</code> to automate the running of many tests. (Think of it as
+  JUnit for hardware.)</p>
+
+<p>I will use <a href='http://www.cis.gvsu.edu/~kurmasz/Software/DLUnit'><code>DLUnit</code></a> to test your circuits.
+  <code>DLUnit</code>will
+  run your circuit many times with different inputs, and compare the resulting outputs to known values. Practice using
+  this testing setup by testing the half adder you built while completing the tutorial. (Again, make sure the file,
+  inputs, and outputs are all named correctly.)</p>
+
+Running <code>DLUnit</code>
+<ul>
+  <li>in EOS:
+    <ol>
+      <li>Make sure /home/kurmasz/public/bin is in your <code>PATH</code></li>
+      <li>Download <a href="HalfAdderTest.java">HalfAdderTest.java</a>.</li>
+      <li>Compile the test: <code class="inline-instruction">dlunit_compile HalfAdderTest.java</code></li>
+      <li>Run <code>DLUnit</code>: <code class="inline-instruction">dlunit HalfAdder.jls HalfAdderTest.class</code>
+        .
+      </li>
+    </ol>
+  </li>
+
+  <li>on your own machine
+    <ol>
+      <li>Download <a href='http://www.cis.gvsu.edu/~kurmasz/Software/DLUnit/dist/DLUnit.jar'>DLUnit.jar</a>.</li>
+      <li>Download <a href="HalfAdderTest.java">HalfAdderTest.java</a>.</li>
+      <li>Compile the test: <code class="inline-instruction">javac -cp DLUnit.jar HalfAdderTest.java</code></li>
+      <li>Run <code class="inline-instruction">java -jar DLUnit.jar HalfAdder.jls HalfAdderTest.class</code>.</li>
+    </ol>
+  </li>
+</ul>
+
+
+<p>To make sure you understand how <code>DLUnit</code> works,
+  deliberately introduce a bug into <code>HalfAdder.jls</code> (e.g.,
+  replace the <code>XOR</code> gate with an <code>AND</code> gate) and
+  re-run the test class. (Then fix the circuit once you know what happens
+  when there is an error.)</p>
+
+
+<h2>Build your own circuit</h2>
+
+<p>Now that you have had some practice using JLS, it's time to build
+  your own circuit. Build a circuit named "<code>UnsignedFullAdder_16bit</code>"
+  that adds two 16-bit unsigned integers. The simplest way to complete
+  this lab is to implement a ripple-carry adder. However, the upcoming
+  project will offer extra points to those who build an adder that is
+  faster than <code>O(n)</code>. Therefore, you may want to get a head
+  start on the project by building a faster adder.</p>
+
+<p>To keep the design manageable, you may want to use one or more
+  sub-circuits (e.g., connect four 4-bit adders, or two 8-bit adders). If
+  you do use sub-circuits, notice that you can unbundle buses into
+  arbitrary groups. For example, you can take a 16-bit bus and split it
+  into 0-3, 4-7, 8-11, and 12-15. In the "Create unbundler" dialog, select
+  "Group bits" instead of "Single bits". (See the "Sign Extender" tutorial
+  built into JLS.)</p>
+
+<ul>
+  <li>Name the inputs "<code>InputA</code>","<code>InputB</code>", and "<code>CarryIn</code>".</li>
+
+  <li>Name the outputs "<code>Output</code>" and "<code>CarryOut</code>".
+    (If you do not name the inputs and outputs correctly, the test script
+    will not run.) The "<code>CarryOut</code>" output should be 1 if, and
+    only if, there is an overflow.
+  </li>
+
+  <li>Test your circuit using <a
+    href="SampleUnsigned16BitAdderTest.java"><code>SampleUnsigned16BitAdderTest.java</code></a>).
+    If the test script doesn't work without modification, then you either
+    named your circuit, inputs, or outputs incorrectly.
+  </li>
+
+  <li><code>SampleUnsigned16BitAdderTest</code> will not completely test
+    your circuit. Add as many tests as necessary to be confident your
+    circuit works.
+  </li>
+</ul>
+
+<h2>JLS Shortcuts</h2>
+<a href="https://www.youtube.com/watch?v=XzF2TBw7Fgw">This video</a> demonstrates several helpful JLS shortcuts.
+Remember, JLS was designed specifically with these projects in mind. If you find a task highly repetitive/tedious,
+you are probably overlooking a shortcut.
+
+<h2>Deliverables</h2>
+
+<ul>
+  <li>Demonstrate your circuit (and tests) to the instructor.</li>
+
+  <li>Add a text box to your <code>jls</code> files that includes
+    <ul>
+      <li>your name,</li>
+      <li>the file name,</li>
+      <li>the assignment name, and</li>
+      <li>the assignment due date.</li>
+    </ul>
+
+    <!--
+    <li>Use the Print->Export Image feature to produce a <code>.jpeg</code>
+        of your half adder, full adder, and any sub-circuits you design. Use
+        the "Just Visible Window" option to print your circuit. Using the
+        "Entire Circuit" option will print one copy of each sub-circuit. That
+        means if you have imported a 1-bit full adder 16 times, you will get 16
+        copies of your adder!
+    </li>
+
+    <li>Submit hard copies of the images.</li>
+-->
+  <li>Submit the <code>jls</code> files, and any additional test files
+    you used, using Blackboard's Assignment Manager.
+  </li>
+</ul>
+
+<hr>
+<p>Updated Monday, 31 December 2018, 4:13 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>
+

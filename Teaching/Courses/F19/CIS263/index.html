@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CIS 263 --- Data Structures and Algorithms</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+            .kielceAssignmentTable {
+           border-spacing: 35px 0;
+        }        
+
+        .kielceAssignmentTable tr th {
+          text-align: left;          
+        }
+
+        .kielceAssignmentTable tr td {
+          vertical-align: top;
+        }
+
+        .kielceAssignmentTable_due {
+           white-space:  nowrap;
+        }
+
+        .kielceAssignmentTable_title {
+            white-space: nowrap;
+        }
+
+        .exam {
+            background-color: lightgreen;
+        }
+
+  </style>
+</head>
+
+<body>
+
+<nav id="nav">
+  <a class='bypass' href="#content">Skip to main content</a>
+
+  <p><a target="_top" href="index.html">Course Home</a></p>
+
+  <p><a href="syllabus.html">Syllabus</a></p>
+
+  <p><a href="timeline.html">Timeline</a></p>
+
+  <!-- <p><a href="estimated_timeline.html">Timeline</a></p> -->
+
+  <!-- <p><a target="_top" data-klink="previousCourseURL">Previous Offering</a></p> -->
+
+  <!-- <p id="currentOffering" style="DISPLAY: none"><a target="_top" data-klink="currentCourseURL">Current Offering</a>
+  </p> -->
+
+  <!--
+  <p><a href="SampleCode" style="color:white"><fontsize="2"
+  face="arial,helvetica,sans-serif">SampleCode</font></a></p>
+  -->
+
+  <hr>
+
+  <p><a href='http://www.cis.gvsu.edu/~kurmasz'>My Home</a></p>
+  <p><a href='http://www.cis.gvsu.edu/public/staffListing/index.php?page=staff&fname=Zachary&lname=Kurmas'>My Schedule</a></p>
+
+</nav>
+
+<main id="content">
+  <div>
+    <h1 style="text-align: center">
+      <span>CIS 263 Data Structures and Algorithms</span><br>
+      <span>Fall 2019</span>
+    </h1>
+  </div>
+
+
+  <dl>
+    <dt> Contact Information:</dt>
+    <dd><style>
+    .contactInfoTable {
+        width: 100%;
+    }
+
+    .contactInfoTable td {
+        border:0;
+        margin: 3px;
+    }
+
+    .ciHeader {
+       font-weight: bold
+    }
+
+    .contactInfoTable td {
+        text-align: left;
+    }
+
+    .contactInfoTable td:nth-child(1) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(3) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(4) {
+        width: 250px;
+    }
+</style>
+
+<table class="contactInfoTable">
+    <tr>
+        <td class="ciHeader">Instructor:</td>
+        <td>Zachary Kurmas</td>
+        <td class="ciHeader">Office:</td>
+        <td>MAK C-2-316</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Phone:</td>
+        <td>331-8688</td>
+        <td class="ciHeader">Office Hours:</td>
+        <td>MW 3:00-4:00; M 5:15-6:00</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Home page:
+        <td><a href="http://www.cis.gvsu.edu/~kurmasz" target="_top">http://www.cis.gvsu.edu/~kurmasz</a>
+        <td>
+        <td>F 11:00-12:00
+    </tr>
+</table></dd>
+
+    <dt>Office Hours:</dt>
+    <dd> Official office hours are listed above. I make a point of being in my office
+      during these times. However, I am typically on campus from 9 to 4 Monday, Wednesday, Friday, and most Tuesdays.
+      Feel free to stop by my office whenever you have a question.
+    </dd>
+
+    <dt>Course Documents:
+    <dd>
+      <ul>
+        <li><a href="syllabus.html">Syllabus</a>
+        <li><a target="_top" href="http://www.cis.gvsu.edu/academic-honesty">CIS Academic Honesty Policy</a></li>
+      </ul>
+
+    <dt>Announcements:</dt>
+    <dd> I will post announcements at <a target="_top" href="http://piazza.com/gvsu/fall2019/cis263">Piazza</a>.
+      Please check there regularly.
+    </dd>
+
+    <dt>Discussion Board:</dt>
+    <dd>Please post questions about homework, projects, etc. to <a target="_top" data-klink="piazza">Piazza</a>. Doing
+      so allows everybody to see the question and answer and saves me the time of answering the same question multiple
+      times. Other students can also answer your question, which may help you get a faster response.
+    </dd>
+
+    <dt>Grades:</dt>
+    <dd>I will post grades on <a target="_top" href="http://mybb.gvsu.edu">Blackboard</a>.
+    </dd>
+
+
+    <dt>Assignments:
+    <dd>
+          <table class='kielceAssignmentTable'>
+      <tr>
+         <th>Due</th>
+         <th>Name</th>
+         <th>Details</th>
+      </tr>
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 28 Aug.</td>
+    <td class='kielceAssignmentTable_title'>Survey : First Day Survey</td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 11 Sep.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/BigO-CPP'>Homework 1: Big-O</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 16 Sep.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/BinarySearch'>Homework  2: Binary Search</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 23 Sep.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/Lists'>Homework 3: Lists</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 2 Oct.</td>
+    <td class='kielceAssignmentTable_title'>Reading 1: Chapters 1 through 3</td>
+    <td class='kielceAssignmentTable_details'>zyBooks Chapters 1-3</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Fri. 4 Oct.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/HashPolynomial'>Homework 4: Hash</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 9 Oct.</td>
+    <td class='kielceAssignmentTable_title'>Reading 2: Chapter 4</td>
+    <td class='kielceAssignmentTable_details'>zyBooks Chapter 4</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 14 Oct.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/practiceTest1.pdf'>Practice Test 1</a></td>
+    <td class='kielceAssignmentTable_details'>(Not due for credit.)</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 16 Oct.</td>
+    <td class='kielceAssignmentTable_title'>Reading 3: Chapter 5</td>
+    <td class='kielceAssignmentTable_details'>zyBooks Chapter 5</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 23 Oct.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/NumberTree'>Homework 5: Tree</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 11 Nov.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/TreeExercises'>Practice Test 2</a></td>
+    <td class='kielceAssignmentTable_details'>(Not due for credit.)</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 13 Nov.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/TreeIterator'>Homework 6: Tree Iterator</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Fri. 6 Dec.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/ClosestPair'>Homework 7: Closest Pair</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 11 Dec.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/PracticeFinal'>Practice Final</a></td>
+    <td class='kielceAssignmentTable_details'>(Not due for credit.)</td>
+  </tr>
+
+</table>
+
+    </dd>
+
+
+    <dt>Text:</dt>
+    <dd>
+      <ul>
+        <li>We will use the <a href="https://www.zybooks.com/catalog/data-structures-essentials/">Data Structures
+          Essentials</a> zyBook from Zyante. Please use book code <code>GVSUCIS263KurmasFall2019</code>.
+        </li>
+        <li>I will also use <a href="https://learning.oreilly.com/library/view/a-tour-of/9780134998053/"><em>A tour
+          of C++</em></a> by Bjarne Stroustrup as a C++ reference. It is available online through the GVSU library.
+        </li>
+        <li>Finally, I will draw some lecture material from the Weiss text. It is
+          expensive,
+          so I wouldn't buy your own copy unless you really need it.
+          <ul>
+            <li><em>Data Structures and Algorithms in C++ (4th edition)</em> by Mark Allen Weiss. ISBN: 9780132847377</li>
+          </ul>
+        </li>
+      </ul>
+    </dd>
+
+    <dt>Lecture Notes:</dt>
+    <dd>
+      <ul>
+	<li>Week 1: <a href='LectureNotes/cis263_week1.html'>Notes</a> 
+</li>	<li>Week 2: <a href='LectureNotes/cis263_week2.html'>Notes</a> 
+</li>	<li>Week 3: <a href='LectureNotes/cis263_week3.html'>Notes</a> 
+</li>	<li>Week 4: <a href='LectureNotes/cis263_week4.html'>Notes</a> 
+</li>	<li>Week 5: <a href='LectureNotes/cis263_week5.html'>Notes</a> 
+</li>	<li>Week 7: <a href='LectureNotes/cis263_week7.html'>Notes</a> 
+</li>	<li>Week 8: <a href='LectureNotes/cis263_week8.html'>Notes</a> 
+</li>	<li>Week 9: <a href='LectureNotes/cis263_week9.html'>Notes</a> 
+</li>	<li>Week 10: <a href='LectureNotes/cis263_week10.html'>Notes</a> 
+</li>	<li>Week 11: <a href='LectureNotes/cis263_week11.html'>Notes</a> 
+</li>	<li>Week 12: <a href='LectureNotes/cis263_week12.html'>Notes</a> 
+</li>	<li>Week 13: <a href='LectureNotes/cis263_week13.html'>Notes</a> 
+</li>
+    </dd>
+
+    <dt>Reference:</dt>
+    <dd>
+      <ul>
+        <li><a href="https://en.cppreference.com/w/">C++ Reference</a></li>
+        <li><a href='https://github.com/kurmasz-assignments/cis263-sample-code'>Sample Code</a> presented in
+          class.
+        </li>
+        <li><a href='https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/'>Code From Weiss Text</a></li>
+        <li>Implementations:
+          <ul>
+            <li>
+              
+              <a href='https://github.com/eagle518/jdk-source-code/blob/master/jdk5.0_src/j2se/src/share/classes/java/util/HashMap.java'>Java 5 HashMap</a> </li>
+            <li>
+              
+              <a href='http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/HashMap.java'>Java 8 HashMap</a>
+            </li>
+            <li>
+              
+              <a href='https://github.com/gcc-mirror/gcc/blob/master/libstdc%2B%2B-v3/include/bits/hashtable.h'>C++ hashtable</a>
+            </li>
+          </ul>
+        </li>
+        <li><a href='https://courses.cs.washington.edu/courses/cse373/13wi/lectures/02-13/16-avl-trees.ppt'>AVL
+        Slides</a> from the University of Washington
+        </li>
+      </ul>
+    </dd>
+  </dl>
+
+
+  <hr>
+  <p>Updated Saturday, 23 November 2019, 12:00 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>

@@ -1,0 +1,347 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="data-structures">Data Structures</h1>
+
+<ul>
+  <li>Think of an <code>ArrayList</code> as simply a tool for storing stuff (i.e., Java Objects).</li>
+  <li>Forget about <em>how</em> these things work and focus on <em>what</em> they do.</li>
+  <li>What are the fundamental operations on an <code>ArrayList</code>?
+    <ul>
+      <li><code>get(x)</code></li>
+      <li><code>put(x)</code></li>
+    </ul>
+  </li>
+  <li>What are some other common things we do with <code>ArrayList</code>s?
+    <ul>
+      <li><code>add</code> (to the end)</li>
+      <li><code>removeFromEnd</code></li>
+      <li><code>insert(object, location)</code> (insert at a specific location)</li>
+      <li><code>remove(location)</code></li>
+    </ul>
+  </li>
+  <li>What is the running time of each?
+    <ul>
+      <li><code>get</code>: <code>O(1)</code></li>
+      <li><code>put</code>: <code>O(1)</code></li>
+      <li><code>add</code>: <code>O(1)</code></li>
+      <li><code>removeFromEnd</code>: <code>O(1)</code></li>
+      <li><code>insert(object, location)</code>: <code>O(n)</code></li>
+      <li><code>remove(location)</code>: <code>O(n)</code></li>
+    </ul>
+  </li>
+  <li>This is good if most of of your operations are <code>O(1)</code>; not so good if you are doing a lot of <code>insert</code>s and <code>remove</code>s.</li>
+  <li>Consider a priority queuing system for course overrides:
+    <ul>
+      <li>Seniors go to the head of the list because they need to graduate.</li>
+      <li>Juniors get in line behind the seniors.</li>
+    </ul>
+  </li>
+  <li>If <code>n</code> students sign up for overrides, it could make this process <code>O(n^2)</code>.</li>
+  <li>Think about this, however: The fact that <code>get</code> and <code>put</code> is <code>O(1)</code> is not helpful because we don’t use these operations.  Is there a way to make the operations we do use faster at the expense of the ones we aren’t using.</li>
+  <li>ArrayLists focus on an item’s specific position (what’s, first, what’s second, etc.)</li>
+  <li>In contrast, what’s important in our queuing example?  Who’s <em>next</em></li>
+  <li>What does this buy us?</li>
+</ul>
+
+<h2 id="mon-29th">Mon 29th</h2>
+
+<ul>
+  <li><em>Collection</em>: “an object that gathers and organizes other objects”
+    <ul>
+      <li><code>List</code>, <code>Map</code>, <code>Set</code>, <code>Tree</code>, etc.</li>
+    </ul>
+  </li>
+  <li><em>Data Type</em>: “a group of values and the operations defined on those values”.
+    <ul>
+      <li>Specific collections (e.g., <code>Lists</code>)</li>
+    </ul>
+  </li>
+  <li><em>Abstract Data Type</em>: Data type where the implementation details are not specified
+    <ul>
+      <li>A <code>List</code> is an Abstract Data Type since implementation details are not given</li>
+      <li><code>ArrayLists</code> and <code>LinkedLists</code> are not abstract because the implementation details are relevant here.</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

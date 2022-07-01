@@ -1,0 +1,385 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 4: Introduction to Sequential Circuits</title>
+
+  <style>
+    img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.hasBorder, table.hasBorder td, table.hasBorder th {
+      border: 1px solid gray;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Lab 4: Introduction to Sequential Circuits</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2019</h1></td>
+  </tr>
+</table>
+
+<p>Author: <a target="_top" href="http://www.cis.gvsu.edu/~wolffe">Prof. Greg Wolffe</a>.
+<hr>
+
+<h3>Pre-lab</h3>
+
+<p>None this week.</p>
+
+<h3> Overview</h3>
+
+<p>The purpose of this lab is to provide a "hands-on" introduction to
+  modern technologies for storing digital data. The lab will
+  investigate basic storage device structure and function by building
+  latches and experimenting with flip-flops. These simple devices
+  will then be combined with combinatorial logic gates to construct
+  sequential circuits. <i>Voila!</i> A state machine is born.</p>
+
+<h3 class="listHeader"> Activities</h3>
+
+<ul>
+  <li> Work your way through the following brief tutorial.</li>
+  <li> Submit a detailed lab report that includes your answers to the
+    numbered questions.
+  </li>
+</ul>
+
+<h3 class="listHeader"> Resources</h3>
+
+<ul>
+  <li>Chapters 2 and 3 in the Harris and Harris textbook. (Appendix B in Patterson and Hennessey.)</li>
+  <li> The web page showing how to use <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/ReferenceDocuments/Switches/switches.html'>switches</a>.</li>
+  <li> The web page showing <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/ReferenceDocuments/Pinouts'>pinouts</a>.</li>
+</ul>
+
+
+<h3> Equipment</h3>
+
+
+<p>The equipment used will be much the same as the past few weeks - with
+  the addition of a few more IC's. As always, please review and
+  follow the guidelines presented for working with integrated circuits.</p>
+
+<h3> Simple Storage Devices</h3>
+
+<p>The first and simplest storage device
+  we will consider is the S-R latch. It can be constructed using
+  relatively simple logic; for example, the version presented in lecture
+  used two NOR gates with feedback circuits. Figure 3-1 below
+  gives the logic diagram.</p>
+
+<img class="center" src="Fig3-1.gif" height="273" width="427" alt="NOR latch">
+
+<p><b>Important</b>: Note that the pinout of a NOR gate integrated circuit
+  (74HC02) differs from the pinouts of the AND and NAND gate ICs used in
+  previous labs. <!-- Figure 3-2 gives the pinout of a quad 2-input NOR
+gate IC.  (Remember, this diagram shows the gate input/output to which each pin belongs.  It does <em>not</em> represent where the pins physically lie on the chip.) -->
+</p>
+
+<img class="center" src="74002.gif" alt="NOR pinout">
+
+<p>To investigate the operation of an S-R latch, construct the
+  following circuit:</p>
+<ul>
+  <li> Carefully insert a 74HCT02 IC into the breadboard so that each
+    pin sits in its own strip.
+  </li>
+
+  <li> Connect the power supply between pins 7 and 14, with the positive
+    terminal on pin 14.
+  </li>
+
+  <li> Wire the inputs and outputs of the circuit according to the
+    diagram (Figure 3-1).
+  </li>
+
+  <li> Connect both the Q and Q' output lines to appropriate resistors,
+    then to LEDs which are connected to ground. This will allow you to
+    monitor the internal state of the latch.
+    <ul>
+      <li><b>Note:</b>It's a good idea to use different colored
+        LEDs for the two outputs.
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+<ol>
+
+  <li>Demonstrate your circuit to the instructor or lab assistant.
+  </li>
+
+  <li> Notice that, unlike the combinatorial circuits we've discussed
+    in class, the output of the S-R latch depends on both the inputs, and
+    the current state of the device. A <em>characteristic table</em> is
+    used to specify the output of the device in terms of both its input
+    and current state. Determine, by observing the state of the LEDs,
+    the characteristic table of the device.
+
+    <table class="hasBorder">
+      <tr>
+        <th>R</th>
+        <th>S</th>
+        <th>previous Q</th>
+        <th>New Q</th>
+        <th>New Q'</th>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td> &nbsp;</td>
+        <td>&nbsp;</td>
+      <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      <tr>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      <tr>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </table>
+  </li>
+
+  <li> What happens to Q and Q' when both inputs are set to logic 1?</li>
+  <li> Explain how the circuit produces the observed result. (In
+    other words write a couple paragraphs explaining why the output of
+    this circuit makes sense given the defined behavior of its
+    component gates when <code>R=1</code> and <code>S=1</code>.)
+  </li>
+
+  <li> The book claims that setting both inputs to 1 produces an "indeterminate" result.
+    <ol>
+      <li> Describe a specific sequence of input values for R and S that could lead to Q being in an indeterminate (or
+        random), but stable, state. (Hint: Consider what happens when R and S both change values "simultaneously".)
+      </li>
+      <li> Describe the random state and the cause of the randomness.</li>
+    </ol>
+    I'm going to be very particular about how this questions is written. You will probably want to have another group
+    read your answer to make sure it is clear. Note: I'm not looking for a description of any intermediate states. I'm
+    only interested in final, stable, states.
+  </li>
+</ol>
+
+
+<h3> Flip-flops</h3>
+
+<p>As described in class, the D flip-flop is a useful device for storing
+  one bit of data. It does not suffer from the indeterminate state
+  observed in the S-R latch. The logic device that will be used in
+  this experiment is the 74HCT74, a dual D-type flip-flop with Set and
+  Reset and a positive-edge trigger. The "dual" means there are two
+  D flip-flops in the IC, the "Set and Reset" means that there are pins to
+  Set and Reset the device, and "positive-edge trigger" indicates that a
+  bit present on the D input will be latched into the flip-flop at the
+  leading edge of a clock pulse.</p>
+
+<p>The pinout of the D flip-flop is very different from the gates used
+  previously. See Figure 3-3 below for the details of the
+  pinout. Power is connected across pins 7 and 14 as usual.
+  For flip-flop #1, pin 2 is the D (<b>Data</b>) input. The
+  outputs Q and Q' are at pins 5 and 6 respectively.
+  The <b>Clock</b> signal (CLK) is input to pin 3. Finally, pin 1
+  (labeled CLR) provides the Clear, or <b>Reset</b> function. Pin
+  4 (labeled PR) provides the Pre-set, or <b>Set</b> function.
+  Both the Set and Clear inputs are active-<em>LOW</em>, which means
+  they are in effect whenever a logic 0 is applied. In other words,
+  connecting Set to ground will instantly set the state of the flip-flop
+  to 1. No clock pulse is necessary to use set and reset. This entire
+  organization is repeated, using different pins, for flip-flop #2. </p>
+
+<img class="center" src="74074.gif" alt="D-latch pinout">
+
+
+<p class="listHeader">Construct the following circuit:</p>
+<ul>
+  <li> Connect power to the chip as usual and connect LEDs to monitor
+    the Q and Q' outputs.
+  </li>
+  <li> Connect the Pre-set and Clear, and D pins to a DIP switch
+    using a "pull-down" (i.e., 0 when the DIP switch is "off")
+    setup. Remember, there is a page on the course web page
+    showing <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/ReferenceDocuments/Switches/switches.html'>how to use switches</a>.
+  </li>
+
+  <li> Test your DIP switch setup by using Pre-set and Clear to set Q
+    to 1, then 0.
+  </li>
+  <li> Connect the clock to a momentary switch using a "pull-down"
+    (i.e., 0 when the switch is up, and 1 when it is pressed)
+    configuration.
+  </li>
+  <li> Test to see that the clock and the "D" switch work as expected.</li>
+</ul>
+
+<p>Show the operation of the D flip-flop by completing the timing diagrams
+  below: (Note: The diagrams below contain 8 vertical dotted lines.
+  If you see fewer than 8 such lines, your web browser truncated the diagram.)</p>
+
+<ol start="6">
+
+  <li> This first diagram shows a typical clocked usage of the flip
+    flop. Note that, for this diagram, PR and CLR are always 1.
+    <p><img src="timing_diagram_dff_only.jpeg" alt="Diagram 1"></p></li>
+
+  <li> This diagram shows typical preset / clear behavior. Note that
+    the clock remains at 0 for the first half of the diagram.
+    <p><img src="timing_diagram_dff_prclr1.jpeg" alt="Diagram 2"></p></li>
+
+  <li> This diagram shows what happens when preset and clear are both low at the same time.
+    The results of setting preset and clear to low at the same time are not defined, so the behavior may not be
+    consistent.
+    <p><img src="timing_diagram_dff_prclr2.jpeg" alt="Diagram 3"></p></li>
+</ol>
+
+<h3> Creating a Sequential Circuit</h3>
+
+<p>This last experiment provides a good example of the way storage devices
+  and logic gates are used together to create a sequential circuit.
+  It uses a combination of feedback (the current state of a storage
+  device) together with combinatorial logic to create a device
+  implementing a useful function.</p>
+
+<ul>
+  <li> Construct the circuit given in Figure 3-4 below:
+    <ul>
+      <li> Use LEDs to monitor the Q outputs of the two flip-flops.</li>
+      <li> Place the LED for A1 to the left of the LED for A0</li>
+      <li><b>Note:</b> It is a good idea to wire together the
+        Clear terminals of the two flip-flops. With that configuration, a
+        single wire can be used to apply the active signal to both flip-flops at
+        once (i.e., you can <b>Reset</b> both flip-flops simultaneously).
+        Do the same thing with the two <b>Clock</b> inputs so as to synchronize
+        the flip-flops on the same leading edge.
+      </li>
+      <!-- Again, if the effects of the "bounce" in the switches causes problems,
+you will need to use a two-switch setup for your clock.</li> -->
+
+    </ul>
+  </li>
+  <li> Use the Clear function appropriately to <b>Reset</b> the state of
+    both flip-flops to Q = 0.
+  </li>
+  <li> Repeatedly apply <b>Clock</b> pulses to the circuit and observe
+    the two Q outputs until you have discovered the pattern.
+  </li>
+  <li> You may need to refer to the web page showing <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/ReferenceDocuments/Pinouts'>pinouts</a>.</li>
+</ul>
+
+<ol start="9">
+
+  <li> Report your observations using a characteristic table..</li>
+  <li> Based on your observations, what useful circuit have you
+    constructed? Hint: Make sure your LED for A1 is to the left of the LED
+    for A0.
+  </li>
+
+  <li>Demonstrate your circuit to the instructor or lab assistant.
+  </li>
+
+</ol>
+<img class="center" src="Fig3-4.gif" height="345" width="547" alt="circuit to build">
+
+<hr>
+<p>Updated Monday, 31 December 2018, 12:00 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

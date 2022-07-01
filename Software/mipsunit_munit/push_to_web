@@ -1,0 +1,2 @@
+rsync -rRLzp * ~/Documents/Courses/CISWebPage/Software/mipsunit_munit
+#rsync -rRLzp * eos17.cis.gvsu.edu:/home/kurmasz/public_html/Software/mipsunit_munit

@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+
+
+<html>
+<head>
+  <title>Functions</title>
+
+  <style type="text/css">
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.hasBorder, table.hasBorder td, table.hasBorder th {
+      border: 1px solid gray;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+  </style>
+</head>
+
+<body>
+<table style="border:  0; width: 100%">
+  <tr>
+    <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;">CIS 351</h1>
+    </td>
+    <td style="width: 70%">
+      <h1 style="text-align: center">Lab 8: Functions</h1></td>
+    <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap">
+      Fall 2021</h1></td>
+  </tr>
+</table>
+
+<h3> Overview</h3>
+
+<p>
+<h1>Be sure to finish automated tests!!!</h1>
+  The purpose of this lab is to practice correct stack management by writing and calling multiple functions.
+
+  <p>Please use this <a href='https://notready.yet'>GitHub Classroom</a> link</p>
+
+<h3>Non-leaf functions</h3>
+
+<ol>
+
+<li> Open code <code>selection_sort.asm</code> and complete the function <code>loc_of_min</code>. 
+ The <code>loc_of_min</code> function has this signature: 
+ <code>int* loc_of_min(int* start, int* end)</code>. It takes as input a pointer to the first and last 
+ elements of an array and returns that returns a 
+<em>pointer</em> to the minimum value in an array. (Notice that the second parameter is a pointer to the last 
+ element in the of the array, not a length.) Test your code thoroughly using 
+ <code>LocationOfMinTest.java</code> as a starting point.  (As always, you will need to add your own tests.)</li>
+
+ <li>Now, use <code>loc_of_min</code> to complete the <code>selection_sort</code> function.  This function takes
+ an array and its length as parameters.  Be sure to test thoroughly.</li> 
+
+<p> <span class='important'>Remember:</code> Calling <code>loc_of_min</code> will replace the value in 
+<code>$ra</code>. You must preserve this value on the stack.  Otherwise, calling <code>selection_sort</code> 
+will cause an infinite loop.  Similarly, pay attention to which registers each method uses.</p></li>
+
+<li>Once your code passes your tests and the automated tests, make sure it follows MIPS calling conventions. 
+Specifically:  
+  <ol type='a'>
+    <li>Parameters must be passed using only "<code>$a</code>" registers.</li>
+    <li>Return values must be placed only in <code>$v0</code>.</li>
+    <li>Changing the registers used by a function (e.g., using <code>t5</code> instead of <code>t0</code> must
+    not break other functions. Specifically, I should not be able to introduce a bug in 
+        <code>selection_sort</code> by changing which registers are used by <code>loc_of_min</code>.
+        Similarly, I should not be able to introduce a bug into <code>selection_sort</code> 
+        by modifying the values of any <code>$a</code> registers in  <code>loc_of_min</code>.
+        </li>
+    <li>The only accesses to the stack should be at the beginning and end of each function.   There should not
+    be multiple stack accesses throughout the function.</li>
+  </ol>
+
+</ol>
+
+
+<h3 class="listHeader"> Recursion</h3>
+
+<p>If you want to be <em>really</em> sure you are handing registers and the stack correctly, 
+write a recursive function.  Any small mistake is almost guaranteed to cause the function to fail.</p>
+
+<p> In discrete mathematics "n choose k" is the number of unique ways to
+  choose <code>k</code> items from a set of <code>n</code>. For
+  example "5 choose 3" is 10, because there are 10 unique ways to
+  draw three balls from a set of five (ABC, ABD, ABE, ACD, ACE,
+  ADE, BCD, BCE, BDE, and CDE).</p>
+
+<p>Implement n choose k <em>recursively</em> using this formula:
+
+<code>n choose k = (n-1 choose k) + (n-1 choose k-1)</code>
+
+<p> n choose k is defined only for positive integers where <code>n
+  &ge; k</code>. By definition
+<ul>
+  <li>n choose 0 = 1,</li>
+  <li>n choose 1 is n, and</li>
+  <li>n choose n is 1.</li>
+</ul>
+
+  Here is a <a href="NcKTest.java">test class</a> for your function. There is no test file for the driver program. You
+  must test it by hand.
+
+
+<h3 class="listHeader"> Submission</h3>
+
+<p><span class='important'>In order to earn an 'M' or 'E' for this lab, you must use conventional register usage and 
+stack-management techniques.  Simply passing the automated tests is not sufficient.</span></p>
+
+<p class="listHeader">When you are done:</p>
+<ol>
+  <li>Make sure your names are in the source code.</li>
+  <li>Commit with a <code>[Grade Me]</code> message.</li>
+</ol>
+
+<hr>
+<p>Updated Friday, 26 November 2021, 7:04 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+
+</html>

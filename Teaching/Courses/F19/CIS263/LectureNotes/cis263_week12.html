@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="gvsu-cis-263">GVSU CIS 263</h1>
+
+<h2 id="week-12--day-1">Week 12 / Day 1</h2>
+
+<h3 id="big-o-for-divide-and-conquer">Big-O for divide and conquer</h3>
+
+<ul>
+  <li>In general, divide and conquer algorithms fit this pattern:
+    <ul>
+      <li><code>T(n) = aT(n/b) + O(n^k)</code></li>
+      <li><code>b</code> Describes the number of pieces that you cut the input into.  (e.g., <code>b = 2</code> for Merge sort.)</li>
+      <li><code>a</code> is the number of recursive calls.
+        <ul>
+          <li>It is common for <code>a == b</code></li>
+        </ul>
+      </li>
+      <li><code>O(n^k)</code> is the amount of work needed to put the pieces together.  (For Mergesort, this is <code>O(n)</code>, for the Matrix
+ multiply it is <code>O(N^2)</code>)</li>
+    </ul>
+  </li>
+  <li>This recursive formula is called a <em>recurrence relation</em>.</li>
+  <li>Let’s see if we can get the formula in a closed form.</li>
+  <li>For simplicity, assume <code>N</code> is a power of <code>b</code>:  <code>N = b^m</code>
+    <ul>
+      <li>For example, if <code>b</code> is 2, we assume <code>N</code> is a power of 2.</li>
+      <li><code>T(b^m) = aT(b^m/b) = (b^m)^k</code></li>
+      <li>Simplify and rewrite <code>(b^m)^k</code></li>
+      <li><code>T(b^m) = aT(b^(m-1)) + (b^k)^m</code></li>
+    </ul>
+  </li>
+  <li>Now for an algebra trick:  Divide everything by <code>a^m</code>
+    <ul>
+      <li><code>T(b^m)/a^m = T(b^(m-1))/(a^(m-1)) = ((b^k)/a)^m</code></li>
+    </ul>
+  </li>
+  <li>At this point, we can see how to “unwind” the recursion.</li>
+  <li class="to-me">Switch to paper notes</li>
+</ul>
+
+<h2 id="week-12--day-2">Week 12 / Day 2</h2>
+
+<h3 id="dynamic-programming">Dynamic Programming</h3>
+
+<p>Sometimes the algorithm naturally repeats work.  Make sure you save it instead of repeat it.</p>
+
+<ul>
+  <li>Recursive Fibonacci
+    <ul>
+      <li>Can create a lookup table on the side, and keep the recursion; but, 
+it’s faster to recognize you need to fill the table from bottom to top, 
+so we can just do that with a loop and skip the recursion.</li>
+    </ul>
+  </li>
+  <li>Ordering Matrix Multiplications
+    <ul>
+      <li>Given non square matrices ABCD, it matters whether we do
+        <ul>
+          <li>(A)(B(CD))</li>
+          <li>(AB)(CD)</li>
+          <li>(ABC)(D)</li>
+          <li>etc.</li>
+        </ul>
+      </li>
+      <li>Interestingly, none of the obvious greedy algorithms work.</li>
+      <li class="q">What is the obvious recursive algorithm?</li>
+    </ul>
+  </li>
+</ul>
+
+<pre><code>optimal_parens(start, end) {
+  for i = start to end {
+     a = optimal_parens(start, i) 
+     b = optimal_parens(i + 1, end)
+     c = cost of (start, i)*(i, end) 
+     cost = a + b + c
+     min = minimum(cost, min)
+  }
+return min
+}
+</code></pre>
+
+<ul>
+  <li>However, just as with fibonacci a lot of work would get duplicated
+    <ul>
+      <li>(e.g., (ABC) and (ABCD) would evaluate many of the same subtrees.</li>
+    </ul>
+  </li>
+  <li class="q">How many different recursive calls are here?
+    <ul>
+      <li>Just <code>O(n^2)</code>.  Each combination of <code>i</code> and <code>j</code> where <code>1 &lt;= i &lt; j &lt;= N</code></li>
+    </ul>
+  </li>
+  <li>Thus, if we store each result in a table the first time we calculate it, 
+the algorithm tops out at <code>O(N^3)</code></li>
+  <li>As with Fibonacci, we can save time by avoiding the recursion and recognizing the 
+order the table will get filled.  Start on diagonal of matrix and move up toward the corner.</li>
+</ul>
+
+
+</main>
+</body>
+</html>

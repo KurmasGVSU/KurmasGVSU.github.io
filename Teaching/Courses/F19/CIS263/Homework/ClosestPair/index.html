@@ -1,0 +1,394 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CIS 263 Homework 7 Closest Pair</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .codeTable {
+      display: inline-block;
+      min-width: 250px;
+    }
+
+    .pad {
+      display: inline-block;
+      padding-right: 15px;
+    }
+
+    #gradingTable {
+      padding-left: 25px;
+      vertical-align: top;
+    }
+
+    .points {
+      padding-left: 10px;
+      padding-right: 15px;
+      text-align: right;
+      vertical-align: top;
+    }
+
+    .desc {
+      white-space: nowrap;
+      vertical-align: top;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 263</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Closest Pair</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2019</h1></td>
+  </tr>
+</table>
+
+  <p>Use this GitHub Classroom link to get started: <a href='https://classroom.github.com/a/5jehf_QK'><code>classroom.github.com/a/5jehf_QK</code></a>.</p>
+
+  <p><span class="inline-important">Don't edit the test file yet.</span> The tests are still a work in progress. If you
+    want to add tests now, put them in a separate .cpp file.</p>
+
+  <h2>The Challenge</h2>
+
+  <p class="listHeader">Implement a divide and conquer algorithm for determining which points in a set are the
+    closest. The algorithm will be similar to the one presented in class, with three additions:
+  <ul>
+    <li>There can be ties.</li>
+    <li>You must return the pairs of closets points (not just determine the minimum distance).</li>
+    <li>Your algorithm will take a <code>tolerance</code> parameter that determines the threshold for determining a
+      "tie".
+    </li>
+  </ul>
+
+  <h2>Details</h2>
+
+  <p class="listHeader">Implement the following two methods:</p>
+  <ul>
+    <li><code>static PointPairSet closestPairsBruteForce(const PointVector &pairs,
+      double tolerance = 0.000001)</code></li>
+    <li><code>static PointPairSet closestPairs(const PointVector &pairs, double tolerance = 0.000001)</code></li>
+  </ul>
+
+  <ul>
+    <li><code>closestPairsBruteForce</code> will just compare all <code>O(n^2)</code> pairs of points and return
+      the sets that are the closest. Implementing this function will help you work out the details of managing ties --
+      especially with respect to the <code>tolerance</code>.
+    </li>
+    <li><code>closestPairs</code> must be a <code>O(n log n)</code> divide and conquer algorithm. (Note: The
+      <code>O(n log n)</code> bound applies only to inputs with no ties.)
+    </li>
+    <li>The following data types are defined in <code>ClosestPairs.h</code>. You must use them in the signature
+      of the above methods, otherwise my tests won't run:
+      <ul>
+        <li><code>Point</code>: Represents an <code>(x, y)</code> point. It's just a renaming of
+          <code>std::pair&lt;double, double&gt;</code>.
+        </li>
+        <li><code>PointVector</code>: A list of <code>Points</code>. It's just a renaming of
+          <code>std::vector&lt;Point&gt;</code>.
+        </li>
+        <li><code>PointPair</code>: A pair of <code>Point</code>s. Used to represent two points that are part of the
+          answer. It's just a renaming of <code>std::pair&lt;Point, Point&gt;</code>.
+        </li>
+        <li><code>PointPairSet</code>: A set of <code>PointPair</code>s. Since there can be a tie for closest
+          points, the <code>closestPairs</code> methods return a <code>set</code> of <code>PointPair</code>s.
+        </li>
+      </ul>
+    </li>
+    <li>The return values for the <code>closetPairs</code> methods must order the points within each
+      <code>PointPair</code> in lexicographic order. (In other words, sort by <code>x</code> coordinate, then by
+      <code>y</code> coordinate. If the closest points are <code>(5, 15)</code> and <code>(10, 6)</code>, then they
+      should appear in the <code>PointPair</code> as <code>{{5, 15}, {10, 6}}</code>.)
+      <span class="inline-important">The tests will fail if <code>PointPairs</code> are in the wrong order.</span>
+    </li>
+    <li>The <code>closetPairs</code> methods should return all pairs of points whose distance is within
+      <code>tolerance</code> of the minimum. <strong>Important:</strong> Think carefully about this:
+      Only include pairs whose distance is withing <code>tolerance</code> of the minimum. Don't
+      apply it transitively to all points in the input.
+    </li>
+    <li>Notice that the <code>closestPairs</code> methods are <code>static</code>. That means (1) they can't
+      access instance variables, and (2) you don't need to instantiate a <code>ClosestPairs</code> object to use
+      them. Any data that you want to share with helper methods should be passed as a parameter.
+    </li>
+  </ul>
+
+  <h2>Grading</h2>
+
+  <p>There are several tiers to this project. Your grade will be based on how many you complete. (Unlike previous
+    homework, you can still receive a decent grade if certain parts of this assignment don't work.)</p>
+
+  <table id="gradingTable">
+    <tr>
+      <th></th>
+      <th class="points">Points</th>
+      <th>Details</th>
+    </tr>
+    <tr>
+      <td class="desc">Works with no ties and no rounding</td>
+      <td class="points">25</td>
+      <td><code>closestPairs</code> (1) implements a divide and conquer algorithm, (2) passes all of the tests tagged
+        <code>noTie</code> and <code>noRound</code>. This means that (1) All answers contain just one
+        <code>PointPair</code>, and (2) you can ignore <code>tolerance</code>.
+      </td>
+    </tr>
+    <tr>
+      <td class="desc">Works with ties.</td>
+      <td class="points">15</td>
+      <td>In addition to the criteria above, all of the tests tagged <code>tie</code> pass. (5 points if
+        <code>tie</code> tests pass for brute force only.)
+      </td>
+    </tr>
+    <tr>
+      <td class="desc">Works with <code>tolerance</code>.</td>
+      <td class="points">10</td>
+      <td>In addition to the criteria above, all of the tests tagged <code>round</code> pass. (4 points if
+        <code>round</code> tests pass for brute force only.)
+      </td>
+    </tr>
+    <tr>
+      <td class="desc">Has a running time of <code>O(n log n)</code></td>
+      <td class="points">10</td>
+      <td>You must prepare and attach a graph showing the running time for input sizes ranging from 500 to 50,000
+        compared to a graph of a function of the form <code>cn log n</code>. (You can only receive these points
+        if <code>closestPairs</code> works correctly.) You need only meet the <code>n log n</code> bound for inputs that
+        contain no ties. (4 points for preparing a graph, even if it isn't <code>n log n</code>.)  Include the graph
+        in your git repo. <em>Important:</em> You must also include the code that generated the numbers used in the
+        graph.  (In other words, I need to be albe to reproduce your results.)
+      </td>
+    </tr>
+  </table>
+
+  <h2>Rules</h2>
+
+  <ul>
+    <li>You may work in teams of two. <strong>But</strong> your teammate must have completed the same set of homework as
+      you. (For example, if you have completed Homework 6, you may only pair with someone who has also completed
+      Homework 6.)
+    </li>
+    <li>Teammates must work together at all times. You may not "divide and conquer". You may not have one person
+      write a bunch of code and then just explain it when it works.
+    </li>
+  </ul>
+
+  <h2>Suggestions</h2>
+
+  <ul>
+    <li>Look at the rubric above and focus on one set of points at a time. For example, just get the basic
+      algorithm working before worrying about how to handle ties, or even considering the tolerance.
+    </li>
+    <li>Do <code>closestPairsBruteForce</code> first, then work on the divide and conquer version. This is especially
+      important when working with ties and tolerance. It will be much easier to get the ties working in the divide
+      and conquer algorithm after you first work out the bugs in the brute force version.
+    </li>
+    <li>Remember, <code>Points</code> in a <code>PointPair</code> must be returned in lexicographic order to pass
+      the tests. However, until you return your final answer, it doesn't really matter what order the points are
+      in.
+    </li>
+    <li>You will need your recursive divide and conquer calls to return both the closest pairs and the distances
+      between those pairs. I did this by having my "helper" functions use
+      <code>set&lt;pair&lt;double, PointPair&gt;&gt;</code>
+      as a return value. (To avoid a lot of typing, I added this to the <code>ClosestPairs</code>:
+      <code>using PointPairDistSet = set&lt;pair&lt;double, PointPair&gt;&gt;;</code>.
+    </li>
+    <li>The divide and conquer code is simipler if you can assume that each recursive call
+      returns at least one pair of points (i.e., that the return set is not empty).  One way to do this is to use a
+      brute force search when your recursive call is down to the last 5 or so points.  As mentioned above, you need
+      not only the closest points, but the distances as well.  I wrote a helper function for brute force that returns
+      <code>set&lt;pair&lt;double, PointPair&gt;&gt;</code>.  This helper function is used by both the main brute force
+      function and my divide and conquer helper.</li>
+  </ul>
+
+  <h2>Submission and grading</h2>
+
+  <ul>
+    <li>Please make sure your name appears in all source code files.</li>
+    <!--
+    <li>Please fill out this survey (optional):
+      <a href='https://rit.az1.qualtrics.com/jfe/form/SV_e8oGJ4NqeXgVblX'><code>rit.az1.qualtrics.com/jfe/form/SV_e8oGJ4NqeXgVblX</code></a>
+    </li>
+    -->
+    <li>Make sure all relevant code (including unit tests) is checked in to GitHub by the due date.</li>
+    <li>Unless you indicate otherwise, I will assume that the code to be graded is on the <code>master</code> branch.
+    </li>
+  </ul>
+
+  <hr>
+  <p>Updated Wednesday, 27 November 2019, 1:10 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>

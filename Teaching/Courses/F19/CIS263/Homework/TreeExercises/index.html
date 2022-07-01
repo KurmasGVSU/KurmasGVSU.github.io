@@ -1,0 +1,300 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CIS 263 Homework 6 Tree Exercises</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    code {
+      background: #f0f0ff;
+    }
+
+    img {
+      width: 450px;
+    }
+
+    .outer > li {
+      padding-bottom: 15px;
+    }
+
+    td {
+      vertical-align: top;
+    }
+
+    li ol {
+      list-style-type: lower-alpha;
+    }
+
+    .smaller {
+      width: 300px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 263</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Tree Exercises</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2019</h1></td>
+  </tr>
+</table>
+
+  <ol class="outer">
+    <li>Draw the binary search tree resulting from the following insertions: 25, 15, 10, 27, 12, 20, 17, 7, 22, 29,
+      24, 21
+    </li>
+    <li>For each problem below, begin with this tree (i.e., each answer should be the following tree with only one
+      node missing):
+      <table>
+        <tr>
+          <td>
+            <ol>
+              <li>Delete 5</li>
+              <li>Delete 12</li>
+              <li>Delete 6</li>
+              <li>Delete 4</li>
+            </ol>
+          </td>
+          <td>
+            <img src="bst1.png">
+          </td>
+        </tr>
+      </table>
+    </li>
+    <li>Consider the following binary tree (Note that it is <em>not</em> a search tree because the nodes are in no
+      particular order.)
+      <table>
+        <tr>
+          <td>
+            <ol>
+              <li>Write the tree in <em>prefix</em> order</li>
+              <li>Write the tree in <em>postfix</em> order</li>
+              <li>Write the tree in <em>infix</em> order</li>
+            </ol>
+          </td>
+          <td>
+            <img src="unorderedBinaryTree.png">
+          </td>
+        </tr>
+      </table>
+    </li>
+    <li>Write a method <code>hasDuplicate</code> that will determine in linear time whether any value appears more
+      than once in a binary search tree. (Assume <code>Node</code>s with a value, a left pointer, and a right pointer.)
+    </li>
+
+    <li>Consider the following AVL tree:
+      <table>
+        <tr>
+          <td>
+            <ol>
+              <li>Draw the result of adding 2 to this tree.</li>
+              <li>Draw the result of removing 17 from this tree. (The original tree.)</li>
+            </ol>
+          </td>
+          <td>
+            <img src="avl1.png" class="smaller">
+          </td>
+        </tr>
+      </table>
+    </li>
+    <li>When using an AVL tree, when are double rotations necessary?</li>
+
+    <li>Consider the following binary max heap:
+      <table>
+        <tr>
+          <td>
+            <ol>
+              <li>Draw the result of adding 93 to the heap.</li>
+              <li>Draw the result of removing the max from his heap (the original).</li>
+            </ol>
+          </td>
+          <td>
+            <img src="binaryHeap1.png" class="smaller">
+          </td>
+        </tr>
+      </table>
+    </li>
+  </ol>
+
+  <p>(Note: Exercises above drawn largely from the Weis text.)</p>
+  <hr>
+  <p>Updated Thursday, 24 October 2019, 3:56 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>

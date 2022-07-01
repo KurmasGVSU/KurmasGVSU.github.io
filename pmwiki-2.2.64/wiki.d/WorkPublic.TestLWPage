@@ -1,0 +1,14 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)
+author=
+csum=
+ctime=1174523716
+host=75.134.113.30
+name=WorkPublic.TestLWPage
+rev=1
+targets=
+text=Entry in test page
+time=1174523716
+author:1174523716=
+diff:1174523716:1174523716:=1d0%0a%3c Entry in test page%0a\ No newline at end of file%0a
+host:1174523716=75.134.113.30

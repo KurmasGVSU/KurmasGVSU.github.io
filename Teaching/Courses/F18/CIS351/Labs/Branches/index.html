@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>CIS 351 Assembly Branches</title>
+  <style type="text/css">
+    code {
+      white-space: nowrap;
+    }
+  </style>
+
+</head>
+
+<body>
+<table style="border:  0; width: 100%">
+  <tr>
+    <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;">CIS 351</h1></td>
+    <td style="width: 70%">
+      <h1 style="text-align: center">Lab 6: Branches</h1></td>
+    <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap">
+      Fall 2018</h1></td>
+  </tr>
+</table>
+
+<p>For this lab, you are going to write and test some assembly
+  code using branches. As with previous assignments, in order for your
+  solution to work with my <code>MUnit</code> tests, you must follow
+  these rules:
+
+<ul>
+  <li> You must give your procedures the names indicated below.</li>
+
+  <li> The procedures you write must be declared <code>.globl</code>.</li>
+
+  <li>Use labels to access memory. (Don't use "magic"
+    constants.)
+  </li>
+
+  <li>The method parameters will be placed in registers
+    <code>a0</code>, <code>a1</code>, and <code>a2</code>.
+    <code>a0</code> will contain the first parameter, <code>a1</code>
+    the second, etc.
+  </li>
+
+  <li>Each method must end with the instruction <code>jr $ra</code>.</li>
+
+  <li>Use the literal value <code>1</code> for <code>true</code> and <code>0</code> for <code>false</code>.</li>
+
+</ul>
+
+<h2>Problems</h2>
+
+<dl>
+  <dt>1. <a href="http://codingbat.com/prob/p182873">makes10(int a,
+    int b)</a></code> from CodingBat.
+  </dt>
+
+  <dt>2. <a href="http://codingbat.com/prob/p101887">intMax(int
+    a, int b, int c)</a></code> from CodingBat.
+  </dt>
+
+  <dt>3. <a href="http://codingbat.com/prob/p172021">close10(int
+    a, int b)</a></code> from CodingBat.
+  </dt>
+
+  <dt>4. <a href=" https://codingbat.com/prob/p177372">max1020(int a, int b)</a></code>
+    from CodingBat.
+  </dt>
+
+  <dt>5. <a
+    href="http://codingbat.com/prob/p103360">dateFashion(int you,
+    int date)</a></code> from CodingBat.
+  </dt>
+
+  <dt>6. <a
+    href="http://codingbat.com/prob/p170833">redTicket(int a, int
+    b, int c)</a></code> from CodingBat.
+  </dt>
+
+</dl>
+
+<p>You may use <a href="BranchTest.java">this class</a> as a
+  starting point for your <code>MUnit</code> tests.
+
+<h2>Submission and grading</h2>
+
+<p>Be sure to document and comment your code!</p>
+
+<p><em>When your code passes all tests</em>, submit the
+  <code>.asm</code> file and MUnit test file using Blackboard's Assignment
+  Manager. Call me over, and I will run your code against my tests. (Your code needs to be in the EOS environment
+  for me to do this.)
+
+<!--
+  Your grade is based on when your code passes all tests. If your code passes all tests by the due date,
+  you get 100%. Otherwise, you lose 5% for each day it takes you after the due date to submit correct code. In
+  addition, you lose 5% for each incorrect submission. For example, if your first submission is two days late,
+  but completely correct, your score will be 90%. If you submit incorrect solutions on the due date,
+  and then submit the correct solutions two days later, your score will be 85%.</p>
+  -->
+
+
+<h2>Hints:</h2>
+<ul>
+  <li>To compute <code>!a0</code>, do the following:<br/>
+    <code>not $a0, $a0</code><br/>
+    <code>andi $a0, $a0, 1</code><br/>
+    (The extra <code>andi</code> instruction makes sure that only the least-significant bit has a value other than 0.)
+  </li>
+</ul>
+
+
+<h2>For more practice</h2>
+
+<p>If you are looking for more assembly coding practice, consider
+  these CodingBat problems:</p>
+<ul>
+  <li>redTicket</li>
+  <li>greenTicket</li>
+  <li>blueTicket</li>
+  <li>loneSum</li>
+  <li>luckySum</li>
+  <li>closeFar</li>
+  <li>evenlySpaced</li>
+</ul>
+<hr>
+<p>Updated Saturday, 13 October 2018, 3:30 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/html5_validate_w3c.png"alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

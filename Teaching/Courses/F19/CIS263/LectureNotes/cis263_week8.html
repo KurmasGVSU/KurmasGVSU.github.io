@@ -1,0 +1,162 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="gvsu-cis-263">GVSU CIS 263</h1>
+
+<h2 id="week-8--day-1">Week 8 / Day 1</h2>
+
+<p>Leftovers:</p>
+
+<ul>
+  <li>Horner’s method vs. repeated Pow</li>
+  <li>Vector&lt;Term&gt; vs whole polynomial.</li>
+</ul>
+
+<p>Exam 1</p>
+
+<h2 id="week-8--day-2">Week 8 / Day 2</h2>
+
+<h3 id="b-trees">B-Trees</h3>
+
+<ul>
+  <li>We typically assume all operations take the same amount of time</li>
+  <li>Only true when all ops are CPU ops.</li>
+  <li>Things change when we must access data from a disk
+    <ul>
+      <li>Fast disks spin at 7200 or 10000 rpm.  (120 - 166 rps)</li>
+      <li>On average must wait 3 to 4 ms for disk to spin halfway around</li>
+      <li>In 3ms, modern machines can execute millions of instructions.</li>
+      <li>Or, on a shared system, we can perform tens of millions of instructions, or make 10s of disk accesses.</li>
+    </ul>
+  </li>
+  <li>Bottom line:  If entire tree doesn’t fit in memory, key to performance is to minimize disk accesses,
+not “regular” CPU operations.
+    <ul>
+      <li>Even SSDs are 1000x slower than a processor.</li>
+    </ul>
+  </li>
+  <li>Assume you have 10,000,000 records that don’t fit in memory. A typical binary search tree would have an expected 
+depth of 1.38 log N, or about 32 disk accesses.
+    <ul>
+      <li>32 disk accesses would take somewhere between 1 and 10 seconds depending on the number of concurrent users.</li>
+    </ul>
+  </li>
+  <li>B tree is a structure designed to minimize disk access
+    <ul>
+      <li>Only put the “real” data at the leaves</li>
+      <li>Build a tree where the number of children is determined by how many keys will fit in a disk block.</li>
+      <li>This minimizes the depth of the tree and, therefore, the number of disk accesses needed to find the data.</li>
+    </ul>
+  </li>
+  <li>B+ tree: Common implementation of B-Tree
+    <ul>
+      <li>Number of keys per node “M” is 5.</li>
+      <li>Number of records per leaf “L” is also 5.
+        <ul>
+          <li>M and L are generally not equal.  Just a coincidence in this case.</li>
+        </ul>
+      </li>
+      <li>Nodes and leaves should remain at least half full.</li>
+      <li>B tree starting point <img src="Images/weis4.63.png" alt="B+ tree starting point" width="50%" /></li>
+      <li>Add 57: <img src="Images/weis4.64.png" alt="Add 57" width="50%" /></li>
+      <li>Add 55: (Basic node split) <img src="Images/weis4.65.png" alt="Add 55" width="50%" /></li>
+      <li>Add 40: (Cascading split) <img src="Images/weis4.66.png" alt="Add 40" width="50%" /></li>
+      <li>Remove 99: (Remove and combine ) <img src="Images/weis4.67.png" alt="Remove 40" width="50%" /></li>
+    </ul>
+  </li>
+  <li>Short-cuts:
+    <ul>
+      <li>Can “borrow” from neighbors if possible (when both inserting and deleting)</li>
+    </ul>
+  </li>
+  <li>Consider effect on your 10,000,000 record dataset.
+    <ul>
+      <li>Assume disk blocks are 8,192 bytes</li>
+      <li>Data key (e.g,. driver name) is 32 bytes</li>
+      <li>Pointer to another branch is 4 bytes.</li>
+      <li>Solve for M: <code>32(M -1) + 4M &le; 8192</code></li>
+      <li><code>M &le; 228</code> (i.e., you can fit 228 keys + block numbers into a disk block)</li>
+      <li><code>L = 32</code> (256 * 32 = 8192)</li>
+      <li>Need at least <code>10,000,000 / 16 = 625,000</code> leaves</li>
+      <li><code>log_228 625,000 = 2.45</code>.  Thus, we need 3 levels of pointers, plus the leaves.</li>
+      <li>Any record can be obtained in 4 disk accesses. (Speedup of about 8).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="external-sorting">External Sorting</h3>
+
+<ul>
+  <li>If you have to sort more data than will fit in memory, traditional sorts become inefficient.</li>
+  <li>Suppose your data is on a linear tape.</li>
+  <li class="question">How many trips across the tape needed for a bubble sort?</li>
+  <li class="question">How many trips across the tape needed for a selection sort?</li>
+  <li class="question">How many trips across the tape needed for a merge sort?</li>
+  <li class="question">What would you do differently if you had multiple tapes? (Perhaps 4?)</li>
+  <li>Starting point:  If M records fit in memory, load M records and sort them.</li>
+  <li>Take sorted chunks of M records and alternate on two of the output tapes.</li>
+  <li>Merging is now less expensive because the two tapes can move forward only.</li>
+  <li><span class="question">How many trips across the tape?</span> <code>Log N/M</code></li>
+  <li>Can we do better with more tapes?
+    <ul>
+      <li>Apply the same technique.
+        <ul>
+          <li>Read groups of M, then disperse them over <code>k</code> tapes.</li>
+          <li>Merge the <code>k</code> tapes into chunks of length <code>k*M</code></li>
+          <li><span class="question">How many runs?</span> <code>log_k N/M</code></li>
+          <li><span class="q">How do we merge <code>k</code> groups together?</span>
+            <ul>
+              <li>Use a priority queue.</li>
+              <li>Put the first elements in the queue.</li>
+              <li>Pull off the minimum</li>
+              <li>Advance the tape that “owned” the minimum and add that value to the queue</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><span class="q">How many tapes does this take?</span> <code>2k</code></li>
+  <li class="to-me">Perhaps these many tapes can be analogous to disk tracks and/or cylinders.</li>
+  <li class="q">How close can we get with <code>k+1</code> tapes?</li>
+  <li>Polyphase Merge
+    <ul>
+      <li>Suppose we have 3 tapes</li>
+      <li>Putting half on each output tape doesn’t help, because after the first merge, 
+we need to move part of the first tape somewhere else.</li>
+      <li>An uneven split will help</li>
+      <li>Suppose there are 37 groups to be sorted.  Put 21 on 1 and 13 on the other.</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

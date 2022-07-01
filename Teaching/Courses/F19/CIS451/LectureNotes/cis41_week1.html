@@ -1,0 +1,355 @@
+<html>
+<head>
+  <title>CIS 451</title>
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question {
+      color: #ff00ff;
+      font-size: 110%;
+    }
+
+    .question > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<h1 id="cis-451-week-1">CIS 451 Week 1</h1>
+
+<h2 id="computer-organization-vs-computer-architecture">Computer Organization vs. Computer Architecture</h2>
+<ul>
+  <li class="question">What is the difference between Computer Organization and Computer Architecture?</li>
+  <li>Computer Organization: How the computer works (i.e., how we build a physical device that computes).
+    <ul>
+      <li>Logic gates</li>
+      <li>Basic circuits (adders, registers, muxes)</li>
+      <li>Datapath (fetch/execute cycle)</li>
+      <li>Assembly language</li>
+    </ul>
+  </li>
+  <li>Computer Architecture: How to design a CPU
+    <ol>
+      <li>Instruction set (ISA) design
+        <ul>
+          <li>What are the CPU’s fundamental operations? (And why different CPUs have different operations)</li>
+          <li>Addressing modes</li>
+          <li>RISC vs. CISC</li>
+          <li>Fixed vs. variable width</li>
+          <li>etc.</li>
+        </ul>
+      </li>
+      <li>How to get more transistors doing useful work at once (i.e., how we utilize the transistors better)
+        <ul>
+          <li>Consider that in the CIS 351 single-cycle CPU, most transistors sat idle most of the time.
+            <ul>
+              <li>It’s like never using your washer and drier at the same time</li>
+            </ul>
+          </li>
+          <li>Pipelining</li>
+          <li>Cache memory (reduce time transistors spend waiting for memory)</li>
+          <li>Instruction level parallelism</li>
+          <li>(Yes, we covered piplelining and cache memory in CIS 351)</li>
+        </ul>
+      </li>
+      <li>We will also touch on power / energy issues.</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="main-benefits-of-taking-cis-451">Main benefits of taking CIS 451</h2>
+
+<ol>
+  <li>Knowledge of current hardware trends
+  * What has influenced CPU design over the years? (Why are today’s CPUs designed the way they are?) 
+  * What improvements / changes are on the horizon?
+  * What needs and challenges are driving those (and future) changes?
+  * A (good) Computer Science program doesn’t focus solely on teaching you to be productive today, but rather on 
+  preparing you to teach yourself what you need to know.
+    <ul>
+      <li>The field changes too rapidly for a focus on current skills to be sufficient.</li>
+      <li>Learning about hardware trends provides context that will help you keep up with changing software trends.
+(e.g., what is motivating current programming languages and web frameworks trends?  Why is cloud computing so 
+big?)</li>
+      <li>It may even allow you to anticipate new trends.  (This is where many million-dollar ideas come from:
+Spotting a trend early enough to profit from being first.)</li>
+    </ul>
+  </li>
+  <li>Practice examining performance and tradeoffs
+    <ul>
+      <li>On average, 0 GVSU CIS students every year to into the field of hardware design.</li>
+      <li>But, almost everybody will have to deal with choosing technology (hardware, language, 
+framework, etc.): You will be faced with something new and have to decide whether /  how to use it.</li>
+      <li>KEY IDEA:  <em>Write this down and look back on it when you decide
+you are sick of CIS 451</em> It’s the <em>PROCESS</em> of evaluation that will be helpful,
+not the specific conclusions you draw in this course.</li>
+      <li>What will set you apart from your peers – think “raise” – is not
+the details you learn in this class; but, your ability to apply the
+general lessons to new technology that hasn’t even been imagined yet.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="administrative-details">Administrative Details</h2>
+
+<ul>
+  <li>I am usually on campus from 9 to 3:30 MWF (and most Tuesdays).</li>
+  <li>My office hours are when I make a point of being in my office; but, you are welcome to come any time the door is open.</li>
+  <li>Piazza:  Best way to get responses quickly.</li>
+  <li>Course web page (assignments) vs. Piazza (questions) vs. Blackboard (grades only)</li>
+  <li>I don’t grade projects until they are working. The most important learning comes from fixing the last few bugs.</li>
+  <li>Please do homework in <em>pairs</em>
+    <ul>
+      <li>Homework tends to be challenging (in that you need to apply ideas to new situations). It is much less frustrating when you can talk it through with someone</li>
+      <li>logistically helps me.  (Happy grader ==&gt; More points for you)</li>
+      <li><em>Do Not</em> submit two separate nearly identical assignments</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="how-transistors-work">How Transistors Work</h2>
+
+<ul>
+  <li>The limits/properties of transistors have played a large role in some recent changes</li>
+  <li class="question">What is the difference between current and voltage?</li>
+  <li>How current flows
+    <ul>
+      <li>electrons move freely between atoms in a metal</li>
+      <li>An electron “pump” at one end adds electrons</li>
+      <li>An electron “sink” at the other end accepts electrons</li>
+      <li>The electrons “wiggle” freely around.  Over time, there is a net flow of charge from source to sink.
+        <ul>
+          <li>The flow past a given point in current.</li>
+          <li>Measured in <em>amps</em> ( electrons per second)</li>
+          <li>The strength of the pump is voltage</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>How current doesn’t flow
+    <ul>
+      <li>Consider a carbon crystal (diamond)
+        <ul>
+          <li>6 total electrons (2 inner four outer)</li>
+          <li>Outer shell filled using covalent bond</li>
+          <li>No incentive to move</li>
+          <li>Requires a massive “pump” to dislodge them.</li>
+          <li>Silicon has a similar chemical structure (14 electrons)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Semiconductor
+    <ul>
+      <li>Doping:  Add some Boron or Phosphorous</li>
+      <li>Enough “uncomfortable” electrons to promote flow of current</li>
+      <li>PN Junction:  Put them next to each other and current will flow in one direction only.</li>
+    </ul>
+  </li>
+  <li>Transistor (PNP)
+    <ul>
+      <li>Takes time and energy for holes to move to switch on/off</li>
+      <li>Smaller transistors can (theoretically) go faster.</li>
+      <li>Limit to how small transistors can get.
+        <ul>
+          <li>Once the get down to a few atoms wide, electrons can simply “jump” across the depletion region.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Veritasium videos <a href="https://www.youtube.com/playlist?list=PLkahZjV5wKe_dajngssVLffaCh2gbq55_">https://www.youtube.com/playlist?list=PLkahZjV5wKe_dajngssVLffaCh2gbq55_</a></li>
+</ul>
+
+<h3 id="brief-history-of-computer-performance">Brief History of Computer Performance</h3>
+
+<ul>
+  <li>Figure 1.1 from Textbook</li>
+  <li>Before 1986 Performance primarily driven by shrinking transistors.
+    <ul>
+      <li>Smaller transistors could switch faster</li>
+      <li>Secondary effect: Additional, more complex instructions (CISC)</li>
+      <li>Each instruction has some overhead (fetch, decode)</li>
+      <li>Fewer instructions could lead to less overall work.</li>
+      <li>(At least that was the theory)</li>
+      <li>Consider full Intel instruction set</li>
+    </ul>
+  </li>
+  <li>Starting around 1986, pipelining became more popular.
+    <ul>
+      <li>Wash and dry at the same time.</li>
+      <li>Transistor shrinkage continues to help performance</li>
+      <li>Increasing parallelism also contributes.</li>
+      <li>RISC philosophy introduced
+        <ul>
+          <li>More faster instructions more effective than fewer slower instructions</li>
+          <li>Allows for simpler hardware =&gt; faster clock speed</li>
+          <li>Plays nice with pipelining</li>
+          <li>MIPS and ARM are both RISC.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>This is first example of how ISA (types of instructions) influence computer design and performance
+    <ul>
+      <li>In the 1980s there was a “competition” between RISC and CISC.
+        <ul>
+          <li class="question">Who Won?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>2004: End of “Denard Scaling”
+    <ul>
+      <li>Transistors stopped getting smaller and faster as quickly.</li>
+      <li>Forced the switch to multicore computers</li>
+    </ul>
+  </li>
+  <li>2010: More’s law ends.
+    <ul>
+      <li class="question">What is Moore’s law</li>
+      <li class="question">Why did it end?</li>
+      <li>There is only so much parallelism in a given process.</li>
+      <li>Diminishing returns</li>
+      <li>Not a large benefit from going above 4 to 8 cores.</li>
+    </ul>
+  </li>
+  <li><span class="question">What was the other major change in the past 15 years that has driven approaches to hardware?</span>
+    <ul>
+      <li>Mobile</li>
+      <li class="question">How has mobile pushed changes?</li>
+      <li>Battery life.</li>
+    </ul>
+  </li>
+  <li class="question">So, what do we do now?
+    <ul>
+      <li>Specialization:  Fastest and/or most efficient processor for a given task.</li>
+      <li>Ability to shut off power to unneeded components.</li>
+      <li>New technology / approaches (e.g., Quantum computing.)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="key-effects-of-increased-computer-performance">Key effects of increased computer performance</h3>
+<ul>
+  <li>Most are obvious</li>
+  <li>Changes to the way we approach software design
+    <ul>
+      <li>Emphasizing ease of software development over performance (in other words “performance for productivity”)</li>
+      <li>virtual functions, heavy reference use</li>
+      <li>garbage collection</li>
+      <li>closures and other functional programming techniques</li>
+      <li>c/c++ =&gt; Java =&gt; Javascript / Ruby / Python</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="power--energy">Power / Energy</h3>
+
+<ul>
+  <li>Three main power-related concerns:
+    <ol>
+      <li>Maximum power (can the power supply deliver energy fast enough)</li>
+      <li>Sustained power consumption
+        <ul>
+          <li>Thermal Design Power (TDP)</li>
+          <li>How much cooling is needed</li>
+          <li>This is typically more challenging than meeting max power</li>
+        </ul>
+      </li>
+      <li>Energy and energy efficiency</li>
+    </ol>
+  </li>
+  <li>Typically energy is more relevant than power.
+    <ul>
+      <li>Power is often “just” a constraint</li>
+      <li>Energy affects the cost of operation (electric bill) and battery life</li>
+    </ul>
+  </li>
+  <li>Two types of power: Static and Dynamic
+    <ul>
+      <li>Static energy or “leakage” comes from imperfect transistors (current “leaking” across the gate)</li>
+      <li>Dynamic energy is used to switch transistors</li>
+    </ul>
+  </li>
+  <li>Dynamic Energy per transistor = <code>capacitive load * Voltage^2</code></li>
+  <li>Dynamic Power per transistor = <code>capacitive load * Voltage^2 * frequency</code></li>
+  <li>Reducing frequency alone does not save energy!
+    <ul>
+      <li>You just expend the same amount of energy over a longer period of time.</li>
+      <li>Thus, doesn’t help battery life</li>
+    </ul>
+  </li>
+  <li>To save energy, you must reduce voltage
+    <ul>
+      <li>But, voltage limits how fast the frequency can be.</li>
+      <li>(If there aren’t enough volts, the transistors don’t switch fast enough)</li>
+    </ul>
+  </li>
+  <li>Key observation: Reducing frequency does not <em>directly</em> save energy.  It <em>indirectly</em> saves energy because you can 
+often reduce voltage.</li>
+  <li>DVFS: Dynamic Voltage and Frequency scaling
+    <ul>
+      <li>Keep frequency / voltage low unless higer performance needed
+        <ul>
+          <li>Desktop: Keep “comfortable” level except for occasional “bursts” of speed.</li>
+          <li>Mobile: Keep acceptable performance level until battery gets low, then reduce performance to keep device 
+available longer.</li>
+        </ul>
+      </li>
+      <li>“human-scale” interactions need only be fast enough not to feel laggy.</li>
+      <li>“low power” modes trade performance for extending battery life.</li>
+    </ul>
+  </li>
+  <li>P-States
+    <ul>
+      <li><a href="https://en.wikichip.org/wiki/intel/frequency_behavior">https://en.wikichip.org/wiki/intel/frequency_behavior</a></li>
+      <li class="question">How much energy is saved going from the highest voltage to the lowest?
+        <ul>
+          <li>(<code>1 - (0.8^2)/ (1.21^2) = .56</code>)</li>
+        </ul>
+      </li>
+      <li class="question">How much is power reduced?
+        <ul>
+          <li>(<code>1 - (0.8^2*.6)/(1.21^2*2.8) = .91</code>)</li>
+        </ul>
+      </li>
+      <li class="question">By how much does the time increase?
+        <ul>
+          <li>(<code>4.6x</code> as long)</li>
+        </ul>
+      </li>
+      <li class="question">Is this a good tradeoff?</li>
+      <li>(See slide for other tradeoffs)</li>
+      <li>Remember, this example is simply for scaling a given CPU to a lower frequency/voltage.  When designing a 
+lower-power/energy system, you would probably modify the chip itself (perhaps transistors with a lower capacitive 
+load, or a chip with fewer transistors that requires more cycles).</li>
+    </ul>
+  </li>
+  <li>Static energy limits how low voltage/frequency can go.
+    <ul>
+      <li>Static energy is constant (doesn’t depend on voltage/frequency)</li>
+      <li>At some point, the static energy dominates the dynamic energy.</li>
+      <li>“race to halt”:  May occasionally be optimal to finish as quickly as possible then turn off to save static energy.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>On a different note:</p>
+
+<ul>
+  <li>Yield is a trade secret; but, believed to be in the 60% to 70% range for new technologies.</li>
+</ul>
+
+</body>
+</html>

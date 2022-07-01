@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 658 Javascript</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    #content {
+      padding: 0 10px 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 658</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Javascript</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2020</h1></td>
+  </tr>
+</table>
+
+<p>You may work in pairs on this assignment.</p>
+
+<h1>Part 1: Client-side Error Checking</h1>
+
+<p class='listHeader'> Add client-side error checking to your either the Bugs or Authors page of your bug tracking app (both "new" and "edit").</p>
+  <ol>
+  <li> Add input and/or change listeners to the fields and report errors as soon as they are made.</li>
+  <li> The submit button should be disabled whenever a form field is in an invalid state.</li> 
+  </ol>
+
+  <p>Make sure the error messages are nicely formatted.  (Don't just throw a string up on the screen.)</p>
+
+  <p>You must write your own JavaScript.  Don't use the built-in client-side form validation for this assignment.
+
+<h1>Part 2: Client-side Table Sorting</h1>
+
+<p class='listHeader'>Add Javascript to your bugs listing (the "index" route) that will respond to a click on a table headding by sorting the table according to that column.  Here is one possible approach:</p>
+  <ol>
+  <li>Add a click listener to each <code>th</code> element.</li>
+  <li>When a header is clicked  
+     <ol type='a'>
+       <li> Get the <code>tbody</code> element and save it in a variable named <code>tbody</code></li>    
+       <li> Call <code class='inline-instruction'>tbody.getElementsByTagName('tr')</code> on the <code>tbody</code> element to get all the <code>tr</code> elements inside the <code>tbody</code>. 
+            (Notice that calling <code class='inline-instruction'>document.getElementsByTagName('tr')</code> will return all <code>tr</code> elements in the document, which is not what you want.)
+       <li> Use a loop to copy all <code>tr</code> elements to a different array.</li>
+       <li> Use a <em>separate</em> loop to remove all the <code>tr</code> elements from the <code>tbody</code>
+          <ul>
+          <li>It is important to use two separate loops. (Bad things may happen if you remove elements from a loop while iterating through it.)
+          <li>You can use the method <code class='inline-instruction'>tbody.removeChild</code> to remove elements from the DOM.</li>
+        </ul>
+       <li> Use the Array <code>sort</code> method to sort the <code>tr</code> objects according to the desired column.  (Use the comparison callback to compare the rows by column.)</li>
+       <li> Re-insert the sorted elements into the <code>tbody</code> element.  (Use the <code class='inline-instruction'>appendChild</code> method.)
+      </ol>
+  </li>
+  </ol>
+
+<h2>Deliverables: </h2>
+
+<li>This homework will be graded by demo.</li>
+  <hr>
+  <p>Updated Thursday, 20 February 2020, 4:48 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kielce</title>
+    <style>
+        /* A link that isn't displayed so that the
+           accessibility checker is happy.
+           */
+        .bypass {
+            position: absolute;
+            top: 0;
+            right: 100%;
+            z-index: 9999;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+<main id="content">
+    <a class='bypass' href="#content">Skip to main content</a>
+    <h1>Kielce</h1>
+
+    <p>Download: <a href="kielce3.js"><code>kielce3.js</code></a></p>
+
+    <p>Kielce is a JavaScript library that provides a simple, lightweight,
+        <em>client-side</em> technique for moving configurable static content
+        from an HTML document into a separate file where it can more easily
+        and accurately be managed. For example, Kielce simplifies the process
+        of updating a syllabus each semester by collecting the content that
+        changes (e.g., semester name, office hours, exam dates) into a
+        separate file. Kielce can also simplify the process of sharing an
+        assignment among several sections of a course by allowing instructors
+        to pull any information specific to an individual section out of the
+        main HTML file and into the Kielce data file. This refactoring
+        reduces the need for collision detection if the main document is
+        updated.</p>
+
+    <h2>Use Case 1: Syllabi</h2>
+
+    <p>The primary content of a syllabus changes little from semester to
+        semester. However, many syllabi contain some data that changes every
+        semester, such as the semester name, office hours, exam dates, and
+        withdrawal dates. One common way of updating this data is to simply
+        run a search-and-replace on the previous semester's syllabus. This
+        technique is tedious and error-prone. For example, is easy to forget
+        to replace one of the exam dates.</p>
+
+    <p>Kielce allows authors to factor semester-dependent information out
+        of the HTML file and into a separate JavaScript file. Having this
+        data in the JavaScript file is helpful because all the data that must
+        be updated is in one place. It is easy to find the data, and
+        difficult to overlook a needed update.</p>
+
+    <p>A typical syllabus prepared in HTML might contain several lines
+        like this:</p>
+
+    <pre>
+   Withdrawal Deadline:  5 March 2012
+   ...
+   &lt;li&gt;Exam 1: 16 February 2012&lt;/li&gt;
+   &lt;li&gt;Exam 2: 17 March 2012&lt;/li&gt;
+   &lt;li&gt;Final Exam: 23 April 2012&lt;/li&gt;
+   ...
+</pre>
+
+    <p><a name="directions">To factor these dates into a separate file using Kielce requires
+        only 3 steps:</a>
+
+    <ol>
+        <li> Surround the information to be moved with a tag containing a <code>kkey</code> attribute (the content of
+            the
+            tag itself becomes a default value):
+
+            <pre>
+   Withdrawal Deadline:  &lt;span kkey="withdraw"&gt;5 March 2012&lt;/span&gt;
+   ...
+   &lt;li&gt;Exam 1: &lt;span kkey="exam1"&gt;16 February 2012&lt;/span&gt;&lt;/li&gt;
+   &lt;li&gt;Exam 2: &lt;span kkey="exam2"&gt;17 March 2012&lt;/span&gt;&lt;/li&gt;
+   &lt;li&gt;Final Exam: &lt;span kkey="exam3"&gt;23 April 2012&lt;/span&gt;&lt;/li&gt;
+   ...
+   </pre>
+        </li>
+
+        <li>Create a file named <code>kielceData.js</code> containing an associative array mapping the keys above to
+            their
+            desired values:
+
+            <pre>
+   ({
+     Override: {
+       withdraw: "5 March 2012",
+       exam1: "16 February 2012",
+       exam2: "17 March 2012",
+       finalExam: "23 April, 2012"
+     }
+   });
+   </pre>
+        </li>
+
+        <li>Add two lines of JavaScript to the HTML file to run Kielce:
+            <pre>
+      &lt;script type="text/javascript" src="kielce3.js"&gt;&lt;/script&gt;
+      &lt;script type="text/javascript"&gt;
+         Kielce.run();
+      &lt;/script&gt;
+   </pre>
+        </li>
+    </ol>
+
+    <p>At this point, "using" Kielce means simply distributing <code>kielce3.js</code> along with the main HTML file.
+        There is no need for special software or web server configuration.</p>
+
+
+    <h2>Use Case 2: Sharing Assignments Among Sections</h2>
+
+    <p>At GVSU, we have up to six different sections of CS 2 taught by six different instructors. We make a strong
+        effort to use the same projects across all sections. However, using exactly the same assignment document has
+        been
+        difficult. The sections meet on different days, so assignments usually have slightly different schedules. Also,
+        some instructors like to offer different explanations or extra credit options. In the past,
+        instructors have customized the prepared assignment document, only to have the author submit an update a few
+        days
+        later. At this point, the instructors must manually merge the changes into their customized version of the
+        assignment. The changes are almost always minor; but, the manual merging is annoying.</p>
+
+    <p>Using Kielce can reduce the need for manual merging. The author need only place tags (e.g.,
+        <code>span</code> or <code>div</code>) where instructors have requested "hooks" for custom content.</p>
+
+
+    <h2>Advantages of Using Kielce</h2>
+
+    <p>Our hope is that other instructors find our assignments and other course materials useful and choose to
+        adopt them at their institutions. We expect that instructors who do adopt our assignments will want to modify or
+        extend them. Thus, our first goal is for Kielce to simplify the process of modifying these documents. However,
+        it is also important that Kielce be as unobtrusive as possible so that instructors who do not wish to use it can
+        almost completely ignore it. (In other words, we don't want our use of Kielce to hinder the adoption of our
+        course
+        materials elsewhere.) Kielce's use of JavaScript helps us achieve these goals.</p>
+
+    <p>All of the processing is done on the client side in the web browser. There is no need to install any scripts or
+        other
+        special software, nor is it necessary to pre-process the documents before sending them to the server. Similarly,
+        there is no need to specially configure the web server. (In particular, users need not configure their server
+        and/or
+        web space for PHP.) As long as the JavaScript files remain with the HTML files,
+        the web browser will display the documents correctly.</p>
+
+    <p>Using JavaScript also means that it is easy for authors to preview the documents they are editing. The web
+        browser renders the finished product. The authors need not run a script after every edit; nor must they set up a
+        full-featured web server on their local machine to view documents that they are editing off-line.</p>
+
+
+    <p>The main limitation to using JavaScript for Kielce is that users do need to run a simple web server to view
+        documents locally. JavaScript will not load the data files directly from the local file system; it will only
+        request the data files from a web server. Fortunately, running a server is as simple as installing Python and
+        running <code>python -m
+            SimpleHTTPServer</code> from the command line.
+    </p>
+
+    <h2>Additional Features</h2>
+
+    Kielce's primary purpose is to substitute values from a JavaScript associative array into HTML tags containing a
+    <code>kkey</code>
+    attribute; however, we have added a couple minor features to add flexibility.
+
+    <h3>Multiple data files</h3>
+
+    <p>Kielce searches each component of a document's path for a file named <code>kielceData.js</code>. This feature
+        allows
+        authors to make data available to any page at a lower level of the file hierarchy. Consider the following file
+        structure:</p>
+    <pre>
+ + Courses
+   + F11
+     + CS_163
+     + CS_451
+   + W12
+     + CS_163
+       + Project1
+     + CS_451
+</pre>
+
+    <p>One could place office hours, the withdraw deadline, and other data pertaining to Winter Semester, 2012, in
+        <code>Courses/W12/kielceData.js</code>. That data would be available to all documents in and under the
+        <code>W12</code> directory.
+        Similarly, everything that pertains to every CS 163 document (e.g., a link to the Academic Honesty web page),
+        would go in
+        <code>Courses/W12/CS_163/kielceData.js</code>. Data that applies to Project 1 only would go in
+        <code>Courses/W12/CS_163/Project1/kielceData.js</code></p>
+
+    <p>Data files are optional. Thus, there need not be a <code>kielceData.jsl</code> file at every level of the file
+        hierarchy.</p>
+
+
+    <p>Kielce looks for two associative arrays in each <code>kielceData.js</code> file: one named <code>Default</code>
+        and one named <code>Override</code>. Kielce processes data files beginning with the root of the web space
+        and works down toward the directory that contains the file to be displayed. At each level,
+        values in <code>Override</code> replace any existing values; values in <code>Default</code> are applied only
+        when
+        there is either no value for the key in question, or the value is <code>null</code>.</p>
+
+    <h3>Leveraging JavaScript</h3>
+
+    <p>Because the data files are simply JavaScript, a key's value can be any valid JavaScript expression. It need not
+        be a
+        string literal. This allows users to automate the calculation of values. For example,
+        consider a syllabus that lists three exam dates. Furthermore, assume that those exam dates are always the
+        fourth,
+        eight, and twelfth Friday of the semester. Kielce allows us to automate the calculation of those dates as
+        follows: (The week and day are zero indexed.)</p>
+
+    <pre>
+var startOfSemester = new Date("8/21/2011");
+var getSemesterDay = function (week, day) {
+   var answer = new Date(startOfSemester);
+   answer.setDate(startOfSemester.getDate() + (7 * week) + day);
+   return answer.toDateString();
+};
+
+({
+   Override: {
+      exam1: getSemesterDay(3, 5),
+      exam2: getSemesterDay(7, 5),
+      exam3: getSemesterDay(11, 5)
+   }
+});
+</pre>
+
+    <p>Notice that the scope of <code>startOfSemester</code> in the example above is
+        limited to the data file in which it is defined. To use <code>startOfSemester</code> throughout a web site
+        requires
+        (1) defining the variable in the top-level data file, and (2) making it accessible through the global namespace.
+        In
+        addition, data files have no access to data defined in files that have not yet been processed.</p>
+
+
+    <p>Consider the
+        following scenario: Every assignment in a course has two checkpoints and a final submission,
+        each a week apart. Because this pattern is the same for every project, we would like to define keys for the
+        checkpoints and submission in the course-level data file. However, the date on which the assignments are based
+        is only defined in the project-level data file. The solution is to specify a function (the function itself,
+        not a function call) as the value. Functions are evaluated after all data files have been processed. Thus,
+        one would prepare the course-level data file like this:
+
+    <pre>
+var getSemesterDay = function (start, week, day) {
+   var answer = new Date(start);
+   answer.setDate(answer.getDate() + (7 * week) + day);
+   return answer.toDateString();
+};
+
+({
+   Override: {
+      checkpoint1: function (data) {
+         return getSemesterDay(data.startOfProject, 1, 0);
+      },
+      checkpoint2: function (data) {
+         return getSemesterDay(data.startOfProject, 2, 0);
+      },
+     checkpoint3: function (data) {
+         return getSemesterDay(data.startOfProject, 3, 0);
+      }
+   }
+});
+</pre>
+
+    The values for <code>checkpoint1</code>, <code>checkpoint2</code>, and <code>checkpoint3</code> would be based on
+    the
+    final value of <code>startOfProject</code>. (Of course, there would be an error if the author forgot to specify
+    <code>startOfProject</code> in the project's data file.)
+
+    <h2>Obtaining</h2>
+
+    To use Kielce, download <a href="kielce3.js"><code>kielce3.js</code></a>, place it in the same directory as the main
+    HTML file, and follow <a href="#directions">these steps above</a>.
+
+</main>
+
+</body>
+</html>

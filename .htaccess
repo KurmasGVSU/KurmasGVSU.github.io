@@ -1,0 +1,14 @@
+# $Id: .htaccess,v 1.8 2004/11/03 18:21:16 rurban Exp $
+
+
+# php_flag display_errors on
+# php_flag register_long_arrays on
+# php_flag my_value on
+
+# php_value include_path /home/kurmasz/public_html
+# php_value date.timezone "America/Detroit"
+
+AddOutputFilterByType DEFLATE application/javascript
+
+Options +ExecCGI
+AddHandler cgi-script .pl

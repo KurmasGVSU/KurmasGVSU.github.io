@@ -1,0 +1,20 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1180109472
+host=75.134.113.30
+name=Misc.TeachingIdeas
+rev=3
+targets=
+text=#  Use the Sudoku as an ice breaker '''and''' and an exercise in describing algorithms.%0a# Talk about the algorithm for playing Can't Stop%0a** How to get the complete list of all number pairs (assuming you can't tell the dice apart).  %0a** How to choose which two columns to start pieces on.
+time=1180109490
+author:1180109490=
+diff:1180109490:1180109480:=3,4c3,4%0a%3c ** How to get the complete list of all number pairs (assuming you can't tell the dice apart).  %0a%3c ** How to choose which two columns to start pieces on.%0a\ No newline at end of file%0a---%0a> #* How to get the complete list of all number pairs (assuming you can't tell the dice apart).  %0a> #* How to choose which two columns to start pieces on.%0a\ No newline at end of file%0a
+host:1180109490=75.134.113.30
+author:1180109480=
+diff:1180109480:1180109472:=3,4c3,4%0a%3c #* How to get the complete list of all number pairs (assuming you can't tell the dice apart).  %0a%3c #* How to choose which two columns to start pieces on.%0a\ No newline at end of file%0a---%0a> #- How to get the complete list of all number pairs (assuming you can't tell the dice apart).  %0a> #- How to choose which two columns to start pieces on.%0a\ No newline at end of file%0a
+host:1180109480=75.134.113.30
+author:1180109472=
+diff:1180109472:1180109472:=1,4d0%0a%3c #  Use the Sudoku as an ice breaker '''and''' and an exercise in describing algorithms.%0a%3c # Talk about the algorithm for playing Can't Stop%0a%3c #- How to get the complete list of all number pairs (assuming you can't tell the dice apart).  %0a%3c #- How to choose which two columns to start pieces on.%0a\ No newline at end of file%0a
+host:1180109472=75.134.113.30

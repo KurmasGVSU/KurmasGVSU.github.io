@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class MIPSUnit::MSpec::TestFactory - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/mipsunit/mspec/test_factory.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-before">::before</a>
+    
+    <li><a href="#method-c-data">::data</a>
+    
+    <li><a href="#method-c-describe">::describe</a>
+    
+    <li><a href="#method-c-it">::it</a>
+    
+    <li><a href="#method-c-metadata">::metadata</a>
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-assert_register_not_at">#assert_register_not_at</a>
+    
+    <li><a href="#method-i-call">#call</a>
+    
+    <li><a href="#method-i-call_by_name">#call_by_name</a>
+    
+    <li><a href="#method-i-data">#data</a>
+    
+    <li><a href="#method-i-data-21">#data!</a>
+    
+    <li><a href="#method-i-set">#set</a>
+    
+    <li><a href="#method-i-verify">#verify</a>
+    
+    <li><a href="#method-i-verify_memory">#verify_memory</a>
+    
+    <li><a href="#method-i-verify_register">#verify_register</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../License_txt.html">License</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../MIPSUnit.html">MIPSUnit</a>
+  
+    <li><a href="../../MIPSUnit/MSpec.html">MIPSUnit::MSpec</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Assembly.html">MIPSUnit::MSpec::Assembly</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/AssemblyLabel.html">MIPSUnit::MSpec::AssemblyLabel</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/DSL.html">MIPSUnit::MSpec::DSL</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/DataLabel.html">MIPSUnit::MSpec::DataLabel</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Generator.html">MIPSUnit::MSpec::Generator</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Global.html">MIPSUnit::MSpec::Global</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/InvalidSpecException.html">MIPSUnit::MSpec::InvalidSpecException</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Label.html">MIPSUnit::MSpec::Label</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Runner.html">MIPSUnit::MSpec::Runner</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/TestDefinition.html">MIPSUnit::MSpec::TestDefinition</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/TestDefinitionGroup.html">MIPSUnit::MSpec::TestDefinitionGroup</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/TestFactory.html">MIPSUnit::MSpec::TestFactory</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/AssemblyLabel.html">MIPSUnit::MSpec::TestFactory::AL</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/TestFactoryHelper.html">MIPSUnit::MSpec::TestFactoryHelper</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Util.html">MIPSUnit::MSpec::Util</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Util/Util.html">MIPSUnit::MSpec::Util::Util</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class MIPSUnit::MSpec::TestFactory</h1>
+
+  <div id="description" class="description">
+    
+<p>Objects of type <a href="TestFactory.html">TestFactory</a> provide the
+context in which test definitions are run.  First, it provides the instance
+methods like <a href="TestFactory.html#method-i-set">set</a>, <a
+href="TestFactory.html#method-i-call">call</a>, and, <a
+href="TestFactory.html#method-i-verify">verify</a> that generate the
+assembly code.</p>
+
+<p>Second, it provides the mechanism that allows <code>describe</code> blocks
+to provide a scope for helper methods and instance variables. Each
+<code>describe</code> block corresponds to a subclass of <a
+href="TestFactory.html">TestFactory</a>. Any instance methods/variables
+defined within a <code>describe</code> block become instance
+methods/variables in the corresponding <a
+href="TestFactory.html">TestFactory</a> subclass.</p>
+
+<p>A <code>describe</code> block contains <code>it</code> blocks.  Each
+<code>it</code> block defines a test (i.e., generates a <a
+href="TestDefinition.html">TestDefinition</a> object).  All of the <a
+href="TestDefinition.html">TestDefinition</a> objects in a
+<code>describe</code> block are stored in a <a
+href="TestDefinitionGroup.html">TestDefinitionGroup</a> object.  The
+<code>Class</code> objects describing <a
+href="TestFactory.html">TestFactory</a> and its subclasses contain a
+<code>@metadata</code> instance variable that contains this <a
+href="TestDefinitionGroup.html">TestDefinitionGroup</a> object.</p>
+
+<p><a href="TestFactory.html">TestFactory</a> instances have three instance
+variables: <code>@description</code>, <code>@output</code>, and
+<code>@local_labels</code>. Use of these instance variables inside
+<code>before</code> or <code>it</code> blocks can have unintended
+consequences.</p>
+
+<p>Similarly, <a href="TestFactory.html">TestFactory</a> class objects
+(created by <code>describe</code> blocks) have a <code>@metadata</code>
+instance variable. Use of <code>@metadata</code> inside a
+<code>describe</code> block can have unintended consequences.</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Zachary Kurmas</p>
+</dd><dt>Copyright
+<dd>
+<p>© 2012</p>
+</dd></dl>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="AL">AL
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-assert_register_not_at" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">assert_register_not_at</span><span
+            class="method-args">(register)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The generated assembly code uses :at as a temporary.  Thus, it is not
+possible to directly verify the value of :at</p>
+          
+
+          
+          <div class="method-source-code" id="assert_register_not_at-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_register_not_at</span>(<span class="ruby-identifier">register</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">register</span> <span class="ruby-operator">==</span> <span class="ruby-value">:at</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">register</span> <span class="ruby-operator">==</span> <span class="ruby-value">:r1</span>)
+    <span class="ruby-identifier">name</span> = <span class="ruby-constant">TestFactoryHelper</span>.<span class="ruby-identifier">register_to_string</span>(<span class="ruby-identifier">register</span>)
+    <span class="ruby-identifier">message</span> = <span class="ruby-node">&quot;Cannot verify value of #{name} because MSpec uses it as a temporary.&quot;</span>
+    <span class="ruby-identifier">message</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;\nTo verify the value of this register, you must first move it to a different, unused register &quot;</span>
+    <span class="ruby-identifier">message</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;and verify the value of that register.&quot;</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">message</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- assert_register_not_at-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- assert_register_not_at-method -->
+
+    
+      <div id="method-i-call" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">call</span><span
+            class="method-args">(p1=nil, p2=nil, p3=nil, p4=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Generates assembly instructions to call the method identified by the
+describe block with the given values.</p>
+          
+
+          
+          <div class="method-source-code" id="call-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 157</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">call</span>(<span class="ruby-identifier">p1</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">p2</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">p3</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">p4</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">name</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">metadata</span>.<span class="ruby-identifier">subject</span>
+  <span class="ruby-identifier">call_by_name</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">p1</span>, <span class="ruby-identifier">p2</span>, <span class="ruby-identifier">p3</span>, <span class="ruby-identifier">p4</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- call-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- call-method -->
+
+    
+      <div id="method-i-call_by_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">call_by_name</span><span
+            class="method-args">(name, p1=nil, p2=nil, p3=nil, p4=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Generates assembly instructions to call the specified function with the
+given values.</p>
+          
+
+          
+          <div class="method-source-code" id="call_by_name-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 143</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">call_by_name</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">p1</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">p2</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">p3</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">p4</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Must specify a method when using call_by_name.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+
+  <span class="ruby-comment"># remove unused parameters</span>
+  <span class="ruby-identifier">params</span> = {<span class="ruby-value">:a0</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">p1</span>, <span class="ruby-value">:a1</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">p2</span>, <span class="ruby-value">:a2</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">p3</span>, <span class="ruby-value">:a3</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">p4</span>}.<span class="ruby-identifier">reject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span> }
+  <span class="ruby-identifier">set</span>(<span class="ruby-identifier">params</span>)
+
+  <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;jal #{name}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- call_by_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- call_by_name-method -->
+
+    
+      <div id="method-i-data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">data</span><span
+            class="method-args">(hash)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>define a new data label whose scope is limited to the current
+<code>it</code> block. This method should not be called from a
+<code>before</code> block, hence the warning. Once the <code>before</code>
+blocks have run, this implementation is replaced with another that does not
+include the warnings.</p>
+          
+
+          
+          <div class="method-source-code" id="data-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 106</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">data</span>(<span class="ruby-identifier">hash</span>)
+  <span class="ruby-constant">MIPSUnit</span><span class="ruby-operator">::</span><span class="ruby-constant">MSpec</span>.<span class="ruby-identifier">global</span>.<span class="ruby-identifier">print_single_warning</span>(<span class="ruby-value">:data_in_before</span>)
+  <span class="ruby-identifier">data!</span>(<span class="ruby-identifier">hash</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- data-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- data-method -->
+
+    
+      <div id="method-i-data-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">data!</span><span
+            class="method-args">(hash)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>define a new data label whose scope is limited to the current
+<code>it</code> block.  Calling this method from a <code>before</code> bock
+will create a separate label for each <code>it</code> block, which is
+wasteful if done needlessly; hence the “!”. (The method <a
+href="TestFactory.html#method-i-data">data</a> from within a
+<code>before</code> block prints a warning.  Calling this method suppresses
+that warning.)</p>
+          
+
+          
+          <div class="method-source-code" id="data-21-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">data!</span>(<span class="ruby-identifier">hash</span>)
+  <span class="ruby-constant">TestFactoryHelper</span>.<span class="ruby-identifier">data</span>(<span class="ruby-identifier">hash</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dl</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">metadata</span>.<span class="ruby-identifier">assert_label_not_defined_in_object_scope</span>(<span class="ruby-identifier">dl</span>)
+    <span class="ruby-ivar">@local_labels</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">dl</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- data-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- data-21-method -->
+
+    
+      <div id="method-i-set" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set</span><span
+            class="method-args">(hash)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Generates assembly instructions to set registers to the given values.
+Values may be integers (<code>Integer</code>) or boolean
+(<code>true</code>) or (<code>false</code>). This method will raise an <a
+href="InvalidSpecException.html">InvalidSpecException</a> if a hash key is
+not a valid register or if a value is not a valid data type.</p>
+          
+
+          
+          <div class="method-source-code" id="set-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set</span>(<span class="ruby-identifier">hash</span>)
+  <span class="ruby-identifier">labels_in_scope</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">metadata</span>.<span class="ruby-identifier">data_labels</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@local_labels</span>
+  <span class="ruby-comment"># we iterate the hash in sorted order so that the output is predictable for</span>
+  <span class="ruby-comment"># testing purposes</span>
+  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">sort</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">to_s</span> }.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">TestFactoryHelper</span>.<span class="ruby-identifier">set_register</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>], <span class="ruby-ivar">@output</span>, <span class="ruby-identifier">labels_in_scope</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set-method -->
+
+    
+      <div id="method-i-verify" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verify</span><span
+            class="method-args">(hash)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>verifies the given output state TODO: call <a
+href="TestFactory.html#method-i-verify_memory">#verify_memory</a> when the
+meaning is unambiguous</p>
+          
+
+          
+          <div class="method-source-code" id="verify-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 202</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">verify</span>(<span class="ruby-identifier">hash</span>)
+  <span class="ruby-comment"># We sort the keys before iterating only so that the</span>
+  <span class="ruby-comment"># output is consistent for testing purposes.</span>
+  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">sort</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">to_s</span> }.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">verify_register</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>])
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- verify-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- verify-method -->
+
+    
+      <div id="method-i-verify_memory" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verify_memory</span><span
+            class="method-args">(observed, expected, length = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>verify that the given memory location contains the specified value</p>
+          
+
+          
+          <div class="method-source-code" id="verify_memory-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 217</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">verify_memory</span>(<span class="ruby-identifier">observed</span>, <span class="ruby-identifier">expected</span>, <span class="ruby-identifier">length</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">assert_register_not_at</span>(<span class="ruby-identifier">observed</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">observed</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>)
+
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Feature not yet supported&quot;</span>) <span class="ruby-keyword">unless</span> (<span class="ruby-identifier">observed</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">observed</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>))
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Feature not yet supported&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">expected</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">expected</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>))
+    <span class="ruby-identifier">labels_in_scope</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">metadata</span>.<span class="ruby-identifier">data_labels</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@local_labels</span>
+    <span class="ruby-identifier">test_name_string</span> = <span class="ruby-node">&quot;#{self.class.metadata.cumulative_description} #{@description}&quot;</span>
+    <span class="ruby-constant">TestFactoryHelper</span>.<span class="ruby-identifier">verify_memory_array</span>(<span class="ruby-identifier">observed</span>, <span class="ruby-identifier">expected</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">test_name_string</span>, <span class="ruby-identifier">labels_in_scope</span>, <span class="ruby-ivar">@output</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- verify_memory-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- verify_memory-method -->
+
+    
+      <div id="method-i-verify_register" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verify_register</span><span
+            class="method-args">(register, expected_value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Generates assembly code to verify that the specified register has the
+expected value.</p>
+          
+
+          
+          <div class="method-source-code" id="verify_register-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 176</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">verify_register</span>(<span class="ruby-identifier">register</span>, <span class="ruby-identifier">expected_value</span>)
+  <span class="ruby-identifier">assert_register_not_at</span>(<span class="ruby-identifier">register</span>)
+
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">expected_value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">expected_value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>) <span class="ruby-operator">||</span>
+      <span class="ruby-identifier">expected_value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">TrueClass</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">expected_value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FalseClass</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Cannot compare a register (#{register.to_s}) to type #{expected_value.class}&quot;</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-constant">TestFactoryHelper</span>.<span class="ruby-identifier">validate_register</span>(<span class="ruby-identifier">register</span>)
+
+  <span class="ruby-comment"># Generate a single string containing the complete name of this test</span>
+  <span class="ruby-identifier">test_name_string</span> = <span class="ruby-node">&quot;#{self.class.metadata.cumulative_description} #{@description}&quot;</span>
+
+  <span class="ruby-comment"># put desired value in $at  (Since the mips beq instruction only compares registers, this happens anyway.</span>
+  <span class="ruby-comment"># There is no harm in making it explicit here.)</span>
+  <span class="ruby-identifier">set</span>(<span class="ruby-value">:at</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">expected_value</span>)
+
+  <span class="ruby-identifier">register_name</span> = <span class="ruby-constant">TestFactoryHelper</span>.<span class="ruby-identifier">register_to_string</span>(<span class="ruby-identifier">register</span>)
+  <span class="ruby-constant">TestFactoryHelper</span>.<span class="ruby-identifier">fail_unless</span>(<span class="ruby-node">&quot;beq $at, #{register_name}&quot;</span>, <span class="ruby-identifier">test_name_string</span>, <span class="ruby-node">&quot;Register #{register.to_s}&quot;</span>,
+                                <span class="ruby-identifier">expected_value</span>, <span class="ruby-keyword">self</span>, <span class="ruby-ivar">@output</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;move $a3, #{register_name}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- verify_register-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- verify_register-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-before" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">before</span><span
+            class="method-args">(&block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>provide code to be run before each test.</p>
+          
+
+          
+          <div class="method-source-code" id="before-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">before</span>(&amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-ivar">@metadata</span>.<span class="ruby-identifier">before</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">block</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- before-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- before-method -->
+
+    
+      <div id="method-c-data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">data</span><span
+            class="method-args">(hash)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Define a new data label whose scope is the entire <code>describe</code>
+block</p>
+          
+
+          
+          <div class="method-source-code" id="data-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">data</span>(<span class="ruby-identifier">hash</span>)
+  <span class="ruby-constant">TestFactoryHelper</span>.<span class="ruby-identifier">data</span>(<span class="ruby-identifier">hash</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">dl</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@metadata</span>.<span class="ruby-identifier">add_data_label</span>(<span class="ruby-identifier">dl</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- data-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- data-method -->
+
+    
+      <div id="method-c-describe" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">describe</span><span
+            class="method-args">(description, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Processes a <code>describe</code> block in a spec</p>
+          
+
+          
+          <div class="method-source-code" id="describe-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">describe</span>(<span class="ruby-identifier">description</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-comment"># save metadata in a local variable so we can pass it to the</span>
+  <span class="ruby-comment"># new TestDefinitionGroup while in a block</span>
+  <span class="ruby-identifier">my_metadata</span> = <span class="ruby-ivar">@metadata</span>
+
+  <span class="ruby-comment"># Define a new descendant of TestFactory (this is what Class.new(self) does)</span>
+  <span class="ruby-comment"># Every class is described by an instance of Class.  The block below</span>
+  <span class="ruby-comment"># adds the instance variable @metadata to the newly defined Class object.</span>
+  <span class="ruby-identifier">group</span> = <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-ivar">@metadata</span> = <span class="ruby-constant">TestDefinitionGroup</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">description</span>, <span class="ruby-identifier">my_metadata</span>)
+    <span class="ruby-comment"># A define block looks like this:</span>
+    <span class="ruby-comment"># define &quot;some function&quot; do</span>
+    <span class="ruby-comment">#   THE BLOCK</span>
+    <span class="ruby-comment"># end</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-comment"># The class_eval statement below runs the code in the define</span>
+    <span class="ruby-comment"># block (i.e, &quot;THE BLOCK&quot;) in the context of defining a new class.  In other</span>
+    <span class="ruby-comment"># words, it is as if we had written the code like this:</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-comment"># class NewTestFactory &lt; TestFactory</span>
+    <span class="ruby-comment">#  THE BLOCK</span>
+    <span class="ruby-comment"># end</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-comment"># Thus, any definitions in the block become instance methods for this</span>
+    <span class="ruby-comment"># descendant of TestFactory.  Calls to &quot;it&quot; or &quot;before&quot; are calls to the</span>
+    <span class="ruby-comment"># class methods &quot;it&quot; and &quot;before&quot; defined below.</span>
+    <span class="ruby-identifier">class_eval</span>(&amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Add the metadata for the newly processed describe block (i.e., group.metadata) to the</span>
+  <span class="ruby-comment"># current list of nested groups.  Notice that @metadata in the  line below is not the same</span>
+  <span class="ruby-comment"># object as @metadata in the block above.  @metadata in the block above is an instance variable in the</span>
+  <span class="ruby-comment"># newly created Class object.</span>
+  <span class="ruby-ivar">@metadata</span>.<span class="ruby-identifier">nested_groups</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">group</span>.<span class="ruby-identifier">metadata</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@metadata</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">group</span>.<span class="ruby-identifier">metadata</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- describe-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- describe-method -->
+
+    
+      <div id="method-c-it" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">it</span><span
+            class="method-args">(description, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Generates a <a href="TestDefinition.html">TestDefinition</a> object then
+adds it to the list of test definitions for the current <a
+href="TestDefinitionGroup.html">TestDefinitionGroup</a></p>
+          
+
+          
+          <div class="method-source-code" id="it-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">it</span>(<span class="ruby-identifier">description</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">definition</span> = <span class="ruby-constant">TestDefinition</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">description</span>, <span class="ruby-identifier">block</span>)
+  <span class="ruby-ivar">@metadata</span>.<span class="ruby-identifier">definitions</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">definition</span>
+  <span class="ruby-identifier">description</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- it-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- it-method -->
+
+    
+      <div id="method-c-metadata" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">metadata</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>return the metadata for the particular <a
+href="TestFactory.html">TestFactory</a> subclass</p>
+          
+
+          
+          <div class="method-source-code" id="metadata-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">metadata</span>
+  <span class="ruby-ivar">@metadata</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- metadata-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- metadata-method -->
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(output, description)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory.rb, line 122</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">output</span>, <span class="ruby-identifier">description</span>)
+  <span class="ruby-ivar">@output</span> = <span class="ruby-identifier">output</span>
+  <span class="ruby-ivar">@description</span> = <span class="ruby-identifier">description</span>
+  <span class="ruby-ivar">@local_labels</span> = []
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

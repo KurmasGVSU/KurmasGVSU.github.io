@@ -1,0 +1,370 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Vector Processing</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #073c88;
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    ul {
+      margin-top: 0;
+    }
+
+    .icTable, .icTable td {
+      border: 1px solid black;
+      margin-bottom: 20px;
+    }
+
+    .spaced-list li {
+      margin-bottom: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 451</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Vector Processing</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2019</h1></td>
+  </tr>
+</table>
+
+
+<h3>Objective</h3>
+
+<p>The objective of this lab assignment is to allow students to examine source code for vector processing and observe
+the performance benefits.</p>
+
+<h3>Chaos</h3>
+
+<p>Consider the (obviously broken) recursive function below:</p>
+
+<pre>
+  float chaos(x, init) {
+    return chaos(x*x + init);
+  }
+</pre>
+
+<p>From a programming perspective, this function is broken because it has no base case and will never terminate. However,
+from a mathematical perspective, some of the inputs have well-defined outputs. If we were to run this broken code, we
+might find that the values stop changing much at some point. For example, <code>chaos(0, 0)</code> will limit to 0,
+but <code>chaos(-1.0, 0)</code> just keeps growing.</p>
+
+<p>It turns out that for inputs <code>0.25 &le; c &lt; 2</code>, this function has a limit. If we plot this function it
+looks like this:</p>
+
+<img src="chaos1.jpeg" alt="example of 'chaotic' function">
+
+<p>Notice that the plot is reasonably smooth for <code>0.25 &le; c &lt; 1.5</code>; but, when <code>c</code> reaches
+  1.5, the values start jumping all over the place. In this interval, we say that this function is <em>chaotic</em>.
+  (Yes, there really is a mathematical definition of chaos.)</p>
+
+<h3>The Mandelbrot Set</h3>
+
+<p>If we mapped outputs to colors, we could make an interesting drawing; however, since the function is one-dimensional,
+it would just be stripes. So, lets change the function so that it operates on a complex numbers.  That way, we can
+define a two-dimensional image.</p>
+
+<p>This is the new function:</p>
+
+<pre>
+  float mandelbrot(z, init) {
+    return mandelbrot(z*z + init);
+  }
+</pre>
+
+<p>This time, instead of plotting the limit, we are going to keep track of how fast it grows --- how many
+iterations we can go before <code>norm(z) &gt; 2.0</code>.
+</p>
+
+<p>The result is this familiar picture:</p>
+
+<img width='500' src="mandelbrot.jpeg" alt="Mandelbrot set">
+
+<p>Brighter colors represent slower divergence.  The bright green represents points that diverge very slowly:  It
+  takes many iterations for the point to reach a distance of 2.0 from the origin.  Dark green colors diverge very
+  quickly:  They reach a distance of 2.0 from the origin within a few iterations.  Black points are those that do
+  not diverge at all.  They are still withing 2.0 of the origin after the maximum number of iterations.
+  (See <a href='https://math.hws.edu/eck/js/mandelbrot/MB-info.html'><code>math.hws.edu/eck/js/mandelbrot/MB-info.html</code></a> for more information.)</p>
+
+<p>Download <a href='mandelbrotComplex.cpp'><code>mandelbrotComplex.cpp</code></a> and figure out how it works. (This is the simplest
+  implementation. It uses a class to represent complex numbers. That class overloads the arithmetic operators.)</p>
+
+<ol start="1">
+
+  <li> What do the variables <code>dx</code> and <code>dy</code> represent?</li>
+
+  <li> What does the line <code>*image++ = count;</code> do? Explain how this line works.
+    (Be certain to explain all the parts of <code>*image++</code>.)</li>
+
+  <li>
+    Compile <code>mandelbrotComplex</code> with the <code>-O0</code> flag. Then run the program and report how long it
+    takes. (Note: The flag is a capital <code>O</code> then a zero. The <code>-O</code> flag is for
+    <em>O</em>ptimization.
+    Contrast this with the lower-case <code>o</code> flag, which is for <em>o</em>utput.) <br>
+    <code class="inline-instruction">g++ -O0 mandelbrotComplex.cpp</code><br>
+    <code class="inline-instruction">time ./a.out</code>
+  </li>
+
+  <li>
+    Now compile  <code>mandelbrotComplex</code> with the <code>-O3</code>, run it, and report how long it takes.
+  </li>
+</ol>
+
+<p>Now, download <a href='mandelbrot.c'><code>mandelbrot.c</code></a> and figure out how it works. The benefit of this C version is
+  that it results in much simpler assembly code; however, we must (1) store the real and imaginary parts of the complex
+  numbers separately, and (2) write our own code to implement complex operations.</p>
+<ol start="5">
+  <li> What is the variable <code>tzr</code> used for?  Why is it needed?</li>
+  <li>
+    Compile <code>mandelbrot.c</code> with the <code>-O0</code> flag.  Then run the program and report how long
+    it takes.<br>
+    <code class="inline-instruction">gcc -mfma -O0 mandelbrot.c</code><br>
+    <code class="inline-instruction">time ./a.out</code>
+  </li>
+
+  <li>
+    Now compile  <code>mandelbrot.c</code> with the <code>-O3</code>, run it, and report how long it takes.
+  </li>
+
+  <li>What is the speedup of the optimized C code over the optimized C++ code?</li>
+</ol>
+
+<h3>The AVX instructions</h3>
+
+<p>Intel provides a set of instructions that can process all elements in an array at once.  The machines in our labs
+  can process up to 8 floating point values at once.
+</p>
+
+
+<p>Look at <code>mandelbrot_c_avx</code>.  Notice that the inner <code>for</code> loop (the one that uses
+  <code>col</code> as the loop index) increments by 8.  This is because each iteration of this loop processes 8
+  points at once. The functions beginning with <code>__mm256_</code> call Intel's special vector instructions.
+  Thoroughly examine this code until you understand how it works.
+
+<ol start="8">
+  <li>What does the <code>_mm256_broadcast_ss</code> function do?</li>
+  <li>What is the purpose of the <code>incr</code> array?</li>
+  <li>What is the purpose of this call: <code>_mm256_xor_ps(dx_ymm0, dx_ymm0)</code>?</li>
+  <li>What is the purpose of this line of code? <code> test = _mm256_movemask_ps(norm_z_ymm15) &
+  255U;</code> Is it necessary to the correct operation of the algorithm?  If so, what would go wrong if it were
+    missing.  If not, why is it optional; and, what is the benefit of keeping it?
+  </li>
+
+<li>Modify <code>main</code> to call <code>mandelbrot_c_avx</code>, then compile the program, run it, and report
+  how long it takes.</li>
+
+  <li>
+    Now compile  the updated program with <code>-O3</code>, run it, and report how long it takes.
+  </li>
+
+  <li>What is the speedup of the optimized code over the unoptimized code?</li>
+
+  <li>What is the speedup of the optimized AVX code over the optimized  C code?</li>
+
+</ol>
+
+<h3>Examine the assembly</h3>
+
+<p>Compile <code>mandelbrot.c</code> down to assembly:
+  <code class="inline-instruction">gcc -mfma -S mandelbrot.c</code>.</p>
+
+  <p>Find the assembly code for <code>mandelbrot_c_avx</code> (look for the label).</p>
+
+<ol start="15">
+  <li>How much room is allocated on the stack for this function?</li>
+  <li>List the AVX instructions used by this method.</li>
+</ol>
+
+Now, examine the assembly code for <code>mandelbrot_c_regular</code>.
+
+<ol start="17">
+  <li>Why does this "non-avx" assembly code use AVX assembly instructions?
+  </li>
+</ol>
+
+<p>If you are curious, you can comment out <code>mandelbrot_c_avx</code> then run
+  <code class="inline-instruction">gcc -mno-avx -S mandelbrot.c</code> to see what Intel's older style of floating
+  point assembly looked like.
+
+<h3>Your turn</h3>
+
+<ol start="18">
+  <li>Write your own AVX code.  It can be almost anything: a different fractal, a matrix multiply,
+    a simple simulation.  (The only thing you can't do is download and compile somebody's else's completed AVX code.)
+  </li>
+</ol>
+
+<hr>
+
+<p>Updated Wednesday, 27 March 2019, 9:42 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>
+
+
+<!-- Key pages in Intel document:  32, 37-38, 42-44 -->

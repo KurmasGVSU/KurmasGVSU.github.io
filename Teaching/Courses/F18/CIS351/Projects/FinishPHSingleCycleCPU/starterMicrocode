@@ -1,0 +1,12 @@
+# All values are in hex
+
+# I-type and J-type instructions.
+# left column is op code in hex
+00    0000	  # no-op
+08    0620	  # addi
+20    8000	  # Halt
+
+# R-type instructions.
+# left column is 0x40 + function code.
+40    0000	  # no-op (opcode and func code 0)
+60    0421	  # add (function code 20)

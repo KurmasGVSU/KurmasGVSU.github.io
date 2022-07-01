@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+# Author:: Zachary Kurmas
+# Copyright:: Copyright (c) 2012
+
+require 'mipsunit/mspec'
+require 'mipsunit/mspec/runner'
+require 'mipsunit/mspec/dsl'
+
+MIPSUnit::MSpec::Runner.run(ARGV)

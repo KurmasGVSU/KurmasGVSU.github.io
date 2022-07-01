@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 163 Qwixx</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .rubric  {
+       margin-left: 25px;
+    }
+
+    .rubric th {
+       text-align: left;       
+    }
+
+    .rubric td {
+       padding-right: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 163</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Qwixx</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Spring 2021</h1></td>
+  </tr>
+</table>
+
+
+   
+
+  <p>GitHub Classroom URL: <a href='https://classroom.github.com/g/v_fSmXGK'><code>https://classroom.github.com/g/v_fSmXGK</code></a></p>
+
+<h2 class="listHeader">Objectives:</h2>
+
+<ul>
+   <li>Use two-dimensional arrays</li>
+   <li>Use the Model-View-Controller design pattern</li>
+   <li>Modify a Java Swing GUI</li>
+   <li>Examine how inheritance and polymorphism are used in the Java Swing library</li>
+   <li>Additional practice writing unit tests</li>
+   <li>Provide experience developing challenging algorithms</li>
+   <li>Provide experience writing a complex Java class</li>
+</ul>
+
+<h2 class="listHeader">Due Dates:</h2>
+
+<ul>
+   <li>Demonstrate that the dice can roll: Wednesday, 3 June 2020, 8:00 am</li>
+   <li>All automated tests pass: Monday, 15 June 2020, 8:00 am</li>
+   <li>Final submission: Monday, 22 June 2020, 8:00 am</li>
+</ul>
+
+
+<h2>Problem Statement</h2>
+
+<p>You will implement and thoroughly test a program that allows users to play a single-player game of the 
+<a href="https://gamewright.com/product/Qwixx">Qwixx</a> dice game.</p>
+
+<p>You are strongly encouraged to work on this project in pairs.</p>
+
+<h2 class='listHeader'>Preliminaries</h2>
+
+<ul>
+   <li>Begin by learning the rules of Qwixx.  <a href='https://youtu.be/zGUj3oCZ9nA'>This video</a> demonstrates a completed project and highlights the rules of a 
+   single-player game.  You may also want to review the <a href='https://gamewright.com/pdfs/Rules/QwixxTM-RULES.pdf'>formal rules</a> for a traditional multi-player game.</li>
+   <li>Next, clone the <a href='https://classroom.github.com/g/v_fSmXGK'>starter code</a> and make sure you understand how it works.  In particular, make sure you understand:
+      <ul>
+      <li>What Controller code runs when buttons and boxes in the view are clicked (and why).</li>
+      <li>How the View works (e.g., how the components are organized and updated).</li>
+      <li>How <code>QwixxModel</code> and <code>ReadOnlyQwixxModel</code> are related, and why the View uses <code>ReadOnlyQwixxModel</code>.</li>
+      </ul>   
+   </li>
+   <li>Make sure understand what each <code>QwixxModel</code>
+   and <code>ReadOnlyQwixxModel</code> method should do. (If you don't your method may not pass my tests.)</li>
+</ul>
+
+<h2 class='listHeader'>Rules</h2>
+
+<ul>
+<li>You are strongly encouraged to work on this project in pairs.</li>
+<li>Your View may only read the Model.  It may not directly manipulate the model.  
+Do not add a <code>QwixxModel</code> variable to your view.  Do not add any mutator methods to <code>ReadOnlyQwixxModel</code>.</li>
+<li>Do not change the signatures of any existing <code>QwixxModel</code> methods.  (Doing so will break my tests.)</li>
+<li>Your model's die values and score values should be stored as integers, <em>not</em> <code>String</code>s.</li>
+   <li>Your code must follow good coding style and practice including:
+      <ul>
+         <li>inner explanatory comments where appropriate,</li>
+         <li>use of descriptive variable and method names,</li>
+         <li>use of constant where appropriate, and
+         </li>
+         <li>use of private "helper" methods where necessary to avoid duplicate
+            code.
+      </ul>
+      </li>
+</ul>
+
+<h2>Workflow</h2>
+
+<p>You should follow a test-driven development workflow.  However, instead of writing all the tests
+for the entire project, just write them one feature at a time. I suggest you test and implement features in this order: </p>
+<ol>
+<li> Roll the dice: Write tests for, then implement <code>QwixxModel#rollDice</code> and <code>QwixxModel#scoreValues</code>.  
+When complete, pressing the <code>Roll</code> button should cause new die values to appear in the view. 
+<span class='inline-important'>This should be complete by Wednesday, 3 June 2020, 8:00 am</span></li>
+<li> Select a number: Write tests for, then implement <code>QwixxModel#numberSelected</code> and 
+<code>QwixxModel#numberValues</code>.  At this point, pressing a number box should cause the View to display an 'X'.  At this stage, 
+don't worry about implementing the rules:  Allow any number box to be selected.  (Also, don't write too many tests, since you will have to update them soon.)</li>
+<li>Only allow number boxes to be selected if they correspond to the current values of the white dice.</li>
+<li>Only allow number boxes to be selected if they correspond to the current values of the white dice <em>and</em> no boxes to the right have been selected. 
+(Now is a good time to write some more thorough tests.)</li>
+<li>After selecting number box based on the white dice, the next number box selected should be based on the colored dice.</li>
+<li>After selecting a number box, update the score.  The score for a row is the summation of the number of boxes 
+selected (1 box =&gt; 1 pt; 2 boxes =&gt; 3 points; 3 boxes -&gt; 6 points, etc.)</li>
+<li>Implement the "<code>can</code>" methods (<code>canSelect</code>, <code>canPassWhite</code>, etc.) and only allow operations to occur in the correct order 
+   (dice must be rolled before selecting white dice, white dice must be used before colored dice, colored dice must be used before rolling again, etc.).
+   To enforce the play order, have <code>QwixxView#update</code> enable/disable buttons based on the "can" methods.</li>
+ <li>Implement <code>QwixxModel#passWhite</code> and <code>QwixxModel#passColor</code> so that users can elect not to select number boxes.</li>  
+ <li>Implement the penalty for not selecting any number boxes during a roll.</li>
+ <li>Implement game over.  (The game is over when either (a) all four penalty boxes are checked, or (b) the rightmost column in each row is crossed out.)</li>
+</ol>
+
+<h2>"Bonus" Features</h2>
+
+<p>Implementing the basic game only covers 90 of the 100 points in the rubric below.  To get the
+full 100 points, you need to add one or more "bonus" features of your choice.  You can choose from one of the options below,
+or propose something else.  (Notice that not all the features below are worth exactly 10 points.)
+
+<p class='listHeader'>Potential bonus features:</p>
+<ul>
+   <li> (3 pts) Change the label on boxes that may no longer be selected to a '-'.  (Remember, the logic for this should go in the model.)
+  <li> (5 pts) Display the dice with pips instead of numbers.</li>
+ 
+  <li> (10 pts) Highlight the current valid moves. (E.g., change the border color on the number boxes that may be chosen.)</li>
+  <li> (10 pts) Prevent users from selecting the rightmost box unless five other boxes have already been selected.</li>
+  <li> (20 pts) Implement a two-player game.  (You will need to show two boards at once.  An quick and easy approach is to instantiate two separate View objects
+which will create two separate windows.  A better approach is to create a additional class so you can display two boards in the same frame.)
+Make sure you fully understand the rules of a two player game. (Yes, completing this is worth extra credit.)</li>
+</ul>
+
+<p class='listHeader'>It is possible that your bonus feature will cause my tests to fail. Before beginning work on the bonus feature:
+<ol>
+<li>Make sure your code passes all of the automated tests.</li>
+<li>Create a new branch named <code>baseline</code> (run <code class='inline-instruction'>git branch baseline</code>).  This will make it easy for me to re-run 
+the instructor tests on the "base" project if necessary.</li>
+<li>Take a screen snapshot of your passing tests.</li>
+</ol>
+
+<p>In other words: <span class='inline-important'>Make sure your code passes the automated tests, and save that passing code somewhere 
+before making changes that are potentially incompatible with my tests.</span></p>
+
+<h2>Grading Rubric</h2>
+
+<table class='rubric'>
+<tr><th>Category</th><th>Points</th></tr>
+<tr><td>Timeliness</td><td>70</td></tr>
+<tr><td>Coding style</td><td>20</td></tr>
+<tr><td>Bonus feature</td><td>10</td></tr>
+</table>
+
+<p>Note: Points will be deducted for insufficient testing and/or not following a TDD workflow as discussed in class.</p>
+
+<p>Timeliness is based on when your code passes the automated tests:</p>
+
+<table class='rubric'>
+<tr><th>Day</th><th>Points</th></tr>
+<tr><td>Two days early</td><td>74</td></tr>
+<tr><td>One day early</td><td>72</td></tr>
+<tr><td>On time</td><td>70</td></tr>
+<tr><td>Late</td><td>-3  points per day</td></tr>
+</table>
+
+<h3 id='submit'>Submitting your Project</h3>
+
+<p class='listHeader'>To submit your project:</p>
+  <ol> 
+   <li>Make sure your name(s) appears in a comment at the top of each <code>.java</code> file.</li>
+            <li> Double check that your bonus feature has been thoroughly tested.  (Remember, the auto-grader does not check these features.)
+            <li> Clean up your code (check for proper indention, long lines, etc.)</li>
+            <li> Make sure your code meets the standards given at the end of the <a href="#rules">"Rules" section above</a>.</li>
+            <li> <span class='inline-important'>Fill out <a href='checklist.txt'><code>checklist.txt</code></a> and add it to your repository.</span></li>
+            <li> Include a video/screencast demonstrating your project.  This screencast should
+             <ol>
+               <li> Demonstrate all the baseline features/rules of the game, </li>
+               <li> Demonstrate your bonus feature, and</li>
+               <li> Highlight / show off the features of the project you are most proud of.</li>
+               </ol>
+               </li>
+            <li> Commit/push with "[Grade me]" in the commit message.</li>
+   </ol>
+
+
+
+<hr>
+ <p>Updated Monday, 17 May 2021, 3:25 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>
+
+
+  

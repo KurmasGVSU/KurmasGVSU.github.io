@@ -1,0 +1,1 @@
+rsync -rRLzp * eos17.cis.gvsu.edu:/home/kurmasz/public_html/Software/mipsunit_mspec

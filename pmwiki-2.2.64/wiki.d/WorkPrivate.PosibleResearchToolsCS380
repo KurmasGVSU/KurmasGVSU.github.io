@@ -1,0 +1,17 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1180109682
+host=75.134.113.30
+name=WorkPrivate.PosibleResearchToolsCS380
+rev=2
+targets=
+text=# LaTeX%0a# Emacs/Vi%0a# Project management%0a** makefiles%0a** RCS%0a** CVS%0a** How to structure a large project (Pat Widner's idea.)%0a* Scripting languages (Need to compare with C & UNIX)%0a** perl%0a** python%0a** bash%0a** tcsh%0a** when to use a script %0a# When to use LISP/prolog, etc.  (Check with CS362)%0a# GUI programming (Need to compare with other classes, and what students tend to learn)%0a** Java%0a** .NET%0a** Tcl/TK%0a# How libraries work in Windows, Mac, Solaris, Linux, etc.%0a# Writing and managing libraries%0a# Setting up file servers%0a# Setting up and using VPNs, virtual subnets, etc%0a# Setting up Unix environment%0a# Setting up/using ssh/scp%0a# Launching jobs remotely in unix%0a# Dynamic loading in Java%0a# DynDNS (and other free services)
+time=1180109709
+author:1180109709=
+diff:1180109709:1180109682:=14,15c14,15%0a%3c # When to use LISP/prolog, etc.  (Check with CS362)%0a%3c # GUI programming (Need to compare with other classes, and what students tend to learn)%0a---%0a> * When to use LISP/prolog, etc.  (Check with CS362)%0a> * GUI programming (Need to compare with other classes, and what students tend to learn)%0a19,27c19,27%0a%3c # How libraries work in Windows, Mac, Solaris, Linux, etc.%0a%3c # Writing and managing libraries%0a%3c # Setting up file servers%0a%3c # Setting up and using VPNs, virtual subnets, etc%0a%3c # Setting up Unix environment%0a%3c # Setting up/using ssh/scp%0a%3c # Launching jobs remotely in unix%0a%3c # Dynamic loading in Java%0a%3c # DynDNS (and other free services)%0a\ No newline at end of file%0a---%0a> * How libraries work in Windows, Mac, Solaris, Linux, etc.%0a> * Writing and managing libraries%0a> * Setting up file servers%0a> * Setting up and using VPNs, virtual subnets, etc%0a> * Setting up Unix environment%0a> * Setting up/using ssh/scp%0a> * Launching jobs remotely in unix%0a> * Dynamic loading in Java%0a> * DynDNS (and other free services)%0a\ No newline at end of file%0a
+host:1180109709=75.134.113.30
+author:1180109682=
+diff:1180109682:1180109682:=1,27d0%0a%3c # LaTeX%0a%3c # Emacs/Vi%0a%3c # Project management%0a%3c ** makefiles%0a%3c ** RCS%0a%3c ** CVS%0a%3c ** How to structure a large project (Pat Widner's idea.)%0a%3c * Scripting languages (Need to compare with C & UNIX)%0a%3c ** perl%0a%3c ** python%0a%3c ** bash%0a%3c ** tcsh%0a%3c ** when to use a script %0a%3c * When to use LISP/prolog, etc.  (Check with CS362)%0a%3c * GUI programming (Need to compare with other classes, and what students tend to learn)%0a%3c ** Java%0a%3c ** .NET%0a%3c ** Tcl/TK%0a%3c * How libraries work in Windows, Mac, Solaris, Linux, etc.%0a%3c * Writing and managing libraries%0a%3c * Setting up file servers%0a%3c * Setting up and using VPNs, virtual subnets, etc%0a%3c * Setting up Unix environment%0a%3c * Setting up/using ssh/scp%0a%3c * Launching jobs remotely in unix%0a%3c * Dynamic loading in Java%0a%3c * DynDNS (and other free services)%0a\ No newline at end of file%0a
+host:1180109682=75.134.113.30

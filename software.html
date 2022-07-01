@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Software</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    ul {
+      padding-top: 0;
+      margin-top: 0;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    dd {
+      margin-bottom: 5px;
+    }
+
+    #headerContainer {
+      text-align: center;
+      width: 100%;
+      display: inline;
+    }
+
+  </style>
+</head>
+
+<body>
+<nav id="nav">
+  <a class='bypass' href="#content">Skip to main content</a>
+  <p><a href="index.html#content">Home</a></p>
+
+  <p><a id='teachingNav' href="index.html#Teaching">Teaching</a></p>
+  
+    <p><a aria-label='Link to Teaching section of web page' class='nav-indent1' href='https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/W22/CIS351'>CIS 351</a></p>
+  
+
+  <div id="softwareNav">
+    <p><a href="software.html">Software</a></p>
+    <p><a aria-label="Link to DLUnit section on Software page" class='nav-indent1' href="Software/DLUnit">DLUnit</a></p>
+    <p><a aria-label='Link to MUnit section on Software page' class='nav-indent1' href="Software/mipsunit_munit/">MUnit</a></p>
+    <p><a arial-label='Link to KielceRB GitHub page' class='nav-indent1' href="https://www.github.com/kurmasz/KielceRB">KielceRB</a></p>
+  </div>
+
+  <p><a href="index.html#Scholarship">Scholarship</a></p>
+  <p><a class='nav-indent1' href="publications.html">Publications</a></p>
+
+  <p><a href="index.html#Advice">Advice</a></p>
+<!--  <p><a href="index.html#Humor">Humor</a></p> -->
+  <p><a href="index.html#ContactInfo">Contact info</a></p>
+  <p><a href='https://www.cis.gvsu.edu/public/staffListing/index.php?page=staff&fname=Zachary&lname=Kurmas'>My Schedule</a></p>
+
+  <p><a href="cv_public.pdf">CV</a></p>
+</nav>
+
+<main id="content">
+
+  <div id="headerContainer"><h1>Software</h1></div>
+
+  <ul>
+    <li><a aria-label="Link to DLUnit section of this page" href="#DLUnit">DLUnit</a></li>
+    <li><a aria-label="Link to KielceRB section of this page" href="#KielceRB">KielceRB</a></li>
+    <li><a aria-label="Link to MIPSUnit section of this page" href="#MIPSUnit">MIPSUnit</a></li>
+    <li><a aria-label="Link to Zawinlinski section of this page" href="#Zawilinski">Zawilinski</a></li>
+
+    <li><a aria-label="Link to JLSCircuitTester section of this page" href="#JLSCircuitTester">JLSCircuitTester</a> (replaced by <a aria-label="Link to DLUnit section of this page" href="DLUnit/index.html">DLUnit</a>)</li>
+  </ul>
+
+  <!-- -------------------------------------------------------------------------------
+  DLUnit
+  ----------------------------------------------------------------------------------->
+
+  <hr>
+  <h2 id="DLUnit"><a aria-label="Link to DLUnit details page" target="_top" href="Software/DLUnit/index.html">DLUnit</a></h2>
+
+  <p><code>DLUnit</code> is a <code><a target="_top" href="http://www.junit.org">JUnit</a></code>-based unit testing
+    framework for simulated digital logic circuits. Specifically, it allows students to write JUnit tests for
+    circuits they build using either the <a aria-label="Link to JLS web page" target="_top"
+                                            href="http://pages.mtu.edu/~pop/jlsp/bin/JLS.html">JLS</a>
+    and <a aria-label="Link to Logisim web page" target="_top"
+           href="http://www.cburch.com/logisim/">Logisim</a> digital logic simulators.</p>
+
+  <p><a aria-label="Link to DLUnit details page" target="_top" href="Software/DLUnit/index.html">More details here</a>.</p>
+
+  <p><a aria-label="Link to DLUnit.jar for download" href="Software/DLUnit/dist/DLUnit.jar">Download</a>.</p>
+
+
+  <!-- -------------------------------------------------------------------------------
+  KielceRB
+  ----------------------------------------------------------------------------------->
+
+  <hr>
+  <h2 id="KielceRB"><a aria-labelledby="KielceRB" href="https://www.github.com/kurmasz/KielceRB#readme">KielceRB</a></h2>
+
+  <p><code>KielceRB</code> is a highly customizable templating engine for
+  generating assignments, syllabi, web pages and other course
+  documents. It loads a hierarchy of key-value pairs from files at
+  various file system levels. These values can then be inserted into
+  documents using Ruby's ERB templating engine. KielceRB simplifies
+  the maintenance of course documents by moving data that changes
+  regularly into external data files where they can be easily
+  identified and updated. By loading data from various file system
+  levels, it is easy to share values among all documents for a
+  particular course and/or semester.</p>
+
+  <p><code>KielceRB</code> also provides methods for including one
+  document inside another allowing users to easily share common
+  content among several pages (navigation bars, contact information,
+  assignment headers, etc.).</p>
+
+  <p>For more details, see the project's <a aria-label="Link to KielceRB page on GitHub"
+  href="https://www.github.com/~kurmasz/KielceRB#readme">GitHub page</a>.</p>
+
+  <p class='list-header'>To download/install, you can either<p>
+    <ul>
+      <li>install the Ruby gem
+	<a aria-label="Link to KielceRB's RubyGems page"  href="https://rubygems.org/gems/kielce"><code>kielce</code></a> (i.e., run <code>gem install kielce</code>), or</li>
+      <li>download the source from <a aria-label="Link to KielceRB page on GitHub"
+				      href="https://www.github.com/~kurmasz/KielceRB">GitHub</a> and run it from there.</li>
+      </ul>
+
+  <!-- -------------------------------------------------------------------------------
+     MIPSUnit
+  ----------------------------------------------------------------------------------->
+
+  <hr>
+  <h2 id="MIPSUnit">MIPSUnit</h2>
+
+
+  <p>MIPSUnit is a suite of two unit testing frameworks for MIPS assembly:</p>
+  <ul>
+    <li><a target="_top" href="Software/mipsunit_mspec">MIPSUnit::MSpec</a> is an
+      <a target="_top" href="http://rspec.info"><code>RSpec</code></a>-inspired testing framework, and
+    </li>
+    <li><a target="_top" href="Software/mipsunit_munit">MIPSUnit::MUnit</a> is a
+      <a target="_top" href="http://www.junit.org"><code>JUnit</code></a>-based testing framework.
+  </ul>
+
+  <p>Each framework has its own strengths and weaknesses (see the individual pages for details); but, at a high level:
+  <ul>
+    <li> We expect students will be more comfortable writing <code>MUnit</code> tests, because far more students have
+      used Java and JUnit than Ruby and RSpec; however,
+    </li>
+    <li> we find it much easier to concisely write thorough/exhaustive tests using <code>MSpec</code>.
+      <code>MSpec</code> also produces a stand-alone assembly file containing the tests. Thus, students need not every
+      use <code>MSpec</code> directly.
+    </li>
+  </ul>
+
+  <p>More details about <a aria-label="Link to MSpec details" target="_top"
+                           href="Software/mipsunit_mspec"><code>MSpec</code></a>.</p>
+  <p>More details about <a aria-label="Link to MUnit details" target="_top"
+                           href="Software/mipsunit_munit"><code>MUnit</code></a>.</p>
+
+  <!-- <p><a href="mipsunit_mspec/download.html">Download <code>MSpec</code></a>.</p>
+  <p><a href="mipsunit_munit/download.html">Download <code>MUnit</code></a>.</p> -->
+
+
+  <!---------------------------------------------------------------------------------
+      Warszawa
+  ----------------------------------------------------------------------------------->
+  <!--
+    <hr>
+    <h2><a name="Warszawa"><a href="warszawa/doc/index.html">Warszawa</a></a></h2>
+  -->
+  <!--#include file="warszawa/blurb.html" -->
+
+
+  <!---------------------------------------------------------------------------------
+     Zawilinski
+  ----------------------------------------------------------------------------------->
+
+  <hr>
+  <h2 id="Zawilinski">Zawilinski</h2>
+
+  <p><code>Zawilinski</code> is a Java library designed specifically to
+    simplify the extraction of data from Wiktionary entries; more
+    generally, it simplifies the process of loading and filtering
+    MediaWiki XML dumps so that the resulting document object tree is
+    of manageable size (i.e., small enough so that generating and
+    accessing the object tree doesn't cause a typical desktop computer
+    to "thrash").</p>
+
+  <p>One main advantage of <code>Zawilinski</code> over other libraries
+    for analyzing MediaWiki content is that it uses tools and techniques
+    that would be familiar to many CS 1 and CS 2 students. For example,
+    many other tools require a database, which may be intimidating for
+    undergraduates who have limited systems administration experience.
+
+  <p>
+    <a aria-label="Link to Zawilinski details" target="_top"
+       href="Software/Zawilinski/doc/edu/gvsu/kurmasz/zawilinski/package-summary.html#package_description">Details</a><br>
+    <a aria-label="Link to Zawilinski documentation" target="_top" href="Software/Zawilinski/doc">Documentation</a><br>
+    <a aria-label="Link to Zawilinski download" href="Software/Zawilinski/zawilinski-1.1.0.jar">Download</a> (Version 1.1.0)
+  </p>
+
+
+  <!---------------------------------------------------------------------------------
+      JLSCircuitTester
+  ----------------------------------------------------------------------------------->
+  <hr>
+  <h2 id="JLSCircuitTester"><a aria-labelledby="JLSCircuitTester"
+    href="http://www.cis.gvsu.edu/~kurmasz/JLSCircuitTester">JLSCircuitTester</a></h2>
+
+  JLSCircuitTester is an extension to the <a target="_top" href="http://www.cs.mtu.edu/~pop/jlsp/bin/JLS.html">JLS</a>
+  digital logic simulator that allows users to automatically test circuits (including CPUs) constructed using JLS. It
+  has been replaced by <a href="DLUnit/index.html">DLUnit</a>, which has more features and is easier to use.
+
+  <dl>
+    <dt>Practical Uses</dt>
+    <dd>Greatly simplifies the grading of digital logic simulator-based assignments.</dd>
+
+    <dt>Pedagogical Uses</dt>
+    <dd>
+
+      <ol>
+
+        <li> Encourages students to more thoroughly test their circuits by simplifying the generation and running of
+          tests.
+
+        <li> Provides a framework with which students can be shown testing in a non-programming context. (In other
+          words, instructors can use JLSCircuitTester to show students that the same principles they learn to test their
+          code can be applied to other things.)
+
+      </ol>
+    </dd>
+
+    <dt>Publications</dt>
+    <dd>
+      <ol>
+
+        <li> D. Poplawski, Z. Kurmas. "JLS/JLSCircuitTester: A
+          Comprehensive Logic Design and Simulation Tool." <em>8th
+          Koli Calling International Conference On Computing
+          Education Research</em>, November 2008.
+
+
+        <li>Z. Kurmas. <a
+          href="http://www.cis.gvsu.edu/~kurmasz/papers/kurmas-iticse08.pdf">
+          Improving student performance using automated testing of
+          simulated digital logic circuits</a>. <em> Proceedings of
+          the 13th annual conference on Innovation and technology
+          in computer science education (ITiCSE 2008),</em> July
+          2008.
+        </li>
+
+        <li>Z. Kurmas. <a
+          href="http://www.cis.gvsu.edu/~kurmasz/papers/JLSPoster_Sigcse08.ppt">Automated
+          Testing of Simulated Digital Circuits and CPUs</a>.
+          Poster presented at <a
+          href="http://www.cs.duke.edu/sigcse08"
+          target="_top">SIGCSE 2008</a>.
+        </li>
+      </ol>
+    </dd>
+  </dl>
+
+  <hr>
+  <p>Updated Wednesday, 29 December 2021, 11:02 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>

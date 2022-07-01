@@ -1,0 +1,20 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10.4; en-US; rv:1.9.1.8) Gecko/20100202 Firefox/3.5.8
+author=
+csum=
+ctime=1273622533
+host=68.188.218.51
+name=KurmasFamilyPrivate.Disney
+rev=3
+targets=KurmasFamilyPrivate.Itinerary,KurmasFamilyPrivate.HollywoodStudios,KurmasFamilyPrivate.AnimalKingdom,KurmasFamilyPrivate.MagicKingdom,KurmasFamilyPrivate.Epcot,KurmasFamilyPrivate.AdditionalThingsToDo,KurmasFamilyPrivate.Shopping
+text=*[[Itinerary]]%0a*[[Hollywood Studios]]%0a*[[Animal Kingdom]]%0a*[[Magic Kingdom]]%0a*[[Epcot]]%0a*[[Additional things to do]]%0a* [[Shopping]]
+time=1274313997
+author:1274313997=
+diff:1274313997:1273695049:=1d0%0a%3c *[[Itinerary]]%0a
+host:1274313997=68.188.218.51
+author:1273695049=
+diff:1273695049:1273622533:=4,6c4%0a%3c *[[Epcot]]%0a%3c *[[Additional things to do]]%0a%3c * [[Shopping]]%0a\ No newline at end of file%0a---%0a> *[[Epcot]]%0a\ No newline at end of file%0a
+host:1273695049=68.188.218.51
+author:1273622533=
+diff:1273622533:1273622533:=1,4d0%0a%3c *[[Hollywood Studios]]%0a%3c *[[Animal Kingdom]]%0a%3c *[[Magic Kingdom]]%0a%3c *[[Epcot]]%0a\ No newline at end of file%0a
+host:1273622533=68.188.218.51

@@ -1,0 +1,777 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Multicycle Microcode</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    th, td {
+      text-align: left;
+      padding-right: 15px;
+    }
+
+    ul, ol {
+      margin-top: 0;
+    }
+
+    table.wires {
+      margin-left: 25px;
+    }
+
+    tr.centered_row {
+      text-align: center;
+    }
+
+    tr.left_row {
+      text-align: left;
+    }
+
+    .setInstructions {
+      float: right;
+      width: 500px;
+      margin-left: 25px;
+    }
+
+  </style>
+</head>
+
+<body>
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 451</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Multicycle Microcode</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2019</h1></td>
+  </tr>
+</table>
+
+
+<p>For this project, you will write the microcode for the multi-cycle CPU presented in Chapter 7 of the Harris and
+  Harris textbook. I am providing a <code>jls</code> file for the <a href="PHMultiCycleCPU.jls">entire CPU</a>. You need
+  only write the microcode.</p>
+
+<h2>Pre-requisites</h2>
+
+<p>You will need to understand how to turn assembly language statements
+  into machine language statements. You will
+  also need to understand how the control lines should be set for each
+  instruction. (This is covered in Chapter 7.) Finally, you will need
+  to understand the basics of microcode. We covered this in class. In
+  addition, this is (partially) covered by
+  <a href='https://booksite.elsevier.com/9780124077263/downloads/advance_contents_and_appendices/appendix_D.pdf'>Appendix D</a>
+  of the Patterson and Hennessy textbook.</p>
+
+<p>
+  <a href="https://cis.gvsu.edu/~kurmasz/Teaching/Courses/F18/CIS351/Labs/JLSIntro/">The "Intro to JLS" lab</a>provides
+  an introduction to using JLS that you may find useful. This lab also explains how to obtain, set up, and use
+  <code>JLS</code>, as well as use the <a href='http://www.cis.gvsu.edu/~kurmasz/Software/DLUnit'><code>DLUnit</code></a> testing software. It is
+  not due for credit.</p>
+
+<p><a href="https://www.youtube.com/watch?v=XzF2TBw7Fgw">This video</a> demonstrates several helpful JLS shortcuts.
+  Remember, JLS was designed specifically with these projects in mind. If you find a task highly repetitive/tedious,
+  you are probably overlooking a shortcut.</p>
+
+<p>(Note: This assignment does not require you to modify the <code>.jls</code> file; so, you need not spend a lot of
+  time learning <code>JLS</code>.)</p>
+
+<h2>Microcode design</h2>
+
+<p>The microcode for this CPU is a 2<sup>12</sup> element ROM containing 24-bit
+  words. The highest 20 bits are used to specify the values of the
+  control lines for one clock cycle. The
+  low-order 2 bits are used to specify which line of microcode to load
+  next. (Some bits are unused.) </p>
+
+<table class="wires">
+  <tr>
+    <th>Bits</th>
+    <th>Control wire / Sequencing</th>
+  </tr>
+
+  <tr>
+    <td>22 - 23</td>
+    <td> PCSource</td>
+  </tr>
+  <tr>
+    <td>21</td>
+    <td> PCWrite</td>
+  </tr>
+  <tr>
+    <td>20</td>
+    <td> PCWriteCond</td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td>16-19</td>
+    <td> ALUop</td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td>15</td>
+    <td> ALUSrcA</td>
+  </tr>
+  <tr>
+    <td>13 - 14</td>
+    <td> ALUSrcB</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td> IRWrite</td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td>11</td>
+    <td> IorD</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td> MemRead</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td> MemWrite</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td> MemToReg</td>
+  </tr>
+
+
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td>7
+    <td> RegDest</td>
+  </tr>
+  <tr>
+    <td>6
+    <td> RegWrite</td>
+  </tr>
+  <tr>
+    <td>5
+    <td> Halt</td>
+  </tr>
+  <tr>
+    <td>4
+    <td> Error</td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td>3</td>
+    <td> unused</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td> unused</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td> dispatch</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td> next</td>
+  </tr>
+
+</table>
+
+<p>The lowest two bits control the sequencing of micro instructions.</p>
+
+<table>
+  <tr>
+    <th>Dispatch</th>
+    <th>Next</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td> 0</td>
+    <td>load microinstruction 0</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td> 1</td>
+    <td>load next microinstruction</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td> 0</td>
+    <td>use dispatch table</td>
+  </tr>
+</table>
+
+
+<!-- If <code>next</code> is set to 1, the microcode loads the next
+microinstruction in ROM.  If <code>next</code> is set to 0, then the
+value of <code>dispatch</code> determines which microinstruction is
+loaded next.  If <code>dispatch</code> is 0, then microinstruction 0
+is loaded.  Thus, you set <code>dispatch</code> to 0 at the end of
+an instruction to begin executing the next instruction.  If
+<code>dispatch</code> is set to 1, then the address of the next
+microinstruction is determined by a </em>dispatch table</em>. -->
+
+<p>The dispatch table for this project is a ROM containing 128 12-bit
+  words. Each line in ROM corresponds to one op code or function code
+  and contains the microcode address for that instruction (Address
+  0-63 are used for opCodes; address 64 through 127 correspond to the
+  function code plus 64.) The microcontroler for this project has
+  only one dispatch table. The microcode for more complex CPUs
+  contain several dispatch tables.</p>
+
+
+<h3>Interface</h3>
+
+<p>Place your microcode in a file named <code>microcode</code>. Place your dispatch table in a file named
+  <code>dispatch1</code>. Do not change the names or timing of any of the CPU elements.</p>
+
+<p>The <code>microcode</code> and <code>dispatch1</code> files are text
+  files containing two columns. The first column is the
+  word number in hex. The second column in the hexadecimal
+  representation of the data. You may have blank lines and may use a
+  hash <code>#</code> for a comment. For example, here are two sample
+  lines from my microcode:<br>
+
+  <code>0 223401 # 001000100011010000000001b </code><br>
+  <code>1 026002 # 000000100110000000000010b </code><br>
+
+<p> These two lines of microcode are shared by all instructions. They should appear only as lines 0 and 1 of the
+  microcode file.)</p>
+
+<!-- In addition, the <code>.mips</code> files produced by the
+ <code>marsAssembler</code> use the same format. -->
+
+<h3>Instruction list</h3>
+
+<p>Implement microcode for each of the instructions listed below. Instructions marked with (*) are not required and may
+  require additional gates and/or control lines not shown in Figure 7.41.</p>
+
+<table>
+  <tr>
+    <th>Name
+    <th>Mnemonic &nbsp;&nbsp;
+    <th>Format&nbsp;&nbsp;
+    <th>OpCode&nbsp;&nbsp;<br>(in hex)&nbsp;&nbsp;
+    <th>Func Code&nbsp;&nbsp;<br>(in hex)&nbsp;&nbsp;
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Add
+    <td>add
+    <td>R
+    <td>0
+    <td>20
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Add Immediate
+    <td>addi
+    <td>I
+    <td>8
+    <td>
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>And
+    <td>and
+    <td>R
+    <td>0
+    <td>24
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>And Immediate
+    <td>andi
+    <td>I
+    <td>c
+    <td>
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Branch on Equal
+    <td>beq
+    <td>I
+    <td>4
+    <td>
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>*Branch on Not Equal
+    <td>bne
+    <td>I
+    <td>5
+    <td>
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Halt
+    <td>halt
+    <td>&nbsp;
+    <td>20
+    <td>
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Jump
+    <td>j
+    <td>J
+    <td>2
+    <td>
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>*Jump and link
+    <td>jal
+    <td>J
+    <td>3
+    <td>
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>*Jump Register
+    <td>jr
+    <td>R
+    <td>0
+    <td>08
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Load Word
+    <td>lw
+    <td>I
+    <td>23
+    <td>
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Load Upper Immediate
+    <td>lui
+    <td>I
+    <td>F
+    <td>
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Nor
+    <td>nor
+    <td>R
+    <td>0
+    <td>27
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Or
+    <td>or
+    <td>R
+    <td>0
+    <td>25
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Or Immediate
+    <td>ori
+    <td>I
+    <td>d
+    <td>
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Set Less Than
+    <td>slt
+    <td>R
+    <td>0
+    <td>2a
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Set Less Than Immediate
+    <td>slti
+    <td>I
+    <td>a
+    <td>
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Store Word
+    <td>sw
+    <td>I
+    <td>2b
+    <td>
+  </tr>
+  <tr class='centered_row'>
+    <td class='left_row'>Subtract
+    <td>sub
+    <td>R
+    <td>0
+    <td>22
+  </tr>
+</table>
+
+
+<h2>Hints</h2>
+
+<ul>
+
+  <li> Coordinating the dispatch table with the microcode by hand can
+    be tedious and error prone. You may want to write a script to help
+    you with this part.
+  </li>
+
+  <li><a href="phFigure5.30.jpeg">this table</a> may help you break instructions into microinstructions.</li>
+  <!--  <li>Consider writing a script to fill the unused slots of
+      your dispatch table with microcode that sets <code>error</code> to
+      1. It will simplify your debugging.
+    </li> -->
+</ul>
+
+<h2> Testing </h2>
+
+To test your CPU, have it execute assembly code, then check that the registers and memory contain the expected values.
+<b>You</b> are responsible for writing the assembly code to thoroughly test your CPU. I am providing only the
+demonstration test files below. <span class="inline-important">They are nowhere near a complete test of your CPU:</span>
+
+<ul>
+  <li><a
+    href="basicOpsDemoTest.a"><code>basicOpsDemoTest.a</code></a>
+  </li>
+
+  <li><a
+    href="basicLoadStoreTest.a"><code>basicLoadStoreTest.a</code></a>
+  </li>
+
+  <li><a href="Multiply.a"><code>Multiply.a</code></a></li>
+</ul>
+
+<h3>Running tests automatically</h3>
+
+<p class="listHeader"> This semester, you will be using a beta version of <code>DLUnit</code> that can test CPUs. This
+  program will</p>
+
+<ol>
+  <li> assemble the assembly file into MIPS machine code,</li>
+  <li> simulate the running of your CPU with the machine code,</li>
+  <li> run the machine code using <a target="_top"
+                                     href="http://courses.missouristate.edu/KenVollmar/MARS/index.htm">MARS</a>
+    (a SPIM-like CPU simulator), and
+  </li>
+  <li> compare the final state of your CPU to that calculated by MARS.</li>
+</ol>
+
+<p>The testing software is called <code>DLUnit_cpu.jar</code> and can be downloaded
+  <a href="DLUnit_cpu.jar">here</a>.</p>
+
+<p class="listHeader">To run the test program
+<ol>
+  <li>Download <a href='DLUnit_cpu.jar'><code>DLUnit_cpu.jar</code></a> if you haven't yet.</li>
+  <li>Download <a href='MultiCycleCPUTest.class'><code>MultiCycleCPUTest.class</code></a> if you haven't yet.</li>
+  <li>Place your microcode is in a file named <code>microcode</code>.
+  <li>Place your dispatch table is in a file named <code>dispatch1</code>.
+  <li>From the directory containing your microcode and dispathch files, run
+    <span class="instruction">java -jar CPUUnit.jar PHMultiCycleCPU.jls MultiCycleCPUTest.class
+         --param your_test_file.a</span></li>
+</ol>
+
+<div class="important">
+  <ul>
+    <li>The CPU tester is a <b><em>beta</em></b> version of a new program.
+      <ol>
+        <li>If you have any problems, let me know right away.</li>
+        <li>Watch for updates.</li>
+        <li>Don't wait until the last minute. Expect to find a bug or two and plan accordingly.</li>
+      </ol>
+    </li>
+    <li>Make sure your microcode and dispatch files are in your current working directory. If they are not, the
+      test software won't find them and will silently fill in all <code>0</code>s.
+    </li>
+  </ul>
+</div>
+
+<h3>Running tests by hand</h3>
+
+<p class="listHeader">To debug your microcode, you may want to run test programs by hand. Start by configuring the
+  memory unit to load instructions from a file named <code>instructions</code>:</p>
+
+<ol>
+  <li>Open <code>PHMultiCycleCPU.jls</code> in JLS.</li>
+  <li>Point at the <code>Memory</code> unit and press <code>Ctrl+M</code>.</li>
+  <li>Select <code>Built-In</code>.</li>
+  <li>Enter <code>instructions</code>.</li>
+  <li>Save the file.</li>
+</ol>
+
+<img class='setInstructions' src="setInstructions.png">
+
+<p>Now, copy (not move) the machine code program you want to test to <code>instructions</code>. Once you have copied
+  the file, JLS will automatically load instruction memory with
+  the desired program. (The file <code>instructions</code> must be in the current working directory. This is the
+  directory from which you launched JLS. Be careful when launching JLS from an icon because it may not be obvious which
+  directory is the current working directory.)</p>
+
+<p>Similarly, make sure your microcode is in a file named <code>microcode</code> and that the file is
+  located in the current working directory (i.e., the directory from which you launch JLS).</p>
+
+<p>The <code>JLSCircuitTester</code> suite (the old tester) contains <code>marsAssembler</code>, a program that will
+  take assembly files as input and generate MIPS code formatted for use as an<code>instructions</code> file: The file
+  contains two columns. The first is the <em>word</em> address of the instruction in hex, and the second is the MIPS
+  binary instruction in hex. Currently <code>marsAssembler</code> writes only to the standard output. Use file
+  redirection to save the output to a file. This semester, the easiest way to use <code>marsAssembler</code> is to
+  run it in EOS. Log into any EOS machine and run </p>
+
+<span class="inline-instruction">
+  /home/kurmasz/public/CS451/bin/marsAssembler assembly_file.a > instructions
+</span>
+
+<p>To examine the results of your program, place a watch on any registers of interest and the RAM unit for Main Memory.
+  When simulating the CPU, I like to set the "Step" value equal to the clock period.</p>
+
+
+<h2> Submission and grading</h2>
+
+<p>This assignment will be worth 80 points, divided as follows:</p>
+
+<table>
+
+  <tr>
+    <td>I-type
+    <td> 10 points
+  </tr>
+  <tr>
+    <td>R-type
+    <td> 10 points
+  </tr>
+  <tr>
+    <td>lw
+    <td> 10 points
+  </tr>
+  <tr>
+    <td>sw
+    <td> 10 points
+  </tr>
+  <tr>
+    <td>branch
+    <td> 10 points
+  </tr>
+  <tr>
+    <td>jump
+    <td> 10 points
+  </tr>
+  <tr>
+    <td>timeliness
+    <td> 20 points
+  </tr>
+  <tr>
+    <td>
+    </td>
+    <td>(+2 if early, -2 for each day late.)</td>
+  </tr>
+</table>
+
+<p><span class="inline-important">Your CPU won't receive a grade until it passes all of my tests.</span> If your
+  submission does not pass all my tests, I will ask you to fix and re-submit your CPU. The delay may reduce your
+  timliness score. In addition, <span class="inline-important">there is a 3 point penalty per buggy submission.</span>
+</p>
+
+<h3>Deliverables</h3>
+
+<p class="listHeader">When you are confident your CPU is working properly:</p>
+
+<ol>
+  <li> Add comments to your <code>microcode</code> and
+    <code>dispatch1</code> files that include
+
+    <ul>
+      <li> your name,</li>
+      <li> the file name,</li>
+      <li> the assignment name, and</li>
+      <li> the assignment due date.</li>
+    </ul>
+
+  <li>Submit <code>microcode</code>, <code>dispatch1</code>, bug
+    reports, and assembly code, and any other relevant files using
+    Assignment Manager.
+  </li>
+
+</ol>
+
+<p>(All deliverables for this project may be submitted electronically.)</p>
+
+<hr>
+
+<p>Updated Tuesday, 3 September 2019, 10:42 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>
+

@@ -1,0 +1,17 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1180109884
+host=75.134.113.30
+name=WorkPrivate.TopicsForNewFacultyFAQ
+rev=2
+targets=
+text=* Printer setup on Mac%0a* Copy Card%0a* Outgoing Mail%0a* Wireless setup%0a** Get instructions in e-mail%0a* Facilities requests%0a** Move whiteboard%0a* Football Tickets (Season Tickets)%0a* Location of office supplies%0a* Location of "Last Minute Labs"%0a** non in Eberhard Center%0a* Mac Guide%0a** Network%0a** Lab etc.
+time=1180109906
+author:1180109906=
+diff:1180109906:1180109884:=1,14c1,14%0a%3c * Printer setup on Mac%0a%3c * Copy Card%0a%3c * Outgoing Mail%0a%3c * Wireless setup%0a%3c ** Get instructions in e-mail%0a%3c * Facilities requests%0a%3c ** Move whiteboard%0a%3c * Football Tickets (Season Tickets)%0a%3c * Location of office supplies%0a%3c * Location of "Last Minute Labs"%0a%3c ** non in Eberhard Center%0a%3c * Mac Guide%0a%3c ** Network%0a%3c ** Lab etc.%0a\ No newline at end of file%0a---%0a> - Printer setup on Mac%0a> - Copy Card%0a> - Outgoing Mail%0a> - Wireless setup%0a> -- Get instructions in e-mail%0a> - Facilities requests%0a> -- Move whiteboard%0a> - Football Tickets (Season Tickets)%0a> - Location of office supplies%0a> - Location of "Last Minute Labs"%0a> -- non in Eberhard Center%0a> - Mac Guide%0a> -- Network%0a> -- Lab etc.%0a\ No newline at end of file%0a
+host:1180109906=75.134.113.30
+author:1180109884=
+diff:1180109884:1180109884:=1,14d0%0a%3c - Printer setup on Mac%0a%3c - Copy Card%0a%3c - Outgoing Mail%0a%3c - Wireless setup%0a%3c -- Get instructions in e-mail%0a%3c - Facilities requests%0a%3c -- Move whiteboard%0a%3c - Football Tickets (Season Tickets)%0a%3c - Location of office supplies%0a%3c - Location of "Last Minute Labs"%0a%3c -- non in Eberhard Center%0a%3c - Mac Guide%0a%3c -- Network%0a%3c -- Lab etc.%0a\ No newline at end of file%0a
+host:1180109884=75.134.113.30

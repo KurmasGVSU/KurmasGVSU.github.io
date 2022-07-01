@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 163 References</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .rubric  {
+       margin-left: 25px;
+    }
+
+    .rubric th {
+       text-align: left;       
+    }
+
+    .rubric td {
+       padding-right: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 163</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">References</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Spring 2021</h1></td>
+  </tr>
+</table>
+
+
+<h2 class="listHeader">Objectives:</h2>
+
+<ul>
+   <li>Understand how references work in Java</li>
+   <li>Understand the differences between variables for primitive data and references.</li>
+   <li>Be able to trace Java code that uses primitive variables and references.</li>
+   <li>Be able to explain why Java code behaves the way it does.</li>
+</ul>
+
+<h2>Problems</h2>
+
+<p>You may work in teams of two.</p>
+
+<p>If you haven't yet, clone the CIS 163 sample code repository:  <a href='https://github.com/kurmasz-SampleCode/CIS163-SampleCode'><code>https://github.com/kurmasz-SampleCode/CIS163-SampleCode</code></a> 
+(the SSH URL is <code>git@github.com:kurmasz-SampleCode/CIS163-SampleCode.git</code>).
+
+<p>Load the <code>ReferenceExamples</code> directory into your favorite IDE and make sure you can run the <code>main</code> method in <code>ReferenceReadingExamples.java</code>.
+
+<p>Answer the following questions.  It is important to trace through the code <em>before</em> you run it.  
+   (I can't stop you from just running the code and writing down the answer; but, if you do, it will come back to haunt you 
+   on the exams.)</p>
+
+<ol>
+   <li>Predict the output of running case 1 in <code>ReferenceReadingExamples.</code>.
+   <li>Set <code>exampleToRun = 1</code> in <code>main</code> and run the code.  Were you correct? If not, 
+   (A) talk to me and make sure you understand  why the code behaves the way it does and (B) explain the misconceptions
+   that led to your incorrect answer.</li>
+   <li>Predict the output of running case 2.</li>
+   <li>Set <code>exampleToRun = 2</code>, run the code, and explain your misconceptions if your initial answer was incorrect.</li>
+   <li>Explain how the values of <code>x</code> and <code>y</code> get flipped between the lines <code>init</code> and <code>in</code>.</li>
+   <li>Why are the changes made by <code>method1</code> not visible from <code>main</code>?
+    <li>Predict the output of running case 3.</li>
+   <li>Set <code>exampleToRun = 3</code>, run the code, and explain your misconceptions if your initial answer was incorrect.</li>
+   <li>Predict the output of running case 4.</li>
+   <li>Set <code>exampleToRun = 4</code>, run the code, and explain your misconceptions if your initial answer was incorrect.</li>   
+   <li>Why are the changes made by <code>method4</code> in case 4  "lost" and not visible in <code>main</code>?  You answer should contrast 
+    the behavior of <code>method3</code> in case 3 with the behavior of <code>method4</code> in case 4.</li>
+    <li>Predict the output of running case 5.</li>
+   <li>Set <code>exampleToRun = 5</code>, run the code, and explain your misconceptions if your initial answer was incorrect.</li>   
+   <li>Why are the changes made by <code>method5</code> in case 5  "lost" and not visible in <code>main</code>?  
+    <li>Predict the output of running case 6.</li>
+   <li>Set <code>exampleToRun = 6</code>, run the code, and explain your misconceptions if your initial answer was incorrect.</li>   
+   <li>This time, only the change to <code>ptx</code>'s' x value is visible in <code>main</code>.  The change to the <code>y</code> value is "lost". Why?</li>
+ <li>Predict the output of running case 7.</li>
+   <li>Set <code>exampleToRun = 7</code>, run the code, and explain your misconceptions if your initial answer was incorrect.</li>  
+   <li>Inside <code>method7</code>, why does modifying <code>x</code> also modify <code>y</code>?
+   <li>After running <code>method7</code>, why is only the change to <code>pty</code> visible in the main method? (Why is the change to <code>ptx</code> "lost"?)
+  <li>Optional: Predict the output of cases 8 - 11.</li>
+</ol>
+
+<h2>Submission</h2>
+
+Simply email me a document with your answers.  If you worked with a partner, be sure both names are on your submission.
+
+
+<hr>
+ <p>Updated Monday, 10 May 2021, 7:32 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>
+
+
+  

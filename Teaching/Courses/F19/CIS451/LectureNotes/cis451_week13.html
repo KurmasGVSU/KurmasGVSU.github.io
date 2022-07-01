@@ -1,0 +1,260 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="cis-451-week-13">CIS 451 Week 13</h1>
+
+<h2 id="io">I/O</h2>
+
+<ul>
+  <li>Programmed I/O
+    <ul>
+      <li>Instructions that specifically route data to an I/O device.</li>
+      <li>Hard-coded / not flexible</li>
+      <li>Harder to program</li>
+    </ul>
+  </li>
+  <li>Polling vs. interrupts
+    <ul>
+      <li>Polling still exists in ultra-chap low-performing embedded devices</li>
+    </ul>
+  </li>
+  <li>DMA
+    <ul>
+      <li class="q">How does this affect caching?</li>
+    </ul>
+  </li>
+  <li>Memory Mapped I/O (H&amp;H Chapter 8)
+    <ul>
+      <li>Some memory reads and writes are routed to I/O</li>
+      <li>Need to be careful with caching (make sure written through and properly updated)</li>
+    </ul>
+  </li>
+  <li>Hierarchy of buses
+    <ul>
+      <li>Most critical things (memory graphics handled first)</li>
+      <li>Often asynchronous (CPU moves onto other things after request sent off-chip.)</li>
+      <li>Pendulum:  Move off chip to distribute, then move back on-chip for performance</li>
+    </ul>
+  </li>
+  <li>Interrupt priority</li>
+  <li>RAID (switch to P&amp;H Slides #29)</li>
+  <li class="to-me">Note why RAM accesses are expensive.</li>
+</ul>
+
+<h3 id="domain-specific-architectures">Domain Specific Architectures</h3>
+
+<ul>
+  <li>Tapped out ILP and multi-core</li>
+  <li>More work using more transistors is difficult to scale because more transistors means more energy (heat)</li>
+  <li>Not much room to optimize existing architectures</li>
+  <li>Arithmetic operations themselves use little energy.
+    <ul>
+      <li>Energy cost comes from overhead (fetch, decode, memory access, etc.)</li>
+      <li>Thus, big improvements in performance mean reducing overhead.</li>
+      <li>Focusing only on the arithmetic means switching from General purpose CPUs to Domain Specific chips
+        <ul>
+          <li>(Chips designed to solve a specific problem.)</li>
+          <li>They tend to map the data flow through the HW directly onto the problem, thereby reducing overhead</li>
+          <li>For example: sending data directly from where it’s produced to where it’s consumed without the overhead of
+ storing in registers or cache.</li>
+          <li>Another example:  Video/image processing doesn’t have a lot of data reuse, so multi-level caches aren’t helpful
+ (and just consume energy)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>“Desperation is the reason architects are now working on DSAs”: Hennessy and Patterson</li>
+  <li>
+    <p>DSAs targt frequently used subproblems.</p>
+  </li>
+  <li>One idea:  FPGAs
+    <ul>
+      <li class="q">Pros / Cons?
+        <ul>
+          <li>Pro: Economy of scale</li>
+          <li>Pro: Reconfigurable</li>
+          <li>Con: Comparatively slow.  Slow enough that the benefit is rather modest.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="guidelines-for-dsas">Guidelines for DSAs</h4>
+
+<p><span>Ask students what each of these means</span>{. :q}</p>
+
+<ol>
+  <li>Use dedicated memories to minimize the distance over which data is moved</li>
+  <li>Invest resources saved from dropping advanced micorarchitectural optimizations into more arithmetic or memory
+    <ul>
+      <li>Reduce branch predictors, schedulers, register renaming and such</li>
+      <li>Possible because the workflow is more specific, we don’t need to be prepared for “anything.”</li>
+    </ul>
+  </li>
+  <li>Use the easiest form of parallelism that matches the domain
+    <ul>
+      <li>Most key targets for DSA have a lot of parallel, but in a specific pattern</li>
+    </ul>
+  </li>
+  <li>Reduce data size and type to the simplest needed for the domain
+    <ul>
+      <li>Don’t use 64-bit ints, if 8 or 16 will do.  This lets you do more in parallel.</li>
+      <li>Also saves on memory bandwidth.</li>
+    </ul>
+  </li>
+  <li>Use a domain specific language</li>
+</ol>
+
+<p>Notice the “Pendulum:”<br />
+  * In the 60s and 70s memory was expensive and we worked hard to save each bit.
+  * Then memory became cheap, and we didn’t care
+  * Now we’re paying attention, but for a slightly different reason:  bandwidth and energy as opposed to monetary cost.</p>
+
+<ul>
+  <li>Google’s TPU for Machine Learning
+    <ul>
+      <li>Designed for <em>inference</em> phase of machine learning
+        <ul>
+          <li class="to-me">quick overview of learning and inference phases</li>
+        </ul>
+      </li>
+      <li>Key piece of work is evaluating <code>[W][x]</code>
+        <ul>
+          <li>Easy to do the multiplications in parallel; but</li>
+          <li>Need a way to do all the additions.</li>
+          <li>Systolic array pushes data through “diagonally”</li>
+          <li>Computing a row takes <code>n</code> steps, doing one multiply and one add at each step; but,</li>
+          <li>can be pipelined.</li>
+        </ul>
+      </li>
+      <li>Notice that the systolic array avoids the need to move intermediate results into and out of registers 
+(or worse, back into main memory)</li>
+      <li>Instructions are CISC style.
+        <ul>
+          <li>A single vector multiply takes n cycles;</li>
+          <li>But, that’s OK because
+            <ol>
+              <li>It facilitates pipelining</li>
+              <li>Avoids repeated instruction fetches (a kind of overhead)</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+      <li class="to-do">Point out
+        <ul>
+          <li>Accumulators (the output from the vector multiply)</li>
+          <li>Activation (hardware to apply the nonlinear function)</li>
+          <li>After activation, data sent back to “Unified Buffer” to be used for next step in the process (again avoiding
+ the long trip back to main memory).</li>
+        </ul>
+      </li>
+      <li class="to-do">Show the die.  Notice that the datapath is the majority of the chip (unlike the General CPU die I
+  showed a few weeks ago.)</li>
+    </ul>
+  </li>
+  <li>How TPU applies general principles
+    <ol>
+      <li>Has dedicated memory</li>
+      <li>Data path is 50% of CPU instead of branch prediction, caches, and such.</li>
+      <li>Easiest form of parallelism: Focuses on the basic operation of the neural net.</li>
+      <li>Uses 8 bit integers instead of floating point:  Good enough, but much simpler.</li>
+      <li>Uses Tensor Flow.</li>
+    </ol>
+  </li>
+  <li>Microsoft Catapult
+    <ul>
+      <li>Use FPGAs to accelerate certain server functions
+        <ul>
+          <li>Convolutions in CNNs</li>
+          <li>Feature extraction on search for Bing</li>
+        </ul>
+      </li>
+      <li><span>Main downside?</span> FPGA programming is still hard (done at a hardware level)</li>
+    </ul>
+  </li>
+  <li>How catapult applies principles
+    <ol>
+      <li>FPGAs have on-chip memory</li>
+      <li>The ALUs in an FPGA can be dedicated to the specific application</li>
+      <li>Can be configured to the match the best form of parallelism</li>
+      <li>Can choose the optimal data size</li>
+      <li>!! Doesn’t fit !! RTL/Verilog goes in the other direction.</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="cross-cutting-issues">Cross-Cutting issues</h3>
+
+<ul>
+  <li>Heterogeneity and System on a Chip
+    <ul>
+      <li>Easiest way to get DSA on a system is over I/O bus; but, bus is relatively slow.</li>
+      <li>How to get custom hardware embedded on a SOC?</li>
+      <li>IP (Intellectual Property) block
+        <ul>
+          <li>Verilog or VHDL code that can be bought/licensed and dropped into a new chip.</li>
+          <li>Apple A4 used 8 such blocks in 2010</li>
+          <li>Apple A8 used 28 such blocks in 2014</li>
+          <li>IP blocks 2/3 of the A8 chip.</li>
+        </ul>
+      </li>
+      <li>“Designing an SOC is like city planning where groups lobby for limited resources”
+        <ul>
+          <li>“Compromise is difficult”</li>
+          <li>Limited space power.  Must decide how much to allocate to CPU, GPU, cache, video encoder, etc.</li>
+          <li>Variety of IP designs allow SOC designers to pick components of the right size for the target audience.</li>
+          <li>Small version of IP block important for entering a market: Existing designs are not likely to make radical
+  changes to try a new concept.</li>
+        </ul>
+      </li>
+      <li>Open Instruction Set
+        <ul>
+          <li>Historically, instruction sets (MIPS, x86, PowerPC, Sparc, etc.) belong to one company</li>
+          <li>This makes it difficult for IP to provide instructions sets that are easily incorporated.
+            <ul>
+              <li>Chip designers don’t want to deal with lots of licensing.</li>
+            </ul>
+          </li>
+          <li>RISC-V now provides an open-source instruction set with unused opcodes.
+            <ul>
+              <li>Chips using RISC-V can incorporate IP cores and their instructions into their custom RISC-V instruction set.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

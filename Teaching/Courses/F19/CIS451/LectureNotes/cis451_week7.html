@@ -1,0 +1,159 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="cis-451-week-7">CIS 451 Week 7</h1>
+
+<h2 id="superscalar--super-pipeline">SuperScalar / Super pipeline</h2>
+
+<ul>
+  <li>Instructions form a partial order
+    <ul>
+      <li>Think about building a house.</li>
+      <li><code>a = 0; b = 3; a = a +c; b = b+ c; d = a+b</code></li>
+    </ul>
+  </li>
+  <li>Having multiple pipelines allow us to take advantage of this <em>instruction level parallelism</em></li>
+  <li>Modern CPUs have multiple <em>functional units</em> – as many as six or eight!</li>
+  <li>Ideally an “x-way” pipeline will get work done x times as fast.</li>
+  <li class="question">What goes wrong?</li>
+  <li>Hazards have a larger effect on wider pipelines.</li>
+  <li>In a regular pipeline, a load followed by an access requires 1 stall.
+    <ul>
+      <li class="question">How many stalls required in a 2-way pipeline? Why?</li>
+      <li class="question">How about an n-way processor?</li>
+    </ul>
+  </li>
+  <li class="question">
+    <p>what about control hazards?</p>
+  </li>
+  <li class="question">How can we schedule instructions to functional units?
+    <ul>
+      <li>Statically (VLIW)</li>
+      <li>Dynamically</li>
+    </ul>
+  </li>
+  <li class="question">What are the advantages and disadvantages of each?
+    <ul>
+      <li>Static
+        <ul>
+          <li>Can be simpler and, therefore, faster; but,</li>
+          <li>Can’t react to stalls and other dynamic events.</li>
+        </ul>
+      </li>
+      <li>Dynamic
+        <ul>
+          <li>More complex</li>
+          <li>Can react to dynamic events (e.g., cache misses)</li>
+          <li>Presents common interface.  (Small implementation changes don’t require recompilation)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="question">
+    <p>Which is more common today?  Why?</p>
+  </li>
+  <li>Itanium was HP/Intel joint venture attempt at static scheduling.
+    <ul>
+      <li>Performance wasn’t good enough to justify the cost.</li>
+    </ul>
+  </li>
+  <li>Dynamic scheduling introduces new data hazards</li>
+  <li>Standard hazard is RAW – Read after Write
+    <ul>
+      <li>This is what forwarding and stalls address in a standard pipeline.</li>
+    </ul>
+  </li>
+  <li>
+    <p>If a CPU has out-of-order issue (looks at a window of instructions and chooses the 
+next available to run), must also worry about WAR hazard:  Write after read.</p>
+
+    <pre><code>lw $t0, 40($s0)
+or $t3, $s5, $s6
+sw $s7, 80($t3)
+add $t1, $t0, $s1  
+sub $t0, $s2, $s3  # be careful when moving this instruction up  WAR hazard 
+and $t2, $s4, $t0
+</code></pre>
+  </li>
+  <li>WAR hazards are called “fake” hazards <span class="question">Why</span>
+    <ul>
+      <li>They can be eliminated by register renaming.</li>
+      <li>Also called “anti-dependence” or “name dependence”</li>
+    </ul>
+  </li>
+  <li>Most CPUs require in-order completion.  (Instructions held and committed in the original order).
+    <ul>
+      <li class="question">What is the challenge with out-of-order completion?
+        <ul>
+          <li>Unwinding exceptions.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Out-of-order completion raises the possibility of WAW data hazards.</p>
+  </li>
+  <li>
+    <p>Compiler optimizations can help reduce stalls / unused functional units.</p>
+
+    <pre><code>for (int i = 0; i &lt; MAX; i++) { 
+   c[i] = a[i] + b[i]
+}
+  
+  
+  
+; The base address of array a is in r1 
+; The base address of array b is in r2
+; The base address of array c is in r3
+  
+      addi r4, r0, 4            ; Set r4 (the loop counter) to MAX
+LOOP: lw r5, 0(r1)              ; Load from a into r5
+      lw r6, 0(r2)              ; Load from b into r6
+      add r7, r5, r6            ; r7 = r6 + r5
+      sw  0(r3), r7             ; store result back in array c
+      addi r1, r1, 4            ; increment pointers for arrays a, b, and c
+      addi r2, r2, 4
+      addi r3, r3, 4
+      subi r4, r4, 1            ; decrement loop counter
+      bnez r4, LOOP             ; branch
+      nop                       ; branch delay slot
+      sw 0(r3), r0              ; set c[0] to 0. (not important, just something to do after the loop.)
+      nop;
+      nop; 
+      nop;
+      nop;      
+      trap #0;
+</code></pre>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

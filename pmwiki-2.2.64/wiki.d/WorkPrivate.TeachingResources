@@ -1,0 +1,20 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419.2.1 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1187733560
+host=148.61.31.46
+name=WorkPrivate.TeachingResources
+rev=3
+targets=
+text=*[[http://citidel.villanova.edu/ | CITIDEL]] CS resources%0a*[[http://doc.cs.vt.edu/ | Syllabus repository]]%0a* Stuff from [[serc.carleton.edu]]%0a**[[http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/CS451/CS451_F07/WebPage/index.php | Carleton course design tutorial ]]%0a**[[http://serc.carleton.edu/NAGTWorkshops/coursedesign/tutorial/for_developers.html]]%0a
+time=1187807478
+author:1187807478=
+diff:1187807478:1187733766:=2,5c2%0a%3c *[[http://doc.cs.vt.edu/ | Syllabus repository]]%0a%3c * Stuff from [[serc.carleton.edu]]%0a%3c **[[http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/CS451/CS451_F07/WebPage/index.php | Carleton course design tutorial ]]%0a%3c **[[http://serc.carleton.edu/NAGTWorkshops/coursedesign/tutorial/for_developers.html]]%0a---%0a> *[[http://doc.cs.vt.edu/ | Syllabus repository]]%0a\ No newline at end of file%0a
+host:1187807478=148.61.31.46
+author:1187733766=
+diff:1187733766:1187733560:=2c2%0a%3c *[[http://doc.cs.vt.edu/ | Syllabus repository]]%0a\ No newline at end of file%0a---%0a> *%0a\ No newline at end of file%0a
+host:1187733766=148.61.39.4
+author:1187733560=
+diff:1187733560:1187733560:=1,2d0%0a%3c *[[http://citidel.villanova.edu/ | CITIDEL]] CS resources%0a%3c *%0a\ No newline at end of file%0a
+host:1187733560=148.61.39.4

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 163 Thinking up Test Cases</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .rubric  {
+       margin-left: 25px;
+    }
+
+    .rubric th {
+       text-align: left;       
+    }
+
+    .rubric td {
+       padding-right: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 163</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Thinking up Test Cases</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Spring 2021</h1></td>
+  </tr>
+</table>
+
+
+  GitHub Classroom URL: <a href='https://classroom.github.com/g/IzKTA0B0'><code>https://classroom.github.com/g/IzKTA0B0</code></a>
+
+<h2 class="listHeader">Objectives:</h2>
+
+<ul>
+   <li>Practice writing JUnit Test cases</li>
+   <li>Practice brainstorming "black box" test cases</li>
+</ul>
+
+<h2>Problem Statement</h2>
+
+<p>You will be given code with bugs in it. Find failing test cases for each broken class and method. Specifically, you will be finding bugs in two methods:</p>
+<dl>
+<dt><code>int compareTo(Date other)</code></dt>
+<dd>Compares two Date objects.  Returns a negative integer if <code>this</code> Date comes before the <code>Other</code> Date; a positive integer if <code>this</code> comes after <code>other</code>; and, returns 0 if they are equal.
+  For example given
+  <ul>
+  <li><code>d1 = new Date(3, 4, 2005)</code>
+  <li><code>d2 = new Date(4, 5, 2005)</code>
+  </ul>
+  then, <code>d1.compareTo(d2)</code> should return a negative integer, <code>d2.compareTo(d1)</code> should return a positive integer, and <code>d1.compareTo(d1)</code> should return 0.
+
+
+<dt><code>int daysSince(Date other)</code></dt>
+<dd>Returns the number of days that have elapsed between <code>other</code> and <code>this</code>.  For example, using the Dates above, 
+<code>d2.daysSince(d1)</code> should return <code>32</code>, <code>d1.daysSince(d2)</code> should return -32; and, <code>d2.daysSince(d2)</code> should return 0.
+</dl>
+
+
+<h3 class='listHeader'>Workflow</h3>
+
+<ol>
+   <li class='listHeader'> Begin by following <a href='https://classroom.github.com/g/IzKTA0B0'>this link</a> and cloning the resulting git repository.  The key files include:
+   <ul>
+     <li><code>lib/brokenDates.jar</code>: This class contains several classes named <code>BrokenDate1a</code>, <code>BrokenDate1b</code>, etc.  Each class has a bug.
+         <span class='inline-important'>Don't open or modify this file.</span> 
+      </li>
+     <li><code>test/BrokenDateTest.java</code>: This will be your test class.  I have provided a few sample tests to help you get started.  The sample shows the name of each class and tells which method in that class is broken.</li>      
+     <li><code>lib/junit-platform-console-standalone-1.6.2.jar</code>: This contains the JUnit library.  Your IDE probably provides it; but, I provided it in case you need it.</li>
+   </ul>
+   <li> Open and edit <code>test/BrokenDateTest.java</code> For each broken class, add test cases until you find a failing test case. The failing test case indicates you have found the bug.</li>
+   <li>Note: The <code>src</code> folder will be empty. The emphasis of this lab is <em>black box</em> tests, so you won't get to see the source code.  </li>
+   <li>When you have found all the bugs:
+     <ul>
+       <li>Commit / push your code so I can grade it.</li>
+       <li>Include your test cases in your tests for Project 1.</li>
+       </ul>
+</ol>
+
+<h3 class='listHeader' id='rules'>Rules</h3>
+<ul>
+   <li>You may work alone, or in teams of two.</li>   
+   <li> <span class='inline-important'>Attempting to modify, decompile, or otherwise gain access to the contents of <code>brokenDates.jar</code> (or any other file not intended for student use) is a violation of the Academic Honesty Policy.</span></li>
+</ul>
+
+
+<h3 class='listHeader' id='hint'>Hints</h3>
+
+<ol>  
+   <li>Make sure the tests you write are <em>supposed</em> to pass.  For example, the test below is not what I'm looking for because is <em>should</em> fail:
+    March 4th comes before March 5th, so the <code>compareTo</code> method is expected to return a negative integer.  Your goal for this 
+    lab is to find pairs of dates that <em>don't</em> produce the expected output.
+<pre>
+  // DON'T do this.  This is an example of what I'm NOT looking for!
+  @Test
+  public void thisIsABadExample() {
+    BrokenDate1a d1 = new BrokenDate1a(3, 4, 2005);
+    BrokenDate1a d2 = new BrokenDate1a(3, 5, 2005);
+
+    // This is a bad test because d1.compareTo(d2), if implemented correctly, should return a negative number.
+    // You only want to find failing test cases that should not be failing.
+    assertTrue(d1.compareTo(d2) &gt; 0);
+  }
+  </pre>
+  </li>
+
+  <li>Here is one way of taking an organized approach to finding bugs in <code>compareTo</code>.  Notice each date has three components:  month, day, and year.
+  The rules of date comparison require you to look at pairs of years, then pairs of months, then pairs of days. Within each pair, there are three choices:  
+  greater than, less than, and equal to.  Three pairs with three choices gives you a total of <code>3^3 = 27</code> test cases.  If you work through those 
+  methodically, you will find a failing test case for the first three broken date classes.</li>
+
+  <li>The fourth case is tricky:  This broken <code>compareTo</code> method attempts to count the number of days since 1 January 1753; 
+  but, counts wrong because it assumes all years have 365 days.  Think of a case where failing to account for leap years will give a wrong answer.
+  </li>
+
+</ol>
+
+<h3 id='submit'>Submitting your Lab</h3>
+
+<p>This assignment is due at the end of the lab period.</p>
+<p class='listHeader'>To submit your project:</p>
+  <ol> 
+            <li> Commit/push with "[Grade me]" in the commit message.</li>
+   </ol>
+
+
+<h2>Quick Git Reference</h2>
+
+<dl>
+<dt>Cloning</dt>
+<dd>To clone a repo (i.e., download it to begin using it):
+<ol>
+<li>Go to your repos main GitHub web page.</li>
+<li>Click the green button labeled "Clone or Download"</li>
+<li>Make sure the box says "Clone with SSH"</li>
+<li>Copy the URL to the clipboard.  (The URL should begin with "<code>git@github.com:</code>")</li>
+<li>From the command line, run <code class='inline-instruction'>git clone <em>the_url_you_copied</em></code></li>
+</ol>
+</dd>
+
+<dt>Committing / Pushing</dt>
+<dd>To commit changes and push them to your repo:
+  <ol>
+     <li>From the root of your repo, run <code class='inline-instruction'>git add .</code>.
+     <li>Then run <code class='inline-instruction'>git commit -m "<em>your_message_here</em>"</code>.  
+         The main purpose of the message is so you can look back on the commits and know what additional work was done for each commit. 
+         I also use commit messages to know when you are ready for me to look at your work.</li>
+      <li>Finally, run <code class='inline-instruction'>git push</code>.</li>
+   </ol>
+</dd>
+
+<dt>Pulling</dt>
+<dd>If changes were made to your repository from another location, be sure to run <code class='inline-instruction'>git pull</code> before doing additional work.  
+    There are several ways external changes can happen.  For example, 
+   <ul>
+      <li> You may be working on two different machines (e.g, a desktop and a laptop).  To switch from the desktop to the laptop, you would push the changes 
+      on the desktop , then pull those changes onto the laptop.</li>
+      <li> I may make changes to your code, either when providing feedback, or in response to a request for help.
+   </ul>
+</dd>
+</dl>
+
+<hr>
+ <p>Updated Saturday, 15 May 2021, 7:16 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>
+
+
+  

@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CIS 263 Homework 1 Big-O</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+  </style>
+</head>
+
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 263</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Big-O</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2019</h1></td>
+  </tr>
+</table>
+
+  <h2>Problems</h2>
+
+  <ol>
+    <li> Which function grows faster? <code>N log N</code> or <code>N<sup>1+&epsilon;</sup></code> where
+      <code>&epsilon; &gt; 0</code>?
+    </li>
+
+    <li>An algorithm takes 0.5ms for input size 100. How long will it take for input size 500 if the running time is the
+      following?
+      <ul>
+        <li>linear</li>
+        <li><code>O(n log n)</code>
+        <li>quadratic</li>
+        <li>cubic</li>
+      </ul>
+    </li>
+
+    <li>An algorithm takes 0.5 ms for input size 100. How large of aproblem can be solved in 1 minute if the
+      running time is the following
+      <ul>
+        <li>linear</li>
+        <li><code>O(n log n)</code>
+        <li>quadratic</li>
+        <li>cubic</li>
+      </ul>
+    </li>
+
+    <li>Why is it important to assume integers in our computer model have a fixed width / size?</li>
+
+  </ol>
+
+  <h2>Coding</h2>
+
+  <p>You will use GitHub Classroom for this assignment. The invitation link is <a href='https://classroom.github.com/a/eOmRrwVj'><code>classroom.github.com/a/eOmRrwVj</code></a></p>
+
+  <p>Remember to use the flags <code>-Wall"</code> and <code>-std=c++17</code> when compiling.</p>
+
+  <dl>
+    <dt>Maximum Subsequence</dt>
+    <dd>Write a <em>linear-time</em> template function in C++ that will give the <em>indices</em> of the maximum
+      subsequence of a vector.
+      <ul>
+        <li>Begin by writing test cases. Use <code>maxSubsequenceSampleTest.cpp</code> as a starting point.
+          (Rename the file so it doesn't include <code>Sample</code>), then add more tests. Don't forget to
+          test types other than <code>int</code>.
+        </li>
+        <li>Edit <code>maxSubSequence.hpp</code> and place your code inside the existing
+          <code>maxSubsequence</code> function. Do not edit the method signature.
+        </li>
+        <li>When you are finished, your code should compile against both <code>maxSubsequenceMain.cpp</code> and
+          <code>MaxSubsequenceTest.cpp</code> without changes. If it doesn't, then it probably won't compile against my
+          test suite.
+        </li>
+        <li>Your submission must include a script or makefile to build an executable that runs your tests. This
+          script/makefile must run on EOS.
+        </li>
+      </ul>
+    </dd>
+
+    <dt>Matrix search</dt>
+    <dd>Suppose you have an <code>NxN</code> matrix such that each individual row is increasing from left to right and
+      each individual column is increasing from top to bottom. Write a template function in C++
+      that decides if a given value is in the matrix. The running time of this function must be <code>O(N)</code>.
+      (Notice that the size of the matrix is <code>O(N<sup>2</sup>)</code>; therefore, you can't examine each element
+      in the matrix.)
+      Write the function as a template that works for both integers and doubles.
+      <ul>
+        <li>Begin by writing test cases. Use <code>matrixSearchSampleTest.cpp</code> as a starting point.
+          (Rename the file so it doesn't include <code>Sample</code>), then add more tests. Don't forget to
+          test types other than <code>int</code>.
+        </li>
+        <li>Edit <code>searchMatrix.hpp</code> and place your code inside the existing
+          <code>searchMatrix</code> function. Do not edit the method signature.
+        </li>
+        <li>Your function should raise an <code>std::invalid_argument</code> exception if the matrix is not square.</li>
+        <li>You may assume that the data in the matrix is ascending in each row and column. You do not need to
+          verify this.
+        </li>
+        <li>When you are finished, your code should compile against both <code>searchMatrixMain.cpp</code> and
+          <code>searchMatrixTest.cpp</code> without changes. If it doesn't, then it probably won't compile against my
+          test suite.
+        </li>
+        <li>Your submission must include a script or makefile to build an executable that runs your tests. This
+          script/makefile must run on EOS.
+        </li>
+      </ul>
+    </dd>
+  </dl>
+
+  <h2>Submission and grading</h2>
+
+  <ul>
+    <li>Submit the written problems in class.</li>
+    <li>Make sure all relevant code is checked in to GitHub by the due date.</li>
+    <li>Unless you indicate otherwise, I will assume that the code to be graded is on the <code>master</code> branch.
+    </li>
+    <li>You are expected to fix and re-submit buggy code. Because your code will eventually be correct, your grade will
+      be based primarily on timliness.
+    </li>
+    <li>There is a penalty for each buggy submission.</li>
+  </ul>
+
+  (Note: Exercises above drawn largely from the Weis text.)
+  <hr>
+  <p>Updated Tuesday, 20 August 2019, 6:53 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>

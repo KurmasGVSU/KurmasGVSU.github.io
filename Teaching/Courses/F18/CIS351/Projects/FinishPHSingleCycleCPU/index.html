@@ -1,0 +1,645 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>CIS 351 Finish Single Cycle CPU</title>
+
+  <style type="text/css">
+    th {
+      text-align: left;
+      padding-right: 15px;
+    }
+
+    table.componentDescription td {
+      vertical-align: top;
+      text-align: left;
+    }
+
+    table.grading td {
+      padding-right: 15px;
+    }
+
+    table.opCodes tr {
+      text-align: center;
+    }
+
+    table.opCodes td.opName {
+      text-align: left;
+    }
+
+    ul, ol {
+      margin-top: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .moore {
+      background-color: #CCCCFF;
+      padding-bottom: 8px;
+    }
+
+    .microcode {
+      display: inline-block;
+      font-family: monospace;
+      white-space: pre;
+      padding: 5px;
+      background: #F1DCA9;
+    }
+
+    .outer_microcode {
+      display: block;
+      padding-left: 25px;
+    }
+
+    .opCodes, .control_list, .points_table {
+      padding-left: 25px;
+    }
+
+    .points {
+      padding-left: 8px;
+    }
+
+  </style>
+</head>
+
+<body>
+<table style="border:  0; width: 100%">
+  <tr>
+    <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;">CIS 351</h1></td>
+    <td style="width: 70%">
+      <h1 style="text-align: center">Lab 8: Finish Single Cycle CPU</h1>
+    </td>
+    <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap">Fall 2018</h1></td>
+  </tr>
+</table>
+
+For this lab, you will use JLS to complete the Single Cycle CPU
+described in Chapter 7 of the Harris and Harris textbook (Chapter 4 in
+the Patterson and Hennessey textbook).
+
+
+<H2>Pre-requisites</H2>
+
+You will need to understand
+<ul>
+  <li> how to turn assembly language statements into machine language
+    statements (you did this for Lab 7), and
+  </li>
+  <li> how the single-cycle CPU shown in Figure 7.24 works.
+  </li>
+</ul>
+
+<h2>Instructions</h2>
+
+<p>For this lab, you going to complete the single-cycle CPU discussed in
+  Chapter 7 of the Harris and Harris textbook. You will need to
+<ol>
+  <li>Add the missing connections to <a href='StarterCPU.jls'><code>StarterCPU.jls</code></a> for <code>j</code>, <code>sw</code>, and
+    <code>lw</code>.
+  </li>
+  <li>Complete the CPU's microcode. (Use <a href='starterMicrocode'><code>starterMicrocode</code></a> as a sample.)</li>
+  <li>Add <code>jal</code> and <code>jr</code> to your CPU.
+  <li>Modify the CPU so that unsigned and logical operations have their immediate values zero-extended instead of
+    sign-extended.
+  </li>
+  <li>Determine the optimal clock period.</li>
+</ol>
+
+
+<p>Your complete CPU should support these instructions:</p>
+
+<table class="opCodes">
+  <tr>
+    <th>Name</th>
+    <th>Mnemonic</th>
+    <th>Format</th>
+    <th>OpCode<BR>(in hex)</th>
+    <th>Func Code<BR>(in hex)</th>
+  </tr>
+  <tr>
+    <td class="opName">Add</td>
+    <td>add</td>
+    <td>R</td>
+    <td>0</td>
+    <td>20</td>
+  </tr>
+  <tr>
+    <td class="opName">Add Unsigned</td>
+    <td>addu</td>
+    <td>R</td>
+    <td>0</td>
+    <td>21</td>
+  </tr>
+  <tr>
+    <td class="opName">Add Immediate</td>
+    <td>addi</td>
+    <td>I</td>
+    <td>8</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="opName">Add Immediate Unsigned</td>
+    <td>addiu</td>
+    <td>I</td>
+    <td>9</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="opName">And</td>
+    <td>and</td>
+    <td>R</td>
+    <td>0</td>
+    <td>24</td>
+  </tr>
+  <tr>
+    <td class="opName">And Immediate</td>
+    <td>andi</td>
+    <td>I</td>
+    <td>c</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="opName">Branch if Equal</td>
+    <td>beq</td>
+    <td>I</td>
+    <td>4</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="opName">Branch on Not Equal
+    <td>bne
+    <td>I
+    <td>5
+    <td>
+  </tr>
+  <tr>
+    <td class="opName">Halt</td>
+    <td>halt</td>
+    <td>&nbsp</td>
+    <td>20</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="opName">Jump</td>
+    <td>j</td>
+    <td>J</td>
+    <td>2</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="opName">Jump and link
+    <td>jal
+    <td>J
+    <td>3
+    <td>
+  </tr>
+  <tr>
+    <td class="opName">Jump Register
+    <td>jr
+    <td>R
+    <td>0
+    <td>08
+  </tr>
+  <tr>
+    <td class="opName">Load Word</td>
+    <td>lw</td>
+    <td>I</td>
+    <td>23</td>
+    <td>
+  </tr>
+  <tr>
+    <td class="opName">Load Upper Immediate</td>
+    <td>lui</td>
+    <td>I</td>
+    <td>F</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="opName">Nor</td>
+    <td>nor</td>
+    <td>R</td>
+    <td>0</td>
+    <td>27</td>
+  </tr>
+  <TR>
+    <td class="opName">Or</td>
+    <td>or</td>
+    <td>R</td>
+    <td>0</td>
+    <td>25</td>
+  </tr>
+  <tr>
+    <td class="opName">Or Immediate</td>
+    <td>ori</td>
+    <td>I</td>
+    <td>d</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="opName">Set Less Than</td>
+    <td>slt</td>
+    <td>R</td>
+    <td>0</td>
+    <td>2a</td>
+  </tr>
+  <tr>
+    <td class="opName">Set Less Than Unsigned</td>
+    <td>sltu</td>
+    <td>R</td>
+    <td>0</td>
+    <td>2b</td>
+  </tr>
+  <tr>
+    <td class="opName">Set Less Than Immediate</td>
+    <td>slti</td>
+    <td>I</td>
+    <td>a</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="opName">Set Less Than Immediate Unsigned</td>
+    <td>sltiu</td>
+    <td>I</td>
+    <td>b</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="opName">Store Word</td>
+    <td>sw</td>
+    <td>I</td>
+    <td>2b</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="opName">Subtract</td>
+    <td>sub</td>
+    <td>R</td>
+    <td>0</td>
+    <td>22</td>
+  </tr>
+  <tr>
+    <td class="opName">Subtract Unsigned</td>
+    <td>subu</td>
+    <td>R</td>
+    <td>0</td>
+    <td>23</td>
+  </tr>
+  <TR>
+    <td class="opName">Xor</td>
+    <td>xor</td>
+    <td>R</td>
+    <td>0</td>
+    <td>26</td>
+  </tr>
+  <tr>
+    <td class="opName">Xor Immediate</td>
+    <td>xori</td>
+    <td>I</td>
+    <td>e</td>
+    <td></td>
+  </tr>
+</table>
+
+
+<h3>Microcode</h3>
+
+This CPU will use a very simple microcode controller that essentially just looks up the control wires values from a
+table. (Examine the <code>Control</code> subcircuit in the <a href='StarterCPU.jls'>starter CPU</a> to see how it works.)
+The control unit loads the lookup table from a file named <code>singleCycleMicrocode</code>.<em>This file must be in
+  the current working directory</em> (otherwise, JLS won't find it, and will silently load the microcode lookup table
+with all 0s). The file format is a list of address-value pairs. The address is either (a) the opcode, or (b) the the
+function code plus <code>0x40</code> for R-type instructions. The value is the values of the control wires bundled
+together. Both addresses and values are in hexadecimal.
+
+<p></p>
+
+<table class="control_list">
+  <tr>
+    <th>Bits</th>
+    <th>Control wire / Sequencing</th>
+  </tr>
+
+  <tr>
+    <td>15</td>
+    <td> halt</td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td> unused</td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td> unused</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td> unused</td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td>11</td>
+    <td> Jump</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td> RegWrite</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td> ALUsrc</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td> MemWrite</td>
+  </tr>
+
+
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td>4-7
+    <td> ALUop</td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td>3</td>
+    <td> MemToReg</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td> MemRead</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td> Branch</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td> RegDest</td>
+  </tr>
+
+</table>
+
+<p></p>
+
+<p>Use <a href='starterMicrocode'><code>starterMicrocode</code></a> as a sample and starting point.</p>
+
+<div class="outer_microcode">
+  <div class="microcode">
+    # All values are in hex
+
+# I-type and J-type instructions.
+# left column is op code in hex
+00    0000	  # no-op
+08    0620	  # addi
+20    8000	  # Halt
+
+# R-type instructions.
+# left column is 0x40 + function code.
+40    0000	  # no-op (opcode and func code 0)
+60    0421	  # add (function code 20)
+
+  </div>
+</div>
+
+<h3 class="listHeader"> Other Instructions</h3>
+
+Stay tuned. I'm sure I forgot something.
+
+<h3 class="listHeader">Hints</h3>
+
+<ul>
+  <li> The built-in Register file simulates <em>negative</em>-edge
+    triggered flip-flops. Your registers (e.g., the program counter)
+    should also use negative-edge triggered flip flops. When using
+    negative-edge triggered flip-flops, the clock's falling edge defines
+    the beginning of each CPU cycle.
+  </li>
+
+  <li> The <code>WE</code>, <code>OE</code>, and
+    <code>CS</code> inputs to RAM and ROM are <em>active low</em>.
+  </li>
+
+  <li> Even though the RAM and ROM control inputs are active low, none
+    of the Control wires are active low. Specifically, the
+    <code>memWrite</code> and <code>memRead</code> wires are 1 when a
+    memory write or memory read is desired.
+  </li>
+
+  <li> The built-in RAM and ROM circuits are <em>word</em>
+    addressable, whereas the memories in the textbook are <em>byte</em>
+    addressable. Make sure your circuit converts between them
+    correctly. (The Instruction Memory circuit I provide takes bytes as
+    input, not words.)
+  </li>
+
+  <li> Read carefully about how MIPS implements jump and branch. In
+    particular, notice (1) how MIPS fills bits 28-32 of the jump target
+    and (2) that the branch offset is added to <code>PC + 4</code>, not
+    <code>PC</code>.
+  </li>
+
+  <li>JLS's un-bundle feature puts the low-order bits at the top.
+    This is different from the diagrams in the book. Read carefully.
+  </li>
+
+  <li> Make use of probes, watches, and displays to help debug your circuit.</li>
+</ul>
+
+<h2> Testing </h2>
+
+To test your CPU, you have it execute assembly code, then check that
+the registers and memory contain the expected values. <b>You</b> are
+responsible for writing code to thoroughly test your CPU. I am
+providing only the demonstration test files below. They are nowhere
+near a complete test of your CPU:
+
+<ul>
+  <li><a
+    href="basicOpsDemoTest.a"><code>basicOpsDemoTest.a</code></a>
+  </li>
+
+  <li><a
+    href="basicLoadStoreTest.a"><code>basicLoadStoreTest.a</code></a>
+  </li>
+
+  <li><a href="Multiply.a"><code>Multiply.a</code></a></li>
+</ul>
+
+<div>
+
+  <h3>Running tests automatically</h3>
+
+  The <code>JLSCircuitTester</code> suite contains a program,<code>jlsCPUTester</code>, that takes as input (1)
+  your<code>JLS</code> circuit and (2) a file containing MIPS assembly code and
+
+  <ol>
+    <li> assembles the file into MIPS machine code,</li>
+    <li> simulates the running of your CPU with the machine code,</li>
+    <li> runs the machine code using <a target="_top"
+                                        href="http://courses.missouristate.edu/KenVollmar/MARS/index.htm">MARS</a>
+      (a SPIM-like CPU simulator), and
+    </li>
+    <li> compares the final state of your CPU to that calculated by MARS.</li>
+  </ol>
+
+  <p class="listHeader"><b>Important:</b>
+  <ul>
+    <li>Make sure your microcode is in a file named <code>singleCycleMicrocode</code> and that the file is
+      located in the current working directory (i.e., the directory from which you launch <code>jlsCPUTester</code>).
+    </li>
+    <li><code>JLS.jar</code> and <code>Mars.jar</code> must be in the same directory as the<code>jlsCPUTester</code>
+      script
+    </li>
+  </ul>
+
+  <p>As with previous projects, all the executable code needed for this lab is in
+    <code>/home/kurmasz/public/CS451/bin</code>. If you add this directory to your path, you will be able to run all
+    test scripts directly from the command line. If you choose not to add this directory to your path, you will have to
+    use the full path name when launching the scripts below. To run the test scripts on your own machine, you must
+    follow the <a href="https://cis.gvsu.edu/~kurmasz/Software/#JLSCircuitTester"><code>JLSCircuitTester</code></a>installation
+    instructions.</p>
+
+  <p>As always, please tell me as soon as possible if you have any problems.</p>
+
+  <p>(If you are in Prof. Kurmas's section, I recommend you complete this assignment on the EOS machines so you can
+    test your CPU without having to install the testing program.)</p>
+
+  <p class="listHeader">Notes:
+  <ol>
+    <li>Registers 0, 1, and 25-31 have special purposes in MIPS. Be
+      careful when writing MIPS assembly code using these registers
+      explicitly. Although it won't affect the running of your CPU under
+      JLS, it may affect how MARS simulates your code and, thus, affect
+      whether <code>jlsCPUTester</code> detects some bugs.
+    </li>
+
+    <li> Be aware of pseudo instructions when writing MIPS code. For
+      example, <code>lw $16, val1</code> is a pseudo instruction. It won't
+      work unless both <code>lui</code> and <code>lw</code> work.
+    </li>
+
+
+  </ol>
+</div>
+
+
+<h3>Running tests by hand</h3>
+
+<p>To debug your CPU, you may want to run test programs by hand. The Instruction Memory I provided is configured to load
+  instructions from a file named <code>instructions</code>. You will want to maintain several different test programs.
+  Make sure these programs are not named<code>instructions</code>, and simply copy (not move) the program you want to
+  test to <code>instructions</code>. Once you have copied the file, JLS will automatically load instruction memory with
+  the desired program. (The file <code>instructions</code> must be in the current working directory. This is the
+  directory from which you launched JLS. Be careful when launching JLS from an icon because it may not be obvious which
+  directory is the current working directory.)</p>
+
+<p>Similarly, make sure your microcode is in a file named <code>singleCycleMicrocode</code> and that the file is
+  located in the current working directory (i.e., the directory from which you launch JLS).</p>
+
+<p>The <code>JLSCircuitTester</code> suite contains <code>marsAssembler</code>, a program that will take assembly
+  files as input and generate MIPS code formatted for use as an<code>instructions</code> file: The file contains two
+  columns. The first is the <em>word</em> address of the instruction in hex, and the second is the MIPS binary
+  instruction in hex. Currently <code>marsAssembler</code> writes only to the standard output. Use file redirection to
+  save the output to a file.</p>
+
+<p>To examine the results of your program, place a watch on any registers of interest and the RAM unit for Main Memory.
+  When simulating the CPU, I like to set the "Step" value equal to the clock period.</p>
+</div>
+
+
+<h2> Submission and grading</h2>
+
+<p>This assignment will be worth 50 points, divided as follows:</p>
+
+<table class="points_table">
+  <tr>
+    <td>Basic instructions (<code>add</code>, <code>addi</code>, <code>beq</code> etc.)</td>
+    <td class="points">10 points</td>
+  </tr>
+  <tr>
+    <td>Load and Store</td>
+    <td class="points">4 points</td>
+  </tr>
+  <tr>
+    <td><code>j</code></td>
+    <td class="points">4 points</td>
+  </tr>
+  <tr>
+    <td>bne</td>
+    <td class="points">4 points</td>
+  </tr>
+  <tr>
+    <td>jal</td>
+    <td class="points">4 points</td>
+  </tr>
+  <tr>
+    <td>jr</td>
+    <td class="points">4 points</td>
+  </tr>
+  <tr>
+    <td>correct sign extension</td>
+    <td class="points">4 points</td>
+  </tr>
+  <tr>
+    <td>"tight" clock period</td>
+    <td class="points">2 points</td>
+  </tr>
+  <tr>
+    <td>neatness / documentation</td>
+    <td class="points">4 points</td>
+    <td>(This means add comments! Please put the clock configuration in one of the comments.)</td>
+  </tr>
+  <tr>
+    <td>timeliness</td>
+    <td class="points">10 points</td>
+    <td>(+2 if early, -2 for each day late.)</td>
+  </tr>
+</table>
+
+<p class="listHeader">Penalties</p>
+<ul>
+  <li>You will loose 3 points for each buggy submission (-5 if the submission contains too few tests).</li>
+</ul>
+
+
+<p> Note: It may not be possible to effectively test some instructions if others are broken. For example, it is not
+  possible to test <code>lw</code> without first using an I-type instruction to load the base register. The list above
+  reflects my testing order. If it is not possible to easily test instruction <code>y</code> because instruction
+  <code>x</code> is broken, you will receive 0 points for instruction <code>y</code>. Thus, if your I-type instructions
+  are broken, you will likely receive a 0 for the assignment.</p>
+
+<p class="listHeader">Add a text box to your <code>jls</code> files that includes</p>
+<ul>
+  <li> your names,</li>
+  <li> the file name,</li>
+  <li> the assignment name, and</li>
+  <li> the assignment due date.</li>
+</ul>
+
+<p>When you are convinced your CPU works, e-mail me both your CPU and microcode files.</p>
+
+<p class="listHeader">Note:</p>
+<ul>
+  <li> You are encouraged to consult with other groups when designing your test programs.</li>
+  <li> You are also encouraged to test your CPU using programs written by other groups.</li>
+</ul>
+
+<hr>
+<p>Updated Sunday, 4 November 2018, 8:12 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/html5_validate_w3c.png"alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

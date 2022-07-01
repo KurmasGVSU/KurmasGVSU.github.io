@@ -1,0 +1,373 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="rails-demo-0-getting-to-know-rails">Rails Demo 0: Getting to Know Rails!</h1>
+
+<p>Let’s create our first “Hello World” web applications!</p>
+
+<ol>
+  <li>
+    <p>Create a new rails app:</p>
+
+    <pre><code> rails new toystore  
+</code></pre>
+  </li>
+  <li>Review the basic directory structure of a Rails app:
+    <ul>
+      <li><code>app</code>:  contains most of our app code, models, views, and controllers as well as assets: javascript, css, etc.</li>
+      <li><code>bin</code>: contains the script needed to start your app, and other setup scripts as well.</li>
+      <li><code>config</code>: specifies the app’s routes, database, and more configuration related info.</li>
+      <li><code>db</code>: contains the app’s database schema and migrations.</li>
+      <li><code>Gemfile</code>: defines which Ruby gems your app depends on.  RubyGems is a ruby package management system.</li>
+      <li><code>lib</code>: extended modules for your app.</li>
+      <li><code>log</code>: your app’s log files.</li>
+      <li><code>public</code>: the only directory seen by the world as is.  Contains any static files as well as compiled assets.</li>
+      <li><code>Rakefile</code>: locates and loads tasks that can be run from the command line.</li>
+      <li><code>test</code>: unit tests, test fixtures, and other text apparatus.</li>
+      <li><code>tmp</code>: tmp files go here.</li>
+      <li><code>vendor</code>: all third party code goes here (gems)</li>
+    </ul>
+  </li>
+  <li>
+    <p>Wow that was fun.  Let’s get our toy web app to say hello world for us!  We do this by creating a new controller: (Make sure you are in the top dir!)</p>
+
+    <pre><code> rails generate controller welcome index goodbye  
+</code></pre>
+  </li>
+  <li>
+    <p>That created a whole bunch of files (controller and views.)  But before we go any further we need to setup the applications home page.  We do this by editing the config/routes.rb file.  Add the following line:</p>
+
+    <pre><code> root 'welcome#index'
+</code></pre>
+  </li>
+  <li>
+    <p>Note also that it added a couple of <code>GET</code>s to the routes.  The routing file defines how incoming requests get mapped to controllers in your app.  <span class="to-me">(Give example of this.)</span>  We can display all of the routes defined by our app with the <code>rake</code> command:</p>
+
+    <pre><code>rake routes
+</code></pre>
+  </li>
+  <li>
+    <p>Next, we need to get our app to display something.  Let’s add hello / good bye messages to our <code>views/welcome/*.erb</code> files for <code>index</code> and <code>goodbye</code>.</p>
+  </li>
+  <li>
+    <p>Now let’s try our app out and see how it works.  We can start it
+with the following command.  Manually load the two pages and
+demonstrate they are loading. (Note that the <code>--binding</code> option assumes you are running in CodeAnywhere.  If you have a local installation of rails you can ignore them!)</p>
+
+    <pre><code> rails s --binding=0.0.0.0
+</code></pre>
+  </li>
+  <li>
+    <p>Now, let’s add some dynamic content to our view!  Modify <code>welcome/index.html.erb</code> so it does this:</p>
+
+    <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Hello World at time=<span class="cp">&lt;%=</span> <span class="no">Time</span><span class="p">.</span><span class="nf">now</span> <span class="cp">%&gt;</span> 
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>However, we need to be careful that we don’t put too much code in the views.  If we had to internationalize the date/time it could take a lot of logic, and that would be better done in the controller.  Let’s go ahead and add the following to the <code>index</code> method of our controller:</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="vi">@curr_time</span> <span class="o">=</span> <span class="no">Time</span><span class="p">.</span><span class="nf">now</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>then modify the index.html.erb as follows:</p>
+
+    <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;h1&gt;</span>Welcome#index<span class="nt">&lt;/h1&gt;</span>
+ <span class="nt">&lt;p&gt;</span>Hello World at time=<span class="cp">&lt;%=</span> <span class="vi">@curr_time</span> <span class="cp">%&gt;</span> <span class="nt">&lt;/p&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Now let’s link our pages together!   We can modify our <code>index</code> page to include the following html:</p>
+
+    <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Say <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/welcome/goodbye"</span><span class="nt">&gt;</span> goodbye<span class="nt">&lt;/a&gt;</span>! 
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>This approach is a bit fragile, though.  If we moved our app’s location on the server filesystem, our links might break.  Rails gives us helpers that let us do this much easier:</p>
+
+    <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Say <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">"Goodbye"</span><span class="p">,</span> <span class="n">welcome_goodbye_path</span> <span class="cp">%&gt;</span>!
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+
+</main>
+</body>
+</html>

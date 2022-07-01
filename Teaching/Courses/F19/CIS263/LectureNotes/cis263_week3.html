@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="gvsu-cis-263">GVSU CIS 263</h1>
+
+<h1 id="week-3--day-1">Week 3 / Day 1</h1>
+
+<h2 id="list-adt">List ADT</h2>
+<ul>
+  <li class="to-me">Walk through <code>List.h</code> source
+    <ul>
+      <li>Point out inner class <code>Node</code></li>
+      <li>Skip over iterators.</li>
+      <li>Look at instance variables.</li>
+      <li>Go back to constructor, then to <code>init</code></li>
+      <li>Walk through creating list object.  (Show stack diagram)</li>
+      <li>Look at <code>size</code> and <code>empty</code></li>
+    </ul>
+  </li>
+  <li class="to-me">Review at a high level what an insert or two looks like.  (Include stack diagram)</li>
+</ul>
+
+<h3 id="iterators">Iterators</h3>
+<ul>
+  <li>An abstraction of a place in a data structure.</li>
+  <li class="to-me">Write code that walks through a linked list or vector using an iterator.</li>
+  <li class="to-me">Walk through list iterator code.
+    <ul>
+      <li>One instance variable: <code>current</code>.  Points to current node</li>
+      <li>Look at <code>List::begin</code> (sets <code>current</code> to <code>head-&gt;next</code>)</li>
+      <li>Look at <code>operator*</code></li>
+      <li>Look at <code>operator++</code> and <code>operator++(int)</code></li>
+      <li class="question">What’s up with the <code>*this</code>?</li>
+      <li class="question">Why is one constructor <code>protected</code>?</li>
+      <li class="question">Why is there no copy constructor?</li>
+      <li>Look at <code>end</code></li>
+      <li>Look at <code>operator==</code></li>
+      <li>Look at <code>insert</code></li>
+    </ul>
+  </li>
+  <li class="question">Why have an iterator class?  Why not just return <code>Node</code>?</li>
+</ul>
+
+<hr />
+
+<h1 id="week-3--day-2">Week 3 / Day 2</h1>
+
+<h2 id="more-listsiterators">More lists/iterators</h2>
+<ul>
+  <li class="question">What is a vector’s iterator?</li>
+  <li class="to-me">Show template code that works for <code>vector</code>, <code>list</code>, and <code>set</code>.</li>
+  <li class="to-me">Show <code>erase</code> and highlight delete.</li>
+  <li class="to-me">Show the <code>list</code> destructor and highlight <code>delete</code>.</li>
+</ul>
+
+<h3 id="lists-vs-vectors">Lists vs. Vectors</h3>
+<ul>
+  <li><span class="question">What is the big-O run-time for <code>List#insert_at_end</code>?</span> <code>O(1)</code></li>
+  <li class="question">What is the big-O run-time for <code>Vector#insert_at_end</code>?</li>
+  <li class="question">What if the vector is full?</li>
+  <li class="question">How much bigger should the new vector be than the old?</li>
+  <li class="to-me">Look at <code>Vector#resize</code></li>
+  <li class="question">Why does size double?
+    <ul>
+      <li>Assume you have a vector of initial size 1.</li>
+      <li>Count the number of “extra” setps needed to insert element <code>x</code> (start <code>x</code> at 0)</li>
+      <li>0 =&gt; 0; 1 =&gt; 1; 2 =&gt; 2; 3 =&gt; 0; 4 =&gt; 4; 5 =&gt; 0; 6 =&gt; 0; 7 =&gt; 0; 8=&gt; 8, etc.</li>
+      <li>Notice that value is 2^n for powers of two and 0 otherwise.</li>
+      <li>This averages out to one extra step per iteration.</li>
+      <li>Thus, overall average is <code>O(1)</code></li>
+    </ul>
+  </li>
+  <li class="question">What would average be if we only added 1 extra slot?</li>
+  <li class="question">What would average be if we only added a constant # of slots?</li>
+  <li>This type of analysis is called <em>amortized</em> analysis.
+    <ul>
+      <li>Key idea:  Some operations may be slow; but, if you make them rare enough, your 
+solution may be considered good overall.</li>
+    </ul>
+  </li>
+  <li class="question">What are the advantages of a Vector over a List?
+    <ul>
+      <li>relative simplicity</li>
+      <li>less overhead (no Node objects / pointers to maintain)</li>
+      <li>More cache friendly (no jumping around the heap)</li>
+    </ul>
+  </li>
+  <li class="question">What are the advantages of a List over a Vector?
+    <ul>
+      <li>Insert and delete can be <code>O(1)</code>; but,</li>
+      <li class="question">Can we make a <code>O(1)</code> delete for a vector?
+        <ul>
+          <li>Lazy delete with a “rebuild” after every <code>cN</code> deletes</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="valgrind">Valgrind</h2>
+<ul>
+  <li class="to-me">Show <code>vector#reserve</code> and highlight <code>delete</code>.</li>
+  <li class="to-me">Demonstrate <code>valgrind</code>;
+    <ul>
+      <li>See <code>ValgrindDemo</code> directory in sample code.</li>
+    </ul>
+  </li>
+  <li>Not yet available for MacOS 10.14.  Need to run in EOS lab.</li>
+</ul>
+
+
+</main>
+</body>
+</html>

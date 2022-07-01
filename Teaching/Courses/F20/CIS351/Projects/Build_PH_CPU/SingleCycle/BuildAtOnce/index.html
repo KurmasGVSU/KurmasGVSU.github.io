@@ -1,0 +1,722 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>CIS 351 Finish Single Cycle CPU</title>
+
+  <style type="text/css">
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    th {
+      text-align: left;
+      padding-right: 15px;
+    }
+
+    table.componentDescription td {
+      vertical-align: top;
+      text-align: left;
+    }
+
+    table.grading td {
+      padding-right: 15px;
+    }
+
+    table.opCodes tr {
+      text-align: center;
+    }
+
+    table.opCodes td.opName {
+      text-align: left;
+    }
+
+    ul, ol {
+      margin-top: 0;
+    }
+
+    .moore {
+      background-color: #CCCCFF;
+      padding-bottom: 8px;
+    }
+
+    .microcode {
+      display: inline-block;
+      font-family: monospace;
+      white-space: pre;
+      padding: 5px;
+      background: #F1DCA9;
+    }
+
+    .outer_microcode {
+      display: block;
+      padding-left: 25px;
+    }
+
+    .opCodes, .control_list, .points_table {
+      padding-left: 25px;
+    }
+
+    .points {
+      padding-left: 8px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Project 4</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2020</h1></td>
+  </tr>
+</table>
+
+
+<p>GitHub Classroom link to the <a href='https://classroom.github.com/g/l66YLH3S'>starter code</a>. Make sure you have the latest version of <code>DLUnit</code>.  You can download it <a href='DLUnit.jar'>here</a>.</p>
+
+
+<p>For this project, you will use JLS to build the Single Cycle CPU
+    described in Chapter 7 of the Harris and Harris textbook (Chapter 4 in
+    the Patterson and Hennessy textbook).</p>
+
+<p class="listHeader">You will complete this project in two phases:</p>
+<ul>
+    <li><b>Phase 1:</b> Use the control unit I provide to get the basic instructions working.</li>
+    <li><b>Phase 2:</b> Remove my "starter" control unit, write your own, and add additional instructions.</li>
+</ul>
+
+<p>It is critically important that you thoroughly test Phase 1 before moving onto Phase 2. <em>Every</em> team that did
+    not do this last semester had serious problems completing this project. Find me immediately if you have any trouble
+    getting the testing software to work. If you don't have the testing software working, you really have no idea
+    whether your CPU is functioning correctly.</p>
+
+<p>Be sure to read this entire document (especially the hints) before you begin. Overlooking any of the instructions or
+    hints can lead you down a dead-end path that will waste hours of your valuable time.</p>
+
+<h2>Pre-requisites</h2>
+
+You will need to understand
+<ul>
+  <li> how to turn assembly language statements into machine language
+    statements (you did this for Lab 9), and
+  </li>
+  <li> how the single-cycle CPU shown in Figure 7.14 works.
+  </li>
+</ul>
+
+
+<h2>Phase 1</h2>
+
+<p class="listHeader">Build the Single-Cycle CPU shown in in Figure 7.14. To help you get
+    started, the <a href='https://classroom.github.com/g/l66YLH3S'>starter code</a> contains <code>StarterCPU_f20.jls</code> which includes a
+
+<ul>
+    <li>register file,</li>
+    <li>ALU,</li>
+    <li>instruction memory,</li>
+    <li>data memory, and </li>
+    <li>"starter" control unit.</li>
+</ul>
+
+
+<p> Before you begin, rename the starter CPU file <code>PHSingleCycleCPU.jls</code>. You aren't required to use the provided components; 
+    but, building your own can be tedious. The purpose of the "starter" control unit is so
+    that you can debug your CPU's datapath separately from the control unit. Once you have the core instructions
+    working, then replace my control unit with one you build from scratch. (This is phase 2) </p>
+
+<h3>Interface</h3>
+
+<p>At the end of Phase 1, your CPU should support the following instructions:</p>
+
+<table class="opCodes">
+    <tr>
+        <th>Name</th>
+        <th>Mnemonic</th>
+        <th>Format</th>
+        <th>OpCode<BR>(in hex)</th>
+        <th>Func Code<BR>(in hex)</th>
+    </tr>
+    <tr>
+        <td class="opName">Add</td>
+        <td>add</td>
+        <td>R</td>
+        <td>0</td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td class="opName">Add Immediate</td>
+        <td>addi</td>
+        <td>I</td>
+        <td>8</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="opName">And</td>
+        <td>and</td>
+        <td>R</td>
+        <td>0</td>
+        <td>24</td>
+    </tr>
+    <tr>
+        <td class="opName">And Immediate</td>
+        <td>andi</td>
+        <td>I</td>
+        <td>c</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="opName">Branch if Equal</td>
+        <td>beq</td>
+        <td>I</td>
+        <td>4</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="opName">Halt</td>
+        <td>halt</td>
+        <td>&nbsp</td>
+        <td>20</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="opName">Jump</td>
+        <td>j</td>
+        <td>J</td>
+        <td>2</td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td class="opName">Load Word</td>
+        <td>lw</td>
+        <td>I</td>
+        <td>23</td>
+        <td>
+    </tr>
+    <tr>
+        <td class="opName">Load Upper Immediate</td>
+        <td>lui</td>
+        <td>I</td>
+        <td>F</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="opName">Nor</td>
+        <td>nor</td>
+        <td>R</td>
+        <td>0</td>
+        <td>27</td>
+    </tr>
+    <TR>
+        <td class="opName">Or</td>
+        <td>or</td>
+        <td>R</td>
+        <td>0</td>
+        <td>25</td>
+    </tr>
+    <tr>
+        <td class="opName">Or Immediate</td>
+        <td>ori</td>
+        <td>I</td>
+        <td>d</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="opName">Set Less Than</td>
+        <td>slt</td>
+        <td>R</td>
+        <td>0</td>
+        <td>2a</td>
+    </tr>
+    <tr>
+        <td class="opName">Set Less Than Immediate</td>
+        <td>slti</td>
+        <td>I</td>
+        <td>a</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="opName">Store Word</td>
+        <td>sw</td>
+        <td>I</td>
+        <td>2b</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="opName">Subtract</td>
+        <td>sub</td>
+        <td>R</td>
+        <td>0</td>
+        <td>22</td>
+    </tr>
+</table>
+
+
+
+<h3>Phase 1 Testing</h3>
+
+In order for your CPU to work seamlessly with the test suite, it must use the following interface:
+
+<ul>
+    <li> Name the circuit for the entire CPU <code>PHSingleCycleCPU.jls</code>. (Did you remember to rename the starter file?)</li>
+    <li> Name the instruction memory <code>InstMemory</code>.</li>
+    <li> Name the register file <code>RegisterFile</code>.</li>
+    <li> Main Memory is simply a built-in RAM. Name it <code>MainMemory</code> and configure it with 2<sup>20</sup>
+        words.
+    </li>
+</ul>
+
+<p class='list-header'><code>DLUnit</code> has a built-in test class that can test this CPU.  In addition to the <code>.jls</code> file, you also 
+provide an assembly file as input.  <code>DLUnit</code> will (1) simulate the assembly code using <code>MARS</code>, 
+(2) simulate the assembly code using your CPU, then (3) compare the final state of the registers from each simulation.  The test will pass if your CPU ends in the same state as 
+the CPU simulated by <code>MARS</code>.</p>
+
+<p><strong>IMPORTANT:</strong> <code>DLUnit</code> only checks the <em>final</em> state of the CPU.  If you write to a register more than once, the intermediate values of that register won't get checked.</p>
+
+<p>The syntax for running <code>DLUnit</code> to test a CPU is <code class='inline-instruction'>java -jar DLUnit.jar <em>jls_file</em>.jls builtin.SingleCycleCPUTest --param <em>assembly_file</em>.a</code>
+To test your code, you will need to write several example assembly programs. The starter code includes a few example testing programs; 
+however, these programs alone won't test your CPU well.</p>
+
+<p class='listHeader'>Avoid the following cases when writing your phase 1 tests:</p>
+  <ul>
+    <li>The ALU has a very simple implementation of <code>slt</code>/<code>slti</code>.  It will give the wrong answer if the inputs overflow when subtracting.</li>
+    <li><code>andi</code> and <code>ori</code> will give incorrect results if the immediate value is negative (or has bit 15 set to 1).  You'll fix this in Phase 2.</li>
+    </ul>
+
+
+<h3>Debugging</h3>
+
+<p>The best way to debug a circuit that is failing tests is to use JLS to step through each instruction.  The starter code includes a 
+bash script named <code>marsAssembler</code> that takes an assembly file as input and generates machine code.  To debug your circuit, run 
+<code>marsAssembler</code> and redirect its output to a file named <code>instructions</code>.  Your circuit's Instruction Memory element
+is configured to load data from this file.  So, if you launch JLS in a directory containing <code>instructions</code> you will be able to
+step through your CPU instruction by instruction.  Important:  <code>marsAssembler</code> is a <em>bash</em> script. It won't run on the 
+Windows command line.  You will need to use Cygwin, WSL, or something similar to run it.  Another option is to look inside the bash script 
+and just run the Windows version of that command "by hand".</p>
+
+<p>Note:  <code>marsAssembler</code> only works with <code>DLUnit</code> version 1.1.1 or newer (built 3 November 2020).  You may need to 
+download the most recent version (linked <a href='DLUnit.jar'>here</a>).  Also, make sure <code>marsAssembler</code> and <code>DLUnit.jar</code> are in the same directory.</p>
+
+
+<h3 class='listHeader'>Phase 1 Hints</h3>
+
+<ul>
+  <li> The built-in Register File uses <em>negative</em>-edge
+    triggered flip-flops. Your registers (e.g., the program counter)
+    should also use negative-edge triggered flip flops. When using
+    negative-edge triggered flip-flops, the clock's falling edge defines
+    the beginning of each CPU cycle.
+  </li>
+
+  <li> The <code>WE</code>, <code>OE</code>, and
+    <code>CS</code> inputs to RAM and ROM are <em>active low</em>.
+  </li>
+
+  <li> Even though the RAM and ROM control inputs are active low, none
+    of the control wires are active low. Specifically, the
+    <code>memWrite</code> and <code>memRead</code> wires are 1 when a
+    memory write or memory read is desired.
+  </li>
+
+  <li> The built-in RAM and ROM circuits are <em>word</em>
+    addressable, whereas the memories in the textbook are <em>byte</em>
+    addressable. Make sure your circuit converts between them
+    correctly. (The Instruction Memory circuit I provide takes bytes as
+    input, not words.)
+  </li>
+
+  <li> Read carefully about how MIPS implements jump and branch. In
+    particular, notice (1) how MIPS fills bits 28-31 of the jump target
+    and (2) that the branch offset is added to <code>PC + 4</code>, not
+    <code>PC</code>.
+  </li>
+
+  <li>You need a minimum of two tests for <code>beq</code>.
+
+  <li> Make use of probes, watches, and displays to help debug your circuit.</li>
+
+      <li> Be aware of pseudo instructions when writing MIPS code. For
+        example, <code>lw $16, val1</code> is a pseudo instruction. It won't
+        work unless both <code>lui</code> and <code>lw</code> work.
+    </li>
+</ul>
+
+<h2>Phase 2</h2>
+
+<p class="listHeader">You have three main tasks to complete for Phase 2:</p>
+<ol>
+   <li>Replace my "starter control" with your own hard-wired control.</li>
+   <li>Add additional instructions.</li>
+   <li>Determine the critical path for the CPU and set the clock accordingly.</li>
+</ol>
+
+<h3>Hard-Wired Control</h3>
+
+<p class='listHeader'>Remove the starter control and replace it with your own control unit. The starter control is a
+    type of microcode. You are going to build a hard-wired control. You <em>must</em></p>
+<ul>
+    <li>construct a truth table for each main control wire (well,
+    almost every wire<sup>*</sup>),</li>
+    <li>use a Karnaugh map to simplify the resulting circuit,</li>
+    <li>implement the simplified circuit in JLS.</li>
+</ul>
+
+<p><sup>*</sup>Some control wires have very similar truth tables (e.g., <code>ALUsrc</code> and <code>RegDest</code>). Groups with
+    similar truth tables may share components.  You need not generate
+    a separate truth table and Karnaugh map in this case.</p>
+
+<p>When you implement your control unit, plan ahead an include the additional instructions (listed below).</p>
+
+
+<h3>Additional Instructions</h3>
+
+<p>Add support for these additional instructions.  (Remember to consider them as you implement your control unit.)</p>
+
+<table class="opCodes">
+    <tr>
+        <th>Name</th>
+        <th>Mnemonic</th>
+        <th>Format</th>
+        <th>OpCode<BR>(in hex)</th>
+        <th>Func Code<BR>(in hex)</th>
+    </tr>
+    <tr>
+        <td class="opName">Add Unsigned</td>
+        <td>addu</td>
+        <td>R</td>
+        <td>0</td>
+        <td>21</td>
+    </tr>
+    <tr>
+        <td class="opName">Add Immediate Unsigned</td>
+        <td>addi</td>
+        <td>I</td>
+        <td>9</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="opName">Branch if not Equal</td>
+        <td>beq</td>
+        <td>I</td>
+        <td>5</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="opName">Jump and Link</td>
+        <td>jal</td>
+        <td>J</td>
+        <td>3</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="opName">Jump Register</td>
+        <td>jr</td>
+        <td>R</td>
+        <td>0</td>
+        <td>08</td>
+    </tr>
+        <tr>
+        <td class="opName">Set Less Than Unsigned</td>
+        <td>sltu</td>
+        <td>R</td>
+        <td>0</td>
+        <td>2b</td>
+    </tr>
+    <tr>
+        <td class="opName">Set Less Than Immediate Unsigned</td>
+        <td>sltiu</td>
+        <td>I</td>
+        <td>b</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="opName">Subtract Unsigned</td>
+        <td>sub</td>
+        <td>R</td>
+        <td>0</td>
+        <td>23</td>
+    </tr>
+
+    <tr>
+        <td class="opName">Xor</td>
+        <td>xor</td>
+        <td>R</td>
+        <td>0</td>
+        <td>26</td>
+    </tr>
+    <tr>
+        <td class="opName">Xor Immediate</td>
+        <td>xori</td>
+        <td>I</td>
+        <td>e</td>
+        <td></td>
+    </tr>
+</table>
+
+
+<h3>Phase 2 Hints</h3>
+
+<ul>
+    <li>The starter code contains <code>ControlUnit.jls</code>.  Place your control unit in this file and
+    import it into the CPU when you are done. It is very important that you use a separate <code>.jls</code> file
+    when working on your CPU.  Doing so will (1) allow you to test the control unit separately from the CPU, and (2) allow <em>me</em> 
+    to test your control unit. Trust me:  
+    You want to be able to test your control unit separately.  
+    I won't be able to help you debug your CPU if I can't test your Control Unit.
+    </li>
+
+    <li>You will need to add additional outputs to the control unit. You may name these outputs whatever
+        you like; but, don't change or remove the existing inputs or outputs.
+    </li>
+
+    <li>Not all I-type instructions are sign-extended.  You will need
+    to add a control wire to suppress the sign extension for these
+    instructions.  <span class="highlight"> Read the instruction
+    description in the textbook (p620 in Harris and Harris,
+    2<sup>nd</sup> ed.) very
+    carefully. You may be surprised by which immediate instructions
+    are sign extended and which are not.  </span></li>
+
+    <li>The ALU does not correctly implement <code>slt</code> and <code>sltu</code>. You may add hardware
+        to fix them. (You built this hardware for Project 1.) <em>This is optional</em>.
+    </li>
+
+
+    <li>This CPU uses different ALU op codes than the book. The comment inside the ALU contains the correct list of op
+        codes.
+    </li>
+
+    <li>Notice that some op codes are also function codes (e.g., op
+        code of <code>0x20</code> for <code>halt</code> and function code of <code>0x20</code>
+        for <code>add</code>).  Be sure your tests account for this.</li>
+</ul>
+
+
+<h2> Submission and grading</h2>
+
+<p>This project will be worth 100 points, divided as follows:</p>
+
+<table>
+    <tr>
+        <td>Passes all tests</td>
+        <td>45&nbsp;points</td>
+    </tr>
+    <tr>
+        <td>Phase 1 timeliness</td>
+        <td>20 points</td>
+    </tr>
+    <tr>
+        <td>Phase 2 timeliness</td>
+        <td>20 points</td>
+    </tr>
+        <tr>
+        <td>Testing</td>
+        <td>5 points</td>
+    </tr>
+    <tr>
+        <td>Neatness / documentation</td>
+        <td>5 points</td>
+    </tr>
+    <tr>
+        <td>Clock Period</td>
+        <td>5 points</td>
+    </tr>
+</table>
+
+<p class="listHeader">"Timeliness" is based on when your CPU passes the automated tests.  You loose 2 points per day if 
+the tests are not passing by the due date.
+
+<p>The best way to earn testing points is to have a thorough suite of assembly files for testing your CPU <em>and</em> <code>DLUnit</code> 
+tests for your control file.  I will also accept a document demonstrating your have a thorough, organized test plan.  This document must 
+include (1) a list of inputs and expected outputs, and (2) your process for efficiently running your tests.</p>
+
+
+<h3>Deliverables</h3>
+
+<p>To submit your project:</p>
+
+<ol>
+   <li>Make sure all <code>.jls</code> files include a comment with your name.</li>
+   <li>Make sure <code>PHSingleCycleCPU.jls</code> includes a comment with the clock period.</li>
+   <li>Make sure your repository includes all your test files / test plans.</li>
+   <li>Add a commit message with <code>[Grade Me]</code> and push.</li>
+   </ol>
+
+
+<hr>
+<p>Updated Thursday, 12 November 2020, 1:31 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>
+
+
+
+

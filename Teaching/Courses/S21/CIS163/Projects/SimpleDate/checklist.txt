@@ -1,0 +1,23 @@
+
+__________ My code passes all the automated instructor tests
+
+__________ I have thoroughly tested the "two digit year" feature.
+           (Remember, the automated tests to check this feature.)
+
+__________ My commit history shows that I have added tests consistently throughout the project 
+           (as opposed to all at once at the end)
+
+
+
+
+__________ My code is clean, indented properly, and otherwise well-formatted
+
+__________ I've broken extremely long lines of code where possible
+
+__________ My code contains comments where appropriate
+
+__________ My code uses descriptive variable and method names
+
+__________ My code uses constants (i.e., static final variables) where appropriate
+
+__________ My code uses private "helper" methods where appropriate to avoid duplicate code.

@@ -1,0 +1,214 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="gvsu-cis-263">GVSU CIS 263</h1>
+
+<h1 id="week-2--day-1">Week 2 / Day 1</h1>
+
+<p>(Note:  Week 2 has only one day because of Labor Day)</p>
+
+<h2 id="const">Const</h2>
+
+<ul>
+  <li>Objects declared <code>const</code> cannot be mutated.</li>
+  <li>Useful when you want to pass an object by reference (to save the expense of copying) but don’t want it to be modified.</li>
+  <li>Only methods marked <code>const</code> may be called on const objects.</li>
+  <li>See <code>MyIntVector.h</code> for an example.</li>
+  <li><em>Show example of resulting compiler error</em></li>
+  <li>“const correctness” can be a pain in the @$$ – especially when you pay no attention to it until you run into a problem.
+    <ul>
+      <li>Avoid the temptation to make everything non-const.  That works until you run into a library call that insists upon const correctness.  At this point, you have a lot of frustrating work to do.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="templates">Templates</h2>
+
+<ul>
+  <li>In C++ parameterized types are called <em>templates</em></li>
+  <li>Similar to Java Generics with one major difference:
+    <ul>
+      <li>The Java compiler verifies the correctness of a Java generic class by looking at its <code>.java</code> file only.
+When defining the generic class, the programmer must completely specify the generic class’s interface
+ (e.g., <code>class Vector&lt;T implements MyInterface&gt;</code>).  The code in the template class must conform to the given
+  interace.</li>
+      <li>A C++ template is literally a template:  Each use results in a separate piece of code behind the scenes: The compiler does not verify the correctness of a template until it is used (and given specific template parameters).</li>
+      <li>This “late” verification can cause compiler errors that are very long and hard to understand.</li>
+      <li>See the last line of <code>sampleTemplateUsage.cpp</code></li>
+    </ul>
+  </li>
+  <li>Both class and functions can be templates.</li>
+  <li>Most data structures are parameterized types.</li>
+</ul>
+
+<h2 id="github-classroom">GitHub Classroom</h2>
+
+<ul>
+  <li>All coding assignments will be submitted using GitHub Classroom.</li>
+</ul>
+
+<h2 id="catch-2-unit-testing-framework">Catch 2 Unit testing framework</h2>
+
+<ul>
+  <li>Download from <a href="https://github.com/catchorg/Catch2">https://github.com/catchorg/Catch2</a></li>
+  <li>See samples in 1st homework.</li>
+</ul>
+
+<h2 id="zybook-chapter-1">zyBook Chapter 1</h2>
+
+<h3 id="data-structures-section-11">Data Structures (Section 1.1)</h3>
+
+<p>“A <em>data structure</em> is a way of organizing, storing, and performing operations on data….”</p>
+
+<ul>
+  <li>think “CRUD”</li>
+  <li>Examples: Record, Array, Linked list, Hash table, heap, graph</li>
+  <li>Different data structures have different conceptual organization (list vs heap)</li>
+  <li>Different data structures are useful under different circumstances.
+    <ul>
+      <li>At a first pass, they have different running times for different operations</li>
+      <li>some may have fast inserts, others may have fast access.</li>
+      <li>some may be optimized for in order (sorted) storage,</li>
+      <li>some may be optimized for unordered storage.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="algorithms-section-12">Algorithms (Section 1.2)</h3>
+
+<p>“An <em>algorithm</em> describes a sequence of steps to solve a computational problem or perform a calculation…”</p>
+
+<ul>
+  <li>Many “real world” problems have sub-problems that have well-known, optimized algorithms
+    <ul>
+      <li>Find longest shared DNA sequence ==&gt; Longest common substring problem</li>
+      <li>Find fastest route to destination ==&gt; Shortest path in a graph</li>
+      <li>Largest subgroup of social network where everybody is connected ==&gt; Clique (largest complete graph)</li>
+    </ul>
+  </li>
+  <li>Some very common problems have no known fast/efficient algorithm (e.g., Clique)</li>
+</ul>
+
+<h3 id="relation-between-data-structure-and-algorithms-section-13">Relation between data structure and algorithms (Section 1.3)</h3>
+
+<p>Algorithms use data structures as a tool.  For example, a longest substring algorithm would use a data structure to efficiently keep track of the different substrings seen.</p>
+
+<h3 id="abstract-data-types-section-14">Abstract data types (Section 1.4)</h3>
+
+<p>Describes operations without indicating how the operation is performed.</p>
+
+<p>For example, A list can be implemented using either an array or a linked list.</p>
+
+<ul>
+  <li>All lists are conceptually sequential (each item has exactly one well-defined “next” item).</li>
+  <li>All lists have “get” and “delete” operations.
+    <ul>
+      <li>Arrays have fast get and slow delete.</li>
+      <li>Linked lists have slow get and fast delete.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="runtime-complexity--cost">Runtime complexity / “cost”</h3>
+
+<ul>
+  <li>Can be defined in terms of many different things:  time, space, network bandwidth, energy etc.</li>
+  <li>Can be best case, worst case, or average case.
+    <ul>
+      <li>We usually consider worst-case</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="key-ideas-of-class">Key ideas of class</h3>
+
+<ul>
+  <li>How different data structures work</li>
+  <li>Big-O run time of their operations</li>
+  <li>Different Abstract Data Types and possible implementations</li>
+  <li>When to use each of the data structures</li>
+</ul>
+
+<h2 id="big-o-review">Big-O review</h2>
+
+<ul>
+  <li class="to-me">Present naive O(N^3) algorithm for max subsequence.</li>
+  <li class="to-me">Have students develop better algorithms.</li>
+  <li>Now, suppose I’m a dishonest salesman trying to “sell” you a slower algorithm.
+<span class="question">What kinds of “tricks” can I play to make my algorithm appear faster than the optimal algorithm?</span>
+    <ul>
+      <li>Faster CPU</li>
+      <li>More RAM</li>
+      <li>Better compiler</li>
+      <li>Different programming language.</li>
+      <li>Use small number of inputs.  (Fastest algorithms may have extra “setup” time.)</li>
+    </ul>
+  </li>
+  <li class="question">Can we measure algorithms independent of the things above?</li>
+  <li>That’s precisely what Big-O does.</li>
+  <li class="to-me">Have students find Big-O of algorithms above.</li>
+  <li><span class="to-me"> What is the definition of Big-O?</span>
+    <ul>
+      <li><code>f(n)</code> is <code>O(g(N))</code> if there exist <code>N</code> and <code>c</code> such that for all <code>n &gt; N</code>, <code>f(n) &lt; c*g(N)</code></li>
+    </ul>
+  </li>
+  <li><span class="question">How does this eliminate the effects of the “cheats” above?</span>
+    <ul>
+      <li><code>f</code> is <code>O(g)</code> if <code>f</code> is <em>eventually</em> <em>always</em> smaller than <code>c*g(n)</code>.
+        <ul>
+          <li>The <code>n &lt; N</code> is the “eventually” part.  It removes quirks where one algorithm may be faster than another for smaller input.</li>
+          <li>The <code>c*g(n)</code> part accounts for differences in CPU speed.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="search--sort-review">Search / Sort Review</h2>
+<ul>
+  <li class="to-me">Explain binary search</li>
+  <li class="question">What sorts do you know?</li>
+  <li><span class="question">What are relative advantages / disadvantages?</span>
+    <ul>
+      <li>Selection sort</li>
+      <li>Insertion sort</li>
+      <li>Bubble sort</li>
+      <li>Shell sort</li>
+      <li>Merge sort</li>
+      <li>Quick sort</li>
+      <li>Radix sort</li>
+    </ul>
+  </li>
+  <li>Comparisons sorts are <code>n log n</code> in best case: <a href="https://www.youtube.com/watch?v=z9EWVOyvcVM">https://www.youtube.com/watch?v=z9EWVOyvcVM</a></li>
+</ul>
+
+</main>
+</body>
+</html>

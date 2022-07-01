@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+   <title>CIS 351 Introduction to Assembly</title>
+<style type="text/css">
+   code {
+      white-space: nowrap;
+   }
+
+   .command {
+     background-color: lightgrey;
+}
+pre {
+     background-color: lightblue;
+}
+
+</style>
+
+</head>
+
+<body>
+<table style="border:  0; width: 100%">
+  <tr>
+    <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;">CIS 351</h1></td>
+    <td style="width: 70%">
+      <h1 style="text-align: center">Lab 2: Introduction Assembly</h1></td>
+    <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap">
+      Fall 2018</h1></td>
+  </tr>
+</table>
+
+<p>For this lab, you are going to write some assembly code and test it using using the
+  <a target="_top" href="http://www.cis.gvsu.edu/~kurmasz/Software/mipsunit_munit"><code>MUnit</code></a> testing
+  framework.</p>
+
+
+<h2><a name="Step1">Step 1</a>: Learn how to test your code</h2>
+
+Before writing any code, you first need to learn how to write and run
+<code>MUnit</code> tests. Follow these steps:
+
+<ol>
+   <li>Create a new directory for this assignment.</li>
+   <li>Download <a href="assemblyIntroSample.asm"><code>assemblyIntroSample.asm</code></a>,
+      <a href="AssemblyIntroSampleTest.java"><code>AssemblyIntroSampleTest.java</code></a>,
+   and <a href="munit.jar"><code>munit.jar</code></a> into this
+   directory (or copy them from <code>~kurmasz/public/CIS351/AssemblyIntro</code>).
+   <li>Launch <a target="_top" href="http://courses.missouristate.edu/KenVollmar/MARS/">Mars</a>, open
+   <code>assemblyIntroSample.asm</code> and see if you can spot the bug.</li>
+   <li>From the command line, run <code class="command">javac -cp munit.jar
+   AssemblyIntroSampleTest.java</code>.  (If you are doing this on
+   your own machine, make sure the <code>javac</code> executable is in
+   your path.)</li>
+   <li>Now, run <code class="command">java -jar munit.jar assemblyIntroSample.asm
+   AssemblyIntroSampleTest.class</code>.  (Notice that you are
+   specifying the name of the <code>class</code> file, not the name of
+   the class.)
+</ol>
+
+<p>At this point, you should see the following output:<br/>
+<pre>
+MIPSUnit::MUnit version 1.1 built Sun Apr 08 14:26:21 EDT 2018.
+Built with MARS version 4.4
+
+	Failure: triples_positive_number(AssemblyIntroSampleTest): expected:<6> but was:<4>
+	Failure: triples_negative_numbers(AssemblyIntroSampleTest): expected:<-18> but was:<-12>
+Tests run: 6, Failures: 2
+</pre>
+
+These tests fail because there is a bug in <code>triple</code>. Edit
+<code>assemblyIntroSample.asm</code> and fix the bug. When you have
+fixed the bug, you will see
+<pre>
+MIPSUnit::MUnit version 1.1 built Sun Apr 08 14:26:21 EDT 2018.
+Built with MARS version 4.4
+
+All tests (6) passed.
+</pre>
+
+<p><strong>Do <em>not</em> continue until you have (1) figured out how to run my test code,
+   and (2) have found and fixed the bug in <code>triple</code>!</strong></p>
+
+<h2>Step 2: Write some Java</h2>
+
+Go to <a href="http://www.codingbat.com">CodingBat</a> and solve these three problems:
+<ul>
+   <li><a href='http://codingbat.com/prob/p181646'>monkeyTrouble</a></li>
+   <li><a href='http://codingbat.com/prob/p187868'>sleepIn</a></li>
+   <li><a href='http://codingbat.com/prob/p159227'>posNeg</a></li>
+</ul>
+
+<p>Do not continue until CodingBat has indicated that you have solved all three problems correctly. If you don't
+   know how to code these problems in Java, you certainly won't be able to do it in assembly!</p>
+
+<h2>Step 3: Write <em>and test</em> some MIPS assembly</h2>
+
+Now solve each problem using MIPS assembly. In order for your solution to work with my testing software,
+you must follow these rules:
+
+<ul>
+   <li>The first two lines of your source file must be<br/>
+      <code>.globl monkeyTrouble sleepIn posNeg<br/>
+         .text</code><br/>
+      (Notice the spelling of <code>.globl</code>.)
+   </li>
+
+   <li>Your three procedures <em>must</em> be named (i.e., labeled with) <code>monkeyTrouble</code>,
+      <code>sleepIn</code>, and <code>posNeg</code> respectively.
+   </li>
+
+   <li>Use labels if you want to store data in global memory.  (You shouldn't need to load or store data for this
+      assignment.)</li>
+   <li>The method parameters will be placed in registers <code>a0</code>, <code>a1</code>, and <code>a2</code>.</li>
+
+   <li>Each method must end with the instruction <code>jr $ra</code>.</li>
+
+   <li>Use the literal value <code>1</code> for <code>true</code> and <code>0</code> for <code>false</code>.</li>
+
+</ul>
+
+<p>Each of these above rules is demonstrated in <a
+      href="assemblyIntroSample.asm"><code>assemblyIntroSample.asm</code></a></p>
+
+
+<p>To test your code, download <a href="AssemblyIntroTest.java">this starter test file</a> into your directory for this
+   homework and
+   follow the steps given in <a href="#step1">step 1</a>.  These tests
+   are not complete; you will need to add some of your own.
+
+<h2>Submission and grading</h2>
+
+<p>Demonstrate to the instructor that your code passes all tests; then, submit a printed copy of the assembly code</p>
+
+<h2>Hints:</h2>
+<ul>
+   <li>To compute <code>!a0</code>, do the following:<br/>
+      <code>not $a0, $a0</code><br/>
+      <code>andi $a0, $a0, 1</code><br/>
+      (The extra <code>andi</code> instruction makes sure that only the least-significant bit has a value other than 0.)
+   </li>
+
+    <li>You are welcome to use branch statements (e.g., <code>beq</code> and <code>bne</code>),
+       but you don't need them to complete this assignment.  Anything you think you need a branch for can be
+    done using <code>slt</code> and <code>slti</code>.</li>
+</ul>
+<hr>
+<p>Updated Monday, 1 October 2018, 10:05 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/html5_validate_w3c.png"alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

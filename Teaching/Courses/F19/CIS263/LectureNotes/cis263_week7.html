@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="gvsu-cis-263">GVSU CIS 263</h1>
+
+<h2 id="week-7--day-1">Week 7 / Day 1</h2>
+
+<p>Leftovers:</p>
+
+<ul>
+  <li>Red black tree</li>
+  <li>iterator invalidation</li>
+</ul>
+
+<h2 id="heaps">Heaps</h2>
+
+<p>Max-Heap:</p>
+
+<ul>
+  <li>Each node is greater than its children.</li>
+  <li>Usually a binary tree, but not necessarily.</li>
+  <li>Insert new node at leaf and “bubble up”</li>
+  <li>Remove: Move last leaf up and bubble down with greatest child.
+    <ul>
+      <li class="question">Why greatest child?</li>
+    </ul>
+  </li>
+  <li>Can be used with a FIFO cache</li>
+  <li>Min-Heap: Same thing with minimum at top.</li>
+</ul>
+
+<p>Heap using array:</p>
+
+<ul>
+  <li>Heap can implemented using an array.</li>
+  <li class="question">For nodes 0 - 4, draw table showing index of children</li>
+  <li class="question">What is the formula?</li>
+  <li class="question">Given a node x, what is formula for parent?
+    <ul>
+      <li><code>floor((x-1)/2)</code></li>
+    </ul>
+  </li>
+  <li class="question">What is the benefit to this implementation?
+    <ul>
+      <li>Less metadata (e.g., pointers)</li>
+    </ul>
+  </li>
+  <li class="question">Can we implement a BST this way?  Why or why not?
+    <ul>
+      <li>Rotations wouldn’t be as simple as moving pointers.</li>
+    </ul>
+  </li>
+  <li class="question">How can we use a Heap to sort?
+    <ul>
+      <li>Insert items into a heap, then pull them out.</li>
+    </ul>
+  </li>
+  <li class="question">What would the running time be?
+    <ul>
+      <li>O(n log n).  There would be n insertions, each taking time log n, followed by n removals, each taking time log n.</li>
+    </ul>
+  </li>
+  <li class="question">Any short-cuts?
+    <ul>
+      <li>Just take the array and pretend it’s a max heap.  The leaf nodes are, by definition, fine.  Only need n/2 
+ operations to make a valid heap.</li>
+    </ul>
+  </li>
+  <li>Notice that this is n log n, but <em>not</em> recursive.</li>
+</ul>
+
+<p>Priority Queue</p>
+
+<ul>
+  <li>Put things in order such that the “most important” stays at the front.</li>
+  <li>Typically implemented with a heap.</li>
+  <li class="question">What would be running time using a “regular” vector or list?</li>
+  <li class="question">What is the running time using a heap?</li>
+</ul>
+
+<p>Use of priority queues in discrete event simulation</p>
+
+<p>d-Heap:</p>
+
+<ul>
+  <li>Heaps don’t have to be binary.  Suppose each node has d children.</li>
+  <li class="question">What is the advantage of increasing d?
+    <ul>
+      <li>Inserts are faster because the tree is shallower.</li>
+    </ul>
+  </li>
+  <li class="question">What is the disadvantage?
+    <ul>
+      <li>Deletes are slower because you have to look for the maximum of all d children.</li>
+      <li>Unless d is a power of 2, the multiplication/division can be expensive.</li>
+    </ul>
+  </li>
+  <li>There is evidence that having 4 children improves performance overall.</li>
+</ul>
+
+<p>Treap:</p>
+
+<ul>
+  <li>BST with random secondary key.</li>
+  <li>Add item to BST.</li>
+  <li>Use secondaray key to percolate up; but, rotate instead of copy.  You end up with a valid BST.</li>
+</ul>
+
+</main>
+</body>
+</html>

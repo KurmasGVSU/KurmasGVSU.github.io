@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Supplemental Videos</title>
+
+<style>
+
+.toc {
+margin-top: 5px;
+padding-top: 5px;
+padding-bottom: 0;
+margin-bottom: 0;
+}
+
+ul {
+padding-top: 0;
+margin-top: 0;
+}
+
+dt {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.down, .up {
+font-size: 75%;
+}
+
+</style>
+
+<script src="jquery-2.1.0.min.js"></script>
+<script>
+makeLinks = function() {
+    var time_regex = /\((\d+):(\d+)\)/;
+    
+    $("li a").each(function (index,element) {
+	var match = time_regex.exec($(this).text());
+	if ($(this).attr("href") == undefined && match != null) {
+	    var link =  $(this).closest("dd").prev().children("a").eq(0).attr("href");
+            console.log("Link:  " + link);
+	    var timed_link = link + "#t=" + match[1] + "m"+match[2]+"s"
+	    console.log("Timed Link: " + timed_link);
+	    $(this).attr("href", timed_link);
+	}
+    });
+
+     $(".expandable").prepend('<span class="down">&#x25BC;&nbsp;</span>' +
+                              '<span class="up">&#x25B6;&nbsp;</span>');
+
+   $(".expandable").each(function (index, element) {
+      var ul = $(this).find("ul");
+      var down = $(this).find(".down");
+      var up = $(this).find(".up");
+      ul.hide();
+      down.hide();
+      up.show();
+      $(this).click(function() {
+         console.log("Click!");
+         ul.toggle();
+         down.toggle();
+         up.toggle();
+      });
+
+
+   });
+
+
+};
+</script>
+</head>
+
+<body onload="makeLinks();">
+<!--
+<h1>Supplemental Videos</h1>
+
+<p>The videos below supplement my courses.</p>
+-->
+
+<h2>CIS 251: Computer Organization and Assembly Language</h2>
+
+<p><a
+href="https://www.youtube.com/playlist?list=PLhCl0ln3o55z3HXfnOvtqEQSw0f1qgAzQ">
+This playlist</a> contains all CIS 251 videos.</p>
+
+<p><a
+href="http://www.youtube.com/watch?v=RZW9sPhKW_Y">This video</a> shows how to play the videos at different
+speeds.  (In other words, this shows how to play the videos faster if
+you think I talk to slowly.)</p>
+
+
+<dl>
+ <dt><a href="http://www.youtube.com/watch?v=nZKutfEPm30">Video 1:
+  Introduction</a></dt>
+
+  <dd> <span class="description">An overview of the course, followed by a demonstration of
+    how to build the simplest possible "computer".  (Spoiler: The
+    "simplest possible computer" is a combinatorial circuit that is
+    implemented directly from a truth table.)</span>
+    
+  <div class="toc expandable">Table of Contents
+    <ul>
+      <li>Overview
+      <ul>
+	<li><a>"Big Picture" (1:00)</a></li>
+	<li><a>Organization vs. Architecture (1:17)</a></li>
+      </ul></li>
+      <li> Building a simple computer
+      <ul>
+	<li><a>Computational Model (1:53)</a></li>
+	<li><a>Motivation for Binary (2:30)</a></li>
+	<li><a>Truth Tables (5:32) </a></li>
+	<li><a>The "sufficiency" of AND, OR, and NOT (6:48) </a></li>
+	<li><a>Logic Gates (8:12) </a></li>
+	<li><a>Implementing a Truth Table (11:34) </a></li>
+      </ul></li>
+      <li><a>Simulating the "Is Prime" Circuit (14:02) </a></li>
+      <li><a>Programmable Logic Arrays (24:45) </a></li>
+      <li><a>The "Big Hammer" (25:15) </a></li>
+    </ul>
+  </div>
+
+<div class="supplements expandable">Supplemental Material
+  <ul>
+    <li><a href="http://www.cs.mtu.edu/~pop/jlsp/bin/JLS.html">JLS</a>
+    <li>Sample JLS files
+    <ul>
+      <li><a href="isPrime.jls"><code>isPrime.jls</code></a></li>
+      <li><a
+      href="circuit_design_pattern.jls"><code>circuit_design_pattern.jls</code></a></li>
+      <li><a href="simple_circuit_pattern_mult_out.jls"><code>simple_circuit_pattern_mult_out.jls</code></a></li>
+    </ul></li>
+    </ul>
+    </div>
+  
+  
+</dd>
+
+<dt><a href="https://www.youtube.com/watch?v=4xiAlX_ALJM">Video 2:  Building Logic Gates</a></dt>
+<dd>
+  <span>A simple technique for building logic gates using items found around
+  the house.  (Spoiler:  The logic gates are relay-based gates built
+  from batteries, springs, wires, and magnets.)</span>
+
+ <div class="toc expandable">Table of Contents
+   <ul>
+     <li><a>NOT Gate (0:31)</a></li>
+     <li><a>AND Gate (4:57)</a></li>
+     <li><a>OR Gate (6:11)</a></li>
+     <li><a>Relay (6:54)</a></li>
+     </ul>
+   </div>
+
+   <div class="supplements expandable">Supplemental Material
+     <ul>
+       <li>Derek Muller's <a href="https://www.youtube.com/watch?v=IcrBqCFLHIY">"How Does a Transistor Work"</a> </li>
+     </ul>
+   </div>
+</dd>
+
+<dt><a href="https://www.youtube.com/watch?v=W6FRAsHzqMQ">Video 3: How Many Switches?</a></dt>
+<dd>
+   <span>This 3 minute video discusses how many "switches" (i.e., input pins) a
+  circuit needs.</span>
+
+  <!--
+ <div class="toc expandable">Table of Contents
+   <ul>
+     <li>Item 1</li>
+     </ul>
+   </div>
+   -->
+</dd>
+
+
+<dt><a href="https://www.youtube.com/watch?v=vT9p2QnIycI">Video 4: Binary</a></dt>
+<dd>
+
+  <span>The "whys" and "hows" of binary.  This video not only shows
+  <em>how</em> to convert between binary and decimal, but also
+  discusses <em>why</em> we use binary, why binary works the way it
+  does, and why the conversion algorithms work.</span>
+ 
+ <div class="toc expandable">Table of Contents
+   <ul>
+     <li><a>Why do we need a standard encoding (1:16)</a></li>
+     <li><a>What makes an encoding "good"? (2:23)</a></li>
+     <li><a>Designing a good encoding (4:35)</a></li>
+     <li><a>Converting binary to decimal
+        <ul>
+	  <li><a>Mathematics (6:36)</a></li>
+	  <li><a>Mechanics (7:38)</a></li>
+	  </ul></li>
+      <li> Converting decimal to binary
+	  <ul>
+	    <li><a>Mechanics of the 'two-pass' algorithm (9:13)</a></li>
+	    <li><a>Mathematics of the 'one-pass' algorithm (12:10)</a></li>
+	    <li><a>Mechanics of the 'one-pass' algorithm (15:35)</a></li>
+     </ul>
+   </div>
+</dd>
+
+<dt><a href="https://www.youtube.com/watch?v=6plMoviKDs0">Video 5: Hexadecimal and Other Number Bases</a></dt>
+<dd>
+  <span class="description">Number bases other than 2 and 10, with a special focus on hexadecimal.</span>
+ 
+ <div class="toc expandable">Table of Contents
+   <ul>
+     <li><a>Binary to decimal review (0:50)</a></li>
+     <ul> Arbitrary base to decimal
+       <li><a>Base 7 to decimal (1:33)<a/></li>
+       <li><a>Base 6 to decimal (2:08)<a/></li>
+       <li><a>Base 36 to decimal (2:40)<a/></li>
+     </ul>
+     <li> Decimal to Binary review (3:43)</a></li>
+     <li> Generalize decimal to binary algorithm (5:08)</a></li>
+     <li> <a>Decimal to arbitrary base (6:32)</a>
+     <ul>
+       <li><a>Decimal to base 5 (7:34)</a></li>
+       <li><a>Decimal to base 6 (8:16)</a></li>
+     </ul>
+     <li><a>Hexadecimal (8:50)</a>
+     <ul>
+       <li><a> Hexadecimal to decimal (9:14)</a></li>
+       <li><a> Hexadecimal to binary (9:14)</a></li>
+       <li><a> Binary to hexadecimal (12:30)</a></li>
+       <li><a> Why use hexadecimal (12:53)</a></li>
+     </ul>
+   </ul>
+   </div>
+
+<div class="supplements expandable">Supplemental Material
+     <ul>
+       <li><a
+     href="http://www.flippybitandtheattackofthehexadecimalsfrombase16.com/">Flippy
+     bit:</a>
+     A game for practicing hexadecimal.
+       <li>Tom Lehrer's "<a
+     href="https://www.youtube.com/watch?v=UIKGV2cTgqA">New Math</a>"
+     (Start at the <a href="https://www.youtube.com/watch?v=UIKGV2cTgqA#t=02m30s">base 8 part</a>.)</li>
+     </ul>
+   </div>
+
+   
+   
+</dd>
+
+
+
+</dl>
+  
+
+<hr>
+<address></address>
+<!-- hhmts start -->Last modified: Sat May 17 21:37:06 EDT 2014 <!-- hhmts end -->
+</body> </html>

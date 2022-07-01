@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CIS 263 Homework 2 Tree Iterator</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .codeTable {
+      display: inline-block;
+      min-width: 250px;
+    }
+
+    .pad {
+      display: inline-block;
+      padding-right: 15px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 263</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Tree Iterator</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2019</h1></td>
+  </tr>
+</table>
+
+  <p>Please fill out this survey: <a href='https://rit.az1.qualtrics.com/jfe/form/SV_e8oGJ4NqeXgVblX'><code>rit.az1.qualtrics.com/jfe/form/SV_e8oGJ4NqeXgVblX</code></a></p>
+
+  <p>Use this GitHub Classroom link to get started: <a href='https://classroom.github.com/a/nzzZpIsq'><code>classroom.github.com/a/nzzZpIsq</code></a>.</p>
+
+  <h2>The challenge:</h2>
+
+  <p class="listHeader">Add iterators to the Binary Search Tree code from the Weiss text. Specifically, you will add
+    const and
+    "regular" iterator classes with the following public methods:</p>
+  <dl>
+    <dt><code>const_iterator</code></dt>
+    <dd>
+      <ul>
+        <li>Constructors as needed.</li>
+        <li><code>const_iterator& operator++()</code></li>
+        <li><code>bool operator==(const const_iterator &other) const</code></li>
+        <li><code>Comparable& retrieve() const</code>
+          <br><span class="pad">(Used by the various <code>operator*()</code> methods</span>
+        </li>
+      </ul>
+    </dd>
+    <dt><code>iterator</code></dt>
+    <dd>
+      <ul>
+        <li>Constructors as needed</li>
+        <li>(The other methods are already inherited from <code>const_iterator</code>.)</li>
+      </ul>
+    </dd>
+    <dt><code>BinarySearchTree</code></dt>
+    <dd>
+      <ul>
+        <li><code class="codeTable">const_iterator cbegin() const</code> <br><span class="pad"></span> Return a constant
+          iterator pointing to thesmallest node in the tree.
+        </li>
+        <li><code class="codeTable">const_iterator end() const</code><br><span class="pad"></span> Return a constant
+          iterator signifying the end.
+        </li>
+        <li><code class="codeTable">const_iterator cfind(const Comparable &item)
+          const </code><br><span class="pad"></span>Return a constant iterator pointing to the the node with value
+          <code>item</code>. If <code>item</code> does not appear in the tree, return the<code>cend</code>
+          pointer.</span></li>
+        <li><code class="codeTable">iterator begin()</code><br><span class="pad"></span> Return a "regular" iterator
+          pointing to the smallest node in the tree.
+        </li>
+        <li><code class="codeTable">iterator end()</code><br><span class="pad"></span> Return a "regular" iterator
+          signifying the end.
+        </li>
+        <li><code class="codeTable">iterator find(const Comparable &item) const </code><br><span class="pad"></span>
+          Return a "regular" iterator pointing to the the node with value <code>item</code>. If <code>item</code> does
+          not appear in the tree, return the<code>end</code> pointer.
+        </li>
+      </ul>
+    </dd>
+  </dl>
+
+  <h3>Rules</h3>
+
+  <p><b>Important:</b> You may not modify the <code>BinaryNode</code> structure. Your iterator must mantain all the
+    necessary data to navigate the tree. We don't want to add <code>previous</code>, <code>next</code>, and/or
+    <code>parent</code> pointers to the nodes, because that would add <code>O(n)</code> additional space to the tree.
+    Instead, your iterator need only maintain <code>O(h)</code> data, where <code>h</code> is the height of the tree.
+  </p>
+
+  <h3>Suggestions</h3>
+
+    <ul>
+      <li>Write (and test) the const iterator first. (You can run the tests for only the const iterator by passing
+        <code>"const*"</code> as a parameter to the test file.)
+      <li>Your "regular" iterator should inherit from your const iterator.  If you do this, you need only implement
+        the constructors. The other const iterator methods can be used without any changes.
+      </li>
+      <li>Sketch a variety of trees to use as test cases.</li>
+    </ul>
+
+  <h2>Submission and grading</h2>
+
+  <ul>
+    <li>Please make sure your name appears in all source code files.</li>
+  <li>Please fill out this survey (optional):
+      <a href='https://rit.az1.qualtrics.com/jfe/form/SV_e8oGJ4NqeXgVblX'><code>rit.az1.qualtrics.com/jfe/form/SV_e8oGJ4NqeXgVblX</code></a>
+    </li>
+    <li>Make sure all relevant code (including unit tests) is checked in to GitHub by the due date.</li>
+    <li>Unless you indicate otherwise, I will assume that the code to be graded is on the <code>master</code> branch.
+    </li>
+    <li>You are expected to fix and re-submit buggy code. Because your code will eventually be correct, your grade will
+      be based primarily on timeliness.
+    </li>
+  </ul>
+
+  <hr>
+  <p>Updated Friday, 15 November 2019, 7:26 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>

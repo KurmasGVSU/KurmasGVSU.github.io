@@ -1,0 +1,397 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="exceptions">Exceptions</h1>
+
+<ul>
+  <li>Look at <code>MotivateExceptions.java</code>.
+    <ul>
+      <li>This is a chain of simple methods that processes a data file.</li>
+      <li class="q">What should happen if a problem is detected at the very end of this chain?</li>
+      <li>Imagine trying to pass error information all the way up that call stack.</li>
+      <li>Each method would have to have an <code>if</code> statement checking for success.</li>
+      <li>Might even need a complex return type to store different error conditions.</li>
+    </ul>
+  </li>
+  <li class="q">What should a constructor do if there is a problem? (Remember, it doesn’t have a typical return value.)</li>
+  <li>Solution: Exceptions.</li>
+  <li>An exception is simply an object that describes a problem</li>
+  <li>When a problem is detected, you instantiate an exception object and <code>throw</code> it.</li>
+  <li>This object will propagate up the call stack until either:
+    <ul>
+      <li>Somebody <code>catch</code>es it and handles it, or</li>
+      <li>It gets passed up by <code>main</code> and the program crashes with a stack trace.</li>
+    </ul>
+  </li>
+  <li>This allows you to automatically pass problems up to the level where they can actually be handled.
+    <ul>
+      <li>And not have to explicitly touch them along the way.</li>
+    </ul>
+  </li>
+  <li class="to-do">
+    <p>Look at <code>MotivateExceptions2.java</code></p>
+  </li>
+  <li>Exceptions are organized into a hierarchy
+    <ul>
+      <li><img src="Images/exceptions1.png" alt="" width="650px" /></li>
+    </ul>
+  </li>
+  <li>The hierarchy allows you too look for problems at a variety of levels
+    <ul>
+      <li>e.g., do you want to see any errors at all, or just those involved with I/O?</li>
+      <li>e.g., do you want to see an I/O related errors, or just FileNotFound.</li>
+    </ul>
+  </li>
+  <li>Think about it as a hunting license.  Do you want a license for rabbit, mammals, or any animal?</li>
+</ul>
+
+<h2 id="checked-vs-unchecked-exceptions">Checked vs. Unchecked exceptions</h2>
+
+<ul>
+  <li>In it’s motherly attempt to be helpful, Java generally requires you acknowledge any potential exceptions by either
+    <ul>
+      <li><code>catch</code>ing them, or</li>
+      <li>putting a <code>throws</code> statement in the method signature.</li>
+    </ul>
+  </li>
+  <li>The <code>throws</code> clause is how the compiler knows to nag anybody using the method.</li>
+  <li>However: Some exceptions (e.g., <code>NullPointerException</code> or <code>IndexOutOfBounds</code> exceptions) could (but shouldn’t) happen at any time.
+    <ul>
+      <li>Effectively every method would need a <code>catch</code> or <code>throws</code> for these exceptions.</li>
+      <li>Therefore, these exceptions are excluded from the “acknowledge” rule.</li>
+    </ul>
+  </li>
+  <li>As a result, Java has two types of exceptions: Checked and Unchecked
+    <ul>
+      <li>Checked exceptions require acknowledgement (<code>catch</code> or <code>throws</code>)</li>
+      <li>Unchecked exceptions do not.</li>
+    </ul>
+  </li>
+  <li>This is implemented using inheritance:
+    <ul>
+      <li>Any Exception that is a descendant of the <code>RuntimeException</code> class is unchecked.</li>
+      <li>All other exceptions are checked.</li>
+    </ul>
+  </li>
+  <li>Notice that <code>Exception</code> implements the <code>Throwable</code> interface.</li>
+  <li>The other  class that implements <code>Throwable</code> is <code>Error</code>.
+    <ul>
+      <li>Errors are like exceptions; but are generally not recoverable.</li>
+      <li>They typically represent problems with the class loader or JVM that you can’t fix as the program is running (e.g., running out of memory)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="making-your-own-exceptions">Making your own exceptions</h2>
+
+<ul>
+  <li>Simply create a class that inherits from either <code>Exception</code> (if you want it checked) or <code>RuntimeException</code> (if you don’t).
+    <ul>
+      <li><code>Exception</code> provides a <code>String</code> instance variable.</li>
+      <li>Feel free to add your own additional instance variables if desired.</li>
+    </ul>
+  </li>
+  <li>See <code>InvoiceWithCustomException.java</code></li>
+  <li class="to-me">Look at my <code>Date163</code> solution.  Notice
+    <ul>
+      <li>Constructor throws <code>IllegalArgumentException</code> if date can’t be created.</li>
+      <li>I could have written a custom exception if I wanted more nuance in the cause of the problem.</li>
+      <li>Notice the catch and re-throw.</li>
+      <li>Notice that <code>NumberFormatException</code> is a subclass of <code>IllegalArgumentException</code>, so the catch and re-throw is technically unnecessary (except that I wanted to customize the error message).</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="misc">Misc.</h2>
+<ul>
+  <li>Remember:  A method stops executing when it hits a <code>throws</code> statement.  (The following lines of code don’t execute.)</li>
+  <li>If you have “clean up” code that should always run, you can put it in a <code>finally</code> block.</li>
+  <li>Avoid using exceptions when a simple <code>if</code> statement could avoid the problem.  For example,
+    <ul>
+      <li><code>if (x &lt; array.length&gt;)</code> is better than plowing ahead and catching the <code>ArrayIndexOutOfBoundsException</code>.</li>
+      <li>Likewise, I prefer checking to see if a file exists before trying to open it.</li>
+      <li>However, since files can get deleted while a program is running, you still need the try/catch block.</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

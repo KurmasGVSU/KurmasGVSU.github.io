@@ -1,0 +1,178 @@
+<!DOCTYPE HTML SYSTEM "http://www.cis.gvsu.edu/~kurmasz/HTML4-loose-kielce.dtd">
+<html>
+<head>
+  <script type="text/javascript" src="../kielce3.js"></script>
+    <title>Computer Instruction Types</title>
+
+    <style type="text/css">
+        img.center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table.hasBorder, table.hasBorder td, table.hasBorder th {
+            border: 1px solid gray;
+        }
+
+        ul, ol {
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .listHeader {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        code {
+            white-space: nowrap;
+        }
+
+    </style>
+</head>
+
+<body>
+<table style="border:  0; width: 100%">
+    <tr>
+        <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;" kkey="courseName"></h1></td>
+        <td style="width: 70%">
+            <h1 style="text-align: center">Lab <span kkey="labNumber.BranchPrediction"></span>:
+                Branch Prediction</h1></td>
+        <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap;" kkey="semesterName"></h1></td>
+    </tr>
+</table>
+
+<hr>
+
+<h3>Pre-lab</h3>
+
+<!-- <p>Hit the snooze button. Lab 1 runs from 8:20 to 9:50. Lab 2 runs from 10:00 to 11:30.</p>-->
+Please complete problems 1 and 2.
+
+<h3> Overview</h3>
+
+<p>The purpose of this lab is to observe branch predictors "in the wild". In other words,
+    your goal is to collect evidence that the branch predictor on your processor does, in fact, affect performance.</p>
+
+
+<h3>Design the trap</h3>
+
+<p>The first step is to design a pair of programs that will differ only in their interaction with the branch predictor.
+    This means that the <em>only</em> difference between the two programs should be the sequence of "taken/not-taken"
+    for
+    a specific branch. Designing such a program can be tricky.</p>
+
+
+<p>Download and examine <a href="observe_bp.c"><code>observe_bp.c</code></a>. This program first loads a
+    <code>boolean</code> array with a specific "taken/not-taken" sequence. It then measures how many
+    cycles elapse during the running of a loop containing a branch that depends on the array.</p>
+
+<p class="listHeader">Compile three versions of this program:</p>
+<ul>
+    <li><code>gcc -O0 -DTAKE_OR_NOT=true observe_bp.c -o never</code></li>
+    <li><code>gcc -O0 -DTAKE_OR_NOT=false observe_bp.c -o always</code></li>
+    <li><code>gcc -O0 -DTAKE_OR_NOT=which observe_bp.c -o random</code></li>
+</ul>
+
+<p class="listHeader">The <code>"-D"</code> flag allows us to set the value of the <code>TAKE_OR_NOT</code> macro from
+    the command line (and saves us the trouble of repeatedly editing the source file). The program <code>never</code>
+    never takes the branch in the loop, whereas the program <code>random</code> randomly takes the branch. Notice that
+</p>
+<ul>
+    <li>We initialize a <code>boolean</code> array instead of repeatedly calling <code>random</code> inside the code
+        we are timing.
+    </li>
+    <li>We call <code>random</code> in the "Array Initialization Loop" for all programs --- even those programs that
+        don't use the random value when initializing the array.
+    </li>
+
+</ul>
+
+<ol>
+    <li> Why is it important to call the <code>random</code> function in the <code>always</code> and <code>never</code>
+        programs, even though they don't actually use the random values?
+    </li>
+</ol>
+
+<p>Run the <code>never</code> program.</p>
+
+<ol start="2">
+    <li>Why does this program return a different time each time it is run?</li>
+</ol>
+
+<p>To reduce the "noise" in the system, run each program a few thousand times and take the average.
+    <a href="average_runs.rb">This Ruby script</a> will automate the process. Run
+    <code>ruby average_runs.rb command</code> where <code><em>command</em></code> is the same command you would type
+    on the command line to
+    execute the program (e.g., <code>./always</code>.)</p>
+
+<ol start="3">
+    <li>Run <code>always</code>, <code>never</code>, and <code>random</code> on an Intel i7 processor and report your
+        observations about the time.
+    </li>
+    <li>Explain how your observations indicate the presence of a branch predictor.</li>
+    <li>Run <code>always</code>, <code>never</code>, and <code>random</code> on an AMD processor and report your
+        findings. (I will provide instructions on how to access the
+    AMD during lab.)
+    </li>
+    <li>Explain how your results indicate that the AMD uses a different branch predictor.</li>
+</ol>
+
+<h3>More differences</h3>
+
+<p>As discussed in class, modern CPUs use quite complicated branch predictors that can detect complex patterns. Create a
+    new program based on <code>observe_bp.c</code> that will cycle through a <em>random</em> sequence of taken/not-taken of a given
+    length. A suboptimal way to do this would be to replace the line<br>
+    <code>if (values[i]) {</code><br>
+    with<br>
+    <code>if (values[i % pattern_length]) {</code><br>
+    However, you don't want the <code>mod</code> inside the code you are timing. Your program should generate the
+    desired pattern <em>outside</em> the timed loop.
+</p>
+
+<ol start="7">
+    <li>For both an Intel and AMD cpu, plot the change in time as the pattern length increases. Increase the pattern
+        length until the time levels off. There are several ways to do this. Here are my suggestions:
+        <ul>
+	  <li>Make sure <code>SIZE</code> is several times larger than your maximum pattern length.</li>
+	    <li>Make the pattern length a command-line parameter
+    (i.e., pass it on the command line and get the value from <code>atoi(argv[1])</code>).</li>
+            <li>Write a script to automate running, and data collection.  Here's a bash script that I've used:
+	      <pre>
+for ((i=25; i < 1500; i+= 25))
+do
+  echo -n "$i "  # the "-n" suppresses the newline
+  ruby average_runs.rb ./pattern $i --samples 2500
+done
+	      </pre>
+
+</li>
+            <li>Use <code>gnuplot</code> to generate your graphs. Simply create a text file with two numbers on each
+                line: the pattern length and the observed time. At the <code>gnuplot</code> prompt type <code>plot
+                    "<em>filename</em>" with linespoints</code> to display the graph.
+            </li>
+            <li>You may need to increase the number of samples in <code>average_runs.rb</code> to sufficiently reduce
+                noise.
+            </li>
+        </ul>
+    </li>
+    <li>Submit your code with your writeup.</li>
+</ol>
+
+
+<hr>
+<span kkey="validator"></span>
+
+<script type="text/javascript">
+    Kielce.run();
+</script>
+</body>
+</html>
+
+<!--- Have them try copying code into the data segment, then jumping there. -->

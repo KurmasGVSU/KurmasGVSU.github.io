@@ -1,0 +1,116 @@
+<html>
+<head>
+  <title>Simple Time</title>
+  <style>
+    .section {
+      padding-left: 30px;
+    }
+
+      h1 {
+        margin-bottom: 5px;
+      }
+  </style>
+</head>
+
+<body>
+<table style="border: 0; width: 100%">
+  <tr>
+    <td style="width: 25%">
+      <h1 style="text-align: left">CIS 162</h1>
+    </td>
+    <td style="width: 50%">
+      <h1 style="text-align: center">Lab 4: Simple Time</h1>
+    </td>
+    <td style="width: 25%">
+      <h1 style="text-align: right">Fall 2018</h1>
+    </td>
+  </tr>
+</table>
+
+
+<h1>Preparation</h1>
+<div class="section">
+  Read Sections 5.1 through 5.8
+</div>
+
+
+<h1>Objectives</h1>
+<div class="section">
+  <p class="listHeader">After completing this lab, you should be able to:
+  <ul>
+    <li>write a class definition</li>
+    <li>use conditional statements to solve problems</li>
+    <li>run JUnit tests to verify the correctness of your code</li>
+  </ul>
+</div>
+
+<h1>Code</h1>
+<div class="section">
+  <p>Write a new class that represents the time of day:</p>
+
+  <ul>
+    <li>Create a new project (don't just stuff this code in an existing project)</li>
+    <li>Create a new class called <code>SimpleTime</code> (It is important that you use the name
+      <code>SimpleTime</code>.)
+    </li>
+    .
+    <li>Define three private integer instance variables to hold the hours, minutes and seconds. This will be military
+      time where 0:00:00 is midnight and 13:30:00 is half past 1 pm.
+    </li>
+    <li>Implement the following methods. It is important that you name the methods exactly as shown below.
+      <ul>
+        <li><code>public SimpleTime(int h, int m, int s)</code> - this constructor initializes the three instance
+          variables
+        </li>
+        <li><code>public SimpleTime( )</code> - this default constructor initializes the three instance variables
+          midnight
+        </li>
+        <li><code>public boolean isMidnight( )</code> - return true if the current time is 0:00:00</li>
+        <li><code>public boolean isNoon( )</code> - return true if the current time is 12:00:00</li>
+        <li><code>public boolean isLunchTime( )</code> - return true if the current time is between 12:00:00 and
+          13:00:00
+          (inclusive)
+        </li>
+        <li><code>public String toString ( )</code> - use the three instance variables to build a String representation
+          of the time. For example, 14:12:56.
+        </li>
+        <li><code>public void increment ( )</code> - increases the current time by one second. Pay attention to end of
+          rollovers of seconds and minutes.
+        </li>
+      </ul>
+  </ul>
+
+  <p>As you complete each method, use BlueJ's object inspector to verify that your methods are correct.</p>
+
+  <p class="listHeader">When you have completed all the methods above,
+  <ul>
+    <li>download <code><a href='SimpleTimeTest.java'><code>SimpleTimeTest.java</code></a></code> and
+      add it to your project's folder.
+    </li>
+    <li>Compile all files in the project.</li>
+    <li>Go to <code>Tools =&gt; Testing =&gt; Run Tests</code> to run the unit tests.
+    <li>Correct any bugs identified by the unit tests. (You may find that some of the instructions above are
+      incomplete. Look at the source of the unit tests to determine the expected behavior. Examples can be easier to
+      understand that long, explanations. Therefore, some companies use unit tests to partially document their code.)
+    </li>
+  </ul>
+</div>
+
+<h1>Submission</h1>
+<div class="section">
+  <p class="listHeader">When your code passes all of the unit tests</p>
+  <ol>
+    <li>Print out your code. (One printout per team.)</li>
+    <li>Demonstrate to the instructor or lab assistant that your code passes all the unit tests.</li>
+    <li>The instructor or lab assistant will initial your printout</li>
+  </ol>
+</div>
+
+<h1>Challenge Problem</h1>
+<div class="section">
+  <p>Add this method <code>public int secondsElapsed(SimpleTime start)</code> that will calculate the number of seconds
+    that have elapsed between <code>start</code> and the time represented by the current object. Add test methods to
+    <code>SimpleTimeTest</code> to verify that your code is correct.</p>
+</div>
+</body>
+</html>

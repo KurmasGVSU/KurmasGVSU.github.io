@@ -1,0 +1,14 @@
+#> InputSetLoader: gvFormat.InputSetLoaderSimpleGVFormat
+
+# This file tests a basic half adder with one-bit inputs named "A" and
+# "B", and one-bit outputs named "Sum" and "Carry"
+
+BEGIN test1
+    INPUTS
+      A [0, 1]
+      B [0, 1]
+    OUTPUTS
+      Sum [0, 1, 1, 0 ]
+      Carry [0, 0, 0, 1 ]
+
+  

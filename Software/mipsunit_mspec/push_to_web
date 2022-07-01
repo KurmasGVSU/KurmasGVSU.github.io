@@ -1,0 +1,2 @@
+rsync -rRLzp * ~/Documents/Courses/CISWebpage/Software/mipsunit_mspec
+rsync -rRLzp * eos17.cis.gvsu.edu:/home/kurmasz/public_html/Software/mipsunit_mspec

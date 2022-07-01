@@ -1,0 +1,345 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>CIS 351 Computer Instruction Types</title>
+
+  <style type="text/css">
+    img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.hasBorder, table.hasBorder td, table.hasBorder th {
+      border: 1px solid gray;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+<table style="border:  0; width: 100%">
+  <tr>
+    <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;">CIS 351</h1></td>
+    <td style="width: 70%"><h1 style="text-align: center">Lab 6: Computer Instruction Types</h1></td>
+    <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap">Fall 2021</h1></td>
+  </tr>
+</table>
+
+<hr>
+
+<p>This lab is derived from a lab designed by <a target="_top" href="http://www.cis.gvsu.edu/~wolffe">Prof. Wolffe</a>.
+</p>
+
+<div class='important'>This lab is due <em>at the beginning of class</em> next Monday. You may prepare electronic <code>.pdf</code> submission if you prefer; but, make sure your 
+tables for problem 19 are neat, well-organized, and easy to follow.</div> 
+
+
+<!--
+<h3>Pre-lab</h3>
+
+<p>Have questions 1-5 complete when you arrive in lab.</p>
+-->
+
+<h3> Overview</h3>
+
+<p>In this lab, you will use MARS to examine the contents of
+  memory and CPU registers and to show the machine instructions
+  generated for each assembly language statement.
+</p>
+
+<h3 class="listHeader"> Resources</h3>
+<ul>
+
+  <li> You may want to refer to the <a href='https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/ReferenceDocuments/HP_AppA.pdf'>User's Guide to SPIM.</a>
+    (This is Appendix&nbsp;A on the Patterson and Hennessy textbook's companion CD.) It is written by the author of
+    <code>spim</code> and describes both <code>spim</code> and the MIPS instruction set. Much of the information is
+    relevant to MARS also. It is over 80 pages long, so do not print it all out in the EOS or arch labs.
+  </li>
+
+</ul>
+
+<!--
+<h3> Getting Started with MARS</h3>
+
+<p>Download the assembly program file named <code><a
+        href="exampleCIT-1.s">exampleCIT-1.s</a></code> (either cut and paste it or
+    use a right-click). Then, open it in MARS (File --&gt; Open, or click the
+    "Open a file for editing" button). This file is the minimal MIPS program.
+    There is an empty data portion; the code portion consists of
+    a <b><code>main</code></b> function that simply calls the <code>exit</code> system
+    call. Comments are given by the text on a line following
+    the <b><code>#</code></b>&nbsp;symbol.</p>
+
+<p>Notice the <code>Registers</code> display on the right. In this particular MIPS processor,
+    all registers hold 32-bits of data.&nbsp; Their current contents are printed in
+    hexadecimal.&nbsp; (Registers will be described in more detail in the
+    next section.) </p>
+
+<p>Click the <code>Assemble</code> button (the one with a screwdriver and wrench). In
+    the "Execute" window, you will see the contents of both the text (code)
+    and data segments of memory. <code>Mars</code> simulates a MIPS
+    processor with a single, 4GB, byte-addressable memory. This is in
+    contrast to the processor we are building in class which has separate
+    memories for instructions and data.</p>
+
+
+<p class="listHeader">The Text Segment window displays the
+    instructions.&nbsp; Each line contains 5 columns:
+<ul>
+
+    <li> Column 1 displays a checkbox for setting breakpoints.</li>
+
+    <li> Column 2 displays the address of an instruction in hexadecimal.</li>
+
+    <li> Column 3 displays the machine encoding of the
+        instruction in hex.
+
+    <li> Column 4 is a mnemonic description of the machine instruction.</li>
+
+    <li> Column 5 contains the assembly source that corresponds to the
+        instruction.
+    </li>
+</ul>
+
+-->
+
+<h3> MIPS R2000 Architecture</h3>
+
+<p>Let's take a closer look at the registers in this processor. The <code>PC</code> register is, of course, the Program
+  Counter. Upon loading a program, the PC will be initialized to the beginning of the text segment. (In other words, the
+  program counter holds the address of the first instruction to be executed.) Registers are designated either by their
+  number (<code>$r0..$r31</code>) or by their name (e.g. <code>$a0</code>, <code>$sp</code>). Register <code>$r0</code>
+  is hard-wired to always hold the value 0. Register <code>$at</code> is reserved for use by the assembler (it is often
+  used as an address register) and the <code>$k</code> registers are for the use of the operating system (kernel).
+  Registers <code>$v0</code>and <code>$v1</code> are used for system call argument passing and return and
+  <code>$a0..$a3</code> are used to pass arguments to functions. The "<code>t</code>" registers are for temporary
+  storage and the "<code>s</code>" registers are used for semi-permanent storage (across function calls). Finally, there
+  is the stack pointer <code>$sp</code>, the global pointer <code>$gp</code>, and the return address holder
+  <code>$ra</code>.</p>
+
+
+<p> Download, load, and assemble <code><a href="exampleCIT-2.s">exampleCIT-2.s</a></code>. This program simply declares
+  a variable named <b><code>val</code></b> and stores the value 42 in it. The <b><code>.word</code></b> directive
+  declares <b><code>val</code></b> to be an entire memory word in size. Knowing its value, you should now be able to
+  find where <b><code>val</code></b> is stored in memory (it will be located somewhere in the data segment). Recall that
+  all values are in hexadecimal. </p>
+
+<ol start="1">
+
+  <li> What is the address of the first instruction that will be executed when running the program?</li>
+
+  <li> Where did you find this information?</li>
+
+  <li> Which memory locations contain the value for the
+    variable <code>val</code>?
+  </li>
+
+  <li> Diagram and label a process' address space in <code>Mars</code>. By
+    this, I mean, draw a column labeled <code>0x00000000</code> at the bottom and
+    <code>0xffffffff</code> at the top. Then, show which portions of
+    this address space are used used for instructions, user data, the
+    stack, kernel data, etc. Hint: You will have to look in different MARS windows to find these different areas.
+    Also, the stack grows "down", meaning that
+    each data item added to the stack has a smaller address than the
+    previous item.
+  </li>
+
+  <li> What is the maximum program size for this
+    configuration? (In other words, how many instructions can your program have before
+    they overflow into data memory?)
+  </li>
+
+</ol>
+
+<h3> Running a Program</h3>
+
+<p>Load and compile <code><a href="exampleCIT-3.s">exampleCIT-3.s</a></code>
+  file. The <b><code>run</code></b> button will cause execution of your
+  program.&nbsp; However, you will usually want to step through you
+  program one instruction at a time - to do this use the <b><code>step</code></b>
+  button (an arrow with a "1" on it). Watch the value of the Program
+  Counter as you step through the code.</p>
+
+
+<h3>Examining instructions</h3>
+
+<p>Closely examine the instructions corresponding to source code lines 10 through 13. Normally, each assembly language
+  instruction corresponds to one machine-language instruction. In this case, the second <code>addi</code> and the two
+  <code>lw</code> assembly instructions are broken into multiple machine-language instructions. In the case of the
+  <code>lw</code>, the first instruction (<code>lui</code>) loads a value into register
+  <code>$1</code> (the<code>(at)</code> register - recall its use).&nbsp; The second instruction actually performs the
+  desired data transfer.</p>
+
+<ol start="6">
+
+  <li> What lines of machine language does the <code>addi</code> pseudo-instruction on line 11 produce?</li>
+
+  <li> What does "<code>lui</code>" stand for? (Hint: Look on page
+    A-57 in the SPIM guide.)
+  </li>
+
+  <li>Why do the two <code>addi</code> instructions result in different numbers of actual instructions? (Hint:
+    Write each constant out in hex.)
+  </li>
+
+  <li> Explain how the MIPS assembler applies the "Make the common case
+    fast" principle to <code>addi</code>.
+
+
+  <li> What is the hex representation of the "immediate" parameter to
+    the <code>lui</code> instruction generated for line 12?
+  </li>
+
+  <li> Why is this the immediate value that is used (i.e., what does it represent)? Hint: Look in the Data Segment
+    window.
+  </li>
+
+  <li> Now, look at the second machine instruction generated for line
+    12 (the first <code>lw</code> instruction). Notice that this instruction
+    has three parameters. Describe the function of all three
+    parameters. (Hint: Examine the machine language generated for lines
+    13 and 15 as well as the description of <code>lw</code> on page A-67.)
+  </li>
+
+  <li> Are all three parameters necessary in order
+    for <code>lw</code> to be able to access the entire 4GB memory
+    space; or, could you eliminate the offset parameter? (Imagine
+    a hypothetical <code>lw</code> instruction that did not have
+    an offset parameter. Would there be memory locations that
+    could not be accessed using this
+    hypothetical <code>lw</code>?) If so, give an example. If not,
+    give a sequence of machine instructions that could be used to
+    load <code>val2</code> into <code>$t1</code> with a
+    2-parameter version of <code>lw</code>.
+  </li>
+
+  <li> Explain why the three-parameter version of <code>lw</code> is
+    useful. Include an explanation of how can it be used to "make the
+    common case fast." (In other words, how it can be used to reduce the
+    number of instructions needed by the program.) (Hint: Look for
+    redundant code in the execute window for <code>exampleCIT-3.s</code>.)
+  </li>
+
+  <li> Explain the cost of the three-parameter version
+    of <code>lw</code>. In particular, include an explanation of
+    how the third (i.e., offset) parameter can potentially slow
+    the computer (as compared to the hypothetical
+    two-parameter <code>lw</code>).
+  </li>
+
+</ol>
+
+
+<p>Now, load <code><a href="add_xy.s">add_xy.s</A></code>, which requests two
+  integers from the user and prints their sum. Run and review this code
+  until you remember / learn how it works. The system calls for
+  performing I/O are discussed on page A-43 of the SPIM guide.</p>
+
+<ol start=16>
+
+  <li> How is the <code>li</code> pseudo-instruction implemented? In other words, which "real" instructions are used to
+    implement the <code>li</code> pseudo-instruction? (Remember, register 0 always contains the value 0.)
+  </li>
+
+
+  <li> How does MIPS implement the <code>move</code> pseudo-instruction?</li>
+
+
+  <li> Would a built-in <code>move</code> be faster than the MIPS
+    implementation? Why or why not? Consider the effects on both the
+    time for the individual instruction, and the overall speed of the
+    processor.
+  </li>
+
+</ol>
+
+<h3>Instruction formats</h3>
+
+
+<ol start=19>
+
+  <li>For each instruction in <code>add_xy.s</code> marked with a "*" in the
+    comment (17, 18, 29, 30, 41, 42, and 72) complete a table showing how the
+    assembly-language instruction is mapped into a machine-language
+    instruction. For pseudo-instructions, create one table for each
+    machine instruction produced by the assembler. You may use <a href="l4q19.pdf">this template</a> for your
+    tables. You may find <a href="http://www.cburch.com/cs/330/reading/mips-ref.pdf">this reference card</a> helpful.
+    Use the example below as a model:
+
+    <table class="hasBorder">
+      <tr>
+        <td>Assembly instruction</td>
+        <td colspan=6> add $s2, $s0, $s1</td>
+      </tr>
+      <tr>
+        <td>Machine instruction (hex)</td>
+        <td colspan=6>0x02119020</td>
+      </tr>
+      <tr>
+        <TD>Machine instruction (binary)</td>
+        <TD>000000</td>
+        <TD>10000</td>
+        <TD>10001</td>
+        <TD>10010</td>
+        <td>00000</td>
+        <td>100000</td>
+      </tr>
+      <tr>
+        <td>Instruction field (decimal)</td>
+        <td>0</td>
+        <td>16</td>
+        <td>17</td>
+        <td>18</td>
+        <td>0</td>
+        <td>32</td>
+      </tr>
+      <tr>
+        <td>Field function</td>
+        <td>opcode</td>
+        <td>rs</td>
+        <td>rt</td>
+        <td>rd</td>
+        <td>unused</td>
+        <td>function</td>
+      </tr>
+    </table>
+
+
+  </li>
+  <li> Why does the <code>la</code> pseudo-instruction in line 17 generate two assembly instructions while the
+    <code>li</code> pseudo instruction in line 18 generates only one?
+  </li>
+  <li>What is the value of the immediate parameter for the <code>beq</code> instruction on line 30?</li>
+  <li>Where does this number come from (i.e., how does the assembler calculate it)?</li>
+  <li>What is the value of the immediate parameter for the <code>j</code> instruction on line 72? Be careful,
+    you need to look at the actual hex value of the instruction, not the number in the "Basic" column.
+  </li>
+  <li>Where does this number come from (i.e., how does the assembler calculate it)?</li>
+</ol>
+
+<p>Submit the answers to questions 1 through 24.</p>
+
+<hr>
+<p>Updated Tuesday, 19 October 2021, 1:15 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+
+</body>
+</html>
+
+<!--- Have them try copying code into the data segment, then jumping there. -->

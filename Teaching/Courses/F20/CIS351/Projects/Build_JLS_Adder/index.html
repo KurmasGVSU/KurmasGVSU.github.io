@@ -1,0 +1,523 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Project 1: Build an Adder</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    th {
+      text-align: left;
+      padding-right: 15px;
+    }
+
+    table.componentDescription td {
+      vertical-align: top;
+      text-align: left;
+    }
+
+    table.grading td {
+      padding-right: 15px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Project 1: Build an Adder</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2020</h1></td>
+  </tr>
+</table>
+
+
+<p>
+  For this project, you will use JLS to implement a <em>signed</em> adder.</p>
+
+
+
+<p>You are strongly encouraged to work in teams of two.</p>
+
+<p>Begin by following <a href='https://classroom.github.com/g/-b7cGY_1'>this GitHub Classroom link</a> 
+to create the repository for this project.  You may want to copy your unsigned adder from the lab 
+into this new repo.</p>
+
+<h2>Task</h2>
+
+<p>Implement a 16-bit <em>signed</em> adder using any algorithm you
+  wish, provided the circuit has a reasonable running time and size.
+  Faster adders will receive more points. (See <a href="#Grading">Grading</a>
+  section below.) Your adder must report overflow conditions when they
+  occur (with respect to signed inputs).
+  Notice that this circuit must have an input named <code>CarryIn</code>.
+  You will use this input for future projects.</p>
+
+
+<p>The starter code contains a file named <code>SignedAdder_16bit.jls</code>.  You must place your solution 
+in this file.  Do <em>not</em> change the names of any of the inputs or outputs.  (If you change the filename
+or the names of any inputs/outputs, the automated tests will not work.))
+
+<p><code>CarryOut</code> is the carry out from the last full adder. It is also,
+  in effect, the overflow indicator for <em>unsigned</em> inputs. <code>Overflow</code> is the overflow
+  indicator for <em>signed</em> inputs. Remember, <code>CarryOut</code> and <code>Overflow</code> will not
+  necessarily have the same value.</p>
+
+<p>You may use <a href='SampleSigned16BitAdderTest.java'><code>SampleSigned16BitAdderTest.java</code></a> as a basis for your own tests. <b>Warning!</b> This
+  test file is incomplete. Don't assume that a circuit that passes this sample test will pass all of my tests.
+
+<h2 class="listHeader">Rules</h2>
+
+<ol>
+  <li>You are strongly encouraged to work in groups of <b>two</b>. You may work alone only <em>with permission of the
+    instructor</em>.
+  </li>
+
+  <li>You may use your unsigned adder from the lab.</li>
+
+  <li>The simulator comes with a built-in adder. You may <em>not</em> use
+    the built-in adder.
+  </li>
+  <li>To build the required circuits, you will probably find it useful to
+    design and build several subcircuits. These subcircuits may have any
+    interface you choose; however, you are responsible for testing them.
+  </li>
+  <li>You must write all of your own chips. In other words, you may not
+    share "internal" chips with your classmates, or download them off the
+    Internet.
+  </li>
+  <li>Be sure to test your components thoroughly. Just because it passes
+    the test included here doesn't mean it will pass <em>my</em> test.
+  </li>
+</ol>
+
+
+<h2 class="listHeader">Hints and shortcuts</h2>
+
+<ul>
+  <li>Remember, JLS inserts the code for sub-circuits directly into the
+    circuits into which they are imported. Thus, changes to sub-circuits
+    are not seen by the circuits that contain them. If you discover a bug
+    in a sub-circuit, you must delete and re-import that sub-circuit into
+    the parent. (Again, test your subcircuits thoroughly before importing
+    them!)
+  </li>
+
+  <li>Remember that no software is perfect. This includes <code>JLS</code>
+    and <code>DLUnit</code>. Commit and push your code often.  That way, if JLS does crash
+    you won't lose too much work. Also, please e-mail me with any bugs you
+    find or feature requests you have. If JLS crashes, please e-mail me the
+    <code>JLSerror</code> file.
+  </li>
+</ul>
+
+<h2><a id="Grading">Grading</a></h2>
+
+<p>This assignment will be scored out of 100 points.</p>
+
+<table class="grading">
+  <tr>
+    <th>Category</th>
+    <th>Rubric</th>
+    <th>Maximum Score</th>
+  </tr>
+
+  <tr>
+    <td>Functionality</td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>
+    <td>Not attempted</td>
+    <td>0</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>Substantially complete, but passes no tests</td>
+    <td>15</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>Passes a few tests</td>
+    <td>25</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>Correctly adds positive integers only</td>
+    <td>45</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>Correctly adds positive and negative integers <br>
+      (but overflow does not work correctly)
+    </td>
+    <td>55</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>Passes all tests</td>
+    <td>65</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>Date 100% correct</td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>Two days early</td>
+    <td>12</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>One day early</td>
+    <td>11</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>On time</td>
+    <td>10</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>One day late</td>
+    <td>8</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>(-2 per day)</td>
+    <td>...</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>Five or more days late</td>
+    <td>0</td>
+  </tr>
+
+
+  <tr>
+    <td>Date <code>output</code> correct</td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>On time</td>
+    <td>10</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>One day late</td>
+    <td>8</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>(-2 per day)</td>
+    <td>...</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>Five or more days late</td>
+    <td>0</td>
+
+  </tr>
+
+
+  <tr>
+    <td>Speed</td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>&le; 75</td>
+    <td>9</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>&le; 125</td>
+    <td>8</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>&le; 175</td>
+    <td>7</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>&le; 225</td>
+    <td>6</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>&le; 275</td>
+    <td>5</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>&le; 300</td>
+    <td>3</td>
+
+  <tr>
+    <td></td>
+    <td>> 300</td>
+    <td>0</td>
+
+  </tr>
+
+  <tr>
+    <td>Presentation</td>
+    <td></td>
+    <td></td>
+  </tr>
+
+
+  <tr>
+    <td></td>
+    <td>Size and Speed<sup>*</sup></td>
+    <td>5</td>
+  </tr>
+
+</table>
+
+<p><sup>*</sup>For 5 points, correctly specify the exact number of gates used
+  by your adder (the total number of gates, including all
+  sub-circuits) and the time required by your adder (i.e., the sum
+  of all the gate delays along the critical path).
+
+<p>
+
+
+<p class="listHeader">Penalties</p>
+<ul>
+
+  <li>You will loose points if your circuits are not neat and well-documented.</li>
+
+</ul>
+
+<h2>Deliverables</h2>
+
+<p class="listHeader">To submit your project:</p>
+
+<ol>
+  <li>Add a text box to your <code>jls</code> files that includes the names of all team members.
+    </ul>
+
+   <li>
+    Your adder should also include a label indicating time and gate count.
+    The time should be the maximum simulation needed for any addition.
+    (I'm looking for an actual number, not a big-O expression.)
+  </li>
+
+  <li>When your adder passes the automated tests, and contains the time/size information, push 
+  your project with <code>[Grade Me]</code> in the commit message.</li>
+</ol>
+
+<hr>
+<p>Updated Sunday, 20 September 2020, 5:47 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>
+

@@ -1,0 +1,478 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  
+<h1 id="references">References</h1>
+
+<ul>
+  <li>We’re going to take some time to think very carefully about how variables are stored in memory.</li>
+  <li>Most of the time, we don’t have to worry about what is happening under the hood; but, occasionally, strange things happen, and the only way to debug your code is to have a solid metal model of what’s <em>really</em> going on.</li>
+  <li>Imagine Memory (RAM) as a really big array.
+    <ul>
+      <li>If you have 8GB of RAM, its as if your array has a billion slots (each slot is 8 bytes on a 64 bit machine).</li>
+    </ul>
+  </li>
+  <li>When you declare a variable (e.g., <code>int x</code>), Java labels one of those slots as <code>x</code>.</li>
+  <li>Once a variable is declared, referencing that variable again gets the data from the memory slot.
+    <ul>
+      <li><code>x = 17</code> put the data into RAM.</li>
+      <li><code>z = x</code> read the data from the memory slot.</li>
+    </ul>
+  </li>
+  <li>Notice that an assignment is just copying data from one box to another.</li>
+  <li>When we add expressions, we just manipulate the data before we put it in its new box (<code>z = x + 15</code>)</li>
+  <li>
+    <p>Notice that <code>int x = 17</code> actually does two separate steps:  <em>Declares</em> the variable (i.e., allocate a memory spot), and <em>initializes</em> the variable (i.e., gives it its initial value).</p>
+  </li>
+  <li>When you call a method, data is “passed by value”</li>
+  <li>
+    <p>Consider</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>When you call <code>add(5, 7)</code>
+    <ul>
+      <li>new variables <code>a</code> and <code>b</code> are declared (i.e., new spots in memory are labeled <code>a</code> and <code>b</code>)</li>
+      <li>then, they are initialized by position (5 goes to <code>a</code> and 7 goes to <code>b</code>)</li>
+    </ul>
+  </li>
+  <li>Similarly, when you call <code>add(x, y)</code>
+    <ul>
+      <li>new variables <code>a</code> and <code>b</code> are declared (i.e., new spots in memory are labeled <code>a</code> and <code>b</code>)</li>
+      <li>the values in the boxes for <code>x</code> and <code>y</code> are copied into the boxes for <code>a</code> and <code>b</code></li>
+    </ul>
+  </li>
+  <li>Check out <code>Primitive.java</code> in <a href="https://github.com/kurmasz-SampleCode/CIS163-SampleCode">https://github.com/kurmasz-SampleCode/CIS163-SampleCode</a></li>
+  <li class="to-me">Point out that referencing uninitialized values is a syntax error.</li>
+  <li>Look at <code>subtract</code> and remember that parameters are always passed by position.
+    <ul>
+      <li>Step through the first couple sections of <code>main</code></li>
+      <li class="to-me">Highlight the use of the debugger
+        <ul>
+          <li>Setting breakpoints</li>
+          <li>Examining local variables</li>
+          <li>Examining variables in other scopes</li>
+          <li>Step in vs. step over</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Because the values are copied, changes to the variable inside the method don’t affect the 
+ variable outside the method.
+    <ul>
+      <li class="to-me">Step through <code>method1</code> in <code>Primitive.java</code></li>
+    </ul>
+  </li>
+  <li>This is true, even if the formal parameter and actual parameter have the same name.
+    <ul>
+      <li>: .to-me} Step through <code>method2</code> in <code>Primitive.java</code></li>
+    </ul>
+  </li>
+  <li>Like humans, variables have “first names” and “full names”.
+    <ul>
+      <li><code>y</code> is like a first name.  Just as each family can have a “John”, each method can have it’s own <code>y</code>.</li>
+      <li>Inside the method, <code>y</code> refers to the local variable <code>y</code>, not whichever <code>y</code> may exist elsewhere.</li>
+    </ul>
+  </li>
+  <li>Remember: Changes to a local variable remain local!</li>
+</ul>
+
+<h2 id="primitive-data-vs-objects">Primitive data vs. objects</h2>
+
+<ul>
+  <li>There are two types of data in Java: <em>primitive</em> data and <em>Objects</em>
+    <ul>
+      <li>Primitive data includes <code>int</code>, <code>long</code>, <code>char</code>, <code>float</code>, <code>double</code>, <code>boolean</code>.</li>
+      <li>They are called “primitive” because they consist of just one datum, and you can’t call methods on them.</li>
+      <li>Objects are defined by a class, instantiated with <code>new</code> and have methods.</li>
+      <li>They are not primitive, because they (usually) consist of several components (i.e., instance variables)</li>
+    </ul>
+  </li>
+  <li>Primitive data is stored directly in the slot of RAM identified by its variable.</li>
+  <li>Objects variables are <em>references</em>:  They refer to the place in memory that actually contains the object.
+    <ul>
+      <li>Think of an object’s variable as a “phone number” that tells you how to reach the object.</li>
+    </ul>
+  </li>
+  <li>Objects don’t exist until you specifically create them using <code>new</code>.</li>
+  <li class="to-me">
+    <p>Draw a diagram showing memory at each step of</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Date</span> <span class="n">d</span><span class="o">;</span>
+<span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">1945</span><span class="o">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Notice that when we say <code>Date d = new Date(1, 2, 1934)</code> we are actually combining four steps
+    <ol>
+      <li>Declaring the variable (which creates the reference)</li>
+      <li>Instantiating the object (that’s what <code>new</code> does)</li>
+      <li>Running the constructor (giving initial values to the instance variables)</li>
+      <li>Assigning a value to the variable.</li>
+    </ol>
+  </li>
+  <li>This difference between primitive data and objects is important to understand because it can cause 
+subtle, unexpected differences in behavior.</li>
+  <li>Step through <code>ReferenceExamples1#nullPointer</code>
+    <ul>
+      <li>Object references also must be initialized to something.
+        <ul>
+          <li>Uninitialized is not the same thing as <code>null</code>.</li>
+        </ul>
+      </li>
+      <li>A null variable does have a value:  <code>null</code></li>
+      <li>If you call a method on a <code>null</code> variable, you get a <code>NullPointerException</code>:  There is no object to call the instance method on.</li>
+    </ul>
+  </li>
+  <li>Step through <code>ReferenceExamples1#assignRefs</code>
+    <ul>
+      <li>The assignment statement (<code>=</code>) copies the value in one box to another.</li>
+      <li>Since the data in the box is not the object, but just a reference, it is only the reference that is copied.</li>
+      <li>As a result, the object now effectively has two names (<code>point1</code> and <code>point3</code>)</li>
+      <li>Think of it like this:  When you write down a repair man’s phone number and give it to a friend, you aren’t copying the repair man.</li>
+      <li>Remember, changes seen through one reference are also visible through the other.</li>
+      <li>If your friend calls the repair man and books an appointment at 9:00 a.m., then you call the next day, you will find that the 9:00 slot is unavailable.  This makes sense because you are calling the same repair man.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="passing-refs-as-parameters">Passing refs as parameters</h3>
+<ul>
+  <li>Think about what happens when you pass a reference as a parameter to a method.</li>
+  <li>Just as with primitive data,
+    <ol>
+      <li>A variable (i.e., “box in RAM”) is created for each parameter.</li>
+      <li>The value for the actual parameter is copied into the formal parameter. 
+This copying is just like setting <code>point3 = point</code> in the previous example:  You now have two different variables that refer to the same object.</li>
+    </ol>
+  </li>
+  <li>As a result, an object passed to a method can be modified by the method.</li>
+  <li>Think carefully about this distinction: The variables are being treated the same way; but, the indirection causes a different behavior to be observed for objects.</li>
+  <li>We say that primitive data is passed “by value” while objects are passed “by reference”.</li>
+  <li>Look at <code>ReferenceExamples1#refsAsParams</code></li>
+  <li>Note however:  Only the object at the end of the reference can be changed.  The reference itself cannot (for the same reason you can’t modify primitive data)</li>
+  <li>Look at <code>ReferenceExamples1#refsAsParams2</code></li>
+</ul>
+
+<p class="to-me">Switch to lab.</p>
+
+<h3 id="vs-equals">== vs .equals</h3>
+
+<ul>
+  <li>Understanding refs allows us to better understand the difference between <code>==</code> and 
+<code>.equals</code></li>
+  <li><code>==</code> compares the value of the two variables.  In other words, just compares the data in the “box” in RAM.
+    <ul>
+      <li>Thus, <code>==</code> asks “Are these the same object?” or “Are these two names for the same object?”</li>
+    </ul>
+  </li>
+  <li><code>.equals</code> looks at the instance data and asks whether the two objects represent the same item (same Date, same Car, sameStudent, etc.)</li>
+  <li>Step through <code>ReferenceExamples1#compareRefs</code></li>
+  <li>Beware of <code>String</code>s.
+    <ul>
+      <li>String literals (e.g., <code>"Foo"</code>) all refer to the same object “under the hood”.</li>
+      <li>Therefore, you can sometimes get away with using <code>==</code> when you should be using <code>.equals</code>.</li>
+      <li>However, your code will beak if the code ever changes such that one of the objects is no longer a literal (e.g., comes from a file or the keyboard.)</li>
+    </ul>
+  </li>
+  <li>Step through <code>ReferenceExamples1#compareStringRefs</code></li>
+</ul>
+
+<h3 id="copying">Copying</h3>
+
+<ul>
+  <li>What should you do if you want two separate copies of an object:</li>
+  <li>Option 1:  Write a copy constructor
+    <ul>
+      <li>This is just a constructor that takes an object of the same type as a parameter.</li>
+    </ul>
+  </li>
+  <li>Option 2: Implement a <code>clone</code> method.
+    <ul>
+      <li>This comes with a lot of “baggage”.  Avoid it unless you really need it.</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

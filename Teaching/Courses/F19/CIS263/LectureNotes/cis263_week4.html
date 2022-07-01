@@ -1,0 +1,257 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="gvsu-cis-263">GVSU CIS 263</h1>
+
+<h2 id="week-4--day-1">Week 4 / Day 1</h2>
+
+<h2 id="lower-bound-on-sort">Lower bound on Sort</h2>
+
+<ul>
+  <li>We have <code>O(n^2)</code> sorts and <code>O(n log n)</code> sorts.  <span class="question">Can we do better?</span></li>
+  <li>Imagine an arbitrary sorting problem:  Four numbered boxes; but you don’t know what’s inside.</li>
+  <li>The job of a sorting algorithm is to choose one of the <code>4! = 24</code> permutations.</li>
+  <li>Each time we compare two numbers (look in a pair of boxes), at best we can eliminate 1/2 of the remaining 
+permutations.
+    <ul>
+      <li class="question">What is the minimum number of comparisons that will guarantee any arbitrary list is sorted?
+        <ul>
+          <li><code>log(n!)</code></li>
+          <li><code>log(n!) = log((n)(n-1)(n-2)(n-3)...(3)(2)(1)) = log(n) + log(n-1) + log(n-2) + log(n-3) + ...</code></li>
+          <li><code>log(n!) &lt; n log(n)</code></li>
+          <li>However, <code>log(n!) &gt; n/2 * log(n/2) = 1/2 (log n - log 1/2)</code> which is <code>O(log n)</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="question">What is a radix sort?</li>
+  <li class="question">What is the running time?</li>
+  <li class="question">Why doesn’t that contradict the result above?</li>
+  <li class="question">When can you use a radix sort?</li>
+  <li class="question">When can’t you use a radix sort?</li>
+</ul>
+
+<h2 id="hash-table">Hash Table</h2>
+
+<ul>
+  <li>Arrays are nice because they are generally fast and simple.</li>
+  <li>Suppose you want to store one record (struct, object) for each GVSU student.
+    <ul>
+      <li class="question">Is an array a good tool for this task?  Why or why not?
+        <ul>
+          <li>What would the index be?  G#?  There are 100 million of them.  That’s a pretty big array for 25,000 records.</li>
+        </ul>
+      </li>
+      <li class="question">How could you use less space?</li>
+      <li class="question">What is potential problem with <code>G# mod 25,000</code>?
+        <ul>
+          <li>Collisions</li>
+        </ul>
+      </li>
+      <li>Before we talk more about collisions, <span class="question">When might mod be a bad hash function?</span>
+        <ul>
+          <li>Suppose you are hashing home prices?  (They all end with $1000)</li>
+          <li class="question">What is the benefit of making table size prime?</li>
+        </ul>
+      </li>
+      <li>Suppose you don’t have a handy integer for your key.  Suppose your key is a string (e.g., name, address, 
+book title)
+        <ul>
+          <li>For context, say you have a table with 10,007 slots. (10,007 is prime) and strings are typically of length 8 
+ or less.</li>
+          <li class="question">What about simply adding the ASCII values in the string?
+            <ul>
+              <li>Numbers don’t get big enough.  <code>127*8 is only 1,016</code></li>
+            </ul>
+          </li>
+          <li class="question">How about treating first three letters as a “base 26” number?<br />
+`char(0) + 27*char(1) + 27*27*char(2)?
+            <ul>
+              <li>Not a good distribution.  Only 2,851 different three letter combinations in the dictionary.</li>
+              <li><code>char(0) + 37\*char(1) + 37^2\*char(2) + .. % table_size</code> does better.</li>
+              <li>Not great, but decent and simple.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Chaining – each bucket is the head of a list.
+    <ul>
+      <li class="question">What is the worst-case run time for a lookup on a table filled with random data?
+        <ul>
+          <li><code>O(N)</code>: All to the same bucket</li>
+        </ul>
+      </li>
+      <li class="question">What is the average case?</li>
+      <li>Load factor (number of elements relative to table size) <code>lambda</code> is important.</li>
+      <li class="question">What is the average case run time given random data and load factor <code>lambda</code>?
+        <ul>
+          <li class="question">What is average list length?
+            <ul>
+              <li><code>lambda</code></li>
+            </ul>
+          </li>
+          <li class="question">What is average number of searches?
+            <ul>
+              <li><code>1 + lambda / 2</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="question">What is the downside of chaining?
+        <ul>
+          <li>Linked lists have overhead, node creation, etc.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Linear probing
+    <ul>
+      <li>Find the next unused slot in the array itself.</li>
+      <li>Expected lookups for successful searches:  <code>1/2(1 + 1/(1-lambda))</code></li>
+      <li class="question">What is expected lookup when lambda = .5? .8? .9?  1.0_?</li>
+      <li>Expected lookups for unsuccessful searches:  <code>1/2(1 + 1/(1-lambda))</code></li>
+      <li>Expected worst case:  If you randomly put N balls into N bins, on average, the bin with the most balls will 
+have <code>log(N) / log(log(N))</code> balls.
+        <ul>
+          <li><span class="question">How many balls is this when N = 1,000,000?</span>  5.26</li>
+          <li><span class="question">How many balls is this when N = 1,000,000,000,000 (a trillion)?</span>  8.32</li>
+        </ul>
+      </li>
+      <li class="question">What is the downside?
+        <ul>
+          <li>Clusters</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Quadratic probing
+    <ul>
+      <li>Use some quadratic function <code>f(i)</code> to determine where to look on attempt <code>i</code>
+        <ul>
+          <li>Can be as simple as <code>f(i) = hash(x) + i^2</code></li>
+          <li>zyBooks uses the more general <code>f(i) = hash(x) + c_1*i + c_2*i^2</code></li>
+        </ul>
+      </li>
+      <li class="question">What is a fast way of computing <code>(i+1)^2</code> given <code>i^2</code>?
+        <ul>
+          <li>Look at the difference.</li>
+        </ul>
+      </li>
+      <li>Once <code>lambda</code> reaches .5, it may not be possible to find a spot – even though table isn’t full.
+        <ul>
+          <li>Applies to <code>f(i) = i^2</code> only.  The more general function may have an even lower threshold.</li>
+          <li>Assume <code>(i^2 -j^2)= (i+j)(i-j) = pk</code> (where <code>p</code> is a prime table size, and <code>k</code> is some integer multiple)</li>
+          <li>This can only happen when either <code>(i+j) = 0</code>, <code>(i -j) = 0</code>, or the prime factorization of the product contains 
+<code>p</code>, which is impossible since <code>i</code>, and <code>j</code> are less than <code>p/2</code>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Double hashing
+    <ul>
+      <li><code>f(i) = h1(x) + i*h2(x) </code></li>
+    </ul>
+  </li>
+  <li>Perfect Hashing
+    <ul>
+      <li>Guarantee worst-case <code>O(1)</code> lookup, if you rebuild table as necessary while building it.</li>
+      <li>As number of rows (<code>M</code>) grows, probability of multiple items in a row decreases.</li>
+      <li>Key questions are
+        <ol>
+          <li>Is <code>M</code> unreasonably large, and</li>
+          <li>How to avoid getting unlucky.</li>
+        </ol>
+      </li>
+      <li>If the probability that some row has more than one item is &lt; 1/2, than we can just re-hash 
+until we get what we want.
+        <ul>
+          <li>Problem is that in order to get this probability, <code>M</code> must be about <code>N^2</code> — too large. (See Weis text for 
+proof)</li>
+        </ul>
+      </li>
+      <li>Idea: Hash table of hash tables. Each row <code>r</code> with more than one item needs a hash table with <code>size(r)^2</code> rows.
+        <ul>
+          <li>On average, the total size of the secondary hash tables will be &lt; 4N with probabilty 1/2.</li>
+          <li>As before, we can just re-hash the first table until we get a sufficiently small secondary table.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Resizing / Rehashing
+    <ul>
+      <li>Load factor</li>
+      <li>When there are too many collisions</li>
+      <li>When a chained list gets too long</li>
+      <li class="question">Why use a prime number?</li>
+      <li>As with rebuilding vector, it’s a ‘O(N)’ operation that doubles size of table, thus, 
+amortized cost is constant.</li>
+    </ul>
+  </li>
+  <li>Hash function
+    <ul>
+      <li>Perfect hash function <em>Is it possible?</em></li>
+      <li><em>What are features of a good hash function?</em>
+        <ul>
+          <li>Fast</li>
+          <li>Uniformly distributed.  (Buckets that stay empty aren’t helpful e.g., hashing house prices % 1000)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Deletions
+    <ul>
+      <li class="question">Is it sufficient to simply mark a bin as ‘empty’ when removing an element?</li>
+      <li class="question">Why not?</li>
+    </ul>
+  </li>
+  <li>Real Implementations
+    <ul>
+      <li class="to-me">Look at Java 5 HashMap implementation.</li>
+    </ul>
+    <p><a href="https://github.com/eagle518/jdk-source-code/blob/master/jdk5.0_src/j2se/src/share/classes/java/util/HashMap.java">https://github.com/eagle518/jdk-source-code/blob/master/jdk5.0_src/j2se/src/share/classes/java/util/HashMap.java</a>
+   * <span class="question">What kind of hash table is this?</span> Separate chaining
+   * <span class="question">Where is new element added?</span> At the head.
+   * {: .question} Why there?
+* Java 8 implementation
+<a href="http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/HashMap.java">http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/HashMap.java</a>
+  * Notice the use of trees when bins are too full.
+  * Notice min and max thresholds for tree and “untree”
+  * Notice a new, simpler secondary hash function.
+* C++ implementation:  (Difficult to follow)
+<a href="https://github.com/gcc-mirror/gcc/blob/master/libstdc%2B%2B-v3/include/bits/hashtable.h">https://github.com/gcc-mirror/gcc/blob/master/libstdc%2B%2B-v3/include/bits/hashtable.h</a></p>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

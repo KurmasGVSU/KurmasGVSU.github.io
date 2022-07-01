@@ -1,0 +1,106 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR"
+ content="Mozilla/4.7 [en] (Win98; I) [Netscape]">
+  <meta name="Author" content="Greg Wolffe">
+  <title>Using Switches</title>
+</head>
+<body text="#000000" bgcolor="#ffffff" link="#0000ee" vlink="#551a8b"
+ alink="#ff0000">
+<center>
+<h2> CIS 351<br>
+Using switches with your breadboard</h2>
+</center>
+
+You may find it convenient to use switches to control whether an input
+wire has a "1" or a "0" on it; however, as you noticed, floating
+inputs can cause erratic behavior.  This is because ICs use voltage,
+not current, to represent "true" and "false".  To work properly, an
+input wire must be clearly connected to +5V (the positive terminal),
+or clearly connected to 0V (the negative terminal).  This makes the
+use of switches tricky.
+<P>
+A switch works by connecting and disconnecting wires.  For example, a
+traditional wall switch works by connecting two wires that allows
+current to flow through a light bulb.  When the wires are connected
+allowing current to pass, we say the switch is "closed".  When the
+wires are not connected, we say the switch is "open".  Some people
+find this counterintuitive.  Just remember that an open switch has an
+opening between two wires; therefore, no electricity flows.
+Connecting a switch to an IC in the intuitive way doesn't work because
+it would create a floating input whenever it was "open".
+<P>
+This document first describe the two types of switches in your kit,
+then explains how to correctly use them with ICs.
+
+
+<H3> Types of switches </H3>
+Your lab kit contains two types of switches: 4-pole DIP switches, and
+the round, button-like momentary switches.
+
+<P> DIP switches work just like normal light switches: When a switch
+is in the "on" position, there is a path for electricity between the
+corresponding pins at the top and bottom of the switch.  Each of the
+four switches connects a different pair of pins.
+<P>
+<IMG src="DIP_switch.jpeg">
+<P>
+A momentary switch is open by default.  Pressing the button closes the
+switch creating a connection over which electricity may flow.  The pin
+layout of the momentary switch, however, is not completely obvious.
+If you flip the switch over, you will notice that it has four legs:
+Two sides have two legs each, and two sides have no legs.  The legs
+across from each other on different sides of the switch are always
+connected.  Legs next to each other, or diagonally across from each
+other are connected only when the switch is depressed.  For the most
+part, you need only remember that the pins diagonally across from each
+other are affected by the switch.  In fact, you may find that some
+switches have only two legs, or that two legs are folded in.
+<P>
+<IMG SRC="momentary_switch.jpeg">
+
+
+
+<H3> Using switches</H3>
+
+The correct use of these switches in our labs is not obvious.  Unlike
+normal electric wiring, it is not correct to use a switch simply to
+open the circuit.  When using logic gates, all inputs must either be
+connected to the +5V power supply, or connected to ground.  Failure to
+specify an input creates what is known as a "floating input".  The
+output of circuits with floating inputs is not defined (i.e., may be
+random.)  Using a switch to open a circuit will create a floating
+input (as opposed to a logical "false".)  The following diagram shows
+how to correctly add a switch to a circuit:
+<P>
+<IMG SRC="pull_down_switch.jpeg">
+<P> When the switch is open (i.e. the DIP switch is "off", or the
+momentary switch is not depressed), there is only a path from A to
+ground.  Thus A has a logical value of "false".  When the switch is
+closed, then there is also a path from +5v to A.  Because electricity
+is lazy, it will choose the path from +5v to A instead of the path
+from +5v to ground (thereby avoiding the work to be done in the
+resistor).  This gives <CODE>A</CODE> a logical value of "true".  With
+your breadbord kits, alwauys use the 4.7K ohm resistors with your
+switch setups.
+<P>
+This setup can apply to both the momentary switch and the DIP
+switch; however, be sure that each switch has its own resistor.
+
+<P>
+
+When using the configuration above, having the switch in the "off" position
+creates a logical "false".  It is sometimes advantageous to have the
+default be a logical "true".  To do this, simply move the
+resistors and the output to the other side of the switch as shown
+below:
+<IMG SRC="pull_up_switch.gif">
+
+
+</BODY>
+</HTML>
+
+

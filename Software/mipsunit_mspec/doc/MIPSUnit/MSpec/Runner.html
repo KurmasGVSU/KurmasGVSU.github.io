@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class MIPSUnit::MSpec::Runner - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/mipsunit/mspec/runner.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-process_file">::process_file</a>
+    
+    <li><a href="#method-c-quit">::quit</a>
+    
+    <li><a href="#method-c-run">::run</a>
+    
+    <li><a href="#method-c-run_and_rescue">::run_and_rescue</a>
+    
+    <li><a href="#method-c-usage">::usage</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../License_txt.html">License</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../MIPSUnit.html">MIPSUnit</a>
+  
+    <li><a href="../../MIPSUnit/MSpec.html">MIPSUnit::MSpec</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Assembly.html">MIPSUnit::MSpec::Assembly</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/AssemblyLabel.html">MIPSUnit::MSpec::AssemblyLabel</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/DSL.html">MIPSUnit::MSpec::DSL</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/DataLabel.html">MIPSUnit::MSpec::DataLabel</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Generator.html">MIPSUnit::MSpec::Generator</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Global.html">MIPSUnit::MSpec::Global</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/InvalidSpecException.html">MIPSUnit::MSpec::InvalidSpecException</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Label.html">MIPSUnit::MSpec::Label</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Runner.html">MIPSUnit::MSpec::Runner</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/TestDefinition.html">MIPSUnit::MSpec::TestDefinition</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/TestDefinitionGroup.html">MIPSUnit::MSpec::TestDefinitionGroup</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/TestFactory.html">MIPSUnit::MSpec::TestFactory</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/AssemblyLabel.html">MIPSUnit::MSpec::TestFactory::AL</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/TestFactoryHelper.html">MIPSUnit::MSpec::TestFactoryHelper</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Util.html">MIPSUnit::MSpec::Util</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Util/Util.html">MIPSUnit::MSpec::Util::Util</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class MIPSUnit::MSpec::Runner</h1>
+
+  <div id="description" class="description">
+    
+<p>runs mspec:  Parses the command line and executes the desired commands</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Zachary Kurmas</p>
+</dd><dt>Copyright
+<dd>
+<p>Copyright © 2012</p>
+</dd></dl>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="ASSEMBLY_FILE_MISSING">ASSEMBLY_FILE_MISSING
+        
+        <dd class="description">
+        
+      
+        <dt id="BAD_FILE">BAD_FILE
+        
+        <dd class="description">
+        
+      
+        <dt id="BAD_USAGE">BAD_USAGE
+        
+        <dd class="description"><p>value returned if program is not given enough / correct command-line
+arguments</p>
+        
+      
+        <dt id="INVALID_SPEC_FILE">INVALID_SPEC_FILE
+        
+        <dd class="description"><p>value returned when the spec file parses, but running the test generates an
+exception</p>
+        
+      
+        <dt id="META_OUTPUT">META_OUTPUT
+        
+        <dd class="description"><p>result of running –version, –help, etc.</p>
+        
+      
+        <dt id="NAME">NAME
+        
+        <dd class="description"><p>Name used in the “usage” output</p>
+        
+      
+        <dt id="UNPARSABLE_SPEC_FILE">UNPARSABLE_SPEC_FILE
+        
+        <dd class="description"><p>value returned when the input file is not valid Ruby code</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-process_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_file</span><span
+            class="method-args">(file_name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_file-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/runner.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">process_file</span>(<span class="ruby-identifier">file_name</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">file_name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'-'</span>
+    <span class="ruby-identifier">run_and_rescue</span> { <span class="ruby-identifier">eval</span>(<span class="ruby-identifier">$stdin</span>.<span class="ruby-identifier">read</span>) }
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">file_name</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">quit</span>(<span class="ruby-node">&quot;File \&quot;#{file_name}\&quot; does not exist.&quot;</span>, <span class="ruby-constant">BAD_FILE</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">file_name</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">quit</span>(<span class="ruby-node">&quot;File \&quot;#{file_name}\&quot; is not readable.&quot;</span>, <span class="ruby-constant">BAD_FILE</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">file_name</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">quit</span>(<span class="ruby-node">&quot;File \&quot;#{file_name}\&quot; is not a regular file.&quot;</span>, <span class="ruby-constant">BAD_FILE</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">run_and_rescue</span> { <span class="ruby-identifier">load</span>(<span class="ruby-identifier">file_name</span>) }
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">run_and_rescue</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">io</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-constant">Generator</span>.<span class="ruby-identifier">generate</span>(<span class="ruby-constant">MIPSUnit</span><span class="ruby-operator">::</span><span class="ruby-constant">MSpec</span>.<span class="ruby-identifier">global</span>.<span class="ruby-identifier">groups</span>, <span class="ruby-identifier">io</span>)
+    <span class="ruby-identifier">$stdout</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">string</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment">#begin</span>
+  <span class="ruby-comment">#  # The StringIO object allows us to defer printing anything to stdout</span>
+  <span class="ruby-comment">#  # until we are sure that there aren't any problems with the spec.</span>
+  <span class="ruby-comment">#  # (In other words, we don't want the output stream to print part of a test</span>
+  <span class="ruby-comment">#  # file, only to bail when an exception gets raised.)</span>
+  <span class="ruby-comment">#  io = StringIO.new</span>
+  <span class="ruby-comment">#  Generator.generate(MIPSUnit::MSpec.global.groups, io)</span>
+  <span class="ruby-comment">#  $stdout.puts io.string</span>
+  <span class="ruby-comment">#rescue InvalidSpecException =&gt; e</span>
+  <span class="ruby-comment">#  $stderr.puts &quot;Invalid spec file.&quot;</span>
+  <span class="ruby-comment">#  $stderr.puts e</span>
+  <span class="ruby-comment">#  exit INVALID_SPEC_FILE</span>
+  <span class="ruby-comment">#end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_file-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_file-method -->
+
+    
+      <div id="method-c-quit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">quit</span><span
+            class="method-args">(message, value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="quit-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/runner.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">quit</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span>(<span class="ruby-identifier">message</span>)
+  <span class="ruby-identifier">exit_wrapper</span>(<span class="ruby-identifier">value</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- quit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- quit-method -->
+
+    
+      <div id="method-c-run" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">run</span><span
+            class="method-args">(args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="run-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/runner.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">run</span>(<span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;--version&quot;</span>)
+    <span class="ruby-identifier">quit</span>(<span class="ruby-node">&quot;MIPSUnit::MSpec version #{MIPSUnit::MSpec::VERSION}&quot;</span>, <span class="ruby-constant">META_OUTPUT</span>)
+  <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>)
+    <span class="ruby-identifier">usage</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">file_name</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">process_file</span>(<span class="ruby-identifier">file_name</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- run-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- run-method -->
+
+    
+      <div id="method-c-run_and_rescue" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">run_and_rescue</span><span
+            class="method-args">() { || ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="run_and_rescue-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/runner.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">run_and_rescue</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-keyword">yield</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">InvalidSpecException</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+    <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Invalid spec file.&quot;</span>
+    <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>
+    <span class="ruby-comment"># prints the backtrace so users can see the offending line of their file</span>
+    <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span>
+    <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">backtrace</span>
+    <span class="ruby-identifier">exit_wrapper</span> <span class="ruby-constant">INVALID_SPEC_FILE</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- run_and_rescue-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- run_and_rescue-method -->
+
+    
+      <div id="method-c-usage" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">usage</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="usage-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/runner.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">usage</span>
+  <span class="ruby-identifier">quit</span>(<span class="ruby-node">&quot;Usage: #{NAME} filename&quot;</span>, <span class="ruby-constant">BAD_USAGE</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- usage-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- usage-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -1,0 +1,8 @@
+JLS.jar is a copy of the most recent JLS.jar.
+When a new version comes out, it is necessary
+to copy the new version here by hand.
+
+(It would be nice to use a symlink to automate this; 
+ but, I use rsync to update the web directory on the 
+ server. I have rsync copy simlinks, so only simlinks
+ to content within the web site will work.)

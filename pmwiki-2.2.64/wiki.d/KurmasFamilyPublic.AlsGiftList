@@ -1,0 +1,60 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0 SeaMonkey/2.21
+author=
+csum=
+ctime=1194980197
+host=99.21.90.140
+name=KurmasFamilyPublic.AlsGiftList
+rev=16
+targets=
+text=# Shirts or sweaters of any kind (2XLT. Note: Generally, this is NOT the same as XXLT.)%0a# Music: any barbershop I don't already have (bootleg copies are OK, I won't turn you in.)%0a# Travel vouchers to anywhere in the world.%0a# Oster Counterforms toaster (#6335, I think)%0a# Fein Multi-Master: http://www.feinus.com/%0a# power washer (to blast dirt off my vinyl siding)%0a# Shiatsu massage cushion: [[http://www.homedics.com/prod/detail.aspx?ID=250 ]] (Available as Sam's Club, but not Wally-Mart, if my sources are accurate)%0a# and the following, from DuluthTrading.com:%0a** Twill Presentation Jacket (XXLT)%0a# Miter saw stand%0a# Cooking Aprons, much like Paul's (but fit for my size, and perhaps one fitting my wife)%0a# Surprises of any kind%0a
+time=1382932527
+author:1382932527=
+diff:1382932527:1382081291:=10,11c10%0a%3c # Miter saw stand%0a%3c # Cooking Aprons, much like Paul's (but fit for my size, and perhaps one fitting my wife)%0a---%0a> # Miter saw stand# Cooking Aprons, much like Paul's (but fit for my size, and perhaps one fitting my wife)%0a
+host:1382932527=99.21.90.140
+author:1382081291=
+diff:1382081291:1382080263:=10c10,11%0a%3c # Miter saw stand# Cooking Aprons, much like Paul's (but fit for my size, and perhaps one fitting my wife)%0a---%0a> # Miter saw stand%0a> # Cooking Apron, much like Paul's (but fit for his size)%0a
+host:1382081291=99.21.90.140
+author:1382080263=
+diff:1382080263:1382080078:=11c11%0a%3c # Cooking Apron, much like Paul's (but fit for his size)%0a---%0a> # Cooking Apron, much like Paul's (but he's quite a bit larger)%0a
+host:1382080263=99.21.90.140
+author:1382080078=
+diff:1382080078:1294000625:=11d10%0a%3c # Cooking Apron, much like Paul's (but he's quite a bit larger)%0a
+host:1382080078=99.21.90.140
+author:1294000625=
+diff:1294000625:1229190856:=5a6%0a> # Banjo (with instruction manual) Doesn't need to be new- a garage sale model would be great!%0a
+host:1294000625=75.128.116.98
+author:1229190856=Al
+csum:1229190856=Update for 2008
+diff:1229190856:1199913816:=4c4,5%0a%3c # Oster Counterforms toaster (#6335, I think)%0a---%0a> # Real Estate or stocks (a share of Berkshire-Hathaway class A would be nice- and a steal at $135,210, down $2,365 from Thursday's close.)%0a> # Cuisinart CPT-160 toaster: [[http://www.cuisinart.com/catalog/product.php?product_id=66&item_id=114&cat_id=14]]%0a6a8%0a> # Harmonica (preferably new, and for reasons explained above, not from China.)%0a11,12d12%0a%3c # Miter saw stand%0a%3c # Surprises of any kind%0a
+host:1229190856=75.51.100.116
+author:1199913816=
+diff:1199913816:1196369316:=6a7%0a> # pepper mill, preferably adjustable and not from China. I've developed an unexplainable aversion to products from China that will end up in my mouth.%0a11a13%0a> ** collector's edition Slinky%0a12a15,17%0a> ** Wool Crusher Hat (7.5/8)%0a> ** Suspenders%0a> # Dining Room Chair (to match the other 5)%0a\ No newline at end of file%0a
+host:1199913816=75.135.152.204
+author:1196369316=
+diff:1196369316:1194980559:=16,17c16%0a%3c ** Suspenders%0a%3c # Dining Room Chair (to match the other 5)%0a\ No newline at end of file%0a---%0a> ** Suspenders%0a\ No newline at end of file%0a
+host:1196369316=24.236.223.81
+author:1194980559=
+diff:1194980559:1194980545:=13,16c13,16%0a%3c ** collector's edition Slinky%0a%3c ** Twill Presentation Jacket (XXLT)%0a%3c ** Wool Crusher Hat (7.5/8)%0a%3c ** Suspenders%0a\ No newline at end of file%0a---%0a> #* collector's edition Slinky%0a> #* Twill Presentation Jacket (XXLT)%0a> #* Wool Crusher Hat (7.5/8)%0a> #* Suspenders%0a\ No newline at end of file%0a
+host:1194980559=148.61.86.131
+author:1194980545=
+diff:1194980545:1194980519:=13,16c13,16%0a%3c #* collector's edition Slinky%0a%3c #* Twill Presentation Jacket (XXLT)%0a%3c #* Wool Crusher Hat (7.5/8)%0a%3c #* Suspenders%0a\ No newline at end of file%0a---%0a> * collector's edition Slinky%0a> * Twill Presentation Jacket (XXLT)%0a> * Wool Crusher Hat (7.5/8)%0a> * Suspenders%0a\ No newline at end of file%0a
+host:1194980545=148.61.86.131
+author:1194980519=
+diff:1194980519:1194980471:=7,9c7,13%0a%3c # pepper mill, preferably adjustable and not from China. I've developed an unexplainable aversion to products from China that will end up in my mouth.%0a%3c # Banjo (with instruction manual) Doesn't need to be new- a garage sale model would be great!%0a%3c # Harmonica (preferably new, and for reasons explained above, not from China.)%0a---%0a> # pepper mill, preferably adjustable and not from China.%0a> I've developed an unexplainable aversion to products%0a> from China that will end up in my mouth.%0a> # Banjo (with instruction manual) Doesn't need to be%0a> new- a garage sale model would be great!%0a> # Harmonica (preferably new, and for reasons explained%0a> above, not from China.)%0a11c15,18%0a%3c # Shiatsu massage cushion: [[http://www.homedics.com/prod/detail.aspx?ID=250 ]] (Available as Sam's Club, but not Wally-Mart, if my sources are accurate)%0a---%0a> # Shiatsu massage cushion:%0a> http://www.homedics.com/prod/detail.aspx?ID=250%0a> (Available as Sam's Club, but not Wally-Mart, if my%0a> sources are accurate)%0a
+host:1194980519=148.61.86.131
+author:1194980471=
+diff:1194980471:1194980376:=1,2c1,4%0a%3c # Shirts or sweaters of any kind (2XLT. Note: Generally, this is NOT the same as XXLT.)%0a%3c # Music: any barbershop I don't already have (bootleg copies are OK, I won't turn you in.)%0a---%0a> # Shirts or sweaters of any kind (2XLT. Note: Generally,%0a> this is NOT the same as XXLT.)%0a> # Music: any barbershop I don't already have (bootleg%0a> copies are OK, I won't turn you in.)%0a4,5c6,10%0a%3c # Real Estate or stocks (a share of Berkshire-Hathaway class A would be nice- and a steal at $135,210, down $2,365 from Thursday's close.)%0a%3c # Cuisinart CPT-160 toaster: [[http://www.cuisinart.com/catalog/product.php?product_id=66&item_id=114&cat_id=14]]%0a---%0a> # Real Estate or stocks (a share of Berkshire-Hathaway%0a> class A would be nice- and a steal at $135,210, down%0a> $2,365 from Thursday's close.)%0a> # Cuisinart CPT-160 toaster:%0a> http://www.cuisinart.com/catalog/product.php?product_id=66&item_id=114&cat_id=14%0a
+host:1194980471=148.61.86.131
+author:1194980376=
+diff:1194980376:1194980325:=
+host:1194980376=24.236.223.81
+author:1194980325=
+diff:1194980325:1194980255:=
+host:1194980325=24.236.223.81
+author:1194980255=
+diff:1194980255:1194980197:=1c1%0a%3c # Shirts or sweaters of any kind (2XLT. Note: Generally,%0a---%0a> * Shirts or sweaters of any kind (2XLT. Note: Generally,%0a3c3%0a%3c # Music: any barbershop I don't already have (bootleg%0a---%0a> * Music: any barbershop I don't already have (bootleg%0a5,6c5,6%0a%3c # Travel vouchers to anywhere in the world.%0a%3c # Real Estate or stocks (a share of Berkshire-Hathaway%0a---%0a> * Travel vouchers to anywhere in the world.%0a> * Real Estate or stocks (a share of Berkshire-Hathaway%0a9c9%0a%3c # Cuisinart CPT-160 toaster:%0a---%0a> * Cuisinart CPT-160 toaster:%0a11,12c11,12%0a%3c # Fein Multi-Master: http://www.feinus.com/%0a%3c # pepper mill, preferably adjustable and not from China.%0a---%0a> * Fein Multi-Master: http://www.feinus.com/%0a> * pepper mill, preferably adjustable and not from China.%0a15c15%0a%3c # Banjo (with instruction manual) Doesn't need to be%0a---%0a> * Banjo (with instruction manual) Doesn't need to be%0a17c17%0a%3c # Harmonica (preferably new, and for reasons explained%0a---%0a> * Harmonica (preferably new, and for reasons explained%0a19,20c19,20%0a%3c # power washer (to blast dirt off my vinyl siding)%0a%3c # Shiatsu massage cushion:%0a---%0a> * power washer (to blast dirt off my vinyl siding)%0a> * Shiatsu massage cushion:%0a24,28c24,28%0a%3c # and the following, from DuluthTrading.com:%0a%3c * collector's edition Slinky%0a%3c * Twill Presentation Jacket (XXLT)%0a%3c * Wool Crusher Hat (7.5/8)%0a%3c * Suspenders%0a\ No newline at end of file%0a---%0a> * and the following, from DuluthTrading.com:%0a> collector's edition Slinky%0a> Twill Presentation Jacket (XXLT)%0a> Wool Crusher Hat (7.5/8)%0a> Suspenders%0a\ No newline at end of file%0a
+host:1194980255=24.236.223.81
+author:1194980197=
+diff:1194980197:1194980197:=1,28d0%0a%3c * Shirts or sweaters of any kind (2XLT. Note: Generally,%0a%3c this is NOT the same as XXLT.)%0a%3c * Music: any barbershop I don't already have (bootleg%0a%3c copies are OK, I won't turn you in.)%0a%3c * Travel vouchers to anywhere in the world.%0a%3c * Real Estate or stocks (a share of Berkshire-Hathaway%0a%3c class A would be nice- and a steal at $135,210, down%0a%3c $2,365 from Thursday's close.)%0a%3c * Cuisinart CPT-160 toaster:%0a%3c http://www.cuisinart.com/catalog/product.php?product_id=66&item_id=114&cat_id=14%0a%3c * Fein Multi-Master: http://www.feinus.com/%0a%3c * pepper mill, preferably adjustable and not from China.%0a%3c I've developed an unexplainable aversion to products%0a%3c from China that will end up in my mouth.%0a%3c * Banjo (with instruction manual) Doesn't need to be%0a%3c new- a garage sale model would be great!%0a%3c * Harmonica (preferably new, and for reasons explained%0a%3c above, not from China.)%0a%3c * power washer (to blast dirt off my vinyl siding)%0a%3c * Shiatsu massage cushion:%0a%3c http://www.homedics.com/prod/detail.aspx?ID=250%0a%3c (Available as Sam's Club, but not Wally-Mart, if my%0a%3c sources are accurate)%0a%3c * and the following, from DuluthTrading.com:%0a%3c collector's edition Slinky%0a%3c Twill Presentation Jacket (XXLT)%0a%3c Wool Crusher Hat (7.5/8)%0a%3c Suspenders%0a\ No newline at end of file%0a
+host:1194980197=24.236.223.81

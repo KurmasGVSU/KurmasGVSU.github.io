@@ -1,0 +1,14 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1180110321
+host=75.134.113.30
+name=WorkPrivate.ReadingList
+rev=1
+targets=
+text=||Steren Skienu ||Programming Callenges ||0-387-00163-8 ||%0a||Ming Li -- Paul Vitanyi -- Kolomogorov ||%0a||Sipser 2nd Edition. ||%0a||Hochbaum ||Approximation algorithms ||0-53494986-1 ||
+time=1180110321
+author:1180110321=
+diff:1180110321:1180110321:=1,4d0%0a%3c ||Steren Skienu ||Programming Callenges ||0-387-00163-8 ||%0a%3c ||Ming Li -- Paul Vitanyi -- Kolomogorov ||%0a%3c ||Sipser 2nd Edition. ||%0a%3c ||Hochbaum ||Approximation algorithms ||0-53494986-1 ||%0a\ No newline at end of file%0a
+host:1180110321=75.134.113.30

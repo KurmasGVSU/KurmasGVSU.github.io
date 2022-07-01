@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>CIS 351 --- Computer Organization and Assembly Language</title>
+  <style>
+    /* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #073c88;
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+  </style>
+</head>
+
+<body>
+<div id="nav">
+
+  <p><a target="_top" href="index.html">Course Home</a></p>
+
+  <p><a href="syllabus.html">Syllabus</a></p>
+
+  <p><a href="timeline.html">Timeline</a></p>
+
+  <!-- <p><a href="estimated_timeline.html">Timeline</a></p> -->
+
+  <!-- <p><a target="_top" data-klink="previousCourseURL">Previous Offering</a></p> -->
+
+  <!-- <p id="currentOffering" style="DISPLAY: none"><a target="_top" data-klink="currentCourseURL">Current Offering</a>
+  </p> -->
+
+  <!--
+  <p><a href="SampleCode" style="color:white"><fontsize="2"
+  face="arial,helvetica,sans-serif">SampleCode</font></a></p>
+  -->
+
+  <hr>
+
+  <p><a href='http://www.cis.gvsu.edu/~kurmasz'>My Home</a></p>
+  <p><a href='http://www.cis.gvsu.edu/public/staffListing/index.php?page=staff&fname=Zachary&lname=Kurmas'>My Schedule</a></p>
+
+</div>
+
+<div id="content">
+
+  <div>
+    <h2 style="text-align: center">
+      <span>CIS 351 Computer Organization and Assembly Language</span><br>
+      <span>Fall 2018</span>
+    </h2>
+  </div>
+
+
+  <dl>
+    <dt> Contact Information:</dt>
+    <dd><style type="text/css">
+    .ciHeader {
+       font-weight: bold
+    }
+</style>
+<table class="contactInfoTable" border=0 cellspacing=3 cellpadding=0 width="100%">
+    <colgroup>
+        <col width="15%" align="left">
+        <col align="left">
+        <col width="15%" align="left">
+        <col width="25%" align="left">
+    </colgroup>
+    <tr>
+        <td class="ciHeader">Instructor:</td>
+        <td>Zachary Kurmas</td>
+        <td class="ciHeader">Office:</td>
+        <td>MAK C-2-316</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Phone:</td>
+        <td>331-8688</td>
+        <td class="ciHeader">Office Hours:</td>
+        <td>MWF 9:30-11</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Home page:
+        <td><a href="http://www.cis.gvsu.edu/~kurmasz" target="_top">http://www.cis.gvsu.edu/~kurmasz</a>
+        <td>
+        <td>
+    </tr>
+</table></dd>
+
+    <dt>Course Objectives:</dt>
+    <dd>At the completion of the course, students will be able to
+      <ul>
+        <li>construct simple combinatorial and sequential circuits,</li>
+        <li>trace the execution of an instruction in a simple CPU,</li>
+        <li>compare and contrast a pipelined CPU design with a single-cycle CPU design,</li>
+        <li>explain the benefits of the memory hierarchy,</li>
+        <li>explain how a particular cache configuration determines whether a memory access is a hit or a miss,</li>
+        <li>write code in assembly language using standard programming constructs.</li>
+      </ul>
+    </dd>
+
+    <dt>Text:</dt>
+    <dd>
+      <ul>
+        <li style="padding-bottom: 0; margin-bottom: 0"><em>Digital Design and Computer Architecture (2nd edition)</em> by David Money Harris and Sarah L. Harris. ISBN: 9780123944245</li>
+      </ul>
+    </dd>
+
+    <dt>Pre-Requsites</dt>
+    <dd> MTH 225, CIS 241, and CIS major/minor standing</dd>
+
+    <dt>Grading:</dt>
+    <dd>Points for this class are shown in the table
+      below. Note also the additional conditions that follow.
+
+      <table>
+        <tr>
+          <th width="60%">Point distribution</th>
+          <th></th>
+          <th>Grading scale</th>
+        </tr>
+        <tr align="center">
+          <td>
+            <table border=0 cellspacing=3 cellpadding=0>
+              <tr>
+                <TH> &nbsp; &nbsp; &nbsp; &nbsp;
+                <TH align=left>Category
+                <TH align=right> &nbsp; &nbsp; &nbsp; &nbsp; %
+              </tr>
+              <TR>
+                <TD> &nbsp; &nbsp; &nbsp; &nbsp;
+                <TD>Midterm Exams
+                <TD align=right> 32%
+              </TR>
+              <TR>
+                <TD> &nbsp; &nbsp; &nbsp; &nbsp;
+                <TD>Final Exam
+                <TD align=right> 18%
+              </TR>
+              <TR>
+                <TD> &nbsp; &nbsp; &nbsp; &nbsp;
+                <TD>Projects
+                <TD align=right> 15%
+              </TR>
+
+
+              <TR>
+                <TD> &nbsp; &nbsp; &nbsp; &nbsp;
+                <TD>Homework and Quizzes
+                <TD align=right> 15%
+              </TR>
+
+              <TR>
+                <TD> &nbsp; &nbsp; &nbsp; &nbsp;
+                <TD>Labs
+                <TD align=right> 20%
+              </TR>
+
+              <TR>
+                <TD> &nbsp;&nbsp; &nbsp; &nbsp;
+                <TD colspan=3>
+                  <HR>
+                <TD>
+              </TR>
+              <TR>
+                <TD> &nbsp; &nbsp; &nbsp; &nbsp;
+                <TD>Total
+                <TD align=right> 100%
+              </TR>
+              <TR>
+                <TD> &nbsp; &nbsp; &nbsp; &nbsp;
+                <TD> &nbsp;
+                <TD align=right> &nbsp;
+                <TD align=right> &nbsp;
+              </TR>
+            </table>
+          <TD>
+            &nbsp; &nbsp; &nbsp; &nbsp;
+          <TD>
+            <table border=0 cellspacing=3 cellpadding=0>
+              <TR>
+                <TH>Letter grade &nbsp; &nbsp;
+                <TH>Minimum Percentage
+              </TR>
+              <TR>
+                <TD> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; A &nbsp;
+                  &nbsp;
+                <TD align=center>94%
+              </TR>
+              <TR>
+                <TD>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; A- &nbsp;
+                  &nbsp;
+                <TD align=center>90%
+              </TR>
+              <TR>
+                <TD>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; B+
+                <TD align=center>87%
+              </TR>
+              <TR>
+                <TD>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; B
+                <TD align=center>84%
+              </TR>
+              <TR>
+                <TD>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; B-
+                <TD align=center>80%
+              </TR>
+              <TR>
+                <TD>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; C+
+                <TD align=center>77%
+              </TR>
+              <TR>
+                <TD>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; C
+                <TD align=center>74%
+              </TR>
+              <TR>
+                <TD>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; C-
+                <TD align=center>70%
+              </TR>
+              <TR>
+                <TD>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; D+
+                <TD align=center>67%
+              </TR>
+              <TR>
+                <TD>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; D
+                <TD align=center>64%
+              </TR>
+            </table>
+        </tr>
+      </table>
+
+      Additional Conditions:
+      <ul>
+        <li> You must have a passing average on the tests to pass the class.</li>
+        <li> Your final grade may be at most one letter grade higher than your test average.</li>
+        <li> I reserve the right to make minor adjustments to the point
+          distribution. In particular, I may make minor adjustments to the
+          weights of each test if we cover more or less material than
+          expected.
+        </li>
+      </ul>
+    </dd>
+
+    <dt>Important Dates:</dt>
+    <dd>
+      <ul>
+        <li>Drop Day: <span>Friday, 26 October</span></li>
+        <li>Final Exam: <span>Monday, 10 December, 8:00 a.m.</span></li>
+      </ul>
+    </dd>
+
+    <dt>Course Policies:</dt>
+    <dd>
+      <ul>
+        <li> Assignments are due at the beginning of class on the due date, unless specified otherwise.</li>
+
+        <li>The penalty for submitting assignments late varies by assignment. It could be as little as one or two
+          points, or as much as no credit for the assignment. However, assignments more than 14 days late will receive
+          a 0 even if "I just forgot to turn it in."
+        </li>
+
+        <li> Unless specified otherwise, all assignments are to be completed
+          individually.
+        </li>
+
+        <li> I do not re-schedule labs, exams, or quizzes except in
+          cases of extreme emergencies. Business trips are not emergencies.
+        </li>
+
+        <li> The deadline to drop with a "W" is Friday, 26 October.
+          Remember, I cannot and will not drop this class for you.
+        </li>
+
+        <LI> Attendance is required. I understand that absences are
+          occasionally necessary; however, I reserve the right to lower grades
+          for excessive absences.
+        </li>
+
+        <li>
+          This course is subject to the GVSU policies listed at <a href='http://www.gvsu.edu/coursepolicies/'><code>www.gvsu.edu/coursepolicies/</code></a>.
+        </li>
+        <!--  <LI> Quizzes may be scheduled as little as one class in advance. -->
+      </ul>
+    </dd>
+
+    <dt>Special Assistance:</dt>
+    <dd>If there is any student in this class who has special needs because of learning, physical or other disability,
+      please contact me and Disability Support Services (DSS) at 616.331.2490. Furthermore, if you have a disability and
+      think you will need assistance evacuating this classroom and/or building in an emergency situation, please make me
+      aware so I can develop a plan to assist you.
+    </dd>
+  </dl>
+
+  <hr>
+  <a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/html5_validate_w3c.png"alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</div>
+</body>
+</html>

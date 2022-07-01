@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>CIS 351 Assembly Branches</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    code {
+      white-space: nowrap;
+    }
+  </style>
+
+</head>
+
+<body>
+<table style="border:  0; width: 100%">
+  <tr>
+    <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;">CIS 351</h1></td>
+    <td style="width: 70%">
+      <h1 style="text-align: center">Homework 4: Branches</h1></td>
+    <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap">
+      Fall 2021</h1></td>
+  </tr>
+</table>
+
+
+<p>For this Homework, you are going to write and test some assembly
+  code using branches.  You may want to watch <a href='https://youtu.be/a-aDuMcYcvU'>this video</a> first.</p>
+
+<p class='listHeader'>As with previous assignments, in order for your
+  solution to work with my <code>MUnit</code> tests, you must follow
+  these rules:
+
+  <ul>
+    <li>The file name must be <code>branches.asm</code>.</li>
+  <li> You must give your procedures the names indicated below.</li>
+
+  <li> The procedures you write must be declared <code>.globl</code>.</li>
+
+  <li>The method parameters will be placed in registers
+    <code>a0</code>, <code>a1</code>, and <code>a2</code>.
+    <code>a0</code> will contain the first parameter, <code>a1</code>
+    the second, etc.
+  </li>
+
+  <li>Each method must end with the instruction <code>jr $ra</code>.</li>
+
+  <li>Use the literal value <code>1</code> for <code>true</code> and <code>0</code> for <code>false</code>.</li>
+
+</ul>
+
+<p class='important'> For this assignment you may only use "real" branch and comparison instructions.  In other words you may use <code>beq</code>, 
+<code>bne</code>, and the various <code>slt</code> instructions.  You may <em>not</em> use the branch and comparison pseudoinstructions like 
+<code>blt</code>, <code>bgt</code>, <code>seq</code>, <code>sle</code>, <code>sgt</code>.  If in doubt, look at your assembled code.  If an 
+assembled branch or comparison instruction turns into multiple instructions, then you may not use it. <p>
+
+<p>To be clear:  This limitation only applies to branches and comparisons.  You may use other pseudoinstrctions like <code>li</code>.</p>
+
+<p><span class='inline-important'>You must also write a reasonably complete set of unit tests.</span></p>
+
+<h2>Problems</h2>
+
+<ol>
+  <li><a href="http://codingbat.com/prob/p182873">makes10(int a,
+    int b)</a></code> from CodingBat.
+  </li>
+
+  <li><a href="http://codingbat.com/prob/p101887">intMax(int
+    a, int b, int c)</a></code> from CodingBat.
+  </li>
+
+  <li><a href="http://codingbat.com/prob/p172021">close10(int
+    a, int b)</a></code> from CodingBat.
+  </li>
+
+  <li><a href=" https://codingbat.com/prob/p177372">max1020(int a, int b)</a></code>
+    from CodingBat.
+  </li>
+
+  <li><a
+    href="http://codingbat.com/prob/p103360">dateFashion(int you,
+    int date)</a></code> from CodingBat.
+  </li>
+
+  <li><a
+    href="http://codingbat.com/prob/p170833">redTicket(int a, int
+    b, int c)</a></code> from CodingBat.
+  </li>
+
+</ol>
+
+<p>This <a href='https://classroom.github.com/a/61emwykQ'>GitHub Classroom repository</a> has a file you can use as the
+  starting point for your  <code>MUnit</code> tests.</p>
+
+<h2>Submission and grading</h2>
+
+<p>Be sure to document and comment your code!</p>
+
+<p><em>When your code passes all tests</em>, commit your code with <code>[Grade Me]</code> in the message.
+
+<!--
+  Your grade is based on when your code passes all tests. If your code passes all tests by the due date,
+  you get 100%. Otherwise, you lose 5% for each day it takes you after the due date to submit correct code. In
+  addition, you lose 5% for each incorrect submission. For example, if your first submission is two days late,
+  but completely correct, your score will be 90%. If you submit incorrect solutions on the due date,
+  and then submit the correct solutions two days later, your score will be 85%.</p>
+  -->
+
+
+<h2>Hints:</h2>
+<ul>
+  <li>To compute <code>!a0</code>, do the following:<br/>
+    <code>not $a0, $a0</code><br/>
+    <code>andi $a0, $a0, 1</code><br/>
+    (The extra <code>andi</code> instruction makes sure that only the least-significant bit has a value other than 0.)
+  </li>
+</ul>
+
+
+<h2>For more practice</h2>
+
+<p>If you are looking for more assembly coding practice, consider
+  these CodingBat problems:</p>
+<ul>
+  <li>redTicket</li>
+  <li>greenTicket</li>
+  <li>blueTicket</li>
+  <li>loneSum</li>
+  <li>luckySum</li>
+  <li>closeFar</li>
+  <li>evenlySpaced</li>
+</ul>
+<hr>
+<p>Updated Monday, 18 October 2021, 1:52 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

@@ -1,0 +1,58 @@
+require 'rake'
+require 'rdoc'
+
+require 'rdoc/task'
+require 'rubygems'
+require "rubygems/package_task"
+require 'date'
+
+require 'lib/mipsunit/mspec'
+
+task :default => [:rdoc, :build_assembly, :gem, :package]
+
+dist_dir = "web/dist"
+
+# Generate RDocs
+Rake::RDocTask.new do |rd|
+  # rd.main = "lib/mipsunit/mspec.rb"
+  rd.rdoc_files.include("License.txt", "lib/**/*.rb")
+  rd.rdoc_dir = "web/doc"
+end
+
+
+# Generate assembly.rb, which contains templates for the assembly file
+task :build_assembly do
+  require 'asm/assembly_builder'
+  AssemblyBuilder.build(File.open(AssemblyBuilder::DEFAULT_TARGET, "w"))
+end
+
+spec = Gem::Specification.new do |s|
+  s.name = 'mipsunit_mspec'
+  s.version = MIPSUnit::MSpec::VERSION
+  s.date = Date.today.to_s
+  s.summary = "An RSpec-inspired unit test framework for MIPS assembly."
+  s.authors = ['Zachary Kurmas']
+  s.email = "kurmasz@gvsu.edu"
+  s.homepage = 'http://www.cis.gvsu.edu/~kurmasz/Software/mipsunit_mspec'
+  s.files = Dir['how_it_works.txt', 'License.txt', 'Rakefile', '{asm,bin,lib}/**/*']
+  s.executables << 'mspec'
+  s.description = <<END
+  MIPSUnit::MSpec is a unit testing framework for MIPS assembly code. In particular, users describe the desired behavior
+  of the assembly code under test (i.e., student assignments) using an RSpec-like syntax. MSpec converts those specs
+  into assembly code that detects and reports errors in the code under test.
+END
+end
+
+Gem::PackageTask.new(spec) do |pkg|
+  pkg.package_dir = dist_dir
+  pkg.need_zip = false
+  pkg.need_tar = true
+end
+
+task :gem => [:build_assembly]
+
+#Rake::PackageTask.new("mipsunit_mspec", MIPSUnit::MSpec::VERSION) do |p|
+#  p.package_dir= dist_dir
+#  p.need_tar = true
+#  p.package_files.exclude(dist_dir, "*.iml", "playspace/**/*")
+#end

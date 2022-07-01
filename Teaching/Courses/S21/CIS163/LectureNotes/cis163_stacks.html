@@ -1,0 +1,410 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="stacks">Stacks</h1>
+
+<ul>
+  <li>A Stack is a collection (i.e., object that holds other objects) that is accessed in <em>LIFO</em> order
+    <ul>
+      <li>LIFO:  <em>L</em>ast <em>i</em>n <em>F</em>irst <em>O</em>ut</li>
+      <li>Think of it as a stack of dinner plates:  You always put a plate on the top and take one from the top.  It rarely makes sense to take the plate from the bottom.</li>
+    </ul>
+  </li>
+  <li>A stack can describe an interruptable person
+    <ul>
+      <li>I’m grading</li>
+      <li>student walks in with a question, I put student’s laptop over top of my grading.</li>
+      <li>Director walks in with something for me to read quickly.  It goes over the student’s laptop.</li>
+      <li>Dean walks in with something for me to sign.</li>
+      <li>Each new task stacks on top of the old one.</li>
+      <li>As each task is finished the top of the stack is “popped” off revealing what was interrupted.</li>
+    </ul>
+  </li>
+  <li>Stacks have three main operations:
+    <ul>
+      <li><code>push</code>: Add new item to the stack</li>
+      <li><code>pop</code>: Remove the top item on the stack and return it.</li>
+      <li><code>peek</code>: Just return the top item on the stack</li>
+    </ul>
+  </li>
+  <li>Typical use:  Postfix notation
+    <ul>
+      <li>We typically use <em>infix</em> notation:  <code>4 + 5</code></li>
+      <li>But, this can be ambiguous:  <code>4 + 5 * 6</code></li>
+      <li>Ambiguities must be resolved with rules (order of operations) and/or parentheses.</li>
+      <li>Post fix notation:  <code>4 5 +</code> is not ambiguous.</li>
+      <li>Even with multiple operations:  <code>4 5 6 * +</code> or <code>4 5 + 6 *</code></li>
+    </ul>
+  </li>
+  <li>More complex example:
+    <ul>
+      <li><code>(3 * 4 - (2 + 5)) * 4 / 2</code></li>
+      <li><code>3 4 * 2 5 + - 4 * 2 /</code></li>
+    </ul>
+  </li>
+  <li>We can use a stack to evaluate postfix notation:
+    <ul>
+      <li>When you see a number, push it on the stack.</li>
+      <li>When you see an operator, pop the top two numbers of the stack, operate, and push.</li>
+      <li>When you have consumed all the input, the answer should be on the top of the stack.</li>
+      <li>(This only works if the input is correct and there aren’t extra/missing items.)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="stacks-are-used-in-recursion">Stacks are used in recursion</h2>
+
+<ul>
+  <li>When we write recursive methods, the local variables and return locations are stored in a data structure called the stack.</li>
+  <li>This structure is a literal stack:  data for newly called methods is pushed onto the stack, and that data is popped of when the method finishes.</li>
+  <li>You can use a Stack data structure to remove recursion from an algorithm like the maze solver.</li>
+  <li>Remember:  With the recursive version, we used the recursive calls to keep track of what paths we have explored.
+    <ul>
+      <li>(Or, in other words, the call stack serves as “breadcrumbs” that we can use to retrace our path.)</li>
+    </ul>
+  </li>
+  <li class="to-do">Show iterative <code>MazeSearch</code></li>
+</ul>
+
+<h2 id="implementing-a-stack">Implementing a stack</h2>
+
+<ul>
+  <li>Using an array:
+    <ul>
+      <li>Just push and pop from the end of the array.</li>
+      <li>This works because both of these operations are <code>O(1)</code></li>
+      <li>(Of course, you could have an issue if the array gets full.)</li>
+    </ul>
+  </li>
+  <li>Using a linked list:
+    <ul>
+      <li>You can operate from whichever end you choose:  They both run in constant time.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="queue">Queue</h1>
+
+<ul>
+  <li>A queue is a <em>FIFO</em> list
+    <ul>
+      <li>FIFO:  <em>F</em>irst <em>I</em>n <em>F</em>irst <em>O</em>ut</li>
+      <li>Like a line in a grocery store or amusement park.</li>
+    </ul>
+  </li>
+  <li>Two main operations:
+    <ul>
+      <li><code>enqueue</code></li>
+      <li><code>dequeue</code></li>
+    </ul>
+  </li>
+  <li>Key uses:  Simulation.
+    <ul>
+      <li>For example, which is better: Separate line for each cashier, or one single line where you go to the next window (think Secretary of State).</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="queue-implementation">Queue Implementation:</h1>
+
+<ul>
+  <li>LinkedList: Two choices
+    <ol>
+      <li>Add to head, remove from tail, or</li>
+      <li>Add to tail, remove from head.
+* Doesn’t really matter.  All <code>O(1)</code></li>
+    </ol>
+  </li>
+  <li>Arrays are trickier because both adding and removing are expensive at the head.</li>
+  <li>Trick:  Use a circular array.
+    <ul>
+      <li>Don’t fix the head and tail.  Let the “head” and “tail” move clockwise.</li>
+      <li>Works as long as array doesn’t get full.</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

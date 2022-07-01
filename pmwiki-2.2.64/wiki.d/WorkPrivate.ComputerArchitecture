@@ -1,0 +1,14 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1180110514
+host=75.134.113.30
+name=WorkPrivate.ComputerArchitecture
+rev=1
+targets=
+text=!! Web pages of courses at other universities%0a%0a*Georgia Tech%0a**2110>http://swiki.cc.gatech.edu:8080/cs2110*  Uses Yale Patt's book%0a**Advanced Organization>http://www.cc.gatech.edu/classes/AY2005/cs4290_spring/* Potentially useful homeworks and projects.%0a*UofM%0a**370 Intro to Comp. Organization>http://www.eecs.umich.edu/courses/eecs370/eecs370.w05/index.html* Good projects%0a**470 Computer Architecture>http://www.eecs.umich.edu/courses/eecs470/*%0a*Michigan State%0a**320 Computer Organization>http://www.cs.msu.edu/~cse320/* Uses a potentially useful tool called sim.%0a*CSE 420 doesn't have a web page.  Check again for fall.%0a*Michigan Tech%0a**CS3421>http://www.csl.mtu.edu/cs3421/www.spring.05/Home.html*%0a*Eastern Michigan COSC 221, 321 (338?)  Doesn't appear to have course web pages.%0a*Western Michigan 223 and 525%0a%0a!! Digital Logic Simulators%0a*Circuit Builder>http://www.jhu.edu/virtlab/logic/logic.htm* at Johns Hopkins%0a%0a*Useful applets>http://math.hws.edu/TMCM/java/DownloadingAndInfo.html*%0afrom *this website>http://math.hws.edu/TMCM/java/index.html*
+time=1180110514
+author:1180110514=
+diff:1180110514:1180110514:=1,21d0%0a%3c !! Web pages of courses at other universities%0a%3c %0a%3c *Georgia Tech%0a%3c **2110>http://swiki.cc.gatech.edu:8080/cs2110*  Uses Yale Patt's book%0a%3c **Advanced Organization>http://www.cc.gatech.edu/classes/AY2005/cs4290_spring/* Potentially useful homeworks and projects.%0a%3c *UofM%0a%3c **370 Intro to Comp. Organization>http://www.eecs.umich.edu/courses/eecs370/eecs370.w05/index.html* Good projects%0a%3c **470 Computer Architecture>http://www.eecs.umich.edu/courses/eecs470/*%0a%3c *Michigan State%0a%3c **320 Computer Organization>http://www.cs.msu.edu/~cse320/* Uses a potentially useful tool called sim.%0a%3c *CSE 420 doesn't have a web page.  Check again for fall.%0a%3c *Michigan Tech%0a%3c **CS3421>http://www.csl.mtu.edu/cs3421/www.spring.05/Home.html*%0a%3c *Eastern Michigan COSC 221, 321 (338?)  Doesn't appear to have course web pages.%0a%3c *Western Michigan 223 and 525%0a%3c %0a%3c !! Digital Logic Simulators%0a%3c *Circuit Builder>http://www.jhu.edu/virtlab/logic/logic.htm* at Johns Hopkins%0a%3c %0a%3c *Useful applets>http://math.hws.edu/TMCM/java/DownloadingAndInfo.html*%0a%3c from *this website>http://math.hws.edu/TMCM/java/index.html*%0a\ No newline at end of file%0a
+host:1180110514=75.134.113.30

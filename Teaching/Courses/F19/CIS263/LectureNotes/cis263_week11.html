@@ -1,0 +1,278 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="gvsu-cis-263">GVSU CIS 263</h1>
+
+<h2 id="week-11--day-1">Week 11 / Day 1</h2>
+
+<ul>
+  <li>Offline bin packing
+    <ul>
+      <li>Obviously, if we can see all the items first, we can do better.</li>
+      <li>(Trivially, we can find the optimum by exhaustive search — <code>O(n!)</code>)</li>
+      <li class="q">What approach would you take to approximate?  Why?
+        <ul>
+          <li>Place the biggest boxes first — they seem to create the most problems in the online version.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>First fit:
+    <ul>
+      <li>Worst cast:  <code>(4M + 1)/3</code></li>
+      <li>Easier to think of as <code>M + ceil((M-1)/3)</code>  – About 1/3 “extra”.</li>
+      <li>Lemma:  All the items placed in “extra” bins have size of at most 1/3.
+        <ul>
+          <li>Suppose to the contrary that the first item in box <code>M+1</code> – called <code>s_i</code> has size 1/3.</li>
+          <li>All previous items must also have size 1/3.</li>
+          <li>Boxes 1..M must have at most two items.</li>
+          <li>In fact the first <code>j</code> must have one element, and the rest must have two.</li>
+          <li class="q">Why must all the one item boxes come before two item boxes?
+            <ul>
+              <li>Remember, boxes placed in size order.</li>
+            </ul>
+          </li>
+          <li>Now size <code>M</code> is the optimial bin packing size, there must be a way to re-arrange
+the first <code>i-i</code> packages so package <code>i</code> will fit.  However,
+            <ul>
+              <li>Nothing can double up with the first <code>j</code> items in one of the first <code>j</code> bins,
+otherwise first fit would have already done si.</li>
+              <li>None of the boxes can have 3 items since they are all size 1/3 or more.</li>
+              <li>Thus, this is a contradiction.  Either <code>M</code> is not optimal, or <code>s_i</code> must
+have size &lt; 1/3.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Lemma: There can be at most <code>M-1</code> objects in “extra” bins.
+        <ul>
+          <li>Note that sum of all package sizes is at most M.  (Otherwise we couldn’t fit them all in M boxes.)</li>
+          <li>Now consider
+            <ol>
+              <li>the total size of the packages in the first M boxes:  sum(W_i)</li>
+              <li>the total size of the next M packages:  sum(x_i)</li>
+            </ol>
+          </li>
+          <li>These two totals together must be less than sum(s_i) because it doesn’t include all the packages.</li>
+          <li>However, consider what happens when we pair each <code>W_i</code> with an <code>x_i</code>:  That sum must be larger than 1, 
+otherwise we would have put package <code>x_i</code> in bin <code>W_i</code>.  This is another contradiction, so we know
+there can be at most M-1 objects in extra bins.</li>
+        </ul>
+      </li>
+      <li>Since there are at most <code>M-1</code> “extra” objects, and the extra objects have size at most 1/3, then
+we can pack them 3 to a bin, for a total of about 1/3 extra bins.</li>
+      <li class="q">How close to this 4/3 bounds can youi come?
+        <ul>
+          <li>Not very.  This bound is not “tight”.</li>
+        </ul>
+      </li>
+      <li>A much more complicated analysis shows an upper bound of <code>11/9M + 6/9</code>
+        <ul>
+          <li>That’s 22% “extra” instead of 33%</li>
+          <li>That bound is “tight”:  We can generate a set of packages will require <code>11/9 opt</code> bins when first fit is used.</li>
+        </ul>
+      </li>
+      <li>In practice, if package sizes are uniformly distributed over the interval O..1, then the number of extra bins is
+ about <code>sqrt(M)</code>.  For large values of M, this is a relatively small percentage:
+        <ul>
+          <li>10% for M=100</li>
+          <li>3% for M=1000</li>
+        </ul>
+      </li>
+      <li>Think of “diminishing returns” — i.e., how expensive the last few percent of accuracy is compared to the first
+ 9x%.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="week-11--day-2">Week 11 / Day 2</h2>
+
+<h3 id="divide-and-conquer">Divide and Conquer</h3>
+
+<ul>
+  <li>Really only applies when
+    <ol>
+      <li>Both halves of the division require processing
+        <ul>
+          <li>Binary search doesn’t count, since only one half is processed</li>
+        </ul>
+      </li>
+      <li>The division is of size <code>O(n)</code>
+        <ul>
+          <li>Selection sort doesn’t count, because you only take 1 element at a time.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>Closest Points
+    <ul>
+      <li>Divide in half</li>
+      <li>Find closest point in each half.</li>
+      <li>Trick is to quickly find the closest points if they are in each half.</li>
+      <li>Key observations:
+        <ol>
+          <li>If <code>D</code> is the distance between the closest points entirely in one half, 
+then we need only consider points within <code>D</code> of center line.</li>
+          <li>Within any given <code>DxD</code> rectangle, only 4 points can be found that are at most <code>D</code> units apart.</li>
+        </ol>
+      </li>
+      <li>Thus, for any point near the center line, need only measure the distance to up to 8 other points (within two <code>DxD</code> 
+squares:  One on each side of the center line).</li>
+      <li><code>O(n log n)</code> for the same reason that merge sort is <code>O(n log n)</code>
+        <ul>
+          <li class="q">But, how do you quickly find the points in the <code>DxD</code> square?
+            <ul>
+              <li>Sort them beforehand.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Selection problem (e.g., finding the median)
+    <ul>
+      <li class="q">How quickly can we find the median of <code>O(n)</code> numbers?</li>
+      <li>Review quicksort
+        <ul>
+          <li>Remember, worst case is <code>O(n^2)</code></li>
+        </ul>
+      </li>
+      <li class="q">How to modify to find the <code>k</code>th smallest element without sorting the entire array?
+        <ul>
+          <li>Pick a pivot.</li>
+          <li>Move elements to either side of the pivot.  (Call the left side <code>S_1</code>)</li>
+          <li>
+            <table>
+              <tbody>
+                <tr>
+                  <td>If $k &lt;</td>
+                  <td>S_1</td>
+                  <td>$ recurse on <code>S_1</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li>If $k = |S_1| + 1, return pivot.
+ $ Else recurse on <code>S_2</code>: <code>quickselect(S_2, k - |S_1| -1)</code></li>
+        </ul>
+      </li>
+      <li>Note the worst-case running time is <code>O(n^2)</code>?</li>
+      <li>Average case is <code>O(n)</code></li>
+      <li class="q">Can we get <code>O(n)</code> worst-case?</li>
+      <li class="q">What do we need to do to guarantee <code>O(n)?</code>
+        <ul>
+          <li>Guarantee that the pivot is not too close to the edge.</li>
+        </ul>
+      </li>
+      <li>The algorithm
+        <ol>
+          <li>Arrange <code>N</code> elements into groups of 5.</li>
+          <li>Find the median of each group.</li>
+          <li>Use median of medians as pivot.</li>
+        </ol>
+      </li>
+      <li>There are <code>N/5</code> columns.  In each column, there are either 2 values above the median, or two values below the
+ median. Also, half of the medians are less than the pivot. 
+ Thus there are approximately <code>2*(n/5)/2 + n/5/2 = n/5 + n/10 = 3/10n</code> 
+ elements either above or below the median of  medians.</li>
+      <li>Thus, the pivot is guaranteed to exclude <code>O(n)</code> numbers, avoiding the <code>O(n^2)</code> worst case.</li>
+      <li class="q">What’s the catch?
+        <ul>
+          <li>Circular reasoning:  Our find-the-median algorithm itself needs to find the median of <code>N/5</code> elements.</li>
+          <li>Solution:  Just call the algorithm recursively.</li>
+        </ul>
+      </li>
+      <li>To be precise:
+        <ul>
+          <li>Assume $N = 5<em>(2k+1) = 10</em>k + 5$.  (This means N is a multiple of 5 and <code>N/5</code> is odd).</li>
+          <li>When we find the median of medians (call it <code>v</code>, there will be <code>k + 1</code> pair of nodes less than <code>v</code> and 
+<code>k + 1</code> pair of nodes greater than <code>v</code>. Also, <code>k</code> of the medians will be &lt; <code>v</code> and <code>k</code> will be &gt; <code>v</code>.  Thus
+, you know you that the pivot will exclude at least <code>3k+1</code> nodes where <code>k = (N-5)/10</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Multiplication
+    <ul>
+      <li class="q">What is big-O of multiplying two N-digit numbers by hand?  (The way you learned in 3rd grade)</li>
+      <li class="q">Can we do better?</li>
+      <li>Let’s try divide an conquer.
+        <ul>
+          <li>Suppose <code>X</code> and <code>Y</code> have 8 digits each.</li>
+          <li>Rewrite <code>X</code> and <code>Y</code> as <code>X_L * 10^4 + X_R</code> and <code>Y_L * 10_4 + Y_R</code>.</li>
+          <li><span class="q">What is <code>XY</code></span> <code>X_L*Y_L*10^8 + (X_LY_R + Y_LX_R)* 10^4 + X_R*L_R</code>.</li>
+          <li>Doesn’t help.  Each multiplication is 1/2 the size; but, there are 4 of them, so we are back where we started.</li>
+        </ul>
+      </li>
+      <li>The trick is to rework so the product has fewer than 4 multiplications.
+        <ul>
+          <li class="q">Where might the middle term show up?
+            <ul>
+              <li>Inside <code>(X_L - X_R)(Y_R - Y_L)</code></li>
+              <li>Specifically, to get the desired term, we add <code>X_LY_L</code> and <code>X_RY_R</code>, which we already computed.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>When we do this, we get <code>T(n) = 3*T(n/2) + O(N)</code>, which simplifies to <code>O(N^(log_2(3)) = O(N^1.59)</code> — not 
+linear; but, better than quadratic.</li>
+      <li>Not commonly used
+        <ul>
+          <li>For small N, overhead isn’t worth it.</li>
+          <li>For large N, there are even better divide and conquer algorithms.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Matrix Multiplication
+    <ul>
+      <li><span class="q">What is conventional running time for multiplying <code>NxN</code> matrix?</span> <code>O(N^3)</code></li>
+      <li class="q">How can we do better?</li>
+      <li>Similar trick.
+        <ul>
+          <li>Divide each matrix into quarters.</li>
+          <li>Gives a straightforward result requiring 8 smaller multiplies.</li>
+          <li>However, we cleverly manipulate the 8 quarters so that need only 7 multiplies.</li>
+          <li>Resulting analysis:
+            <ul>
+              <li><code>T(N) = 7*T(N/2) + O(N^2)</code></li>
+              <li>Simplifies to <code>O(N^(log_2 7)) = O(N^2.81)</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Mostly of theoretical interest.  Not practical.</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

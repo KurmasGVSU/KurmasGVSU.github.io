@@ -1,0 +1,23 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1180107735
+host=75.134.113.30
+name=KurmasFamilyPublic.TheaterAndArtOpportunitiesInGrandRapids
+rev=4
+targets=
+text=!Links%0a||Art ||[[http://www.gvsu.edu/art/index6.html | GVSU Art Gallery]] ||%0a||Theater||[[http://www.grct.org | Grand Rapids Civic Theater]] ||%0a||Theater ||[[http://www.masterarts.org | Master Arts Theater]] ||%0a||Theater ||[[http://www.actorsatspectrum.org | Actors' at Spectrum Theater]]||%0a||Theater ||[[http://www.bwaygr.org | Broadway Theater Guild ]]||%0a||Theater ||[[http://www.jtgr.org | Jewish Theater of GR]] ||%0a||Opera ||[[http://www.operagr.com | Opera Grand Rapids]]||%0a
+time=1180107871
+author:1180107871=
+diff:1180107871:1180107830:=2,3c2,3%0a%3c ||Art ||[[http://www.gvsu.edu/art/index6.html | GVSU Art Gallery]] ||%0a%3c ||Theater||[[http://www.grct.org | Grand Rapids Civic Theater]] ||%0a---%0a> ||Art || [[http://www.gvsu.edu/art/index6.html | GVSU Art Gallery]] ||%0a> ||Theater|| [[http://www.grct.org | Grand Rapids Civic Theater]] ||%0a8c8%0a%3c ||Opera ||[[http://www.operagr.com | Opera Grand Rapids]]||%0a---%0a> ||Opera || [[http://www.operagr.com | Opera Grand Rapids]]||%0a
+host:1180107871=75.134.113.30
+author:1180107830=
+diff:1180107830:1180107777:=2,8c2,8%0a%3c ||Art || [[http://www.gvsu.edu/art/index6.html | GVSU Art Gallery]] ||%0a%3c ||Theater|| [[http://www.grct.org | Grand Rapids Civic Theater]] ||%0a%3c ||Theater ||[[http://www.masterarts.org | Master Arts Theater]] ||%0a%3c ||Theater ||[[http://www.actorsatspectrum.org | Actors' at Spectrum Theater]]||%0a%3c ||Theater ||[[http://www.bwaygr.org | Broadway Theater Guild ]]||%0a%3c ||Theater ||[[http://www.jtgr.org | Jewish Theater of GR]] ||%0a%3c ||Opera || [[http://www.operagr.com | Opera Grand Rapids]]||%0a---%0a> ||Art|| [[http://www.gvsu.edu/art/index6.html | GVSU Art Gallery ]]||%0a> ||Theater||[[http://www.grct.org | Grand Rapids Civic Theater]]||%0a> ||Theater||[[http://www.masterarts.org | Master Arts Theater]]||%0a> ||Theater||[[http://www.actorsatspectrum.org | Actors' at Spectrum Theater]]||%0a> ||Theater||[[http://www.bwaygr.org | Broadway Theater Guild ]]||%0a> ||Theater||[[http://www.jtgr.org | Jewish Theater of GR ]] ||%0a> ||Opera|| [[http://www.operagr.com | Opera Grand Rapids ]]||%0a
+host:1180107830=75.134.113.30
+author:1180107777=
+diff:1180107777:1180107735:=0a1%0a> %0a2c3%0a%3c ||Art|| [[http://www.gvsu.edu/art/index6.html | GVSU Art Gallery ]]||%0a---%0a> ||Art||*GVSU Art Gallery>http://www.gvsu.edu/art/index6.html*||%0a
+host:1180107777=75.134.113.30
+author:1180107735=
+diff:1180107735:1180107735:=1,9d0%0a%3c %0a%3c !Links%0a%3c ||Art||*GVSU Art Gallery>http://www.gvsu.edu/art/index6.html*||%0a%3c ||Theater||[[http://www.grct.org | Grand Rapids Civic Theater]]||%0a%3c ||Theater||[[http://www.masterarts.org | Master Arts Theater]]||%0a%3c ||Theater||[[http://www.actorsatspectrum.org | Actors' at Spectrum Theater]]||%0a%3c ||Theater||[[http://www.bwaygr.org | Broadway Theater Guild ]]||%0a%3c ||Theater||[[http://www.jtgr.org | Jewish Theater of GR ]] ||%0a%3c ||Opera|| [[http://www.operagr.com | Opera Grand Rapids ]]||%0a
+host:1180107735=75.134.113.30

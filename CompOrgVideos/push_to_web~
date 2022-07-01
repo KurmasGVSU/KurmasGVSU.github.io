@@ -1,0 +1,1 @@
+scp -r * eos12.cis.gvsu.edu:public_html/Teaching/Videos

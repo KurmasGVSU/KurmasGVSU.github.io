@@ -1,0 +1,23 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10.4; en-US; rv:1.9.0.3) Gecko/2008092414 Firefox/3.0.3
+author=
+csum=
+ctime=1242427679
+host=68.188.218.51
+name=KurmasFamilyPublic.AtlantaInformation
+rev=4
+targets=
+text=CHATTANOOGA%0a* Rock City%0a** Hours: 8:30 - 6:00%0a** Price: $16.95 (adults), $8.95 (ages 3 - 13)%0a** Plan 2 hours%0a%0a* Ruby Falls%0a** 8 am - 8 pm%0a** Price: $15.95 (adults), $7.95 (ages 3 - 13)%0a** Plan 1 1/2 hours minimum%0a%0a* Incline Railway%0a** hours:9 - 6  (last train 5:20)%0a** Price: $14 (adults), $7 (kids)%0a** 20 minute ride, round trip (free parking at the bottom)%0a%0a* Chattanooga Combo:%0a** all three: $44 (adults) $23 (kids)%0a** two (Rock City and Ruby Falls): $31 (adults), $14 (kids)%0a%0aATLANTA%0a* American Adventure (770 428 5217)%0a** Hours (beginning the 25th) 10 - %0a** Price: $19.99 all day (includes go karts, mini golf, foam factory and fun forest rides),  $15.99 (3 hours), $4.99 adult wristband%0a** Or $2/ ride or 19 rides $25 or 40 rides $50%0a** Foam Factory $7 (4 and up) $4 (3 and under), adult companions free%0a%0a* Stone Mountain%0a** Hours:  10am - 8pm (Laser Show at 9:30pm)%0a** Price: Daily Adventure Pass Adults $26, ($22 at Kroger),  Children ages (3 - 11) $21 ($17.00 at Kroger)%0a** Individual Attractions (adults $9, children $7)%0a** Parking $8 - 10%0a** Twilight Rate (begins at 4pm)  $15.00%0a%0a* Yellow River Game Ranch%0a** Hours:  Monday - Friday 10 - 5%0a** Price:  Adults $8.00, Children 2 - 11 $7.00%0a%0a* Zoo Atlanta%0a** Hours: Monday - Friday 9:30 - 5:30, Saturday and Sunday 9:30 - 6:30%0a** Price:  adults $18.99, children (3 - 11) $13.99, under 3 free%0a%0a
+time=1242614439
+author:1242614439=
+diff:1242614439:1242614269:=10,11c10%0a%3c ** Plan 1 1/2 hours minimum%0a%3c %0a---%0a> %0a15,17c14,15%0a%3c ** 20 minute ride, round trip (free parking at the bottom)%0a%3c %0a%3c * Chattanooga Combo:%0a---%0a> %0a> * Combo:%0a
+host:1242614439=68.188.218.51
+author:1242614269=
+diff:1242614269:1242429192:=1,19d0%0a%3c CHATTANOOGA%0a%3c * Rock City%0a%3c ** Hours: 8:30 - 6:00%0a%3c ** Price: $16.95 (adults), $8.95 (ages 3 - 13)%0a%3c ** Plan 2 hours%0a%3c %0a%3c * Ruby Falls%0a%3c ** 8 am - 8 pm%0a%3c ** Price: $15.95 (adults), $7.95 (ages 3 - 13)%0a%3c %0a%3c * Incline Railway%0a%3c ** hours:9 - 6  (last train 5:20)%0a%3c ** Price: $14 (adults), $7 (kids)%0a%3c %0a%3c * Combo:%0a%3c ** all three: $44 (adults) $23 (kids)%0a%3c ** two (Rock City and Ruby Falls): $31 (adults), $14 (kids)%0a%3c %0a%3c ATLANTA%0a
+host:1242614269=68.188.218.51
+author:1242429192=
+diff:1242429192:1242427679:=1,13d0%0a%3c * American Adventure (770 428 5217)%0a%3c ** Hours (beginning the 25th) 10 - %0a%3c ** Price: $19.99 all day (includes go karts, mini golf, foam factory and fun forest rides),  $15.99 (3 hours), $4.99 adult wristband%0a%3c ** Or $2/ ride or 19 rides $25 or 40 rides $50%0a%3c ** Foam Factory $7 (4 and up) $4 (3 and under), adult companions free%0a%3c %0a%3c * Stone Mountain%0a%3c ** Hours:  10am - 8pm (Laser Show at 9:30pm)%0a%3c ** Price: Daily Adventure Pass Adults $26, ($22 at Kroger),  Children ages (3 - 11) $21 ($17.00 at Kroger)%0a%3c ** Individual Attractions (adults $9, children $7)%0a%3c ** Parking $8 - 10%0a%3c ** Twilight Rate (begins at 4pm)  $15.00%0a%3c %0a18,21d4%0a%3c * Zoo Atlanta%0a%3c ** Hours: Monday - Friday 9:30 - 5:30, Saturday and Sunday 9:30 - 6:30%0a%3c ** Price:  adults $18.99, children (3 - 11) $13.99, under 3 free%0a%3c %0a
+host:1242429192=68.188.218.51
+author:1242427679=
+diff:1242427679:1242427679:=1,4d0%0a%3c * Yellow River Game Ranch%0a%3c ** Hours:  Monday - Friday 10 - 5%0a%3c ** Price:  Adults $8.00, Children 2 - 11 $7.00%0a%3c %0a
+host:1242427679=68.188.218.51

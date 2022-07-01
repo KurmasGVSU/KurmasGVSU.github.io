@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>CIS 351 Assembly Loops</title>
+  <style type="text/css">
+    code {
+      white-space: nowrap;
+    }
+  </style>
+
+</head>
+
+<body>
+<table style="border:  0; width: 100%">
+  <tr>
+    <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;">CIS 351</h1></td>
+    <td style="width: 70%"><h1 style="text-align: center">Assembly Loops</h1></td>
+    <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap">Winter 2021</h1></td>
+  </tr>
+</table>
+
+<p>For this homework, you are going to write and test some assembly
+  code using loops. As with previous assignments, in order for your
+  solution to work with my testing software, you must follow these
+  rules:
+
+<ul>
+  <li> You must give your procedures the names indicated below.</li>
+
+  <li> The procedures you write must be declared <code>.globl</code>.</li>
+
+  <li>Use labels to access memory. (Don't use "magic"
+    constants.)
+  </li>
+
+  <li>The method parameters will be placed in registers
+    <code>a0</code>, <code>a1</code>, and <code>a2</code>.
+    <code>a0</code> will contain the first parameter, <code>a1</code>
+    the second, etc.
+  </li>
+
+  <li>Each method must end with the instruction <code>jr $ra</code>.</li>
+
+  <li>Use the literal value <code>1</code> for <code>true</code> and <code>0</code> for <code>false</code>.</li>
+
+</ul>
+
+<h2>Problems</h2>
+
+<dl>
+  <dt>1. <code>int indexOf(int value, int[] array)</code></dt>
+  <dd> Return the index of the first element of <code>array</code>
+    that is equal to <code>value</code>, or return <code>-1</code> if
+    <code>value</code> doesn't appear in <code>array</code>. For this
+    problem, a negative value will mark the end of
+    <code>array</code>.
+  </dd>
+
+  <dt>2. <code>int max(int[] array, int length)</code></dt>
+  <dd>Return the largest value in <code>array</code>.
+  </dd>
+
+  <dt>3. <a href="http://codingbat.com/prob/p127384">sum13(int[]
+    array, int length)</a></code> from CodingBat.
+  </dt>
+
+  <dt>4. <a
+    href="http://codingbat.com/prob/p111327">sum67(int[] array, int length)</a></code> from CodingBat.
+  </dt>
+
+  <dt>5. <code>void reverse(char[] string)</code>
+  <dd>Reverse <code>string</code> in place. <code>string</code> will be null-terminated. Hint: Set up two
+    pointers, one to the first character, one to the last. Then "walk" the pointers toward the middle swapping as
+    you go.
+  </dd>
+
+  <dt>6. <code>void evenOdd(int[] array, int length)</code>
+  <dd>Re-arrange <code>array</code> in place such that all the even numbers come before all the odd numbers.
+    The numbers may be in any order, so long as the evens come before the odds. This problem is based on
+    <a href="https://codingbat.com/prob/p105771">the evenOdd CodingBat problem</a>; however, unlike the CodingBat
+    problem, you are not allowed to write data outside of the array.
+  </dd>
+
+</dl>
+
+<p>You may use <a href="Loops1TestSample.java">this class</a> as a
+  starting point for your <code>MUnit</code> tests.
+
+
+<h2>Submission and grading</h2>
+
+<p>Use this <a href='https://classroom.github.com/g/qO5KxFyD'>GitHub Classroom repository</a>. Place your code in <code>loops1.asm</code>.  
+Do not rename the methods.  The repo also has a file you can use as the
+  starting point for your  <code>MUnit</code> tests.</p>
+
+<p>Be sure to document and comment your code!</p>
+
+<p><em>When your code passes all tests</em>, commit your code with <code>[Grade Me]</code> in the message.
+
+
+<!-- 
+<p><em>When your code passes all tests</em>, submit the
+  <code>.asm</code> and test files using Blackboard's Assignment Manager. Your
+  grade is based on when your code passes all tests. If your code
+  passes all tests by the due date, you get 100%. Otherwise, you lose
+  5% for each day it takes you after the due date to submit correct
+  code. In addition, you lose 5% for each incorrect submission. For
+  example, if your first submission is two days late, but completely
+  correct, your score will be 90%. If you submit incorrect solutions
+  on the due date, and then submit the correct solutions two days
+  later, your score will be 85%.</p>
+
+-->
+
+<!-- <h2>Hints:</h2> -->
+
+</body>
+<hr>
+<p>Updated Wednesday, 17 March 2021, 8:33 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+
+</html>

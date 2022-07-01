@@ -1,0 +1,158 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="gvsu-cis-263">GVSU CIS 263</h1>
+
+<h2 id="week-13--day-1">Week 13 / Day 1</h2>
+
+<p>Exam 2</p>
+
+<h2 id="week-13--day-2">Week 13 / Day 2</h2>
+
+<h4 id="optimal-binary-search-tree">Optimal binary search tree</h4>
+
+<ul>
+  <li>Set of words <code>w_1</code>, <code>w_2</code> … <code>w_n</code> with probabilities <code>p_1</code>, <code>p_2</code>, … , <code>p_n</code></li>
+  <li>Goal is to minimize access time in a search tree (i.e, keep most common words toward top)</li>
+  <li>In other words, minimize <code>Sum p_i(1+d_i)</code> where <code>d_i</code> is depth of word 1.</li>
+  <li class="q">Describe a greedy algorithm.
+    <ul>
+      <li>Put most common word at the root.</li>
+      <li>Then divide words before and after and recurse.</li>
+      <li>Not optimal</li>
+    </ul>
+  </li>
+  <li>Balanced tree is not optimal either.</li>
+  <li class="q">Huffman codes can use greedy algorithm.  Why can’t this?
+    <ul>
+      <li>Tree must maintain binary search property.  Can’t put nodes wherever we want them.</li>
+    </ul>
+  </li>
+  <li>We can take a dynamic programming approach similar to matrix multiplication</li>
+</ul>
+
+<h2 id="randomized-algorithms">Randomized algorithms</h2>
+
+<ul>
+  <li>Use random numbers in algorithms</li>
+  <li>Two main types
+    <ul>
+      <li>Las Vegas:
+        <ul>
+          <li>always gives the right answer, but running time is random.</li>
+          <li>quick sort</li>
+        </ul>
+      </li>
+      <li>Monte Carlo:
+        <ul>
+          <li>may or many not give the right answer</li>
+          <li>primality testing</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Las Vegas algorithms are a way to defeat the “adversary”
+    <ul>
+      <li>Quicksort has a worst-case scenario of <code>O(n^2)</code>, even with median-of-7.</li>
+      <li>Given a fixed algorithm, the adversary can intentionally cause bad / worst-case behavior</li>
+      <li>Realistically, “the adversary” is patterns in real problems that happen to interact poorly with the algorithm.
+        <ul>
+          <li>(Think about the bad cases for bin packing)</li>
+        </ul>
+      </li>
+      <li>If we choose pivots randomly for quick sort, we can still get unlucky, but that “bad luck” is not likely to recur.</li>
+      <li>However, if a workload pattern is causing bad quicksort behavior, that bad behavior will pop up again and again.</li>
+    </ul>
+  </li>
+  <li>Need to understand (pseudo) random numbers
+    <ul>
+      <li>Computer can’t truly choose numbers at random.  Need some algorithm.</li>
+      <li>Goal is to produce statistical properties that are common among truly random numbers.</li>
+      <li class="q">Why is just using part of the clock a bad idea?</li>
+    </ul>
+  </li>
+  <li>Simplest is Linear Congruential Generators
+    <ul>
+      <li><code>x_{i+1} = A x_i mod M</code></li>
+      <li>Given M = 11, A = 7, and <code>x_0</code> = 1</li>
+      <li>7, 5, 2, 3, 10, 4, 6, 9, 8, 1, 7, 5, 2</li>
+      <li class="q">What are some dangers?
+        <ul>
+          <li>Short period.  Can’t just pick any <code>A</code> and <code>M</code>.</li>
+          <li>If <code>A = 5</code> then we get 5, 3, 9, 1, 5, 3, 4</li>
+          <li>Notice this happens even though <code>M</code> and <code>A</code> are relatively prime.</li>
+        </ul>
+      </li>
+      <li>One good choice:
+        <ul>
+          <li><code>M = 2^31 - 1 = 3,147,483,647</code></li>
+          <li><code>A = 48,271</code></li>
+        </ul>
+      </li>
+      <li>Small changes can completely break the generator
+        <ul>
+          <li><code>x_{i+1} = (48,271x_i + 1) * M</code> has a period of 1 if seed is 179,424,105</li>
+        </ul>
+      </li>
+      <li>Need to be careful when implementing.  Overflow seems harmless, but can mess with 
+the period.</li>
+    </ul>
+  </li>
+  <li>Watch out for generators that use <code>M=2^B</code> (e.g. 2^32 on a 32-bit machine).
+    <ul>
+      <li>Always alternate even-odd</li>
+      <li>Lower <code>k</code> bits have a period of <code>2^k</code> or less.</li>
+      <li>The UNIX <code>drand48</code> uses a generator like this; but, uses a 48 bit generator, 
+but only returns the upper 32 bits.
+        <ul>
+          <li><code>x_{i+1} = (Ax_i + c) mod 2^B</code></li>
+          <li>Constants are <code>A = 25,214,903,917</code>, <code>B=48</code>, <code>C=11</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>There are many better algorithms than Linear Congruential.
+    <ul>
+      <li>Mersenne Twister is popular</li>
+      <li>Beyond the scope of this class</li>
+    </ul>
+  </li>
+  <li class="q">Why don’t we use random piviots in quicksort?
+    <ul>
+      <li>Random number generation is expensive.</li>
+    </ul>
+  </li>
+  <li class="q">Why are lottery numbers drawn using physical machines?</li>
+</ul>
+
+
+</main>
+</body>
+</html>

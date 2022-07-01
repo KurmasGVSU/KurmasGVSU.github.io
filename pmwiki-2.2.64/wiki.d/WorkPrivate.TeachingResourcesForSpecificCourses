@@ -1,0 +1,17 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419.3 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1189190559
+host=148.61.31.46
+name=WorkPrivate.TeachingResourcesForSpecificCourses
+rev=2
+targets=
+text=!CS 162%0a*[[http://www.csis.pace.edu/~scharff/webwork/webwork.html | Web Work]] (Java demo:  [[http://atlantis.seidenberg.pace.edu/webwork2]])%0a*[[http://debug.csi.muohio.edu/ | Debugging videos]]
+time=1189190729
+author:1189190729=
+diff:1189190729:1189190559:=2,3c2%0a%3c *[[http://www.csis.pace.edu/~scharff/webwork/webwork.html | Web Work]] (Java demo:  [[http://atlantis.seidenberg.pace.edu/webwork2]])%0a%3c *[[http://debug.csi.muohio.edu/ | Debugging videos]]%0a\ No newline at end of file%0a---%0a> *[[http://www.csis.pace.edu/~scharff/webwork/webwork.html | Web Work]] (Java demo:  [[http://atlantis.seidenberg.pace.edu/webwork2]])%0a\ No newline at end of file%0a
+host:1189190729=148.61.31.46
+author:1189190559=
+diff:1189190559:1189190559:=1,2d0%0a%3c !CS 162%0a%3c *[[http://www.csis.pace.edu/~scharff/webwork/webwork.html | Web Work]] (Java demo:  [[http://atlantis.seidenberg.pace.edu/webwork2]])%0a\ No newline at end of file%0a
+host:1189190559=148.61.31.46

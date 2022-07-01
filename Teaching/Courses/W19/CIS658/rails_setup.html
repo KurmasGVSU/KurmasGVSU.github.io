@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Getting Started with Rails</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #073c88;
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    dt dt {
+      font-size: 85%;
+    }
+  </style>
+</head>
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 658</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Getting Started with Rails</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2019</h1></td>
+  </tr>
+</table>
+
+<p>Note: Parts of this document were originally written by Prof. Engelsma.</p>
+
+<h2>RVM</h2>
+
+<p>RVM is the <em>R</em>uby <em>V</em>ersion <em>M</em>anager. It allows you to have multiple versions of Ruby
+  installed on your machine. Rails, and certain Ruby packages, can be sensitive to the version. Therefore, I
+  suggest you install and use RVM to manage your Ruby version. (Don't rely on the default Ruby version installed on
+  your machine.)
+</p>
+
+<h2>Platform</h2>
+
+<p>Your first decision is whether to install Rails on your own machine, or to run it in a cloud environment. There are
+  advantages to running Rails on your own machine (e.g., you don't have to worry about Internet access or
+  time/space quotas); but, Rails is a complex framework with many dependencies. If you use a cloud platform, it is
+  much easier to start from scratch if anything gets messed up.</p>
+
+<dl>
+  <dt>Your own machine</dt>
+  <dd>
+    <dl>
+      <dt>Windows</dt>
+      <dd>
+        I've never tried installing and running Rails on a Windows machine; but, I've heard it can be painful. If
+        you want to run Rails locally on a Windows machine, try one of these approaches:
+        <ul>
+          <li>Install Rails in a Ubuntu virtual image. (One key benefit of this approach is that, if anything
+            gets messed up, you can simply delete the image and start over.)
+          </li>
+          <li>Use the Windows Subsystem for Linux. WSL is a relatively new feature in Windows 10. It gives you a
+            good Linux environment without a full-blown virtual machine. See
+            <ul>
+              <li>This Wikipedia article:
+                <a href='Wikipedia https://en.wikipedia .org/wiki/Windows_Subsystem_for_Linux'><code>Wikipedia https://en.wikipedia .org/wiki/Windows_Subsystem_for_Linux</code></a></li>
+              <li>
+                An installation guide:
+                <a href='https://docs.microsoft.com/en-us/windows/wsl/install-win10'><code>docs.microsoft.com/en-us/windows/wsl/install-win10</code></a>
+              </li>
+              <li>
+                This guide to RVM <a href='https://rvm.io/rvm/install#explained'><code>rvm.io/rvm/install#explained</code></a>
+              </li>
+            </ul>
+            (Thanks to Kevin Kredit for the suggestion.)
+          </li>
+        </ul>
+      </dd>
+
+      <dt>Linux or MacOS</dt>
+      <dd>
+        There are a number of package installers designed to make this process easier; however, many are out of date, or
+        lag behind hte official version of Rails. As explained above, I suggest using RVM rather than relying on the
+        version of Ruby that came pre-installed on your machine.
+
+        <ul>
+          <li>Install RVM. (See <a href='https://rvm.io'><code>rvm.io</code></a> for details on your specific platform.)</li>
+          <li>Use RVM to install a recent version of Ruby:
+            <span class="inline-instruction">rvm install ruby-2.6.0</span>
+          </li>
+          <li>Make the version you just installed your default Ruby interpreter:
+            <span class="inline-instruction">rvm --default use 2.6.0</span></li>
+          <li>Install the most recent version of Rails: <span class="inline-instruction">gem install rails</span></li>
+        </ul>
+      </dd>
+    </dl>
+  </dd>
+
+  <dt>Cloud Environments</dt>
+  <dd>
+    <dl>
+      <dt>Cloud 9</dt>
+      <dd>Cloud9 has been Prof. Engelsma's favorite cloud-based IDE. However, Amazon acquired Cloud9 and
+        incorporated it into Amazon Web Services (AWS). If you are fortunate enough to have created a Cloud9 account
+        before it was acquired by Amazon, you can still use your existing account. If not you will need to create an AWS
+        account. You will need a credit card to sign up; however, Amazon gives new users 12 months of "free tier"
+        service that will allow you to use Cloud9 without charge. After your 12-month trial ends, $2/month should buy
+        more than enough time on an EC2 instance to meet the needs of this class
+        (<a href='https://aws.amazon.com/cloud9/pricing/'><code>aws.amazon.com/cloud9/pricing/</code></a>).
+      </dd>
+
+      <dt>CodeAnywhere</dt>
+      <dd>CodeAnywhere is an alternative cloud IDE to Cloud9. In Prof. Engelsma's opinion, it is not quite as easy to
+        use; but, it is completely free (for up to 2 hours/day of usage) and doesn't require a credit card.
+        <ul>
+          <li>Go to <a href='https://codeanywhere.com/dashboard'><code>codeanywhere.com/dashboard</code></a></li>
+          <li>Create a new project and open it.</li>
+          <li>When you open the new project for the first time, the Connection Wizard will appear. This
+            Connection Wizazrd does two things. (1) You can set up a connection to a source code repository.
+            This step is optional. (2) You name your container and choose its "stack" (initial configuration). Choose
+            the
+            "Ubuntu 16.04" version of Ruby.
+          </li>
+
+          <li>Once the container is ready, select the "SSH Console" tab.</li>
+          <li>Check your RVM version: <span class="inline-instruction">rvm --version</span></li>
+          <li>Upgrade RVM (if desired): <span class="inline-instruction">rvm get stable</span></li>
+          <li>Check your Ruby version: <span class="inline-instruction">ruby --version</span></li>
+          <li>Upgrade Ruby (if desired): <span class="inline-instruction">rvm install ruby-2.6.0</li>
+          <li>Set the default Ruby version:
+            <span class="inline-instruction">rvm --default use 2.6.0</span></li>
+          <li>Check the Rails version: <span class="inline-instruction">rails -v</span></li>
+          <li>Install Rails (if necessary): <span class="inline-instruction">gem install rails</span>
+            <ul>
+              <li>This step may take 6 to 8 minutes.</li>
+              <li>If you are building a test/toy application and don't need the documentation tools you can do a
+                quicker install with <span class="inline-instruction">gem install rails --no-ri --no-rdoc</span></li>
+            </ul>
+          </li>
+          <li>Create a new Rails app: <span class="inline-instruction">rails new name_of_your_app</span>
+            <ul>
+              <li>Make sure the current working directory is underneath <code>~/workspace</code>.</li>
+            </ul>
+          </li>
+          <li><code>cd</code> into the new application's directory</li>
+          <li>Launch rails: <span class="inline-instruction">rails s --binding=0.0.0.0</span>
+            <ul>
+              <Li>If you get a help/"usage" display, then you ran the <code>rails</code> command from the wrong
+                directory.
+              </Li>
+            </ul>
+          </li>
+          <li>The information page for your container will contain a link to your web app. When you click it, you
+            should see the default Rails landing page.
+          </li>
+        </ul>
+        This screencast walks through the above steps: <a href='https://youtu.be/Lh5A6mshMvk'><code>youtu.be/Lh5A6mshMvk</code></a>.
+      </dd>
+    </dl>
+  </dd>
+</dl>
+
+<hr>
+<p>Updated Friday, 12 April 2019, 1:18 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

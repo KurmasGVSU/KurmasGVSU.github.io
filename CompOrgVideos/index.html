@@ -1,0 +1,1537 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Computer Organization Supplementary Videos</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .vlist {
+      display: inline-block;
+      margin-right: 25px;
+      vertical-align: top;
+    }
+
+    .expandable-content {
+      display: none;
+    }
+
+    .hidden {
+      display: inline;
+    }
+    .showing {
+      display: none;
+    }
+    .pretend-link {
+      color: #0000ee;
+    }
+
+    .in-progress {
+	color: #888888;
+    }
+    
+
+dl.normal dt {
+    font-weight: normal;
+    font-variant: none;
+    font-size: 115%;
+}
+
+.toc {
+margin-top: 5px;
+padding-top: 5px;
+padding-bottom: 0;
+margin-bottom: 0;
+}
+
+.showing, .hidden {
+font-size: 75%;
+}
+
+  </style>
+</head>
+
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <h1> CIS 351 Supplementary Videos</h1>
+
+<p class='listHeader'>Below is a series of videos I use in CIS 351, Grand Valley State University's course on Computer Organization and Assembly Language.</p>
+<ul>
+<li><a href='https://www.youtube.com/playlist?list=PLhCl0ln3o55z3HXfnOvtqEQSw0f1qgAzQ'>This playlist</a> contains all the videos below.</li>
+<li>These videos introduce topics in a "just-in-time" manner: I don't introduce topics a topic until it is needed to solve a larger problem.
+For example, I don't introduce two's complement until after we have covered adders and are ready to introduce the addition of 
+negative numbers and subtraction.  Similarly, I don't introduce multiplexers until they are needed for the carry select adder and ALUs.</li>
+<li>The pace of the videos is a bit slow (I tend to stumble over my words if I try to talk faster).  I recommend watching them at 1.25x speed.</li>
+<li>Feel free to use these videos in your course.  If you do, please encourage all your students to subscribe to the channel.</li>
+</ul> 
+
+  <dl class='normal'>
+
+  
+  <dt> <a href='https://youtu.be/nZKutfEPm30'>Video 1: Introduction</a></dt>
+  <dd> An introduction to CIS 351, GVSU's course on Computer Organization and Assembly Language. This video provides an overview of the course and shows how to physically implement a combinatorial circuit (which, in some sense, is a very simple "computer") from a truth table using a PLA-style design.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Overview<ul>
+<li>"Big Picture"  <a href='https://youtu.be/nZKutfEPm30#t=1m00s'>(1:00)</a></li>
+<li>Organization vs. Architecture  <a href='https://youtu.be/nZKutfEPm30#t=1m17s'>(1:17)</a></li>
+</ul>
+</li>
+<li>Building a Simple Computer<ul>
+<li>Computational Model  <a href='https://youtu.be/nZKutfEPm30#t=1m53s'>(1:53)</a></li>
+<li>Motivation for Binary  <a href='https://youtu.be/nZKutfEPm30#t=2m30s'>(2:30)</a></li>
+<li>Truth Tables  <a href='https://youtu.be/nZKutfEPm30#t=5m32s'>(5:32)</a></li>
+<li>The "Sufficiency" of AND, OR, and NOT  <a href='https://youtu.be/nZKutfEPm30#t=6m48s'>(6:48)</a></li>
+<li>Logic Gates  <a href='https://youtu.be/nZKutfEPm30#t=8m12s'>(8:12)</a></li>
+<li>Implementing a Truth Table  <a href='https://youtu.be/nZKutfEPm30#t=11m34s'>(11:34)</a></li>
+</ul>
+</li>
+<li>Simulating the "Is Prime" Circuit  <a href='https://youtu.be/nZKutfEPm30#t=14m02s'>(14:02)</a></li>
+<li>Programmable Logic Arrays  <a href='https://youtu.be/nZKutfEPm30#t=24m45s'>(24:45)</a></li>
+<li>The "Big Hammer"  <a href='https://youtu.be/nZKutfEPm30#t=25m15s'>(25:15)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Supplemental Resources
+    <div class="expandable-content">
+       <ul>
+          
+            <li><a href='https://pages.mtu.edu/~pop/jlsp/bin/JLS.html'>JLS Website</a></li>
+          
+            <li><a href='JLS.jar'>JLS Download</a></li>
+          
+            <li><a href='isPrime.jls'>IsPrime</a> JLS circuit</li>
+          
+            <li><a href='mult3_pla.jls'>Multiples of 3</a> JLS Circuit using PLA pattern</li>
+          
+            <li><a href='pla_pattern.jls'>Blank PLA Pattern</a> in JLS</li>
+          
+       </ul>
+    </div>
+  </div>
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Related Videos
+    <div class="expandable-content">
+       <ul>
+        
+           <li><a href='https://www.youtube.com/watch?v=xY6Gm-O8rWY'>Programmable Logic Arrays</a> from <a href='https://www.youtube.com/channel/UCmw4PjenkDkrEpr2_8qbOtw'>Robot Brigade</a></li>
+        
+       </ul>
+    </div>
+  </div>
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/4xiAlX_ALJM'>Video 2: Building Logic Gates</a></dt>
+  <dd> Presents a simple and intuitive technique for building logic gates like AND, OR, and NOT.  Also discusses one technique for implementing logic gates using relays.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>NOT Gate  <a href='https://youtu.be/4xiAlX_ALJM#t=0m31s'>(0:31)</a></li>
+<li>AND Gate  <a href='https://youtu.be/4xiAlX_ALJM#t=4m57s'>(4:57)</a></li>
+<li>OR Gate  <a href='https://youtu.be/4xiAlX_ALJM#t=6m11s'>(6:11)</a></li>
+<li>Relay  <a href='https://youtu.be/4xiAlX_ALJM#t=6m54s'>(6:54)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Related Videos
+    <div class="expandable-content">
+       <ul>
+        
+           <li><a href='https://www.youtube.com/watch?v=LN0ucKNX0hc&list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo&index=3'>Electronic Computing</a> from <a href='https://www.youtube.com/watch?v=tpIctyqH29Q&list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo'>Crash Course Computer Science</a></li>
+        
+           <li><a href='https://www.youtube.com/watch?v=gI-qXk7XojA&list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo&index=4'>Boolean Logic & Logic Gates</a> from <a href='https://www.youtube.com/watch?v=tpIctyqH29Q&list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo'>Crash Course Computer Science</a></li>
+        
+           <li><a href='https://www.youtube.com/watch?v=7dvqfpXEjdg&list=PLA8F3EE4391DF4D0A&index=6'>Boolean Operators</a> from <a href='https://www.youtube.com/playlist?list=PLA8F3EE4391DF4D0A'>EngMicroLectures</a></li>
+        
+           <li><a href='https://www.youtube.com/watch?v=IcrBqCFLHIY'>How Does a Transistor Work</a> from <a href='https://www.youtube.com/channel/UCHnyfMqiRRG1u-2MsSQLbXA'>Veritasium</a></li>
+        
+           <li><a href='https://www.youtube.com/watch?v=fw-N9P38mi4&list=PLTd6ceoshprfc_VVJYunO1BN9peCTMQgr'>Introduction to Logic Gates</a> from <a href='https://www.youtube.com/channel/UCSX3MR0gnKDxyXAyljWzm0Q'>Computer Science</a></li>
+        
+       </ul>
+    </div>
+  </div>
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/W6FRAsHzqMQ'>Video 3: How Many Switches?</a></dt>
+  <dd> How many "switches" (i.e., input pins) does a combinatorial circuit need?  (In other words, explains why n bits can encode 2^n values.)
+ 
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/vT9p2QnIycI'>Video 4: Binary</a></dt>
+  <dd> The "whys" and "hows" of binary.  This video not only shows <em>how</em> to convert between binary and decimal, but also discusses <em>why</em> we use binary, why binary works the way it does, and why the conversion algorithms work.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Why do we need a standard encoding?  <a href='https://youtu.be/vT9p2QnIycI#t=1m16s'>(1:16)</a></li>
+<li>What makes an encoding "good"?  <a href='https://youtu.be/vT9p2QnIycI#t=2m23s'>(2:23)</a></li>
+<li>Designing a good encoding  <a href='https://youtu.be/vT9p2QnIycI#t=4m35s'>(4:35)</a></li>
+<li>Converting binary to decimal<ul>
+<li>Mathematics  <a href='https://youtu.be/vT9p2QnIycI#t=6m36s'>(6:36)</a></li>
+<li>Mechanics  <a href='https://youtu.be/vT9p2QnIycI#t=7m38s'>(7:38)</a></li>
+</ul>
+</li>
+<li>Converting decimal to binary<ul>
+<li>Mechanics of the 'two-pass' algorithm  <a href='https://youtu.be/vT9p2QnIycI#t=9m13s'>(9:13)</a></li>
+<li>Mathematics of the 'one-pass' algorithm  <a href='https://youtu.be/vT9p2QnIycI#t=12m10s'>(12:10)</a></li>
+<li>Mechanics of the 'one-pass' algorithm  <a href='https://youtu.be/vT9p2QnIycI#t=15m35s'>(15:35)</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Related Videos
+    <div class="expandable-content">
+       <ul>
+        
+           <li><a href='https://www.youtube.com/watch?v=1GSjbWt0c9M&list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo&index=5'>Representing Numbers and Letters with Binary</a> from <a href='https://www.youtube.com/watch?v=tpIctyqH29Q&list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo'>Crash Course Computer Science</a></li>
+        
+           <li><a href='https://www.youtube.com/watch?v=2xJEf9tCTgU&list=PLA8F3EE4391DF4D0A&index=5'>Number Bases: Decimal and Binary</a> from <a href='https://www.youtube.com/playlist?list=PLA8F3EE4391DF4D0A'>EngMicroLectures</a></li>
+        
+       </ul>
+    </div>
+  </div>
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/6plMoviKDs0'>Video 5: Hexadecimal and Other Number Bases</a></dt>
+  <dd> Number bases other than 2 and 10, with a special focus on hexadecimal.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Binary to decimal review  <a href='https://youtu.be/6plMoviKDs0#t=0m50s'>(0:50)</a></li>
+<li>Arbitrary base to decimal<ul>
+<li>Base 7 to decimal  <a href='https://youtu.be/6plMoviKDs0#t=1m33s'>(1:33)</a></li>
+<li>Base 6 to decimal  <a href='https://youtu.be/6plMoviKDs0#t=2m08s'>(2:08)</a></li>
+<li>Base 36 to decimal  <a href='https://youtu.be/6plMoviKDs0#t=2m40s'>(2:40)</a></li>
+</ul>
+</li>
+<li>Decimal to Binary review  <a href='https://youtu.be/6plMoviKDs0#t=3m43s'>(3:43)</a></li>
+<li>Generalize decimal to binary algorithm  <a href='https://youtu.be/6plMoviKDs0#t=5m08s'>(5:08)</a></li>
+<li>Decimal to arbitrary base  <a href='https://youtu.be/6plMoviKDs0#t=6m32s'>(6:32)</a><ul>
+<li>Decimal to base 5  <a href='https://youtu.be/6plMoviKDs0#t=7m34s'>(7:34)</a></li>
+<li>Decimal to base 6  <a href='https://youtu.be/6plMoviKDs0#t=8m16s'>(8:16)</a></li>
+</ul>
+</li>
+<li>Hexadecimal  <a href='https://youtu.be/6plMoviKDs0#t=8m50s'>(8:50)</a><ul>
+<li>Hexadecimal to decimal  <a href='https://youtu.be/6plMoviKDs0#t=9m14s'>(9:14)</a></li>
+<li>Hexadecimal to binary  <a href='https://youtu.be/6plMoviKDs0#t=9m14s'>(9:14)</a></li>
+<li>Binary to hexadecimal  <a href='https://youtu.be/6plMoviKDs0#t=12m30s'>(12:30)</a></li>
+<li>Why use hexadecimal  <a href='https://youtu.be/6plMoviKDs0#t=12m53s'>(12:53)</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Supplemental Resources
+    <div class="expandable-content">
+       <ul>
+          
+            <li><a href='http://www.flippybitandtheattackofthehexadecimalsfrombase16.com'>Flippy bit</a> A game for practicing hexadecimal</li>
+          
+            <li>Notes on  <a href='https://homepages.bluffton.edu/~nesterd/apps/numberbases.html'>other number bases</a></li>
+          
+       </ul>
+    </div>
+  </div>
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Related Videos
+    <div class="expandable-content">
+       <ul>
+        
+           <li><a href='https://www.youtube.com/watch?v=lWv0Tb8srcQ&list=PLA8F3EE4391DF4D0A&index=4'>Positional Notation and Hexadecimal Notation</a> from <a href='https://www.youtube.com/playlist?list=PLA8F3EE4391DF4D0A'>EngMicroLectures</a></li>
+        
+           <li>Tom Lehrer's <a href='https://www.youtube.com/watch?v=UIKGV2cTgqA'>"New Math"</a> (Start at the <a href='https://www.youtube.com/watch?v=UIKGV2cTgqA#t=02m30s'>base 8 part</a>.)</li>
+        
+       </ul>
+    </div>
+  </div>
+  
+
+  </dd>
+  
+  <dt> <a href=' https://youtu.be/TEiR_USOiPU'>Video 6: Failure to Scale</a></dt>
+  <dd> Demonstrates why the straightforward "sum of products" approach to building circuits is only practical for small circuits.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Review  <a href=' https://youtu.be/TEiR_USOiPU#t=0m18s'>(0:18)</a></li>
+<li>"Big Hammer"  <a href=' https://youtu.be/TEiR_USOiPU#t=1m09s'>(1:09)</a></li>
+<li>Inefficient  <a href=' https://youtu.be/TEiR_USOiPU#t=1m39s'>(1:39)</a></li>
+<li>Scalability of Size  <a href=' https://youtu.be/TEiR_USOiPU#t=2m44s'>(2:44)</a></li>
+<li>Naïve 64-bit adder / Scalability of Size   <a href=' https://youtu.be/TEiR_USOiPU#t=3m58s'>(3:58)</a></li>
+<li>Use case for "Big Hammer"   <a href=' https://youtu.be/TEiR_USOiPU#t=7m22s'>(7:22)</a></li>
+<li>Programmable Logic Array  <a href=' https://youtu.be/TEiR_USOiPU#t=8m31s'>(8:31)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Supplemental Resources
+    <div class="expandable-content">
+       <ul>
+          
+            <li><a href='pla_pattern.jls'>Blank PLA Pattern</a> in JLS</li>
+          
+       </ul>
+    </div>
+  </div>
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Related Videos
+    <div class="expandable-content">
+       <ul>
+        
+           <li><a href='https://www.youtube.com/watch?v=xY6Gm-O8rWY'>Programmable Logic Arrays</a> from <a href='https://www.youtube.com/channel/UCmw4PjenkDkrEpr2_8qbOtw'>Robot Brigade</a></li>
+        
+       </ul>
+    </div>
+  </div>
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/ULfFOe300pE'>Video 7: Combinatorial Circuits</a></dt>
+  <dd> The basics of combinatorial circuits (what a combinatorial circuit is, how to trace the behavior of a combinatorial circuit, and rules for combinatorial circuits).
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Tracing Circuit Behavior  <a href='https://youtu.be/ULfFOe300pE#t=0m43s'>(0:43)</a></li>
+<li>Crossing vs. Connecting Wires  <a href='https://youtu.be/ULfFOe300pE#t=1m54s'>(1:54)</a></li>
+<li>Simulating Circuits with JLS  <a href='https://youtu.be/ULfFOe300pE#t=2m17s'>(2:17)</a><ul>
+<li>Adding / Connecting Gates  <a href='https://youtu.be/ULfFOe300pE#t=2m50s'>(2:50)</a></li>
+<li>Input Pins and Output Displays  <a href='https://youtu.be/ULfFOe300pE#t=3m20s'>(3:20)</a></li>
+<li>Signal Generator  <a href='https://youtu.be/ULfFOe300pE#t=3m56s'>(3:56)</a></li>
+<li>Comments  <a href='https://youtu.be/ULfFOe300pE#t=5m09s'>(5:09)</a></li>
+</ul>
+</li>
+<li>Fan-in  <a href='https://youtu.be/ULfFOe300pE#t=6m54s'>(6:54)</a></li>
+<li>Fan-out  <a href='https://youtu.be/ULfFOe300pE#t=7m48s'>(7:48)</a></li>
+<li>Multiple Output Pins  <a href='https://youtu.be/ULfFOe300pE#t=8m39s'>(8:39)</a></li>
+<li>Rules for Combinatorial Circuits  <a href='https://youtu.be/ULfFOe300pE#t=8m55s'>(8:55)</a><ul>
+<li>Single Source for Each Input  <a href='https://youtu.be/ULfFOe300pE#t=9m05s'>(9:05)</a></li>
+<li>No loops  <a href='https://youtu.be/ULfFOe300pE#t=9m33s'>(9:33)</a></li>
+</ul>
+</li>
+<li>Combinatorial vs. Sequential Circuits  <a href='https://youtu.be/ULfFOe300pE#t=10m21s'>(10:21)</a></li>
+<li>Summary  <a href='https://youtu.be/ULfFOe300pE#t=11m25s'>(11:25)</a></li>
+<li>Skills  <a href='https://youtu.be/ULfFOe300pE#t=12m45s'>(12:45)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Supplemental Resources
+    <div class="expandable-content">
+       <ul>
+          
+            <li><a href='https://pages.mtu.edu/~pop/jlsp/bin/JLS.html'>JLS Website</a></li>
+          
+            <li><a href='JLS.jar'>JLS Download</a></li>
+          
+            <li><a href='https://www.youtube.com/watch?v=z9s8A8oBe7g&list=PLTd6ceoshprfc_VVJYunO1BN9peCTMQgr&index=2'>Logic Gate Expressions</a> from <a href='https://www.youtube.com/channel/UCSX3MR0gnKDxyXAyljWzm0Q'>Computer Science</a></li>
+          
+            <li><a href='https://www.youtube.com/watch?v=BnB2m1nXZ84&list=PLTd6ceoshprfc_VVJYunO1BN9peCTMQgr&index=3'>Logic Gate Combinations</a> from <a href='https://www.youtube.com/channel/UCSX3MR0gnKDxyXAyljWzm0Q'>Computer Science</a></li>
+          
+       </ul>
+    </div>
+  </div>
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/K0fwRFPbcDI'>Video 8: Oher Gates</a></dt>
+  <dd> Discusses NAND, NOR, XOR, XNOR.  Also discusses gates with three or more inputs.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Number of different gates  <a href='https://youtu.be/K0fwRFPbcDI#t=0m45s'>(0:45)</a></li>
+<li>Other Gates <ul>
+<li>NAND  <a href='https://youtu.be/K0fwRFPbcDI#t=1m45s'>(1:45)</a></li>
+<li>NOR  <a href='https://youtu.be/K0fwRFPbcDI#t=2m27s'>(2:27)</a></li>
+<li>XOR  <a href='https://youtu.be/K0fwRFPbcDI#t=2m34s'>(2:34)</a></li>
+<li>Other truth tables  <a href='https://youtu.be/K0fwRFPbcDI#t=3m35s'>(3:35)</a></li>
+</ul>
+</li>
+<li>Three or more inputs  <a href='https://youtu.be/K0fwRFPbcDI#t=4m53s'>(4:53)</a><ul>
+<li>XOR with three or more inputs  <a href='https://youtu.be/K0fwRFPbcDI#t=5m22s'>(5:22)</a></li>
+<li>XNOR with three or more inputs  <a href='https://youtu.be/K0fwRFPbcDI#t=6m16s'>(6:16)</a></li>
+</ul>
+</li>
+<li>Bubbles on output  <a href='https://youtu.be/K0fwRFPbcDI#t=6m45s'>(6:45)</a></li>
+<li>Buffer  <a href='https://youtu.be/K0fwRFPbcDI#t=7m00s'>(7:00)</a></li>
+<li>Bubbles on input  <a href='https://youtu.be/K0fwRFPbcDI#t=7m35s'>(7:35)</a></li>
+<li>Summary  <a href='https://youtu.be/K0fwRFPbcDI#t=8m04s'>(8:04)</a></li>
+<li>Skills  <a href='https://youtu.be/K0fwRFPbcDI#t=9m01s'>(9:01)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/kyW2BRdcnYc'>Video 9: Boolean Expressions</a></dt>
+  <dd> Discusses Boolean Expressions and how they correspond to circuit diagrams.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Symbols  <a href='https://youtu.be/kyW2BRdcnYc#t=0m19s'>(0:19)</a><ul>
+<li>Why "+" means "OR"  <a href='https://youtu.be/kyW2BRdcnYc#t=0m28s'>(0:28)</a></li>
+<li>Why "*" means "AND"  <a href='https://youtu.be/kyW2BRdcnYc#t=1m19s'>(1:19)</a></li>
+</ul>
+</li>
+<li>Soapbox  <a href='https://youtu.be/kyW2BRdcnYc#t=2m21s'>(2:21)</a></li>
+<li>Expression / diagram equivalence  <a href='https://youtu.be/kyW2BRdcnYc#t=5m32s'>(5:32)</a></li>
+<li>Order of operations  <a href='https://youtu.be/kyW2BRdcnYc#t=5m50s'>(5:50)</a></li>
+<li>Multiplication by juxtaposition  <a href='https://youtu.be/kyW2BRdcnYc#t=6m15s'>(6:15)</a></li>
+<li>Example 1  <a href='https://youtu.be/kyW2BRdcnYc#t=6m30s'>(6:30)</a></li>
+<li>Example 2  <a href='https://youtu.be/kyW2BRdcnYc#t=7m13s'>(7:13)</a></li>
+<li>Example 3  <a href='https://youtu.be/kyW2BRdcnYc#t=7m37s'>(7:37)</a></li>
+<li>XOR symbol  <a href='https://youtu.be/kyW2BRdcnYc#t=7m38s'>(7:38)</a></li>
+<li>Sum of products  <a href='https://youtu.be/kyW2BRdcnYc#t=8m20s'>(8:20)</a></li>
+<li>Skills  <a href='https://youtu.be/kyW2BRdcnYc#t=9m03s'>(9:03)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/W1Kv3CfQWas'>Video 10: Functional Completeness</a></dt>
+  <dd> Discusses the concept of functional completeness (sometimes called "logical completeness").
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Definition of functional completeness  <a href='https://youtu.be/W1Kv3CfQWas#t=0m51s'>(0:51)</a></li>
+<li>How to prove {AND, OR, NOT} is functionally complete  <a href='https://youtu.be/W1Kv3CfQWas#t=1m07s'>(1:07)</a></li>
+<li>Other functionally complete sets  <a href='https://youtu.be/W1Kv3CfQWas#t=2m22s'>(2:22)</a></li>
+<li>Proof that {NAND} is functionally complete  <a href='https://youtu.be/W1Kv3CfQWas#t=2m45s'>(2:45)</a><ul>
+<li>NOT from NAND  <a href='https://youtu.be/W1Kv3CfQWas#t=3m20s'>(3:20)</a></li>
+<li>AND from NAND  <a href='https://youtu.be/W1Kv3CfQWas#t=3m58s'>(3:58)</a></li>
+<li>OR from NAND  <a href='https://youtu.be/W1Kv3CfQWas#t=4m07s'>(4:07)</a></li>
+</ul>
+</li>
+<li>Proof that {AND, NOT} is functionally complete  <a href='https://youtu.be/W1Kv3CfQWas#t=5m35s'>(5:35)</a></li>
+<li>Tips for writing functionally complete proofs  <a href='https://youtu.be/W1Kv3CfQWas#t=6m36s'>(6:36)</a></li>
+<li>Summary  <a href='https://youtu.be/W1Kv3CfQWas#t=8m28s'>(8:28)</a></li>
+<li>Skills  <a href='https://youtu.be/W1Kv3CfQWas#t=9m25s'>(9:25)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://www.youtube.com/watch?v=asw5ktxOvpU&feature=youtu.be'>Video 11: Ripple-Carry adder</a></dt>
+  <dd> Discusses (1) how a ripple-carry works, and (2) a thought process that leads to the design of the ripple-carry adder.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Busses  <a href='https://www.youtube.com/watch?v=asw5ktxOvpU&feature=youtu.be#t=0m45s'>(0:45)</a></li>
+<li>Carry Out  <a href='https://www.youtube.com/watch?v=asw5ktxOvpU&feature=youtu.be#t=1m22s'>(1:22)</a></li>
+<li>Art and Science of Programming and Hardware  <a href='https://www.youtube.com/watch?v=asw5ktxOvpU&feature=youtu.be#t=2m44s'>(2:44)</a></li>
+<li>Adding base 10 "by hand"  <a href='https://www.youtube.com/watch?v=asw5ktxOvpU&feature=youtu.be#t=3m58s'>(3:58)</a></li>
+<li>Adding binary "by hand"  <a href='https://www.youtube.com/watch?v=asw5ktxOvpU&feature=youtu.be#t=5m07s'>(5:07)</a></li>
+<li>Implementation  <a href='https://www.youtube.com/watch?v=asw5ktxOvpU&feature=youtu.be#t=5m56s'>(5:56)</a><ul>
+<li>Half-adder  <a href='https://www.youtube.com/watch?v=asw5ktxOvpU&feature=youtu.be#t=6m25s'>(6:25)</a></li>
+<li>Full adder  <a href='https://www.youtube.com/watch?v=asw5ktxOvpU&feature=youtu.be#t=8m02s'>(8:02)</a></li>
+<li>Chaining full adders  <a href='https://www.youtube.com/watch?v=asw5ktxOvpU&feature=youtu.be#t=9m15s'>(9:15)</a></li>
+</ul>
+</li>
+<li>Abstracting subcircuits  <a href='https://www.youtube.com/watch?v=asw5ktxOvpU&feature=youtu.be#t=9m50s'>(9:50)</a></li>
+<li>Chaining adders  <a href='https://www.youtube.com/watch?v=asw5ktxOvpU&feature=youtu.be#t=11m16s'>(11:16)</a></li>
+<li>Summary  <a href='https://www.youtube.com/watch?v=asw5ktxOvpU&feature=youtu.be#t=12m10s'>(12:10)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Related Videos
+    <div class="expandable-content">
+       <ul>
+        
+           <li><a href='https://youtu.be/1I5ZMmrOfnA'>How Computers Calculate</a> from <a href='https://www.youtube.com/watch?v=tpIctyqH29Q&list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo'>Crash Course Computer Science</a></li>
+        
+       </ul>
+    </div>
+  </div>
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/Caoslzf_AOg'>Video 12: Propagation Delay</a></dt>
+  <dd> Discusses the propagation delay of a gate/circuit and what may happen if you read the output too soon.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Propagation delay  <a href='https://youtu.be/Caoslzf_AOg#t=0m57s'>(0:57)</a></li>
+<li>Circuit output is voltage not binary  <a href='https://youtu.be/Caoslzf_AOg#t=2m25s'>(2:25)</a></li>
+<li>Transient values  <a href='https://youtu.be/Caoslzf_AOg#t=3m07s'>(3:07)</a></li>
+<li>Summary  <a href='https://youtu.be/Caoslzf_AOg#t=3m29s'>(3:29)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/LPJT0zwB7yY'>Video 13: Time of Circuits</a></dt>
+  <dd> Discusses (1) How to determine the propagation delay of a combinatorial circuit given the delays of the component gates, and (2) how to perform a big-O analysis on the propagation delays for a family of circuits.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Parallel gates  <a href='https://youtu.be/LPJT0zwB7yY#t=1m20s'>(1:20)</a></li>
+<li>Critical path  <a href='https://youtu.be/LPJT0zwB7yY#t=1m46s'>(1:46)</a></li>
+<li>Time for 8-bit ripple-carry adder  <a href='https://youtu.be/LPJT0zwB7yY#t=2m22s'>(2:22)</a></li>
+<li>Comparing circuit designs  <a href='https://youtu.be/LPJT0zwB7yY#t=5m02s'>(5:02)</a></li>
+<li>Big-O of ripple carry  <a href='https://youtu.be/LPJT0zwB7yY#t=6m00s'>(6:00)</a></li>
+<li>Big-O of "big hammer"  <a href='https://youtu.be/LPJT0zwB7yY#t=6m38s'>(6:38)</a><ul>
+<li>Building n-input gates out of 2-input gates  <a href='https://youtu.be/LPJT0zwB7yY#t=8m42s'>(8:42)</a></li>
+</ul>
+</li>
+<li>Summary  <a href='https://youtu.be/LPJT0zwB7yY#t=11m44s'>(11:44)</a></li>
+<li>Skills  <a href='https://youtu.be/LPJT0zwB7yY#t=13m04s'>(13:04)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/BEK3JRwm6tc'>Video 14: Size of Circuits</a></dt>
+  <dd> Discusses measuring the size of a circuit (i.e., counting gates) and discussing the growth in size of a family of circuits as the number of inputs increases.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Size of n-input gates  <a href='https://youtu.be/BEK3JRwm6tc#t=0m27s'>(0:27)</a></li>
+<li>Size of ripple-carry adder  <a href='https://youtu.be/BEK3JRwm6tc#t=1m37s'>(1:37)</a></li>
+<li>Size of "big hammer" circuit  <a href='https://youtu.be/BEK3JRwm6tc#t=2m26s'>(2:26)</a></li>
+<li>Summary  <a href='https://youtu.be/BEK3JRwm6tc#t=3m27s'>(3:27)</a></li>
+<li>Skills  <a href='https://youtu.be/BEK3JRwm6tc#t=4m20s'>(4:20)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href=' https://youtu.be/u0UbjRtu_c8'>Video 15a: Carry Lookahead Basics</a></dt>
+  <dd> The motivation and basic operation of a Carry-Lookahead adder.  (The size and propagation delay are covered in Video 15b.)
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Adders smaller than O(n)  <a href=' https://youtu.be/u0UbjRtu_c8#t=0m37s'>(0:37)</a></li>
+<li>Bottleneck in ripple-carry adder  <a href=' https://youtu.be/u0UbjRtu_c8#t=1m19s'>(1:19)</a></li>
+<li>Compute carry-ins in parallel  <a href=' https://youtu.be/u0UbjRtu_c8#t=1m39s'>(1:39)</a><ul>
+<li>Recursive formula  <a href=' https://youtu.be/u0UbjRtu_c8#t=2m57s'>(2:57)</a></li>
+<li>"Generate" and "Propagate"  <a href=' https://youtu.be/u0UbjRtu_c8#t=4m29s'>(4:29)</a></li>
+<li>Cin in terms of Generate and Propagate  <a href=' https://youtu.be/u0UbjRtu_c8#t=5m22s'>(5:22)</a></li>
+<li>Gn/Pn notation  <a href=' https://youtu.be/u0UbjRtu_c8#t=6m15s'>(6:15)</a></li>
+</ul>
+</li>
+<li>Named wires  <a href=' https://youtu.be/u0UbjRtu_c8#t=7m18s'>(7:18)</a></li>
+<li>Example circuit  <a href=' https://youtu.be/u0UbjRtu_c8#t=7m53s'>(7:53)</a></li>
+<li>Skills  <a href=' https://youtu.be/u0UbjRtu_c8#t=9m13s'>(9:13)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Related Videos
+    <div class="expandable-content">
+       <ul>
+        
+           <li><a href='https://www.youtube.com/watch?v=6Z1WikEWxH0'>Neso Academy (part 1)</a></li>
+        
+           <li><a href='https://www.youtube.com/watch?v=9lyqSVKbyz8'>Neso Academy (part 2)</a> (shows how to unwind the recursion)</li>
+        
+       </ul>
+    </div>
+  </div>
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/Bf6plMrj7-Y'>Video 15b: Time and Size of the Carry Lookahead Adder</a></dt>
+  <dd> Discusses the "big-O" propagation delay and size of a carry lookahead adder.  This video also looks at techniques for reducing the size (including giving a brief, high-level introduction to prefix adders).
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Time for Carry-Lookahead adder  <a href='https://youtu.be/Bf6plMrj7-Y#t=0m37s'>(0:37)</a><ul>
+<li>Time for largest lookahead subcircuit  <a href='https://youtu.be/Bf6plMrj7-Y#t=1m37s'>(1:37)</a></li>
+</ul>
+</li>
+<li>Size for Carry-Lookahead adder  <a href='https://youtu.be/Bf6plMrj7-Y#t=3m05s'>(3:05)</a><ul>
+<li>Is it really as big as O(n^3)?  <a href='https://youtu.be/Bf6plMrj7-Y#t=3m55s'>(3:55)</a></li>
+<li>Reducing size by avoiding redundancy  <a href='https://youtu.be/Bf6plMrj7-Y#t=5m37s'>(5:37)</a></li>
+<li>Prefix adders  <a href='https://youtu.be/Bf6plMrj7-Y#t=7m29s'>(7:29)</a></li>
+<li>Hybrid adders  <a href='https://youtu.be/Bf6plMrj7-Y#t=7m56s'>(7:56)</a></li>
+</ul>
+</li>
+<li>Skills  <a href='https://youtu.be/Bf6plMrj7-Y#t=8m40s'>(8:40)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/PeRTw7nbTnM'>Video 16: Carry Select Adder</a></dt>
+  <dd> Discusses the operation, time, and size of the carry-select adder.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Basic idea  <a href='https://youtu.be/PeRTw7nbTnM#t=0m46s'>(0:46)</a></li>
+<li>Multiplexor  <a href='https://youtu.be/PeRTw7nbTnM#t=3m57s'>(3:57)</a><ul>
+<li>Truth Ttable / Sum of Products  <a href='https://youtu.be/PeRTw7nbTnM#t=5m04s'>(5:04)</a></li>
+<li>8-bit 2-to-1 Mux  <a href='https://youtu.be/PeRTw7nbTnM#t=5m54s'>(5:54)</a></li>
+</ul>
+</li>
+<li>Apply pattern recursively  <a href='https://youtu.be/PeRTw7nbTnM#t=7m13s'>(7:13)</a></li>
+<li>Propagation delay  <a href='https://youtu.be/PeRTw7nbTnM#t=7m49s'>(7:49)</a></li>
+<li>Size  <a href='https://youtu.be/PeRTw7nbTnM#t=9m02s'>(9:02)</a></li>
+<li>Skills  <a href='https://youtu.be/PeRTw7nbTnM#t=12m22s'>(12:22)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <span class='in-progress'>Video 17: Size / Time Tradeoff</span></dt>
+  <dd> <em class='in-progress'>Still working on it.</em>
+ 
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/BZ5ANowVjHY'>Video 18: Signed Integers</a></dt>
+  <dd> Discusses representing signed integers in hardware using sign/magnitude and two's complement.  Provides the rationale / motivation for two's complement.  Shows two shortcuts for converting between decimal and two's complement.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Sign / Magnitude  <a href='https://youtu.be/BZ5ANowVjHY#t=0m32s'>(0:32)</a><ul>
+<li>Two zeros  <a href='https://youtu.be/BZ5ANowVjHY#t=0m59s'>(0:59)</a></li>
+<li>"Breaks" addition  <a href='https://youtu.be/BZ5ANowVjHY#t=1m08s'>(1:08)</a></li>
+</ul>
+</li>
+<li>Designing Two's Complement  <a href='https://youtu.be/BZ5ANowVjHY#t=1m39s'>(1:39)</a><ul>
+<li>"Designing" -1  <a href='https://youtu.be/BZ5ANowVjHY#t=1m58s'>(1:58)</a></li>
+</ul>
+</li>
+<li>Rationale for Two's Complement  <a href='https://youtu.be/BZ5ANowVjHY#t=3m34s'>(3:34)</a></li>
+<li>"Mental Math" uses sign/magnitude  <a href='https://youtu.be/BZ5ANowVjHY#t=4m30s'>(4:30)</a></li>
+<li>Range of Two's Complement  <a href='https://youtu.be/BZ5ANowVjHY#t=6m09s'>(6:09)</a></li>
+<li>Intepreting Two's Complement<ul>
+<li>Formal definition  <a href='https://youtu.be/BZ5ANowVjHY#t=6m47s'>(6:47)</a></li>
+<li>Flip bits and add 1  <a href='https://youtu.be/BZ5ANowVjHY#t=7m42s'>(7:42)</a></li>
+<li>Flip left of last 1  <a href='https://youtu.be/BZ5ANowVjHY#t=9m54s'>(9:54)</a></li>
+</ul>
+</li>
+<li>Binary or Two's Complement  <a href='https://youtu.be/BZ5ANowVjHY#t=11m23s'>(11:23)</a></li>
+<li>Skills  <a href='https://youtu.be/BZ5ANowVjHY#t=12m11s'>(12:11)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Related Videos
+    <div class="expandable-content">
+       <ul>
+        
+           <li><a href='https://www.youtube.com/watch?v=lKTsv6iVxV4'>Binary: Plusses & Minuses</a> from Computerphile</li>
+        
+       </ul>
+    </div>
+  </div>
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/LdfTMs1KlXs'>Video 19: Signed Arithmetic</a></dt>
+  <dd> Discusses creating a signed adder and a subtractor.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Signed vs. unsigned overflow  <a href='https://youtu.be/LdfTMs1KlXs#t=0m54s'>(0:54)</a></li>
+<li>How to interpret bits  <a href='https://youtu.be/LdfTMs1KlXs#t=2m34s'>(2:34)</a></li>
+<li>Subtraction  <a href='https://youtu.be/LdfTMs1KlXs#t=3m43s'>(3:43)</a></li>
+<li>Skills  <a href='https://youtu.be/LdfTMs1KlXs#t=6m47s'>(6:47)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <span class='in-progress'>Video 20: Boolean Algebra</span></dt>
+  <dd> <em class='in-progress'>Still working on it.</em>
+ 
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <span class='in-progress'>Video 21: Karnaugh Maps</span></dt>
+  <dd> <em class='in-progress'>Still working on it.</em>
+ 
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/Xj7_eOXohNE'>Video 22: Multiplexors and ALUs</a></dt>
+  <dd>  Discusses the general pattern for building multiplexors, then shows how to use multiplexors to build an ALU.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>4-to-1 mux  <a href='https://youtu.be/Xj7_eOXohNE#t=1m47s'>(1:47)</a></li>
+<li>8-to-1 mux  <a href='https://youtu.be/Xj7_eOXohNE#t=4m22s'>(4:22)</a></li>
+<li>ALU  <a href='https://youtu.be/Xj7_eOXohNE#t=5m00s'>(5:00)</a></li>
+<li>Skills  <a href='https://youtu.be/Xj7_eOXohNE#t=6m08s'>(6:08)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/tpsK3oU7wos'>Video 23: Latches</a></dt>
+  <dd> Discusses the design and inner workings of the SR-Latch and D-Latch.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Storing data with a feedback loop  <a href='https://youtu.be/tpsK3oU7wos#t=1m31s'>(1:31)</a></li>
+<li>Feedback loop with  a twist  <a href='https://youtu.be/tpsK3oU7wos#t=2m35s'>(2:35)</a></li>
+<li>SR-Latch  <a href='https://youtu.be/tpsK3oU7wos#t=3m19s'>(3:19)</a><ul>
+<li>Both inputs 0  <a href='https://youtu.be/tpsK3oU7wos#t=4m00s'>(4:00)</a></li>
+<li>S=1; R=0  <a href='https://youtu.be/tpsK3oU7wos#t=4m31s'>(4:31)</a></li>
+<li>R=1; S=0  <a href='https://youtu.be/tpsK3oU7wos#t=5m11s'>(5:11)</a></li>
+</ul>
+</li>
+<li>Characteristic table  <a href='https://youtu.be/tpsK3oU7wos#t=5m28s'>(5:28)</a></li>
+<li>D-Latch  <a href='https://youtu.be/tpsK3oU7wos#t=8m15s'>(8:15)</a></li>
+<li>Skills  <a href='https://youtu.be/tpsK3oU7wos#t=9m09s'>(9:09)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Related Videos
+    <div class="expandable-content">
+       <ul>
+        
+           <li><a href='https://youtu.be/fpnE6UAfbtU'>Registers and RAM</a> from <a href='https://www.youtube.com/watch?v=tpIctyqH29Q&list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo'>Crash Course Computer Science</a></li>
+        
+       </ul>
+    </div>
+  </div>
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/FTW5FDvngs4'>Video 24: Clocks and latches</a></dt>
+  <dd> (1) Demonstrates why CPUs need clocks, (2) Shows how to add a clock to a D-Latch. (3) Shows why a clocked D-Latch alone isn't sufficient.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Gates on busses  <a href='https://youtu.be/FTW5FDvngs4#t=0m25s'>(0:25)</a></li>
+<li>Transient values and latches  <a href='https://youtu.be/FTW5FDvngs4#t=2m30s'>(2:30)</a></li>
+<li>Clocks  <a href='https://youtu.be/FTW5FDvngs4#t=4m45s'>(4:45)</a></li>
+<li>Clocked latch  <a href='https://youtu.be/FTW5FDvngs4#t=5m10s'>(5:10)</a><ul>
+<li>Clocked latch is not enough  <a href='https://youtu.be/FTW5FDvngs4#t=6m15s'>(6:15)</a></li>
+</ul>
+</li>
+<li>Skills  <a href='https://youtu.be/FTW5FDvngs4#t=8m01s'>(8:01)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Supplemental Resources
+    <div class="expandable-content">
+       <ul>
+          
+            <li>JLS demo of <a href='transientValuesDemo.jls'>transient values produced by a ripple-carry adder</a></li>
+          
+            <li>JLS demo of <a href='feedback.jls'>problems caused by latch with no clock</a></li>
+          
+            <li>JLS demo of why a <a href='clocked_feedback_still_broken.jls'>a clock and a single latch is not sufficient</a></li>
+          
+       </ul>
+    </div>
+  </div>
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/bfpmiBNygJ4'>Video 25: Flip-Flops</a></dt>
+  <dd> Discusses how to implement a flip-flop from two D-latches in a master-slave configuration.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Master-Slave implementation  <a href='https://youtu.be/bfpmiBNygJ4#t=0m40s'>(0:40)</a></li>
+<li>Rising vs. falling-edge  <a href='https://youtu.be/bfpmiBNygJ4#t=3m11s'>(3:11)</a></li>
+<li>Demo in JLS  <a href='https://youtu.be/bfpmiBNygJ4#t=3m32s'>(3:32)</a></li>
+<li>JLS Demo with register  <a href='https://youtu.be/bfpmiBNygJ4#t=7m55s'>(7:55)</a></li>
+<li>Skills  <a href='https://youtu.be/bfpmiBNygJ4#t=8m43s'>(8:43)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Supplemental Resources
+    <div class="expandable-content">
+       <ul>
+          
+            <li><a href='clocked_feedback_with_master_slave.jls'>Master/Slave flip-flop</a> in JLS</li>
+          
+            <li><a href='clocked_feedback_with_flip_flop.jls'>Repeated addition with a register</a> in JLS</li>
+          
+       </ul>
+    </div>
+  </div>
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/p6SNN2nq_vM'>Video 26: Sequential Circuits</a></dt>
+  <dd> Discusses the general principles of sequential circuits, provides an outline / design pattern for many common sequential circuits, and walks through several examples.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>General sequential circuit pattern  <a href='https://youtu.be/p6SNN2nq_vM#t=1m03s'>(1:03)</a></li>
+<li>JLS examples<ul>
+<li>Count up  <a href='https://youtu.be/p6SNN2nq_vM#t=2m01s'>(2:01)</a></li>
+<li>Clock too short  <a href='https://youtu.be/p6SNN2nq_vM#t=5m45s'>(5:45)</a></li>
+<li>Count evens  <a href='https://youtu.be/p6SNN2nq_vM#t=6m28s'>(6:28)</a></li>
+<li>Adder with no upper limit   <a href='https://youtu.be/p6SNN2nq_vM#t=10m12s'>(10:12)</a></li>
+</ul>
+</li>
+<li>Skills  <a href='https://youtu.be/p6SNN2nq_vM#t=14m56s'>(14:56)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Supplemental Resources
+    <div class="expandable-content">
+       <ul>
+          
+            <li>A sample sequential JLS circuit that <a href='counter_done.jls'>counts up</a></li>
+          
+            <li>A sample sequential JLS circuit that <a href='countEvens_done.jls'>counts even numbers</a></li>
+          
+            <li>A JLS implementation of a <a href='seqAdder_done.jls'>sequential adder</a></li>
+          
+       </ul>
+    </div>
+  </div>
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/ks3IWOJS7iM'>Video 27: Finite State Machines</a></dt>
+  <dd> How to implement finite state machines (both binary encoded and "one hot")
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Example 1: Traffic Light  <a href='https://youtu.be/ks3IWOJS7iM#t=1m05s'>(1:05)</a></li>
+<li>Implementing a FSM  <a href='https://youtu.be/ks3IWOJS7iM#t=2m14s'>(2:14)</a></li>
+<li>External input to FSM  <a href='https://youtu.be/ks3IWOJS7iM#t=2m52s'>(2:52)</a></li>
+<li>Example 2: Vending machine  <a href='https://youtu.be/ks3IWOJS7iM#t=3m56s'>(3:56)</a></li>
+<li>Binary encoding for FSM  <a href='https://youtu.be/ks3IWOJS7iM#t=6m48s'>(6:48)</a></li>
+<li>"One Hot" encoding for FSM  <a href='https://youtu.be/ks3IWOJS7iM#t=7m22s'>(7:22)</a></li>
+<li>Skills  <a href='https://youtu.be/ks3IWOJS7iM#t=10m27s'>(10:27)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/97mLeCTpzSg'>Video 28: Words and Register Files</a></dt>
+  <dd> Discusses the concept of a word (in the context of a CPU).  Then shows how to build a register file.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>CPU Word  <a href='https://youtu.be/97mLeCTpzSg#t=0m34s'>(0:34)</a></li>
+<li>Registers  <a href='https://youtu.be/97mLeCTpzSg#t=1m56s'>(1:56)</a></li>
+<li>Register File  <a href='https://youtu.be/97mLeCTpzSg#t=3m45s'>(3:45)</a><ul>
+<li>Reading registers  <a href='https://youtu.be/97mLeCTpzSg#t=4m30s'>(4:30)</a></li>
+<li>"Two-ported" register file  <a href='https://youtu.be/97mLeCTpzSg#t=4m57s'>(4:57)</a></li>
+<li>Writing registers  <a href='https://youtu.be/97mLeCTpzSg#t=5m07s'>(5:07)</a></li>
+</ul>
+</li>
+<li>Register enable input  <a href='https://youtu.be/97mLeCTpzSg#t=5m42s'>(5:42)</a><ul>
+<li>"Dangerous" solution  <a href='https://youtu.be/97mLeCTpzSg#t=6m27s'>(6:27)</a></li>
+<li>"Safe" solution  <a href='https://youtu.be/97mLeCTpzSg#t=8m00s'>(8:00)</a></li>
+</ul>
+</li>
+<li>Enabling correct register for writing  <a href='https://youtu.be/97mLeCTpzSg#t=9m00s'>(9:00)</a></li>
+<li>Decoder  <a href='https://youtu.be/97mLeCTpzSg#t=9m58s'>(9:58)</a></li>
+<li>Summary  <a href='https://youtu.be/97mLeCTpzSg#t=11m07s'>(11:07)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/tBFHnM_QLyo'>Video 29: Machine Language</a></dt>
+  <dd> An introduction to the concept of machine language; and, a careful look at the MIPS R-type instruction format.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Machine instruction  <a href='https://youtu.be/tBFHnM_QLyo#t=0m35s'>(0:35)</a></li>
+<li>Machine language  <a href='https://youtu.be/tBFHnM_QLyo#t=2m30s'>(2:30)</a></li>
+<li>MIPS / RISC  <a href='https://youtu.be/tBFHnM_QLyo#t=3m45s'>(3:45)</a><ul>
+<li>Fixed-width instruction  <a href='https://youtu.be/tBFHnM_QLyo#t=5m10s'>(5:10)</a></li>
+</ul>
+</li>
+<li>R-type instruction<ul>
+<li>Op code  <a href='https://youtu.be/tBFHnM_QLyo#t=5m37s'>(5:37)</a></li>
+<li>Source and destination egisters  <a href='https://youtu.be/tBFHnM_QLyo#t=6m21s'>(6:21)</a></li>
+<li>Function code  <a href='https://youtu.be/tBFHnM_QLyo#t=6m44s'>(6:44)</a></li>
+<li>Shift amount  <a href='https://youtu.be/tBFHnM_QLyo#t=7m51s'>(7:51)</a></li>
+</ul>
+</li>
+<li>Complete instruction walkthrough  <a href='https://youtu.be/tBFHnM_QLyo#t=8m31s'>(8:31)</a></li>
+<li>Summary  <a href='https://youtu.be/tBFHnM_QLyo#t=9m31s'>(9:31)</a></li>
+<li>Skills  <a href='https://youtu.be/tBFHnM_QLyo#t=10m34s'>(10:34)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/S2vBcossHB4'>Video 30: Fetch/Execute Cycle</a></dt>
+  <dd> Demonstrates the fetch/execute cycle of a single-cycle CPU.  Also briefly discusses special purpose vs. general purpose registers.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Single-Cycle CPU  <a href='https://youtu.be/S2vBcossHB4#t=0m31s'>(0:31)</a></li>
+<li>Instructions and RAM  <a href='https://youtu.be/S2vBcossHB4#t=1m21s'>(1:21)</a></li>
+<li>Byte Addressable memory  <a href='https://youtu.be/S2vBcossHB4#t=1m49s'>(1:49)</a></li>
+<li>Program counter  <a href='https://youtu.be/S2vBcossHB4#t=3m30s'>(3:30)</a></li>
+<li>General vs. special purpose registers  <a href='https://youtu.be/S2vBcossHB4#t=3m46s'>(3:46)</a></li>
+<li>"Triangle" short-cut for clocked inputs  <a href='https://youtu.be/S2vBcossHB4#t=4m31s'>(4:31)</a></li>
+<li>Complete cycle walkthrough  <a href='https://youtu.be/S2vBcossHB4#t=4m45s'>(4:45)</a><ul>
+<li>Calculate address of next instruction  <a href='https://youtu.be/S2vBcossHB4#t=5m19s'>(5:19)</a></li>
+</ul>
+</li>
+<li>Summary  <a href='https://youtu.be/S2vBcossHB4#t=6m02s'>(6:02)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Related Videos
+    <div class="expandable-content">
+       <ul>
+        
+           <li><a href='https://youtu.be/FZGugFqdr60'>The Central Processing Unit (CPU)</a> from <a href='https://www.youtube.com/watch?v=tpIctyqH29Q&list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo'>Crash Course Computer Science</a></li>
+        
+       </ul>
+    </div>
+  </div>
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/8bKgzR3axog'>Video 31: Generating and Loading Machine Code</a></dt>
+  <dd> Gives a (very) high-level view of assembly, compilation, and program loading.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Assembly  <a href='https://youtu.be/8bKgzR3axog#t=0m55s'>(0:55)</a></li>
+<li>C to machine code  <a href='https://youtu.be/8bKgzR3axog#t=2m03s'>(2:03)</a></li>
+<li>Loading machine code into RAM  <a href='https://youtu.be/8bKgzR3axog#t=3m18s'>(3:18)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/GwM7SHDfLXw'>Video 32: I-Type Instructions</a></dt>
+  <dd> Discusses the design and implementation of the MIPS I-Type instruction.  Also discusses the control unit, control wires, and sign extension.
+ 
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/pFWLI5OYb0U'>Video 33: Assembly Basics</a></dt>
+  <dd> Discusses assembly language at a high level (i.e., its purpose an relationship to machine language)
+ 
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/Slc_OJMiTbY'>Video 34: MIPS Assembly and MARS</a></dt>
+  <dd> Introduces MIPS Assembly and the MARS MIPS simulator.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Downloading MARS  <a href='https://youtu.be/Slc_OJMiTbY#t=0m32s'>(0:32)</a></li>
+<li>.text directive  <a href='https://youtu.be/Slc_OJMiTbY#t=1m12s'>(1:12)</a></li>
+<li>Register names and numbers  <a href='https://youtu.be/Slc_OJMiTbY#t=1m42s'>(1:42)</a></li>
+<li>Assembling and the Execute Pane  <a href='https://youtu.be/Slc_OJMiTbY#t=2m09s'>(2:09)</a></li>
+<li>Executing and stepping through code  <a href='https://youtu.be/Slc_OJMiTbY#t=3m26s'>(3:26)</a></li>
+<li>Breaking code down  <a href='https://youtu.be/Slc_OJMiTbY#t=4m11s'>(4:11)</a></li>
+<li>Register use conventions  <a href='https://youtu.be/Slc_OJMiTbY#t=5m12s'>(5:12)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Supplemental Resources
+    <div class="expandable-content">
+       <ul>
+          
+            <li><a href='http://courses.missouristate.edu/kenvollmar/mars/'>MARS Website</a></li>
+          
+            <li><a href='https://booksite.elsevier.com/9780124077263/downloads/COD_5e_Greencard.pdf'>MIPS reference</a> (aka "the green card")</li>
+          
+       </ul>
+    </div>
+  </div>
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/F3S0Axk0AY4'>Video 35: Testing with MUnit and Debugging in MARS</a></dt>
+  <dd> Discusses the MUnit testing framework, as well as debugging features in MARS.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>MUnit  <a href='https://youtu.be/F3S0Axk0AY4#t=0m22s'>(0:22)</a></li>
+<li>Using labels  <a href='https://youtu.be/F3S0Axk0AY4#t=0m55s'>(0:55)</a></li>
+<li>.globl directive  <a href='https://youtu.be/F3S0Axk0AY4#t=1m11s'>(1:11)</a></li>
+<li>Function parameters  <a href='https://youtu.be/F3S0Axk0AY4#t=1m30s'>(1:30)</a></li>
+<li>Return values  <a href='https://youtu.be/F3S0Axk0AY4#t=2m07s'>(2:07)</a></li>
+<li>Returning from a function  <a href='https://youtu.be/F3S0Axk0AY4#t=2m19s'>(2:19)</a></li>
+<li>Sample unit tests  <a href='https://youtu.be/F3S0Axk0AY4#t=2m40s'>(2:40)</a></li>
+<li>Compiling and running MUnit tests  <a href='https://youtu.be/F3S0Axk0AY4#t=3m19s'>(3:19)</a></li>
+<li>Stepping through code in MARS  <a href='https://youtu.be/F3S0Axk0AY4#t=4m59s'>(4:59)</a><ul>
+<li>Calling the function to test  <a href='https://youtu.be/F3S0Axk0AY4#t=5m37s'>(5:37)</a></li>
+<li>Step one line at a time  <a href='https://youtu.be/F3S0Axk0AY4#t=6m17s'>(6:17)</a></li>
+</ul>
+</li>
+<li>When to re-compile tests  <a href='https://youtu.be/F3S0Axk0AY4#t=7m18s'>(7:18)</a></li>
+<li>Infinite loops when debugging  <a href='https://youtu.be/F3S0Axk0AY4#t=8m02s'>(8:02)</a></li>
+<li>"Invalid Program Counter Value" when executing jr $ra  <a href='https://youtu.be/F3S0Axk0AY4#t=9m08s'>(9:08)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Supplemental Resources
+    <div class="expandable-content">
+       <ul>
+          
+            <li><a href='https://cis.gvsu.edu/~kurmasz/Software/mipsunit_munit/'>MUnit Website</a></li>
+          
+       </ul>
+    </div>
+  </div>
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/031UCtaVLfM'>Video 36: Make the Common Case Fast</a></dt>
+  <dd> Discusses how MIPS handles large immediate values (i.e., immediate values larger than 17 bits) and how that solution applies the "Make the Common Case Fast" design principle.  This video also discusses pseudoinstructions.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Options for large immediates<ul>
+<li>Make all instructions longer  <a href='https://youtu.be/031UCtaVLfM#t=0m42s'>(0:42)</a></li>
+<li>Have variable width instruction set  <a href='https://youtu.be/031UCtaVLfM#t=1m36s'>(1:36)</a></li>
+<li>Split large immedates across multiple instructions  <a href='https://youtu.be/031UCtaVLfM#t=4m09s'>(4:09)</a></li>
+</ul>
+</li>
+<li>Pseudoinstructions  <a href='https://youtu.be/031UCtaVLfM#t=2m36s'>(2:36)</a></li>
+<li>Assembler temporary ($at) register  <a href='https://youtu.be/031UCtaVLfM#t=5m19s'>(5:19)</a></li>
+<li>addi with large immediate value  <a href='https://youtu.be/031UCtaVLfM#t=5m46s'>(5:46)</a></li>
+<li>Make the Common Case Fast  <a href='https://youtu.be/031UCtaVLfM#t=6m48s'>(6:48)</a><ul>
+<li>Mathematical example  <a href='https://youtu.be/031UCtaVLfM#t=7m54s'>(7:54)</a></li>
+</ul>
+</li>
+<li>Summary  <a href='https://youtu.be/031UCtaVLfM#t=10m19s'>(10:19)</a></li>
+<li>Skills  <a href='https://youtu.be/031UCtaVLfM#t=11m30s'>(11:30)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/sFlRjnYyIu8'>Video 37: Jumps</a></dt>
+  <dd> Discusses the design and implementation of the MIPS jump instruction.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Basic jump behavior  <a href='https://youtu.be/sFlRjnYyIu8#t=0m40s'>(0:40)</a></li>
+<li>Jump implementation  <a href='https://youtu.be/sFlRjnYyIu8#t=1m25s'>(1:25)</a></li>
+<li>Labels  <a href='https://youtu.be/sFlRjnYyIu8#t=2m14s'>(2:14)</a></li>
+<li>Datapath for jump  <a href='https://youtu.be/sFlRjnYyIu8#t=3m39s'>(3:39)</a></li>
+<li>Encoding jump target using only 26 bits  <a href='https://youtu.be/sFlRjnYyIu8#t=4m10s'>(4:10)</a><ul>
+<li>All instruction addresses end with 00  <a href='https://youtu.be/sFlRjnYyIu8#t=4m24s'>(4:24)</a></li>
+<li>Insert two zeros at end of jump target  <a href='https://youtu.be/sFlRjnYyIu8#t=4m54s'>(4:54)</a></li>
+<li>Address space  <a href='https://youtu.be/sFlRjnYyIu8#t=5m21s'>(5:21)</a></li>
+<li>All instruction addresses begin with 0000  <a href='https://youtu.be/sFlRjnYyIu8#t=6m33s'>(6:33)</a></li>
+<li>Jump encoding walkthrough  <a href='https://youtu.be/sFlRjnYyIu8#t=6m58s'>(6:58)</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+  <div class="resources expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Related Videos
+    <div class="expandable-content">
+       <ul>
+        
+           <li><a href='https://youtu.be/zltgXvg6r3k'>Instructions & Programs</a> from <a href='https://www.youtube.com/watch?v=tpIctyqH29Q&list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo'>Crash Course Computer Science</a></li>
+        
+       </ul>
+    </div>
+  </div>
+  
+
+  </dd>
+  
+  <dt> <a href='https://youtu.be/Mii70BNIjzU'>Video 38: Branches</a></dt>
+  <dd> Shows how MIPS beq is implemented and discusses why the beq machine instructions stores the target as an offset from PC + 4.
+ 
+  
+  <div class="toc expandable"><span class="showing">&#x25BC;&nbsp;</span><span class="hidden">&#x25B6;&nbsp;</span>Table of Contents
+    <div class="expandable-content">
+       <ul>
+<li>Conditional vs. Unconditional branches</li>
+<li>Example assembly code  <a href='https://youtu.be/Mii70BNIjzU#t=1m35s'>(1:35)</a></li>
+<li>Branch pseudoinstructions  <a href='https://youtu.be/Mii70BNIjzU#t=2m36s'>(2:36)</a></li>
+<li>beq target address size  <a href='https://youtu.be/Mii70BNIjzU#t=3m11s'>(3:11)</a></li>
+<li>absolue vs. relative paths/addresses  <a href='https://youtu.be/Mii70BNIjzU#t=5m29s'>(5:29)</a></li>
+<li>beq machine instruction  <a href='https://youtu.be/Mii70BNIjzU#t=8m04s'>(8:04)</a></li>
+<li>beq implementation  <a href='https://youtu.be/Mii70BNIjzU#t=8m41s'>(8:41)</a><ul>
+<li>zero wire  <a href='https://youtu.be/Mii70BNIjzU#t=10m15s'>(10:15)</a></li>
+</ul>
+</li>
+<li>Summary  <a href='https://youtu.be/Mii70BNIjzU#t=11m02s'>(11:02)</a></li>
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </dd>
+  
+  </dl>
+
+  <hr>
+  <p>Updated Friday, 19 March 2021, 12:55 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+
+<script>
+let items = document.getElementsByClassName("expandable");
+for (let i = 0; i < items.length; i++) {
+  let item = items[i];
+  let show = item.getElementsByClassName('hidden')[0];
+   let hide = item.getElementsByClassName('showing')[0];
+  let extras = item.getElementsByClassName('expandable-content')[0];
+  show.addEventListener('click', () => {
+    show.style.display = 'none';
+    hide.style.display = 'inline';
+    extras.style.display = 'block';
+  });
+    hide.addEventListener('click', () => {
+    show.style.display = 'inline';
+    hide.style.display = 'none'
+    extras.style.display = 'none';
+  });
+}
+</script>
+</body>
+</html>

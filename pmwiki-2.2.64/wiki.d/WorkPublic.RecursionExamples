@@ -1,0 +1,20 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3
+author=
+csum=
+ctime=1256658219
+host=148.61.31.131
+name=WorkPublic.RecursionExamples
+rev=3
+targets=
+text=%0aThe lists below contain the detailed examples provided in the text.  They do not include exercises.%0a%0a||!Authors ||!Title ||!ISBN ||!Example List%0a||Anderson and Francheschi ||Java 6 Illuminated (2e) ||0-7637-4963-X ||factorial [[%3c%3c]] gcd [[%3c%3c]] palindrome [[%3c%3c]] binary search [[%3c%3c]] towers of hanoi* [[%3c%3c]] animation ||%0a||Lewis, DePasquale, and Chase || Java Foundations ||0-321-42972-9 ||List [[%3c%3c]] Factorial [[%3c%3c]] Maze traversal [[%3c%3c]] Towers of Hanoi ||%0a||Malik, D.S.  ||Java Programming ||0-619-21608 ||factorial [[%3c%3c]] max [[%3c%3c]] Fibbonacci [[%3c%3c]] Towers of Hanoi [[%3c%3c]] Sierpinski Gasket ||%0a||Soroka, Barry ||Java 5 Objects First ||0-7637-3720-8 ||factorial [[%3c%3c]] String methods [[%3c%3c]]Recursive bisection (computing square root) [[%3c%3c]] Ackermann's Function ||
+time=1256757258
+author:1256757258=
+diff:1256757258:1256757229:=1c1,2%0a%3c %0a---%0a> !Recursion Examples%0a> %0a8c9%0a%3c ||Soroka, Barry ||Java 5 Objects First ||0-7637-3720-8 ||factorial [[%3c%3c]] String methods [[%3c%3c]]Recursive bisection (computing square root) [[%3c%3c]] Ackermann's Function ||%0a\ No newline at end of file%0a---%0a> ||Soroka, Barry [[#Soroka|#]] ||Java 5 Objects First ||0-7637-3720-8 ||factorial [[%3c%3c]] String methods [[%3c%3c]]Recursive bisection (computing square root) [[%3c%3c]] Ackermann's Function ||%0a\ No newline at end of file%0a
+host:1256757258=148.61.31.131
+author:1256757229=
+diff:1256757229:1256658219:=5,9d4%0a%3c ||!Authors ||!Title ||!ISBN ||!Example List%0a%3c ||Anderson and Francheschi ||Java 6 Illuminated (2e) ||0-7637-4963-X ||factorial [[%3c%3c]] gcd [[%3c%3c]] palindrome [[%3c%3c]] binary search [[%3c%3c]] towers of hanoi* [[%3c%3c]] animation ||%0a%3c ||Lewis, DePasquale, and Chase || Java Foundations ||0-321-42972-9 ||List [[%3c%3c]] Factorial [[%3c%3c]] Maze traversal [[%3c%3c]] Towers of Hanoi ||%0a%3c ||Malik, D.S.  ||Java Programming ||0-619-21608 ||factorial [[%3c%3c]] max [[%3c%3c]] Fibbonacci [[%3c%3c]] Towers of Hanoi [[%3c%3c]] Sierpinski Gasket ||%0a%3c ||Soroka, Barry [[#Soroka|#]] ||Java 5 Objects First ||0-7637-3720-8 ||factorial [[%3c%3c]] String methods [[%3c%3c]]Recursive bisection (computing square root) [[%3c%3c]] Ackermann's Function ||%0a\ No newline at end of file%0a
+host:1256757229=148.61.31.131
+author:1256658219=
+diff:1256658219:1256658219:=1,4d0%0a%3c !Recursion Examples%0a%3c %0a%3c The lists below contain the detailed examples provided in the text.  They do not include exercises.%0a%3c %0a
+host:1256658219=148.61.31.131

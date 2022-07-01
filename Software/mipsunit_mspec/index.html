@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>MIPSUnit::MSpec</title>
+   <style type="text/css">
+
+      code {
+         font-size: 120%;
+      }
+
+      .multi_line_box, .single_line_box {
+         background: #ffebcd;
+         border: 1px solid;
+         padding: 5px;
+         margin: 5px;
+         position: relative;
+
+      }
+
+      .single_line_box {
+         display: inline-block;
+         left: 35px;
+      }
+
+      .multi_line_box {
+         width: 85%;
+         min-width: 300px;
+      }
+
+      .box_and_caption {
+         /* border: solid 1px;*/
+         /* text-align: center; */
+         position: relative;
+         left: 35px;
+         display: inline-block;
+         margin: 5px;
+         margin-bottom: 25px;
+      }
+
+      dd {
+         margin-bottom: 10px;
+      }
+
+      .nobreak {
+         white-space: nowrap;
+      }
+
+      .listHeader {
+         margin-bottom: 0;
+         padding-bottom: 0;
+      }
+
+      ul {
+         margin-top: 0;
+         padding-top: 0;
+      }
+
+      .navigation {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 150px;
+         height: 100%;
+
+         overflow: auto;
+         background-color: #074c88;
+         color: white;
+         padding: 5px;
+      }
+
+      .navigation a:link {
+         color: white;
+      }
+
+      .navigation a:visited {
+         color: white;
+      }
+
+      .navigation ul {
+         padding-left: 0;
+      }
+
+      .navigation ul li {
+         list-style-position: inside
+      }
+
+      .content {
+         position: absolute;
+         top: 0;
+         left: 160px;
+         padding: 10px;
+         overflow: auto;
+      }
+
+      /* A link that isn't displayed so that the
+         accessibility checker is happy.
+      */
+      .bypass {
+         position: absolute;
+         top: 0;
+         right: 100%;
+         z-index: 9999;
+         color: black;
+      }
+
+   </style>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navigation" id="nav">
+   <a class='bypass' href="#content">Skip to main content</a>
+   MSpec
+   <ul>
+      <li><a href="#spec_basics">Basics</a></li>
+      <li><a href="#limitations">Limitations</a></li>
+      <li><a href="#advanced">Advanced</a></li>
+      <li><a href="#other_restrictions">Restrictions</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact_info">Contact Info</a></li>
+   </ul>
+
+   <hr>
+
+   <ul>
+      <li><a href="doc/MIPSUnit/MSpec/TestFactory.html">Documentation</a></li>
+      <li><a href="download.html">Download</a></li>
+   </ul>
+</nav>
+
+<!-- Main content -->
+<main class="content" id="content">
+<h1><code>MIPSUnit::MSpec</code></h1>
+
+<p><code>MIPSUnit::MSpec</code> is a unit testing framework for MIPS assembly code. In particular, users describe the
+   desired behavior of the assembly code under test (i.e., student assignments) using an <a target="_top"
+                                                                                            href="http://rspec.info/">RSpec</a>-like
+   syntax. <code>MSpec</code> converts those specs (RSpec uses the term "specification" or <em>spec</em> instead of
+   "test") into assembly code that detects and reports errors in the code under test.</p>
+
+<h2>Example Workflow</h2>
+
+<p>Suppose you have assigned the following to your assembly language class:</p>
+
+<div class="multi_line_box" style="left: 35px;">
+
+   Write a function named <code>in_range</code> that takes three parameters &mdash; <code>value</code>, <code>min</code>,
+   and <code>max</code> &mdash; and returns <code>true</code> if <code class="nobreak">min &le; value &le; max</code>
+   and <code>false</code> otherwise.
+
+   <p>Be sure that your function is named <code>in_range</code> (spelled correctly)
+      and declared in your code's <code>.globl</code> section.</p>
+</div>
+
+<p>Begin by writing an <code>RSpec</code>-like spec file that describes the expected behavior of
+   <code>in_range</code>:</p>
+
+<span class="box_and_caption">
+<a name="example1">
+   <iframe title="Example 1" class="multi_line_box" src="in_range_spec.txt"
+           width="325" height="435" style="width: 460px;"></iframe>
+</a>
+<br>
+   <a name="example1b"><strong>Example 1:</strong></a> Specify inputs and expected outputs as scalars
+      (<a href="in_range_spec.rb"><code>in_range_spec.rb</code></a>)
+</span>
+
+<p>Next, run <code>in_range_spec.rb</code> through <code>MSpec</code> and redirect the output to a file:
+
+<div class="single_line_box">
+   <code>
+      mspec in_range_spec.rb > in_range_spec.asm
+   </code>
+</div>
+
+<p><code>in_range_spec.asm</code> contains assembly code that will execute <code>in_range</code> with the given
+   parameters and report whether <code>$v0</code> has the expected value. Use a MIPS simulator such as <a target="_top"
+                                                                                                          href="http://courses.missouristate.edu/kenvollmar/mars/"><code>MARS</code></a>
+   or <a target="_top" href="http://spimsimulator.sourceforge.net/"><code>SPIM</code></a> to run the tests. </p>
+
+<div class="single_line_box">
+   <code>java -jar MARS.jar sm in_range.asm in_range_spec.asm</code>
+</div>
+
+<p>Download these files and try it yourself:</p>
+<ul>
+   <li><a href="in_range_spec.rb"><code>in_range_spec.rb</code></a></li>
+   <li><a href="in_range_correct.asm"><code>in_range_correct.asm</code></a></li>
+   <li><a href="in_range_error.asm"><code>in_range_error.asm</code></a></li>
+   <li><a href="in_range_spec.asm"><code>in_range_spec.asm</code></a> (You may want to generate this file yourself.)
+   </li>
+</ul>
+
+<h2><a name="spec_basics">Spec Basics</a></h2>
+
+<p>We expect that the vast majority of test cases can be written by users who don't know any <a target="_top"
+                                                                                                href="http://www.ruby-lang.org/">Ruby</a>
+   or <code>RSpec</code> by simply applying the patterns in Examples <a href="#example1">1</a>, <a
+         href="#example2">2</a> and <a href="#example3">3</a>. However, for those who prefer to thoroughly understand
+   the code they write (as opposed to copying and modifying examples), this section explains the basics of
+   <code>MSpec</code> syntax.</p>
+
+<dl>
+   <dt>Symbols</dt>
+   <dd>In Ruby, tokens that begin with a colon (i.e, "<code>:in_range</code>",
+      and "<code>:v0</code>") are <a href="http://www.troubleshooters.com/codecorn/ruby/symbols.htm"
+                                     target="_top"><em><code>Symbol</code></em>s</a>.
+
+      For purposes of using <code>MSpec</code>, you can think of a symbol as a unique name. <code>MSpec</code> uses
+      symbols to specify, among other things, functions, registers, and labels. (In most cases, we could have chosen to
+      implement <code>MSpec</code> using <code>String</code>s instead of <code>Symbols</code>; however, we chose to
+      follow the idiomatic Ruby convention of <code>Symbol</code>s where possible.)
+   </dd>
+
+
+   <dt><a href="doc/MIPSUnit/MSpec/TestFactory.html#method-c-describe"><strong><code>describe</code></strong></a></dt>
+   <dd> Tests (i.e., "specs") are contained in <code>describe</code> blocks. In most cases, a file contains a <code>describe</code>
+      block for each function tested. The parameter to the <code>describe</code> function is usually the name of the
+      function written as a symbol (i.e., a colon followed by the name of the function to be tested). See <a
+            href="#example1">Example 1</a>.
+   </dd>
+
+   <dt><a href="doc/MIPSUnit/MSpec/TestFactory.html#method-c-it"><strong><code>it</code></strong></a></dt>
+   <dd> Each spec is defined by an "<code>it</code>" block. The <code>it</code> block can contain any arbitrary Ruby
+      code; but, it typically follows the pattern demonstrated in
+      <a href="#example1">Example 1</a>
+      (three lines: calls to <code>set</code>, <code>call</code>, and <code>verify</code>).
+   </dd>
+
+   <dt><a href="doc/MIPSUnit/MSpec/TestFactory.html#method-c-data"><strong><code>data</code></strong></a></dt>
+   <dd>The <code>data</code> method creates and initializes a label in the assembly file's <code>.data</code>
+      section. For example,
+      <br>
+        <div class="single_line_box"><code>data(:my_array => [:word, 2, 4, 6, 8, 10])</code></div>
+      <br>
+      creates this line in the assembly file's <code>.data</code> section
+      <br>
+        <div class="single_line_box"><code>my_array__<em>unique_id</em>: .word 2 4 6 8 10</code></div>
+      <br>
+
+      These labels can be defined either in the <code>it</code> block,
+      or the <code>describe</code> block.
+      Like variables in most programming languages, data labels are visible within their enclosing scope. (Notice the
+      use of <code>:array1</code> in two specs in <a href="#example2">Example 2</a>.) The
+      array containing the desired values may also contain MIPS data size predicates, such as <code>:byte</code>,
+      <code>:half</code>, <code>:word</code>, <code>:ascii</code>, and <code>:asciiz</code>. Notice the use of Ruby
+      symbols (as opposed to the MIPS "dot" syntax). (As with <code>set</code>,
+      the &quot;<code>=></code>&quot; notation is used because the parameter to
+      <code>data</code> is a Ruby Hash.)
+   </dd>
+
+   <dt><a href="doc/MIPSUnit/MSpec/TestFactory.html#method-i-set"><strong><code>set</code></strong></a></dt>
+   <dd>The <code>set</code> method sets the specified registers to the specified values. For example<br>
+
+      <div class="single_line_box"><code>set(:t0 => 3, :s1 => 4)</code></div>
+      <br>sets register <code>$t0</code> to 3 and register <code>$s1</code> to 4. (The &quot;<code>=></code>&quot;
+      notation is used because the parameter to <code>set</code> is a Ruby Hash.) Similarly,
+      <br>
+      <div class="single_line_box"><code>set(:t3 => :array1)</code></div>
+      <br>sets register <code>$t3</code> to the address corresponding to label <code>array1</code>.  (See the
+      <code>data</code> section and <a href="#example2">Example 2</a>.)
+
+   </dd>
+
+   <dt><a href="doc/MIPSUnit/MSpec/TestFactory.html#method-i-call"><strong><code>call</code></strong></a></dt>
+   <dd>The <code>call</code> method calls the function under test with the given parameters. <code>call</code> can take
+      up to four parameters, which become the values of
+      <code>$a0</code> <span class="nobreak">through <code>$a3</code></span>.
+      (The name of the
+      function under test is passed as a parameter to <code>describe</code>. See <a
+            href="#example1">Example 1</a>. See also <a aria-labelledby="otherFeatures" href="#call_by_name"><code>
+         call_by_name</code></a>.)
+   </dd>
+
+   <dt><a href="doc/MIPSUnit/MSpec/TestFactory.html#method-i-verify"><strong><code>verify</code></strong></a></dt>
+   <dd>The <code>verify</code> method verifies the values of the specified registers. For example,<br>
+
+      <div class="single_line_box"><code>verify(:v0 => 3, :v1 => 4)</code></div>
+      <br> verifies that <code>$v0</code> has the value <code>3</code> and <code>$v1</code> has the value <code>4</code>.
+      (As with <code>set</code>, the &quot;<code>=></code>&quot; notation is used because the parameter to
+      <code>verify</code> is a Ruby Hash.)
+   </dd>
+
+
+   <dt><a href="doc/MIPSUnit/MSpec/TestFactory.html#method-i-verify_memory"><strong><code>verify_memory</code></strong></a>
+   </dt>
+   <dd>The method <code>verify_memory(observed, expected)</code> verifies that the <code>observed</code>
+      parameter refers to a memory location containing the <code>expected</code> sequence of values.
+   </dd>
+
+</dl>
+
+<div>
+<span class="box_and_caption">
+<a name="example2">
+   <iframe title="Example 2" class="multi_line_box" src="sum_array_spec.txt"
+           width="325" height="315" style="width: 460px;"></iframe>
+</a>
+   <br>
+   <a name="example2b"><strong>Example 2:</strong></a> Specify memory as input
+      (<a href="sum_array_spec.rb"><code>sum_array_spec.rb</code></a>)
+</span>
+</div>
+
+<div>
+<span class="box_and_caption">
+<a name="example3">
+   <iframe title="Example 3" class="multi_line_box" src="multiply_array_spec.txt"
+           width="370" height="225" style="width: 505px;"></iframe>
+</a>
+   <br>
+   <a name="example3b"><strong>Example 3:</strong></a> Specify memory as both input and expected output
+      (<a href="multiply_array_spec.rb"><code>multiply_array_spec.rb</code></a>)
+</span>
+</div>
+
+<h2><a name="limitations">Limitations</a></h2>
+
+<p class="listHeader">We designed <code>MSpec</code> to minimize the restrictions placed on the those writing the
+   assembly code
+   (i.e., the
+   students). To the extent possible, we avoided reserving registers, labels, or memory locations for
+   <code>MSpec</code> use. As a result, the current version of <code>MSpec</code> has a few, minor limitations:</p>
+
+<ul>
+   <li>The <code>verify</code> methods use <code>$at</code>. Therefore,
+      you cannot use <code>verify</code> to directly verify the value of <code>$at</code>. Also,
+      calling <code>verify</code> or <code>verify_memory</code> will modify the value of <code>$at</code>.
+   </li>
+
+   <li><code>MSpec</code> reports only the first error. When <code>MSpec</code> detects a spec failure, it reports that
+      failure and quits. (The process of reporting errors changes several registers,
+      thereby making any other tests unreliable.)
+   </li>
+
+   <li><code>MSpec</code> does not re-set the CPU state before each test. Consequently
+      <ol>
+         <li>You cannot make assumptions about the initial value of any register.</li>
+         <li>Changes made to data labels by one spec will be visible in other specs.</li>
+      </ol>
+   </li>
+</ul>
+
+<p>The "Advanced Techniques" section below contains workarounds for most of these limitations.</p>
+
+<h2><a name="advanced">Advanced Specs</a></h2>
+
+<p>The great thing about spec files being Ruby code is that you can use all of the flexibility of Ruby to help make
+   your spec files concise and easily maintainable. Here are a few of the techniques I find most useful:</p>
+
+<h3>Helper methods</h3>
+
+<p>Each <code>it</code> block of code runs as if it were an instance method of a class defined by the
+   <code>describe</code> block. Consequently, you can add additional instance methods to the <code>describe</code> block
+   that can be called by the <code>it</code> blocks. One common use of this feature when teaching an assembly language
+   class is to write a helper method to calculate the expected answer. (See the <code>nck_spec</code>
+   example below.)
+</p>
+
+<h3>Use a loop to generate multiple tests</h3>
+
+<p>In Java's <code>JUnit</code>, individual tests are statically defined methods. In contrast,
+   <code>MSpec</code> tests are generated dynamically by
+   executing the <code>it</code> method in a <code>describe</code> block. Thus,
+   you can generate multiple tests inside a loop. This is particularly useful when writing exhaustive tests.
+   (Although exhaustive tests aren't common in industry, they are useful for thoroughly testing student code.)
+   Example 4 below uses a nested loop to test every possible input for "n choose k" for
+   <code class="nobreak">k &le; 20</code>. </p>
+
+
+<div>
+   <span class="box_and_caption">
+      <a name="example4">
+         <iframe title="Example 4" class="multi_line_box" src="nck_spec.txt"
+                 width="325" height="305" style="width: 460px;"></iframe>
+      </a>
+      <br>
+         <a name="example4b"><strong>Example 4:</strong></a> Using a loop to generate multiple specs
+      (<a href="nck_spec.rb"><code>nck_spec.rb</code></a>)
+   </span>
+</div>
+
+<h3><code>before</code> blocks</h3>
+
+<p>If you have some code you want run at the beginning of <em>every</em> spec in a <code>describe</code> block,
+   you can put it in a <code>before</code> block. (See the <code>in_range_s_unchanged</code> example below.)</p>
+
+<h3>Instance variables</h3>
+
+<p>Each <code>describe</code> block corresponds
+   to a class, and the code in <code>it</code> and
+   <code>before</code> blocks behave like instance methods of that class. Thus, you can introduce and use instance
+   variables. Example 5 below illustrates how <code>before</code> blocks and instance variables can be used together.
+</p>
+
+<div>
+   <span class="box_and_caption">
+      <a name="example5">
+         <iframe title="Example 5" class="multi_line_box" src="in_range_s_unchanged_spec.txt"
+                 width="465" height="540" style="width: 570px;"></iframe>
+      </a>
+      <br>
+       <a name="example5b"><strong>Example 5:</strong></a> <code>before</code> blocks and instance variables
+      (<a href="in_range_s_unchanged_spec.rb"><code>in_range_s_unchanged_spec.rb</code></a>)
+   </span>
+
+</div>
+
+<h3><code>data</code> vs. <code>data!</code></h3>
+
+<p>The <code>data</code> method generates assembly code that allocates and initializes a single region of memory.
+   (Specifically, it generates a single line in the <code>.data</code> section.) This is the desired behavior when
+   specifying a string or array that will be used as a <em>read-only</em> input by several different specs. When the
+   function under test does not modify any data memory passed as a parameter, it is important to put the
+   <code>data</code> statements in the <code>describe</code> block and not in the <code>before</code> block. Placing
+   them in the <code>before</code> block will needlessly (and wastefuly) create a separate label for each test. For this
+   reason, calling <code>data</code> in a <code>before</code> block will generate a warning.</p>
+
+<p>However, because <code>MSpec</code> does not re-set the processor state between tests, if a shared data label is
+   passed as a parameter to a function that modifies the memory (e.g., a sort function), successive tests will not
+   receive the expected input. (They will instead receive the result of the previous test.) In this case, each test
+   needs its own copy of the input. One way to generate one copy per test is to call <code>data!</code> (notice the
+   exclamation point) in the
+   <code>before</code>
+   block. Calling <code>data!</code> will suppress the warning that appears when calling <code>data</code> from withing
+   a <code>before</code> block.</p>
+
+<p class="listHeader">If the user wishes to share a data input among several, but not all, tests in a describe block,
+   she can</p>
+<ul>
+   <li>Nest <code>describe</code> blocks, placing the desired label definition in a <code>before</code> block in the
+      inner <code>describe</code>.
+   </li>
+
+   <li>Use a <code>before</code> block to define instance variables, but actually call <code>data</code> only in the
+      desired <code>it</code> blocks.
+   </li>
+</ul>
+
+<h3><code>@output</code></h3>
+
+<p><code>@output</code> is the variable that contains a handle to the output file. You can use it to add arbitrary
+   assembly to your test. For example, if you really wanted to verify the value of <code>$at</code> at the end of a
+   function, you could do this:</p>
+
+<iframe title="Example 'at spec'" class="multi_line_box" src="verify_at_spec.txt"
+        width="435" height="135" style="width: 360px;"></iframe>
+
+<p>We don't use these features often; but, they are occasionally useful:</p>
+
+<dl id="otherFeatures">
+   <dt><a id='call_by_name' href="doc/MIPSUnit/MSpec/TestFactory.html#method-i-call_by_name">
+      <strong><code>call_by_name</code></strong></a></dt>
+   <dd>The <code>call_by_name</code> method allows you to call an arbitrary function. (In contrast,
+      <code>call</code> calls the function specified by the <code>describe</code> block.
+   </dd>
+
+   <dt>Nesting <code>describe</code> blocks</dt>
+   <dd><code>MSpec</code> allows you to nest <code>describe</code> blocks the same way you can in <code>RSpec</code>.
+      Nesting <code>describe</code> blocks allows you to logically organize specs into groups and provide a scope for
+      helper methods and data labels. <strong>Note:</strong> Only one <code>describe</code> block in a particular chain
+      may take a label as a parameter (otherwise, the function to be called by <code>call</code> would be ambiguous).
+      The remaining <code>describe</code> blocks instead take Strings as parameters that are used to build the
+      description of the spec that is printed in the event of a failure.
+   </dd>
+</dl>
+
+<h2><a name="other_restrictions">Other Restrictions</a></h2>
+
+<p class="listHeader">We took care to limit the number of rules users had to follow; but there are a few:</p>
+
+<ul>
+   <li>Do not give helper methods the same name as methods in the
+      <a href="doc/MIPSUnit/MSpec/TestFactory.html"><code>TestFactory</code></a> class. If you do,
+      you will replace the <code>MSpec</code> code with your code.
+   </li>
+
+   <li>Do not give your instance variables names identical to <code>TestFactory</code> instance variables, including
+      <ul>
+         <li><code>@output</code></li>
+         <li><code>@description</code></li>
+         <li><code>@local_labels</code></li>
+      </ul>
+
+   <li>Do not attempt to verify the value of <code>$at</code> using the <code>verify</code> method.</li>
+
+   <li>Do not call <code>data</code> from within a <code>before</code> block. If you need test to have a separate
+      copy of a data label, use <code>data!</code></li>
+</ul>
+
+<h2><a name="faq">FAQ</a></h2>
+
+<dl>
+
+   <dt>Why does <code>MSpec</code> report only the first failure?</dt>
+
+   <dd><code>MSpec</code> generates an assembly file that is then executed by MARS or SPIM together with the code under
+      test. To report all failures, <code>MSpec</code> would have to store the list of failures somewhere in the
+      simulated memory space --- the same memory space to which the code under test has access. Thus,
+      <ul>
+         <li>The list of failures would be susceptible to corruption by buggy code.</li>
+         <li>The code that stores the list of failures would have to take great care not to disturb the state of the CPU
+            (or at least restore any changes made). We simply haven't yet had time to write this code.
+         </li>
+      </ul>
+   </dd>
+
+   <dt>Why does <code>MSpec</code> generate an assembly file instead of interacting directly with MARS?</dt>
+
+   <dd> Instead of having <code>MSpec</code> generate an assembly file, we could have used <a target="_top"
+                                                                                              href="http://jruby .org/">JRuby</a>
+      to directly drive MARS. This approach would have made it easier to (1) reset the simulated CPU between tests, and
+      (2) report the complete list of failures (as opposed to the first failure only). However, it would have required
+      that all users install Ruby and JRuby. In contrast, having <code>MSpec</code> generate an assembly file, only the
+      spec writer (i.e., the professor) must have Ruby installed. Those who actually run the tests (i.e., the students)
+      need only have the <code>MSpec</code>-generated assembly file and MARS or SPIM. (While installing Ruby is simple
+      in theory, I did not want to be responsible for helping 40 students a semester install Ruby on their Windows
+      machines.)
+   </dd>
+
+   <dt>Why the two-part name?</dt>
+
+   <dd>Two reasons: First <code>MSpec</code> is the name of <a href="https://github.com/rubyspec/mspec">another
+      testing framework</a>. Second, we are considering adding other frameworks to the
+      <code>MIPSUnit</code> suite. For example, <code>MIPSUnit::MUnit</code> would be a <code>JUnit</code>-based
+      testing framework that would interact directly with MARS, thereby avoiding the
+      limitations of <code>MSpec</code>'s assembly-based implementation.
+   </dd>
+
+</dl>
+
+<h2><a name="contact_info">Contact Info</a></h2>
+
+You can e-mail me at <em>last-name</em> <em>first-initial</em><code>@gvsu.edu</code>,
+or see my complete contact info <a href="http://www.cis.gvsu.edu/~kurmasz/index2.html#contact_info">here</a>.
+
+<hr style="margin-left: -15px;">
+<em>(C) 2013 Zachary Kurmas</em>
+<br>
+Last updated: 1 April 2014
+</main>
+
+</body>
+
+
+</html>

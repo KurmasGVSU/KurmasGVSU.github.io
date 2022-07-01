@@ -1,0 +1,487 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+   <title>Understanding Pipeline Operations</title>
+
+   <style type="text/css">
+      img.center {
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
+      }
+
+      table.center {
+         margin-left: auto;
+         margin-right: auto;
+      }
+
+      table.hasBorder, table.hasBorder td, table.hasBorder th {
+         border: 1px solid gray;
+      }
+      .listHeader {
+         padding-bottom: 0;
+         margin-bottom: 0;
+      }
+
+      ul {
+         padding-top: 0;
+         margin-top: 0;
+      }
+
+   </style>
+</head>
+
+<body>
+<table style="border:  0; width: 100%">
+   <tr>
+      <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;">CIS 351</h1>
+      </td>
+      <td style="width: 70%">
+         <h1 style="text-align: center">Lab 10: Pipeline</h1></td>
+      <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap">
+         Winter 2021</h1></td>
+   </tr>
+</table>
+
+<hr>
+
+This lab was designed by <a target="_top" href="http://www.cis.gvsu.edu/~wolffe">Prof. Wolffe</a>
+
+<p>
+
+<h3>Pre-lab</h3>
+
+Please have questions 1 - 5 answered when you arrive in lab.
+
+<h3> Overview</h3>
+
+<p>
+   The purpose of this lab is to become more familiar with the concept of pipelining,
+   as found in modern CPU architectures. Specifically,
+   the lab involves the use of a graphical pipeline simulator. This
+   tool will be used to further your understanding of how a pipeline works,
+   how it is implemented, and how it deals with the problems introduced by
+   using this high-performance technique.</p>
+
+<h3 class="listHeader"> Activities</h3>
+<ul>
+   <li> Work your way through the following brief tutorial.</li>
+   <li> Submit a lab report that includes answers to the numbered
+      questions and your annotated source code.
+   </li>
+</ul>
+
+<h3 class="listHeader"> Resources</h3>
+<ul>
+   <li> There is an on-line <a href="dlxview/help.html">User Manual</a>
+      available for the visualization tool used in this lab.
+   </li>
+</ul>
+
+<h3> A graphical pipeline simulator</h3> The name of this simulation
+tool is <code>DLXview</code>. Its purpose is to graphically illustrate the
+operation of the pipeline implemented in the DLX architecture.
+DLX is the name Patterson and Hennessy gave to the hypothetical
+machine and instruction set we have been studying. (Although, I don't
+think they use the DLX name in the current edition of the
+textbook.)<br>
+
+
+<h3> Operating DLXview</h3>
+To start DLXview, simply type <b><code>dlxview</code></b> at the command
+prompt.
+<dl>
+   <dt>Configuring the system</dt>
+
+   <dd>The first step is to configure the machine to simulate a specific
+      pipelined architecture. Feel free to experiment with alternative
+      configurations. However, this lab utilizes only the default mode
+      with default parameters. See the user manual for a description of
+      the various configuration parameters available.
+      <ul>
+         <li> Click the <b><code>configure</code></b> button. A pop-up window
+            will present a set of scheduling modes.
+         </li>
+         <li> Select <b><code>basic pipeline</code></b>.
+            A pop-up window will present a set of configuration parameters
+            appropriate for the pipeline mode you have selected.
+         </li>
+         <li> Accept the <b><code>default</code></b> configuration by clicking <b><code>OK</code></b>.</li>
+         <li> Again, click <b><code>OK</code></b>.</li>
+      </ul>
+   </dd>
+
+   <dt>Loading an executable</dt>
+   <dd>
+      Once the system has been configured, a file can be loaded for
+      execution.
+      <ul>
+         <li> Download the assembly program file <a href="exampleDLX-1.s"><code>exampleDLX-1.s</code></a>
+            into your current directory.
+         </li>
+         <li> Click the <b><code>load</code></b> button.&nbsp; A file selection
+            window will pop up.
+         </li>
+         <li> Select the file (<code>exampleDLX-1.s</code>) by clicking on it.</li>
+         <li> Click <code><b>load</b>.</code></li>
+         <li> Click <b><code>done</code></b>.</li>
+      </ul>
+   </dd>
+
+   <dt>Running a program</dt>
+   <dd>
+      To execute a program:
+      <ul>
+         <li> Click the <b><code>step forward</code></b> button to begin
+            execution.; A pop-up window will request a starting address.
+         </li>
+         <li> Click the <b><code>default</code></b> button.</li>
+         <li> Click the <b><code>step forward</code></b> button or the <b><code>next
+            cycle</code></b> button to progress through the assembly program. <span
+               style="font-style: italic;">Stepping </span>advances execution
+            forward to the next instruction. <span style="font-style: italic;">Cycling</span>
+            advances the simulation by one clock cycle. These are usually, but
+            not always, the same thing (i.e., most instructions take a single
+            cycle). The <b><code>step back</code></b> and <b><code>previous cycle</code></b>
+            buttons will also be very helpful in observing and understanding
+            pipeline operation.
+         </li>
+      </ul>
+
+      <ol>
+         <li> How many cycles does it take to fill the pipeline? (Notice that
+            DLXview labels the cycles beginning with zero. To avoid ambiguity,
+            fill in the blank: "In DLXview, the first cycle during which all the
+            pipeline stages are busy is labeled _____.")
+         </li>
+
+         <li> How many cycles does it take for the computer to execute the
+            first instruction completely?
+         </li>
+
+         <li> What pipeline stage is the instruction <code>and r6, r7,
+            r8</code> in during cycle number 5 (i.e., the cycle labeled 5)?
+         </li>
+
+         <li> During which cycle does the the processor begin computing the
+            instruction <code>and r12, r13, r14</code>? (Make sure your answer clearly states "the <code>x</code>th
+            cycle" or
+            "the cycle labeled x").
+         </li>
+
+         <li> During which cycle does the the processor finish computing the
+            instruction <code>and r12, r13, r14</code>? (Make sure your answer clearly states "the <code>x</code>th
+            cycle" or
+            "the cycle labeled x").
+         </li>
+      </ol>
+   </dd>
+
+   <dt>Views</dt>
+   <dd>
+      The top half of the display window is an instruction timing diagram,
+      calibrated in clock cycles. Each instruction is uniquely colored
+      to make it easier to follow its progress through the pipeline. In
+      addition to the timing diagram, DLXview provides two views of the
+      pipeline in operation. The button near the bottom of the screen
+      allows you to toggle between the two viewing modes.
+      <ul>
+         <li> the <b><code>block diagram</code></b> shows the entire pipeline as
+            labeled stages
+         </li>
+         <li> the <b><code>integer datapath</code></b> presents a detailed
+            device-level view of the pipeline
+         </li>
+      </ul>
+   </dd>
+</dl>
+
+<h3> The DLXview implementation of the DLX architecture</h3>
+
+DLXview
+is a fairly straightforward implementation of the DLX
+architecture. Recall the differences between a pipelined
+processor and the simpler processor we described in class:
+<ul>
+   <li> Pipeline latches have been added between datapath stages, and
+      named appropriately. Think of them as "holding" the results of the
+      previous stage of the pipeline (left) and forwarding those results on to
+      the next stage of the pipeline (right).
+   </li>
+   <li> Additional wiring has been added to efficiently distribute
+      results. For example, multiple transfer wires emanate from the
+      Write Back stage and serve as input (feedback) to previous stages of the
+      pipeline. This loop back technique is known as <span
+            style="font-style: italic;">data forwarding</span> and is used to solve
+      some of the timing problems associated with pipeline hazards.
+   </li>
+   <li> Branches are resolved in the Instruction Decode stage.
+      Hence the necessary logic has been moved into that stage of the pipeline.
+   </li>
+</ul>
+
+
+<h3> A simple pipelined program</h3>
+
+<p>The assembly program loaded earlier (<code>exampleDLX-1.s</code>) is a very simple
+   program with no data dependencies, branches, or other potential
+   problems. The code is well-documented and should be easily
+   understood. Take some time now to execute the program,
+   familiarizing yourself with the different views and the operation of the
+   simulator.</p>
+
+
+<p>Pay particular attention to the register file. Notice how it
+   indicates which registers are being read from and written to.
+   Also pay close attention to the muxes. They help indicate which
+   of the many values generated in the previous stage are actually being
+   used in the current stage. (In other words, watching the lines
+   through the muxes shows you where the inputs to the ALU are coming
+   from.) Stepping backward and forward will help you understand how an
+   individual instruction progresses through the pipeline. </p>
+
+<p>Note: we are only concerned here with the operation and control of
+   the pipeline. In other words, we don't care what data values are
+   actually in the registers or what the results of the operations
+   are. It is possible, however, to initialize registers to a desired
+   value using a <code>*.i</code> file. See the User's manual for additional
+   information. </p>
+
+<p>Note: it is possible at any time to change the operation of the
+   simulator by editing the source code (see the file selection window). </p>
+
+<p>Let's trace through the execution of a single instruction. The
+   first instruction in the example program loads a word from memory into a
+   register. Recall that DLX data addressing uses the indexed
+   method. The word to be read from memory is located at the address
+   contained in the instruction itself (i.e. the constant value 0), offset
+   (or indexed) by the value contained in register R2. The word read
+   from memory is to be loaded into register R1. </p>
+<ul>
+   <li> In the first phase of the instruction cycle, the instruction is
+      fetched (note the color: it's the yucky brown instruction in the
+      pipeline).
+   </li>
+   <li> In the second phase, the instruction is decoded (although this is
+      not illustrated, the opcode is being used to specify a <b><code>load</code></b>
+      operation). In addition, any necessary values are read from the
+      register file. In this case, the value of register R2 is read
+      because it is needed for subsequent memory addressing. The
+      simulator indicates the register <b><code>read</code></b> by displaying a
+      colored R2 in the box representing the register file.
+   </li>
+   <li> After executing the third cycle, the effective address of the
+      operand has been calculated. Note the paths drawn through the two
+      muxes in the Execute stage. Tracing back the path in the upper mux
+      indicates a value originating in the register file -- this represents
+      the contents of R2. The path through the lower mux traces back to
+      the sign-extended immediate operand datapath -- this represents the
+      constant 0 from the instruction.
+   </li>
+   <li> In the fourth cycle the memory word is read. This is not
+      really evident until the next phase.
+   </li>
+   <li> The last stage is the Write Back phase. This stage always
+      uses a value generated in the previous stage. In this case, the
+      instruction was a load from memory into a register. Examining the
+      register file shows that data is being written to register R1. (Values
+      displayed near the top of the register file are <b><code>read</code></b>
+      values, the value displayed near the bottom represents a <b><code>write</code></b>
+      operation). Tracing back the wire representing the register file
+      write operation reveals the origin of the value being written -- the
+      data memory.
+   </li>
+</ul>
+Trace through the execution of the other instructions in the program
+until you are confident you understand the operation of the pipeline.
+<ol start=6>
+   <li> Which registers are being read during cycle 5 (the cycle labeled 5)?</li>
+   <li> Which registers are being written during cycle 5 (the cycle labeled 5)?</li>
+   <li> Where does input to the main ALU come from during cycle 2 (the cycle labeled 2)?</li>
+   <li> Where does input to the main ALU come from during cycle 3 (the cycle labeled 3)?</li>
+   <li> What is the purpose of all of the <code style="font-weight: bold;">nops</code>
+      at the end of the sample program?
+   </li>
+</ol>
+
+<h3> Structural hazards</h3>
+
+<p>A structural hazard is another term for a resource conflict.
+   Resource conflicts (we will discuss this in more detail in class) refer
+   to contention for a specific functional unit. Take a moment to
+   study the integer data path of the DLX pipeline.</p>
+
+<p>It is possible that the Instruction Fetch stage might be accessing
+   memory at the same time as the Memory Access stage. One
+   stage is reading an instruction and the other is reading a data
+   value. Only one word can be read from a memory unit at time.
+   This is an example of a resource conflict. </p>
+
+<ol start="11">
+   <li> How does the DLX pipeline architecture resolve this conflict?</li>
+</ol>
+
+Locate the adder in the Instruction Decode stage. Trace its
+backward and forward connections to understand its operation well enough
+to answer the question:
+<ol start="12">
+   <li> What purpose does this adder serve?</li>
+</ol>
+
+<h3> Data hazards</h3>
+The next type of hazard is a data hazard, which always involves some
+type of data dependency. In a typical instance, the current
+instruction requires some operand that is being generated by the
+preceding instruction (e.g. a <b><code>load</code></b> or an <b><code>ALU</code></b>
+operation). Program <a href="exampleDLX-2.s">exampleDLX-2.s</a>
+contains such a dependency. Download the program and study the
+code. Load and run the program and study its execution.
+
+<ol start="13">
+
+   <li> Identify all pairs of instructions that have a data dependency.
+      In particular identify all pairs of instructions (not necessarily
+      adjacent) where the result of the second instruction depends
+      directly on the result of the first.
+   </li>
+
+
+   <li> Describe in your own words how the DLX hardware addresses this
+      dependency problem. Your answer should be precise enough to
+      convince me that you understand the mechanism used.
+   </li>
+
+   <li> Trace through the progress of the fourth instruction in a
+      manner similar to that used in the section above ("<b>A simple
+         pipelined program</b>"). There is a "visual bug" or discrepancy that
+      you will notice as you trace through the execution of this
+      program. Identify it.
+   </li>
+
+
+   <LI> Step to cycle 4. Use your favorite screenshot tool
+      to capture the main DLXview window. Print the snapshot and highlight
+      the set of wires that shows how the result of <code>sub r3, r4,
+         r5</code> is routed directly to the main ALU.
+
+</ol>
+
+Some data dependencies span several instructions. Program <a
+      href="exampleDLX-3.s">exampleDLX-3.s</a> demonstrates this problem in
+cycle 5, when the first <code>add</code> instruction is writing
+register <code>r3</code> during the same cycle that the second
+<code>add</code> instruction is reading <code>r3</code>.
+
+<P>
+<OL start=17>
+
+   <li> Which value of <code>r3</code> will be read if the DLX
+      processor used the register file provided for Project 4? If the
+      wrong value would be read, describe how you would properly
+      coordinate the reading and writing of the registers.
+   </li>
+
+</ol>
+
+
+<p>Not all data dependencies can be solved by forwarding. Program
+   <a href="exampleDLX-4.s">exampleDLX-4.s</a> contains an example of a type
+   of hazard that forwarding cannot eliminate. Download the
+   program and study the code. Load and run the program and study
+   its execution.</p>
+
+
+<p>Examine all of the instructions in the example program and identify
+   their dependencies. Notice that the <b><code>add</code></b>
+   instruction immediately follows a <b><code>load</code></b>
+   instruction. This is an example of a dependency immune to
+   forwarding. Execute the program using <i>cycles</i> instead of
+   stepping. Refer to the timing diagram and notice the presence
+   of stalls in the pipeline. A <i>stall</i> is a delay cycle, or
+   bubble, inserted into the pipeline. When this type of data
+   dependency (called a load data hazard) is detected, hardware
+   known as a <b><code>load interlock</code><span style="font-family:
+ monospace;"></span></b> will delay subsequent instructions to resolve
+   the timing problem. Study the operation of this program until
+   you understand both the problem and the solution. </p>
+
+
+<ol start="18">
+
+   <li> Why must the <b><code>add</code></b> operation be delayed one
+      cycle? Your answer should consider timing issues and functional
+      units. Be sure to explain why forwarding cannot solve the
+      problem.
+   </li>
+
+
+   <li> Describe how hardware can <i>detect</i> a load data hazard.</li>
+</ol>
+
+
+<h3> Control hazards</h3>
+
+<p>The final type of hazard involves control transfer -- branches and
+   jumps. Program <a href="exampleDLX-5.s">exampleDLX-5.s</a>
+   implements control transfer in the form of a loop. Download,
+   study, and execute the code until you understand its operation.
+   The comments in the code should help you understand what the loop is
+   doing.</p>
+
+<p>
+
+   The DLX hardware resolves branches in the Instruction Decode stage of
+   the pipeline. Instead of a <code>beq</code> instruction that uses
+   subtraction in the ALU to compare two registers, the DLX hardware has
+   <code>bez</code> and <code>bnz</code> instructions that branch if the
+   specified register is equal or not equal to 0 respectively. These
+   new branch instructions allow the hardware to determine by the end of
+   the second cycle whether to take the branch. </p>
+
+<p>
+   Notice that the instruction immediately following the branch
+   instruction is a <code>nop</code>. This
+   <code>nop</code> is called a <i>branch delay slot</i> and is
+   typically inserted by the compiler.
+</p>
+
+<ol start="20">
+   <li> Why is the branch delay slot necessary? In other words, what
+      would go wrong if we removed the <code>nop</code>?
+   </li>
+
+   <li> Suppose you had a smarter compiler. Explain what it could put in the branch delay slot instead of a
+      <code>nop</code>.
+   </li>
+
+   <!---
+      </li> <ul> <li> Remember:
+    compilers only deal with code &mdash; no hardware solutions allowed.</li>
+    <li> Also remember: compilers are not omniscient. Top credit
+    will be given for solutions that <span style="font-style:
+    italic;">rearrange or reorder</span> existing code, rather than
+    rewrite code. (This means no loop unrolling &mdash; yet.)</li> </ul>
+   -->
+
+   <li> Write an optimized assembly program incorporating your code
+      adjustments. Your solution must still contain a loop.
+   </li>
+
+   <li> How many cycles does the original program take to assign the
+      final result to register R6? (In other words, during which cycle
+      is the instruction <code>add r6, r4, r5</code> in the "write-back"
+      phase?)
+   </li>
+
+   <li> How many cycles does your optimized assembly program take to do
+      the same work?
+   </li>
+</ol>
+
+<hr>
+<p>Updated Saturday, 27 March 2021, 8:01 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+
+</html>

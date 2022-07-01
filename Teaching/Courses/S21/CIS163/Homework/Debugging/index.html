@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 163 Debugging</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .rubric  {
+       margin-left: 25px;
+    }
+
+    .rubric th {
+       text-align: left;       
+    }
+
+    .rubric td {
+       padding-right: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 163</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Debugging</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Spring 2021</h1></td>
+  </tr>
+</table>
+
+
+<h2 class="listHeader">Objectives:</h2>
+
+<ul>
+   <li>Practice using a debugger</li>
+   <li>Practice debugging code with the aid of a debugger</li>
+</ul>
+
+<h2>Activity</h2>
+
+<p>You may complete this lab in pairs.</p>
+
+<p>Begin by following this GitHub Classroom link and cloning the resulting repository: <a href='https://classroom.github.com/g/u2zGlU19'><code>https://classroom.github.com/g/u2zGlU19</code></a>
+
+<p>The test <code>testSummation</code> fails.  Set a breakpoint in <code>Buggy.summation</code>, step through the code, and identify the source of the bug.</p>
+
+<ol>
+<li>  Add a comment to the <code>summation</code> method in <code>Buggy.java</code> explaining when 
+ (which line of code, which iteration of the loop) during your step through the code do you first noticed evidence of a bug 
+(e.g.,  see a variable with an incorrect value)?
+<li>  Also add a comment describing the bug in your code and how you fixed the bug.</li>
+<li>  Add test cases to <code>BuggyTest.java</code> thoroughly testing <code>summation</code>. Add comments explaining why you chose the test cases you did, 
+and why you believe your set of test cases is sufficient.
+</ol>
+
+
+<p>The test <code>testFactorial_v1</code> fails.  Set a breakpoint in <code>Buggy.factorial_v1</code>, step through the code, and identify the source of the bug.</p>
+
+<ol start='4'>
+<li>  Add a comment to the <code>factorial_v1</code> method in <code>Buggy.java</code> explaining when 
+ (which line of code, which iteration of the loop) during your step through the code do you first noticed evidence of a bug 
+(e.g.,  see a variable with an incorrect value)?
+<li>  Also add a comment describing the bug in your code and how you fixed the bug.</li>
+<li>  Add test cases to <code>BuggyTest.java</code> thoroughly testing <code>factorial_v1</code>. Add comments explaining why you chose the test cases you did, 
+and why you believe your set of test cases is sufficient.
+</ol>
+
+<p>The test <code>testFactorial_v2_b</code> may enter an infinite loop.  (That's why it isn't marked with <code>@Test</code>: I didn't 
+want you to accidentally run a test that would cause your IDE to hang.).  Add the <code>@Test</code> annotation to this test, set a breakpoint in 
+<code>Buggy.factorial_v2</code>, step through the code, and identify the source of the infinite loop.
+
+<ol start='7'>
+<li>  Add a comment to the <code>factorial_v2</code> method in <code>Buggy.java</code> explaining when 
+ (which line of code, which iteration of the loop) during your step through the code do you first noticed evidence of a bug 
+(e.g.,  see a variable with an incorrect value)?
+<li>  Also add a comment describing the bug in your code and how you fixed the bug.</li>
+<li>  Add test cases to <code>BuggyTest.java</code> thoroughly testing <code>factorial_v2</code>. Add comments explaining why you chose the test cases you did, 
+and why you believe your set of test cases is sufficient.  For now, assume the maximum input is 12.</li>
+</ol>
+
+<p>Run all the tests in <code>WordAnalyzerTest.java</code>.  Some will pass and some will fail.</p>
+
+<ol start='10'>
+<li>  Look through the stack trace generated by <code>testFRC_mate</code>.   (Depending on your IDE, you may have to click on it.)
+  As you look down from the top, what is the first line of code in code <code>WordAnalyzer.java</code> mentioned?</li>
+<li> What happened on that line that caused an exception to be raised? (Use the debugger to step through the code, if necessary.)</li>
+<li>  Add a comment describing the bug and how you fixed it.</li>
+<li>  Add test cases to thoroughly test <code>firstRepeatedCharacter</code>. Add comments explaining why you chose the test cases you did, 
+and why you believe your set of test cases is sufficient.</li>
+</ol>
+
+<p>Use the debugger to find the bug in <code>firstMultipleCharacter</code>.  Note that the bug may actually be in the <code>find</code> helper method.
+   As you debug this method, take note of the difference between "step over" and "step into".  In particular, when you first step through <code>firstMultipleCharacter</code>, 
+   step <em>over</em> <code>find</code>, examine the value returned by <code>find</code> and see if you can guess what the bug is.</p>
+
+<ol start='14'>
+<li>  Add a comment describing the bug and how you fixed it.</li>
+<li>  Add test cases to thoroughly test <code>firstMultipleCharacter</code>. Add comments explaining why you chose the test cases you did, 
+and why you believe your set of test cases is sufficient.</li>
+</ol>
+
+<p>Use the debugger to find the bug in <code>countRepeatedCharacters</code>.</p>
+
+<ol start='16'>
+<li>  Add a comment describing the bug and how you fixed it.</li>
+<li>  Add test cases to thoroughly test <code>countRepeatedCharacters</code>. Add comments explaining why you chose the test cases you did, 
+and why you believe your set of test cases is sufficient.</li>
+</ol>
+
+<h2>Challenge Problem</h2>
+
+<p>If you compute 20! using either method in <code>Buggy</code>, the answer will be negative.  Why?</p>
+
+
+
+<h2>Submission</h2>
+
+Commit the changes to the code.  If you worked with a partner, be sure both names are in a comment at the head of each file.
+
+<h2>Acknowledgements</h2>
+
+<p>This lab is based on <a href="http://www.horstmann.com/bigj/help/debugger/tutorial.html"> this lab</a> by <a href="http://www.horstmann.com/">Cay Horstmann</a>. 
+
+<hr>
+ <p>Updated Monday, 10 May 2021, 7:28 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>
+
+
+  

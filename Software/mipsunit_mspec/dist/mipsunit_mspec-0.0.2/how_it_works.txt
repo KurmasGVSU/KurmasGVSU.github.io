@@ -1,0 +1,366 @@
+
+****************************************************************
+*
+* How MIPSUnit::MSpec works
+*
+****************************************************************
+
+MIPSUnit::MSpec is a Ruby program generates a set of unit tests for
+MIPS assembly.  Specifically, MSpec takes as input Ruby code
+describing the desired unit tests and produces as output a MIPS
+assembly file that will run the unit tests and report any failures.
+
+A basic input file looks something like this:
+
+describe :method1 do 
+
+  def helperMethod1
+     # perform complex setup
+  end
+
+  it "exhibits behavior 1" do 
+     set(:s0 => 6)  # generate assembly to set s0 to 6
+     helperMethod1  # call helperMethod1 
+
+     # generate assembly to (1) set a0 to 6 and a1 to 4, and
+     # (2) jal to method 1
+     call(16)        
+     
+     # generate assembly to verify that v0 is now 13 and s0 is still 6.
+     verify(:v0 => 13, :s0 => 6) 
+  end
+
+  it "exhibits behavior 2" do
+    set(:s0 => 5, :s1 => 6)
+    helper1
+    call(-6)
+    verify(:v0 => 12, :s0 => 5, :s1 => 6)
+ end
+end
+
+describe :method2 do
+  it "exhibits behavior 1" do
+    set(:s0 => 15, :s1 => 16)
+    call(23)
+    verify(:v0 => 15, :s0 => 15, :s1 => 16)
+ end
+end  
+
+
+This document explains how several Ruby features allow us to define
+tests in such a flexible and concise way (especially compared to a
+statically-typed language such as Java).
+
+We begin by defining a few key terms
+
+* A *test* is a sequence of assembly language statements that run some
+  code and checks the results.  mipsunit generates an assembly file
+  containing one or more tests.
+
+* A *test definition* is a ruby code block that, when executed,
+  generates a test (i.e., produces assembly code as output).  The
+  blocks passed to the "it" methods above are test definitions.
+
+* set, call, and verify are instance methods of the class TestFactory.
+  Thus, TestFactory objects execute test definitions (i.e., the code
+  in the it blocks), thereby generating assembly language tests.
+
+
+****************************************************************
+*
+* Comparison to Java (or "Why Ruby?")
+*
+****************************************************************
+
+RSpec is a popular unit testing framework for Ruby. MSpec uses syntax
+very similar to RSpec.  Consider how MSpec might look if it modeled
+after JUnit instead of RSpec:
+
+class TestFactory {
+   public void set(String register, int value);
+   public void call(String function, int p1, int p2, int p3, int p4);
+   public void verify(String register, int value);
+   /* Many, many more overloaded methods here */
+}
+
+static import TestFactory.*;
+class MyTests extends TestFactory {
+
+  @Test
+  public void test1() {
+     set("s0", 6);
+     call("method1",16 );
+     verify("v0", 13);
+     verify("s0", 6);
+  }
+}
+
+Notice the extra typing and structure. Also notice that with Java:
+  * Supporting different data types as parameters (Strings, labels,
+    floating point, etc.) would require a large number of overloaded
+    methods.
+
+  * Providing different @Before blocks to different groups of tests
+    would require a separate Java class for each group.
+  
+  * Setting/verifying multiple registers in a single call to set or
+    verify would require the overhead of a HashMap, or some awkward
+    use of variable arguments. 
+
+  * It would be difficult to name tests with  phrases instead of valid
+    Java identifiers. (Or, each test would need both a method name and
+    a string identifier.)
+
+
+****************************************************************
+*
+* Implementation details
+*
+****************************************************************
+
+Let's look at the Ruby "magic" that makes MSpec work.
+
+First, note that spec files are actual Ruby code. "describe",
+"before", and "it" are all just methods. The key is where these
+methods are defined.
+
+Second, note that, in Ruby, classes are themselves instances of the
+class Class.  For example, String in Ruby is the name of an object of
+type Class that defines the String class.  When you instantiate a
+String object using "String.new", you are calling a method named "new"
+on an object of type "Class".  If this feature of Ruby is not familiar
+to you, I suggest you review ....
+
+*
+* describe blocks define a scope
+*
+
+As with the Java example, set, call, and verify are all instance
+methods in the TestFactory class.
+
+A "describe" block has two primary components: method definitions and
+"it" statements.
+  * The definitions are helper methods that the user wants to add to
+    the TestFactory class.  These methods can be used, for example, to
+    collect code common to many (but not necessarily all) tests.
+  * The "it" statements are method calls that generate new
+    TestDefinitions.  Specifically the it method takes the block
+    passed to it for later execution by a TestFactory object.  
+ 
+In Ruby, instance variables are not declared, they are simply used.
+Therefore, any instance variables set by helper methods are visible
+throughout the describe block (including in the test definitions).
+
+We could simply add all of these helper methods to the TestFactory
+class. However, good design suggests that we limit the scope of these
+new methods (and, more importantly the instance variables they
+use). To do this, each "describe" block defines a new subclass of
+TestFactory. Any methods defined inside a "describe" block are added
+to this new subclass only. Imagine the code in the describe block
+appears between these two lines of ruby code:
+
+  class MyTestFactory < TestFactory
+     def helperMethod1
+        # perform complex setup
+     end
+
+     it "exhibits behavior 1" do 
+       set(:s0 => 6)  
+       helperMethod1       
+       call(16)        
+       verify(:v0 => 13, :s0 => 6) 
+     end
+
+     it "exhibits behavior 2" do
+        set(:s0 => 5, :s1 => 6)
+        helper1
+        call(-6)
+        verify(:v0 => 12, :s0 => 5, :s1 => 6)
+     end
+  end 
+
+
+The "it" statements are method calls. Because the describe block is
+executed in a class context (i.e., as if we are defining a class) "it"
+is really a call to the method TestFactory.it. (In other words, the
+method TestFactory.it is executed as we are defining class
+MyTestFactory.)  The method TestFactory.it takes the block passed to
+it (i.e., the test definition) and creates a TestDefinition object.
+This object stores (1) the block of code, and (2) the particular
+subclass of TestFactory (MyTestFactory, in this case), and (3) the
+name of the test (i.e., the string passed to the it method.)
+
+(To be clear: TestFactory.it is not an instance method for objects of
+type TestFactory. Instead it is an instance method for the object of
+type Class named TestFactory.  When we create a new Class object based
+on TestFactory, that object also has a method named it.)
+
+The main benefit to this somewhat complicated scheme is that helper
+methods are limited in scope to their enclosing describe block.  In
+other words, we can create nested namespaces by nesting describe block.
+
+*
+* generating the assembly
+*
+
+After executing the spec file (which, as stated before, is just Ruby
+code), we have a list of TestDefinition objects. (Well, actually, we
+have more of a tree corresponding to the nested describe blocks; but,
+that detail isn't important here.)  At this point, generating the code
+is primarily a matter of 
+* iterating through the TestDefinition objects
+* instantiating the proper subclass of TestFactory for each object
+* executing the code block in the context of the factory object.
+
+If all the TestDefinition objects were stored in an array, the code
+would look something like this:
+
+defs.each do |test_definition|
+  factory = test_definition.test_factory_class.new
+  factory.instance_eval(test_definition.block)
+end
+
+If calling the method new on a return value looks strange, remember,
+classes are simply instances of the Class object.  In Ruby, the
+following code is legal:
+
+  class_to_instantiate = String
+  my_string = class_to_instantiate.new("my new string")
+
+The code above does the same thing:  When processing the describe
+block, we define a new instance of Class and store it in the
+TestDefinition object.  In the block of code above, we retrieve that
+Class instance and call "new" to create an object of type TestFactory.
+
+The instance_eval method runs the code in the block (which originally
+was the block of a call to the it method) in the context of the
+TestFactory object.  Thus, the code behaves as if it were inside an
+instance method.  This is how code in the it blocks can call set,
+call, verify, and other TestFactory instance methods.  These methods
+then generate the desired assembly code.
+
+Each call to TestFactory.it produces a new TestDescription object.
+These objects are stored inside the class object itself. For example,
+the TestFactory class is described by an instance of the Class class
+that is named TestFactory. Because classes in Ruby are open, we can
+add instance variables to the TestFactory object (which is different
+from an object of type TestFactory). An instance variable named
+@metadata holds the list of TestDescription objects (as well as other
+data).
+
+TestFactory also has a "describe" method (TestFactory.describe). This
+allows the user to nest describe" blocks. In addition to organizing
+tests, this nesting allows the user to scope "helper" methods. As
+before, the describe method creates a new subclass of TestFactory.
+However, that new subclass is not a child of TestFactory, but instead
+a child of the current class (which is, itself, a descendant of
+TestFactory).
+
+*
+* Generating subclasses of TestFactory
+*
+
+Each describe block defines a new subclass of TestFactory. Here is a
+partial implementation of TestFactory.describe:
+
+def self.describe(description, &block)
+  new_factory_class = Class.new(self) do
+    class_eval(&block)
+  end
+end
+  
+The statement Class.new(self) creates a new instance of Class that is
+based on the current class.  This way each new nested describe block
+has access to the instance methods and instance data of the enclosing
+describe block.  
+
+The &block parameter holds the block passed to describe (i.e., the
+helper methods and the calls to it).   Calling class_eval(&block)
+causes this code to execute as if it were within the definition of the
+new class.  In other words:
+    class MyTestFactory < EnclosingTestFactory # Class.new(self) does this
+    	  # class_eval(&block) behaves as if the block were typed here
+    end
+
+*
+* Instance variables in the TestFactory classes.
+*
+
+
+
+
+
+==========
+
+
+Notice that the entire spec file is run in the context of main (this
+is kind of like running it in the global namespace).  Your first
+thought might be to run this code in a more limited context; however,
+that didn't work.  We considered two options:
+
+(1) Create a Spec class with a describe method and execute the spec
+code in this context.  The problem is that the helper methods inside
+the Spec context wouldn't get passed to the describe blocks.
+
+(2) Run the spec inside the TestFactory context.  This would allow the
+helper methods to be passed on to nested describe blocks / TestFactory
+classes.  However, it would also allow "it" statements and "before"
+statements at the top level.  The presence of these statements at the
+top level isn't necessarily a problem, but we thought consistency with
+RSpec would be beneficial.
+
+We tried to create two TestFactory classes, a "TopLevelFactory" class with
+only a describe method, and a TestFactory class that inherited from
+TopLevelFactory.  However, explicitly creating TestFactory instead
+of building it dynamically from TopLevelFactory caused us to lose any
+helper methods added at the top level (i.e., outside any describe
+block).
+
+So, in the end, we decided to follow RSpec and run the spec in the
+main context and make describe a "global" method.
+
+
+** Each describe block and it block can have its own data labels.  Each data label
+is given a unique ID, so different labels in different scopes don't collide.  However,
+within a given scope, a given label name may be used once only.  Thus, a parent and child
+can't each have a label named :l1.  We could have implemented scoping that allowed for
+shadowing (like Java); however, we figured that if two labels in the same scope had the
+same name, it was more likely an oversight than attempt at shadowing.  Therefore, we
+ stipulate that label names must be unique
+
+
+------------
+
+#### Try moving self.it, self.describe, and self.before out of TestFactory into a new class called TestDescriptionFactory  See if this does the same thing as rspec, only clearer. (It doesn't work.  We want to both build test descriptions and add methods to a new type to TestFactory
+
+
+
+interface TestDescription {
+   public make(TestFactory factory);
+}
+
+
+public List<TestDescription>  myTests() {
+   ArrayLIst<TestDescription> list = new ArrayList<TestDescription>();
+   list.add(new TestDescription() {
+      make(TestFactory factory) {
+        factory.set();
+	factory.run();
+	factory.verify();
+      }
+   }
+  return list
+}       
+
+
+
+
+
+
+
+
+The input to the test generator looks 
+
+
+
+

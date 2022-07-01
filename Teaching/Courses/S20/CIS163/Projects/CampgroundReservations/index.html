@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 163 Campground Reservations</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .rubric  {
+       margin-left: 25px;
+    }
+
+    .rubric th {
+       text-align: left;       
+    }
+
+    .rubric td {
+       padding-right: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 163</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Campground Reservations</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Summer 2020</h1></td>
+  </tr>
+</table>
+
+  <p>GitHub Classroom URL: <a href='https://classroom.github.com/g/yf0mvbdr'><code>classroom.github.com/g/yf0mvbdr</code></a></p>
+
+<h2 class="listHeader">Objectives:</h2>
+
+<ul>
+   <li>Implement a Singly Linked list</li>
+   <li>Practice examining and modifying existing code</li>
+   <li>Practice managing a complex project</li>
+</ul>
+
+<h2>Preliminaries:</h2>
+
+<p class='listHeader'>Before beginning this project:</p>
+<ul>
+   <li>Review textbook chapters 8 - 10, 12, 13, 15, and 18.</li>
+   <li>Read this entire project description.</li>
+</ul>
+
+<h2 class="listHeader">Milestones:</h2>
+
+<ul>
+   <li>Step 1: Tuesday, 7 July 2020, 8:00 am</li>
+   <li>Step 2: Tuesday, 14 July 2020, 8:00 am</li>
+   <li>Final submission: Tuesday, 28 July 2020, 8:00 am</li>
+</ul>
+
+<h2>Problem Statement:</h2>
+
+<p>Your first task as a new programmer in a company will typically be modifying existing code.  
+With that in mind, your assignment is to update a provided Reservation System program 
+ to use a Linked List (in addition to some other new functionality). 
+ You my not add any additional instance variables to the classes provided without the instructor’s permission.</p>
+
+ <p class='listHeader'><b>Important</b>:</p>
+ <ul>
+    <li>No class may contain an <code>ArrayList</code>.</li>
+    <li>You should modify only the <code>get</code>, <code>remove</code>, and <code>add</code> methods.
+     Do not touch any other code (other than replacing the <code>ArrayList</code> with <code>MySingleWithTailLinkedList</code> in Step 1).
+</ul>
+
+<h2>Step 0: Get Oriented</h2>
+
+<p>Examine the starter code and figure out how it works. Use the debugger, if necessary.  Be patient: This could take an hour or two.</p>
+
+<h2>Step 1: Replace <code>ArrayList</code> with <code>MySingleWithTailLinkedList</code></h2>
+
+<p>In <code>ListModel</code>, change all occurrences of <code>ArrayList</code> to 
+<code>MySingleWithTailLinkedList</code>. Once you have made this change, you will not see syntax errors (because the two classes have identical interfaces with respect to this project); 
+however, you program will not function again until you complete steps 2, and 3. From this point on, you are not permitted to change the <code>ListModel</code> class.
+
+<h2> Step 2: Complete <code>MySingleWithTailLinkedList</code></h2>
+
+<p>Complete <code>MySingleWithTailLinkedList</code> methods <code>get</code>, <code>remove</code>, and <code>add</code>.  Use private helper methods where appropriate. 
+Do not modify any of the other methods in <code>MySingleWithTailLinkedList</code>. You may <em>not</em> add any additional instance variables to the classes provided (<code>Node</code>, <code>MySingleWithTailLinkedList</code>, etc.). 
+You are <em>not</em> permitted to change either the GUI or the <code>ListModel</code> class.<p>  
+
+<p>We suggest you complete the methods in this order:  <code>get</code>, <code>remove</code>, <code>add</code>.  For now, the <code>add</code>
+method can place the new item anywhere in the list.</p>
+
+<p>Note:  The GUI will not run correctly unless all three methods are working perfectly.  If the GUI doesn't seem 
+to be working, you have an issue with one or more of the linked list methods.   You will likely need to 
+use the debugger to get everything working.</p>
+
+<h2> Step 3: Add elements in order</h2>
+
+<p class='listHeader'>Modify the <code>add</code> method so that items are inserted in sorted order.  Items should be sorted as follows:</p>
+   <ul>
+      <li>First by estimated check out date</li>
+      <li>Then by guest name</li>
+      <li>Then by cost</li>
+   </ul>
+
+<h2>Grading Rubric</h2>
+
+<table class='rubric'>
+<tr><th>Category</th><th>Points</th></tr>
+<tr><td>Coding style</td><td>10</td></tr>
+<tr><td><code>get</code></td><td>10</td></tr>
+<tr><td><code>remove</code></td><td>20</td></tr>
+<tr><td>"basic" <code>add</code></td><td>10</td></tr>
+<tr><td><code>add</code> with insert</td><td>30</td></tr>
+<tr><td>Timeliness</td><td>20</td></tr>
+</table>
+
+<p>Note: Points will be deducted for insufficient testing.</p>
+
+<p>Timeliness is based on when your code passes both the automated tests and my inspection:</p>
+
+<table class='rubric'>
+<tr><th>Day</th><th>Points</th></tr>
+<tr><td>Two days early</td><td>22</td></tr>
+<tr><td>One day early</td><td>21</td></tr>
+<tr><td>On time</td><td>20</td></tr>
+<tr><td>Late</td><td>-3  points per day</td></tr>
+</table>
+
+<h3 id='submit'>Submitting your Project</h3>
+
+<p class='listHeader'>To submit your project:</p>
+  <ol> 
+   <li>Make sure your name(s) appears in a comment at the top of each <code>.java</code> file.</li>
+            <li> Clean up your code (check for proper indention, long lines, etc.)</li>
+            <!-- <li> <span class='inline-important'>Fill out <a href='checklist.txt'><code>checklist.txt</code></a> and add it to your repository.</span></li> -->
+            <li> Commit/push with "[Grade me]" in the commit message.</li>
+   </ol>
+
+<hr>
+ <p>Updated Wednesday, 1 July 2020, 1:19 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>
+
+
+  

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>CIS 371 Semester Project</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+      #content {
+        padding: 0 10px 0 10px;
+      }
+      
+      .sumline td {
+        border-bottom: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 371</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Semester Project</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2020</h1></td>
+  </tr>
+</table>
+    Implement an web app of your choice. Your web app must
+    be new and innovative: It must either provide a useful service not currently available in other web apps, or
+    provide an existing service in a new, innovative way.
+    <p><b>Due:</b> Monday, 20 April</p>
+
+  <p><a href='https://rit.az1.qualtrics.com/jfe/form/SV_7NT0boVMTZaOyWx'>RIT Survey</a></p>
+
+    <dl>
+      <dt>Features</dt>
+      <dd>
+        <span class="listHeader">Your web app must:</span>
+        <ul>
+          <li> utilize a database.,</li>
+          <li> be significantly more complex than two or three "CRUD" pages,</li>
+          <li><del> utilize a responsive CSS framework of your choice (Bootstrap, Pure, etc.) so that your web app looks great on
+            mobile devices as well as desktops,</del>
+          </li>
+          <li> look great on mobile devices as well as desktops (I suggest utilizing a responsive CSS framework such as Bootstrap; but, you may use CSS and media queries if you prefer),
+          </li>
+          <li> have at least one UI feature that uses AJAX, and</li>
+          <li> include <del>both</del> unit tests <del>and end-to-end tests.</del> (End-to-end tests are extra credit.)</li>
+        </ul>
+        <p>The web service should be documented somewhere obvious in your web app (e.g. a "developers" link on your page
+          footer, or about page).</p>
+        <p>Make sure all forms, fields, etc. are implemented. Your web app should be completely implemented at the
+          conclusion of this project.
+        </p>
+      </dd>
+      <dt>Innovation</dt>
+      <dd>
+        <p>
+          One of the more challenging (and hopefully fun) aspects of this project is that you are to come up with your
+          own web application idea. While there are general requirements your application must meet (see details above) you
+          are free to innovate and design a web experience that you are personally interested in and passionate about.</p>
+        <p>Your app must be original and innovative. It is ok to come up with a "better mousetrap", but don't simply
+          replicate an app that already exists. Substantially improving upon an existing app idea or giving it a novel spin
+          of your own is permissible, provided your "novel spin" is functional (as opposed to simply cosmetic).</p>
+        <p>You also may take an existing idea and apply it to a new domain, as long as the conversion requires the
+          addition of innovative features. (For example, implementing "Yelp for U-Pick Blueberries" wouldn't make for a
+          good project, because you would be simply copying Yelp and changing the name of some fields.)
+        </p>
+        <p>To come up with an idea, think about web experiences that frustrate you. What existing sites have missing
+          features (in your opinion)? What web app do you wish somebody would write? Talk to your friends. What apps
+          do <em>they</em> wish somebody would write?</p>
+      </dd>
+      <dt>Deployment</dt>
+      <dd>
+        You must deploy your app on EOS, or a cloud-based hosting provider (one choice is to deploy free on Heroku).
+      </dd>
+      <dt class="listHeader">Deliverables</dt>
+      <dd>
+        <ul>
+          <li>Submit a brief description of the app you propose to implement by
+            <span class="inline-instruction">Wednesday, 26 February</span> (no more than one page!).
+          </li>
+          <li>Submit a URL to a public Github or Bitbucket repository with your
+            final code.
+          </li>
+          <li>Submit a copy of your final presentation in a readable format (e.g., *.pdf, *.pptx, *.key).</li>
+          <li>Email me a link to the deployed app.</li>
+        </ul>
+      </dd>
+      
+      <dt>Grading Rubric</dt>
+      <dd>
+        <table>
+          <tr>
+            <td>Innovative and sufficiently complex</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Fully Functional</td>
+            <td>25</td>
+          </tr>
+          <tr>
+            <td>Clean User Interface</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>Fully Responsive</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>AJAX Feature</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Fully Functional REST API / Documentation</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td><del>Cloud Deployment</del></td>
+            <td><del>10</del></td>
+          </tr>
+          <tr>
+            <td>Testing</td>
+            <td>10</td>
+          </tr>
+          <tr class="sumline">
+            <td>Final Presentation</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td>100</td>
+          </tr>
+        </table>
+        (+5 for cloud deployment; +5 for automated end-to-end tests.)
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+    (Thank-you to Prof. Engelsma, Prof. Adams, and Prof. Schymik for their suggestions and contributions to the writeup
+    and grading rubric.)
+
+
+<p>Please fill out this <a href='https://rit.az1.qualtrics.com/jfe/form/SV_7NT0boVMTZaOyWx'>survey from RIT</a> when your project is complete.</p>
+    <hr>
+    <p>Updated Saturday, 4 April 2020, 4:44 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+  </body>
+</html>

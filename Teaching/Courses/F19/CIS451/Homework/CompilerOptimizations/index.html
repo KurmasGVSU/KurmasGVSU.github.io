@@ -1,0 +1,452 @@
+<!DOCTYPE HTML SYSTEM "http://www.cis.gvsu.edu/~kurmasz/HTML4-loose-kielce.dtd">
+<html>
+<head>
+   <title>Compiler Optimized Pipelining</title>
+
+   <style type="text/css">
+      img.center {
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
+      }
+
+      table.center {
+         margin-left: auto;
+         margin-right: auto;
+      }
+
+      table.hasBorder, table.hasBorder td, table.hasBorder th {
+         border: 1px solid gray;
+      }
+
+      .listHeader {
+         padding-bottom: 0;
+         margin-bottom: 0;
+      }
+
+      ul {
+         padding-top: 0;
+         margin-top: 0;
+      }
+
+   </style>
+</head>
+
+<body>
+<table style="border:  0; width: 100%">
+   <tr>
+      <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;" kkey="courseName"></h1></td>
+      <td style="width: 70%">
+         <h1 style="text-align: center">Lab <span kkey="labNumber.CompilerOptimizations"></span>:
+           Pipeline Optimizations</h1></td>
+      <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap;" kkey="semesterName"></h1></td>
+   </tr>
+</table>
+
+<hr>
+This lab was originally designed by <a target="_top" href="http://www.cis.gvsu.edu/~wolffe">Prof. Wolffe</a>.
+
+<h3>Pre-lab</h3>
+
+Please have questions 1 - 5 answered when you arrive in lab.
+
+
+<h3> Overview</h3>
+
+<p>This lab continues the investigation of pipeline computing begun last
+   week. Specifically, it examines ways in which compiler techniques
+   can improve the efficiency of a pipeline, and hence reduce the execution
+   time of a program. </p>
+
+
+<h3 class="listHeader">Activities</h3>
+<ul>
+   <li> Work your way through the following brief tutorial.</li>
+   <li> Submit a detailed lab report that includes answers to the
+      numbered questions and your annotated source code.
+   </li>
+</ul>
+
+<h3 class="listHeader">Resources</h3>
+<ul>
+   <li> There is a <a href="dlxview/help.html">User
+      Manual</a> available for the visualization tool used in this
+      lab.
+   </li>
+</ul>
+
+<h3>Data Hazards and Compiler Optimization</h3>
+
+<p>Recall the discussion in last week's lab about the various types of
+   hazards encountered in pipelined execution (structural hazards, data
+   dependencies, control transfers). Let's review the effects of some
+   of these hazards on pipelined code. Suppose I wish to execute the
+   following code snippet:</p>
+
+<blockquote><code>sum = item1 + item2;</code> <br>
+   <code>total = sum + tax;</code><br>
+   <span style="font-family: monospace;">sum2 </span><code>= item3 +
+      item4;</code></blockquote>
+
+<p>Assume that all data objects are 32-bit integers stored in memory at
+   succeeding offsets from the address stored in <code>r1</code>. For
+   example, <code>sum</code> (the first data variable) is located at an offset
+   of <code>0</code> from <code>r1</code>, <code>item1</code> is located at an offset
+   of 4 from <code>r1</code>, <code>item2</code> is located at an offset
+   of 8 from <code>r1</code>, etc. If we wanted to load <code>item1</code>
+   into register <code>r3</code>, the corresponding instruction would be:
+   <b><code>lw&nbsp;r3,4(r1)</code></b>. If we wanted to load <code>item2</code>
+   into register <code>r4</code>, the corresponding instruction would be:
+   <b><code>lw&nbsp;r4,&nbsp;8(r1)</code></b>.</p>
+
+
+<p>Perform the following: </p>
+<ol>
+   <li><p>Write the <span style="font-style:
+italic;">straightforward</span> MIPS assembly language code that
+      implements the code snippet. This means that you should write all the
+      assembly for line&nbsp;1 (including any necessary <code>sw</code>
+      instructions) before writing the assembly for line&nbsp;2. Your code should
+      not explicitly list any stalls. There should be 11 machine
+      instructions in your code, not including the <code>noops</code>
+      and <code>trap #0</code> used to flush the pipeline at the end of the
+      program.</p>
+
+      <p class="listHeader"> Note: For this, and the next 4 problems, you may find it helpful to
+         "run" your code through the <b>dlxview</b> simulator. (Remember that
+         you can choose Next Cycle to step through the code one cycle at a time
+         if desired.) Using <code>dlxview</code> is not required, but should you choose to,
+         make note of the following differences between DLX assembly and MIPS
+         assembly:</p>
+      <UL>
+
+         <li> When writing code for <code>dlxview</code>, don't put dollar signs in front
+            of the registers.
+
+         <li> Registers are
+            named <code>r1</code>, <code>r2</code>, <code>r3</code>, etc.
+            Notice the lower case "r".
+         <li> Comments begin with semi-colons (;), not hashes (#).
+         <li> You must use spaces, not tabs.
+         <li> Store word is written like this: <code>sw 6(R1), R6</code>.
+      </ul>
+      <p></p>
+
+   <li> How many cycles does it take the "dlxview" machine to "execute"
+      the code that you have written (not including the <code>trap #0</code>
+      at the end)? (Start counting with cycle 0, and stop counting when the final <code>sw</code> instruction is in the
+      "WB" state. Note that the total number of cycles is one more than the number DLXview gives to the last cycle.)
+   </li>
+
+   <li> Show the locations of the stalls and branch delays in your code
+      from problem&nbsp;1.
+
+   <li> Pretend you are an optimizing compiler: Rearrange (not
+      rewrite) the instruction sequence to eliminate the data hazards (and
+      the subsequent stalls).
+   </li>
+
+   <li> How many cycles does your "optimized" code take to execute?</li>
+</ol>
+
+<h3>Control Hazards and Compiler Optimization</h3>
+As described last week, the compiler (or an assembly language
+programmer) needs to insert a <b><code>nop</code></b> immediately following
+a conditional branch instruction. This <i>branch delay slot</i> is
+necessary to deal with the control hazard introduced by the
+branch. However, an optimizing compiler can mask the latency
+introduced by the branch by identifying useful work that is independent
+of the branch instruction. This work is then inserted into the
+pipeline in place of the <b><code>nop</code></b>.
+<P>
+   Consider a typical loop that adds two matrices:
+
+<P>
+<blockquote><code>for (i = 0; i &lt; MAX; i++) {</code> <br>
+   <code>&nbsp;&nbsp; c[i] = a[i] + b[i];</code><br>
+   <code>}</code><br>
+   <code>c[MAX] = 0;</code>
+</blockquote>
+<p>The program <a href="exampleCO-1.s"><code>exampleCO-1.s</code></a> gives the DLX
+   assembly code for the loop (with MAX set to 4). </p>
+<ol start=6>
+
+   <li> Run <code>exampleCO-1</code> through <code>dlxview</code> then Identify <em>and explain</em>
+      all data and control hazards that result in "wasted" cycles. Look carefully, there is a data hazard you
+      probably don't expect!
+   </li>
+
+   <li> How many cycles does it take to complete the program in
+      <code>exampleCO-1.s</code> when <code>MAX</code> is 4?
+   </li>
+
+   <li> Now, state the number of cycles as a function of <code>MAX</code>.
+
+   <li> Re-arrange the code to eliminate any data hazards and branch
+      delay slots.
+
+   <li> How many cycles does it take to complete your optimized program
+      when <code>MAX = 4</code>?
+
+   <li> State the number of cycles of your re-arranged program as a function in terms of <code>MAX</code>. (<b>Important:</b>
+      At this point, have the instructor double-check your answers to make sure you're on the right track.)
+
+</ol>
+
+<p>The "speedup" of the optimized code is the factor by which we would
+   multiply the running time of the optimized code to get the running
+   time of the original code. For example, if MAX is 1, the original
+   code takes 18 cycles to run, whereas the optimized code takes only 15
+   cycles. This gives a speedup of 1.2, because 15*1.2 = 18.</p>
+
+<p>Notice that the speedup depends on <code>MAX</code>.</p>
+
+<ol start=12>
+   <li> What is the speedup of your optimized code when <code>MAX = 4</code>?
+
+   <li><p>Use your favorite plotting tool (I like <code>gnuplot</code>) to
+      plot the speedup of your optimized code as a function of
+      <code>MAX</code>. Attach the graph to your lab submission.</p>
+
+      <p class="listHeader"> To run <code>gnuplot</code>, type <code>"gnuplot"</code> in a
+         Linux shell. The following commands will plot a graph and save it
+         as a <code>.jpeg</code> file:</p>
+      <ul>
+         <li><code>set term jpeg</code></li>
+
+         <li><code>set output "myPlot.jpeg"</code></li>
+
+         <li><code>plot [1:100] (x + 1)/(3*x+10)</code>. (The parameter
+            <code>[1:100]</code> tells gnuplot to plot values for
+            <code>1&nbsp;&lt;=&nbsp;x&nbsp;&lt;=&nbsp;100</code> only.)
+
+      </ul>
+
+   </li>
+
+
+   <li> As <code>MAX</code> gets large, the speedup approaches an upper
+      bound. What is this bound?
+
+</ol>
+
+
+<h3>Optimizing by re-writing code</h3>
+
+<p>Notice that the main body of the loop has three <code>addi</code> and
+   one <code>subi</code> instruction. We could really improve the speed
+   of this loop if we could somehow load and store values from the
+   arrays <code>a</code>, <code>b</code>, and <code>c</code> by
+   incrementing the offsets instead of incrementing the base pointers
+   (because all three arrays use the same offset). Unfortunately, this
+   is not possible because, in MIPS, the offset in an immediate value and
+   is fixed at compile time.</p>
+
+<p>A smart compiler, however, can greatly reduce running time by
+   "unrolling" the loop. In other words, a smart compiler can replicate
+   the body of a loop and eliminate extra branch instructions and extra
+   index value increments. When replicating the body of the loop, you
+   will need to </p>
+
+<ul>
+   <li> eliminate redundant computations,</li>
+   <li> adjust the loop decrement and termination code,</li>
+   <li> eliminate unnecessary branches, and</li>
+   <li> adjust the addresses of loads and stores to compensate for the
+      new "size" of an iteration.
+   </li>
+</ul>
+
+<p>You may also need to use additional registers.</p>
+
+<OL start=15>
+
+   <li> Assume that the value of <code>MAX</code> is known to be 4 at
+      the time the program is compiled. "Unroll" the optimized loop
+      from problem 9 and optimize the unrolled loop to use as few
+      cycles as possible. Where possible, modify the offset
+      of <code>lw</code> instructions in order to
+      remove <code>addi</code> instructions.  (Because MAX is known at
+      compile time, you are effectively removing the loop. Your
+      optimized code should have 17 instructions and no stalls.)
+   </li>
+
+   <li> How many cycles does your "unrolled" assembly take?</li>
+
+   <li> What is the speedup of this unrolled code over the optimized
+      program from problem 9?
+   </li>
+
+   <li> The tradeoff of unrolling loops is that your source code grows in length. By what percentage did your source
+      code grow when you unrolled the loop (as compared to the source code you wrote for problem 9)? Do not count the
+      trailing <code>nops</code> and <code>trap #0</code>.
+   </li>
+
+</ol>
+
+<P>
+
+   Unrolling loops is trickier when the number of iterations is not known
+   at compile time; but, it is still possible. The trick is to
+   re-organize the loop so that each iteration of the "unrolled" loop
+   handles <code>I</code> iterations of the original loop. (For example, when <code>I = 4</code>,
+   the first iteration of the unrolled loop contains instructions to
+   complete iterations 1 through 4 of the original loop; the second iteration of the unrolled loop contains instructions
+   to complete iterations 5 through 8 of the original loop, etc.) This way, the
+   program suffers the "loop overhead" only once every <code>I</code>
+   loops.
+
+<OL start=19>
+
+
+   <li> Assume that the value of <code>MAX</code> is not known at
+      compile time, but is known at run-time before the loop begins. Unroll
+      the optimized loop from problem 9 so that each iteration of the
+      unrolled loop performs the work of 4 original loops. (In other words,
+      iteration 1 of the new loop computes c[0] through c[3]; iteration 2
+      computes c[4] through c[7], etc.) For simplicity, assume that
+      <code>MAX</code> is a multiple of 4.
+
+   <li> How could you modify your code so that it could handle any value
+      of <code>MAX</code> (as opposed to multiples of 4 only)?
+   </li>
+
+   <li> Write a function that describes the number of cycles taken by
+      your optimized code (from problem 19) in terms of <code>MAX</code>. <em>(Verify your answer
+      with the instructor before continuing.)</em>
+   </li>
+
+
+   <li> When <code>MAX</code> is large, what is the speedup of the unrolled version as compared to the optimized code
+      from problem 9?
+   </li>
+
+
+   <li> How much bigger (in terms of percentage) is the unrolled source code than the version in problem 9?
+
+</ol>
+
+<p> Thus far, we have been unrolling code in groups of 4; however, you
+   can unroll code using arbitrarily large groups. For the remaining
+   problems consider what would happen if you unrolled your code in
+   groups of <code>I</code> iterations.</p>
+
+<ol start="24">
+
+   <li> Write a function that describes the number of cycles taken by
+      your unrolled loop in terms of both <code>MAX</code>, and
+      <code>I</code> (the number of iterations per unrolled loop.) Your
+      formula will consider three types of instructions: (1) Instructions
+      that appear once per original iteration (e.g., the <code>lw</code>
+      instructions), (2) instructions that appear once per unrolled
+      iteration (e.g., the branch instruction), and (3) instructions that
+      appear once per program (e.g., the final <code>sw</code>). You can test
+      your formula by making sure that it reduces to your answer for
+      Problem&nbsp;21 when <code>I = 4</code>.
+   </li>
+
+   <li>Write a function that describes the speedup of your unrolled loop
+      (as compared to the optimized code in problem 9) in terms of both
+      <code>MAX</code>, and <code>I</code>.
+   </li>
+
+   <li> As <code>MAX</code> grows large, the effects of the constant
+      terms (i.e., the "<code>+6</code>") become negligible. If you ignore
+      these terms, <code>MAX</code> should cancel, leaving a formula in
+      terms of <code>I</code>. What is it?
+   </li>
+
+   <li> What is the limit of this speedup as <code>I</code> grows?
+      (Hint: There is a finite limit. If you think that the answer is
+      "there is no limit", then you made a mistake somewhere.)
+   </li>
+
+   <li> Calculate the size of your unrolled loop as a function of <code>I</code>.</li>
+
+   <li> What is the limit of this function as <code>I</code> grows?</li>
+
+   <li> What would you consider the optimal number of iterations per
+      unrolled loop? Why? (This is an opinion question. There isn't a
+      right answer, you just have to say something thoughtful.)
+   </li>
+
+</ol>
+
+
+<!--
+
+<h3>Adding floating point to the mix</h3>
+
+The longer latencies of floating-point arithmetic make compiler
+optimizations more interesting, and more important.  Consider a
+typical loop that adds a scalar value to a vector of double-precision
+floating point values in memory.&nbsp; The loop might look something
+like this: </p>
+<p><code>&nbsp;&nbsp;&nbsp; for (i=0;&nbsp; i&lt;4; i++)</code> <br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A[i] = A[i] + x;</code> </p>
+<p>The program <a href="example8-3.s">example8-3.s</a> gives the DLX
+assembly code for the loop. </p>
+<p>When this loop is executed on the DLX pipeline it incurs certain
+latencies.&nbsp; If we consider the stalls and idle clock cycles, it
+executes as follows: </p>
+<p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+addi r1, r0, #32</code> <br>
+<code>&nbsp;&nbsp;&nbsp; Loop:&nbsp;&nbsp; ld f0, 0(r1)</code> <br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+stall</code> <br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+addd f4, f0, f2</code> <br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+stall</code> <br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+stall</code> <br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sd 0(r1), f4</code> <br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+subi r1, r1, 8</code> <br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+bnez r1, Loop</code> <br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+delay</code> </p>
+<p>There are several different types of delays introduced here: </p>
+<ul>
+  <li> As with integer operations, there is a one-cycle <i>load
+interlock</i> stall necessary to read in the double from memory before
+using it in the <code>addd</code> operation.</li>
+
+  <li> Because floating-point operations take longer than integer
+  operations, there must be <em>two</em> cycles between
+  the <code>addd</code> instruction and the instruction that stores
+  the result of that <code>addd</code>.
+
+  <li> Also, as before, there is also a <i>branch delay slot</i> after
+the conditional.</li>
+
+
+ Perform the following:
+<ol start="29">
+  <li> Reschedule (rearrange) the instructions of this loop to reduce
+the clock cycles per iteration (but, don't unroll it yet.)  The
+optimal solution will have only one stall, and no branch delay.
+(Hint: You are allowed to modify the <code>sd</code> instruction
+slightly.)
+
+  <li> Unroll your code from problem 28 by simply replicating the loop
+  body four times.  For this problem, don't re-arrange the code, just
+  remove the branch statement and make the necessary adjustments to
+  the indices.  Also, please indicate the presence of stalls in your code.
+
+  <li> Now, re-arrange your unrolled code to eliminate all stalls.
+  You may have to rename some registers to do this.
+  
+  <li> As with problems 23 and 25, compute the speed-up and increase
+  in source code as a function of the number iterations per unrolled loop.
+
+</ol>
+
+-->
+<hr>
+<span kkey="validator"></span>
+
+</body>
+</html>

@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Getting Started with Rails</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+      
+      dt dt {
+        font-size: 85%;
+      }
+    </style>
+  </head>
+  <body>
+    <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 658</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Getting Started with Rails</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2020</h1></td>
+  </tr>
+</table>
+    <p>Note: Parts of this document were originally written by Prof. Engelsma.</p>
+    <h2>RVM</h2>
+    <p>RVM is the <em>R</em>uby <em>V</em>ersion <em>M</em>anager. It allows you to have multiple versions of Ruby
+      installed on your machine. Rails, and certain Ruby packages, can be sensitive to the version. Therefore, I
+      suggest you install and use RVM to manage your Ruby version. (Don't rely on the default Ruby version installed on
+      your machine.)
+    </p>
+    <h2>Platform</h2>
+    <p>Your first decision is whether to install Rails on your own machine, or to run it in a cloud environment. There are
+      advantages to running Rails on your own machine (e.g., you don't have to worry about Internet access or
+      time/space quotas); but, Rails is a complex framework with many dependencies. If you use a cloud platform, it is
+      much easier to start from scratch if anything gets messed up.</p>
+    <dl>
+      <dt>Your own machine</dt>
+      <dd>
+        <dl>
+          <dt>Windows</dt>
+          <dd>
+            I've never tried installing and running Rails on a Windows machine; but, I've heard it can be painful. If
+            you want to run Rails locally on a Windows machine, try one of these approaches:
+            <ul>
+              <li>Install Rails in a Ubuntu virtual image. (One key benefit of this approach is that, if anything
+                gets messed up, you can simply delete the image and start over.)
+              </li>
+              <li>Use the Windows Subsystem for Linux. WSL is a relatively new feature in Windows 10. It gives you a
+                good Linux environment without a full-blown virtual machine. See
+                <ul>
+                  <li>This Wikipedia article:
+                    <a href='https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux'><code>en.wikipedia.org/wiki/Windows_Subsystem_for_Linux</code></a></li>
+                  <li>
+                    An installation guide:
+                    <a href='https://docs.microsoft.com/en-us/windows/wsl/install-win10'><code>docs.microsoft.com/en-us/windows/wsl/install-win10</code></a>
+                  </li>
+                  <li>
+                    This guide to RVM <a href='https://rvm.io/rvm/install#explained'><code>rvm.io/rvm/install#explained</code></a>
+                  </li>
+                </ul>
+                (Thanks to Kevin Kredit for the suggestion.)
+              </li>
+            </ul>
+          </dd>
+          <dt>Linux or MacOS</dt>
+          <dd>
+            There are a number of package installers designed to make this process easier; however, many are out of date, or
+            lag behind hte official version of Rails. As explained above, I suggest using RVM rather than relying on the
+            version of Ruby that came pre-installed on your machine.
+            <ul>
+              <li>Install RVM. (See <a href='https://rvm.io'><code>rvm.io</code></a> for details on your specific platform.)</li>
+              <li>Use RVM to install a recent version of Ruby:
+                <span class="inline-instruction">rvm install ruby-2.7.0</span>
+              </li>
+              <li>Make the version you just installed your default Ruby interpreter:
+                <span class="inline-instruction">rvm --default use 2.7.0</span></li>
+              <li>Install the most recent version of Rails: <span class="inline-instruction">gem install rails</span></li>
+            </ul>
+          </dd>
+        </dl>
+      </dd>
+      <dt>Cloud Environments</dt>
+      <dd>
+        <dl>
+          <dt>CodeAnywhere</dt>
+          <dd>CodeAnywhere is an inexpensive (but not free) Cloud IDE. You can try it for 7 days free.  After 7 days, plans start at $3/month.
+            <ul>
+              <li>Set up a new CloudAnywhere project and container:
+                <ol>
+                  <li>Go to <a href='https://codeanywhere.com/dashboard'><code>codeanywhere.com/dashboard</code></a></li>
+                  <li>Create a new project, then open it.</li>
+                  <li>When you open the new project for the first time, the Connection Wizard will appear. This
+                    Connection Wizazrd does two things. (1) You can set up a connection to a source code repository.
+                    This step is optional. (2) You name your container and choose its "stack" (initial configuration). Choose
+                    the
+                    "Ubuntu 16.04" version of Ruby.
+                  </li>
+                  <li>Once the container is ready, right click on the container name and select "SSH Terminal".</li>
+                </ol>
+              </li>
+              <li>Make sure RVM and Ruby are up-to-date:
+                <ol>
+                  <li>Check your RVM version: <span class="inline-instruction">rvm --version</span></li>
+                  <li>Upgrade RVM (if desired): <span class="inline-instruction">rvm get stable</span></li>
+                  <li>Check your Ruby version: <span class="inline-instruction">ruby --version</span></li>
+                  <li>Upgrade Ruby (if desired): <span class="inline-instruction">rvm install ruby-2.7.0</span></li>
+                    <li>Set the default Ruby version:
+                      <span class="inline-instruction">rvm --default use 2.7.0</span></li>
+                  </ol>
+                </li>
+                <li>Bring Node up-to-date and install <code>yarn</code>. (All Rails apps use at least a little JavaScript.  
+                  Rails 6.0 manages this JavaScript with a tool called <code>webpack</code>.  A recent version of Node and the 
+                  <code>yarn</code> package manager are needed to install and manage <code>webpack</code>.)
+                  <ol>
+                    <li>Check the current Node version <span class="inline-instruction">node -v</span></li>
+                    <li>Run <span class="inline-instruction">nvm ls-remote</span> to determine the latest vesion of node.  (Currently 12.14.1)</li>
+                    <li>Run <span class="inline-instruction">nvm install 12.14.1</span> to install the latest versoin of Node</li>
+                    <li>Run <span class="inline-instruction">nvm alias default 12.14.1</span> to set the latest version as the default. 
+                       (If you don't do this, you'll end up using the old version when you next log in.)</li>
+                    <li>Run <span class="inline-instruction">npm install -g yarn</span> to install <code>yarn</code>.</li>
+                  </ol>
+                </li>
+                <li>Finally, we are ready to install Rails and create a new app:
+                  <ol>
+                    <li>Check the Rails version: <span class="inline-instruction">rails -v</span></li>
+                    <li>Install Rails (if necessary): <span class="inline-instruction">gem install rails --no-document</span>. 
+                        (This will install rails without the local documentation.  If you want the local documentation, run the command above without <code>--no-document</code>.)
+                    </li>
+                    <li>Create a new Rails app: <span class="inline-instruction">rails new name_of_your_app</span>
+                      <ul>
+                        <li>Make sure the current working directory is underneath <code>~/workspace</code>.</li>
+                      </ul>
+                    </li>
+                    <li><code>cd</code> into the new application's directory: <span class="inline-instruction">cd name_of_your_app</span></li>
+                    <li>Right-click on your CodeAnywhere Connection, and select "<code>info</code>" from the context menu.</li>
+                    <li>At the bottom of the page that opens, you will see the web address for your rails application. (For example: <code>http(s)://RailsW20-kurmasz.codeanyapp.com</code>)</li>
+                    <li>Right-click on your CodeAnywhere Connection and select "<code>Refresh</code> from the context menu.</li>
+                    <li>Edit <code>config/environments/development.rb</code> to contain a line analogous to <span class="inline-instruction">config.hosts &lt;&lt; 'railsw20-kurmasz.codeanyapp.com'</span>
+                          <span class='inline-important'>Notice that the string is all lower case</span>.</li>
+                        <li>Be sure to save the file.</li>
+                        <li>Launch rails: <span class="inline-instruction">rails s --binding=0.0.0.0</span>
+                          <ul>
+                            <li>If you get a help/"usage" display, then you ran the <code>rails</code> command from the wrong
+                              directory.
+                            </li>
+                          </ul>
+                        </li>
+                        <li>The information page for your container will contain a link to your web app. When you click it, you
+                          should see the default Rails landing page.
+                        </li>
+                      </ol>
+                    </li>
+                  </ul>
+                  <p>This screencast walks through the above steps: <a href='https://youtu.be/YG1_xks0lFw'><code>youtu.be/YG1_xks0lFw</code></a>.</p>
+                  <p>How to update Node: <a href='https://hosting.review/tutorial/how-to-update-node/'><code>hosting.review/tutorial/how-to-update-node/</code></a>
+                  </dd>
+                </dl>
+              </dd>
+            </dl>
+            <hr>
+            <p>Updated Friday, 10 April 2020, 8:03 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+          </body>
+        </html>

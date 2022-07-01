@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Advanced Adders</title>
+  <style>
+    li {
+      padding-bottom: .5em;
+    }
+
+    li ol li {
+      padding-bottom: 0;
+    }
+
+    .over {
+      text-decoration: overline;
+      text-decoration-skip: none;
+    }
+
+  .sep {
+    padding: 1px;
+  }
+
+  img {
+    vertical-align: middle;
+  }
+
+ .bottom {
+   border-bottom: 1px solid black;
+ }
+
+  .btop {
+    border-top: 1px solid black;
+  }
+
+  .truth-table {
+     border-collapse: collapse;
+  }
+
+  .truth-table tr td:last-child,
+  .truth-table tr th:last-child {
+    border-left: 1px solid black;
+    text-align: center;
+    padding-left: 5px;
+  }
+
+  .extra1 {
+    padding-right: 5px;
+  }
+
+  figure {
+    border: solid black 1px;
+    display: inline-block;
+  }
+
+  figcaption {
+    text-align: center;
+    font-size: 125%;
+  }
+
+  #f1, #f2 {
+    width: 500px;
+  }
+
+  </style>
+</head>
+
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Advanced Adders</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2021</h1></td>
+  </tr>
+</table>
+
+
+<p>Remember: Designs like the carry-select and carry-lookahead adders are not "all-or-nothing".  
+For example, you can place carry-lookahead logic on only some of the full adders, thereby 
+limiting the size in exchange for time. (See Figure 1.)  
+Similarly, you can apply the carry-select pattern one time only. (See Figure 2.)</p>
+
+<figure>
+    <img id=f1 src='carryLookahead-oneOnly.png'>
+  <figcaption>Figure 1: Adder using only one carry lookahead input</figcaption>
+  </figure> 
+
+<figure>
+    <img id=f2 src='carrySelect_oneLevelOnly.png'>
+  <figcaption>Figure 2: Carry-Select applied at one level only</figcaption>
+  </figure> 
+
+<p>Suppose you begin with a 16-bit ripple-carry adder.  You want to make it faster, but can't afford a "full" carry-lookahead or carry-select adder,
+so, you decide to do "one step" only.</p>
+<ol>
+  <li>Which design above will be faster (Figure 1 or Figure 2)?</li>
+  <li>Which design above will be smaller (Figure 1 or Figure 2)?</li>
+</ol>
+
+
+
+<hr>
+<p>Updated Friday, 10 September 2021, 10:34 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

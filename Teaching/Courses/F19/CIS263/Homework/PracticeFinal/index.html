@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CIS 263 Homework 6 Final Exam Review</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    code {
+      background: #f0f0ff;
+    }
+
+    img {
+      width: 450px;
+    }
+
+    .outer > li {
+      padding-bottom: 15px;
+    }
+
+    td {
+      vertical-align: top;
+    }
+
+    li ol {
+      list-style-type: lower-alpha;
+    }
+
+    .smaller {
+      width: 300px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 263</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Final Exam Review</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2019</h1></td>
+  </tr>
+</table>
+
+  General notes:
+  <ul>
+    <li>The final exam will be cumulative.  Be sure to review material
+      from the first two exams.</li>
+    <li>Also review all the lecture notes (linked at the bottom of the
+      course web page).</li>
+    <li>The final exam is Wednesday, 11 December, at 2:00 and 4:00.  You
+  can come at either time, regardless of which section you are
+  enrolled in. (You must pick one time or the other, because I'll need
+      a break between.)</li>
+    </ul>
+
+  Review questions:
+<ol>
+  <li>Understand the formal definition of big-O and be able to explain
+  why we use it instead f simply counting operations.</li>
+  <li>Under what conditions does the <kbd>O(n log n)</kbd> lower bound for sorting apply?</li>
+  <li>What is an iterator?  Why do we use them?</li>
+  <li>How do C++ templates differ from Java generics?</li>
+  <li>What are the relative advantages and disadvantages of B trees as compared to binary search trees?</li>
+  <li>Under which conditions are B-trees better than binary search trees?</li>
+  <li>How do Linear Congruential Generators work?  What are their strengths and weaknesses?</li>
+  <li>By definition, which algoritms are in <kbd>P</kbd>?</li>
+  <li>By definition, which algorithms are in <kbd>NP</kbd>?</li>
+  <li>Is matrix multiplication in <kbd>NP</kbd>?</li>
+  <li>What is an online algorithm?  How does it differ from an offline algorithm?</li>
+  <li>Describe an <em>online</em> sorting algorithm.</li>
+  <li>Describe an <kbd>O(n log n)</kbd> algorithm for either the first-fit or best-fit bin packing problem.</li>
+  <li>Give examples of where the algorithm with the lowest big-O worst-case runtime is not the most commonly used algorithm.</li>
+     
+     <li> Rod problem from <a href='https://www.cs.umb.edu/~henryzlo/cs310/problems1/problems.pdf'><code>www.cs.umb.edu/~henryzlo/cs310/problems1/problems.pdf</code></a></li>
+  <li>What data structure is typically used to implement a priority queue?</li>
+  <li>List several uses of a priority queue.</li>
+  <li>How does a d-Heap differ from a binary heap?  When/Why is one used?</li>
+  <li>Give pseudocode for merging disjoint sets.</li>
+  <li>With respect to merging disjoint sets, what is "path compression"</li>
+  <li>What is the "halting" problem?</li>
+  <li>Give a sketch of the proof that the halting problem is undecidable.</li>
+  <li>What is a Huffman Code?</li>
+  <li>Give pseudocode for an algorithm to generate a Huffman code.</li>
+  <li>Why is there a greedy algorithm for generating a Huffman code, but no greedy algorithm for generating an optimal binary search tree?</li>
+  <li>What are the key aspects of a divide and conquer algorithm?</li>
+<li>What are the key aspects of a dynamic programming algorithm?</li>
+</ol>
+
+  <hr>
+  <p>Updated Saturday, 23 November 2019, 11:39 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>

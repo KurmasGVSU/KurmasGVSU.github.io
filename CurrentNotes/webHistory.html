@@ -1,0 +1,429 @@
+
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h2 id="origins-of-the-web">Origins of the Web</h2>
+
+<p>(Note:  Shared with CIS 658 and CIS 371.)</p>
+
+<ul>
+  <li class="q">What is the Internet?</li>
+  <li class="q">What is the WWW?</li>
+  <li>Be careful when using these terms in this class.  Take care to use them precisely.</li>
+</ul>
+
+<h3 id="original-berners-lee-paper">Original Berners-Lee paper</h3>
+
+<ul>
+  <li class="q">What is the Web?</li>
+  <li class="q">How is the Web different than the Internet?</li>
+  <li class="q">Who “invented” the Web?</li>
+  <li class="q">Why?
+    <ul>
+      <li class="q">What was the Web designed for?</li>
+      <li class="q">What problem was the web created to solve?
+        <ul>
+          <li>Documenting all the different, interrelated projects and their results.</li>
+          <li>“Yes; but, how will we ever keep track of such a large project.”</li>
+          <li>“Often the information has been recorded, it just cannot be found.”</li>
+        </ul>
+      </li>
+      <li class="q">Why was this problem especially noticeable at CERN?
+        <ul>
+          <li>Many different, tangentially linked projects made it difficult to organize all relevant information
+ hierarchically, and keep documentation and results up-to-date.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="q">Where did Berners-Lee get the inspiration for a web structure?
+    <ul>
+      <li>“The actual observed working structure of the organisation is a multiply connected “web” whose
+  interconnections evolve with time.</li>
+    </ul>
+  </li>
+  <li class="q">What type of structure does Berners-Lee explicitly avoid?
+    <ul>
+      <li>A fixed hierarchical structure.</li>
+    </ul>
+  </li>
+  <li class="q">What motivates Berners-Lee to say “CERN is a model in miniature of the rest of
+    world in a few years time. CERN meets now some problems
+    which the rest of the world will have to face soon”?</li>
+  <li>“Another person must be able to find the
+             information, sometimes without knowing what he is looking for.”
+    <ul>
+      <li class="q">What does Berners-Lee mean by this?</li>
+      <li class="q">Describe a time when you have done this.</li>
+    </ul>
+  </li>
+  <li class="q">According to Berners-Lee, what are the main problems with keywords?
+    <ul>
+      <li>People don’t tend to choose the same keywords.</li>
+      <li>“The keywords become useful only to people who already know the application well.”</li>
+      <li>Ever have this problem on StackOverflow?</li>
+    </ul>
+  </li>
+  <li class="q">How does the proposed web differ from Hypercard?
+    <ul>
+      <li>Hypercard was single-user.</li>
+    </ul>
+  </li>
+  <li class="q">When was the term “hypertext” coined?
+    <ul>
+      <li>In the 1950’s</li>
+    </ul>
+  </li>
+  <li>“An intriguing possibility, given a large hypertext database with typed links, is that it allows some degree of
+ automatic analysis.” <span class="q">What does this sound like?</span>  Google.</li>
+  <li class="q">What do “Live links” sound like?
+    <ul>
+      <li>Dynamic content.</li>
+    </ul>
+  </li>
+  <li class="q">What kind of web page corresponds roughly to the “Personal Skills Inventory” mentioned by Berners-Lee?</li>
+  <li class="q">Give an example of how modern web servers “…provide existing information in a form matching the standard interface.”
+    <ul>
+      <li>They can serve plain text.</li>
+      <li>They can serve files (.doc, .pdf)</li>
+    </ul>
+  </li>
+  <li>This quote makes me feel old: “(… and yes, this would provide an excellent project with which to try our new object oriented programming
+                               techniques!)”</li>
+  <li class="q">What requirements did Berners-Lee identify for the Web? What does each mean?
+    <ul>
+      <li>Remote access: Data is not stored on the end users’ machines</li>
+      <li>Heterogeneous: Client and servers represent a variety of different systems (VM/CMS, Mac, VAX, Unix)</li>
+      <li>Decentralized / Uncoordinated: “Information systems start small and grow. They also start isolated and then merge. A new system must allow
+                                existing systems to be linked together without requiring any central control or coordination.”</li>
+      <li>Access to existing info:  Can serve plain text, .pdf, .doc, etc.  Data doesn’t need to be HTML to be served.</li>
+      <li>Private links:  Bookmarks</li>
+      <li>Bells and Whistles: Graphics</li>
+      <li>Data analysis:  Can crawl data, analyze it, and look for problems (e.g., missing people)</li>
+      <li>Live links: Dynamic Data</li>
+    </ul>
+  </li>
+  <li>Non requirement:  Copyright enforcement.  <span class="q">Why</span>
+    <ul>
+      <li>Proposal was target at CERN, which was generating data for public consumption, not for sale.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cacm-article">1994 CACM Article</h3>
+
+<ul>
+  <li class="q">How does Berners-Lee describe the web in the 1994 CACM article?
+    <ul>
+      <li>“A pool of human knowledge”</li>
+    </ul>
+  </li>
+  <li class="q">How does he describe the browsing experience?</li>
+  <li class="q">List several tools that Berners-Lee envisions the Web replacing.  Did it?
+    <ul>
+      <li>NNTP, FTP, Gopher, WAIS.  All but FTP have effectively been replaced.</li>
+    </ul>
+  </li>
+  <li class="q">What is a “hierarchical space”?
+    <ul>
+      <li>The slash. Used to separate levels of hierarchy in an URL.</li>
+    </ul>
+  </li>
+  <li class="q">Why does Berners-Lee claim that HTTP is “perhaps misnamed”?
+    <ul>
+      <li>Because HTTP is useful for transferring any data, not just HTML.</li>
+    </ul>
+  </li>
+  <li class="q">Which points from “the future” have come true? Which have not?
+    <ul>
+      <li>A name service allowing documents to be referenced by name rather than location:  Not really.</li>
+      <li>Hypertext editors allowing non-experts to publish information:  Yes.</li>
+      <li>More sophisticated document type definitions:  Yes.</li>
+      <li>Integration with concurrent editors and other real-time features:  Yes.</li>
+      <li>Easy-to-use servers:  Yes.</li>
+      <li>Evolution of objects from principally human-readable to more machine-oriented.  Yes.</li>
+      <li>Conventions on the Internet for commercial use:  Yes.</li>
+    </ul>
+  </li>
+  <li class="q">Is the web as easy to update as it is to read?
+    <ul>
+      <li class="to-me">Press the class for their opinions.  (Poll everywhere question?)</li>
+    </ul>
+  </li>
+  <li>Basic Components
+    <ul>
+      <li>Client/server architecture</li>
+      <li>Server provides data</li>
+      <li>Client (Browser) requests data and displays it.</li>
+      <li>Traditionally, data provided using HTML. (More on that later)</li>
+      <li>Data requested using URL.</li>
+    </ul>
+  </li>
+  <li>Historically, data was static:  Conceptually requesting a document</li>
+  <li>Quickly moved to dynamic content
+    <ul>
+      <li>Web server generated new pages on the fly (e.g., weather report, airline ticket prices).</li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

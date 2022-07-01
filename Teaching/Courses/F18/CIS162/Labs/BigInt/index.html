@@ -1,0 +1,160 @@
+
+<head>
+  <title>CIS 162 Lab Big Integers</title>
+</head>
+<p>
+<table border="0" width="100%">
+  <tbody>
+  <tr>
+    <td width="33%">
+      <h1 align="Left">CIS 162</h1>
+    </td>
+    <td width="33%">
+      <h1 align="Center">Lab 12</h1>
+    </td>
+    <td width="33%">
+      <h1 align="Right">
+        Fall 2018</h1>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<h2 align="Center">Big Integers</h2>
+<p align="Center"></p>
+
+
+<p>Regular Java integers (i.e., <code>int</code>s) take up 32 bits of memory and, therefore, can hold only integers
+  between -2,147,483,648 and 2,147,483,647. Java integers are only 32 bits because, at the time Java was designed, most
+  computers were build to operate on at most 32 bits at one time. (Today, 64-bit machines are most common.) Such 32- and
+  64-bit operations happen very quickly in hardware. Storing and operating on larger numbers must be done using
+  software. </p>
+
+
+Today, you are going to implement your own version of Java's
+<code>BigInteger</code> class. This class will allow you to store,
+add, multiply, compare, and print arbitrarily large integers. One
+common use of Java's <code>BigInteger</code> class is to handle the
+very large prime numbers used in cryptography.
+<P>
+
+
+  In order to store a <code>BigInteger</code> in Java, you must
+  represent it using a group of "smaller" variables. For this lab, you
+  must use an array of <code>int</code>egers to store your
+  <code>BigInteger</code> Here are two ways you can use your array:
+
+<ul>
+  <li><b>Base-10</b>: Store the integer in the same way you would
+    write it: Each array element contains one digit between 0 and 9.
+    Because you are representing the integer the same way you do on
+    paper, you then perform addition and multiplication using the same
+    technique you use to add and multiply numbers by hand. This
+    technique is the most obvious, and will be the easiest to implement
+  </li>
+
+  <li><b>Base-2^32</b>: Suppose you have an integer so large that it
+    takes 70 bits to represent. You could represent this large integer
+    using three, normal, 32 bit-integers "pushed together". When doing
+    this, you are effectively using your array to represent your
+    <code>BigInteger</code> as a "base 2147483648" number. The
+    algorithms to implement some of the methods are <em>very</em>
+    difficult (especially the constructor), but they will run much more
+    quickly. If you choose this path, let me know and I will give you
+    more specific instructions.
+  </li>
+
+  <!---
+  <LI> <B>Chinese Remainder Theorem</B>: Perhaps the most efficient
+  implementation is to use the Chinese Remainder Theorem.  The
+  mathematics to implement this technique are not difficult (easy
+  enough to be done in two hours); however, the techniques will
+  probably be something very new to you.  If you are curious, ask and
+  I'll provide you a copy of a textbook that describes the
+  technique.<P></LI> --->
+</ul>
+
+
+<h3> Writing <code>BigInteger</code></h3>
+
+Begin by cloning <code>https://github.com/KurmasGVSU/BigIntLab.git</code>
+(or, by creating a new project and adding
+<a href="MyBigInteger.java"><code>MyBigInteger.java</code></a> and
+<a href="MyBigIntegerTest.java"><code>MyBigIntegerTest.java</code></a>
+to it).
+
+Implement <em>and <a href="#test">test</a></em> the methods <em>in the
+  order listed below</em>. This lab will be much easier to write and
+debug if you follow the directions. Trust me. To reduce complexity,
+your implementation will (1) handle only positive integers and
+(2) assume that all <code>BigIntegers</code> have 1024 characters
+(including leading zeros, if necessary).
+
+<ul>
+  <!--
+  <LI> <CODE>public static void fill_with_0(int array[])</CODE>:
+  A <code>static</code> method that fills every slot
+  in <code>array</code> with 0. -->
+
+  <li><code>BigInteger(String)</code>: A constructor taking
+    a <code>String</code> as input.
+  </li>
+
+  <li><code> String toString()</code>: Return a <code>String</code>
+    representing the <code>BigInteger</code> object.
+  </li>
+
+  <li><code>static boolean equals(BigInteger n1, BigInteger n2)</code>:
+    Returns <code>true</code> if and only if <code>n1</code> is equal
+    to <code>n2</code>.
+  </li>
+
+  <li><code>static boolean lessThan(BigInteger n1, BigInteger
+    n2)</code>: Returns <code>true</code> if and only if <code>n1</code>
+    is less than <code>n2</code>.
+
+  <li><code>static BigInteger add(BigInteger n1, BigInteger
+    n2)</code>: Return a <code>BigInteger</code> equal to the sum
+    of <code>n1</code> and <code>n2</code>.
+
+
+  <li><code>static BigInteger multiply(BigInteger n1, BigInteger
+    n2)</code>: Return a <code>BigInteger</code> equal to the product
+    of <code>n1</code> and <code>n2</code>. (<em>extra credit</em>. Remove the <code>@Ignore</code> tags from the
+    tests if you decide to attempt this method.)
+
+</ul>
+
+<he><a name="Test">Testing</a> <code>MyBigInteger</code></he>
+
+Test your <code>MyBigInteger</code> class using <a href="MyBigIntegerTest.java"><code>MyBigIntegerTest.java</code></a>.
+Pay attention to how each method is tested, what test cases are chosen, and what integers are chosen for each tests.
+
+<H3>Submisson</h3>
+
+Demonstrate to the instructor that your test script runs correctly.
+Then submit a printout of the code.
+
+<P>
+
+<h2> For More practice</h2>
+
+Here are some exercises that will help you prepare for the
+Final Exam:
+
+<ul>
+  <li><code>static BigInteger subtract(BigInteger n1, BigInteger n2)</code>.
+  <li><code>static BigInteger divide(BigInteger n1, BigInteger n2)</code>.
+  <li><code>static BigInteger mod(BigInteger n1, BigInteger m)</code>.
+  <li><code>double doubleValue()</code>.
+  <li> Add the ability to handle negative numbers.
+
+  <li> Make the array <code>digits</code> just big enough to hold the
+    number (as opposed to fixing the size at 1024).
+  </li>
+
+</ul>
+<hr>
+<p>Updated Sunday, 11 November 2018, 5:18 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/html5_validate_w3c.png"alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

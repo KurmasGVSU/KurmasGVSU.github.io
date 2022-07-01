@@ -1,0 +1,14 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1180110146
+host=75.134.113.30
+name=Tools.ProjectsToInvestigate
+rev=1
+targets=
+text=*Unlocking the clubhouse -- Margolis and Fischer%0a*Findbugs at Maryland%0a*Simulators for Operating Systems by S. Robbins at UT San Antonio%0a* Rebecca A. Bates -- Minnesota at Mankato -- [[http://www.cset.mnsu.edu/cis]]
+time=1180110146
+author:1180110146=
+diff:1180110146:1180110146:=1,4d0%0a%3c *Unlocking the clubhouse -- Margolis and Fischer%0a%3c *Findbugs at Maryland%0a%3c *Simulators for Operating Systems by S. Robbins at UT San Antonio%0a%3c * Rebecca A. Bates -- Minnesota at Mankato -- [[http://www.cset.mnsu.edu/cis]]%0a\ No newline at end of file%0a
+host:1180110146=75.134.113.30

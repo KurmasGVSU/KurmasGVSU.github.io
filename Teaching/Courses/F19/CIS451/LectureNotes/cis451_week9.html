@@ -1,0 +1,162 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="cis-451-week-9">CIS 451 Week 9</h1>
+
+<h3 id="intel-superscalar">Intel Superscalar</h3>
+
+<ul>
+  <li>Intel breaks instructions down into micro operations.</li>
+  <li>These micro-ops are bigger than those shown for the multi-cycle CPU.
+    <ul>
+      <li>They are more like RISC ops.</li>
+    </ul>
+  </li>
+  <li>For example,
+    <ul>
+      <li><code>add eax, ebx</code> is (probably) one micro-op</li>
+      <li><code>add eax, [MEM]</code> is probably two (a read followed by an add)</li>
+      <li><code>add [MEM], eax</code> is probably three (read, add, store)</li>
+    </ul>
+  </li>
+  <li>Classic CISC instructions (e.g., string compare) are split into
+many (more than 4) micro-ops.
+    <ul>
+      <li>These micro-ops typically come from a microcoded routine
+(often with a loop or other complex control)</li>
+      <li>It is typically faster to write code from scratch using newer, smaller
+instructions than to use old</li>
+    </ul>
+  </li>
+  <li>Out-of-order execution typically done at micro-instruction level
+    <ul>
+      <li>Consider the code below</li>
+      <li><code>sub</code> can execute immediately, even if <code>eax</code> isn’t ready yet.</li>
+      <li><code>call</code> requires <code>esp</code>.  Allowing <code>sub esp, 4</code> to progress immediately
+ allows the CPU to begin setting up the function call, even if <code>eax</code> is still being computed.</li>
+    </ul>
+  </li>
+</ul>
+
+<pre><code>     # version 1
+     push eax
+     call some_function
+
+     # version 2
+     sub esp, 4
+     mov [ESP], eax
+     call some_function
+</code></pre>
+
+<ul>
+  <li class="to-me">Look at PII pipeline slide
+    <ul>
+      <li>Two stages for branch prediction</li>
+      <li>Three stages to fetch instruction
+(and build 16+ byte block aligned to next instruction)</li>
+      <li>Two stages for decode
+        <ul>
+          <li>Figure out where the next three instructions are</li>
+          <li>Decode</li>
+          <li>Four parallel decoders D0, D1, D2, D3
+            <ul>
+              <li>D0 can handle instructions with up to 4 micro-ops</li>
+              <li>D1-D3 can handle 1 micro op each</li>
+              <li>Thus, use 4-1-1-1 rule to maximize throughput</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Notice that although execution units and buffers increase, issue/retire width stalls out at 4.</p>
+  </li>
+  <li>Example 6.1a. Instruction decoding requiring 3 clock cycles</li>
+</ul>
+
+<pre><code>mov [esi], eax ; 2 uops, D0
+add ebx, [edi] ; 2 uops, D0
+sub eax, 1 ; 1 uop, D1
+cmp ebx, ecx ; 1 uop, D2
+je L1 ; 1 uop, D0
+</code></pre>
+
+<ul>
+  <li>Example 6.1b. Instructions reordered for improved decoding (only two clock cycles)</li>
+</ul>
+
+<pre><code>mov [esi], eax ; 2 uops, D0
+sub eax, 1 ; 1 uop, D1
+add ebx, [edi] ; 2 uops, D0
+cmp ebx, ecx ; 1 uop, D1
+je L1 ; 1 uop, D2
+</code></pre>
+
+<ul>
+  <li class="to-me">Show Intel Micro-architecture slide</li>
+  <li class="to-me">Show “Intel Growth over time” slide</li>
+  <li>
+    <p>Tomasulo’s algorithm</p>
+  </li>
+  <li>Other goodies
+    <ul>
+      <li>Macrofusion ==&gt; CMP and JMP</li>
+      <li>Loop detection buffer</li>
+    </ul>
+  </li>
+  <li class="to-me">Show slides with pictures of CPUs over time.</li>
+  <li>At this point processing power of single CPU is leveling out 
+<span class="to-me">Show “Single processor performance”</span></li>
+  <li>Faster clocks use too much power / generate too much heat</li>
+  <li>Hard to utilize more functional units
+    <ul>
+      <li>too many dependencies</li>
+      <li>cache misses cause long delays
+        <ul>
+          <li>(Thus, transistors went into larger caches instead of more execution units.)</li>
+          <li>“Sometimes bigger and dumber is better”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Solution is more parallelism.
+    <ul>
+      <li>Multi core</li>
+      <li>Simultaneous multithreading (aka “Hyperthreading”)</li>
+      <li>SIMD (both in applications – SSE, AVX — and GPUs)</li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

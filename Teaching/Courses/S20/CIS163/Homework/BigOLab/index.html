@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 163 Big O</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .rubric  {
+       margin-left: 25px;
+    }
+
+    .rubric th {
+       text-align: left;       
+    }
+
+    .rubric td {
+       padding-right: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 163</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Big O</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Summer 2020</h1></td>
+  </tr>
+</table>
+
+<h2 class="listHeader">Objectives:</h2>
+
+<ul>
+   <li>Learn how to time code</li>
+   <li>Get a feel for the relative speed of different operations</li>
+   <li>Generate and interpret growth functions of code</li>
+</ul>
+
+<h2>Activity</h2>
+
+<p>Create and clone this GitHub Classroom repository: <a href='https://classroom.github.com/g/z-KjfgMW'><code>classroom.github.com/g/z-KjfgMW</code></a>
+
+<p>Begin by watching <a href='https://youtu.be/yKA2sDNsMR8'>this video</a> describing the timing code and how it works.
+The video also discusses how to plot results.</p>
+
+<p>Prepare a document with the following information:</p>
+
+<ol>
+ <li> Compare the running times of <code>max</code>, <code>sumInts</code>, and <code>multiplyInts</code>:
+   <ul>
+    <li> Remove the comments from tests 1, 2 and 3 in <code>main</code>.</li>
+    <li> Run the <code>main</code> method.</li>
+    <li> Plot the data in columns 1 and 2 of the resulting files.  
+    If you are using <code>gnuplot</code> you can use this command: <span class='inline-instruction'><code>plot "sumInt.bigO", "multInt.bigO", "max.bigO"</code></span></li>
+    </ul>
+  Include the graph in your lab write up.
+  </li>
+  <li>Find the (approximate) slope of each line in the graph.</li>
+  <li>About how much slower is multiplication than addition?</li>
+
+  <li>Graph the running times of <code>sumProductPairsSlow</code> and <code>sumProductPairsFaster</code> (tests 4 and 5).</li>
+  <li>Approximately how much faster is <code>sumProductPairsFaster</code> than <code>sumProductPairsSlow</code>.  
+  Notice that the graphs both have a parabolic shape, and that the difference in speed (as a percentage) is consistent.
+  This is how we know the two algorithms are in the same class (i.e., have the same big-O).</li>
+
+  <li>Graph the running time of <code>sort</code> (test 6).</li>
+  <li>Find the line that best fits the graph.  (You can "eyeball it".  No need to use fancy regression tools.)   If you are using <code>gnuplot</code>
+   you can use 
+  a command similar to this: <span class='inline-instruction'>plot "sort1.bigO", x*log(x)</span>.  Notice that <code>x*log(x)</code> is 
+  <em>not</em> in quotes.</li>
+  
+  <li>Notice that the graph is not quite a line.  It curves up slightly.  A graph of the form <code>a*x*log(x)</code> should fit better. 
+      Find the coefficient <code>a</code>.  Plot both graphs together and include them in your lab write up. </li>
+
+  <li>Graph the running times of <code>insertAtHead</code> and <code>insertAtTail</code> (tests 9 and 10).</li>
+  <li>Do the two methods belong to the same complexity class (i.e., have the same big-O)?  If not, which one is faster?  Why?</li>
+</ol>
+
+
+  <p>Examine the code for <code>insertAtHead</code> and <code>insertAtTail</code>.  Notice that the <code>ArrayList</code>
+  is actually stored in a variable of type <code>List</code>.  <code>List</code> is an interface that <code>ArrayList</code> implements.
+  The class <code>LinkedList</code> also implements the <code>List</code> interface. This means you can replace <code>new ArrayList&lt;Integer&gt;()</code>
+  with <code>new LinkedList&lt;Integer&gt;()</code> and the code will still compile and run.</p>
+
+<ol start='11'>
+<li> Replace the <code>ArrayList</code> in <code>insertAtHead</code> and <code>insertAtTail</code> 
+with a <code>LinkedList</code> as described above.  Then, generate graphs for the new code.  (You can use tests 10 and 11).</li>
+<li> Describe any differences you see.  Speculate about the causes of the differences. (Make sure your output for tests 10 and 11 differ 
+from that of 9 and 10.  If it doesn't you didn't get the code modified correctly.)</li>
+
+  <li>Optional: Graph the running times of <code>sumIntsBig</code> and <code>multiplyIntsBig</code> (tests 7 and 8). Are these graphs <code>O(n)</code>.  If not, why not?</li>
+</ol>
+
+
+<h2>Submission</h2>
+
+Copy your lab report into the git repository and commit.
+ If you worked with a partner, be sure both names are in a comment at the head of each file.
+
+
+<hr>
+ <p>Updated Wednesday, 8 July 2020, 6:31 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+
+
+</main>
+</body>
+</html>
+
+
+  

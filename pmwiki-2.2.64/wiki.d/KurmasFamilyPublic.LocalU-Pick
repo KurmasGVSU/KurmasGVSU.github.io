@@ -1,0 +1,17 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.0.11) Gecko/2009060214 Firefox/3.0.11
+author=
+csum=
+ctime=1246309327
+host=148.61.39.201
+name=KurmasFamilyPublic.LocalU-Pick
+rev=2
+targets=
+text=#Cook's Produce. 616-837-8764 13353 60th Avenue Coopersville. Strawberries $1.50/qt starting mid-June.%0a#Visser Farms. [[http://www.visser-farms.com/]].  Strawberries%0a#Gavin Orchards. [[http://gavinorchards.com]]. Cherries starting early July.  Apples %0a#Dunneback Farm [[http://www.dunnebackfarm.com/]] Strawberries and Apples%0a%0a%0a[[http://www.fruitridgemarket.com/markets.shtml]]
+time=1246310293
+author:1246310293=
+diff:1246310293:1246309327:=4,7d3%0a%3c #Dunneback Farm [[http://www.dunnebackfarm.com/]] Strawberries and Apples%0a%3c %0a%3c %0a%3c [[http://www.fruitridgemarket.com/markets.shtml]]%0a\ No newline at end of file%0a
+host:1246310293=148.61.39.201
+author:1246309327=
+diff:1246309327:1246309327:=1,3d0%0a%3c #Cook's Produce. 616-837-8764 13353 60th Avenue Coopersville. Strawberries $1.50/qt starting mid-June.%0a%3c #Visser Farms. [[http://www.visser-farms.com/]].  Strawberries%0a%3c #Gavin Orchards. [[http://gavinorchards.com]]. Cherries starting early July.  Apples %0a
+host:1246309327=148.61.39.201

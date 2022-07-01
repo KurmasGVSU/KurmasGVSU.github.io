@@ -1,0 +1,193 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  
+<h1 id="gvsu-cis-263">GVSU CIS 263</h1>
+
+<h1 id="week-1--day-1">Week 1 / Day 1</h1>
+
+<h2 id="administrative-stuff">Administrative Stuff</h2>
+
+<ul>
+  <li>Course web page: <a href="https://cis.gvsu.edu/~kurmasz/Teaching/Courses/F19/CIS263/syllabus.html">https://cis.gvsu.edu/~kurmasz/Teaching/Courses/F19/CIS263/syllabus.html</a></li>
+  <li>Read the <a href="https://cis.gvsu.edu/~kurmasz/Teaching/Courses/F19/CIS263/syllabus.html">syllabus</a>.</li>
+  <li>Office Hours:
+    <ul>
+      <li>Official office hours are given on my web page.  This is when I make a point of being in my office.</li>
+      <li>However, I tend to be on campus from 9 to 4 Monday, Wednesday, and Friday.</li>
+      <li>Anytime the door is open, it’s office hours.  The wider the door is open, the more interruptible I am.</li>
+      <li>If it’s all the way open, feel free to come in just to chat.</li>
+    </ul>
+  </li>
+  <li>I like mouthy students.  (More specifically, I like to know what you do and don’t like about the way the course is being run.  We may not agree; but, that’s OK.)</li>
+  <li>The primary text will be the “Data Structures Essentials” online book from zyBooks <a href="https://www.zybooks.com/catalog/data-structures-essentials/">https://www.zybooks.com/catalog/data-structures-essentials/</a></li>
+  <li><em>A Tour of C++</em> by Bjarne Stroustrup is a good C++ reference book that is free to GVSU students:  <a href="https://learning.oreilly.com/library/view/a-tour-of/9780134998053/">https://learning.oreilly.com/library/view/a-tour-of/9780134998053/</a></li>
+  <li>I will draw some lecture material out of the Weiss text.  It’s expensive, so I’m not suggesting you run out and buy it.</li>
+  <li>All submitted code <em>must</em> come with tests.</li>
+  <li>You are generally expected to fix and re-submit buggy code.  Your grade will be based primarily on timliness (which a penalty for each buggy submission).</li>
+</ul>
+
+<h2 id="getting-started-with-c">Getting started with C++</h2>
+
+<ul>
+  <li>Why C++?
+    <ul>
+      <li>Closer to the hardware</li>
+      <li>Languages like Java abstract away a lot of implementation details.
+        <ul>
+          <li>This is good when doing “ordinary” application development; but,</li>
+          <li>it is important for Computer Science majors to know what’s going on “under the hood”.</li>
+          <li>You won’t need to look “under the hood” often; but, if you don’t learn it in college, you won’t have the skill when you need it.</li>
+        </ul>
+      </li>
+      <li>Also an opportunity to get experience with more languages.</li>
+      <li>To be marketable after graduation, you need to be able to learn new languages / platforms quickly.</li>
+    </ul>
+  </li>
+  <li>Skill Level
+    <ul>
+      <li>You need only learn C++ well enough to complete the assignments.  (This isn’t a C++ class, after all.)</li>
+      <li>However, the Weiss text goes into a level of detail that will be useful if you anticipate doing some “serious” C++
+ development after graduation.
+        <ul>
+          <li><a href="https://www.pearson.com/us/higher-education/program/Weiss-Data-Structures-and-Algorithm-Analysis-in-C-4th-Edition/PGM148299.html">https://www.pearson.com/us/higher-education/program/Weiss-Data-Structures-and-Algorithm-Analysis-in-C-4th-Edition/PGM148299.html</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>C++ is a compiled language
+    <ul>
+      <li>To compile (in EOS):  <code class="type-this">g++ -std=c++17 -Wall myCppFile.cpp -o myExcecutable</code>
+        <ul>
+          <li><span class="to-me">Emphasize need for <code>-std=c++17</code></span>
+            <ul>
+              <li>(Without it some newer language constructs – like initializer lists – won’t compile.)</li>
+            </ul>
+          </li>
+          <li class="to-me">Emphasize importance of <code>-Wall</code></li>
+        </ul>
+      </li>
+      <li>To run (in EOS): <code class="type-this">./myExecutable</code></li>
+      <li>If you don’t specify the output with <code>-o</code>, a file named <code>a.out</code> is generated.</li>
+      <li>You may have at most one <code>main</code> function in the referenced code.</li>
+    </ul>
+  </li>
+  <li>C++ looks a lot like Java with several key differences:
+    <ul>
+      <li>Namespaces are always explicit.  (Not implied by directory structure.)  See Stroustrup Section 3.4.</li>
+      <li><code>std::cout</code> (See Strostroup Chapter 10.)</li>
+      <li>Separate <code>.h</code> and <code>.cpp</code> files. (See Stroustrup Sections 3.1 and 3.2.)</li>
+      <li>See <code>LawnMower.{h,cpp}</code> and <code>mowerUser{A,B}.cpp</code></li>
+      <li>Sample code available here: <a href="https://github.com/kurmasz-assignments/cis263-sample-code">https://github.com/kurmasz-assignments/cis263-sample-code</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="week-1--day-2">Week 1 / Day 2</h1>
+
+<h2 id="more-c">More C++</h2>
+
+<ul>
+  <li>CLion
+    <ul>
+      <li>From JetBrains <a href="https://www.jetbrains.com">https://www.jetbrains.com</a>– same company as IntelliJ</li>
+      <li>Students have free access</li>
+      <li>To get started
+        <ol>
+          <li>Clone the repo with the starter code.</li>
+          <li>File -&gt; New Project.</li>
+          <li>Edit path to point to folder for cloned repo.</li>
+          <li>Edit <code>CMakeLists.txt</code></li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>Objects are, by default, created on the stack.  (No need to use <code>new</code> as in Java.)
+    <ul>
+      <li class="to-me">Draw stack diagram. (Show both local varaibles and function calls in both C++ and Java.)</li>
+    </ul>
+  </li>
+  <li>Variables are <em>not</em> initialized.  If you declare a variable and don’t give it a value, the value will get a 
+“random” value.
+    <ul>
+      <li class="to-me">Show how this can happen with a stack diagram.</li>
+    </ul>
+  </li>
+  <li>By default, objects are passed by value (whereas Java objects are passed by reference).  See Stroustrup Section 3.6.
+    <ul>
+      <li>By adding <code>&amp;</code> to a type, you can pass an object <em>by reference</em> like Java does.</li>
+      <li>See <code>Point2D.h</code> and <code>passByValueOrReference.cpp</code></li>
+      <li class="to-me">Draw stack and memory diagram</li>
+    </ul>
+  </li>
+  <li>Pointers
+    <ul>
+      <li>The <code>&amp;</code> operator returns an object’s memory address.</li>
+      <li>(The operator is also used to declare a reference type.  With practice, you can tell the meaning from context. 
+  When used with a type, <code>&amp;</code> means <em>reference</em>.  When used with a value, it means <em>address</em>.)</li>
+      <li>The <code>*</code> operator is used to either declare or <em>dereference</em> a pointer.  (When a pointer is <em>dereferenced</em> we take access the object being pointed at.)</li>
+      <li>See <code>slidePointUsingPointers</code> in <code>passByValueOrReference.cpp</code>.</li>
+      <li class="to-me">Draw stack and memory diagram</li>
+      <li>Also used when creating objects dynamically using new (similar to Java).  See <code>MyIntVector.h</code></li>
+      <li>In general, you should use references when you can.  Only use poineters when you must.</li>
+    </ul>
+  </li>
+  <li>Copy / assignment of complex objects
+    <ul>
+      <li>By default, objects are copied field by field.</li>
+      <li>This works for objects containing only simple types like <code>Point2D</code>.</li>
+      <li>It can cause problems for objects that contain pointers and other shared resources.
+        <ul>
+          <li><code>missingCopyConstructor.cpp</code> shows what goes wrong when the default C++ copy constructor is used when a custom one is needed.</li>
+          <li class="to-me">Draw memory diagram</li>
+          <li><code>expectedCopyBehavior</code> demonstrates the expected behavior when a correct copy constructor is provided.</li>
+        </ul>
+      </li>
+      <li>The assignment (i.e., <code>=</code> operator) must be overloaded for the same reason.</li>
+      <li>Warning: Sometimes the compiler will use the copy constructor when you think it might be using the assignment operator – especially when using an assignment in a declaration like <code>MyVector v1 = v2</code>.</li>
+      <li>See Stroustrup Section 5.2 for a general discussion of copy and move.</li>
+      <li>Weiss Section 1.5.6 goes into even more depth.</li>
+      <li>There is also a <em>move</em> operator for the special circumstance where an object is copied then destroyed.
+        <ul>
+          <li>Most common when returning an object from a method.</li>
+          <li>See Stoustrup Section 5.2.2 for details on the move operator.</li>
+          <li>Weiss Section 1.5.6 goes into even more depth about rvalue references.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

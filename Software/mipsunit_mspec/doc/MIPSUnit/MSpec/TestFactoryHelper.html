@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class MIPSUnit::MSpec::TestFactoryHelper - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/mipsunit/mspec/test_factory_helper.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-data">::data</a>
+    
+    <li><a href="#method-c-fail_unless">::fail_unless</a>
+    
+    <li><a href="#method-c-get_integer_value">::get_integer_value</a>
+    
+    <li><a href="#method-c-get_label_string">::get_label_string</a>
+    
+    <li><a href="#method-c-is_register-3F">::is_register?</a>
+    
+    <li><a href="#method-c-lookup_unique_name">::lookup_unique_name</a>
+    
+    <li><a href="#method-c-print_lw">::print_lw</a>
+    
+    <li><a href="#method-c-process_expected_memory_value">::process_expected_memory_value</a>
+    
+    <li><a href="#method-c-register_to_string">::register_to_string</a>
+    
+    <li><a href="#method-c-remove_warning_from_data_method">::remove_warning_from_data_method</a>
+    
+    <li><a href="#method-c-set_address">::set_address</a>
+    
+    <li><a href="#method-c-set_boolean">::set_boolean</a>
+    
+    <li><a href="#method-c-set_integer">::set_integer</a>
+    
+    <li><a href="#method-c-set_register">::set_register</a>
+    
+    <li><a href="#method-c-validate_register">::validate_register</a>
+    
+    <li><a href="#method-c-verify_memory_array">::verify_memory_array</a>
+    
+    <li><a href="#method-c-verify_memory_memory">::verify_memory_memory</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../License_txt.html">License</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../MIPSUnit.html">MIPSUnit</a>
+  
+    <li><a href="../../MIPSUnit/MSpec.html">MIPSUnit::MSpec</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Assembly.html">MIPSUnit::MSpec::Assembly</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/AssemblyLabel.html">MIPSUnit::MSpec::AssemblyLabel</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/DSL.html">MIPSUnit::MSpec::DSL</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/DataLabel.html">MIPSUnit::MSpec::DataLabel</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Generator.html">MIPSUnit::MSpec::Generator</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Global.html">MIPSUnit::MSpec::Global</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/InvalidSpecException.html">MIPSUnit::MSpec::InvalidSpecException</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Label.html">MIPSUnit::MSpec::Label</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Runner.html">MIPSUnit::MSpec::Runner</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/TestDefinition.html">MIPSUnit::MSpec::TestDefinition</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/TestDefinitionGroup.html">MIPSUnit::MSpec::TestDefinitionGroup</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/TestFactory.html">MIPSUnit::MSpec::TestFactory</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/AssemblyLabel.html">MIPSUnit::MSpec::TestFactory::AL</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/TestFactoryHelper.html">MIPSUnit::MSpec::TestFactoryHelper</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Util.html">MIPSUnit::MSpec::Util</a>
+  
+    <li><a href="../../MIPSUnit/MSpec/Util/Util.html">MIPSUnit::MSpec::Util::Util</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class MIPSUnit::MSpec::TestFactoryHelper</h1>
+
+  <div id="description" class="description">
+    
+<p>These helper methods are used by <a
+href="TestFactory.html#method-i-set">MIPSUnit::MSpec::TestFactory#set</a>,
+<a
+href="TestFactory.html#method-i-call">MIPSUnit::MSpec::TestFactory#call</a>,
+<a
+href="TestFactory.html#method-i-verify">MIPSUnit::MSpec::TestFactory#verify</a>,
+etc. to generate assembly code. We moved them to this separate class so
+they don’t appear in the namespace of <code>describe</code> blocks.  (It
+is important to limit what methods appear in the <code>describe</code>
+block namespace so users don’t accidentally write helper methods that
+hide <a href="../MSpec.html">MSpec</a> methods.)</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Zachary Kurmas</p>
+</dd><dt>Copyright
+<dd>
+<p>© 2012</p>
+</dd></dl>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="REGISTERS">REGISTERS
+        
+        <dd class="description"><p>A <code>Set</code> of valid register names</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">data</span><span
+            class="method-args">(hash) { |dl| ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>creates a new <a href="DataLabel.html">DataLabel</a>.  The
+<code>yield</code> adds the new label to either the specific <a
+href="TestFactory.html">TestFactory</a>, or the entire block as
+appropriate.</p>
+          
+
+          
+          <div class="method-source-code" id="data-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">data</span>(<span class="ruby-identifier">hash</span>)
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Parameters to method \&quot;data\&quot; are incorrectly formatted.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">unless</span> (<span class="ruby-identifier">name</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Symbol</span>) <span class="ruby-operator">||</span> (<span class="ruby-identifier">name</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Must use symbol or string when specifying data.&quot;</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">TestFactoryHelper</span>.<span class="ruby-identifier">is_register?</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Data labels may not be register names.&quot;</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">dl</span> = <span class="ruby-constant">DataLabel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>, *<span class="ruby-identifier">values</span>)
+    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">dl</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- data-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- data-method -->
+
+    
+      <div id="method-c-fail_unless" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fail_unless</span><span
+            class="method-args">(condition, test_name, location_name, expected_value, factory, output) { || ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>generate assembly code that will test a specified condition, then print a failure message unless the
+specified condition is met.
+- +condition+ is a +beq+ or +bne+ instruction without the branch target. (In other words,
++condition+ does _not_ include the label.)
+- +test_name+ is the +String+ that is printed in the failure message to identify the test
+- +location_name+ is a +String+ containing the name of the location as it should be printed in the error
+#message (.e.g, &quot;$v0&quot;)</pre>
+<ul><li>
+<p><code>expected_value</code> is the expected value that is printed in the
+error message (must be an integer)</p>
+</li><li>
+<p><code>factory</code> the factory</p>
+</li><li>
+<p><code>output</code> the output stream</p>
+</li></ul>
+
+<pre>The block is responsible for moving the observed value into $a3</pre>
+          
+
+          
+          <div class="method-source-code" id="fail_unless-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 190</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">fail_unless</span>(<span class="ruby-identifier">condition</span>, <span class="ruby-identifier">test_name</span>, <span class="ruby-identifier">location_name</span>, <span class="ruby-identifier">expected_value</span>, <span class="ruby-identifier">factory</span>, <span class="ruby-identifier">output</span>)
+  <span class="ruby-comment"># create a label for the branch target (i.e., the end if the &quot;if&quot; block)</span>
+  <span class="ruby-identifier">target_label</span> = <span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;pass&quot;</span>)
+
+  <span class="ruby-comment"># equivalent of (if $at != $register_to_check), then ...</span>
+  <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{condition}, #{target_label.unique_name}&quot;</span>
+
+  <span class="ruby-comment"># create a data label containing the test name. (This label is used to print an error message if necessary)</span>
+  <span class="ruby-identifier">test_name_label</span> = <span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;test_name&quot;</span>)
+  <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">data</span>(<span class="ruby-identifier">test_name_label</span>.<span class="ruby-identifier">unique_name</span>.<span class="ruby-identifier">to_sym</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value">:asciiz</span>, <span class="ruby-identifier">test_name</span>])
+
+  <span class="ruby-comment"># create a data label containing the name of the location to check (e.g., register name, memory location)</span>
+  <span class="ruby-comment"># TODO: Search for existing labels with same data.</span>
+  <span class="ruby-identifier">location_name_label</span> = <span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;reg_name&quot;</span>)
+  <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">data</span>(<span class="ruby-identifier">location_name_label</span>.<span class="ruby-identifier">unique_name</span>.<span class="ruby-identifier">to_sym</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value">:asciiz</span>, <span class="ruby-identifier">location_name</span>.<span class="ruby-identifier">to_s</span>])
+
+  <span class="ruby-keyword">yield</span>
+  <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">call_by_name</span>(<span class="ruby-value">:fail</span>, <span class="ruby-identifier">test_name_label</span>.<span class="ruby-identifier">unique_name</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-identifier">location_name_label</span>.<span class="ruby-identifier">unique_name</span>.<span class="ruby-identifier">to_sym</span>,
+                       <span class="ruby-identifier">expected_value</span>)
+
+  <span class="ruby-comment"># The label at the end of the if block</span>
+  <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{target_label.unique_name}:&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- fail_unless-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- fail_unless-method -->
+
+    
+      <div id="method-c-get_integer_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_integer_value</span><span
+            class="method-args">(value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns <code>value</code> if <code>value</code> is an
+<code>Integer</code>.  Returns the corresponding <code>ASCII</code> value
+if <code>value</code> is a <code>String</code> of length 1,</p>
+          
+
+          
+          <div class="method-source-code" id="get_integer_value-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 217</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_integer_value</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>))
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>))
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">value</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;If value is a String, it must have length exactly 1.&quot;</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">bytes</span>.<span class="ruby-identifier">first</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;value must be a Integer or a String&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_integer_value-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_integer_value-method -->
+
+    
+      <div id="method-c-get_label_string" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_label_string</span><span
+            class="method-args">(label, labels_in_scope)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>return the globally unique <code>String</code> that corresponds to the
+given label. If <code>label</code> is a <code>String</code>, then assume
+that the name is already unique (e.g., that it is a label hard-coded in the
+code under test).  If <code>label</code> is a <code>Symbol</code>, then
+assume that it is the local name of a <a
+href="DataLabel.html">DataLabel</a> and look up its unique name.</p>
+          
+
+          
+          <div class="method-source-code" id="get_label_string-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_label_string</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">labels_in_scope</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">label</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">label</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">AssemblyLabel</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">lookup_unique_name</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">labels_in_scope</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">label</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{label.to_s} is not a valid label.  (Must be  must be a Symbol or AssemblyLabel.)&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_label_string-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_label_string-method -->
+
+    
+      <div id="method-c-is_register-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">is_register?</span><span
+            class="method-args">(symbol)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>return whether <code>symbol</code> is a valid register</p>
+          
+
+          
+          <div class="method-source-code" id="is_register-3F-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">is_register?</span>(<span class="ruby-identifier">symbol</span>)
+  <span class="ruby-constant">REGISTERS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">symbol</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- is_register-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- is_register-3F-method -->
+
+    
+      <div id="method-c-lookup_unique_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lookup_unique_name</span><span
+            class="method-args">(label, labels_in_scope)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>return the unique name for the given label (i.e., local name). Raises an <a
+href="InvalidSpecException.html">InvalidSpecException</a> if
+<code>label</code> is not the local name of a label currently in scope. 
+Raises an ArgumentError if (1) <code>label</code> is not a symbol, or (2)
+there are multiple labels with the same name currently in scope.</p>
+          
+
+          
+          <div class="method-source-code" id="lookup_unique_name-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lookup_unique_name</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">labels_in_scope</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;label must be a symbol&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">label</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>)
+
+  <span class="ruby-identifier">matching_label</span> = <span class="ruby-identifier">labels_in_scope</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dl</span><span class="ruby-operator">|</span> <span class="ruby-identifier">dl</span>.<span class="ruby-identifier">local_name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">label</span> }
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">matching_label</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;There is no label \&quot;#{label.to_s}\&quot; in this scope.&quot;</span>)
+  <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">matching_label</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>)
+    <span class="ruby-identifier">matching_label</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">unique_name</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;TestFactoryHelper.set_address was passed a data label list&quot;</span> <span class="ruby-operator">+</span>
+                                <span class="ruby-string">&quot;that contained duplicate labels. &quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lookup_unique_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lookup_unique_name-method -->
+
+    
+      <div id="method-c-print_lw" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_lw</span><span
+            class="method-args">(output, target, base, offset, size)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>generates an assembly <code>lw</code> (load word) instruction. This method
+generates the appropriate <code>lw</code> pseudo-instruction based on the
+type of <code>base</code>.  If <code>base</code> is a <code>String</code>
+(which is assumed to be a label) then an instruction of the form “lw
+target, base+offset” is generated.  If <code>base</code> is a
+<code>Symbol</code> (which is assumed to be a register), an instruction of
+the form +lw target, offset(base)+ is generated.</p>
+<ul><li>
+<p><em>Warning:</em> In each case, the resulting machine instructions are
+likely to use $at.</p>
+</li><li>
+<p><em>Note:</em> <code>Symbol</code>s are always assumed to be registers. 
+This method does not look up local label names. When using local labels,
+you must call <a
+href="TestFactoryHelper.html#method-c-lookup_unique_name">::lookup_unique_name</a>
+before calling print_lw.</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="print_lw-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 239</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">print_lw</span>(<span class="ruby-identifier">output</span>, <span class="ruby-identifier">target</span>, <span class="ruby-identifier">base</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">size</span>)
+  <span class="ruby-identifier">op</span>= {<span class="ruby-value">4</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;lw&quot;</span>, <span class="ruby-value">2</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;lh&quot;</span>, <span class="ruby-value">1</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;lb&quot;</span>}
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Size must be #{op.keys.inspect}&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">op</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">size</span>)
+  <span class="ruby-identifier">validate_register</span>(<span class="ruby-identifier">target</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">base</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>))
+    <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;#{op[size]} $#{target.to_s}, #{base}+#{offset}&quot;</span>)
+  <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">base</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>))
+    <span class="ruby-identifier">validate_register</span>(<span class="ruby-identifier">base</span>)
+    <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;#{op[size]} $#{target.to_s}, #{offset}(#{register_to_string(base)})&quot;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;base must be a String or a Symbol&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- print_lw-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- print_lw-method -->
+
+    
+      <div id="method-c-process_expected_memory_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_expected_memory_value</span><span
+            class="method-args">(value, base, current_offset, current_increment, factory, test_name, output)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This is a helper method for <a
+href="TestFactoryHelper.html#method-c-verify_memory_array">::verify_memory_array</a>
+that processes a single element of an array containing expected values.</p>
+<ul><li>
+<p>If <code>value</code> is a <code>String</code> or <code>Integer</code>,
+verify that the memory location under test (<code>base</code> +
+<code>current_offset</code>) is equal to <code>value</code>.</p>
+</li><li>
+<p>If <code>value</code> is a assembler directive (e.g., “+:word”,
+“:byte”, “:ascii”), return the corresponding data size.</p>
+</li></ul>
+
+<p><code>current_increment</code> is the size of the datum under test (i.e.,
+the amount by which the offset should be increased to reach the next value)</p>
+
+<p>This method returns two values:</p>
+<ul><li>
+<p>the offset of the next element to be examined, and</p>
+</li><li>
+<p>the current increment (which changes if <code>value</code> corresponds to
+an assembler directive)</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="process_expected_memory_value-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 265</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">process_expected_memory_value</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">base</span>, <span class="ruby-identifier">current_offset</span>, <span class="ruby-identifier">current_increment</span>, <span class="ruby-identifier">factory</span>, <span class="ruby-identifier">test_name</span>,
+    <span class="ruby-identifier">output</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>)
+    <span class="ruby-comment">#TODO: properly align data (e.g., :word should move to next 4-byte boundary)</span>
+    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">current_offset</span>, <span class="ruby-constant">DataLabel</span>.<span class="ruby-identifier">size_of</span>(<span class="ruby-identifier">value</span>)]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">current_increment</span> = <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> (<span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>))
+    <span class="ruby-comment"># TODO:  When the input is a character, the failure message will print the</span>
+    <span class="ruby-comment"># ASCII value, not the character.  This could lead to confusing error messages.</span>
+    <span class="ruby-identifier">int_value</span> = <span class="ruby-identifier">get_integer_value</span>(<span class="ruby-identifier">value</span>)
+
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">int_value</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">-2</span><span class="ruby-operator">**</span><span class="ruby-value">15</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">int_value</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">2</span><span class="ruby-operator">**</span><span class="ruby-value">15</span>)
+      <span class="ruby-identifier">print_lw</span>(<span class="ruby-identifier">output</span>, <span class="ruby-value">:at</span>, <span class="ruby-identifier">base</span>, <span class="ruby-identifier">current_offset</span>, <span class="ruby-identifier">current_increment</span>)
+      <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;addi $at, $at, #{-int_value}&quot;</span>
+
+      <span class="ruby-comment"># TODO Have the failure message print the local name, not the global name.</span>
+      <span class="ruby-identifier">fail_unless</span>(<span class="ruby-string">&quot;beq $at, $zero&quot;</span>, <span class="ruby-identifier">test_name</span>, <span class="ruby-node">&quot;Memory location\\n#{base}[#{current_offset}]&quot;</span>, <span class="ruby-identifier">int_value</span>,
+                  <span class="ruby-identifier">factory</span>, <span class="ruby-identifier">output</span>) <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">print_lw</span>(<span class="ruby-identifier">output</span>, <span class="ruby-value">:a3</span>, <span class="ruby-identifier">base</span>, <span class="ruby-identifier">current_offset</span>, <span class="ruby-identifier">current_increment</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span> <span class="ruby-comment"># end if value is 16 bits or less</span>
+      <span class="ruby-identifier">print_lw</span>(<span class="ruby-identifier">output</span>, <span class="ruby-value">:at</span>, <span class="ruby-identifier">base</span>, <span class="ruby-identifier">current_offset</span>, <span class="ruby-identifier">current_increment</span>)
+      <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;xori $at, $at, #{int_value &amp; 0x0000ffff}&quot;</span>
+      <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;sll $at, $at, 16&quot;</span>
+
+      <span class="ruby-comment"># TODO Have the failure message print the local name, not the global name.</span>
+      <span class="ruby-identifier">fail_unless</span>(<span class="ruby-string">&quot;beq $at, $zero&quot;</span>, <span class="ruby-identifier">test_name</span>, <span class="ruby-node">&quot;Memory location\\n#{base}[#{current_offset}]&quot;</span>, <span class="ruby-identifier">int_value</span>,
+                  <span class="ruby-identifier">factory</span>, <span class="ruby-identifier">output</span>) <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">print_lw</span>(<span class="ruby-identifier">output</span>, <span class="ruby-value">:a3</span>, <span class="ruby-identifier">base</span>, <span class="ruby-identifier">current_offset</span>, <span class="ruby-identifier">current_increment</span>)
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">print_lw</span>(<span class="ruby-identifier">output</span>, <span class="ruby-value">:at</span>, <span class="ruby-identifier">base</span>, <span class="ruby-identifier">current_offset</span>, <span class="ruby-identifier">current_increment</span>)
+      <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;srl $at, $at, 16&quot;</span>
+      <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;xori $at, $at, #{(int_value &gt;&gt; 16)}&quot;</span>
+
+
+      <span class="ruby-comment"># TODO Have the failure message print the local name, not the global name.</span>
+      <span class="ruby-identifier">fail_unless</span>(<span class="ruby-string">&quot;beq $at, $zero&quot;</span>, <span class="ruby-identifier">test_name</span>, <span class="ruby-node">&quot;Memory location\\n#{base}[#{current_offset}]&quot;</span>, <span class="ruby-identifier">int_value</span>,
+                  <span class="ruby-identifier">factory</span>, <span class="ruby-identifier">output</span>) <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">print_lw</span>(<span class="ruby-identifier">output</span>, <span class="ruby-value">:a3</span>, <span class="ruby-identifier">base</span>, <span class="ruby-identifier">current_offset</span>, <span class="ruby-identifier">current_increment</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span> <span class="ruby-comment"># if value is 16 bits or more</span>
+    [<span class="ruby-identifier">current_offset</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">current_increment</span>, <span class="ruby-identifier">current_increment</span>]
+  <span class="ruby-keyword">end</span> <span class="ruby-comment"># else</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_expected_memory_value-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_expected_memory_value-method -->
+
+    
+      <div id="method-c-register_to_string" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">register_to_string</span><span
+            class="method-args">(register)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="register_to_string-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">register_to_string</span>(<span class="ruby-identifier">register</span>)
+  <span class="ruby-identifier">validate_register</span>(<span class="ruby-identifier">register</span>)
+  <span class="ruby-identifier">reg_string</span> = <span class="ruby-identifier">register</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">reg_string</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^r(\d+)$/</span>
+    <span class="ruby-node">&quot;$#{$1}&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-node">&quot;$#{reg_string}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- register_to_string-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- register_to_string-method -->
+
+    
+      <div id="method-c-remove_warning_from_data_method" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_warning_from_data_method</span><span
+            class="method-args">(factory)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>replaces the initial implementation of <a
+href="TestFactory.html#method-i-data">MIPSUnit::MSpec::TestFactory#data</a>
+with one that does not print a warning.</p>
+          
+
+          
+          <div class="method-source-code" id="remove_warning_from_data_method-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">remove_warning_from_data_method</span>(<span class="ruby-identifier">factory</span>)
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">data</span>(<span class="ruby-identifier">hash</span>)
+    <span class="ruby-identifier">data!</span>(<span class="ruby-identifier">hash</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remove_warning_from_data_method-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove_warning_from_data_method-method -->
+
+    
+      <div id="method-c-set_address" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_address</span><span
+            class="method-args">(register, label, output, data_labels)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>produce a line of assembly to set <code>register</code> to the unique label
+corresponding to <code>label</code> This method will raise an <a
+href="InvalidSpecException.html">InvalidSpecException</a> if
+<code>register</code> is not a valid register, or if <code>label</code> is
+not a valid label.</p>
+          
+
+          
+          <div class="method-source-code" id="set_address-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 150</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">set_address</span>(<span class="ruby-identifier">register</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">data_labels</span>)
+  <span class="ruby-identifier">validate_register</span>(<span class="ruby-identifier">register</span>)
+  <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;la #{register_to_string(register)}, #{get_label_string(label, data_labels)}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_address-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_address-method -->
+
+    
+      <div id="method-c-set_boolean" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_boolean</span><span
+            class="method-args">(register, value, output)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>produce a line of assembly to set <code>register</code> to
+<code>value</code>.  This method will raise an <a
+href="InvalidSpecException.html">InvalidSpecException</a> if
+<code>register</code> is not a valid register, or if <code>value</code> is
+not <code>true</code> or <code>false</code>.</p>
+          
+
+          
+          <div class="method-source-code" id="set_boolean-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 137</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">set_boolean</span>(<span class="ruby-identifier">register</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">output</span>)
+  <span class="ruby-identifier">validate_register</span>(<span class="ruby-identifier">register</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">TrueClass</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FalseClass</span>)
+    <span class="ruby-identifier">set_integer</span>(<span class="ruby-identifier">register</span>, <span class="ruby-identifier">value</span> <span class="ruby-operator">?</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">output</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{value} is not a valid boolean variable.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_boolean-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_boolean-method -->
+
+    
+      <div id="method-c-set_integer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_integer</span><span
+            class="method-args">(register, value, output)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>produce a line of assembly to set <code>register</code> to
+<code>value</code>.  This method will raise an <a
+href="InvalidSpecException.html">InvalidSpecException</a> if
+<code>register</code> is not a valid register, or if <code>value</code> is
+not an integer.  The method will also produce a warning on $stderr if the 
+given value is outside the range of a 32-bit integer.</p>
+          
+
+          
+          <div class="method-source-code" id="set_integer-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 120</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">set_integer</span>(<span class="ruby-identifier">register</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">output</span>)
+  <span class="ruby-identifier">validate_register</span>(<span class="ruby-identifier">register</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Integer</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{value} is not an integer.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0xFFFFFFFF</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">-0x80000000</span>
+    <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Warning!  Value #{value} is outside the 32-bit range for integers.&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;li #{register_to_string(register)}, #{value}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_integer-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_integer-method -->
+
+    
+      <div id="method-c-set_register" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_register</span><span
+            class="method-args">(register, value, output, data_labels)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Write an assembly statement to <code>output</code> setting
+<code>register</code> to <code>value</code>. This method raises an <a
+href="InvalidSpecException.html">InvalidSpecException</a> if either</p>
+<ul><li>
+<p>register does not refer to a valid register, or</p>
+</li><li>
+<p>value is not of a recognized type.</p>
+</li></ul>
+
+<p>This method does not accept String values.</p>
+          
+
+          
+          <div class="method-source-code" id="set_register-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">set_register</span>(<span class="ruby-identifier">register</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">data_labels</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">TrueClass</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FalseClass</span>))
+    <span class="ruby-identifier">set_boolean</span>(<span class="ruby-identifier">register</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">output</span>)
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>)
+    <span class="ruby-identifier">set_integer</span>(<span class="ruby-identifier">register</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">output</span>)
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">AssemblyLabel</span>)
+    <span class="ruby-identifier">set_address</span>(<span class="ruby-identifier">register</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">output</span>, <span class="ruby-identifier">data_labels</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Cannot set a register to type #{value.class}.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_register-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_register-method -->
+
+    
+      <div id="method-c-validate_register" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validate_register</span><span
+            class="method-args">(register)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>raises an <a href="InvalidSpecException.html">InvalidSpecException</a> if
+<code>register</code> is not a valid register</p>
+          
+
+          
+          <div class="method-source-code" id="validate_register-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">validate_register</span>(<span class="ruby-identifier">register</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">REGISTERS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">register</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{register} is not a valid register.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- validate_register-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- validate_register-method -->
+
+    
+      <div id="method-c-verify_memory_array" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verify_memory_array</span><span
+            class="method-args">(base, values, factory, test_name, labels_in_scope, output)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Verify that the memory beginning at the given label/register matches the
+sequence of values given</p>
+          
+
+          
+          <div class="method-source-code" id="verify_memory_array-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 312</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">verify_memory_array</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">values</span>, <span class="ruby-identifier">factory</span>, <span class="ruby-identifier">test_name</span>, <span class="ruby-identifier">labels_in_scope</span>, <span class="ruby-identifier">output</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">is_register?</span>(<span class="ruby-identifier">base</span>))
+    <span class="ruby-identifier">label_to_use</span> = <span class="ruby-identifier">base</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">label_to_use</span> = <span class="ruby-identifier">get_label_string</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">labels_in_scope</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">current_offset</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">current_increment</span> = <span class="ruby-constant">DataLabel</span>.<span class="ruby-identifier">size_of</span>(<span class="ruby-value">:word</span>)
+
+  <span class="ruby-comment"># TODO: Refactor this out into a separate method</span>
+  <span class="ruby-comment"># (And update the tests as well)</span>
+  <span class="ruby-comment"># replace Strings with the sequence of individual letters</span>
+  <span class="ruby-identifier">previous_string_type</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">values</span> = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">previous_string_type</span> = <span class="ruby-identifier">item</span> <span class="ruby-keyword">if</span> (<span class="ruby-identifier">item</span> <span class="ruby-operator">==</span> <span class="ruby-value">:ascii</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">item</span> <span class="ruby-operator">==</span> <span class="ruby-value">:asciiz</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">previous_string_type</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidSpecException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;String values must be tagged as .ascii or .asciiz.&quot;</span>)
+      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">previous_string_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:asciiz</span>
+        <span class="ruby-identifier">item</span>.<span class="ruby-identifier">chars</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-operator">+</span> [<span class="ruby-value">0</span>]
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">item</span>.<span class="ruby-identifier">chars</span>.<span class="ruby-identifier">to_a</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">item</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">values</span>.<span class="ruby-identifier">flatten!</span>
+
+  <span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    (<span class="ruby-identifier">current_offset</span>, <span class="ruby-identifier">current_increment</span>) = <span class="ruby-identifier">process_expected_memory_value</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">label_to_use</span>, <span class="ruby-identifier">current_offset</span>,
+                                                                        <span class="ruby-identifier">current_increment</span>, <span class="ruby-identifier">factory</span>,
+                                                                        <span class="ruby-identifier">test_name</span>, <span class="ruby-identifier">output</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- verify_memory_array-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- verify_memory_array-method -->
+
+    
+      <div id="method-c-verify_memory_memory" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verify_memory_memory</span><span
+            class="method-args">(expected_base, observed_base, factory, labels_in_scope, output)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Verify that the memory beginning at expected_base matches the memory at
+observed_base</p>
+          
+
+          
+          <div class="method-source-code" id="verify_memory_memory-source">
+            <pre><span class="ruby-comment"># File lib/mipsunit/mspec/test_factory_helper.rb, line 350</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">verify_memory_memory</span>(<span class="ruby-identifier">expected_base</span>, <span class="ruby-identifier">observed_base</span>, <span class="ruby-identifier">factory</span>, <span class="ruby-identifier">labels_in_scope</span>, <span class="ruby-identifier">output</span>)
+  <span class="ruby-comment"># problem:  Need two registers (one for each value loaded)  :at can be one.  No good choice for the second.</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- verify_memory_memory-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- verify_memory_memory-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

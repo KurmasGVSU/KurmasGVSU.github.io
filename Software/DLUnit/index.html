@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DLUnit</title>
+    <style>
+
+        code {
+            font-size: 120%;
+        }
+
+        .multi_line_box, .single_line_box {
+            background: #ffebcd;
+            border: 1px solid;
+            padding: 5px;
+            margin: 5px;
+            position: relative;
+        }
+
+        .single_line_box {
+            display: inline-block;
+            left: 35px;
+        }
+
+        .multi_line_box {
+            width: 85%;
+            min-width: 300px;
+        }
+
+        .box_and_caption {
+            /* border: solid 1px;*/
+            /* text-align: center; */
+            position: relative;
+            left: 35px;
+            display: inline-block;
+            margin: 5px;
+            margin-bottom: 25px;
+        }
+
+        dd {
+            margin-bottom: 10px;
+        }
+
+        .nobreak {
+            white-space: nowrap;
+        }
+
+        .listHeader {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        ul {
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 100%;
+
+            overflow: auto;
+            color: white;
+            padding: 5px;
+            background-color: #005d95;
+            /* "Laker blue is #0065a4, but fails ARIA contrast test.
+                Color above is as close as I can get
+                https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+             */
+        }
+
+        .navigation a:link {
+            color: white;
+        }
+
+        .navigation a:visited {
+            color: white;
+        }
+
+        .navigation ul {
+            padding-left: 0;
+        }
+
+        .navigation ul li {
+            list-style-position: inside
+        }
+
+        .content {
+            position: absolute;
+            top: 0;
+            left: 160px;
+            padding: 10px;
+            overflow: auto;
+        }
+
+        /* A link that isn't displayed so that the
+           accessibility checker is happy.
+         */
+        .bypass {
+            position: absolute;
+            top: 0;
+            right: 100%;
+            z-index: 9999;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<div class="navigation" id="nav">
+    <a class='bypass' href="#content">Skip to main content</a>
+    DLUnit
+    <ul>
+        <li><a href="#basics">Basics</a></li>
+        <li><a href="#advanced">Other Use Cases</a></li>
+        <li><a href="#simulators">Simulators</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact_info">Contact Info</a></li>
+    </ul>
+
+    <hr>
+
+    <ul>
+        <li><a href="dist/doc/index.html">Documentation</a></li>
+        <li><a href="dist/DLUnit.jar">Download</a></li>
+        <!-- <li><a href="dist/munit.jar">Download</a></li>-->
+    </ul>
+</div>
+
+<!-- Main content -->
+<div class="content" id="content">
+    <h1><code>DLUnit</code></h1>
+
+    <p><code>DLUnit</code> is a <code><a target="_top"
+                                         href="http://www.junit.org">JUnit</a></code>-based unit testing
+        framework for simulated digital logic circuits. Specifically, it allows students to write JUnit tests for
+        circuits they build using either the <a target="_top" href="http://pages.mtu.edu/~pop/jlsp/bin/JLS.html">JLS</a>
+        or <a target="_top" href="http://www.cburch.com/logisim/">Logisim</a> digital logic simulators.
+
+    <p class="listHeader"><code>DLUnit</code> provides methods that
+
+    <ul>
+        <li> set the initial circuit state (currently input pins and registers --- memory coming soon),</li>
+        <li> instruct <code>JLS</code> or <code>Logisim</code> to simulate the circuit under test, and</li>
+        <li> query the final state of the circuit (currently, read the output pins and registers).</li>
+    </ul>
+
+    Programmers use <code>JUnit</code>'s <code><a target="_top"
+                                                  href="http://junit.sourceforge.net/javadoc/org/junit/Assert.html">Assert</a></code>
+    methods to verify that the circuits under test behaved as expected.
+    Errors are reported using <code>JUnit</code>'s built-in error
+    reporting mechanism.
+
+    <h2>Example Workflow</h2>
+
+    <p>Suppose the assignment is to build a half adder. Begin by writing a <code>JUnit</code> test class
+        that describes the expected behavior of the circuit:</p>
+
+    <span class="box_and_caption"><a name="example1"><iframe class="multi_line_box" src="HalfAdderTest.txt" width="550"
+                                                             height="675" style="width: 575px;"
+                                                             title="Example 1"></iframe></a>
+        <br>
+        <a name="example1b"><strong>Example 1:</strong></a> Simple<code>DLUnit</code> example.(<a
+                href="HalfAdderTest.java"><code>HalfAdderTest.java</code></a>)
+    </span>
+
+    <p>Next, compile <code>HalfAdderTest.java</code>.
+
+    <div class="single_line_box">
+        <code>
+            javac -cp dlunit.jar HalfAdderTest.java
+        </code>
+    </div>
+
+    <p>Now, implement a half adder in your favorite digital logic simulator. (You did write the test first, right?
+        &#x1F609;)</p>
+
+    <p>Finally, run the tests. Pass the name of the circuit and the name of the <em>class file</em> on the command line.
+        (Passing the name of the class file is unusual, but provides a way to run the tests without requiring the
+        user to explicitly configure the runtime classpath.)
+    <div class="single_line_box">
+        <code>
+            java -jar dlunit.jar halfAdder.circ HalfAdderTest.class
+        </code>
+    </div>
+
+    <p class="listHeader">Download these files and try it yourself:</p>
+    <ul>
+        <li>JLS:
+            <ul>
+                <li><a href="HalfAdderTest.java"><code>HalfAdderTest.java</code></a></li>
+                <li><a href="halfAdder.jls"><code>halfAdder.jls</code></a></li>
+                <li><a href="halfAdder_broken.jls"><code>halfAdder_broken.jls</code></a></li>
+                </li>
+            </ul>
+        </li>
+        <li>Logisim:
+            <ul>
+                <li><a href="HalfAdderTest.java"><code>HalfAdderTest.java</code></a></li>
+                <li><a href="halfAdder.jls"><code>halfAdder.circ</code></a></li>
+                <li><a href="halfAdder_broken.jls"><code>halfAdder_broken.circ</code></a></li>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2><a name="basics">Basics</a></h2>
+
+    <p>The methods in <a href="dist/doc/edu/gvsu/dlunit/DLUnit.html"><code>DLUnit</code></a>
+        allow the unit tests to interact with the underlying simulator. Adding this line to the beginning of the test
+        class</p>
+
+    <div class="single_line_box">
+        <code>import static edu.gvsu.dlunit.DLUnit.*;</code>
+    </div>
+
+    <p> allows programmers to call <code>DLUnit</code> methods without further qualification.
+        Our goal in using static methods is to minimize the amount of typing needed while still providing a
+        reasonable level of compile-time error checking.</p>
+
+    <dl>
+        <dt><code>setPin...</code></dt>
+        <dd>Set an input pin to a specific value:
+            <ul>
+                <li><code>setPin("FeatureEnabled", true);</code>
+                <li><code>setPinSigned("InputA", -234);</code>
+                <li><code>setPinUnsigned("InputB", 0xABCD);</code>
+            </ul>
+        </dd>
+
+        <dt><code>setRegister...</code></dt>
+        <dd>Set a register to a specific value:
+            <ul>
+                <li><code>setRegister("LightOn", true);</code>
+                <li><code>setRegisterSigned("RunningTotal", -234);</code>
+                <li><code>setRegisterUnsigned("CurrentState", 0xABCD);</code>
+            </ul>
+        </dd>
+
+        <dt><code>setMemory...</code></dt>
+        <dd>Set a segment of memory to a values:
+            <ul>
+                <li><code>setMemorySigned("MyRAM", 0x12C, -17);</code>
+                <li><code>setMemorySigned("MyRAM", 0xAB00, new int[]{10, -11, 12, -13});</code>
+                <li><code>setMemoryUnsigned("MyRAM", 0x1240, 23);</code>
+                <li><code>setMemoryUnsigned("MyRAM", 0x0, new int[]{10, 11, 12, 13});</code>
+            </ul>
+            Note: Logisim does not name its RAM elements. This means (1) The name parameter is ignored when testing
+            logisim circuits, and (2) <code>DLUnit</code> does not support the testing of Logisim circuits with more
+            than one RAM element per subcircuit.
+        </dd>
+
+
+        <dt><code>run</code></dt>
+        <dd> Run the simulator:
+            <ul>
+                <li><code>run()</code></li>
+            </ul>
+
+        <dt><code>readPin...</code></dt>
+        <dd>Get the value of an output pin:
+            <ul>
+                <li><code>readPin("WasErrorDetected");&nbsp;// returns boolean</code></li>
+                <li><code>readPinSigned("InputA");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// returns long; interprets most
+                    significant bit as a sign bit</code></li>
+                <li><code>readPinUnsigned("InputB");&nbsp;&nbsp;&nbsp;// returns long</code></li>
+            </ul>
+        </dd>
+
+        <dt><code>readRegister...</code></dt>
+        <dd>Get the value of a register:
+            <ul>
+                <li><code>readRegister("LightOn");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+                    returns boolean</code></li>
+                <li><code>readRegisterSigned("CurrentSum");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// returns long; interprets
+                    most
+                    significant bit as a sign bit</code></li>
+                <li><code>readRegisterUnsigned("CurrentState");&nbsp;// returns long</code></li>
+            </ul>
+        </dd>
+
+        <dt><code>readMemory...</code></dt>
+        <dd>Get the values in a segment of memory:
+            <ul>
+                <li><code>readMemorySigned("MyRAM", 0x12C);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// returns single
+                    word; most
+                    significant bit is sign bit.</code>
+                <li><code>readMemorySigned("MyRAM", 0xAB00, 4);&nbsp;&nbsp;&nbsp;// returns the four words beginning
+                    with
+                    0xAB00</code>
+                <li><code>readMemoryUnsigned("MyRAM", 0x12C);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// returns a single
+                    word as a positive integer</code>
+                <li><code>readMemoryUnsigned("MyRAM", 0xAB00, 4);&nbsp;// returns the four words beginning with
+                    0xAB00</code>
+            </ul>
+            Note: Logisim does not name its RAM elements. This means (1) The name parameter is ignored when testing
+            logisim circuits, and (2) <code>DLUnit</code> does not support the testing of Logisim circuits with more
+            than one RAM element per subcircuit.
+        </dd>
+    </dl>
+
+    <!--
+    <p class="listHeader">Features coming soon:</p>
+    <ul>
+        <li>set/read memory/RAM</li>
+    </ul>
+    -->
+    <h2><a id="cpuTesting">CPU Testing</a></h2>
+
+    <p class="listHeader"><code>DLUnit</code> includes classes to test the single-cycle and multi-cycle MIPS CPUs
+        presented in the Patterson and Hennessy text (and also in the Harris and Harris text). These test classes take a
+        MIPS assembly language file as input and</p>
+    <ol>
+        <li>Use the MARS MIPS simulator to generate machine code</li>
+        <li>Load that machine code into the CPUs instruction memory</li>
+        <li>Simulate the CPU</li>
+        <li>Simulate the assembly code using MARS</li>
+        <li>Compare the registers and memory in the simulated CPU to the expected values (as determined by MARS)</li>
+    </ol>
+
+    <p>To test a single-cycle CPU, run the following command:</p>
+
+    <div class="single_line_box">
+        <code>
+            java -jar dlunit.jar myCPU.jls builtin.SingleCycleCPUTest.java --param myTestFile.a
+        </code>
+    </div>
+
+    <p class="listHeader">The test file assumes the following names for registers and memory:</p>
+    <ul>
+        <li>The Registers must be contained in a subcircuit named "<code>RegisterFile</code>" and named
+            "<code>R1</code>", "<code>R2</code>", "<code>R3</code>", ..., "<code>R31</code>".
+        </li>
+        <li>The instruction memory must be contained in a subcircuit named "<code>InstMemory</code> and named
+            "<code>InstructionMemory</code>"
+        </li>
+        <li>The data memory must be in the main circuit (i.e., not in a subcircuit) and named "<code>MainMemory
+        </code>".
+        </li>
+    </ul>
+
+    <p>(These values are relatively easy to find and change in the source code, if desired.)</p>
+
+    <h2><a id="advanced">Other Use Cases</a></h2>
+
+    <p>Here are some examples of how I use <code>DLUnit</code> in my classroom:</p>
+
+    <h3>Thorough/Exhaustive Testing</h3>
+
+    <p>Experienced programmers tend to write unit tests that focus on corner cases and other key examples. However,
+        my students are novices: Their bugs don't always occur in the expected places. Therefore, I prefer to
+        test my students' circuits very thoroughly. Writing a large number of individual tests would be rather tedious.
+        Fortunately, it is rather easy to write thorough/exhaustive <code>DLUnit</code> tests.</p>
+
+    <p><code><a href="RippleCarryAdderTest.java">RippleCarryAdderTest.java</a></code> is a test class I use to
+        evaluate my students' ripple carry adders. Notice that:</p>
+    <ul>
+        <li>Because all the tests have the same basic structure, I wrote a helper method
+            (<code>verifyOutputAndCarryOut</code>) that is called by all tests.
+        </li>
+        <li>This helper method calculates the expected outputs based on the inputs. By calculating the output, (1)
+            I avoid making silly mistakes, and (2) it is easier to change/add inputs.
+        </li>
+        <li>Rather than writing a separate method for each set of inputs, I write a several methods that iterate
+            through a list of inputs. This is not a standard unit test technique; but, it serves me well for grading
+            purposes. (Notice the list of input values at the beginning of the file. I can quickly and easily add or
+            remove tests by modifying these lists.)
+        </li>
+        <li>By using the <code>@FixMethodOrder</code> annotation to specify the order in which JUnit runs the tests,
+            I can quickly evaluate where a submitted circuit falls within a rubric. Circuits that fail one of the "a"
+            tests have a fundamental error in the addition circuit. In this case, circuits that pass all the "a"
+            tests but fail a"b" test have used the CarryIn input incorrectly. Circuits that fail only "c" tests have
+            a bug in the overflow detection. (This rubric is not the only factor in the final grade: I also look at
+            each circuit and comment on style and technique.)
+        </li>
+    </ul>
+
+
+    <h2><a id="simulators">Supported Simulators</a></h2>
+
+    <dl>
+        <dt><a target="_top" href="http://pages.mtu.edu/~pop/jlsp/bin/JLS.html">JLS</a></dt>
+        <dd>JLS was written by David Poplawski at Michigan Tech. I have used this simulator for 10 years. I find
+            it intuitive and easy to use. It has a number of built-in components that are very
+            helpful when building ALUs and Patterson and Hennessy's example CPU from their textbook.
+
+            <p>JLS has two main limitations: (1) It has a couple of minor UI bugs that can be annoying; and (2) there
+                is no quick way to fix a bug in a subcircuit that been included multiple times into a main
+                circuit. For example, if a student finds a bug in a full adder after she has imported it 16 times into a
+                ripple carry adder, she must delete and re-import each full adder. It is not possible to fix
+                the sub-circuit in one place only.</p>
+        </dd>
+
+        <dt><a target="_top" href="http://www.cburch.com/logisim/">Logisim</a></dt>
+        <dd>Logisim was written by Carl Burch at Hendrix College (now at Google). This appears to be the most popular
+            simulator in use today in CS classrooms. It has more features than JLS; consequently, I find it
+            slightly more difficult to learn and to use. This additional difficulty is well worth it if you make use
+            of Logisim's additional features. Those who are building only a few, simple circuits are (in my opinion)
+            better off using JLS.
+        </dd>
+    </dl>
+
+    <p>To add support for a new simulator, one need only (1) write a new class implementing the <code><a
+            href="dist/doc/edu/gvsu/dlunit/ISimulator.html">ISimulator</a></code>
+        interface, and (2) make some minor changes to <code>DLUnitCore</code> so it recognizes the simulator's
+        file extension.
+    </p>
+
+    <h2><a id="notes">Notes / Quirks</a></h2>
+
+    <ul>
+        <li>When testing JLS, calls to <code>setMemory*</code> don't take effect until the simulator is run. (I
+            discovered this when writing end-to-end tests. I'm not sure why else it would be helpful to call
+            <code>readMemory*</code> before calling <code>run</code>.)
+        </li>
+        <li> Note: Logisim does not name its RAM elements. This means (1) The name parameter is ignored when testing
+            logisim circuits, and (2) <code>DLUnit</code> does not support the testing of Logisim circuits with more
+            than one RAM element per subcircuit.
+        </li>
+    </ul>
+
+    <p>What questions do you have?</p>
+
+
+    <h2><a id="faq">FAQ</a></h2>
+
+    <p>What questions do you have?</p>
+
+    <dl>
+    </dl>
+
+    <h2><a id="contact_info">Contact Info</a></h2>
+
+    You can e-mail me at <em>last-name</em> <em>first-initial</em><code>@gvsu.edu</code>,
+    or see my complete contact info <a href="http://www.cis.gvsu.edu/~kurmasz/index2.html#contact_info">here</a>.
+
+    <hr style="margin-left: -15px;">
+    <em>(C) 2017 Zachary Kurmas</em>
+    <br>
+    Last updated: 20 October 2017
+</div>
+
+</body>
+
+
+</html>

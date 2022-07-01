@@ -1,0 +1,565 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="rails-demo-2-building-a-simple-blog-app">Rails Demo 2: Building a simple Blog app</h1>
+
+<p>So let’s create a caveman blog app.  Let’s start by creating a new app.</p>
+
+<ol>
+  <li>
+    <p>We use the rails command to do this.</p>
+
+    <pre><code> rails new blog
+</code></pre>
+  </li>
+  <li>
+    <p>Now let’s use the scaffold generator to create our first entity.   Note we use the capital letter singular version of the entity</p>
+
+    <pre><code> rails generate scaffold Post title:string article:text likes:integer status:integer 
+</code></pre>
+  </li>
+  <li>
+    <p>Review briefly what this accomplishes (e.g. creates the MVC triad for Posts) as well as the db migration.  Then run rake to cause the migration to execute.</p>
+
+    <pre><code> rake db:migrate
+</code></pre>
+  </li>
+  <li>
+    <p>Now we can run the rails server and play around with the MVC triad that was created.</p>
+
+    <pre><code> rails s --binding=0.0.0.0
+</code></pre>
+  </li>
+  <li>
+    <p>Let’s setup our <code>Post</code> model so it can deal with the enumerated status types properly.  We need to add the following line of code to the <code>Post</code> class in <code>model/post.rb</code>:</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">enum</span> <span class="ss">status: </span><span class="p">[</span><span class="ss">:published</span><span class="p">,</span> <span class="ss">:unpublished</span><span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>But let’s say that we wanted the <code>:unpublished</code> value (which is actually <code>1</code>) to be the default in the database, rather than <code>0</code> (or <code>:published</code>).  We can do this by tweaking the migration that we generated and adding a default to the status field:</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">class</span> <span class="nc">CreatePosts</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
+   <span class="k">def</span> <span class="nf">change</span>
+     <span class="n">create_table</span> <span class="ss">:posts</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+                   <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:title</span>
+       <span class="n">t</span><span class="p">.</span><span class="nf">text</span> <span class="ss">:article</span>
+       <span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:likes</span>
+       <span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:status</span><span class="p">,</span> <span class="ss">default: </span><span class="mi">1</span>
+       <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span> <span class="ss">null: </span><span class="kp">false</span>
+     <span class="k">end</span>
+     <span class="k">end</span>
+ <span class="k">end</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Yikes, we already ran our migration.  No problem, let’s back off the migration and re-run it:</p>
+
+    <pre><code>rake db:rollback STEP=1
+</code></pre>
+  </li>
+  <li>
+    <p>Cool, now that we undid the previous migration, we can do it again with our updated migration.</p>
+
+    <pre><code>rake db:migrate
+</code></pre>
+  </li>
+  <li>
+    <p>However, we still have a problem, because our input forms are treating status as an integer value.  Take a look at <code>views/_form.html.erb</code> for example.  We can setup our form to handle the enumerated types by making several updates.  First let’s add an action to the <code>posts_controller.rb</code>.  At the top we put this line:</p>
+
+    <pre><code> before_action :set_statuses
+</code></pre>
+
+    <p>and on the bottom we put</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">set_statuses</span>
+   <span class="vi">@statuses</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">statuses</span>
+ <span class="k">end</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Now we need to update the form code, replacing this line of code:</p>
+
+    <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">number_field</span> <span class="ss">:status</span><span class="p">,</span> <span class="ss">id: :post_status</span> <span class="cp">%&gt;</span>		
+</code></pre></div>    </div>
+
+    <p>with</p>
+
+    <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">select</span> <span class="ss">:status</span><span class="p">,</span> <span class="vi">@statuses</span><span class="p">.</span><span class="nf">keys</span><span class="p">,</span> <span class="ss">selected: </span><span class="vi">@post</span><span class="p">.</span><span class="nf">status</span> <span class="cp">%&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Now go ahead and visit the posts form and check out the enumerated type!</p>
+  </li>
+</ol>
+
+<h1 id="using-tdd-to-validate-models">Using TDD to validate models</h1>
+
+<ol>
+  <li>
+    <p>Let’s look at how we can add some validation to the form.  Let’s do this via a TDD approach.   Let’s start by writing down some of our constraints in the README file!</p>
+
+    <pre><code> Testing specifications for posts:
+ title: string
+ article: text
+ likes: integer
+ status: enum - published or unpublished
+	
+	
+ - title must be present
+ - title must be between 5 and 80 characters
+ - article must be present
+ - article must be between 20 and 600 characters
+ - likes must be positive
+ - status must be valid
+</code></pre>
+  </li>
+  <li>
+    <p>This is how we want the Post model to behave.  Now let’s go ahead and write some tests that can test these particular specifications.  First under <code>test/models/</code> add to <code>post_test.rb</code>.</p>
+
+    <pre><code> require 'test_helper'
+
+ class PostTest &lt; ActiveSupport::TestCase
+
+  def setup
+     @post = Post.create(title: "a title", article: "This is the actual text of our article.  It can be rather long.", likes: 0, status: 1)
+  end
+	
+  test "post must be valid" do
+   	assert @post.valid? 
+  end
+	
+ end
+</code></pre>
+  </li>
+  <li>
+    <p>Now that we have a test, we can actually run our tests with rake.</p>
+
+    <pre><code> rake test
+</code></pre>
+  </li>
+  <li>
+    <p>Notice that we pass all tests at this point, since we have not validation rules established for our model.  Let’s go ahead and add test routines for each of our model specifications:</p>
+
+    <pre><code> test "title must be present" do 
+ end
+
+ test "title must not be too short" do 
+ end
+
+ test "title must not be too long" do
+ end
+
+ test "article must be present" do
+ end
+
+ test "article must not be too short" do
+ end
+
+ test "article must not be too long" do
+ end
+
+ test "likes must be positive" do
+ end
+
+ test "status must be valid" do
+ end
+</code></pre>
+  </li>
+  <li>
+    <p>Now let’s implement each one of these with the appropriate forms of the <code>assert</code> method:</p>
+
+    <pre><code> test "post must be valid" do
+   		assert @post.valid? 
+ end
+
+ test "title must be present" do 
+     @post.title = ""
+     assert_not @post.valid?
+ end
+
+ test "title must not be too short" do 
+     @post.title = "aa"
+     assert_not @post.valid?
+ end
+
+ test "title must not be too long" do
+     @post.title = "a" * 81
+     assert_not @post.valid?
+ end
+
+ test "article must be present" do
+     @post.article = ""
+     assert_not @post.valid?
+ end
+
+ test "article must not be too short" do
+     @post.article = "aa"
+     assert_not @post.valid?
+ end
+
+ test "article must not be too long" do
+     @post.article = "a" * 601
+     assert_not @post.valid?
+ end
+
+ test "likes must be positive" do
+     @post.likes = -1
+     assert_not @post.valid?
+ end
+
+ test "status must be valid" do
+     invalid_statuses = [-10, -1, 2, 10]
+     invalid_statuses.each do |is|
+         begin
+             @post.status = is
+             assert false, "#{is} should be invalid"
+         rescue
+             assert true
+         end
+     end
+ end
+	
+ test "status must be published or unpublished" do
+     valid_statuses = [:published, :unpublished]
+     valid_statuses.each do |is|
+       begin
+           @post.status = is
+           assert true
+       rescue
+           assert false, "#{is} should be invalid"
+       end
+     end
+  		end 
+</code></pre>
+  </li>
+  <li>
+    <p>Now if we run our tests again, many (but not all of them fail) since we have not yet implemented our model validation.</p>
+
+    <pre><code> rake test
+</code></pre>
+  </li>
+  <li>
+    <p>Ok, that makes sense, so lets proceed to implement the validations in our <code>post.rb</code> model.</p>
+
+    <p>title</p>
+
+    <pre><code> validates :title,  presence: true, length: {minimum: 5, maximum: 80}
+</code></pre>
+
+    <p>article</p>
+
+    <pre><code> validates :article, presence: true, length: {minimum: 20, maximum: 600}
+</code></pre>
+
+    <p>likes</p>
+
+    <pre><code> validates :likes, numericality: {greater_than_or_equal_to: 0}
+</code></pre>
+
+    <p>(Feeling a little overwhelmed with methods and parameters appearing out of nowhere? I certainly did when I first learned Rails.)</p>
+  </li>
+  <li>
+    <p>Wild, now all of our model tests pass, but some of our generated controller tests do not!  That is because the auto-generated fixtures do not meet our model validation constraints! In particular the article fields aren’t long enough. Let’s fix this by editing <code>test/fixtures/posts.yml</code>.  Then run the tests again.  Eureka!  We now have a a great deal of test automation in place and accomplished all this without breaking a sweat.</p>
+  </li>
+  <li>Let’s go ahead and try to run the web app and see how the validation works in our form.  Pretty cool, eh?
+    <ul>
+      <li class="to-me">Discuss how the error messages are generated.</li>
+      <li class="to-me">Use Rails console to create invalid object.  Notice that calling <code>valid?</code> fills the <code>messages</code> instance variable.</li>
+    </ul>
+  </li>
+  <li>
+    <p>We can play around with validations in the rails console as well.</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rails</span> <span class="n">console</span>
+<span class="nb">p</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">title: </span><span class="s2">"This is a valid title"</span><span class="p">,</span> <span class="ss">article: </span><span class="s2">"This is a very long article about absolutely nothing."</span><span class="p">,</span> <span class="ss">likes: </span><span class="mi">0</span><span class="p">)</span>
+     
+<span class="nb">p</span><span class="p">.</span><span class="nf">valid?</span>
+<span class="nb">p</span><span class="p">.</span><span class="nf">title</span> <span class="o">=</span> <span class="s2">"a"</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="nb">p</span><span class="p">.</span><span class="nf">valid?</span> 
+<span class="nb">p</span><span class="p">.</span><span class="nf">errors</span><span class="p">.</span><span class="nf">messages</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+
+</main>
+</body>
+</html>

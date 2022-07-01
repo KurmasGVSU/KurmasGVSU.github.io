@@ -1,0 +1,443 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 2: Introduction to Digital Logic</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    ul {
+      margin-top: 0;
+    }
+
+    .icTable {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Introduction to Digital Logic</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2021</h1></td>
+  </tr>
+</table>
+
+
+
+<p>Adapted from a lab originally designed by <a target="_top" href="https://www.cis.gvsu.edu/~wolffe">Prof. Greg Wolffe</a>.
+
+<p class='important'><b>Important:</b> This lab is evaluated entirely by demo.  Be sure to demonstrate your circuits to the instructor 
+when indicated below.  You will perform <em>three</em> demonstrations during the lab session.</p>
+
+<h3 class="listHeader">Preparation</h3>
+
+<p>Watch <a href='https://youtu.be/cpFiApHriGc'>this video</a> demonstrating how to build circuits on breadboards. 
+(Yes, it's long; but, it will save you a lot of trouble when doing the lab --- especially the part about switches that
+begins at time <a href='https://youtu.be/cpFiApHriGc#t=1323'>22:03</a>.)</p>
+
+<h3 class="listHeader">Resources</h3>
+<ul>
+
+  <li> Chapters 1 - 3 describe the basics of digital logic. (See also
+    Appendix C located on the companion CD of the Patterson and Hennessy
+    textbook.)
+  </li>
+
+  <li><a href='https://www.electronics-tutorials.ws/resistor/res_2.html'>This site</a> explains how to
+    determine the number of Ohms a resistor provides based on the colors of its bands.
+  </li>
+
+  <li><a href='https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/ReferenceDocuments/Pinouts'>Pinouts</a> for the chips in your breadboard kits.</li>
+</ul>
+
+<h3>Equipment Care</h3>
+
+<p class="listHeader">Some important guidelines when working with breadboards and CMOS chips:</p>
+
+<ul>
+    <li><span class='inline-important'><em><b>Every</b></em> LED must be connected to a resistor.</span>  Failure to do so will damage the LEDs.</li>
+
+      <li>When inserting an IC, <span class='inline-important'>be sure that the notch goes to the left</span>, and that pins 7 and 14 are connected correctly.
+      Failure to do so will damage the chip.</li>
+
+  <li> Avoid touching the pins.</li>
+
+  <li> Never connect an input signal to a CMOS chip when the power
+    is off. In other words, make sure there is power flowing through
+    pins 7 and 14 before connecting input wires to a power source.
+  </li>
+
+  <li> Do not remove power if an input signal is still present. In
+    other words, disconnect power to your inputs before disconnecting
+    power to the chip or breadboard.
+  </li>
+  <li>Monitor the temperature of the chips.  If a chip becomes hot to the touch, it usually means that you have either (1) inserted it backwards, or (2) improperly 
+  connected pins 7 and 14 to power and ground.
+  </li>
+
+  <li><span class='inline-important'><em>Always</em> use the chip puller to remove ICs from the breadboard.</span>  Using your fingers will bend the pins.</li>
+</ul>
+
+<h3>Your first circuit</h3>
+
+  Construct the circuit shown in Figure 1-1 and described below.  (The <a href='https://youtu.be/cpFiApHriGc'>video</a> also walks through 
+  how to build this circuit.)
+  <img class="center" src="Fig1-1.gif" height="263" width="274" alt="Simple LED">
+
+<h3> Adding Logic Gates </h3>
+<p>The logic used gates in this are packaged in integrated circuits containing 14 pins.
+Because there are so many pins available, each IC contains multiple logic gates.
+For example, the IC labeled <code>74HCT08</code> contains four AND gates within the chip, each of which
+takes two inputs.  The figure below shows the pinout for this chip.</p>
+
+<img class="center" src="74008.gif" alt="AND pinout">
+
+<p>Your kits also include the following integrated circuits:</p>
+
+<table class="center icTable">
+  <tr>
+    <td> Designation</td>
+    <td> Operation</td>
+  </tr>
+
+  <tr>
+    <td> 74HCT00</td>
+    <td> NAND</td>
+  </tr>
+
+  <tr>
+    <td> 74HCT02</td>
+    <td> NOR</td>
+  </tr>
+
+  <tr>
+    <td> 74HCT08</td>
+    <td> AND</td>
+  </tr>
+
+  <tr>
+    <td> 74HCT32</td>
+    <td> OR</td>
+  </tr>
+
+  <tr>
+    <td> 74HCT86</td>
+    <td> XOR</td>
+  </tr>
+</table>
+
+<p>They are all quad 2-input ICs - meaning there are four gates within each chip, where each gate takes two input.
+  <a href='https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/ReferenceDocuments/Pinouts'>This page</a> shows the pinouts for these chips.
+</p>
+
+
+<p>To investigate the operation of an integrated circuit that
+  implements the AND function, construct the following circuit: </p>
+
+<img class="center" src="Fig1-3.gif" height="265" width="331" ALT="AND gate and LED">
+
+<p class='listHeader'> Perform the following:</p>
+<ol start="1">
+  <li> Construct a truth table from your observations.</li>
+  <li> Take the wires attached to input <code>B</code> and leave the other
+    end floating in the air. Describe the effect of having this
+    "floating input". (To get some more interesting behavior, grab the
+    floating ends with your fingers and wiggle them.)
+</ol>
+
+<h3>Switches</h3>
+
+<p>It is much more convenient to use switches to control whether an input
+wire has a logical <em>true</em> or a <em>false</em> on it; however, as you noticed, floating
+inputs can cause erratic behavior. The <a href='https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/ReferenceDocuments/Switches/switches.html'>Using Switches</a> page (as well as 
+<a href='https://youtu.be/cpFiApHriGc'>the video</a>)
+explains how to correctly use the two types of switches in your kit.
+
+<ol start="3">
+  <li> Add dip switches to the circuit you just built (the one shown in
+    Figure 1-3).  <span class='inline-important'>Demonstrate to the instructor or lab assistant that
+    your circuit works correctly.</span>
+</ol>
+
+<img src='pull_down_switch.jpeg'>
+
+
+<h3>Experiment</h3>
+
+<ol start="4">
+
+  <li> Get a random IC from the instructor. Replace your <code>74HCT08</code>  ("AND gate chip") with the new
+    chip. Construct a truth table from your observations. Identify the
+    type of gates the chip contains. <span class='inline-important'>Show your truth table to the instructor or lab assistant.</span></li>
+    </ol>
+
+<h3>Creating a more complex combinatorial circuit</h3>
+Digital logic is implemented by using basic logic gates as building blocks
+to create more complex circuits. A combinatorial circuit is a set
+of gates whose output function depends only on the values of its current
+inputs (i.e., there is no storage or feedback involved in the system).
+Build the common combinatorial circuit shown below.  Use DIP switches in the "pull-down"
+  configuration to control the values of <code>A</code> and <code>B</code>. 
+  
+  <img class='center' SRC="Fig2-3.gif" height=301 width=415 alt="Mystery circuit">
+  
+<ol start=5>
+
+
+  <li>
+    Determine the truth table from observation. <span class='inline-important'>Place the column
+    for <code>Y</code> to the <em>left</em> of the column
+    for <code>X</code>.</span> In other words, treat <code>YX</code> as
+    a two-bit number.
+  </li>
+
+  <li>
+    Using your observations as a guide, describe what simple operation
+    this circuit implements. (Did you place the column for <code>Y</code> to the <em>left</em> 
+    of the column for <em>X</em>?)
+  </li>
+
+  <li><span class='inline-important'>Demonstrate your circuit and truth table to the instructor (or lab assistant</span>).
+  </li>
+
+  
+</ol>
+
+<hr>
+<h3>Debugging</h3>
+
+<p class='listHeader'>If your circuit doesn't work as expected, work through this checklist:</p>
+
+<ul>
+  <li>Do all LEDs have resistors?</li>
+  <li>Are all LED resistors less than 1000 Ohms?</li>
+  <li>Are all chips inserted with the notch to the left?</li>
+  <li>Is pin 14 of each chip wired to the positive power bus?</li>
+  <li>Is pin 7 of each chip wired to the negative power bus?</li>
+  <li>Are there any floating inputs?</li>
+  <li>Does every switch have a resistor?</li>
+  <li>Is every switch's resistor at least 1000 Ohms?</li> <!-- ' commented "closing" quote to make syntax highlighter happy-->
+  
+</ul>
+
+
+
+<hr>
+<p>Updated Wednesday, 1 September 2021, 12:56 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+
+
+<!--
+Dropped because lab was too long
+<h3>
+Designing a Simple Controller</h3>
+The final aspect of this introduction to combinatorial circuits is the
+design phase; using simple digital logic to create more complex circuits.
+Based on the knowledge gained above, you are to design and construct a
+simple digital controller. The controller is to be used to activate
+a device when a particular set of input conditions is true. It should
+have the following set of characteristics:
+<ul>
+<li>
+the controller takes four inputs (A, B, C, and D) and has one output (X)</li>
+
+<li>
+the device control line (output X) must be HIGH whenever input A is ON
+and input D is OFF and either input B or input C (or both) is ON</li>
+</ul>
+Design and implement the controller:
+<ol START=13>
+<li>
+Draw a labeled schematic of your circuit specifying IC numbers and pin
+numbers.</li>
+</ol>
+Test your circuit and <b>demonstrate it to the instructor</b>.
+
+-->
+
+</body>
+</html>

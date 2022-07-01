@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 371 CSS and HTML</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    #content {
+      padding: 0 10px 0 10px;
+    }
+
+    .demo3 {
+      width: 400px;
+    }
+
+    #quixx1 {
+      margin-left: 25px;
+    }
+
+  .req {
+    text-align: left;
+  }
+
+  .points {
+    padding-right: 15px;
+  }
+
+    </style>
+</head>
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 371</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">CSS and HTML</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2020</h1></td>
+  </tr>
+</table>
+
+<p>Based on an assignment originally developed by Prof. Engelsma.</p>
+
+<p>GitHub Classroom URL: <a href='https://classroom.github.com/a/txkne0og'><code>classroom.github.com/a/txkne0og</code></a></p>
+
+<p><a href='https://rit.az1.qualtrics.com/jfe/form/SV_7XaqCGtZrI9GliR'>RIT Survey</a></p>
+
+<h1>Objective</h1>
+
+<p>The objective of this assignment is to provide students with practice writing HTML and CSS.</p>
+
+<h1 id='part1'>Part 1: CSS</h1>
+
+<p>Craft CSS code for the following scenarios. You must craft your CSS by hand – do not use any third party CSS or JavaScript libraries in your solutions. 
+ Avoid duplicating CSS rules when possible. I suggest adding the CSS to the head of each <code>.html</code> file in the git repo. Feel free to suggest an alternative.</p>
+
+<p>Please complete this assignment individually.</p>
+
+<dl>
+<dt>Problem 1</dt>
+<dd>
+<img src="Images/image1.png"  alt='Sample Output for problem 1'>
+
+<p>HTML Source: </p>
+<xmp>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 1</title>
+</head>
+<body>
+    <h1> Example 1 </h1> 
+    <div class="important">
+       <p> <span class="bigtext">C</span>urabitur blandit tempus porttitor. Duis mollis, est non commodo
+           luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque 
+           ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Aenean lacinia 
+           bibendum nulla sed consectetur. Maecenas sed diam eget risus varius blandit sit amet non magna. 
+           Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. 
+           Pellentesque ornare sem lacinia quam venenatis vestibulum. 
+      </p>
+    </div>
+    <p id="signature">Mad Tertulous</p>
+</body>
+</html>
+</xmp>
+
+<p class='listHeader'>Specifications:</p>
+  <ul>
+    <li>h1 is centered with text color purple.</li>
+    <li>The element marked with id=”signature” is right justified italics.</li>
+    <li>First character in the paragraph is the Georgia font family and 40px in size.</li>
+  </ul>
+</dd>
+
+<dt>Problem 2</dt>
+<dd>
+
+<img src="Images/image2.png"  alt='Sample Output for problem 2'>
+
+<p>HTML Source: </p>
+<xmp>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 2</title>
+</head>
+<body>
+<p id="topleft"> I am top left </p>
+<p id="bottomleft"> I am bottom left </p>
+<p id="topright"> I am top right </p>
+<p id="bottomright"> I am bottom right </p>
+<div class="centered_green_box">
+    <p class="centered"> Centered </p>
+</div>
+
+</body>
+</html>
+</xmp>
+
+<p class='listHeader'>Specifications:</p>
+  <ul>
+     <li>left justified text has a left margin of 5px.</li>
+     <li>Right justified text has a right margin of 5px.</li>
+     <li>Top/bottom margin is default.</li>
+     <li>Size of the box is 100px X 100px, with background color <code>#00FF00</code>.</li>
+     <li>Be sure the <em>center</em> of box stays in the center when the screen is resized. (The center of the box should be centered, not the top, left corner.)</li>
+     <li>
+  </ul>
+Hint: For the box, use absolute positioning and <code>calc</code> for compute the location.
+</dd>
+</dl>
+
+<dt>Problem 3</dt>
+<dd>
+<img class='demo3' src="Images/image3.png"  alt='Sample Output for problem 3'>
+<img class='demo3' src="Images/image3b.png"  alt='Sample Output 2 for problem 3'>
+
+<p>HTML Source: </p>
+<xmp>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 3</title>
+</head>
+<body>
+<p> Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis
+    dapibus posuere velit aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh
+    ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. </p>
+<div class="fancy_quote">Posuere erat a ante venenatis dapibus! onec ullamcorper nulla non metus auctor</div>
+<p> Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo
+    quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam quis risus eget urna mollis ornare vel eu
+    leo. Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus
+    posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.</p>
+<p>Maecenas faucibus mollis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec ullamcorper nulla non
+    metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec
+    elit.</p>
+</body>
+</html>
+</xmp>
+
+<p class='listHeader'>Specifications:</p>
+  <ul>
+<li>paragraph text is displayed in default font.</li>
+<li>Quote box measures 200px X 100px.</li>
+<li>The font size of the quoted text is 120% larger than the default font-size.</li>
+<li>The font style of the quoted text is italic.</li>
+<li>The precise appearance of the page will depend on the width of the window. The important feature is that the paragraph text wraps around the quote text. 
+</ul>
+</dd>
+
+<dt>Problem 4</dt>
+<dd>
+
+<img src="Images/image4b.png"  alt='Sample Output for problem 4'>
+
+<img src="Images/image4.png"  alt='Sample Output for problem 4'>
+
+<p>HTML Source: </p>
+<xmp>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 4</title>
+</head>
+<body>
+<div class="box redbox">
+    Get ready!
+</div>
+<div class="box yellowbox">
+    Get set!
+</div>
+<div class="box greenbox">
+    Go!!
+</div>
+
+</body>
+</html>
+
+</xmp>
+
+<p class='listHeader'>Specifications:</p>
+  <ul>
+    <li> The boxes should begin to stack up vertically when the width of the view is reduced (i.e., when you reduce the width of your browser window.)
+      <ul>
+        <li>If your browser window won't narrow enough to stack the boxes, you can make them a bit wider.</li>
+        <li>This page need only work for browsers. It doesn't have to be "responsive" and work for mobile.</li>
+      </ul>
+    </li>
+    <li> Use shades of red, yellow, green for the box background and border. Colors do not need to match the example above exactly.</li>
+    <li> The boxes are 300px wide.</li>
+    <li> Padding, margins and borders are all set to 10px.</li>
+    <li> Text should be centered in the containing box.</li>
+    <li> Avoid duplicating lines of CSS. Place settings that apply to all three boxes in their own CSS ruleset.</li>
+  </ul>
+</dd>
+
+<dt>Problem 5</dt>
+<dd>
+
+<img src="Images/image5.png"  alt='Sample Output for problem 5'>
+
+<p>HTML Source: </p>
+<xmp>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 5</title>
+</head>
+
+<body>
+    <ol>
+        <li> <a href="#1"> Link #1 </a> </li>
+        <li> <a href="#2"> Link #2 </a> </li>
+        <li> <a href="#3"> Link #3 </a> </li>
+    </ol>
+</body>
+
+</html>
+</xmp>
+
+<p class='listHeader'>Specifications:</p>
+  <ul>
+     <li> normal, unvisited links are red with no underline.
+     <li> Visited links are grey with no underline.
+     <li> If you hover over a link it turns red with an underline.
+     <li> When you click a link it flashes momentarily a blue color with no underline.
+</ul>
+</dd>
+</dl>
+
+<hr>
+
+<h1 id='part2'>Part 2: Quixx Board</h1>
+
+<p class='listHeader'>Implement the board for the "pencil game" <a href="https://gamewright.com/product/Qwixx">Quixx</a>. 
+<ul>
+  <li>Make your game look as much like the sample below as possible.</li>
+  <li>Focus on designing your CSS to avoid duplication when possible.</li>
+  <li>Make the width of each number box the same. (In other words, a box containing "2" should not be narrower than a box containing "12".)</li>
+  <li>Limit your use of absolute and relative positioning. (You will need to use them in a couple places.)
+  <li>The starter code includes <code>quixx.html</code>.  The purpose of this starter file is so you don't have to type the HTML for each number box by hand.
+      You may use this as a starting point if you like; or, you can create your own <code>html</code> file from scratch.
+  <li>Your design does <em>not</em> need to be responsive.  Feel free to hard-code widths and heights for this assignment.</li>
+  <li>Your design does, however, need to appear correctly at different screen witdths and scale factors. That doesn't mean it has to look good on a mobile screen, but <em>small</em> adjustments to the scale and/or window size shouldn't mess up the image.
+</ul>
+
+<p class='listHeader'>This assignment must be completed indivdually. You may not share code; but, you are encouraged to share high-level 
+ideas with each other including:</p>
+<ul>
+  <li>Which CSS properties you used</li>
+  <li>Which selectors you used to avoid repetition</li>
+</ul>
+
+<p><span class='inline-important'>Expect Part 2 to take <em>much</em> longer than Part 1.</span></p>
+
+<p class='listHeader'>Hints:</p>
+<ul>
+<li>You can use Unicode character <a href='https://www.codetable.net/decimal/128274'><code>&amp;#128274</code></a> for the lock.</li>
+<li>You can use Unicode character <a href='https://www.codetable.net/decimal/127922'><code>&amp;#127922</code></a> for the small die.</li>
+<li>You can use Unicode character <a href='https://www.codetable.net/decimal/10007'><code>&amp;#10007</code></a> for the small <code>x</code> over the die.</li>
+<li>Use <code>position: relative</code> to slide the <code>x</code> over the die.</li>
+<li>Use <code>position: abosolute</code> to draw the back border around the 12 and lock columns.</li>
+<li>Using <a href="https://www.w3schools.com/css/css3_variables.asp"><code>var</code></a> and 
+<a href="https://www.w3schools.com/cssref/func_calc.asp"><code>calc</code></a> will make it easier to make adjustments. (Remember to put spaces around "<code>+</code>" and "<code>-</code>".)</li>
+</ul>
+
+<img id='quixx1' src='Images/htmlQuixxBoard.png' alt='Quixx board'/>
+
+
+<hr>
+
+<h1 id='part3'>Part 3: Quixx using a template</h1>
+
+
+
+<p class='listHeader'>Use an HTML templating system to generate the Quixx board.</p>
+<ul>
+<li>You may use any templating system you like (<a href='https://php.net'>PHP</a>, <a href='https://www.w3schools.com/asp/razor_syntax.asp'>Razor (C#)</a>, <a href='https://www.stuartellis.name/articles/erb/'>ERB (Ruby)</a>, <a href='https://ejs.co/'>EJS (JavaScript)</a>, <a href='https://jinja.palletsprojects.com/en/2.10.x/'>Jinja (Python)</a>, etc.).  The sample code on git hub contains
+    <a href='https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/Templating'>examples of several of these templating systems</a>.
+    </li>
+<li>Your template should dynamically generate a board based on two parameters: the maximum value in each row, and the number of rows. 
+    For example, the board below uses parameters of 21 and 6.  (If you prefer, you may simply set two variables at the beginning of your code and change those values by hand to generate a differently configured board.)
+    <ul>
+      <li> In order for the template to automatically adjust to the desired number of rows and values, your template will have a nested loop.</li>
+      <li> The first <code>n/2</code> rows should count up, the last <code>n/2</code> rows should count down.</li>
+    </ul>
+<li>In preparation for the next assignment, please add a unique id to each number box.  The ids should look something like <code>row3-col6</code>
+<li>You may use the template to generate CSS as well.  (You may need to do this to get the widths and placement correct.)</li>
+</ul>
+
+<img id='quixx1' src='Images/quixx_20x6.png' alt='21 x 6 Quixx board'/>
+
+<hr>
+
+<h1 id='part4'>Part 4: Implement the game </h1>
+
+<p>GitHub classroom link: <a href='https://classroom.github.com/g/cIUHZHJO'><code>classroom.github.com/g/cIUHZHJO</code></a>. </p>
+
+<p>Add JavaScript to your Qwixx board so that you can play the game.  You can find the rules here: <a href='https://gamewright.com/pdfs/Rules/QwixxTM-RULES.pdf'><code>gamewright.com/pdfs/Rules/QwixxTM-RULES.pdf</code></a></p>
+
+<p class='listHeader'>Rules:</p>
+<ul>
+  <li>You may work in teams of up to two. (I will give temmates access to your repository by hand.  Just ask.)</li>
+  <li>Your implementation must be client-side only. (Obviously, you will need a server to provide the page and JavaScript; but,
+  once the page loads, you shouldn't talk to the server again.)</li>
+  <li>Use plain JavaScript:  <em>Don't</em> use React, Angular, Vue, etc.</li>
+  <li> You may either (1) use a static HTML file with a fixed, standard-sized board, or (2) use your code from part 3 to load a dynamically-generated board.</li>
+  <li>You will need to add dice to your Qwixx board: Two white dice, and one additional die for each color used.</li>
+  <li>Your implementation must use Model-View-Controller design (i.e., separate Model, View, and Controller) classes.  (If you have a different design in mind, feel free to ask.)</li>
+  <li>All state should be stored in the mode</li>
+  <li>Your view may not modify your model.</li>
+  <li>You must provide unit tests for your Model and Controller classes.</li>
+  <li>You may use as much or as little of the provided starter code as you like.</li>
+</ul>
+  
+<p class='listHeader'>Ideas / Suggestons:</p>
+<ul>
+  <li>Have the model recognize and track three phases:  (1) Need to roll, (2) Need to use white dice (or pass), (3) Need to use colored die (or take -5).</li>
+  <li>Add a click  handler to each number box.  When a number box is clicked, check to see if that box is elligible to be crossed out (e.g., no boxes to the left have been crossed out, and number in the box corresponds to dice.)
+  <li>Writing many short, helper methods makes testing easier.
+</ul>
+
+
+<h2>Setting up Jest</h2>
+
+<p class='listHeader'>To run your Qwixx code directly in a browser, you will want to use the 
+<a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import'>ES 6 module import syntax</a>. This ES6 syntax is different from 
+the <em>CommonJS</em> syntax used by Node, which causes problems when testing.  To address the differing import syntax, we will use a package called 
+<a href='https://babeljs.io'>Babel</a> to transform the code into something that Node handles.  To set up Jest using Babel:</p>
+<ol>
+<li>Set up <code>npm</code> in your project: <span class='inline-instruction'>npm init -y</span></li>
+<li>Install <code>Jest</code>: <span class='inline-instruction'>npm install --save-dev jest</span></li>
+<li>Install <code>Babel</code>: <span class='inline-instruction'>npm install --save-dev babel-jest @babel/core @babel/preset-env</span></li>
+<li>Configure Babel by creating a file named <code>babel.config.js</code> with the following content:
+<pre>
+module.exports = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        targets: {
+          node: 'current',
+        },
+      },
+    ],
+  ],
+};
+</pre>
+</li>
+<li>Edit the <code>"scripts"/"test"</code> property to equal <code>jest</code>
+</ol>
+
+<p>You can now run your Jest tests from the command line with <span class='inline-instruction'>npm test</span>.</p>
+
+<p>Note:  If you choose to use the starter code from GitHub classroom, these steps have already been completed. You need only run <span class='inline-instruction'>npm install</span>.)
+
+  <h2>Rubric</h2>
+
+<p> This assignment will be scored out of 60 points, with opportunities for extra credit.</p>
+
+<table>
+<tr><th class='points'>Points</th><th class='req'>Requirements</th></tr>
+<tr><td>30</td><td>Basic functionality and minimal model testing</td></tr>
+<tr><td>10</td><td>Correctly calculates score</td></tr>
+<tr><td>10</td><td>Correctly enforces rules</td></tr>
+<tr><td>5</td><td>Complete and thorough unit tests</td></tr>
+<tr><td>5+</td><td>A "bonus" of your choice (make the game multi-player, make the game work with a dynamically chosen board size, etc.)</td></tr>
+</table>
+
+  <p class='listHeader'>Note: In order to receive a grade for this assignment, your submission must, a minimum:</p>
+  <ul>
+  <li>Allow users to roll the dice, 
+  <li>Allow users to cross out a box based on the white dice,
+  <li>Allow users to cross out a box based on a colored die, and
+  <li>Contain unit tests for the model.
+  </ul>
+
+<hr>
+<h1>Submission</h1>
+
+<p class='listHeader'>I will grade the parts of this assignment separately.</p>
+<ul>
+ <li>When Part 1 is complete, commit to the <code>master</code> branch with a commit message that includes "<code>[grade me 1]</code>" 
+(the square brackets are important).</li>
+<li>When Part 2 is complete, commit to the <code>master</code> branch with a commit message that includes "<code>[grade me 2]</code>" 
+(the square brackets are important).</li>
+<li>When Part 3 is complete, commit to the <code>master</code> branch with a commit message that includes "<code>[grade me 3]</code>" 
+(the square brackets are important).</li>
+<li>When part 4 is complete,  commit to the <code>master</code> branch with a commit message that includes "<code>[grade me 4]</code>" 
+(the square brackets are important) and <b>Schedule a demo with me</b>.</li>
+</ul>
+
+<p>Please fill out this <a href='https://rit.az1.qualtrics.com/jfe/form/SV_7XaqCGtZrI9GliR'>survey from RIT</a> when you have completed Part 4.</p>
+
+<hr>
+<p>Updated Saturday, 4 April 2020, 4:41 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+
+</main>
+</body>
+</html>

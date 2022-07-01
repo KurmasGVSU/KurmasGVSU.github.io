@@ -1,0 +1,363 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="recursion">Recursion</h1>
+
+<ul>
+  <li class="q">How are Fibonacci numbers defined?
+    <ul>
+      <li><code>F(n) = 1 if n == 1 or n == 2, else f(n -1)+ f(n-2)</code></li>
+    </ul>
+  </li>
+  <li class="q">Code directly from the definition.</li>
+  <li class="q">Code the iterative way.</li>
+  <li class="q">Which is easier to follow?</li>
+  <li class="q">How could you define factorial recursively?
+    <ul>
+      <li><code>f(n) = 1 if n = 0 or 1, else n*f(n-1)</code></li>
+    </ul>
+  </li>
+  <li class="q">Write <code>factorial</code> recursively.</li>
+  <li>All recursive problems need a base case (otherwise, the algorithm won’t terminate.)</li>
+  <li>If you’ve studied induction before, some of this will feel similar.</li>
+</ul>
+
+<h2 id="recursive-thinking">Recursive thinking</h2>
+<ul>
+  <li>The trick to using recursion is to think define a problem as a smaller version of itself.</li>
+  <li>All vowels:
+    <ul>
+      <li class="q">Suppose you had a magic function that told you whether a string of length <code>n</code> contained only vowels. How could you check if a string of length <code>n + 1</code> contained only vowels?</li>
+      <li class="q">Write the code.</li>
+    </ul>
+  </li>
+  <li>Palindrome:
+    <ul>
+      <li class="q">How could you define <code>isPalindrome</code> recursively?</li>
+      <li class="q">Write the code.</li>
+    </ul>
+  </li>
+  <li class="q">How would you define a list mathematically?</li>
+  <li class="q">How can you define a list recursively?</li>
+  <li class="q">implement <code>int maxValue(int[] stuff)</code> recursively.
+    <ul>
+      <li>Hint: use a helper method.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="non-tail-recursion">Non-tail recursion</h2>
+
+<ul>
+  <li>The problems we’ve seen thus far don’t really show the true power of recursion.  The problems we’ve seen work pretty well iteratively.  Some problems only work well recursively.
+    <ul>
+      <li>In particular, problems that make more than one recursive call are difficult to write iteratively.</li>
+    </ul>
+  </li>
+  <li class="q">Imagine you wanted to search your entire hard disk for a file.  How would you do that?
+    <ul>
+      <li>You would probably do a depth-first search.</li>
+      <li>You would need some way to keep track of where you were at each level.</li>
+      <li>Recursion does that for you for free.</li>
+      <li>Recursion creates a “stack” of method calls. This stack contains both the local variables and the return location for each method call. The local variables and return location on this stack serve as your “breadcrumbs” that keeps track of where you’ve been.</li>
+    </ul>
+  </li>
+  <li>Look at <code>FileCounter.java</code>
+    <ul>
+      <li><img src="Images/fileTree.png" alt="" width="300px" /> <img src="Images/fileTree_kielce.png" alt="" width="400px" /></li>
+      <li>The local loop variable <code>f</code> keeps track of where we are at each level.</li>
+    </ul>
+  </li>
+  <li>Look at <code>Maze.java</code>
+    <ul>
+      <li>The return value keeps track of which direction we are evaluating.</li>
+    </ul>
+  </li>
+  <li>Look at <code>groupSum</code> from CodingBat: <a href="https://codingbat.com/prob/p145416">https://codingbat.com/prob/p145416</a></li>
+</ul>
+
+
+</main>
+</body>
+</html>

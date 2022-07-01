@@ -1,0 +1,344 @@
+<!DOCTYPE HTML SYSTEM "http://www.cis.gvsu.edu/~kurmasz/HTML4-loose-kielce.dtd">
+<html>
+<head>
+    <script type="text/javascript" src="kielce3.js"></script>
+    <title>Introduction to JLS</title>
+    <style type="text/css">
+        .listHeader {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        ul {
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .DLUnit {
+            color: purple;
+            background-color: #F0F0F0;
+        }
+
+        div.DLUnit {
+            border-color: purple;
+            border: 1px solid;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+<table style="border: 0; width: 100%">
+    <tr>
+        <td style="width: 25%">
+            <h1 style="text-align: left; white-space: nowrap;"><span kkey="courseName"></span></h1>
+        </td>
+        <td style="width: 50%">
+            <h1 style="text-align: center; ">Lab <span kkey="labNumber.JLSIntro"></span>
+                (Version&nbsp;<span kkey="version"></span>)
+            </h1>
+        </td>
+        <td style="width: 25%">
+            <h1 style="text-align: right; white-space: nowrap;" kkey="semesterName"></h1>
+        </td>
+    </tr>
+</table>
+
+<h2 style="text-align: center">Introduction to JLS</h2>
+
+<p>Although breadboards are a lot of fun to
+    <del>play</del>
+    experiment with, it is very difficult to build anything but very small
+    circuits. (More accurately, it is almost impossible to debug circuits
+    with more than 10 or 15 wires.) Therefore, you will use simulation
+    software when designing and building larger circuits. In particular,
+    this you will be using a circuit simulator from
+    <a href="http://www.cs.mtu.edu/~pop" target="_top">Dave Poplawski</a>
+    at
+    <a href="http://www.cs.mtu.edu" target="_top">Michigan Tech</a>
+    named
+    <em>JLS</em>
+    (<em>J</em>ava
+    <em>L</em>ogic
+    <em>S</em>imulator).
+</p>
+
+<p class="listHeader">The primary objectives for this lab are</p>
+
+<ul>
+    <li>to get JLS set up in your environment,</li>
+    <li>to learn how to use JLS,</li>
+    <li>to learn how to test your circuits using either the <a
+            klink="jlsct_webloc" href=""><code>JLSCircuitTester</code></a>
+        suite or the new DLUnit, and
+    </li>
+    <li>to build a circuit using JLS.
+</ul>
+
+<h2>Pre-lab</h2>
+
+<p>As soon as you arrive in lab, demonstrate that you have created at least one circuit using JLS.</p>
+
+<h2>Set up JLS</h2>
+
+The JLS simulator is written in Java and can, therefore, be installed in
+user space and run on almost any machine with the Java 5.0 run-time
+environment. One exception: You may need a two-button mouse to run JLS
+on a Mac. (Java for the Mac does not process ctrl-click as a right-click
+in the way Windows and Linux do. Many important features now have
+keyboard shortcuts; but, you may find yourself in need of a feature
+accessible only with a right-click.)
+
+
+<p>All the JLS code is contained in <code>JLS.jar</code>. If you are using the EOS
+    lab, you will find it in <code kkey="jls_loc"></code>. The
+    easiest way to run JLS is to put this directory in your path. (For most
+    of you, the best way to do this is to add the line <code>export&nbsp;PATH=$PATH:<span kkey="jls_bin"></span></code>
+    to the end of your <code>.bashrc</code>.) There is a script named <code>jls</code>
+    in this directory that sets up the java classpath and launches JLS. This
+    directory also contains other scripts that will make your life in this
+    course much easier. If you object to adding this directory to your path,
+    you can also launch JLS with this command:<br>
+    <code>java&nbsp;-jar&nbsp;<span kkey="jls_loc"></span>/JLS.jar</code>.
+
+
+<p>To run JLS on your own machine, download <a
+        klink="jls_webloc" href=""><code>JLS.jar</code></a>. You
+    run JLS by typing <code>java -jar <em>jlsDir</em>/JLS.jar</code>,
+    where <code><em>jlsDir</em></code> is the directory into which you saved
+    <code>JLS.jar</code>. <!-- The flag <code>-Xmx256m</code> tells the JVM to
+    use up to 256MB of memory. (The default is 64MB.) If <code>jls</code>
+    runs out of memory and crashes, you can change the 256 to something
+    larger (however, if you find that 256MB of memory isn't enough, then
+    there is a good chance your circuit is not designed well). -->
+
+
+<p>Regardless of where you run JLS, make sure you have the latest
+    version. <span kkey="current_jls_version"></span>
+
+
+<h2>Learn how to use JLS</h2>
+
+<p>Begin by working through the "Introduction", "Full&nbsp;Adder", and
+    "Sign&nbsp;Extender" tutorials. (You may also want to complete the 4-Bit
+    Counter tutorial when we get to registers.) You will find all the
+    tutorials in the <code>Help->Tutorials</code> menu.</p>
+
+<p class="listHeader">As you work through the tutorial, pay special attention to the
+    following details:</p>
+<ul>
+    <li>Name your half adder <code>HalfAdder.jls</code>, <em>not</em> <code>ha</code>
+        as suggested by the tutorial.
+    </li>
+    <li>Name your sum output <code>Sum</code>, <em>not</em> <code>SUM</code>
+        as suggested by the tutorial.
+    </li>
+    <li>Name your full adder <code>FullAdder.jls</code>, <em>not</em> <code>fa</code>
+        as suggested by the tutorial.
+    </li>
+    <li>Importing a sub-circuit inserts a <em>copy</em> of the imported
+        sub-circuit into the circuit you are creating. As a result, if you
+        later discover a bug in your sub-circuit, you must re-import that
+        sub-circuit everywhere. It is not sufficient to simply fix the bug in
+        the sub-circuit's <code>jls</code> file. Moral: Thoroughly test your
+        sub-circuits before importing them.
+    </li>
+</ul>
+
+<p> When you are finished, save your half-adder in a file named
+    <code>HalfAdder.jls</code>. Make sure the inputs are
+    named "<code>A</code>" and "<code>B</code>", and the outputs are
+    named "<code>Sum</code>" and "<code>Carry</code>".
+    The program I use to help test your circuits requires the circuits to
+    present a known interface. (In other words, the program needs to know
+    what the input and output pins are named.) If you do not conform to the
+    specified interface (i.e., the given circuit and input names), I will
+    probably not grade your circuit.</p>
+
+
+<h2>Learn how to test JLS circuits</h2>
+
+<p>After completing a circuit, your first order of business should be to
+    test it by setting the values of the input pins and examining the values
+    of the output pins. In fact, it is a good idea to test sub-circuits as
+    you build them.</p>
+
+<p>When you have finished building the full adder (as described in the
+    tutorial):</p>
+
+<ol>
+    <li>Add input pins named <code>InputA</code>, <code>InputB</code>, and
+        <code>CarryIn</code>.
+    </li>
+    <li>Add a "generate test signals" element. (This element is on the
+        toolbar to the right of the "pause" element.). Set appropriate values
+        for the three input pins. (As an example, one line may look like this:
+        <code>InputA 1 end</code>.)
+    </li>
+    <li>Add watches to all the output pins.</li>
+    <li>Place probes on the "Carry" outputs of each component half adder.</li>
+    <li>Open the simulator window, run the simulation, and verify that the
+        resulting output is correct.
+    </li>
+    <li>Change the scale factor from 1 to 5 and observe what happens.</li>
+</ol>
+
+<p>Using the simulator window is a good way to check a few example
+    input/output pairs, or to track down bugs; however, trying to thoroughly
+    test a circuit using this technique would be very tedious and time
+    consuming. Consequently, we provide <code>JLSCircuitTester</code>, a
+    suite of programs to automate the running of many tests. (Think of it as
+    JUnit for hardware.)</p>
+
+<div class="DLUnit">
+    <p>
+    <h3>IMPORTANT!</h3></p>
+
+    <p class="listHeader">This semester, you have a choice of using either <code>JLSCircuitTester</code>, or
+        an an "alpha" version of a new tool called <code>DLUnit</code>. <code>DLUnit</code> will replace <code>JLSCircuitTester</code>
+        sometime in the next 24 months. The main advantages of <code>DLUnit</code> over <code>JLSCircuitTester</code>
+        are</p>
+    <ul>
+        <li>It is easier to install and run (i.e., you don't need the bash/batch scripts to make it work).</li>
+        <li>It is easier to write tests. They are JUnit tests (as opposed to <code>JLSCircuitTester</code>, which uses a
+            custom syntax).
+        <li>The output is easier to understand.</li>
+        <li>It supports both JLS and <a href="http://www.cburch.com/logisim/">Logisim</a>. (Logisim is similar to JLS,
+            but more popular.)
+        </li>
+    </ul>
+
+    <p>If you are already familiar with <code>JLSCircuitTester</code> because you've used it in other classes, I
+        suggest you continute to use it --- no need to learn a new tool. If you've never used <code>JLS</code> or
+        <code>JLSCircuitTester</code> before, I suspect you will be happier with <code>DLUnit</code>.</p>
+
+    <p class="listHeader">Note, however, that <code>DLUnit</code> is still a work in progress. It should work just fine
+        for the course
+        projects; but,
+    </p>
+    <ul>
+        <li>The error messages are still a bit terse</li>
+        <li>There are most certainly bugs.</li>
+    </ul>
+
+    <p>If you chose to use <code>DLUnit</code>, just copy this <code>.jar</code> file from EOS:
+        <code><span kkey="jls_bin"></span></code></p>
+</div>
+
+<p>I will use the <code>JLSCircuitTester</code> suite to test your
+    circuits. Programs in this suite run circuits many times with different
+    inputs, and compare the resulting outputs to known values. For this lab,
+    you will be using a program called <code>jlsCircuitTester</code>. For
+    your convenience, I have installed this suite in <code kkey="jls_bin"></code>.
+    If you are using your own machine, you will need to download <a
+            klink="jlsct_webloc" href=""><code>JLSCircuitTester</code></a>
+    and follow the installation instructions.</p>
+
+<p>Practice using this testing setup by testing the half adder you built
+    while completing the tutorial. (Again, make sure the file, inputs, and
+    outputs are all named correctly.)</p>
+
+<ol>
+    <li>Download <a href="testHalfAdder">testHalfAdder</a>.</li>
+    <li>Run <code>jlsCircuitTester HalfAdder.jls testHalfAdder</code>.</li>
+</ol>
+
+<div class="DLUnit">
+    <p>If you are using <code>DLUnit</code>:</p>
+    <ol>
+        <li>Download <a href="HalfAdderTest.java">HalfAdderTest.java</a>.</li>
+        <li>Compile the test: <code>javac -cp DLUnit.jar HalfAdderTest.java</code></li>
+        <li>Run <code>java -jar DLUnit.jar HalfAdder.jls HalfAdderTest.class</code>.</li>
+    </ol>
+</div>
+
+
+<p>If you want to better understand how <code>testHalfAdder</code>
+    specifies inputs to the circuits, run <code>jlsCircuitTester</code>
+    with the <code>--verbose</code> parameter.</p>
+
+<p>To make sure you understand how <code>jlsCircuitTester</code> works,
+    deliberately introduce a bug into <code>HalfAdder.jls</code> (e.g.,
+    replace the <code>XOR</code> gate with an <code>AND</code> gate) and
+    re-run the test script. (Then fix the circuit once you know what happens
+    when there is an error.)</p>
+
+
+<h2>Build your own circuit</h2>
+
+<p>Now that you have had some practice using JLS, it's time to build
+    your own circuit. Build a circuit named "<code>UnsignedFullAdder_16bit</code>"
+    that adds two 16-bit unsigned integers. The simplest way to complete
+    this lab is to implement a ripple-carry adder. However, the upcoming
+    project will offer extra points to those who build an adder that is
+    faster than <code>O(n)</code>. Therefore, you may want to get a head
+    start on the project by building a faster adder.</p>
+
+<p>To keep the design manageable, you may want to use one or more
+    sub-circuits (e.g., connect four 4-bit adders, or two 8-bit adders). If
+    you do use sub-circuits, notice that you can unbundle buses into
+    arbitrary groups. For example, you can take a 16-bit bus and split it
+    into 0-3, 4-7, 8-11, and 12-15. In the "Create unbundler" dialog, select
+    "Group bits" instead of "Single bits". (See the "Sign Extender" tutorial
+    built into JLS.)</p>
+
+<ul>
+    <li>Name the inputs "<code>InputA</code>","<code>InputB</code>", and "<code>CarryIn</code>".</li>
+
+    <li>Name the outputs "<code>Output</code>" and "<code>CarryOut</code>".
+        (If you do not name the inputs and outputs correctly, the test script
+        will not run.) The "<code>CarryOut</code>" output should be 1 if, and
+        only if, there is an overflow.
+    </li>
+
+    <li>Test your circuit using <a href="testUnsignedFullAdder_16bit"><code>testUnsignedFullAdder16_bit</code></a>
+        <span class="DLUnit">(or <a
+                href="SampleUnsigned16BitAdderTest.java"><code>SampleUnsigned16BitAdderTest.java</code></a>)</span>.
+        If the test script doesn't work without modification, then you either
+        named your circuit, inputs, or outputs incorrectly.
+    </li>
+
+    <li><code>testUnsignedFullAdder16_bit</code> will not completely test
+        your circuit. Add as many tests as necessary to be confident your
+        circuit works.
+    </li>
+</ul>
+
+<h2>Deliverables</h2>
+
+<ul>
+    <li>Demonstrate your circuit (and tests) to the instructor.</li>
+
+    <li>Add a text box to your <code>jls</code> files that includes
+        <ul>
+            <li>your name,</li>
+            <li>the file name,</li>
+            <li>the assignment name, and</li>
+            <li>the assignment due date.</li>
+        </ul>
+
+        <!--
+        <li>Use the Print->Export Image feature to produce a <code>.jpeg</code>
+            of your half adder, full adder, and any sub-circuits you design. Use
+            the "Just Visible Window" option to print your circuit. Using the
+            "Entire Circuit" option will print one copy of each sub-circuit. That
+            means if you have imported a 1-bit full adder 16 times, you will get 16
+            copies of your adder!
+        </li>
+
+        <li>Submit hard copies of the images.</li>
+    -->
+    <li>Submit the <code>jls</code> files, and any additional test files
+        you used, using Blackboard's Assignment Manager.
+    </li>
+</ul>
+
+<hr>
+<span kkey="validator"></span>
+<script type="text/javascript">
+    Kielce.run();
+</script>
+</body>
+</html>
+

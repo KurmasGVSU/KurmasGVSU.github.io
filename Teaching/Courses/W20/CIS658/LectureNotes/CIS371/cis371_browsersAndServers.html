@@ -1,0 +1,877 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="browsers--servers--http">Browsers / Servers / HTTP</h1>
+
+<ul>
+  <li>Two key pieces
+    <ul>
+      <li>Web browser: Program used to request and display information</li>
+      <li>Web server: Program used to provide information</li>
+      <li>These programs usually run on different machines.</li>
+    </ul>
+  </li>
+  <li>Crash course in Networking
+    <ul>
+      <li>Streams: A conceptual “stream” of data.
+        <ul>
+          <li>Imagine golf balls being pushed through a pipe with either bits or digits written on them.</li>
+          <li>Or a ticker tape</li>
+        </ul>
+      </li>
+      <li>Streams appear in many programming languages, including Java.
+        <ul>
+          <li><code>System.out</code> in Java is a stream typically connected to the console (screen).
+            <ul>
+              <li>Bytes pushed into the stream by methods like <code>println</code> are pulled out and displayed on the screen.</li>
+            </ul>
+          </li>
+          <li><code>System.in</code> is a stream typically connected to the keyboard.  Data pulled out used as input to the program.</li>
+          <li>Streams (both input and output) can be attached to files. (That’s how we read and write to files.)</li>
+          <li>Streams called “<em>pipes</em>” can connect different processes.</li>
+          <li>Can even attache streams to <code>String</code>s or <code>byte</code> arrays.</li>
+          <li>In many languages, streams provide a common interface so that methods can take a generic Stream object as a
+ parameter and be written agnostic of the source/destination of the data.
+            <ul>
+              <li>In other words, the method need not know whether the data is coming from the keyboard or a file.</li>
+            </ul>
+          </li>
+          <li>Streams can carry text data, binary data, or both (although buffering can make handling both at the same time
+ tricky).</li>
+        </ul>
+      </li>
+      <li>A connection between programs running on different machines is called a “<em>socket</em>”.
+        <ul>
+          <li>Sockets are objects typically created by the operating system.</li>
+          <li>In Java, a Socket object contains methods that return input and output stream objects.</li>
+          <li>These stream objects returned by sockets is how data is sent between programs (in particular, web browsers and
+ web servers)</li>
+          <li>Imagine you ask your assistant “Connect me to the White House”.  A few minutes later she brings you a cell
+  phone, and you begin a conversation.  You don’t really know for sure how she connected you, all that matters is
+that you now have an object that allows you to communicate.</li>
+        </ul>
+      </li>
+      <li>Each computer connected to the Internet is assigned a unique number called an “IP address”.</li>
+      <li>However, we humans find names easier to remember than numbers.</li>
+      <li>Therefore, we use DNS (Domain Name System) to map names like <code>www.google.com</code> to IP addresses.</li>
+      <li>A computer can run more than one program that may want to use a socket.  Therefore, <em>port numbers</em> are used to
+ direct incoming requests to the correct program.
+        <ul>
+          <li>A port number is analogous to to a telephone extension.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="url">URL</h3>
+
+<ul>
+  <li>URL is what you type into a browser to specify what information you want.
+    <ul>
+      <li><span class="q">What does URL stand for?</span> Uniform Resource Locator</li>
+    </ul>
+  </li>
+  <li>Key parts: <img src="Images/partsOfURL.png" alt="Parts of a URL" />
+    <ul>
+      <li>Protocol:  “Language” the client will speak to the server
+        <ul>
+          <li>Most browsers can also handle other protocols like FTP.</li>
+          <li>When a browser connects to <code>ftp://foo.com</code> it is talking to an FTP server, which means it needs
+to generate its requests differently (e.g., “Speak” Dutch instead of English)</li>
+        </ul>
+      </li>
+      <li>Hostname: The human-readable name of the machine hosting the web server.
+        <ul>
+          <li>Your computer’s networking system uses DNS (Domain Name Service) to turn the hostname into an IP address.</li>
+        </ul>
+      </li>
+      <li>Path/Document: The specific information you are looking for.
+        <ul>
+          <li>For example, <code>~kurmasz</code> and <code>~dulimarh</code> are two different documents on the CIS web server.</li>
+        </ul>
+      </li>
+      <li>Query String:  Parameters for dynamic web pages.
+        <ul>
+          <li>We’ll talk about this later.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>URL vs URI
+    <ul>
+      <li>URL is a Uniform Resource <em>Locator</em></li>
+      <li>URI is a Uniform Resource <em>Identifier</em></li>
+      <li>URI uniquely identifies an object, URL tells you where it is (how to get it)</li>
+      <li>URL is a subset of URI.  (In other words, a URL identifies and object <em>and</em> tells you how to get it)</li>
+      <li><a href="https://dev.to/flippedcoding/what-is-the-difference-between-a-uri-and-a-url-4455">https://dev.to/flippedcoding/what-is-the-difference-between-a-uri-and-a-url-4455</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="basic-web-workflow">Basic web workflow:</h3>
+<table class="bottomBorders indent25">
+  <tr><th>Web Browser</th><th>Web Server</th></tr>
+  
+  <tr><td></td><td><p class="listHeader">Web Server program is launched</p>
+        <ul>
+        <li>Program registers with the operating system which port it listens </li>
+        <li>By convention, web servers listen on port 80 for  insecure requests (think "old school" HTTP)
+           and port 443 for secure (i.e., HTTPS) requests.</li>
+        </ul>
+  </td></tr>
+  
+  <tr><td>User launches a web browser and requests a web page (say <code>www.gvsu.edu</code>)</td><td></td></tr>
+  <tr><td>Browser asks operating system to create a Socket connected to <code>www.gvsu.edu</code> port 80.
+     <ul>
+     <li>To create this socket, the operating system connects to a DNS server to determine which IP address corresponds
+      to <code>www.gvsu.edu</code> (It's <code>148.61.6.9</code>)
+      </li>
+      <li>(Imagine a kid with a string and a can running across the street to address <code>148.61.6.9</code>.)</li>
+      </ul>
+      </td><td></td></tr>
+      
+  <tr><td></td><td>The Operating System on the machine with IP <code>148.61.6.9</code> receives the incoming network 
+  request for port 80.  It knows that the web server is listening on port 80, so it forwards all of that connection's
+   data to the Web Server. (Imagine a kid with a string and a can arriving at the door, asking for "port 80" and the
+    doorman tells him which office to go to.)
+    </td></tr>
+   
+  <tr><td></td><td>The web server creates a Socket and begins to read data from the socket.
+     (The kid arrives in the office and hands the person the can.)
+  </td></tr>
+  <tr><td>The web browser "asks" the web server for the desired web page.</td><td></td></tr>
+  <tr><td></td><td>The web server sends the requested data</td></tr>
+  <tr><td>The web browser displays the data sent.</td><td></td></tr>
+  </table>
+
+<h3 id="http">HTTP</h3>
+
+<ul>
+  <li>Once the Browser and Server are connected, they need to agree on what “language” to speak
+    <ul>
+      <li>When you call someone on the phone, you need some way of figuring out what language to speak.</li>
+      <li>In many cases, you assume the language based on the location of the person you are calling (e.g., you speak
+ Polish when you call a number with Poland’s country code).</li>
+      <li>Web works the same way:  When you “dial up” port 80 or 443, you “speak” HTTP.</li>
+    </ul>
+  </li>
+  <li>HTTP is a text protocol:  Data sent is human-readable.</li>
+  <li>Client speaks first:
+    <ul>
+      <li><code>GET / HTTP/1.0</code>
+        <ul>
+          <li>“Hello, I would like ‘/’”</li>
+          <li>Verb: What client is asking server to do</li>
+          <li>URL:  What “document is desired”</li>
+          <li>Version:  What “dialect”</li>
+        </ul>
+      </li>
+      <li>Request headers: Extra information that server might find helpful.  Including
+        <ul>
+          <li>What kind of documents browser can handle (html, pdf, jpeg, etc)</li>
+          <li>Cache information (more on that later)</li>
+          <li>Cookies (more on that later)</li>
+          <li>Others to be discussed later</li>
+          <li>“By the way, it might help for you to know …”</li>
+          <li>HTTP/1.1 requires the <code>host</code> request header.  More on that later.</li>
+        </ul>
+      </li>
+      <li>Blank line indicates end of headers.</li>
+    </ul>
+  </li>
+  <li>Server responds
+    <ul>
+      <li>status code
+        <ul>
+          <li>200: OK</li>
+          <li>404: Not Found</li>
+          <li>etc.</li>
+        </ul>
+      </li>
+      <li>Response headers (information about response)
+        <ul>
+          <li>Content-type: html</li>
+          <li>Content-length: (how much data)</li>
+          <li>Others to be discussed later</li>
+        </ul>
+      </li>
+      <li>Blank line means end of headers</li>
+      <li>The actual data requested (e.g., the HTML)</li>
+    </ul>
+  </li>
+  <li>HTTP Standard maintained by IETF (Internet Engineering Task Force)
+    <ul>
+      <li>This body also standardizes other Internet protocols (TCP, IP, SMTP, etc.)</li>
+      <li>Final standards document is referred to as an RFC (Request For Comments)</li>
+      <li>Anybody can participate</li>
+      <li><a href="https://www.ietf.org">https://www.ietf.org</a></li>
+      <li>(Notice that while the web is designed to be decentralized and uncoordinated, there still need to be standards
+ used to transmit information.)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="web-browser">Web Browser</h3>
+
+<ul>
+  <li>We can use <code>telnet</code> to “pretend” to be a web browser.
+    <ul>
+      <li>telnet simply opens a socket that we can use to send and receive text.</li>
+      <li class="to-do">Log into EOS, visit <code>http://35.39.165.174:8080/</code>
+        <ul>
+          <li>(It’s just a simple WordPress site)</li>
+        </ul>
+      </li>
+      <li class="to-do">Now use telnet to visit site:
+        <ul>
+          <li><code>telnet 35.39.165.174 8080</code></li>
+          <li><code>GET / HTTP/1.0</code></li>
+          <li>&lt;blank line&gt;</li>
+          <li>Examine the result:
+            <ul>
+              <li>Notice response headers</li>
+              <li>Notice blank line</li>
+              <li>Followed by HTML</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="to-do">This time <code>GET /2019/12/20/ HTTP/1.0</code>
+        <ul>
+          <li>Notice that you get a different web page.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="to-do">Try <code>www.gvsu.edu</code> and take not of 301 response</li>
+  <li>There are very few “http” sites left. Almost all are “https”, which
+    <ul>
+      <li>verifies the identity of the server</li>
+      <li>encrypts the connection</li>
+    </ul>
+  </li>
+  <li>To talk to “real” web sites by hand, we need to use <code>openssl</code> which can verify the server and
+set up the encryption.
+    <ul>
+      <li><code>openssl s_client -crlf -connect www.gvsu.edu:443</code></li>
+      <li class="to-do">Notice the various response headers (cache, cookies, etc.)</li>
+      <li class="to-do">Visit <code>https://www.cis.gvsu.edu/~kurmasz</code>.
+        <ul>
+          <li>This page is much simpler, and is easier to see the content in the returned HTML.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Let’s look at a very simple HTTP client written in Java
+    <ul>
+      <li>Sample code on GitHub <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode">https://github.com/kurmasz-SampleCode/CIS371-SampleCode</a>
+        <ul>
+          <li>Look at <code>SimpleWebClient/BasicHTTPTransaction.java</code></li>
+        </ul>
+      </li>
+      <li>This is similar to what <code>telnet</code> does.</li>
+      <li>Change to <code>data</code> directory and run <code>python -m SimpleHTTPServer</code></li>
+      <li>In a different window:
+        <ul>
+          <li>Change to <code>SimpleWebClient</code></li>
+          <li>Run <code>javac BasicHTTPTransaction.java</code></li>
+          <li>Run <code>java BasicHTTPTransaction</code></li>
+          <li>The standard output will show the response headers.</li>
+          <li>A file beginning with <code>opt.</code> will contain the data from the requested document</li>
+        </ul>
+      </li>
+      <li class="to-me">Look at source code</li>
+      <li>(Note: This code can only handle http; it can’t handle https)</li>
+    </ul>
+  </li>
+  <li>“Host” request header
+    <ul>
+      <li>Multiple domain names can be pointed at one IP address, thus</li>
+      <li>Some web servers handle multiple web sites.</li>
+      <li>Called “virtual servers”: One program pretends to be many different web sites.</li>
+      <li>The web server then needs a way to know which site the browser thinks its talking to.</li>
+      <li>Hence, <code>host</code> header required by HTTP 1.1</li>
+    </ul>
+  </li>
+  <li><code>BasicHTTPTransaction.java</code> can only connect with HTTP servers.</li>
+  <li>To connect to HTTPS, use <code>BasicHTTPSTransaction.java</code></li>
+  <li>Compile and run <code>BasicHTTPSTransaction</code>
+    <ul>
+      <li>Now that we are connected to a “real” server, there are additional headers
+        <ul>
+          <li>Cookies</li>
+          <li>Cache (<a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching">https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching</a>)</li>
+          <li>Vary and Expire (used also for caching)</li>
+          <li>XSS</li>
+        </ul>
+      </li>
+      <li>More about these later</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="web-server">Web Server</h2>
+
+<ul>
+  <li>Let’s look at a very simple web server: <code>SimpleHTTPServer/HTMLOnlyServer.java</code> in the sample code</li>
+</ul>
+
+<h2 id="other-http-features">Other HTTP Features</h2>
+<ul>
+  <li>Content-type:
+    <ul>
+      <li>Why do we need a <code>content-type</code> response header? <span class="q">Why can’t we just infer type from file extension 
+ (e.g., <code>.jpeg</code>)</span></li>
+      <li>Content type is specified by a media type (formerly called a MIME type)</li>
+      <li>The list of types is managed by IANA <a href="https://iana.org">https://iana.org</a>
+        <ul>
+          <li>IANA is the group that hands out IP addresses, among other things.</li>
+        </ul>
+      </li>
+      <li>Notice hierarchy in media types:  <a href="https://en.wikipedia.org/wiki/Media_type">https://en.wikipedia.org/wiki/Media_type</a>
+        <ul>
+          <li>There is a basic, standard hierarchy (<code>text/*</code>, <code>image/*</code>, <code>application/*</code>)</li>
+          <li>As you can imagine, the <code>application/*</code> space could get very crowded, so there is also a newer mechanism for
+ expansion: <code>vnd/</code>
+            <ul>
+              <li>This type itself is hierarchical.</li>
+            </ul>
+          </li>
+          <li>Types beginning with <code>x-</code> don’t need to be registered.</li>
+        </ul>
+      </li>
+      <li>Type often inferred from file extension and/or other metadata; but, can also sometimes be guessed:
+<a href="https://en.wikipedia.org/wiki/Content_sniffing">https://en.wikipedia.org/wiki/Content_sniffing</a></li>
+    </ul>
+  </li>
+  <li>Other verbs
+    <ul>
+      <li>GET</li>
+      <li>POST: (More about GET, POST, PUT, later)</li>
+      <li>HEAD:  Just get the header</li>
+      <li>PUT: Replace a resource on the server</li>
+      <li>DELETE: Delete a resource</li>
+      <li>TRACE: testing / debugging</li>
+      <li>OPTIONS: query which verbs are supported</li>
+      <li>CONNECT: used in setting up a tunnel</li>
+      <li>Not all verbs are supported by all servers.  (GET and POST obviously are)</li>
+    </ul>
+  </li>
+  <li>Connection sharing: Keep the TCP connection open in case the document contains images, javascript files, etc.
+    <ul>
+      <li><code>connection: keep-alive</code> vs <code>connection: close</code></li>
+      <li>“Keep alive” avoids the overhead of setting up a new TCP connection</li>
+      <li>HTTP 2 does even better (more on this later)</li>
+    </ul>
+  </li>
+  <li>Status Codes
+    <ul>
+      <li>1xx: Informational (not widely used)</li>
+      <li>2xx: Success</li>
+      <li>3xx: Tell the client to do somethings else (e.g., redirect)
+        <ul>
+          <li>301: Moved permanently</li>
+          <li>304: Not modified</li>
+        </ul>
+      </li>
+      <li>4xx: Errors in the request
+        <ul>
+          <li>400: Badly formed request by client</li>
+          <li>401: Unauthorized</li>
+          <li>404: Not found</li>
+        </ul>
+      </li>
+      <li>5xx: Server errors (e.g., your Rails code crashed)</li>
+      <li><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html</a></li>
+    </ul>
+  </li>
+  <li>Virtual Hosting
+    <ul>
+      <li class="q">What would happen if multiple domain names got pointed to the same IP address?
+        <ul>
+          <li>One server could then handle multiple web sites; but,</li>
+        </ul>
+      </li>
+      <li class="q">How would the server know which site the client thinks its talking to?</li>
+      <li>That’s what the <code>host</code> request header is for.</li>
+      <li>The practice is so common, <code>host</code> is now required by HTTP/1.1.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="caching">Caching</h4>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching">https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching</a></li>
+  <li>Potentially reduce network traffic by keeping data that doesn’t change much local.</li>
+  <li class="q">What kinds of information needs to be shared between client and server to do this well?</li>
+  <li>Server can send hints about how “stable” the data is
+    <ul>
+      <li><code>Cache-Control: no-store</code> (no caching at all)</li>
+      <li><code>Cache-Control: no-cache</code> (check with sever before using cache)</li>
+      <li><code>Cache-Control: max-age=86400</code> (how long clients can reliably use data without re-validating)</li>
+      <li><code>Cache-Control: Expires=</code> (absolute time of expiration)</li>
+    </ul>
+  </li>
+  <li>With <code>max-age</code> and <code>Expires</code> if the too much time is passed, client can still ask the browser if the
+cached data still happens to be valid</li>
+  <li>Cache Validation:
+    <ul>
+      <li>Server can send <code>ETag</code> (hash) of local content;</li>
+      <li>To revalidate, client can send tag back with <code>If-None-Match</code> or <code>If-Modified-Since</code>. Server can respond with
+  either 304, or send new data.</li>
+    </ul>
+  </li>
+  <li class="q">How do we decide how “aggressively” to cache data (i.e., how long we can put off revalidation)
+    <ul>
+      <li class="q">What kind of data is not suitable for caching
+        <ul>
+          <li>Sensitive data</li>
+          <li>Data likely to change very quickly</li>
+        </ul>
+      </li>
+      <li class="q">What kind of data is especially suitable for long timeouts?
+        <ul>
+          <li>CSS and Javascript can be.</li>
+        </ul>
+      </li>
+      <li class="q">What is the downside of adding long expiration on CSS and Javascript?
+        <ul>
+          <li>Can be tricky to get clients to use updates.</li>
+        </ul>
+      </li>
+      <li class="q">How can we force an update if we set an expiration far in the future?
+        <ul>
+          <li>Change the filename.</li>
+          <li>This is a common technique in web dev.</li>
+          <li>It is especially helpful for making sure new and old code don’t mix.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="q">Where all can caching happen?
+    <ul>
+      <li>The browser itself.</li>
+      <li>Proxies / Gateways (machines network traffic is routed through)</li>
+    </ul>
+  </li>
+  <li><code>Cache-Control: private</code> and <code>Cache-Control: public</code> can specify whether data is suitable for a public cache.
+    <ul>
+      <li class="q">Why might data <em>not</em> be suitable for a public cache?</li>
+    </ul>
+  </li>
+  <li>Caching usually happens behind the scenes without much explicit thought; but, it can cause problems in web
+   applications.
+    <ul>
+      <li>Sometimes apps return stale data</li>
+      <li>Sometimes during development, you find yourself running old code.</li>
+      <li>You need to know caching happens so you know to keep an eye out for strange behavior.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="https">HTTPS</h3>
+
+<ul>
+  <li>Problem with HTTP:  Anybody with access to network equipment can see contents of HTTP requests and responses.
+    <ul>
+      <li>Passwords and other sensitive data sent in forms, as well as</li>
+      <li>The content of the returned page, which may also contain sensitive data.</li>
+      <li>Also includes data sent/received using AJAX.</li>
+    </ul>
+  </li>
+  <li>This could be ISP employees as packets go from one stage to another</li>
+  <li>Could also be anybody with a “packet sniffer” on an physical Ethernet.</li>
+  <li>Also want to avoid man-in-the-middle attack:  Somebody impersonating a website.</li>
+  <li>Basic idea of HTTPS: Encrypt the connection end-to-end and verify endpoint.</li>
+  <li>Two main kinds of encryption:
+    <ul>
+      <li>Shared secret (also called “symmetric key” or “secret key”)
+        <ul>
+          <li>Both sides have a shared secret that encrypts/decrypts information</li>
+        </ul>
+      </li>
+      <li>Public/private key (also called “asymmetric”)
+        <ul>
+          <li>One side holds a private key known to nobody else.</li>
+          <li>Published public key.</li>
+          <li>Information encrypted with public key can only be read by private key.
+            <ul>
+              <li>Used to send data that can only be understood by intended recipient</li>
+            </ul>
+          </li>
+          <li>Information encrypted by private key can be ready using public key.
+            <ul>
+              <li>Used to verify information source</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Shared key algorithms tend to be less computationally expensive than public/private key.</li>
+    </ul>
+  </li>
+  <li>You want to connect securely to a new site for the first time (e.g., a ticket seller) 
+<span class="q">How do you establish a secure connection?</span>
+    <ul>
+      <li>Once you have the site’s public key, you can generate and encrypt a secret key to be used.</li>
+    </ul>
+  </li>
+  <li class="q">How can you get site’s public key?</li>
+  <li class="q">What is the problem with using HTTP to request site’s public key?
+    <ul>
+      <li>Susceptible to man-in-the-middle</li>
+    </ul>
+  </li>
+  <li>Solution: Trusted Certificate authorities (Verisign, GoDaddy, etc.)
+    <ul>
+      <li>Public key of trusted authorities built into the browser.
+        <ul>
+          <li>This is reasonable because there is only a small number of them</li>
+        </ul>
+      </li>
+      <li>Company using HTTPS Server must go to a CA and have their public key
+signed using that CA’s private key.</li>
+    </ul>
+  </li>
+  <li>Setting up a secure connection now looks like this:
+    <ol>
+      <li>Go to web site “unsecurely” and ask for site’s public key.</li>
+      <li>Site responds with it’s public key, encrypted by the CAs private key.</li>
+      <li>You decrypt PK using the CA’s public key, which is built into your browser.</li>
+      <li>If you get a readable result, you can trust the PK.</li>
+      <li>Generate a secret key and send it to server using verified public key.</li>
+      <li>Chat away.</li>
+    </ol>
+  </li>
+  <li>TLS
+    <ul>
+      <li><a href="https://www.internetsociety.org/deploy360/tls/basics/">https://www.internetsociety.org/deploy360/tls/basics/</a></li>
+      <li><a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/">https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/</a></li>
+    </ul>
+  </li>
+  <li class="to-do">
+    <p>Look at <code>BasicHTTPSTransaction.java</code></p>
+  </li>
+  <li>To get <code>cacerts</code> file on Mac
+    <ul>
+      <li>Find Java “home” <code>/usr/libexec/java_home</code></li>
+      <li>Go to <code>cacerts</code>: <code>Home/lib/security/cacerts</code></li>
+      <li>Or:  <code>find \</code>/usr/libexec/java_home` -name ‘cacerts’`</li>
+      <li>&lt;https://stackoverflow.com/questions/11936685/how-to-obtain-the-location-of-cacerts-of-the-default-java
+-installation&gt;</li>
+    </ul>
+  </li>
+  <li>List contents of <code>cacerts</code>:
+<a href="https://uberconf.com/blog/bruce_snyder/2013/01/how_to_list_all_certificates_in_the_jdk_cacerts_file">https://uberconf.com/blog/bruce_snyder/2013/01/how_to_list_all_certificates_in_the_jdk_cacerts_file</a></li>
+</ul>
+
+<h4 id="http2">HTTP2</h4>
+<ul>
+  <li>Consider a modern web site with many connections.
+    <ul>
+      <li>The main <code>.html</code> file links to many CSS, JavaScript, and image files.</li>
+      <li>Under the standard HTTP model, you must either
+        <ol>
+          <li>Wait for the main file to load before getting the other files, or</li>
+          <li>Create a separate, parallel TCP connection.</li>
+        </ol>
+      </li>
+      <li>But, creating TCP connections are time consuming and computationally expensive – especially when using HTTPS.</li>
+    </ul>
+  </li>
+  <li>Google began investigating these issues in mid-2000s.</li>
+  <li>Initially called SPDY.</li>
+  <li>Formalized in 2015 as HTTP2</li>
+  <li>Adds several optimizations
+    <ul>
+      <li>Data can be sent in binary</li>
+      <li>Better support for compression</li>
+      <li>Multiple streams can be combined, so multiple secure TCP connections aren’t necessary.</li>
+      <li>Server can preemptively send files it knows client will need.</li>
+    </ul>
+  </li>
+  <li><a href="https://www.digitalocean.com/community/tutorials/http-1-1-vs-http-2-what-s-the-difference">https://www.digitalocean.com/community/tutorials/http-1-1-vs-http-2-what-s-the-difference</a></li>
+</ul>
+
+
+</main>
+</body>
+</html>

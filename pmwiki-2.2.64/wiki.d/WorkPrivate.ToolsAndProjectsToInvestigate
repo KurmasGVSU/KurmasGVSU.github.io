@@ -1,0 +1,17 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419.2.1 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1180110229
+host=148.61.39.4
+name=WorkPrivate.ToolsAndProjectsToInvestigate
+rev=2
+targets=
+text=* Unlocking the clubhouse -- Margolis and Fischer%0a* Findbugs at Maryland%0a* Simulators for Operating Systems by S. Robbins at UT San Antonio%0a* Rebecca A. Bates -- Minnesota at Mankato -- [[http://www.cset.mnsu.edu/cis]]%0a* Capistrano [[http://capify.org]] for load balancing software%0a* [[http://citidel.villanova.edu/ | CITIDEL]] CS teaching resource archive%0a* 
+time=1187732622
+author:1187732622=
+diff:1187732622:1180110229:=4,7c4%0a%3c * Rebecca A. Bates -- Minnesota at Mankato -- [[http://www.cset.mnsu.edu/cis]]%0a%3c * Capistrano [[http://capify.org]] for load balancing software%0a%3c * [[http://citidel.villanova.edu/ | CITIDEL]] CS teaching resource archive%0a%3c * %0a\ No newline at end of file%0a---%0a> * Rebecca A. Bates -- Minnesota at Mankato -- [[http://www.cset.mnsu.edu/cis]]%0a\ No newline at end of file%0a
+host:1187732622=148.61.39.4
+author:1180110229=
+diff:1180110229:1180110229:=1,4d0%0a%3c * Unlocking the clubhouse -- Margolis and Fischer%0a%3c * Findbugs at Maryland%0a%3c * Simulators for Operating Systems by S. Robbins at UT San Antonio%0a%3c * Rebecca A. Bates -- Minnesota at Mankato -- [[http://www.cset.mnsu.edu/cis]]%0a\ No newline at end of file%0a
+host:1180110229=75.134.113.30

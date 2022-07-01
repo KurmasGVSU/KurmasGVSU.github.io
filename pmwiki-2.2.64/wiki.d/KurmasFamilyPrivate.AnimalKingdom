@@ -1,0 +1,20 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10.4; en-US; rv:1.9.1.8) Gecko/20100202 Firefox/3.5.8
+author=
+csum=
+ctime=1273692796
+host=68.188.218.51
+name=KurmasFamilyPrivate.AnimalKingdom
+rev=3
+targets=
+text=Wednesday, May 26, 2010%0a%0a9:00 am - 9:00 pm%0a%0aarrive: at 8:30 am%0a%0aItinerary%0a||border=1%0a|| View # || Map # || Attraction Name || Additional Notes ||%0a|| 1 || # 6 || Kilmanjaro Safaris || FP (first 30 minutes or before close)||%0a|| 2 || #13 || Maharaja Jungle Trek || Walk through ||%0a|| || # 15 || Expedition Everest || FP -- Z only, before 9:30 am or after 4 pm ||%0a|| 3 || # 2 || It's Tough to be a Bug || FP -- use FP if wait is longer than 30 minutes ||%0a|| 4 || # 3 || Discovery Island Trail/ Tree of Life || View exhibit ||%0a|| 5 || # 4 || Festival of Lion King || Before 11 am or after 4 pm ||%0a|| 6 ||  || Lunch ||%0a|| 7 || # 5 || Explore Camp Mickey and Minnie Trails || Character Meet and Greet ||%0a|| 8 || # 18 || Finding Nemo the Musical ||%0a|| 9 || # 16 || Boneyard Playground ||%0a|| 10 || # 20 || Triceratop Spin || First 90 minutes or hour before close ||%0a|| ||  # 19 || Primeval Whirl || FP -- Z only, first 2 hours or before close ||%0a|| || # 21 || Dinosaur || FP -- Z only, before 10:30 am or hour before close ||%0a|| 11 || || Parade || 3:45 pm, sit on discovery island ||%0a%0aAdditional things we want to see and do:%0a||border=1%0a|| * || # 1 || Oasis Exhibits || Walk through ||%0a|| * || # 7 || Pangani Forest Exploration Trail || Walk through ||%0a|| * || # 8 || Wildlife Express Train || ||%0a|| * || # 13 || Maharajah Jungle trek || Walk Through ||%0a|| * || # 11 || Affection Section || Petting Zoo ||%0a|| * || # 12 || Flights of Wonder Bird Show || ||%0a%0a
+time=1274312306
+author:1274312306=
+diff:1274312306:1273692852:=
+host:1274312306=68.188.218.51
+author:1273692852=
+diff:1273692852:1273692796:=3,4c3,4%0a%3c 9:00 am - 9:00 pm%0a%3c %0a---%0a> 9:00 am - (:00 pm%0a> %0a23,24c23,24%0a%3c || 11 || || Parade || 3:45 pm, sit on discovery island ||%0a%3c %0a---%0a> ||11 || || Parade || 3:45 pm, sit on discovery island ||%0a> %0a
+host:1273692852=68.188.218.51
+author:1273692796=
+diff:1273692796:1273692796:=1,33d0%0a%3c Wednesday, May 26, 2010%0a%3c %0a%3c 9:00 am - (:00 pm%0a%3c %0a%3c arrive: at 8:30 am%0a%3c %0a%3c Itinerary%0a%3c ||border=1%0a%3c || View # || Map # || Attraction Name || Additional Notes ||%0a%3c || 1 || # 6 || Kilmanjaro Safaris || FP (first 30 minutes or before close)||%0a%3c || 2 || #13 || Maharaja Jungle Trek || Walk through ||%0a%3c || || # 15 || Expedition Everest || FP -- Z only, before 9:30 am or after 4 pm ||%0a%3c || 3 || # 2 || It's Tough to be a Bug || FP -- use FP if wait is longer than 30 minutes ||%0a%3c || 4 || # 3 || Discovery Island Trail/ Tree of Life || View exhibit ||%0a%3c || 5 || # 4 || Festival of Lion King || Before 11 am or after 4 pm ||%0a%3c || 6 ||  || Lunch ||%0a%3c || 7 || # 5 || Explore Camp Mickey and Minnie Trails || Character Meet and Greet ||%0a%3c || 8 || # 18 || Finding Nemo the Musical ||%0a%3c || 9 || # 16 || Boneyard Playground ||%0a%3c || 10 || # 20 || Triceratop Spin || First 90 minutes or hour before close ||%0a%3c || ||  # 19 || Primeval Whirl || FP -- Z only, first 2 hours or before close ||%0a%3c || || # 21 || Dinosaur || FP -- Z only, before 10:30 am or hour before close ||%0a%3c ||11 || || Parade || 3:45 pm, sit on discovery island ||%0a%3c %0a%3c Additional things we want to see and do:%0a%3c ||border=1%0a%3c || * || # 1 || Oasis Exhibits || Walk through ||%0a%3c || * || # 7 || Pangani Forest Exploration Trail || Walk through ||%0a%3c || * || # 8 || Wildlife Express Train || ||%0a%3c || * || # 13 || Maharajah Jungle trek || Walk Through ||%0a%3c || * || # 11 || Affection Section || Petting Zoo ||%0a%3c || * || # 12 || Flights of Wonder Bird Show || ||%0a%3c %0a
+host:1273692796=68.188.218.51

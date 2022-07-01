@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>IA Differences</title>
+
+  <style type="text/css">
+    img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.hasBorder, table.hasBorder td, table.hasBorder th {
+      border: 1px solid gray;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+  </style>
+</head>
+
+<body>
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 451</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">IA Differences</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2019</h1></td>
+  </tr>
+</table>
+
+  <p><b>Warning:</b>This assignment is designed to be completed in-class.  There are details missing that you will need
+  to talk to me about if you are attempting to make this assignment up.</p>
+
+  <p>The purpose of this lab is to explore the different behaviors of
+    different CPUs that implement the Intel instruction set. To put it
+    another way, we want to observe an AMD processor behaving differently
+    from an Intel processor --- especially with respect to the implementation of their superpipelines.</p>
+
+  <h2>Background</h2>
+
+  <p>This lab will use a lot of Intel assembly language as well as many
+    different UNIX tools. Before you begin, you may want to review the Intel
+    Assembly Overview from the Intel Machine Language assignment, as well as the following UNIX topics:</p>
+
+  <ul>
+    <li>C programming</li>
+    <li>Bash scripts</li>
+    <li>pipes</li>
+    <li>perl</li>
+    <li>gnuplot</li>
+  </ul>
+
+  <h2>Determining the pipeline width</h2>
+
+  <p>At a high level, we are going to determine the number of cycles it takes to execute <code>n</code> instructions.
+    This will give us a rough estimate of the number of instructions executed per cycle (IPC). For example, if the
+    CPU can execute 1000 instructions in 500 cycles, then we know that, on average, it is completing 2 instructions
+    per cycle.
+  </p>
+
+  <h3>Timing Code with <code>rdtsc</code></h3>
+
+  <p> All x86 processors have a register called the <em>time stamp counter</em>. The CPU sets this register to 0 when it
+    boots up and increments it every time the clock ticks. You can use this register to time code: Simply use the
+    <code>rdtsc</code> assembly instruction to read the timestamp counter immediately before and after the code you
+    are timing.</p>
+
+  <p>For this lab, we will be timing code that looks something like this:</p>
+  <pre>
+    rdtsc            # read the starting cycle count (rdtsc puts its answer in %edx and %eax)
+    push %eax        # save the timestamp on the stack so it doesn't get clobbered by the next call to rdtsc
+    addl $1, %ecx
+    addl $1, %ecx
+    ...              # repeat this instruction many times.
+    addl $1, %ecx
+    addl $1, %ecx
+    rdtsc            # read the ending cycle count
+    pop %ebx         # retrieve the starting cycle count
+    subl %ebx, %eax  # Compute the elapsed number of cycles (subtract the starting value, %ebx, from the ending value)
+    </pre>
+
+  <p class="listHeader">In theory, the difference in the values returned by the two calls to <code>rdtsc</code> is the
+    number of cycles required to run the <code>n</code> intervening instructions. (This isn't completely true for
+    reasons that will be discussed later; but, it is good enough for right now.)</p>
+
+  <h3>Collecting Evidence</h3>
+
+  <p>There is a fair amount of noise in the measurement of the assembly code shown above:
+    The superscalar processor will likely schedule the <code>rdtsc</code> instructions in parallel with other nearby
+    instructions. Therefore, we cannot be sure we are timing precisely <code>n</code> instructions. To compensate for
+    this uncertainty, we will take many measurements with increasing values of <code>n</code>. The overall trend will
+    give us a clearer picture of the superpipeline's width than the measurement for a single <code>n</code>. </p>
+
+  <p>The code to be measured will not contain a loop: Instead of looping over a body of <code>n</code> instructions, we
+    will "hand write" a sequence of <code>n</code> instructions. We avoid using a loop because the loop structure would
+    add extra instructions with different dependencies. To avoid loops, we write a different function for each value of
+    <code>n</code> we wish to test. The Ruby script <a
+    href="generate_experiments3.rb"><code>generate_experiments3.rb</code></a> automates this process.
+
+  <p class="listHeader">Run <code>generate_experiments3.rb</code>. Examine the resulting output. Notice</p>
+  <ol>
+    <li>The function <code>step_group</code> contains the sequence of instructions to be repeated and timed.</li>
+    <li>The functions <code>time_xx_ops</code> contain the code to time a sequence of the desired length.
+      Notice that this function:
+      <ul>
+        <li>follows conventional stack frame set-up/tear-down (whereas
+          <code>step_group</code> does not,
+        </li>
+        <li>calls <code>step_group</code> enough times to generate a sequence of the desired length, and</li>
+        <li>contains the calls to <code>rdtsc</code> that time the sequence of operations.</li>
+  </ol>
+
+  <p>The output from <code>generate_experiments3.rb</code> contains only the code being timed.
+    <a href='time_instructions2.c'><code>time_instructions2.c</code></a> contains <code>main</code> as well as a loop that calls the functions to be
+    tested and prints the results.</p>
+
+
+  <h3>Comparing CPUs and interpreting the results</h3>
+
+  This semester, we have three CPUs available for experimentation:
+
+  <ul>
+    <li>The Intel i7s in EOS</li>
+    <li>The Intel i5s in Data Com</li>
+    <li>The AMDs in Arch</li>
+  </ul>
+
+  <p class="listHeader">Begin by timing a sequence of <code>addl</code> instructions:</p>
+  <ol>
+    <li>Run <code>generate_experiments3.rb</code> and redirect the output to a file (I'll call it
+      <code>asm1.s</code></li>
+    <li>Examine <code>asm1.s</code> and make sure you undertand what it's doing.</li>
+    <li>Compile <code>asm1.s</code> and <code><a href='time_instructions2.c'><code>time_instructions2.c</code></a></code> together into a single
+      executable and run it.</li>
+
+    <li>You will notice that the CPI for the initial workload is less than 1.  Have me explain why, then adjust
+      <code>time_instructions</code> to account for the problem.</li>
+
+
+    <li>Run the previous test on the different CPUs
+      and plot the results together on the same graph. Attach a copy
+      of your plot to your lab report. If using <code>gnuplot</code>,
+      you can change your output format and save the plot to a
+      file. First type
+      "<code>set&nbsp;term&nbsp;<em>mode</em></code>", where
+      <em>mode</em> is one of many output formats, including
+      "postscript", "jpeg", "png", and "pbm". (Type <code>help
+      term</code> for the complete list.) After you have set the term,
+      type "<code>set&nbsp;output&nbsp;<em>filename</em></code>".
+      Typing "<code>set&nbsp;term&nbsp;x11</code>" will return the
+      output to the screen. WARNING: <code>gnuplot</code> doesn't
+      always correctly overwrite files. So, make sure your plots look
+      good on the screen <em>before</em> changing the terminal and
+      output file.  <!--HINT: Entering the line <code>set sytle data
+      linespoints</code> will plot all data files using the
+      "linespoints" style.  The <code>linespoints</code> style is
+      generally easier to read than a bunch of isolated points.--></li>
+
+    <li>Find the approximate slope of each line.</li>
+
+    <li>Describe the differences you see between CPUs (if any).</li>
+
+    <li>Now, edit <code>generate_experiments3.rb</code> so that instead of timing a sequence of <code>addl $1,
+      %eax</code>, it times a sequence of <code>addl $1, %eax; addl $1, %ecx</code>.  (Look for where
+      <code>instruction_pool</code> is defined near line 154.)
+      Run it on the different hardware. What are the slopes of the lines?
+    </li>
+
+    <li>The slopes of the line should be significantly less than 1. What
+      does this tell you?
+    </li>
+
+    <li>The first test produces code that looks like this:
+      <pre>
+		addl $1, %eax
+		addl $1, %eax
+		addl $1, %eax
+		addl $1, %eax
+		...
+		</pre>
+      whereas the second  produces code that looks like
+      this:
+      <pre>
+		addl $1, %eax
+		addl $1, %ecx
+		addl $1, %eax
+		addl $1, %ecx
+		...
+		</pre>
+      Why can the CPU run the second example faster?
+    </li>
+
+    <li>Figure out how many <code>add</code> instructions each different
+      CPU can do in parallel. Attach graphs demonstrating this. (In other
+      words, show me how you figured it out.) In general, each plot should contain more than one line.
+      Look most
+      closely at the slope of the line in the range <code>[10000, 15000]</code> (If you don't see at least one CPU
+      that can handle more than 2 instructions at a time, let me know.) <b>WARNING:</b> Make sure your timing code
+      doesn't use <code>%ebx</code>, <code>%r13d</code>, or any other register that is in use <em>at the point your
+      code being time is being run.</em>
+    </li>
+
+    <li>The i7 can, in theory, complete 4 instructions in parallel.  Try to find a sequence of four instructions
+      that the i7 will issue and execute in parallel.</li>
+
+    <!--
+    <li>Thus far, we have been testing an <code>add</code> instruction with
+       an immediate parameter. Now, try an <code>add</code> instruction that
+       takes two register-direct parameters (e.g., <code>addl %eax, %ebx</code>).
+       How many can run in parallel?
+
+
+    <li>Now, find out how many register-indirect instructions (e.g., <code>addl
+       -4(%rbp), %eax</code>) can run in parallel?
+        -->
+  </ol>
+
+  <!--
+  <h2>Timing <code>imull</code></h2>
+
+  <p>Now, let's look at how the compiler handles multiplication:</p>
+
+  <p>Write some C code that includes the line <code>x *= 7</code> where <code>x</code> is declared to be a
+     <code>register int</code>.</p>
+
+  <ol start="15">
+     <li>What assembly code is generated for this line? (It should be several lines.)</li>
+     <li>Explain how this assembly code works.</li>
+  </ol>
+
+  <p>Now find a constant value that causes the compiler to generate an <code>imull</code> instruction. Time a single
+     <code>mull</code> instruction the same
+     manner you tested timed the <code>add</code>.
+
+  <ol start="17">
+
+     <li>Find the slope of the lines for each CPU.</li>
+     <li>What do these graphs tell you about time it takes to perform a multiply?<?li>
+
+     <li>Now repeat the experiment for larger groups of multiplies and find out how many multiplies can be executed in
+        parallel.
+     </li>
+  </ol>
+  -->
+
+  <hr>
+
+</body>
+</html>
+<!-- Key pages in Intel document:  32, 37-38, 42-44 -->

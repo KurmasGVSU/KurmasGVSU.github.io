@@ -1,0 +1,14 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1180109578
+host=75.134.113.30
+name=WorkPrivate.UsefulArchBooksAtOttawaCountyLibrary
+rev=1
+targets=
+text=# PC Intern system programming.  The encyclopedia of DOS programming Know How.  Michael Tischer.  9-781557-551-450%0a# Assembly Language for Intel-Based Computers.  Third Edition.  Kip R. Irvine. 0-13-660390-4%0a
+time=1180109578
+author:1180109578=
+diff:1180109578:1180109578:=1,2d0%0a%3c # PC Intern system programming.  The encyclopedia of DOS programming Know How.  Michael Tischer.  9-781557-551-450%0a%3c # Assembly Language for Intel-Based Computers.  Third Edition.  Kip R. Irvine. 0-13-660390-4%0a
+host:1180109578=75.134.113.30

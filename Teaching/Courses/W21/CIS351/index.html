@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CIS 351 --- Computer Organization and Assembly Language</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+            .kielceAssignmentTable {
+           border-spacing: 35px 0;
+        }        
+
+        .kielceAssignmentTable tr th {
+          text-align: left;          
+        }
+
+        .kielceAssignmentTable tr td {
+          vertical-align: top;
+        }
+
+        .kielceAssignmentTable_due {
+           white-space:  nowrap;
+        }
+
+        .kielceAssignmentTable_title {
+            white-space: nowrap;
+        }
+
+        .exam {
+            background-color: lightgreen;
+        }
+
+  </style>
+</head>
+
+<body>
+
+<div id="nav">
+
+  <p><a target="_top" href="index.html">Course Home</a></p>
+
+  <p><a href="syllabus.html">Syllabus</a></p>
+
+  <p><a href="timeline.html">Timeline</a></p>
+
+  <!-- <p><a href="estimated_timeline.html">Timeline</a></p> -->
+
+  <!-- <p><a target="_top" data-klink="previousCourseURL">Previous Offering</a></p> -->
+
+  <!-- <p id="currentOffering" style="DISPLAY: none"><a target="_top" data-klink="currentCourseURL">Current Offering</a>
+  </p> -->
+
+  <!--
+  <p><a href="SampleCode" style="color:white"><fontsize="2"
+  face="arial,helvetica,sans-serif">SampleCode</font></a></p>
+  -->
+
+  <hr>
+
+  <p><a href='https://www.cis.gvsu.edu/~kurmasz'>My Home</a></p>
+  <p><a href='https://www.cis.gvsu.edu/public/staffListing/index.php?page=staff&fname=Zachary&lname=Kurmas'>My Schedule</a></p>
+
+</div>
+
+
+<div id="content">
+  <div>
+    <h2 style="text-align: center">
+      <span>CIS 351 Computer Organization and Assembly Language</span><br>
+      <span>Winter 2021</span>
+    </h2>
+  </div>
+
+
+  <dl>
+    <dt> Contact Information:</dt>
+    <dd><style>
+    .contactInfoTable {
+        width: 100%;
+    }
+
+    .contactInfoTable td {
+        border:0;
+        margin: 3px;
+    }
+
+    .ciHeader {
+       font-weight: bold
+    }
+
+    .contactInfoTable td {
+        text-align: left;
+    }
+
+    .contactInfoTable td:nth-child(1) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(3) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(4) {
+        width: 250px;
+    }
+</style>
+
+<table class="contactInfoTable">
+    <tr>
+        <td class="ciHeader">Instructor:</td>
+        <td>Zachary Kurmas</td>
+        <td class="ciHeader">Office:</td>
+        <td>MAK C-2-316</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Phone:</td>
+        <td>331-8688</td>
+        <td class="ciHeader">Office Hours:</td>
+        <td>MW 10-11, 2-3 </td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Home page:
+        <td><a href="http://www.cis.gvsu.edu/~kurmasz" target="_top">http://www.cis.gvsu.edu/~kurmasz</a>
+        <td>
+        <td>
+    </tr>
+</table>
+
+
+E-mail is the best way to contact me.  During the week, expect a reply within 24 hours.  Also, feel free to visit my office any time the door is open, 
+even if it isn't officially office hours.
+</dd>
+
+    <dt>Course Documents:
+    <dd>
+      <ul>
+        <li><a href="syllabus.html">Syllabus</a>
+        <li><a target="_top" href="https://www.cis.gvsu.edu/academic-honesty">CIS Academic Honesty Policy</a></li>
+      </ul>
+
+    <dt>Announcements:</dt>
+    <dd> I will post announcements at <a target="_top" href="https://piazza.com/gvsu/winter2021/cis351">Piazza</a>.
+      Please check there regularly.
+    </dd>
+
+    <dt>Discussion Board:</dt>
+    <dd>Please post questions about homework, projects, etc. to <a target="_top" href="https://piazza.com/gvsu/winter2021/cis351">Piazza</a>. Doing
+      so allows everybody to see the question and answer and saves me the time of answering the same question multiple
+      times. Other students can also answer your question, which may help you get a faster response.
+    </dd>
+
+    <dt>Grades:</dt>
+    <dd>I will post grades on <a target="_top" href="https://mybb.gvsu.edu">Blackboard</a>.
+    </dd>
+
+
+    <dt>Assignments:
+    <dd>
+          <table class='kielceAssignmentTable'>
+      <tr>
+         <th>Due</th>
+         <th>Name</th>
+         <th>Details</th>
+      </tr>
+  <tr>    <td class='kielceAssignmentTable_due'>Fri. 22 Jan.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/CIS351_IntroductoryQuestions.pdf'>First Day Survey</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 1 Feb.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/DigitalLogicIntro'>Homework 1: Introduction to Digital Logic</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 15 Feb.</td>
+    <td class='kielceAssignmentTable_title'><a href='Projects/Build_JLS_Adder'>Project 1: Build an Adder</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 22 Feb.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/booleanAlgebra.html'>Homework 2: Boolean Algebra</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 1 Mar.</td>
+    <td class='kielceAssignmentTable_title'><a href='Projects/Build_JLS_SubSlt'>Project 2: Build a Subtractor and SLT</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Fri. 5 Mar.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/sequentialCircuits.pdf'>Homework 3: Sequential Circuits</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 8 Mar.</td>
+    <td class='kielceAssignmentTable_title'><a href='Projects/Build_JLS_ALU'>Project 3: Build an ALU</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 29 Mar.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/singleCycle.pdf'>Homework 4: Single Cycle CPU</a></td>
+    <td class='kielceAssignmentTable_details'>Please work in pairs.</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Fri. 2 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Projects/Build_PH_CPU/SingleCycle/BuildAtOnce'>Project 4 (Phase 1)</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 14 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/cacheHomework.html'>Homework  6: Cache</a></td>
+    <td class='kielceAssignmentTable_details'>Problems 1 - 6 only.</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Fri. 16 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Projects/Build_PH_CPU/SingleCycle/BuildAtOnce'>Project 4: Build Single Cycle CPU</a></td>
+    <td class='kielceAssignmentTable_details'>Please work in pairs</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 21 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/pipelineImplementation.pdf'>Homework  7: Pipeline Implementation</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 26 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/pipelinePerformance.pdf'>Homework 8: Pipeline Performance</a></td>
+    <td class='kielceAssignmentTable_details'><em>Not due for credit</em></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 26 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Labs/Recursion'>Homework  5: Recursion</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 26 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/practiceFinal.pdf'>Practice Final</a></td>
+    <td class='kielceAssignmentTable_details'><em>Not due for credit</em></td>
+  </tr>
+
+</table>
+
+    </dd>
+
+    <dt>Labs:
+    <dd>
+          <table class='kielceAssignmentTable'>
+      <tr>
+         <th>Date</th>
+         <th>Name</th>
+         <th>Details</th>
+      </tr>
+  <tr>    <td class='kielceAssignmentTable_due'>Tue. 19 Jan.</td>
+    <td class='kielceAssignmentTable_title'><a href='Labs/Tools'>Lab 1: Tools</a></td>
+    <td class='kielceAssignmentTable_details'><em>Individual</em> assignment</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Tue. 2 Feb.</td>
+    <td class='kielceAssignmentTable_title'><a href='Labs/UnsignedAdder'>Lab 3: Unsigned Adder</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Tue. 9 Feb.</td>
+    <td class='kielceAssignmentTable_title'><a href='Labs/ChangeOfBase'>Lab 2a: Number Conversions</a></td>
+    <td class='kielceAssignmentTable_details'><em>Individual</em> assignment</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Tue. 9 Feb.</td>
+    <td class='kielceAssignmentTable_title'><a href='Labs/DigitalLogicIntroLab'>Lab 2b: Introduction to Digital Logic</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Tue. 2 Mar.</td>
+    <td class='kielceAssignmentTable_title'><a href='Labs/SequentialCircuits'>Lab 4a: Sequential Circuits</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Tue. 2 Mar.</td>
+    <td class='kielceAssignmentTable_title'><a href='Labs/AssemblyIntroLab'>Lab 4b: Introduction to Assembly</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Tue. 9 Mar.</td>
+    <td class='kielceAssignmentTable_title'><a href='Labs/ComputerInstructionTypes'>Lab 5: Computer Instruction Types</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Tue. 16 Mar.</td>
+    <td class='kielceAssignmentTable_title'><a href='Labs/Branches'>Lab 6: Assembly Branches</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Tue. 23 Mar.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/LoopsAndMemory'>Lab 7: Loops and Memory</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Tue. 6 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Labs/Cache'>Lab 8: Cache (part 1)</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Tue. 13 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Labs/Cache#Part2'>Lab 9: Cache (part 2)</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Tue. 20 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Labs/DLXview'>Lab 10: Pipeline</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+</table>
+
+
+      (Labs are due the following Monday, unless otherwise specified.)
+    </dd>
+
+    <dt>Text:</dt>
+    <dd>
+      The official textbook for this class is
+      <ul>
+        <li style="padding-bottom: 0; margin-bottom: 0"><em>Digital Design and Computer Architecture (2nd edition)</em> by David Money Harris and Sarah L. Harris. ISBN: 9780123944245</li>
+      </ul>
+
+      <p style="padding-top: 0; margin-top: 0;">If you already have a copy of the Patterson and Hennessy text (shown
+        below), you may use that text
+        instead. This book goes into more depth for some of the later course topics. It can be helpful; but, I
+        wouldn't spend more than about $10 on it.</p>
+
+      <ul>
+        <li><em>Computer Organization and Design: The Hardware/Software Interface, 4th Edition</em> by David Patterson and John Hennessy. ISBN: 1558606041</li>
+      </ul>
+
+      <p>Also, the differences between the 1st and 2nd edition of Harris and Harris are minimal. If you can find a
+        cheap copy of the first version, go ahead and use it.</p>
+
+    </dd>
+
+    <dt>Reference:</dt>
+    <dd>
+      <ul>
+        <li>JLS <a target="_top" href="https://www.cs.mtu.edu/~pop/jlsp/bin/JLS.html">Web Page</a>
+        (Use <a href="https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/Tools/JLS.jar">this link</a> to download.)</li>
+
+        <li><a target="_top" href="https://courses.missouristate.edu/kenvollmar/mars/">Mars</a></li>
+
+        <li><a href='https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/ReferenceDocuments/mips_green_card.pdf'>MIPS Reference Card</a></li>
+
+        
+        <li>Useful YouTube Channels
+        <ul>
+            <li>My <a href="https://www.cis.gvsu.edu/~kurmasz/CompOrgVideos">supplemental Videos</a> for CIS 351.
+            </li>
+           <li><a href='https://www.youtube.com/channel/UCSX3MR0gnKDxyXAyljWzm0Q'>Computer Science</a></li>
+           <li><a href='https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo'>Crash Course: Computer Science</a></li>           
+        </ul>
+        </li>
+        <li>Misc. Videos
+          <ul>
+            <li><a target="_top" href="https://www.youtube.com/watch?v=4xiAlX_ALJM">Relays</a></li>
+            <li><a target="_top"
+                   href="https://www.youtube.com/watch?v=IcrBqCFLHIY">Transistors</a>
+              (from <a target="_top" href="https://www.youtube.com/user/1veritasium">Veritasium</a>)
+            </li>
+            <li><a target="_top" href="https://www.youtube.com/watch?v=Sk4puph6GCI">Pipelining</a></li>
+          </ul>
+        </li>
+
+
+        <li><a target="_top" href="https://www.bluffton.edu/~nesterd/java/numberbases.html">Number bases</a></li>
+        <li>Twos complement
+          <ul>
+            <li><a target="_top" href="https://en.wikipedia.org/wiki/Two's_complement">Wikipedia Article</a></li>
+            <li><a target="_top" href="https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html">Thomas Finley</a>
+            </li>
+            <li><a target="_top"
+                   href='https://prozessorsimulation.klickagent.ch/?lang=en&amp;convertor=true'>converter</a></li>
+            <li><a target="_top"
+                   href="https://www.youtube.com/watch?v=UIKGV2cTgqA">"New Math"</a></li>
+          </ul>
+        </li>
+
+
+        <li> Digital Logic stuff
+          <UL>
+            <li> Karnaugh Map explanations from
+              <UL>
+                <li><A target="_top" HREF="https://www.cs.usm.maine.edu/~welty/karnaugh.htm"> University of Southern
+                  Maine</A>,
+
+                <li><A target="_top" HREF="https://en.wikipedia.org/wiki/Karnaugh_map"> Wikipedia</A>, and
+                <li><A target="_top"
+                       HREF="https://www.embedded.com/showArticle.jhtml?articleID=16100908">Embedded.com</A>.
+              </ul>
+            <li> More about <A target="_top"
+                               HREF="https://electronics.howstuffworks.com/relay1.htm">relays</A>.
+            </li>
+
+            <li>Transistors:
+              <ul>
+                <li> More about <A target="_top"
+                                   HREF="https://electronics.howstuffworks.com/diode.htm">transistors</A>.
+
+                <li> An article about <a target="_top"
+                                         href="https://www.amasci.com/amateur/transis.html">how
+                  transistors <em>really</em> work</a>.
+                <li> Selected <a href="Resources/transistors.pdf">transistor-related pictures</a>.</li>
+                <li>Entertaining, but informative
+                  <a target="_top" href="https://youtu.be/IcrBqCFLHIY">video</a></li>
+              </ul>
+            </li>
+          </ul>
+
+        <li><a target="_top" href="https://www.nand2tetris.org">Nand2Tetris</a>.This course, developed by Noam Nisan
+          and Simon Schocken, is a series of projects in which students build a (simulated) computer from NAND
+          gates; then build a simple assembler, programming language, and operating system; and finally, implement
+          Tetris on the system they created.
+        </li>
+
+
+        <li> Assembly language resources
+          <UL>
+            <li><A target="_top" HREF="https://courses.missouristate.edu/KenVollmar/MARS/">MARS</A>. A MIPS assembly
+              language simulator written in Java.
+            <li><A target="_top" HREF="https://www.cs.wisc.edu/~larus/spim.html">SPIM</A>. A MIPS32 assembly language
+              simulator.
+            <li> Norman Matloff's <A HREF="https://heather.cs.ucdavis.edu/~matloff/50/LinuxAssembly.html">Introduction
+              to Linux Intel Assembly Language</A>.
+            <li> Notes on <a target="_top" href="https://www.cim.mcgill.ca/~langer/273/12-coprocessors.pdf">MIPS
+              floating point</a> from McGill University.
+            </li>
+          </ul>
+
+        <li> Computer architecture resources
+          <ul>
+            <li> A brief description and history of the <A target="_top"
+                                                           HREF="https://en.wikipedia.org/wiki/MIPS_architecture">
+              MIPS architecture</A>.
+            <li> Intel Architecture<A target="_top" HREF="https://developer.intel.com/sites/developer/index.htm">
+              support page</A>.
+          </ul>
+        </li>
+
+        <li> Textbooks (and companion software, slides, practice problems, etc.)
+          <ul>
+            <li><a target="_top" href="https://www.elsevierdirect.com/companion.jsp?ISBN=9780123704979">Companion
+              site</a> for Harris and Harris text (includes lecture slides).
+            </li>
+            <li><a target="_top"
+                   href="https://www.lulu.com/us/en/shop/david-tarnoff/computer-organization-and-design-fundamentals-e-book/ebook/product-1242053.html">Computer
+              Organization and Design Fundamentals</a> a free e-book from David Tarnoff.
+            </li>
+            <li><A target="_top"
+                   HREF="https://books.mcgraw-hill.com/getbook.php?isbn=007136207X&amp;template=schaums">Schaum's
+              Outlines on Computer Architecture</A>. Only $20.
+            </li>
+            <li><A target="_top" HREF="https://www.williamstallings.com/COA6e.html">Resource page</A> for the
+              Stallings text.
+            </li>
+          </ul>
+        </li>
+
+        <li> Just for fun:
+          <ul>
+            <li><a target="_top" href="https://james.hamsterrepublic.com/technomancy/">Technomancy</a></li>
+          </ul>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+
+
+  <hr>
+  <p>Updated Wednesday, 21 April 2021, 10:18 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</div>
+</body>
+</html>

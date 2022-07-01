@@ -1,0 +1,107 @@
+<html>
+<head>
+    <title>Download MIPSUnit::MSpec</title>
+    <style type="text/css">
+        fieldset {
+            display: inline-block;
+        }
+
+        .field {
+            text-align: right;
+            width: 125px;
+            float: left;
+        }
+
+        input[type=text] {
+            width: 400px;
+        }
+
+        .labeledButton {
+            margin-right: 25px;
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+            padding-top: 20px;
+        }
+
+        .buttonBlock {
+            text-align: justify;
+        }
+
+
+    </style>
+</head>
+<body>
+<h1> Download <code>MIPSUnit::MSpec</code></h1>
+
+<p>This project was made possible through Grand Valley State University's <em>Individualized
+    Workload Plan</em>, which allowed me to develop <code>MSpec</code> in lieu of teaching an additional course.
+    Documenting <code>MSpec</code>'s use will significantly strengthen future requests for similar workload
+    flexibility.</p>
+
+<p>Please provide as much information as you are comfortable sharing. None of the fields below are required; however,
+    the more information you provide, the easier it will be for me to get time to update this program and work on
+    others.</p>
+
+
+<form action="submit.php" method="post">
+    <fieldset>
+        <label class="field" for="name">Name:</label> <input type="text" name="name"><br>
+        <label class="field" for="university">University:</label><input type="text" name="university"> <br>
+        <label class="field" for="course">Course:</label> <input type="text" name="course"><br>
+        <label class="field" for="students_per_year">Enrollment / Year:</label> <input type="text"
+                                                                                       name="students_per_year"> <br>
+
+
+        <span class="field">Role:</span> <span class="buttonBlock"><span><input type="radio" name="role"
+                                                                                value="Instructor"> Instructor</span><br>
+        <span class="field">&nbsp;</span><span class="labeledButton"><input type="radio" name="role" value="Student"> Student</span><br>
+        <span class="field">&nbsp;</span> <span class="labeledButton"><input type="radio" name="role" value="Developer"> Developer</span><br>
+        <span class="field">&nbsp;</span> <span class="labeledButton"><input type="radio" name="role" value="Other"> Other</span><br>
+        </span>
+
+        <label class="field" for="comments">Comments:</label> <textarea cols="58" rows="5" name="comments"></textarea><br>
+
+
+        <input type="submit" value="Download Ruby Gem (preferred)" name="gem">
+        <input type="submit" value="Download tar file" name="tar">
+    </fieldset>
+
+</form>
+
+
+<h2>Gem Installation</h2>
+
+<p>You must have <a href="http://rubygems.org/">RubyGems</a> installed.  If you have root access to your machine,
+   run<br>
+   <code>pseudo gem install mipsunit_mspec-0.0.3.gem</code><br>
+   from the command line.</p>
+
+<p>If you do not have root access, then run<br>
+   <code>gem install -i <em>$HOME/LocalGems</em>/ -n <em>$HOME/bin</em>/ mipsunit_mspec-0.0.3.gem</code><br>
+from the command line, where
+<ul>
+   <li><code><em>$HOME/LocalGems</em></code> is a directory into which you place gems you install, and</li>
+   <li><code><em>$HOME/bin</em></code> is a directory into which you place scripts and other executable code.</li>
+</ul>
+
+
+
+
+<h2>Tar Installation</h2>
+
+<p>Un-tar the file and run the <code>mspec</code> executable.  Because the <code>mspec</code> executable is designed to
+be the entry point for a Ruby Gem, you will have to configure the Ruby load path by hand.  Suppose you extracted the
+tar file into <code>/home/tools</code>.  You could run <code>mspec</code> like this:</p>
+
+<code>ruby -I /home/tools/mipsunit_mspec-0.0.3/lib /home/tools/mipsunit_mspec-0.0.3/bin/mspec [filename]</code>
+
+<hr>
+
+</body>
+</html>
+
+

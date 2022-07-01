@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="gvsu-cis-263">GVSU CIS 263</h1>
+
+<h2 id="week-9--day-2">Week 9 / Day 2</h2>
+
+<h4 id="union-of-disjoint-sets">Union of Disjoint sets</h4>
+
+<ul>
+  <li>Imagine creating a random maze
+    <ul>
+      <li>Begin with a <code>m x n</code> grid of boxes with four walls.</li>
+      <li>Assign each box a unique “set”.</li>
+      <li>Pick a wall at random.</li>
+      <li>If the two rooms are in separate sets (i.e., no path between them yet), merge the two sets 
+into one.</li>
+      <li>Repeat.</li>
+    </ul>
+  </li>
+  <li>This same process can be used for clustering.
+    <ul>
+      <li>Put each object / person in his own set.</li>
+      <li>Find two sets to merge.</li>
+      <li>Repeat.</li>
+    </ul>
+  </li>
+  <li>Note: Two key operations:
+    <ul>
+      <li><code>find:</code> get the name of the set an an object is in.</li>
+      <li><code>union:</code> merge two sets.</li>
+    </ul>
+  </li>
+  <li class="q">Try to come up with the most efficient find/merge algorithm.
+    <ul>
+      <li class="q">“find fast” or “merge fast”?</li>
+      <li class="q">What is the cost of merging in “find fast” setup where we have a map of node names to set names?
+        <ul>
+          <li><code>O(n)</code> per merge, since we need to scan the list for all nodes belonging to the merged set.</li>
+        </ul>
+      </li>
+      <li><span class="q">How can we merge fast?</span> Use a tree</li>
+      <li><span class="q">What is the cost of using a simple tree?</span> find can get slow if tree is unbalanced.</li>
+      <li class="q">How to reduce the cost of a <code>find</code> (i.e., depth of the tree)?
+        <ul>
+          <li>union-by-size:  Always merge smaller tree into larger.</li>
+          <li class="q">How does this  minimize tree depth?</li>
+          <li class="q">Tree can’t be deeper than <code>log n</code>, Why?
+            <ul>
+              <li>Whenever a node’s depth increases, the size of its tree must double.  Can only double <code>log n</code> times.</li>
+            </ul>
+          </li>
+          <li><span class="q">What does the tree look like in the best case?</span> Depth of at most two.  Lots of single nodes 
+pointing to a root.  This gives an average constant time per operation.</li>
+          <li>union-by-height works for the same reason.</li>
+        </ul>
+      </li>
+      <li class="q">Can we do better (i.e., knock down the height of the tree)?
+        <ul>
+          <li>Path compression: Every find moves every node along the path up to the root.</li>
+          <li><code>M</code> operations can be completed in O(Mα) where α is an extrodinarily slow-growing function – 
+effectively constatnt.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<pre><code>// both node numbers and set numbers are integers.
+// An array S maps nodes to their parent node.
+// Root nodes have a negative value.
+int  find(int x) {
+
+    // x is a root.  Return the set name.
+    if (S[x] &lt; 0) {
+      return x;
+    } else {        
+      S[x] = find(S[x]);
+      return S[x];
+    }
+}    
+</code></pre>
+
+</main>
+</body>
+</html>

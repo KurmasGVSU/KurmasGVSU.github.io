@@ -1,0 +1,29 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10.4; en-US; rv:1.9.1.8) Gecko/20100202 Firefox/3.5.8
+author=
+csum=
+ctime=1246848492
+host=68.188.218.51
+name=KurmasFamilyPrivate.Addresses
+rev=6
+targets=
+text=[@%0aGrandpa and Grandma Kurmas%0a201 North Main Street%0aEssexville, MI  48732%0a%0aUncle Nathan Kurmas%0a27515 Cordoba Dr%0aApt 3111%0aFarmington Hills, MI  48334%0a%0aGreat Grandma Beaver%0a3414 Bennett%0aFlint, MI 48506%0a%0aGrandpa and Grandma Sheffer%0a2821 Victoria Drive%0aTraverse City, MI  49684%0a%0aGreat Grandma and Great Grandpa VanBrocklin%0a1009 Carver Street%0aTraverse City, MI  49686%0a%0aUncle Joshua and Aunt Tara Sheffer%0aXander, Xavier, Malcolm, and Quilan%0a20271 White Oak Ct%0aLake Ann, MI  49650%0a%0aUncle Tony and Aunt Shannon Sheffer%0aElla and Mady%0a13317 South Martin Lane%0aEmpire, MI  49630%0a@]
+time=1274190246
+author:1274190246=
+diff:1274190246:1274190150:=1c1%0a%3c [@%0a---%0a> [=..%0a32c32%0a%3c @]%0a\ No newline at end of file%0a---%0a> ..=]%0a\ No newline at end of file%0a
+host:1274190246=68.188.218.51
+author:1274190150=
+diff:1274190150:1274190110:=1c1%0a%3c [=..%0a---%0a> [=%0a32c32%0a%3c ..=]%0a\ No newline at end of file%0a---%0a> =]%0a\ No newline at end of file%0a
+host:1274190150=68.188.218.51
+author:1274190110=
+diff:1274190110:1274190010:=1d0%0a%3c [=%0a32d30%0a%3c =]%0a\ No newline at end of file%0a
+host:1274190110=68.188.218.51
+author:1274190010=
+diff:1274190010:1274189978:=
+host:1274190010=68.188.218.51
+author:1274189978=
+diff:1274189978:1246848492:=1,30c1,20%0a%3c Grandpa and Grandma Kurmas%0a%3c 201 North Main Street%0a%3c Essexville, MI  48732%0a%3c %0a%3c Uncle Nathan Kurmas%0a%3c 27515 Cordoba Dr%0a%3c Apt 3111%0a%3c Farmington Hills, MI  48334%0a%3c %0a%3c Great Grandma Beaver%0a%3c 3414 Bennett%0a%3c Flint, MI 48506%0a%3c %0a%3c Grandpa and Grandma Sheffer%0a%3c 2821 Victoria Drive%0a%3c Traverse City, MI  49684%0a%3c %0a%3c Great Grandma and Great Grandpa VanBrocklin%0a%3c 1009 Carver Street%0a%3c Traverse City, MI  49686%0a%3c %0a%3c Uncle Joshua and Aunt Tara Sheffer%0a%3c Xander, Xavier, Malcolm, and Quilan%0a%3c 20271 White Oak Ct%0a%3c Lake Ann, MI  49650%0a%3c %0a%3c Uncle Tony and Aunt Shannon Sheffer%0a%3c Ella and Mady%0a%3c 13317 South Martin Lane%0a%3c Empire, MI  49630%0a---%0a> Carrie Wojtas%0a> 4302 Glen Hollow Dr.%0a> Hudsonville, MI  49426%0a> %0a> %0a> Barb Walker%0a> 1700 Stark NW%0a> Grand Rapids, MI 49534%0a> %0a> %0a> Lindsey Olsen%0a> 5559 Estate%0a> Allendale, MI  49401%0a> %0a> %0a> Jeannette Harter%0a> 5787 Mill Dr%0a> Coopersville, MI  49404%0a> %0a> %0a
+host:1274189978=68.188.218.51
+author:1246848492=
+diff:1246848492:1246848492:=1,20d0%0a%3c Carrie Wojtas%0a%3c 4302 Glen Hollow Dr.%0a%3c Hudsonville, MI  49426%0a%3c %0a%3c %0a%3c Barb Walker%0a%3c 1700 Stark NW%0a%3c Grand Rapids, MI 49534%0a%3c %0a%3c %0a%3c Lindsey Olsen%0a%3c 5559 Estate%0a%3c Allendale, MI  49401%0a%3c %0a%3c %0a%3c Jeannette Harter%0a%3c 5787 Mill Dr%0a%3c Coopersville, MI  49404%0a%3c %0a%3c %0a
+host:1246848492=68.188.218.51

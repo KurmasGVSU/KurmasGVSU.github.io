@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Introduction to JLS</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+  </style>
+</head>
+
+<body>
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Introduction to JLS</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2022</h1></td>
+  </tr>
+</table>
+
+
+<p class="listHeader">The objective for this lab is to</p>
+
+<ul>
+  <li>reinforce your understanding of adders by building one.</li>
+</ul>
+
+<p>You are encouraged to work in teams of two on this assignment.<p>
+
+<p>Begin by following <a href='https://classroom.github.com/a/MOKwrdO6'>this GitHub Classroom link</a> to create 
+the GitHub repository for this assignment.  You will be asked to select or create a team name. 
+The team you create is valid for this assignment only.  
+You may switch teammates between assignments if you like.</p>
+
+
+<h2>Intro to JLS</h2>
+
+   This semester we will be using a digital logic simulator called <a href='https://pages.mtu.edu/~pop/jlsp/bin/JLS.html'>JLS</a>. 
+   
+   <p class='listHeader'>All the necessary code is contained in a single <code>.jar</code> file.</p>
+     <ul>   
+   <li>If you are using
+  EOS/Arch, you will find <code>JLS.jar</code> in <code>/home/kurmasz/public/bin</code>. The easiest way to run JLS 
+  in EOS/Arch is to put this directory in your path. (For most of you, the best way to do this is to add the
+  line <code class="inline-instruction nobreak">export&nbsp;PATH=$PATH:/home/kurmasz/public/bin</code> to the
+  end of your <code>.bashrc</code>.) There is a script named <code>jls</code> in this directory that sets up the java
+  classpath and launches JLS. This directory also contains other scripts that will make your life in this course much
+  easier. If you object to adding this directory to your path, you can also launch JLS with this
+  command: <code class="inline-instruction nobreak">java&nbsp;-jar&nbsp;/home/kurmasz/public/bin/JLS.jar
+  /JLS.jar</code>.</li>
+
+ <li>If you want to run <code>JLS</code> on your own machine, you can download the <code>jar</code> file  
+ <a href='https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/Tools/JLS.jar'>here</a>. (Please do not email Prof. Poplawski for a copy of <code>JLS</code>.)</li>
+</ul>
+ 
+<p><a href='https://youtu.be/l5SDkUcI46k'>This video</a> demonstrates how to use wires, subcircuits, and parallel gates in JLS.
+
+<h2>Build an Adder</h2>
+
+<p>Use JLS to build an circuit that adds two 16-bit unsigned integers.
+You can use any design you like (ripple-carry, carry-lookahead, etc.).
+A ripple-carry adder is the simplest; but, building a faster, more complex adder will give you a head start on Project 1.  
+(To be specific, to get full credit on Project 1, you ned an adder that is faster than <code>225</code>.)</p>
+
+<p>The starter code contains a <code>.jls</code> 
+file named "<code>UnsignedAdder_16bit</code>".  Your solution must go in this file (the auto-grader won't find it otherwise).
+Also, you must not change the names of the inputs and outputs.  (Again, doing so will break the autograder.)</p>
+
+<p>To keep the design manageable, you may want to use one or more
+  sub-circuits (e.g., connect four 4-bit adders, or two 8-bit adders). If
+  you do use sub-circuits, notice that you can unbundle buses into
+  arbitrary groups. For example, you can take a 16-bit bus and split it
+  into 0-3, 4-7, 8-11, and 12-15. In the "Create unbundler" dialog, select
+  "Group bits" instead of "Single bits". (See the "Sign Extender" tutorial
+  built into JLS.)</p>
+
+<p>You may not use the built-in JLS adder.  You must create your own full adder.  Remember, you can save your full adder as a separate file and import it (using "File -&gt; Import").</p>
+
+
+<h2>Testing</h2>  
+   We will use a tool called <a href='https://cis.gvsu.edu/~kurmasz/Software/DLUnit/'>DLUnit</a> to run automated tests on your JLS circuits.  Specifically, 
+   <code>DLUnit</code> allows you to write and execute JUnit tests for your circuits. 
+    
+<p class='listHeader'>To run <code>DLUnit</code></p>
+<ul>
+  <li>in EOS/Arch:
+    <ol>
+      <li>Make sure <code>/home/kurmasz/public/bin</code> is in your <code>PATH</code></li>
+      <li>Download <a href="IsPrimeTest.java">IsPrimeTest.java</a>.</li>
+      <li>Compile the test: <code class="inline-instruction">dlunit_compile IsPrimeTest.java</code></li>
+      <li>Run <code>DLUnit</code>: <code class="inline-instruction">dlunit isPrime.jls IsPrimeTest.class</code>
+        .
+      </li>
+    </ol>
+  </li>
+  <li>on your own machine
+    <ol>
+      <li>Download <a href='https://www.cis.gvsu.edu/~kurmasz/Software/DLUnit/dist/DLUnit.jar'>DLUnit.jar</a>.</li>
+      <li>Download <a href="IsPrimeTest.java">IsPrimeTest.java</a>.</li>
+      <li>Compile the test: <code class="inline-instruction">javac -cp DLUnit.jar IsPrimeTest.java</code></li>
+      <li>Run <code class="inline-instruction">java -jar DLUnit.jar isPrime.jls IsPrimeTest.class</code>.</li>
+    </ol>
+  </li>
+</ul>
+
+
+
+<p>Test your circuit using <a
+    href="SampleUnsigned16BitAdderTest.java"><code>SampleUnsigned16BitAdderTest.java</code></a>.
+    If the test script doesn't work without modification, then you either
+    named your circuit, inputs, or outputs incorrectly.  Note, however, that <code>SampleUnsigned16BitAdderTest</code> will not completely test
+    your circuit. Add as many tests as necessary to be confident your
+    circuit works.
+  
+
+<h2>JLS Shortcuts</h2>
+<a href="https://www.youtube.com/watch?v=XzF2TBw7Fgw">This video</a> demonstrates several helpful JLS shortcuts.
+Remember, JLS was designed specifically with these projects in mind. If you find a task highly repetitive/tedious,
+you are probably overlooking a shortcut.
+
+<p>Also, you can create and import subcircuits (analogous to writing a
+  function in code).  Go to "File -&gt; Import" to import a saved subcircuit.</p>
+
+<h2>Deliverables</h2>
+
+<p class='listHeader'> When your circuits passes the autograder tests:</p>
+<ul>
+  <li>Add a text box to your <code>jls</code> files that includes
+   the names of all team members.</li>
+
+  <li>Commit and push your <code>jls</code> files, and any additional test files
+    you used.  Include <code>[Grade Me]</code> in the commit message.
+  </li>
+</ul>
+
+<hr>
+<p>Updated Thursday, 6 January 2022, 3:39 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>
+

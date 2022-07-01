@@ -1,0 +1,533 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <title>Cache</title>
+
+    <style type="text/css">
+        
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+        img.center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table.hasBorder, table.hasBorder td, table.hasBorder th {
+            border: 1px solid gray;
+        }
+
+        .listHeader {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        ul {
+            padding-top: 0;
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Cache</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2022</h1></td>
+  </tr>
+</table>
+
+
+<h3> Overview</h3>
+
+This lab was originally written to use the <a target="_top" href="http://www.simplescalar.com">Simplescalar</a> CPU simulator.
+The update to use <a href='https://valgrind.org/docs/manual/cg-manual.html'>Cachegrind</a>
+instead was prepared by Prof. Bowman.
+
+<p>Lab 9 is problems 1-11.</br>
+    Lab 10 is problems 12-18.</p>
+
+<h3>Cachegrind</h3>
+
+You may have used <a href='https://valgrind.org'>Valgrind</a> in the past to check for memory leaks in your C
+code.  However, Valgrind is actually a set of tools based on a common framework.
+One of those tools allows you to simulate caches with various
+configurations.
+
+Cachegrind is a tool that takes as input a description of a machine's memory
+hierarchy (i.e., cache levels),
+runs a specified program,
+and reports on the number of hits and misses in each level of the cache.
+
+Note: when looking at examples of Cachegrind,
+be careful to distinguish between "1" (the numeral "one") and "l"
+(a lower-case letter "L").
+
+<p class='listHeader'> You can see the <a href='https://valgrind.org/docs/manual/cg-manual.html#cg-manual.cgopts'>documentation</a>
+to learn how to specify cache parameters to Cachegrind.
+This lab focuses on the level 1 data cache,
+which is referred to as <code>D1</code> in Cachegrind.
+You can leave the other caches with their default configurations.
+A few notes:</p>
+<ul>
+  <li> Line size and cache size should be given in <em>bytes</em>.</li>
+  <li> Line size is what we have been referring to as block size --
+  it is just different terminology for the same idea.</li>
+</ul>
+
+For example, to simulate a machine with an 8KB, direct-mapped L1 data cache
+with 32 byte blocks, use this command:
+
+<code class='inline-instruction'>valgrind --tool=cachegrind --D1=8192,1,32 {program_to_run}</code>
+
+If you do not want Cachegrind to clutter your working directory with log files,
+you can use the argument <code class='inline-instruction'>--cachegrind-out-file=/dev/null</code> to prevent the file
+from being created.
+But, be sure you are recording the information you need somewhere.
+
+<h4 class='listHeader'>Availability</h4>
+<ul>
+    <li> Valgrind is already installed in EOS/Arch.  There is no need to install it yourself.  (In fact, you probably don't have 
+sufficient permissions to install your own copoy.)</li>
+    <li>Don't try to run Valgrind on MacOS.  Each OS update breaks Valgrind and it takes them quite awhile to fix it.
+    According to their web site, the current version only supports MacOS up to 10.12.  (Most of you probably have some 
+    version of 11.)
+</ul>
+
+<h3>Code</h3>
+
+<p>The code for this lab is in this GitHub repo: <a href='https://github.com/KurmasGVSU/CacheLabCode'><code>https://github.com/KurmasGVSU/CacheLabCode</code></a>.  <span class='inline-important'>This is <em>not</em> a GitHub Classroom repository</span>.
+If you want your own repository where you can commit changes, you need to <em>fork</em> this repository as opposed to cloning it.  
+If you clone this repository, you will get a read-only copy of the code and won't be able to commit any changes.</p>
+
+<p>To fork a repository, go to <a href='https://github.com/KurmasGVSU/CacheLabCode'>the repo's GitHub page</a> and look for the "fork" button near the upper-right corner of the screen 
+(<a href='locOfForkButton.png'>example</a>).</p>
+
+
+
+
+
+<h3>Effects of block size</h3>
+
+<p>Your first task is to examine the effects of block size on a "toy"
+    program. Look
+    at <a href="blockSize1.c"><code>blockSize1.c</code></a>. This small
+    program iterates through each byte in a large array. Begin by
+    compiling this C program  using <code>gcc</code> as you normally would.
+    The instructions below assume that you produced the default executable
+    (<code>a.out</code>). If you named your executable something else using the <code>-o</code> flag,
+   update the instructions accordingly. 
+
+
+<ol>
+  <li> Use Cachegrind to determine the miss-rates of an 8KB, direct-mapped cache
+   with the following block sizes:
+   32 bytes, 64 bytes, 128 bytes, and 256 bytes.
+   To do so, use commands that look like this:
+
+   <code class='inline-instruction'> valgrind --tool=cachegrind --D1=8192,1,<em>{block}</em> ./a.out</code>
+
+   where <code><em>{block}</em></code> ranges from 32 to 256.
+
+   When the program runs correctly there will be lots of lines specifying the cache performance.
+   The one you are interested in is <code>D1 miss rate</code> --
+   the miss rate for the L1 data cache.  This value is rounded to 0.1%.  If you want to see the result 
+   with more precision, you can divide the number of L1 data misses by the total number of L1 data accesses.
+
+   After you have run Cachegrind for each block size,
+   save the miss rate from each run.
+   List the miss rate for each block size tested.
+
+   <p class='listHeader'>Hints for running Cachegrind --
+   you can ignore these or ask me if you are not comfortable with <code>bash</code>:</p>
+   <ul>
+   <li> If you get sick of typing the full instruction,
+     you can add an alias in your <code>.bashrc</code> similar to the following:
+    
+     <code class='inline-instruction'> alias cachegrind='valgrind --tool=cachegrind --cachegrind-out-file=/dev/null</code>
+     </li>
+   <li> It's not difficult to make a script to automatically runs Cachegrind with
+     varying block sizes and presents the results.  You can even just type a <code>for</code> loop 
+     right in the bash terminal.
+
+     
+   <li>Cachegrind places its output on the standard error. One technique for automating the data collection is to 
+      (1) redirect the standard error to a different file for each block size,
+     such as by adding <code class='inline-instruction'> 2&gt; cache_<em>{block}</em>.txt</code> to the end of an instruction, then
+     (2) <code>grep</code> the output files rather than searching them by hand.
+     For example,  <code class='inline-instruction'>grep 'D1&nbsp;&nbsp;miss rate:' cache_64.txt</code>
+     (Note that the search string above has <em>two</em> spaces after <code>D1</code>.)</li>
+     
+     <li>For example, you could use the command below to collect the miss rates for all four block sizes:
+
+     <p><span class='inline-instruction'>for block in 32 64 128 256; do cachegrind --D1=8192,1,${block} ./a.out 2> output_${block}; done<br>
+     grep 'D1&nbsp;&nbsp;miss rate' output_*</span></p>
+     
+     <p></p></li>
+   </li> <!--- end of item 1 -->
+  </ul>
+
+
+   <li> Based on your observations,
+   determine a formula for the miss rate in terms of block size.
+   The formula will not be exact, but it should track the miss rate quite closely.  Two hints:
+     <ul>
+       <li>Write the miss rates as decimals, not percentages.</li>
+       <li>If you don't see the formula, continue the pattern "backwards" and estimate the values
+       for block sizes of 16, 8, 4, and 2.</li>
+    </ul>
+   </li>
+ 
+   <li> Your formula above should have an intuitive explanation
+   (i.e., it shoud not just be a line fit to data).
+   Explain what is happening in the cache during each memory access to produce
+   the results you observed.</li>
+</ol>
+
+
+<h3> Writing Code with Cache in Mind</h3>
+
+<ol start="4">
+    <li> Now, write a C program for which the miss rate is considerably higher for a 64-byte block than for a 32-byte
+        block. (The easiest way to do this is to find two array locations that conflict with a 64-byte block, but not
+        with a 32-byte block. If you do this, you will see the cache with the 32-byte blocks has a nearly 0% miss rate
+        while the cache with the 64-byte blocks has nearly a 100% miss rate.) You may not change the associativity or overall cache size.
+         List your source code, all cache
+        parameters used, and the resulting hit rates. Hint: You need not loop through the entire array. Instead, find
+        two addresses that collide in the cache. Remove the inner loop and mke <code>NUM_LOOPS</code> 10,000,000.
+    </li>
+</ol>
+
+Hints for writing programs with a specified cache behavior:
+<ul>
+
+    <li> Notice in <code>blockSize1.c</code> that <code>array</code> is
+        an array of characters; therefore, each item in the cache is exactly
+        1 byte. As a result, it is easy to identify data items that will or
+        will not conflict in the cache. For example, in an 8KB direct-mapped
+        cache, array bytes 0 and 8192 will conflict. Your job is to find
+        sets of array elements that conflict with a 64 byte block, but not 32 byte block. 
+        This is basically a pencil-and-paper problem that we happen to be using a cache
+        simulator to verify.
+    </li>
+
+   <!-- <li><code>gcc</code> is a <em>C</em> compiler. Your code must be
+        straight C. No iostreams; no "//"-style comments; and, all variables
+        must be declared at the beginning of each function.
+    </li>
+
+    <li> Declaring the local variables as "register" variables encourages
+        the compiler to keep the values of these variables in a register,
+        thereby reducing their effect on the cache hit rate.
+    </li>
+
+    <li>Most of the time, the array in the C code happens to line up with
+        the beginning of the cache. In other words, <code>array[0]</code>
+        tends to be mapped to cache slot 0. Sometimes, it gets mapped
+        somewhere else. If you have an answer you are confident is correct, 
+        but doesn't give the expected results.  Try adding 32 to each value.
+    </li>
+    -->
+</ul>
+
+<h3>Benefits of a large cache</h3>
+
+<p>Let's observe how the cache miss rate changes as the cache gets larger.  We will use various sorting algorithms as our test programs.
+To compile the first test program, <code>cd</code> into the git repo and run <span class='inline-instruction'>make runInsertionSort</span></p>
+
+
+<p>Use <code>cachegrind</code> to measure
+the D1 miss rate when running an insertion sort on the input file <code>input_5e4</code>.  You will find it in the <code>Data</code> directory 
+in the git repo.  (This file is named <code>input_5e4</code> because it contains <code>5x10<sup>4</sup>=50,000</code> data points.) 
+
+<ol start='5'>
+  <li>Plot the miss rate as the cache size increases from 1K to 512KB. (Use powers of two for the cache size. 
+  Choose any block size you like.)  Running 
+  <code>cachegrind</code> on this input should take 15 to 20 seconds on EOS/Arch and should generate about 
+  5.6 million memory accesses.  If you are noticing a faster run time or fewer memory accesses, then you 
+  are doing something wrong.  The most common problem is a mis-configured input file.  Similarly, if the 
+  program doesn't terminate after 45 seconds or so, then you probably forgot the input file.  Attach your plot
+  to your lab report.</li>
+  
+  <li>When (for what cache size) does the miss rate reach zero?</li>
+  
+  <li>Why do you think this cache size produces a 100% hit rate?  (Hint: Why is the input file named <code>input_5e4</code>?)</li>
+</ol>
+
+<h3> Optimal block size</h3>
+
+Your next task is to determine the optimal block size for insertion sort and quick sort.  
+
+<ol start=8>
+    <li> Determine the optimal block size for insertion sort.  Run <code>runInsertionSort</code> using <code>input_5e4</code> as input 
+    given cache sizes of 2KB, 8KB, and 32KB and block sizes from 32 to 512 (powers of two only). 
+    Present your results using a graph with block size on the x-axis and the miss rate on the y-axis. Please
+    generate one graph with three lines: One each for each cache size.
+    Your graph should have a form similar to
+        <a href="effectsOfBlockSize.jpg">Figure 8.18</a> in Harris and Harris (2nd edition).
+
+    There are a couple ways to generate these graphs.  One option is to place the data points into a spreadsheet that can generate graphs.
+    Another is to use a tool called <a href='https://www.gnuplot.info'><em>gnuplot</em></a>.  To use gnuplot, place your data in a plain text file similar to 
+    <a href='sample_gnuplot_data'><code>sample_gnuplot_data</code></a>. This sample file also contains the gnuplot commands that will generate the graph. 
+    </li>
+
+    <li>Generate a similar plot for <code>runMyQsort</code>.  Use the same cache and block sizes. (To compile the quick sort runner, run 
+<span class='inline-instruction'>make runMyQsort</span>.)</li>
+
+    <li>When comparing the plots, you will notice that the optimal block size for quick sort is smaller than 
+    for insertion sort.  Why is that?  (Hint:  Think about how each algorithm accesses the array as it runs.)
+
+    <li>(Optional) The makefile compiles the sort programs using the <code>-O3</code> compile flag (optimization level 3).
+    Recompile insertion sort using the <code>-O0</code> flag (no optimization).  What do you think accounts for the difference in miss rates? 
+    (Hint:  Look at the total number of cache accesses for each optimization level.)</li>
+
+</ol>
+
+
+        <!--- skip for now.  Need sample problems that exhibit more interesting cache behavior
+
+        <LI> Recall that different cache configurations have different
+      overheads.  Compute which block line has the highest "hit-rate to total
+      size" ratio.
+
+        -->
+<hr>
+
+<a name="Part2"><h3>Effects of associativity</h3></a>
+
+<ol start=12>
+    <li> Write a simple C program for which a 4-way associative cache has
+        a significantly lower miss rate than a equally sized 2-way set
+        associative cache. You may choose any cache size and block size you
+        wish, but they must remain the same for the entire problem. Submit
+        the source code, all cache parameters, and resulting hit rates. Submit
+        the source code, all cache parameters, and resulting hit rates. Hint: Write the simplest program you can that
+        will produce a 100% miss rate for the 2-way cache.
+    </li>
+
+    <li> Write a simple C program for which an associativity of 2 has a
+        <em>higher</em> miss rate than a direct-mapped cache. You may choose
+        any cache size and block size you wish, but they must remain the same
+        for the entire problem. Submit the source code, all cache parameters,
+        and resulting hit rates. As with the previous problem, start by writing a program that has a 100% miss rate
+        for a 2-way cache.
+    </li>
+
+    <li>Explain why your code above produces the miss rates observed
+        (i.e., why your code has a higer miss rate on the two-way
+        cache).
+    </li>
+
+    <li> Graph the miss rate quicksort, insertion sort, and gcc as associativity 
+    ranges over 1, 2, 4, 8, 16, and fully associative.  Use a 64 byte block and generate lines for both 1KB and 4KB caches.
+    Your graph should have six lines:  1KB and 4KB for each of the three programs. Your graph should have a form similar to
+        <a href="effectsOfAssoc.jpg">Figure 5.30</a> in Patterson and Hennessey (4th edition, revised). Notice how quickly
+        the miss rate levels off as the associativity increases.
+        <ul>
+        <li>To test <code>gcc</code> run <code class='inline-instruction'>gcc -O3 CacheLabCode/cacheTestTools.c CacheLabCode/myQsort.c CacheLabCode/runMyQsort.c -o test</code></li>
+        </ul>
+    </li>
+
+    <li> Which programs benefit the most from increased associativiy (i.e., associativity larger than two)?  Why do you think
+    these programs are more sensitivie to the associativity?
+</ol>
+
+<h3> Effects of replacement policy</h3>
+
+<ol start=17>
+
+    <li> Write a simple C program for which a random replacement policy
+        results in a significantly lower miss rate than LRU. (Use an 8-way
+        set associative cache with a size and block size of your choosing.)
+        Submit the source code. 
+    </li>
+
+    <li>Unfortunately, cachegrind will only simulate LRU replacement.  Explain why your code should
+    have a lower miss rate with a random replacement policy than with LRU.</li>
+
+<!-- 
+    <li>Choose a cache size and block size. Plot the effects of associativity and replacement policy on qsort. Your
+        graph should have associativity on the x-axis and miss rate on the y-axis. There should be three lines: one for
+        each replacement policy.
+    </li> -->
+
+</ol>
+</div>
+<hr>
+<p>Updated Tuesday, 12 April 2022, 6:21 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

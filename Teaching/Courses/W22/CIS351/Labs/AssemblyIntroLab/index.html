@@ -1,0 +1,316 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 5: Introduction to Assembly</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+  </style>
+
+</head>
+
+<body>
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Lab 5: Introduction to Assembly</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2022</h1></td>
+  </tr>
+</table>
+
+
+<p>For this lab, you are going to write some assembly code and test it using using the
+  <a target="_top" href="http://www.cis.gvsu.edu/~kurmasz/Software/mipsunit_munit"><code>MUnit</code></a> testing
+  framework.  Begin by watching <a href='https://youtu.be/5_XZhjmJ-jk'>this video</a> .</p>
+
+
+<h2><a id="step1">Step 1</a>: Learn how to test your code</h2>
+
+Before writing any code, you first need to learn how to write and run
+<code>MUnit</code> tests. Follow these steps:
+
+<ol>
+  <li>Follow <a href='https://classroom.github.com/a/uvFd2xKV'>this GitHubClassroom link</a> and clone the resulting repository.</li>
+  <li>Download <a href="munit.jar"><code>munit.jar</code></a> into the directory for this repo 
+  (or, copy it from <code>/home/kurmasz/public/CIS351/AssemblyIntro</code>).  The file <code>mars.jar</code> 
+  is in the repository's <code>.gitignore</code>
+  so that GitHub doesn't have to store hundreds of copies of this file.  This is why you have to download it separately, 
+  and why you won't see it on the GitHub page.
+  <li>Download <a target="_top" href="http://courses.missouristate.edu/KenVollmar/MARS/">Mars</a>.  
+  This file is also listed in <code>.gitignore</code> so that it is not stored by GitHub.</li>
+  <li>Launch <code>Mars</code>, open
+    <code>assemblyIntroSample.asm</code> and see if you can spot the bug.
+  </li>
+  <li>From the command line, run <code class="inline-instruction">javac -cp munit.jar
+    AssemblyIntroSampleTest.java</code>. (If you are doing this on
+    your own machine, make sure the <code>javac</code> executable is in
+    your path.)
+  </li>
+  <li>Now, run <code class="inline-instruction">java -jar munit.jar assemblyIntroSample.asm
+    AssemblyIntroSampleTest.class</code>. (Notice that you are
+    specifying the name of the <code>class</code> file, not the name of
+    the class.)
+</ol>
+
+<p>At this point, you should see the following output:<br/>
+
+<pre class="terminal-output">
+MIPSUnit::MUnit version 1.1 built Sun Apr 08 14:26:21 EDT 2018.
+Built with MARS version 4.4
+
+	Failure: triples_positive_number(AssemblyIntroSampleTest): expected:&lt;6&gt; but was:&lt;4&gt;
+	Failure: triples_negative_numbers(AssemblyIntroSampleTest): expected:&lt;-18&gt; but was:&lt;-12&gt;
+Tests run: 6, Failures: 2
+</pre>
+
+These tests fail because there is a bug in <code>triple</code>. Edit
+<code>assemblyIntroSample.asm</code> and fix the bug. When you have
+fixed the bug, you will see
+
+<pre class="terminal-output">
+MIPSUnit::MUnit version 1.1 built Sun Apr 08 14:26:21 EDT 2018.
+Built with MARS version 4.4
+
+All tests (6) passed.
+</pre>
+
+<div class="important">Do <em>not</em> continue until you have (1) figured out how to run my test code, and (2) have
+  found and fixed the bug in <code>triple</code>!
+</div>
+
+<h2>Step 2: Write some Java</h2>
+
+Go to <a href="http://www.codingbat.com">CodingBat</a> and solve these three problems:
+<ul>
+  <li><a href='http://codingbat.com/prob/p181646'>monkeyTrouble</a></li>
+  <li><a href='http://codingbat.com/prob/p187868'>sleepIn</a></li>
+  <li><a href='http://codingbat.com/prob/p159227'>posNeg</a></li>
+</ul>
+
+<p>Do not continue until CodingBat has indicated that you have solved all three problems correctly. If you don't
+  know how to code these problems in Java or Python, you certainly won't be able to do it in assembly!</p>
+
+<h2>Step 3: Write <em>and test</em> some MIPS assembly</h2>
+
+Now solve each problem using MIPS assembly. Use <code>assemblyIntro.asm</code> as your starting point.
+In order for your solution to work with my testing software, you must follow these rules:
+
+<ul>
+  <li>The first two lines of your source file must be<br/>
+    <code>.globl monkeyTrouble sleepIn posNeg<br/>
+      .text</code><br/>
+    (Notice the spelling of <code>.globl</code>.)
+  </li>
+
+  <li>Your three procedures <em>must</em> be named (i.e., labeled with) <code>monkeyTrouble</code>,
+    <code>sleepIn</code>, and <code>posNeg</code> respectively.
+  </li>
+
+  <li>Use labels if you want to store data in global memory. (You shouldn't need to load or store data for this
+    assignment.)
+  </li>
+  <li>The method parameters will be placed in registers <code>a0</code>, <code>a1</code>, and <code>a2</code>.</li>
+
+  <li>Each method must end with the instruction <code>jr $ra</code>.</li>
+
+  <li>Use the literal value <code>1</code> for <code>true</code> and <code>0</code> for <code>false</code>.</li>
+
+</ul>
+
+<p>To test your code, edit <code>AssemblyIntroTest.java</code> then compile and run using the instructions from 
+ <a href="#step1">step 1</a>. These tests are not complete; you will need to add some of your own.</p>
+
+<h2>Submission and grading</h2>
+
+<p>When your code <span class='inline-important'>and tests</span> are complete and correct (i.e., passes the automated tests), commit everything with "<code>[Grade Me]</code>" in the commit message.</p>
+
+<p class='important'>You <em>must</em> have a complete set of test cases for each problem.  That means four tests for <code>monkeyTrouble</code> and <code>sleepIn</code>, and 
+eight tests for <code>posNeg</code>.</p>
+
+<h2 class="listHeader">Hints:</h2>
+<ul>
+  <li>To compute <code>!a0</code>, do the following:<br/>
+    <code>not $a0, $a0</code><br/>
+    <code>andi $a0, $a0, 1</code><br/>
+    (The extra <code>andi</code> instruction makes sure that only the least-significant bit has a value other than 0.)
+  </li>
+
+  <li>You are welcome to use branch statements (e.g., <code>beq</code> and <code>bne</code>),
+    but you don't need them to complete this assignment. Anything you think you need a branch for can be
+    done using <code>slt</code> and <code>slti</code>.
+  </li>
+</ul>
+<hr>
+<p>Updated Tuesday, 22 February 2022, 3:07 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

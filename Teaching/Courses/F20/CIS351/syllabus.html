@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CIS 351 --- Computer Organization and Assembly Language</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .rightAlign {
+      text-align: right;
+    }
+
+    .leftAlign {
+      text-align: left;
+    }
+
+    .centerAlign {
+      text-align: center;
+    }
+
+    .gradingTable {
+      border: 0;
+      padding-top: 10px;
+    }
+
+    .gradingTable td, .gradingTable th {
+      padding-right: 10px;
+      padding-left: 10px;
+      /* border: 1px solid blue;  // retained for debugging */
+    }
+
+    .gradingTableHeader {
+      font-size: 110%;
+    }
+
+    .pointsTable {
+      padding-left: 25px;
+      border-collapse: collapse;
+    }
+
+    .pointsCell {
+      vertical-align: top;
+    }
+
+    .underlined {
+      border-bottom: 1px solid black;
+    }
+
+    .letterGradeHeader {
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+<div id="nav">
+
+  <p><a target="_top" href="index.html">Course Home</a></p>
+
+  <p><a href="syllabus.html">Syllabus</a></p>
+
+  <p><a href="timeline.html">Timeline</a></p>
+
+  <!-- <p><a href="estimated_timeline.html">Timeline</a></p> -->
+
+  <!-- <p><a target="_top" data-klink="previousCourseURL">Previous Offering</a></p> -->
+
+  <!-- <p id="currentOffering" style="DISPLAY: none"><a target="_top" data-klink="currentCourseURL">Current Offering</a>
+  </p> -->
+
+  <!--
+  <p><a href="SampleCode" style="color:white"><fontsize="2"
+  face="arial,helvetica,sans-serif">SampleCode</font></a></p>
+  -->
+
+  <hr>
+
+  <p><a href='http://www.cis.gvsu.edu/~kurmasz'>My Home</a></p>
+  <p><a href='http://www.cis.gvsu.edu/public/staffListing/index.php?page=staff&fname=Zachary&lname=Kurmas'>My Schedule</a></p>
+
+</div>
+
+
+<div id="content">
+
+  <div>
+    <h2 style="text-align: center">
+      <span>CIS 351 Computer Organization and Assembly Language</span><br>
+      <span>Fall 2020</span>
+    </h2>
+  </div>
+
+  <dl>
+    <dt> Contact Information:</dt>
+    <dd><style>
+    .contactInfoTable {
+        width: 100%;
+    }
+
+    .contactInfoTable td {
+        border:0;
+        margin: 3px;
+    }
+
+    .ciHeader {
+       font-weight: bold
+    }
+
+    .contactInfoTable td {
+        text-align: left;
+    }
+
+    .contactInfoTable td:nth-child(1) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(3) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(4) {
+        width: 250px;
+    }
+</style>
+
+<table class="contactInfoTable">
+    <tr>
+        <td class="ciHeader">Instructor:</td>
+        <td>Zachary Kurmas</td>
+        <td class="ciHeader">Office:</td>
+        <td>MAK C-2-316</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Phone:</td>
+        <td>331-8688</td>
+        <td class="ciHeader">Office Hours:</td>
+        <td>MWF 10-11 (physical) </td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Home page:
+        <td><a href="http://www.cis.gvsu.edu/~kurmasz" target="_top">http://www.cis.gvsu.edu/~kurmasz</a>
+        <td>
+        <td>
+    </tr>
+</table>
+</dd>
+
+    <dt>Course Objectives:<dt>
+    <dd>At the completion of the course, students will be able to
+      <ul>
+        <li>construct simple combinatorial and sequential circuits,</li>
+        <li>trace the execution of an instruction in a simple CPU,</li>
+        <li>compare and contrast a pipelined CPU design with a single-cycle CPU design,</li>
+        <li>explain the benefits of the memory hierarchy,</li>
+        <li>explain how a particular cache configuration determines whether a memory access is a hit or a miss,</li>
+        <li>write code in assembly language using standard programming constructs.</li>
+      </ul>
+    </dd>
+
+   <dt>Instruction Format</dt>
+   <dd>This will be a "staggered hybrid" course: The lecture material will be presented as videos that you watch on your own time.  
+   (A schedule of topics and links to the videos can be found on the course <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/F20/CIS351/timeline.html'>timeline</a>.)
+   You will be assigned one day per week to meet in person.  That time will be used for discussion, clarification, group exercises, and exams.
+   Weekly in-person attendance is required.</dd>
+
+    <dt>Text:</dt>
+    <dd>
+      <ul>
+        <li style="padding-bottom: 0; margin-bottom: 0"><em>Digital Design and Computer Architecture (2nd edition)</em> by David Money Harris and Sarah L. Harris. ISBN: 9780123944245</li>
+      </ul>
+    </dd>
+
+    <dt>Pre-Requsites</dt>
+    <dd> MTH 225, CIS 241, and CIS major/minor standing.  In addition, students are expected to be comfortable programming in Java and using <code>git</code>.</dd>
+
+    <dt>Grading:</dt>
+    <dd>Points for this class are shown in the table
+      below. Note also the additional conditions that follow.
+
+
+      <table class="gradingTable">
+        <tr>
+          <th class="gradingTableHeader">Point distribution</th>
+          <th class="gradingTableHeader">Grading scale</th>
+        </tr>
+
+        <tr>
+          <td class="pointsCell">
+            <table class="pointsTable">
+              <!-- empty row -->
+              <tr><td> &nbsp;</td><td></td></tr>
+              <tr>
+                <th class="leftAlign">Category
+                <th class='rightAlign'> %
+              </tr>
+              <tr>
+                <td>Midterm Exams
+                <td class='rightAlign'> 35%
+              </tr>
+              <tr>
+                <td>Final Exam
+                <td class='rightAlign'> 20%
+              </tr>
+              <tr>
+                <td>Projects
+                <td class='rightAlign'> 20%
+              </tr>
+              <tr>
+                <td>Labs
+                <td class='rightAlign'> 15%
+              </tr>
+              <tr class="underlined">
+                <td class="underlined">Homework and Participation
+                <td class='underlined rightAlign'> 10%
+              </tr>
+              <tr>
+                <td>Total
+                <td class='rightAlign'> 100%
+              </tr>
+            </table>
+          </td>
+          <td class="scaleCell">
+            <table class="scaleTable">
+              <tr>
+                <th class="letterGradeHeader" colspan="3">Letter grade</th>
+                <th>Minimum percentage</th>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="leftAlign">A</td>
+                <td></td>
+                <td class='centerAlign'>94%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="leftAlign">A-</td>
+                <td></td>
+                <td class='centerAlign'>90%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>B+</td>
+                <td></td>
+                <td class='centerAlign'>87%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>B</td>
+                <td></td>
+                <td class='centerAlign'>84%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>B-</td>
+                <td></td>
+                <td class='centerAlign'>80%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>C+</td>
+                <td></td>
+                <td class='centerAlign'>77%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td> C</td>
+                <td></td>
+                <td class='centerAlign'>74%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>C-</td>
+                <td></td>
+                <td class='centerAlign'>70%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>D+</td>
+                <td></td>
+                <td class='centerAlign'>67%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>D</td>
+                <td></td>
+                <td class='centerAlign'>64%
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+      </table>
+
+      Additional Conditions:
+      <ul>
+        <li> You must have a passing average on the tests to pass the class.</li>
+        <li> Your final grade may be at most one letter grade higher than your test average.</li>
+        <li> I reserve the right to make minor adjustments to the point
+          distribution. In particular, I may make minor adjustments to the
+          weights of each test if we cover more or less material than
+          expected.
+        </li>
+      </ul>
+    </dd>
+
+    <dt>Important Dates:</dt>
+    <dd>
+      <ul>
+        <li>Drop Day: <span>Friday, 30 October</span></li>
+        <li>Final Exam: <span>Monday, 14 December, 8:00 a.m. or Wednesday, 16 December, 8:00 a.m. or Wednesday, 16 December, 4:00 p.m.</span></li>
+      </ul>
+    </dd>
+
+    <dt>Course Policies:</dt>
+    <dd>
+      <ul>
+        <li> Labs are due at the beginning of class on the following Monday.</li>
+        <li> Assignments are due at the beginning of class on the due date, unless specified otherwise.</li>
+
+        <li>The penalty for submitting assignments late varies by assignment. It could be as little as one or two
+          points, or as much as no credit for the assignment. However, assignments more than 14 days late may receive
+          a 0 even if "I just forgot to turn it in."
+        </li>
+
+        <li> Unless specified otherwise, all assignments are to be completed
+          individually.
+        </li>
+
+        <li> I do not re-schedule labs, exams, or quizzes except in
+          cases of extreme emergencies. Business trips are not emergencies.
+        </li>
+
+        <li> The deadline to drop with a "W" is Friday, 30 October.
+          Remember, I cannot and will not drop this class for you.
+        </li>
+
+        <LI> Attendance is required. I understand that absences are
+          occasionally necessary; however, I reserve the right to lower grades
+          for excessive absences.
+        </li>
+
+        <li>
+          This course is subject to the GVSU policies listed at <a href='http://www.gvsu.edu/coursepolicies/'><code>http://www.gvsu.edu/coursepolicies/</code></a>.
+        </li>
+        <!--  <LI> Quizzes may be scheduled as little as one class in advance. -->
+      </ul>
+    </dd>
+
+    <dt>Special Assistance:</dt>
+    <dd>If there is any student in this class who has special needs because of learning, physical or other disability,
+      please contact me and Disability Support Services (DSS) at 616.331.2490. Furthermore, if you have a disability and
+      think you will need assistance evacuating this classroom and/or building in an emergency situation, please make me
+      aware so I can develop a plan to assist you.
+    </dd>
+  </dl>
+
+  <hr>
+  <p>Updated Wednesday, 2 December 2020, 5:48 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</div>
+</body>
+</html>

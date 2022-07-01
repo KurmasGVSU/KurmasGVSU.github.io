@@ -1,0 +1,487 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="javascript">JavaScript</h1>
+
+<h2 id="history">History</h2>
+
+<ul>
+  <li>Originally designed as a language to run in the browser to
+    <ul>
+      <li>Reduce the need for page reloads (e.g., by performing form validation locally).</li>
+      <li>Add nice UI effects</li>
+    </ul>
+  </li>
+  <li>1995: Netscape creates LiveScript (quickly changed to JavaScript)</li>
+  <li>Microsoft introduces VBScript and then Jscript</li>
+  <li>1996: Netscape proposes ECMAScript specification as a standard
+    <ul>
+      <li>ECMA: European Computer Manufacturers Association</li>
+      <li><a href="https://www.ecma-international.org">https://www.ecma-international.org</a></li>
+    </ul>
+  </li>
+  <li>1997: First version of ECMA-262</li>
+  <li>2015: ES6 – later called ES2015
+    <ul>
+      <li>Introduced many of the “modern” features (classes, imports, () =&gt; notation, etc.)</li>
+    </ul>
+  </li>
+  <li>New version every year since</li>
+  <li>Current version is 10th Edition (also called ES2019)</li>
+</ul>
+
+<h2 id="quick-start">Quick Start</h2>
+
+<ul>
+  <li>Every web page contains an object named <code>document</code>.  This object describes the entire web page.</li>
+  <li>This object has several methods that allow us to grab specific elements
+    <ul>
+      <li><code>getElementById()</code></li>
+      <li><code>getElementsByClassName()</code></li>
+      <li><code>getElementsByTagName()</code></li>
+      <li><code>getElementsByName()</code></li>
+      <li>Notice that all but the first one return a <em>list</em> of elements.</li>
+    </ul>
+  </li>
+  <li>Can run the above methods on other elements to search only part of the DOM.</li>
+  <li>Once we have a “handle” on an element, we can manipulate it.  We can
+    <ul>
+      <li>Change the text</li>
+      <li>Remove it from the DOM</li>
+      <li>Add sub-elements to it.</li>
+      <li>Change it’s style</li>
+    </ul>
+  </li>
+  <li class="to-me">Load <code>basicDOMManipulation.html</code>.  Open the console and run
+    <ul>
+      <li><code>document.getElementById('favorite').innerHTML += " (My favorite")</code></li>
+      <li><code>document.getElementById('favorite').style.color = 'green'</code></li>
+      <li><code>document.getElementById('favorite').style.visibility='hidden'</code></li>
+      <li><code>document.getElementById('favorite').style.display='none'</code></li>
+      <li><code>document.getElementById('favorite').style.display='inline'</code></li>
+    </ul>
+  </li>
+  <li>Many fancy UI tricks are simply manipulating the DOM.
+    <ul>
+      <li>First section:  Callbacks</li>
+      <li>Second section: Hiding elements</li>
+      <li>Third section: Adding elements to the DOM</li>
+      <li>Fourth section: Change listener / showing error message</li>
+    </ul>
+  </li>
+  <li>Note: Most of the <code>get</code> methods return a DOM list.  This is <em>not</em> an array, so methods like <code>forEach</code> don’t work.</li>
+</ul>
+
+<h2 id="add-javascript-to-rails">Add JavaScript to Rails</h2>
+
+<ul>
+  <li>Rails uses a tool called Webpacker to package all the Javascript into a few packages.</li>
+  <li>By default, there is a single JavaScript package included on all pages
+    <ul>
+      <li>Look at <code>app/views/layouts/application.html</code></li>
+      <li>The <code>javascript_pack_tag</code> method loads a bundle of JavaScript.</li>
+      <li>Notice the <code>application</code> parameter.  This corresponds to <code>app/javascript/packs/application.js</code></li>
+      <li>We could
+        <ul>
+          <li>Add code directly to <code>application.js</code></li>
+          <li>Add code to a different file and import it into <code>application.js</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>But, our code will only apply to the Posts form, so we’ll create a second pack.
+    <ol>
+      <li>Create a new file named <code>app/javascript/packs/postValidate.js</code></li>
+      <li>Add a simple <code>console.log</code> statement to this file.</li>
+      <li>
+        <p>Add this line to the <em>end</em> of <code>new.html.erb</code> and <code>edit.html.erb</code>:</p>
+
+        <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">javascript_pack_tag</span> <span class="s1">'validatePost'</span><span class="p">,</span> <span class="s1">'data-turbolinks-track'</span><span class="p">:</span> <span class="s1">'reload'</span> <span class="cp">%&gt;</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Open <code>_form.html.erb</code> and add the parameter <code>id: 'postForm'</code> to the <code>form_with</code> method call.</li>
+      <li>Add <code>&lt;div id='errorMessage'&gt;&lt;/div&gt;</code> to the top of the form.</li>
+      <li>
+        <p>Change the form submit to</p>
+
+        <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">submit</span> <span class="ss">data: </span><span class="p">{</span><span class="ss">disable_with: </span><span class="kp">false</span><span class="p">}</span> <span class="cp">%&gt;</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Add the following to <code>postValidate.js</code></p>
+
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">let</span> <span class="nx">form</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">postForm</span><span class="dl">'</span><span class="p">);</span>
+ <span class="kd">let</span> <span class="nx">errorMessage</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">errorMessage</span><span class="dl">'</span><span class="p">);</span>  
+ <span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">submit</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="nx">errorMessage</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+   <span class="kd">let</span> <span class="nx">titleText</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByName</span><span class="p">(</span><span class="dl">'</span><span class="s1">post[title]</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="p">;</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">titleText: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">titleText</span><span class="p">);</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nx">titleText</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error: Title not long enough</span><span class="dl">"</span><span class="p">);</span>
+     <span class="nx">errorMessage</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Title not long enough.</span><span class="dl">"</span><span class="p">;</span>
+     <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+   <span class="p">}</span> 
+ <span class="p">});</span>
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="key-features--differences">Key features / differences</h2>
+
+<ul>
+  <li>Template strings</li>
+  <li>Uses “Java-style” comments (both <code>//</code> and <code>/* ... */</code>)</li>
+  <li>Integers and floating point are the same type. (Try <code>typeof(1)</code> and <code>typeof(3.14159)</code>);</li>
+  <li>All objects behave like associative arrays.</li>
+  <li><code>==</code> vs <code>===</code>
+    <ul>
+      <li><code>==</code> converts both parameters to the same type before comparison (called <em>coercion</em>)</li>
+      <li><code>===</code> does not coerce parameters.  If the parameters are different types, the result is <code>false</code>.</li>
+      <li>Use <code>===</code> unless you have a good reason to use <code>==</code>.</li>
+      <li>When you use <code>==</code> add a comment explaining why.</li>
+      <li>See <code>keyFeatures.js</code></li>
+    </ul>
+  </li>
+  <li><code>null</code> and <code>undefined</code> are different.
+    <ul>
+      <li><code>null == undefined</code> is <code>true</code>:  Both convert to <code>false</code></li>
+      <li><code>null === undefined</code> is <code>false</code>: They are different types.</li>
+      <li>Be sure to check for both <code>null</code> and <code>undefined</code>.</li>
+    </ul>
+  </li>
+  <li><code>let</code> vs <code>var</code>
+    <ul>
+      <li>Variables declared using <code>let</code> have block scope (are local to the block)</li>
+      <li>Variables declared using <code>var</code> are visible throughout the function (are <em>not</em> local to the block.)</li>
+      <li>Use <code>let</code> unless you have a good reason to use <code>var</code>.</li>
+      <li>When you use <code>var</code>, and a comment explaining why.</li>
+    </ul>
+  </li>
+  <li class="to-me">Look at <code>sortingStudents.js</code></li>
+  <li class="to-me">Look at <code>varVsLetSubtlty.js</code> (shows how <code>let</code> correctly sets up closure)</li>
+  <li class="to-me">Look at <code>eventVsThis.html</code> (also shows how to clone nodes, when necessary)</li>
+  <li class="to-me">Look at <code>placementOfScripts.html</code> (also shows how to clone nodes, when necessary)</li>
+</ul>
+
+<h2 id="client-side-web-pages">Client-side web pages</h2>
+
+<ul>
+  <li>Consider Facebook:  Notice that when you scroll down the page, you never get to the bottom. Instead, new posts get inserted and the list seems to go on “forever”</li>
+  <li>This is an application of a technique called <em>AJAX</em>: Asynchronous Javascript and XML
+    <ul>
+      <li>(Although, we tend to use JSON more than XML these days.)</li>
+      <li>JavaScript running on the browser makes an HTTP request back to the server</li>
+      <li>The server returns raw data (usually in XML or JSON form),</li>
+      <li>The client-side JavaScript then inserts that data into the DOM (e.g., creates new posts and puts them at the end of the list.)</li>
+    </ul>
+  </li>
+  <li>This technique often involves creating new DOM elements on the fly (like we say last week).</li>
+  <li>Client-side frameworks like React, Angular, and Vue take this to the extreme and construct the entire DOM on the client “on the fly”</li>
+</ul>
+
+<h3 id="rails-as-an-api">Rails as an API</h3>
+
+<ul>
+  <li>Notice that our blog app can return raw data in JSON form:
+    <ul>
+      <li>Visit this URL:</li>
+    </ul>
+  </li>
+  <li>However, Rails, by default, utilizes several security checks that make updates difficult
+    <ul>
+      <li>CSRF token</li>
+      <li>Same-origin policy</li>
+    </ul>
+  </li>
+  <li>I tried to covert an existing Rails app to serve as an API.  It worked; but, it was clumsy, and I felt like I was opening security holes.
+    <ul>
+      <li>There are ways to add and API to an existing app.  These largely involve creating separate controllers for the API. (Thereby preserving security for the “regular” controllers)</li>
+      <li>For our purposes, it will be easiest to simply create a new app from scratch designed specifically to serve as an API.</li>
+      <li class="to-me">Show &lt;DemoScripts/RailsDemo05.html&gt;</li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

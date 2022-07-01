@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Semester Presentation</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #073c88;
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .spaced-list li {
+      margin-bottom: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 451</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Semester Presentation</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2019</h1></td>
+  </tr>
+</table>
+
+<dl>
+  <dt><b>ASSIGNMENT:</b>
+
+  <dd> In teams of two, prepare a 15 minute presentation on some computer architecture-related topic of interest to you.
+    Your presentation should synthesize information from several sources. (Teams of three or more will be considered for
+    large topics. Total presentation time will increase 8 minutes for every person over two.)
+  </dd>
+
+  <dt><b>DUE:</b>
+  <dd>
+    <table>
+      <tr><td>Proposal:</td><td>Monday, 1 April 2019</td></tr>
+      <tr><td>Presentation: </td><td>Monday, 15 April 2019 (Last Monday of class)</td></tr>
+    </table>
+  </dd>
+
+  <dt><a name="proposal"><b>PROPOSAL</b></a></dt>
+  <dd>
+    Send me an e-mail by Monday, 1 April telling me (a) who you are working with,
+    and (b) what your topic is.
+  </dd>
+
+  <dt><b>PRESENTATION:</b>
+
+  <dd>Apply the Golden Rule to your presentation: Give the type of
+    presentation that you would enjoy watching. Don't simply read your
+    notes. Instead, be sure to use some visuals: whiteboard, overheads,
+    PowerPoint, etc. (Although, take care not to let your presentation
+    degenerate into reading PowerPoint slides.) Better yet, make your
+    presentation interactive: Ask questions of the audience, or have a
+    group activity. Feel free to have fun and make the audience laugh;
+    just keep in mind that your primary goal is to teach the audience.
+
+  <dt><b>REFERENCES:</b>
+
+  <dd> Your presentation should incorporate and synthesize
+    material from five different sources. (I may approve a smaller
+    number for certain topics.) At least two of those sources must be
+    available in hard copy (i.e., not just a web page). You don't
+    necessarily need to obtain the hard copy (for example, you may
+    download an electronic copy of a research paper), but the source
+    must have been published somewhere besides the web.
+
+    <p> Wikipedia itself not a reliable source; however, it is a good source of references.</p>
+  </dd>
+
+  <dt><b>GRADING:</b>
+  <dd> The presentation will be worth 5% of your overall
+    grade. I will grade your presentations using <A
+    HREF="PresentationRubric.pdf">this rubric</A>. <!-- In addition, you will
+    offer feedback to other presenters using <A
+    HREF="CS451_StudentEvaluation.pdf">this form</A>.-->
+  </dd>
+
+  <dt><b>CHOOSING A TOPIC:</b>
+  <dd> Each topic may be covered by only one
+    group per class. Topics will be chosen first-come, first-serve; so,
+    e-mail me when you know what you want to do. Here are some topic
+    ideas: (You are, of course, welcome to suggest different topics.)
+    Your presentation must go beyond what was
+    covered in class.
+    <ul>
+      <li> Discuss new and interesting architectures</li>
+      <li> Low power issues</li>
+      <li> New architecture-related compiler technology</li>
+      <li> How transistors <em>really</em> work</li>
+      <li> Other Computer Engineering topics that we covered too quickly</li>
+      <li> Specific microcode implementations</li>
+      <li> New memory technology (e.g. DDR3, Flash)</li>
+      <li> New storage technology </li>
+      <li> State-of-the art architecture research. (e.g., check out what
+        grad students are doing at Wisconsin, Stanford, Texas, etc.)
+      </li>
+      <li> File systems</li>
+      <li> Advanced cache replacement algorithms</li>
+    </ul>
+</dl>
+
+<hr>
+
+Yes, you may team up with students in other sections.  Just be sure you are both available to present at 9:00 or 10:00
+
+<p>Chosen Topics:</p>
+
+
+Monday 10:00
+<ol>
+  <li>Ryan and Chad: Effect of compiliers</li>
+  <li>Ryan and Logan: Storage technologies</li>
+  <li>Patrick and Jeff: Incorporating FPGA into CPUS/GPUs</li>
+</ol>
+
+Wednesday 9:00
+<ol>
+  <li>Greg and William: Pepsi vs. Coke</li>
+  <li></li>
+  <li></li>
+</ol>
+
+Wednesday 10:00
+<ol>
+  <li>Ben and Parker S.: Quantum Computing</li>
+  <li>Matt and Nolan: Quantum Tunneling / Paramagnetic effect</li>
+  <li>Sierra and Tressa: How transistors work</li>
+</ol>
+
+Friday 9:00
+<ol>
+  <li>Aly, Kanoa, Dan: Low power issues.</li>
+  <li>Gionata, Troy, and Jacob: Transistors</li>
+</ol>
+
+Friday 10:00
+<ol>
+  <li>Cameron and Rose:  Thermal Design Power</li>
+  <li>Parker P. and John:  RISC V</li>
+  <li>Trung and Colton: New Memory tecnology</li>
+</ol>
+
+<!-- Mark B, Partick A. Jeff H. Carter G. , Ryan B. -->
+
+<hr>
+<p>Updated Friday, 5 April 2019, 3:03 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

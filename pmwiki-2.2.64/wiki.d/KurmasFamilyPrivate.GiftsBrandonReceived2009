@@ -1,0 +1,26 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10.4; en-US; rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5
+author=
+csum=
+ctime=1262124759
+host=68.188.218.51
+name=KurmasFamilyPrivate.GiftsBrandonReceived2009
+rev=5
+targets=
+text=?? Lincoln Logs%0a%0aSue and Gary and Family %0a* Lego Race Car%0a* ESPN talking radio%0a%0aPaul and Andrea and Family%0a* Light Bright Cube%0a* Light Bright sheets and pegs%0a%0aDave and Debbie%0a* Travel Aquadoodle%0a%0aAunt Carol and Uncle John%0a* Geo Trax Fly By Bridge%0a%0aGrandpa and Grandma Kurmas%0a* Silly String%0a* Flash Light%0a* Light up Drum Sticks%0a* High 5 Magazine Subscription%0a* Homemade Cookies%0a* Matchbox Cars%0a%0aGreat Grandma Beaver%0a* Flannel PJS%0a%0aUncle Nathan%0a* Legos%0a%0aGrandma and Grandpa Sheffer%0a* Mario Cart Game%0a* Orange%0a* Crayons%0a* Cars Coloring posters%0a* Bell Ornament (hand painted and personalized)%0a* Jonah Veggie Tales DVD%0a* Twisty Sucker from Cottage Cafe%0a* Nascar Flags%0a* Slinky Jr.%0a* Guitar Picks%0a%0aGreat Grandma VanBrocklin%0a* Geo Trax Tunnel and car%0a%0aUncle Joshua and Aunt Tara and family%0a* Whack a Mole Game%0a%0aMrs. Walstra and Mrs. Merril%0a* Book%0a* Shark Beanie Baby%0a%0aMark and Sonya and family%0a* Lamb Beanie baby%0a%0aUs%0a* Cranimum Caribo Game%0a* Plastic Tinker toys%0a* Denny Hamlin Car%0a* Cars Flannel PJs%0a* Electronic Drums%0a* %0a* Stocking:%0a** Kelsey Steele Ornament%0a** Flying Star%0a**  %0a%0aChad and Brandy and Family%0a* Snowman light up ornament%0a* Eric Carle ABC Game%0a
+time=1262556562
+author:1262556562=
+diff:1262556562:1262125570:=41,42c41%0a%3c * Guitar Picks%0a%3c %0a---%0a> %0a68,70d66%0a%3c Chad and Brandy and Family%0a%3c * Snowman light up ornament%0a%3c * Eric Carle ABC Game%0a
+host:1262556562=68.188.218.51
+author:1262125570=
+diff:1262125570:1262125247:=56,66c56%0a%3c * Cranimum Caribo Game%0a%3c * Plastic Tinker toys%0a%3c * Denny Hamlin Car%0a%3c * Cars Flannel PJs%0a%3c * Electronic Drums%0a%3c * %0a%3c * Stocking:%0a%3c ** Kelsey Steele Ornament%0a%3c ** Flying Star%0a%3c **  %0a%3c %0a---%0a> *%0a
+host:1262125570=96.42.148.165
+author:1262125247=
+diff:1262125247:1262124894:=1,2d0%0a%3c ?? Lincoln Logs%0a%3c %0a22,24c20%0a%3c * Homemade Cookies%0a%3c * Matchbox Cars%0a%3c %0a---%0a> %0a26,27c22,23%0a%3c * Flannel PJS%0a%3c %0a---%0a> * Fleece PJs%0a> %0a29,30c25,26%0a%3c * Legos%0a%3c %0a---%0a> * Thomas "fix it shop" with Toby%0a> %0a32,33c28%0a%3c * Mario Cart Game%0a%3c * Orange%0a---%0a> * Trampoline%0a35,37c30,31%0a%3c * Cars Coloring posters%0a%3c * Bell Ornament (hand painted and personalized)%0a%3c * Jonah Veggie Tales DVD%0a---%0a> * Thomas DVD%0a> * Mickey Mouse Coloring Sheets%0a39,41c33,37%0a%3c * Nascar Flags%0a%3c * Slinky Jr.%0a%3c %0a---%0a> * Bell Ornament (painted and personalized)%0a> * Orange%0a> * Spencer%0a> * Diego talking radio%0a> %0a43,44c39,40%0a%3c * Geo Trax Tunnel and car%0a%3c %0a---%0a> * Lego Bus%0a> %0a46,54c42,44%0a%3c * Whack a Mole Game%0a%3c %0a%3c Mrs. Walstra and Mrs. Merril%0a%3c * Book%0a%3c * Shark Beanie Baby%0a%3c %0a%3c Mark and Sonya and family%0a%3c * Lamb Beanie baby%0a%3c %0a---%0a> * Little Einsteins Pyramid and Quincy%0a> * Leo Talking Doll%0a> %0a
+host:1262125247=96.42.148.165
+author:1262124894=
+diff:1262124894:1262124759:=0a1,3%0a> ????%0a> Thomas Logging Company%0a> %0a2,4c5,6%0a%3c * Lego Race Car%0a%3c * ESPN talking radio%0a%3c %0a---%0a> * %0a> %0a13,14c15,16%0a%3c * Geo Trax Fly By Bridge%0a%3c %0a---%0a> * Little People Car Ramp/ Garage%0a> %0a15a18%0a> * Operation Game%0a17,20c20%0a%3c * Flash Light%0a%3c * Light up Drum Sticks%0a%3c * High 5 Magazine Subscription%0a%3c %0a---%0a> %0a
+host:1262124894=96.42.148.165
+author:1262124759=
+diff:1262124759:1262124759:=1,46d0%0a%3c ????%0a%3c Thomas Logging Company%0a%3c %0a%3c Sue and Gary and Family %0a%3c * %0a%3c %0a%3c Paul and Andrea and Family%0a%3c * Light Bright Cube%0a%3c * Light Bright sheets and pegs%0a%3c %0a%3c Dave and Debbie%0a%3c * Travel Aquadoodle%0a%3c %0a%3c Aunt Carol and Uncle John%0a%3c * Little People Car Ramp/ Garage%0a%3c %0a%3c Grandpa and Grandma Kurmas%0a%3c * Operation Game%0a%3c * Silly String%0a%3c %0a%3c Great Grandma Beaver%0a%3c * Fleece PJs%0a%3c %0a%3c Uncle Nathan%0a%3c * Thomas "fix it shop" with Toby%0a%3c %0a%3c Grandma and Grandpa Sheffer%0a%3c * Trampoline%0a%3c * Crayons%0a%3c * Thomas DVD%0a%3c * Mickey Mouse Coloring Sheets%0a%3c * Twisty Sucker from Cottage Cafe%0a%3c * Bell Ornament (painted and personalized)%0a%3c * Orange%0a%3c * Spencer%0a%3c * Diego talking radio%0a%3c %0a%3c Great Grandma VanBrocklin%0a%3c * Lego Bus%0a%3c %0a%3c Uncle Joshua and Aunt Tara and family%0a%3c * Little Einsteins Pyramid and Quincy%0a%3c * Leo Talking Doll%0a%3c %0a%3c Us%0a%3c *%0a
+host:1262124759=96.42.148.165

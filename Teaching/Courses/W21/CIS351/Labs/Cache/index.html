@@ -1,0 +1,509 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <title>Cache</title>
+
+    <style type="text/css">
+        
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+        img.center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table.hasBorder, table.hasBorder td, table.hasBorder th {
+            border: 1px solid gray;
+        }
+
+        .listHeader {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        ul {
+            padding-top: 0;
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Cache</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2021</h1></td>
+  </tr>
+</table>
+
+
+<h3> Overview</h3>
+
+This lab uses the <a target="_top"
+                     href="http://www.simplescalar.com">Simplescalar</a> CPU simulator to investigate the
+effects of different cache configurations on performance.
+
+<p>Lab 8 is problems 1-5.</br>
+    Lab 9 is problems 6-11.</p>
+
+
+<h3>Simplescalar</h3>
+
+<p><a href="http://www.simplescalar.com">Simplescalar</a> is a suite of
+    programs that simulate the execution of programs compiled using a
+    MIPS-like instruction set called PISA. You can simulate the execution
+    of any program using Simplescalar by simply re-compiling it
+    using a version of <code>gcc</code> that knows how to generate PISA
+    instructions as well as x86 instructions.</p>
+
+<p>For this lab, you will be using the tool <code>sim-cache</code>. This
+    tool takes as input a description of a machine's memory hierarchy
+    (i.e., cache levels) and reports on the number of hits and misses in
+    each cache. Section 4.2 of <a href="TR_1342.pdf">The Simplescalar
+        Tech Report</a> explains how to describe the cache setup you want to
+    simulate. When you read through this section, take note of three things:</p>
+<ul class='listHeader'>
+    <li> With <code>sim-cache</code>, you don't specify the size of the
+        cache directly. Instead you specify (1) the number of lines, (2)
+        the block size, and (3) the associativity of the cache. The size
+        of the cache is the product of these three numbers. Thus, a 4-way set
+        associative cache with 1024 lines of 16 bytes each is 4*1024*16 =
+        65536 bytes (64 kilobytes).
+
+    <li> The cache to be configured is mentioned twice on the command
+        line. (The phrase "<code>dl1</code>" will appear twice when
+        configuring the L1 data cache.)
+
+    <li> The parameters to <code>sim-cache</code> frequently uses both
+        "<code>1</code>" (the numeral "one") and "<code>l</code>" (a
+        lower-case letter "L"). Watch carefully because the differences
+        in print between the two can be subtle.
+</ul>
+
+<p>
+    For example, to configure a machine with an 8KB, direct-mapped L1 data
+    cache with 32 byte blocks, use this command: <code class='inline-instruction'> -cache:dl1
+    dl1:256:32:1:l</code>. Notice that 256 blocks times 32 bytes per
+    block equals 8192 bytes.</p>
+
+<p>When running <code>sim-cache</code>, I recommend sending the output
+    directly to a file using the command line
+    parameters <code class='inline-instruction'>-redir:sim <em>file1</em></code>
+    and <code class='inline-instruction'>-redir:prog <em>file2</em></code>. <code>file1</code>
+    will contain the results of the simulation (i.e., cache hit and miss
+    rates). <code>file2</code> will contain the output produced by
+    the program simulated. This data is generally not interesting.</p>
+
+<h3>Using a VM for Simplescalar</h3>
+
+<p class='listHeader'>Simplescalar is designed to run on 32-bit machines.  So, instead of using Arch/EOS directly, 
+we will be using virtual machines.   Our sysadmin Tom has set up five virtual machines for us to use. 
+They have these IP addresses:</p>
+
+<ul>
+<li><code>192.168.216.22</code></li>
+<li><code>192.168.216.26</code></li>
+<li><code>192.168.216.27</code></li>
+<li><code>192.168.216.28</code></li>
+<li><code>192.168.216.29</code></li>
+</ul>
+
+<p>To access these machines, <em>you must first log into an EOS or Arch machine</em>.  Then, use <code>ssh</code> to log into 
+one of the VMs: <span class='inline-instruction'>ssh simple@192.168.216.<em>X</em></span> 
+(where <code><em>X</em></code> is the number of the particular machine you chose.  Just pick one at random.) 
+The username is <code>simple</code> and the password is <code>SimpleSim2020</code>.</p>
+
+<p>You will all be sharing these machines; so,</p>
+<ol class='listHeader'>
+  <li>when you log in for the first time please create a subdirectory in <code>/SimpleScalarData</code> to use as your workspace 
+(so you don't accidentally mess up others' work).
+<li>Be nice.</li>
+</ol>
+ 
+<p>You can access your VM data from EOS/Arch through the directory <code>/home/SimpleScalar</code>.
+
+ <p>Note: The VMs do not have a GUI.</p>
+
+
+<h3>Effects of block size</h3>
+
+<p>Your first task is to examine the effects of block size on a "toy"
+    program. Look
+    at <a href="blockSize1.c"><code>blockSize1.c</code></a>. This small
+    program iterates through each byte in a large array. First, you will need to copy 
+    this file to your space on a VM:
+   <span class='inline-instruction'>cp /SimpleScalarData/blockSize1.c <em>yourDirectory</em></span>
+    
+    Next, compile this C program for Simplescalar using the following
+    command:<span class='inline-instruction'> ss_gcc blockSize1.c</span>  (Make sure you are in <em>your</em> directory so you don't end up 
+    overwriting someone else's file.) Running this command will produce a file named <code>a.out</code>.
+    (As with the normal version of <code>gcc</code>, you can specify the
+    name of the executable generated using the <code>-o</code> flag.)
+    This file will not run by itself. It will run only as input to one of
+    the Simplescalar programs. If it does, you generated it using the wrong version of <code>gcc</code>.
+</p>
+
+<ol>
+    <li> Use <code>sim-cache</code> to determine the miss-rates of an 8KB, direct-mapped cache with the
+        following block sizes: 8 bytes, 16 bytes, 32 bytes, and 64 bytes. To
+        do so, use commands that look like this:</p>
+
+        <p><span class='inline-instruction'>sim-cache -cache:dl1
+            dl1:<em>line</em>:<em>block</em>:1:l -redir:prog /dev/null -redir:sim
+            output_<em>block</em> a.out</span></p>
+
+        <p>Where <em>block</em> ranges from 8 to 64, and <em>line</em> is set
+            such that product of <em>block</em> times <em>line</em> is
+            8192.</p>
+
+        Hints for running sim-cache:
+        <ul class='listHeader'>
+            <li> Notice that the end of the cache configuration parameter is
+                the number <code>1</code> followed by the letter <code>l</code> (as in
+                "lru").
+            </li>
+
+            <li><code>sim-cache</code> is in <code>/Simplescalar/simplesim-3.0/sim-cache</code></li>
+
+            <li> It's not difficult to make a script to automatically runs <code>sim-cache</code> with
+                varying block sizes and present the results. This line provides an example of how to perform
+                arithmetic in                a bash script:
+                <span class='inline-instruction'>let num_lines=8192/$i</span></li>
+        </ul>
+
+
+        <p> After you have run <code>sim-cache</code> for each block size,
+            <code>grep</code> each output file (<code>output_8</code>, <code>output_16</code>,
+            etc.) for the line "<code>dl1.miss_rate</code>". List the miss rate
+            for each block size tested.</p></li>
+
+    <li> Based on your observations, determine a formula for the miss
+        rate in terms of <em>block_size</em>.
+    </li>
+
+    <li>Explain your results (i.e., what is happening in the cache
+        during each memory access to produce the results you observed).
+    </li>
+
+    <li> Now, write a C program for which the miss rate is considerably higher for a 16 byte block than for an 8 byte
+        block. (The easiest way to do this is to find two array locations that conflict with a 16-byte block, but not
+        with an 8-byte block. If you do this, you will see the cache with the 8-byte blocks have a nearly 0% miss rate
+        while the cache with the 16-byte blocks has nearly a 100% miss rate.) List your source code, all cache
+        parameters used, and the resulting hit rates. Hint: You need not loop through the entire array. Instead, find
+        two addresses that collide in the cache. Remove the inner loop and make <code>NUM_LOOPS</code> 1000000.
+    </li>
+</ol>
+
+Hints for writing programs with a specified cache behavior:
+<ul>
+
+    <li> Notice in <code>blockSize1.c</code> that <code>array</code> is
+        an array of characters; therefore, each item in the cache is exactly
+        1 byte. As a result, it is easy to identify data items that will or
+        will not conflict in the cache. For example, in an 8KB direct-mapped
+        cache, array bytes 0 and 8192 will conflict. Your job is to find
+        sets of array elements that conflict with a 16 byte block, but not an
+        8 byte block.
+    </li>
+
+    <li><code>gcc</code> is a <em>C</em> compiler. Your code must be
+        straight C. No iostreams; no "//"-style comments; and, all variables
+        must be declared at the beginning of each function.
+    </li>
+
+    <li> Declaring the local variables as "register" variables encourages
+        the compiler to keep the values of these variables in a register,
+        thereby reducing their effect on the cache hit rate.
+    </li>
+
+    <li><span class='important'>Ideally, the array in the C code will line up with
+        the beginning of the cache. In other words, <code>array[0]</code>
+        should be mapped to cache slot 0. Sometimes, it gets mapped to <code>array[8]</code>.
+        If you are confident your solution should work; but, it doesn't try adding 8 to each array index.</span>
+    </li>
+</ul>
+
+<h3> Optimal block size</h3>
+
+Your next task is to determine the optimal block size for
+<code>qsort</code>.
+
+<ol start=5>
+    <li> Determine the optimal block size for <code>qsort</code> given a
+        1KB, 4KB, and 16KB cache. Present your results using a graph with
+        block size on the x-axis and the miss rate on the y-axis. Please
+        generate one graph with three lines: One each for 1KB, 4KB, and 16KB.
+        Valid block sizes are 8, 16, 32, and 64. Your graph should have a form similar to
+        <a href="effectsOfBlockSize.jpg">Figure 8.18</a> in Harris and Harris (2nd edition).
+    </li>
+</ol>
+
+<ul>
+    <li> Use <code>input_1e4</code> for input. (It contains 50,000
+        randomly generated integers.)
+    </li>
+    <li> The <code>ss_qsort</code> executable and sample inputs are found in
+        <code>~/TestData</code>.
+        <!-- The executable
+        for <code>sim-cache</code> is in
+        <code>~kurmasz/public/Simplescalar/bin</code>--> </li>
+    <li> To simulate a 1KB,
+        direct-mapped cache with 16 byte blocks, use the following (very long)
+        command line:
+        <br><code>sim-cache -cache:dl1
+            dl1:64:16:1:l -redir:prog opt -redir:sim output_dl1:64:16:1:l
+            ~/TestData/ss_qsort ~/TestData/input_1e4</code>
+
+        <!--- skip for now.  Need sample problems that exhibit more interesting cache behavior
+
+        <LI> Recall that different cache configurations have different
+      overheads.  Compute which block line has the highest "hit-rate to total
+      size" ratio.
+
+        -->
+    </li>
+    <li>This program should take a few seconds to run. If it finishes instantly,
+        then something isn't configured correctly. The file <code>opt</code> may give you a clue. If not,
+        ask the instructor for help.
+    </li>
+    <li>If you are using <code>gnuplot</code>, entering the line <code>set style data linespoints</code> will plot all
+        data files using the "linespoints" style. Using this shortcut means that you won't have to type
+        <code>with linespoints</code> after every file.
+    </li>
+</ul>
+
+<hr>
+
+<a name="Part2"><h3>Effects of associativity</h3></a>
+
+<ol start=6>
+    <li> Write a simple C program for which a 4-way associative cache has
+        a significantly lower miss rate than a equally sized 2-way set
+        associative cache. You may choose any cache size and block size you
+        wish, but they must remain the same for the entire problem. Submit       
+        the source code, all cache parameters, and resulting hit rates. Hint: Write the simplest program you can that
+        will produce a 100% miss rate for the 2-way cache.
+    </li>
+
+    <li> Write a simple C program for which an associativity of 2 has a
+        <em>higher</em> miss rate than a direct-mapped cache. You may choose
+        any cache size and block size you wish, but they must remain the same
+        for the entire problem. Submit the source code, all cache parameters,
+        and resulting hit rates. As with the previous problem, start by writing a program that has a 100% miss rate
+        for a 2-way cache.
+    </li>
+
+    <li>Explain why your code above produces the miss rates observed
+        (i.e., why your code has a higer miss rate on the two-way
+        cache).
+    </li>
+
+    <li> Choose <code>qsort</code> (or another interesting program of
+        your choice) and a cache size. Produce a graph showing miss
+        rates as associativity ranges over 1, 2, 4, 8, 16, and fully
+        associative. Your graph should have associativity on the x-axis,
+        and miss-rate on the y-axis. It should also contain four lines:
+        one for each block size. Be sure to clearly label your graph
+        with the cache size. Your graph should have a form similar to
+        <a href="effectsOfAssoc.jpg">Figure 5.30</a> in Patterson and Hennessey (4th edition, revised).
+    </li>
+</ol>
+
+<hr>
+
+<h3> Effects of replacement policy</h3>
+
+<ol start=10>
+
+    <li> Write a simple C program for which a random replacement policy
+        results in a significantly lower miss rate than LRU. (Use an 8-way
+        set associative cache with a size and block size of your choosing.)
+        Submit the source code, all cache parameters, and resulting hit rates.
+    </li>
+
+    <li>Choose a cache size and block size. Plot the effects of associativity and replacement policy on qsort. Your
+        graph should have associativity on the x-axis and miss rate on the y-axis. There should be three lines: one for
+        each replacement policy.
+    </li>
+
+</ol>
+
+<hr>
+<p>Updated Thursday, 1 April 2021, 10:10 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

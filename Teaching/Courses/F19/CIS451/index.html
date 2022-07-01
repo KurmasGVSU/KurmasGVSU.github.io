@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CIS 451 --- Computer Architecture</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+            .kielceAssignmentTable {
+           border-spacing: 35px 0;
+        }        
+
+        .kielceAssignmentTable tr th {
+          text-align: left;          
+        }
+
+        .kielceAssignmentTable tr td {
+          vertical-align: top;
+        }
+
+        .kielceAssignmentTable_due {
+           white-space:  nowrap;
+        }
+
+        .kielceAssignmentTable_title {
+            white-space: nowrap;
+        }
+
+        .exam {
+            background-color: lightgreen;
+        }
+
+  </style>
+</head>
+
+<body>
+
+<nav id="nav">
+  <a class='bypass' href="#content">Skip to main content</a>
+
+  <p><a target="_top" href="index.html">Course Home</a></p>
+
+  <p><a href="syllabus.html">Syllabus</a></p>
+
+  <p><a href="timeline.html">Timeline</a></p>
+
+  <!-- <p><a href="estimated_timeline.html">Timeline</a></p> -->
+
+  <!-- <p><a target="_top" data-klink="previousCourseURL">Previous Offering</a></p> -->
+
+  <!-- <p id="currentOffering" style="DISPLAY: none"><a target="_top" data-klink="currentCourseURL">Current Offering</a>
+  </p> -->
+
+  <!--
+  <p><a href="SampleCode" style="color:white"><fontsize="2"
+  face="arial,helvetica,sans-serif">SampleCode</font></a></p>
+  -->
+
+  <hr>
+
+  <p><a href='http://www.cis.gvsu.edu/~kurmasz'>My Home</a></p>
+  <p><a href='http://www.cis.gvsu.edu/public/staffListing/index.php?page=staff&fname=Zachary&lname=Kurmas'>My Schedule</a></p>
+
+</nav>
+
+<main id="content">
+  <div>
+    <h1 style="text-align: center">
+      <span>CIS 451 Computer Architecture</span><br>
+      <span>Fall 2019</span>
+    </h1>
+  </div>
+
+
+  <dl>
+    <dt> Contact Information:</dt>
+    <dd><style>
+    .contactInfoTable {
+        width: 100%;
+    }
+
+    .contactInfoTable td {
+        border:0;
+        margin: 3px;
+    }
+
+    .ciHeader {
+       font-weight: bold
+    }
+
+    .contactInfoTable td {
+        text-align: left;
+    }
+
+    .contactInfoTable td:nth-child(1) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(3) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(4) {
+        width: 250px;
+    }
+</style>
+
+<table class="contactInfoTable">
+    <tr>
+        <td class="ciHeader">Instructor:</td>
+        <td>Zachary Kurmas</td>
+        <td class="ciHeader">Office:</td>
+        <td>MAK C-2-316</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Phone:</td>
+        <td>331-8688</td>
+        <td class="ciHeader">Office Hours:</td>
+        <td>MW 3:00-4:00; M 5:15-6:00</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Home page:
+        <td><a href="http://www.cis.gvsu.edu/~kurmasz" target="_top">http://www.cis.gvsu.edu/~kurmasz</a>
+        <td>
+        <td>F 11:00-12:00
+    </tr>
+</table></dd>
+
+    <dt>Office Hours:</dt>
+    <dd> Official office hours are listed above. I make a point of being in my office during these times. However, I am
+      typically on campus from 9 to 4 (or later) Monday, Wednesday, Friday, and most Tuesdays. Feel free to stop by my
+      office whenever you have a question.
+    </dd>
+
+    <dt>Course Documents:
+    <dd>
+      <ul>
+        <li><a href="syllabus.html">Syllabus</a>
+        <li><a target="_top" href="http://www.cis.gvsu.edu/academic-honesty">CIS Academic Honesty Policy</a></li>
+      </ul>
+
+    <dt>Announcements:</dt>
+    <dd> I will post announcements at <a target="_top" href="https://piazza.com/gvsu/fall2019/451">Piazza</a>.
+      Please check there regularly.
+    </dd>
+
+    <dt>Discussion Board:</dt>
+    <dd>Please post questions about homework, projects, etc. to <a target="_top" href="https://piazza.com/gvsu/fall2019/451">Piazza</a>. Doing
+      so allows everybody to see the question and answer and saves me the time of answering the same question multiple
+      times. Other students can also answer your question, which may help you get a faster response.
+    </dd>
+
+    <dt>Grades:</dt>
+    <dd>I will post grades on <a target="_top" href="http://mybb.gvsu.edu">Blackboard</a>.
+    </dd>
+
+
+    <dt>Assignments:
+    <dd>
+          <table class='kielceAssignmentTable'>
+      <tr>
+         <th>Due</th>
+         <th>Name</th>
+         <th>Details</th>
+      </tr>
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 9 Sep.</td>
+    <td class='kielceAssignmentTable_title'>First Day Survey</td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 23 Sep.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/singleCyclePerformance.pdf'>Homework 1: Single Cycle Performance</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 30 Sep.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/IntelMachineLanguage'>Homework 2: Intel Machine Language</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 7 Oct.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/branchPrediction.pdf'>Homework  4: Branch Prediction</a></td>
+    <td class='kielceAssignmentTable_details'>(only 1, 2, 4, and 5 due for credit.)</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 14 Oct.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/practiceTest1.pdf'>Practice Test 1: </a></td>
+    <td class='kielceAssignmentTable_details'>(not due for credit)</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 16 Oct.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/MicrocodeForPHMultiCycleCPU's '>Homework 3: Multicycle Microcode</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 23 Oct.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/ObserveBP'>Homework  6: Observe Branch Prediction</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 23 Oct.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/twoLevel.pdf'>Homework 5: Two Level Adaptive Predictor</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 4 Nov.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/IADifferences'>Homework 7: Intel Differences</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 4 Nov.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/Presentation/presentation.html#Proposal'>Presentation Proposal</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 25 Nov.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/VectorProcessing'>Homework  8: Vector Processing (AVX)</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 2 Dec.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/Presentation/presentation.html'>Presentaton</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 2 Dec.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/practiceFinal.pdf'>Practice Final : </a></td>
+    <td class='kielceAssignmentTable_details'>(not due for credit)</td>
+  </tr>
+
+</table>
+
+    </dd>
+
+    <dt>Lecture Notes:</dt>
+    <dd>
+      <ul>
+	<li>Week 1: <a href='LectureNotes/cis451_week1.html'>Notes</a> <a href='LectureNotes/slides_week1.pptx'>Slides</a>
+</li>	<li>Week 2: <a href='LectureNotes/cis451_week2.html'>Notes</a> <a href='LectureNotes/slides_week2.pptx'>Slides</a>
+</li>	<li>Week 3: <a href='LectureNotes/cis451_week3.html'>Notes</a> 
+</li>	<li>Week 7: <a href='LectureNotes/cis451_week7.html'>Notes</a> 
+</li>	<li>Week 9: <a href='LectureNotes/cis451_week9.html'>Notes</a> 
+</li>	<li>Week 10: <a href='LectureNotes/cis451_week10.html'>Notes</a> 
+</li>	<li>Week 11: <a href='LectureNotes/cis451_week11.html'>Notes</a> 
+</li>	<li>Week 12: <a href='LectureNotes/cis451_week12.html'>Notes</a> 
+</li>	<li>Week 13: <a href='LectureNotes/cis451_week13.html'>Notes</a> 
+</li>
+    </dd>
+
+
+    <dt>Text:</dt>
+    <dd>
+      The official textbook for this class is
+      <ul>
+        <li style="padding-bottom: 0; margin-bottom: 0"><em>Computer Architecture: A Quantitative Approach (6th edition)</em> by John Hennessy and David Patterson. ISBN: 9780128119051</li>
+      </ul>
+
+      <p style="padding-top: 0; margin-top: 0;">These texts are used in CIS 351. You may find them helpful; but, I
+        would only buy one if you can find it used for $10 or $15. (Older editions are as good
+        as the latest edition.)</p>
+
+      <ul>
+        <li><em>Digital Design and Computer Architecture (2nd edition)</em> by David Money Harris and Sarah L. Harris. ISBN: 9780123944245</li>
+        <li><em>Computer Organization and Design: The Hardware/Software Interface, 4th Edition</em> by David Patterson and John Hennessy. ISBN: 1558606041</li>
+      </ul>
+
+    </dd>
+
+
+    <dt>Reference:</dt>
+    <dd>
+      <ul>
+        <li><a target="_top" href="http://www.cs.mtu.edu/~pop/jlsp/bin/JLS.html">JLS</a></li>
+
+        <li><a target="_top" href="http://courses.missouristate.edu/kenvollmar/mars/">Mars</a></li>
+
+        <li><a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/ReferenceDocuments/mips_green_card.pdf'>MIPS Reference Card</a></li>
+
+        <li><a href='https://textbooks.elsevier.com/web/product_details.aspx?isbn=9780128119051'>Publisher site of course text</a></li>
+        <li><a href='https://booksite.elsevier.com/9780124077263/index.php'>Online sections of Patternson and Hennessy text.</a></li>
+        <li><a href='https://cs.stanford.edu/people/eroberts/courses/soco/projects/risc/'>Overview of RISC</a> (including RISC vs. CISC)
+        </li>
+        <li>Agner Fog's details of <a href='https://www.agner.org/optimize/microarchitecture.pdf'>current CPU microarchitectures</a> (includes branch prediction details)
+        </li>
+        <li>Details of <a href='https://www.realworldtech.com/haswell-cpu/'>Haswell front end</a></li>
+        <li>Dynamic Scheduling / Tomasulo's Algorithm
+          (<a href='https://www.youtube.com/playlist?list=PLAwxTw4SYaPkNw98-MFodLzKgi6bYGjZs'>Videos</a>)
+          ( <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS451/ReferenceDocuments/tomasuloGT.pdf'>Notes</a>)
+        <li>Vido discussing <a href='https://www.youtube.com/watch?v=rtI5wRyHpTg'>The end of Moore's Law</a>.
+        </li>
+        <li>Quantum Computing:
+          <ul>
+            <li>Video playlist from
+              <a href='https://www.youtube.com/playlist?list=PLkahZjV5wKe_dajngssVLffaCh2gbq55_'>Veritasium</a></li>
+            <li>Supplemental Veritasium video on
+              <a href='https://www.youtube.com/watch?v=v1_-LsQLwkA&t=458s'>spin</a>.
+            </li>
+            <li><a href='https://www.youtube.com/watch?v=sjINVV2xOow&list=PLHSIfioizVW2uC27IFkHlSc-NgvZjBliZ'>Quantum Computing videos</a> from Andrea Morello at UNSW.
+            </li>
+            <li><a href='https://www.youtube.com/playlist?list=PLqSkUknJX0S9olTYuJ5SOl1D6pbzaPuWx'>Quantum Physics videos</a> from Andrea Morello at UNSW.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+
+
+  <hr>
+  <p>Updated Saturday, 23 November 2019, 12:58 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>

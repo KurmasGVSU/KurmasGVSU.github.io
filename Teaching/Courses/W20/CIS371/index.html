@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CIS 371 --- Web Application Programming</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+              .kielceAssignmentTable {
+           border-spacing: 35px 0;
+        }        
+
+        .kielceAssignmentTable tr th {
+          text-align: left;          
+        }
+
+        .kielceAssignmentTable tr td {
+          vertical-align: top;
+        }
+
+        .kielceAssignmentTable_due {
+           white-space:  nowrap;
+        }
+
+        .kielceAssignmentTable_title {
+            white-space: nowrap;
+        }
+
+        .exam {
+            background-color: lightgreen;
+        }
+
+    </style>
+  </head>
+  <body>
+    <nav id="nav">
+  <a class='bypass' href="#content">Skip to main content</a>
+
+  <p><a target="_top" href="index.html">Course Home</a></p>
+
+  <p><a href="syllabus.html">Syllabus</a></p>
+
+  <p><a href="timeline.html">Timeline</a></p>
+
+  <!-- <p><a href="estimated_timeline.html">Timeline</a></p> -->
+
+  <!-- <p><a target="_top" data-klink="previousCourseURL">Previous Offering</a></p> -->
+
+  <!-- <p id="currentOffering" style="DISPLAY: none"><a target="_top" data-klink="currentCourseURL">Current Offering</a>
+  </p> -->
+
+  <!--
+  <p><a href="SampleCode" style="color:white"><fontsize="2"
+  face="arial,helvetica,sans-serif">SampleCode</font></a></p>
+  -->
+
+  <hr>
+
+  <p><a href='http://www.cis.gvsu.edu/~kurmasz'>My Home</a></p>
+  <p><a href='http://www.cis.gvsu.edu/public/staffListing/index.php?page=staff&fname=Zachary&lname=Kurmas'>My Schedule</a></p>
+
+</nav>
+    <main id="content">
+      <div>
+        <h1 style="text-align: center">
+          <span>CIS 371 Web Application Programming</span><br>
+          <span>Winter 2020</span>
+        </h1>
+      </div>
+      <dl>
+        <dt> Contact Information:</dt>
+        <dd><style>
+    .contactInfoTable {
+        width: 100%;
+    }
+
+    .contactInfoTable td {
+        border:0;
+        margin: 3px;
+    }
+
+    .ciHeader {
+       font-weight: bold
+    }
+
+    .contactInfoTable td {
+        text-align: left;
+    }
+
+    .contactInfoTable td:nth-child(1) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(3) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(4) {
+        width: 250px;
+    }
+</style>
+
+<table class="contactInfoTable">
+    <tr>
+        <td class="ciHeader">Instructor:</td>
+        <td>Zachary Kurmas</td>
+        <td class="ciHeader">Office:</td>
+        <td>MAK C-2-316</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Phone:</td>
+        <td>331-8688</td>
+        <td class="ciHeader">Office Hours:</td>
+        <td>M 1-2; W 11-12; </td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Home page:
+        <td><a href="http://www.cis.gvsu.edu/~kurmasz" target="_top">http://www.cis.gvsu.edu/~kurmasz</a>
+        <td>
+        <td>Th 5:00-6:00 (downtown)
+    </tr>
+</table></dd>
+        <dt>Office Hours:</dt>
+        <dd> Official office hours are listed above. I make a point of being in my office
+          during these times. However, I am typically on campus from 9 to 4 Monday, Wednesday, Friday, and most Tuesdays.
+          Feel free to stop by my office whenever you have a question.
+        </dd>
+        <dt>Course Documents:
+          <dd>
+            <ul>
+              <li><a href="syllabus.html">Syllabus</a>
+                <li><a target="_top" href="http://www.cis.gvsu.edu/academic-honesty">CIS Academic Honesty Policy</a></li>
+              </ul>
+              <dt>Announcements:</dt>
+              <dd> I will post announcements at <a target="_top" href="http://piazza.com/gvsu/winter2020/cis371">Piazza</a>.
+                Please check there regularly.
+              </dd>
+              <dt>Discussion Board:</dt>
+              <dd>Please post questions about homework, projects, etc. to <a target="_top" data-klink="piazza">Piazza</a>. Doing
+                so allows everybody to see the question and answer and saves me the time of answering the same question multiple
+                times. Other students can also answer your question, which may help you get a faster response.
+              </dd>
+              <dt>Grades:</dt>
+              <dd>I will post grades on <a target="_top" href="http://mybb.gvsu.edu">Blackboard</a>.
+              </dd>
+              <dt>Assignments:
+                <dd>
+                      <table class='kielceAssignmentTable'>
+      <tr>
+         <th>Due</th>
+         <th>Name</th>
+         <th>Details</th>
+      </tr>
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 8 Jan.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/week1_reading.html'>Reading 1: WWW History and Basics</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 8 Jan.</td>
+    <td class='kielceAssignmentTable_title'>Homework 0: First Day Questions</td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Fri. 17 Jan.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/explore_http.html'>Homework 2: Explore HTTP</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 22 Jan.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/WebServer/server1.html'>Homework 1: Web Server</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Fri. 31 Jan.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/CSS-Quixx'>Homework 3: CSS / Quixx  (Part 1)</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 5 Feb.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/CSS-Quixx#part2'>Homework 4: CSS / Quixx  (Part 2)</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 10 Feb.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/CSS-Quixx#part3'>Homework 5: CSS / Quixx  (Part 3)</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Fri. 21 Feb.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/BugTracker'>Homework  6: Express (Part 1)</a></td>
+    <td class='kielceAssignmentTable_details'>(Part 1)</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 24 Feb.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/midtermReview.pdf'>Midterm Review</a></td>
+    <td class='kielceAssignmentTable_details'>(Not due for credit.)</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 26 Feb.</td>
+    <td class='kielceAssignmentTable_title'><a href='Project'>Project : Project Description</a></td>
+    <td class='kielceAssignmentTable_details'>One page description due</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Fri. 28 Feb.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/BugTracker/index.html#part2'>Homework  7: Express (Part 2)</a></td>
+    <td class='kielceAssignmentTable_details'>(Part 2 -- Unit tests not required)</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 18 Mar.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/BugTrackerReact/index.html'>Homework 9: React (Part 1)</a></td>
+    <td class='kielceAssignmentTable_details'>(Part 1)</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 25 Mar.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/CSS-Quixx#part4'>Homework 8: CSS /Qwixx (Part 4)</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Fri. 27 Mar.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/BugTrackerReact/index.html#part2'>Homework 10: React (Part 2)</a></td>
+    <td class='kielceAssignmentTable_details'>(Part 2)</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 1 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/BugTrackerReact/index.html#part3'>Homework 11: React (Part 3)</a></td>
+    <td class='kielceAssignmentTable_details'>(Part 3)</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 15 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/finalReview.pdf'>Final Review</a></td>
+    <td class='kielceAssignmentTable_details'>(Not due for credit.)</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Fri. 17 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Homework/PracticeFinalCode'>Practice Final</a></td>
+    <td class='kielceAssignmentTable_details'>(Not due for credit.)</td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Mon. 20 Apr.</td>
+    <td class='kielceAssignmentTable_title'><a href='Project'>Project : Semester Project</a></td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+</table>
+
+                </dd>
+                <dt>Text:</dt>
+                <dd>
+                  <p style="padding-top: 0; margin-top: 0; padding-bottom: 0; margin-bottom: 0">This text is optional:
+                    <ul>
+                      <li><em>Learning React, 2nd Edition</em> by Porcello and Banks. ISBN: 978-1-49205-171-8</li>
+                    </ul>
+                </dd>
+                
+                <dt>Reference:</dt>
+                <dd>
+                  <ul>
+                    <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode">Sample Code</a></li>
+                    <li><a href="https://2019.stateofjs.com">The state of Javascript</a></li>
+                  </ul>
+                </dd>
+              </dl>
+              <dt>PHP Sample:</dt>
+              <dd>
+                <ul>
+                  <li><a href="environment.php">Environment Variables / Query String</a></li>
+                </ul>
+              </dd>
+              <hr>
+              <p>Updated Friday, 10 April 2020, 7:42 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+            </main>
+          </body>
+        </html>

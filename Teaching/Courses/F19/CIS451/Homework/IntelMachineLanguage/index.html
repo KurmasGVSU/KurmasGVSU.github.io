@@ -1,0 +1,1018 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Intel Machine Language</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    ul {
+      margin-top: 0;
+    }
+
+    .icTable, .icTable td {
+      border: 1px solid black;
+      margin-bottom: 20px;
+    }
+
+    .spaced-list li {
+      margin-bottom: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 451</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Intel Machine Language</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2019</h1></td>
+  </tr>
+</table>
+
+
+<p>The overview sections of this lab were originally written by
+  <a target="_top" href="http://www.cis.gvsu.edu/~wolffe">Prof. Wolffe</a>.</p>
+
+<p>You will want to work in pairs. You don't want to tackle this alone. Trust me.</p>
+
+<p><b><em>Start Early!</em></b> This is a challenging assignment; and you will need time to ask many questions. If
+  you wait until two or three days before the deadline, you won't have time to get all your questions answered.
+  (Also, remember Piazza.)
+</p>
+
+<h3>Overview</h3>
+
+The purpose of this lab is to explore an instruction set and machine
+language that is different from MIPS. In particular, we will be
+exploring the Intel 64/IA-32 machine language. As you work through this
+assignment, pay attention to the differences between MIPS and IA-32 including
+instruction length, addressing modes, and the variety of instructions
+included in the instruction sets.
+
+<h3 class="listHeader">Resources</h3>
+<ul>
+
+   <!--
+   <li> The Stallings textbook has several useful references:</li>
+
+   <ul>
+
+     <li> a short description of Pentium instruction types (see Section
+     10.5)</li>
+
+     <li> a table (Table 10.8) with mnemonics and examples of each
+     major type of operation</li>
+
+     <li> a diagram (Figure 12.3) detailing Intel register organization</li>
+
+   </ul>
+   -->
+
+   <li>Section 6.8 in the Harris and Harris textbook discusses the IA-32
+      architecture. Pay particular attention to how the registers are
+      organized, and the instruction format.
+   </li>
+
+
+   <li>You may also want to check out Sections 2.16 (p 134) and 6.10
+      (p448) in the Patterson and Hennessy textbook.
+   </li>
+
+
+   <li>There is a link to the Intel architecture support page on the
+      course info page.
+   </li>
+
+   <li>Here are links to the Intel Software Developer's Manuals:
+      <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS451/ReferenceDocuments/IntelDevManuals/IntelSoftwareDeveloperManual_v1_2014.pdf'>Volume 1</a>, <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS451/ReferenceDocuments/IntelDevManuals/IntelSoftwareDeveloperManual_v2_2014.pdf'>Volume 2</a>, and <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS451/ReferenceDocuments/IntelDevManuals/IntelSoftwareDeveloperManual_v3_2014.pdf'>Volume 3</a>.
+      You can also access the development manuals directly from the
+      <a href='http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html'>Intel Developer's web site</a>; however,
+      if they have updated the documents since June 2014, the page numbers may not line
+      up with the page numbers I reference below.
+      <ul>
+         <li>These are massive PDF documents.&nbsp;Do not print them out!</li>
+      </ul>
+   </li>
+</ul>
+
+<h3>Overview of the Intel 80x86 Architecture</h3>
+
+<p>A typical view of the Intel register set shows eight general-purpose,
+   32-bit registers
+   (<code>eax</code>
+   ,
+   <code>ebx</code>
+   ,
+   <code>ecx</code>
+   ,
+   <code>edx</code>
+   ,
+   <code>esi</code>
+   ,
+   <code>edi</code>
+   ,
+   <code>esp</code>
+   ,
+   <code>ebp</code>). Although these registers are technically general purpose (meaning
+   that they can hold any 32-bit value), in practice only
+   <code>eax</code>
+   ,
+   <code>ebx</code>
+   ,
+   <code>ecx</code>
+   , and
+   <code>edx</code>
+   are used for general data.
+   <code>esp</code>
+   is typically the stack pointer; and
+   <code>ebp</code>
+   is typically the frame pointer.</p>
+
+<p>Local variables are typically stored in the memory around an address
+   stored in register <code>ebp</code>, also called the <em>frame pointer</em>.
+   (Think of a "frame" around some segment of memory.) For example, <code>int
+      x</code> may be at location <code>%ebp -4</code>, and <code>int y</code>
+   at location <code>%ebp -8</code>. (Remember, <code>int</code>s are 4
+   bytes long.)</p>
+
+<p>Like many machines, Intel processors use a stack. The register <code>esp</code>
+   holds the address of the next available address on the stack. The stack
+   grows down, meaning that the value of <code>esp</code> decreases as data
+   are added to the stack. Functions store their data on the stack.</p>
+
+<p>Functions are required to leave the stack and frame pointers as they
+   found them. Therefore, the first few assembly language instructions of
+   any function store the current value of <code>esp</code> and <code>ebp</code>
+   (typically on the stack). In addition, the frame for local variables is
+   typically on the stack. Therefore, functions with local data also
+   increase the stack pointer enough to hold all the local variables. The
+   last thing a function does is restore the stack and frame pointers to
+   their original values.</p>
+
+<p>Finally, a few additional notes:</p>
+<ul>
+   <li>Intel assembly follows different conventions depending on context,
+      so you must pay careful attention:
+
+      <ul>
+         <li>The assembly produced by <code>gcc</code> follows a different
+            convention from MIPS: The destination of an operation is typically the
+            <em>last</em> operand, not the first.
+         </li>
+
+         <li>However, The Intel Software Developer's Manual guide lists the
+            destination
+            first.
+         </li>
+      </ul>
+
+   <li>Arithmetic/logical instructions use only two operands &mdash; one operand
+      doubles as both source and destination.
+   </li>
+
+   <li>Because Intel processors are backward compatible to earlier 16 and
+      8 bit machines, the lower 16 bits of each 32-bit register have their
+      own names, namely <code>ax</code>, <code>bx</code>, <code>cx</code>, <code>dx</code>,
+      <code>si</code>, <code>di</code>, <code>sp</code>, <code>bp</code>.
+      Similarly, the names (<code>ah</code>, <code>bh</code>, <code>ch</code>,
+      <code>dh</code>, <code>al</code>, <code>bl</code>, <code>cl</code>, <code>dl</code>)
+      designate the most significant and least significant bytes (in earlier
+      microprocessors Intel used 8-bit registers). See Figure&nbsp;6.36 in Harris
+      and Harris, or Figure&nbsp;2.40 in the Patterson and Hennessy text. <!--,
+or Figure 12.40 in the Stallings text.--> Similarly, on a 64-bit
+      machine, <code>e?x</code> is the lower 32-bits of the 64-bit register <code>r?x</code>.
+      If you look at 64-bit code you will see both the 32-bit <code>"e"</code>
+      versions and the 64-bit <code>"r"</code> versions of the registers
+      used. In general, memory addresses will use the <code>"r"</code>
+      registers (e.g., <code>rsp</code> and <code>rbp</code>) while
+      the 32-bit arithmetic operands will use the <code>"e"</code> registers (<code>eax</code>,
+      <code>ebx</code>, etc.).
+   </li>
+</ul>
+
+
+
+<h3>Generating and Understanding Assembler Code</h3>
+
+
+<p>The easiest way to write correct assembly code is to let a compiler do it for us! Then we just have to figure out
+  what it's doing and why. A quick look at the man pages for the <b><code>gcc</code></b> compiler under Linux shows that
+  the '<b><code>-S</code></b>' switch directs the compiler to generate assembly and stop (without producing an
+  executable). We can use this feature to learn the nature of a particular instruction set by writing simple,
+  understandable programs in a high-level language (like C) and studying what the compiler produces. </p>
+
+
+<p class="listHeader">A brief note about assembler notation
+  in the interest of making the programs easier to read:</p>
+
+<ul>
+  <li>registers are preceded by a (<b><code>%</code></b>)</li>
+
+  <li>constants are preceded by a&nbsp;(<b><code>$</code></b>)</li>
+
+  <li>labels are indicated by (<b><code>.L</code></b>)</li>
+
+  <li>offsets and memory references are indicated by parentheses <b><code>()</code></b>.
+    For example, <code>movl %esp, %ebp</code> means to take the value of <code>%esp</code>
+    and put it in <code>%ebp</code>. In contrast, <code>movl (%esp), %ebp</code>
+    means to take the value at the top of the stack and put it in <code>%ebp</code>.
+  </li>
+</ul>
+
+<p>As an example, begin with the program <a href="exampleIML-1b.c">exampleIML-1b.c</a>. Run
+  <code class="inline-instruction">gcc -S exampleIML-1b.c</code> to produce assembly code for the native machine. (I
+  compiled this code on a 64-bit Intel i7. If you use a different machine, your code may look different.)</p>
+
+<p class="listHeader">Look at the resulting code. Lines that begin with a dot (.) are either labels or directives. They
+  are used by the assembler, but are not instructions that are executed when the program runs.</p>
+
+<ul>
+  <li>The first three instructions (the <code>pushq</code>, <code>moveq</code>,
+    and <code>subq</code>) set up the stack and frame pointers.
+  </li>
+
+  <li>The next four instructions initialize local variables <code>a</code>,
+    <code>b</code>, <code>difference</code> and <code>printf_answer</code>. Notice
+    that variable names do <em>not</em> appear in the assembly code.
+    Instead, each local variable is assigned to a memory location
+    referenced as an offset from the frame pointer.
+  </li>
+
+  <li>The next several instructions handle the subtraction.</li>
+
+  <li>The eight instructions beginning with <code>movl -8(%rbp), %ecx</code>set up the parameters, call
+    <code>printf</code>, and save the return value. Notice how the parameters are passed in spare registers.
+  </li>
+
+  <li>Finally, the return value is set up; the <code>leave</code>
+    instruction restores the stack and frame pointers; and the method
+    ends.
+  </li>
+</ul>
+
+<ol start="1">
+  <li>Explain what each of the assembly language instructions in <code>exampleIML-1b.s</code>
+    does <em>and why</em>. (A couple of the "whys" aren't obvious, so don't
+    hesitate to ask for help.) Two hints:
+    <ul>
+      <li>Remember, this code is un-optimized, so not all operations may have been completed in as few
+        instructions as possible.
+      </li>
+      <li>Review the section above discussing how the "r" registers are related to the "e" registers.</li>
+    </ul>
+</ol>
+
+
+<h3>Intel Machine Language</h3>
+
+<p>
+  In comparison to MIPS, the Intel machine language is extremely complex:
+  Instructions can be anywhere from 1 to 15 bytes long; and, each
+  instruction supports many different addressing modes. Fortunately, most
+  of the extremely complex instructions are very specialized and rarely
+  used (e.g., the MMX instructions). The instructions you will examine
+  today are much simpler.</p>
+
+<p class="listHeader">Figure 2-1 on page 2-1 (aka page 31) of
+  <a href='http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS451/ReferenceDocuments/IntelDevManuals/IntelSoftwareDeveloperManual_v2_2014.pdf'>Volume 2 of the Software Developer's Manual</a>
+  shows the basic format of an Intel instruction. Some
+  instructions have a prefix of up to four bytes. The next 1 to 3 bytes
+  contain the op code. The instructions we will examine all have one byte
+  opcodes. The byte after the opcode describes the operands and the
+  addressing modes of the operands. As shown in Figure 2-1, this byte is
+  divided into three fields:</p>
+
+<ul>
+
+  <li><b>Mod</b>: Bits 6 and 7 represent the addressing mode of the "memory" parameter. If an instruction has 2
+    parameters, at most
+    one may be a memory address. The other must be a register or an immediate value. The "Mod" bits specify the
+    addressing mode of the parameter that may be a memory address.
+  </li>
+
+
+  <li><b>R/M</b>: Bits 0 - 2 identify the particular register (<code>eax</code>,
+    <code>ebx</code>, etc.) that uses the addressing mode specified by bits
+    6 and 7.
+  </li>
+
+
+  <li><b>Reg/Opcode</b>: For some instructions, bits 3-5 specify the
+    instruction's "non-memory" parameter (i.e., the one that must be a register or immediate value). Other
+    instructions use these 3 bits
+    as an extension to the op code. (This is indicated by a slash and a number after the op-code in the instruction
+    reference.)
+  </li>
+</ul>
+
+
+<p>Look at Table 2-2 on page 2-6. The leftmost column lists the possible values for
+  the parameter that may specify a memory address. The notation <code>EAX</code> specifies a basic
+  register-direct access to register <code>eax</code> (i.e., the data for the instruction is contained directly in
+  register <code>eax</code>). Brackets specify a memory access. For example
+  <code>[EAX]</code> means that the data for the instruction is not stored directly in <code>eax</code>, but rather
+  the memory location specified by <code>eax</code>. (In other words, <code>eax</code> contains the memory
+  address at which the data is located.)</p>
+
+<p>The top row lists the registers that can serve as the "non-memory" parameter. (Remember, if there are two parameters,
+  the second parameter may not be a memory address.) The cell where the row and column intersect contains the entire
+  Mod R/M byte. For example, an instruction parameters <code>[EDX]</code> and <code>EBX</code> would have a ModR/M
+  byte of <code>0x1A</code>. Notice the bits listed in the row and column headers
+  (00, 011, and 010 &#x2192; 0001 1010) are equal to <code>0x1A</code> the listed ModR/M byte. (See the yellow and
+  green highlighted items in
+  <a href='IntelDevManual_Table2.2.pdf'>this marked-up version of Table 2.2</a>.)</p>
+
+
+<!-- Notice that some R/M bits (<code>0x04</code> , <code>0x0C</code> , <code>0x84</code> , <code>0x8C</code>, etc.)
+indicate that the operands are listed in a second addressing bit called the <code>SIB</code> . Table 2-3 lists the
+meaning of values in the SIB.</p> -->
+
+<ol start="2">
+  <li>Using Table 2-2, identify the addressing mode that corresponds to each of the four possible values of Mod.
+    Hint: Look at the operands in the "Effective Address" column. If you saw <code>EBP</code> or <code>%ebp</code>
+    in an assembly
+    instruction, where would the data for that instruction come from? What addressing mode does that correspond do?
+    How about if you saw either <code>[EBP]-16</code> (which <code>gcc</code> writes as <code>-16(%ebp)</code>)?
+  </li>
+</ol>
+
+<p>Now, let's look at some real Intel machine code: </p>
+
+<ul class="spaced-list">
+
+  <li><span class="important">(You will want to do this on
+    EOS/Arch. The compilers on other CPU/OS combinations are almost always slightly different. These
+    differences almost always give students a lot of trouble.)</span>
+  </li>
+
+  <li>Begin by compiling <a href="exampleIML-1b.c"><code>exampleIML-1b.c</code></a>
+    down to assembly code (<code class="inline-instruction">gcc -S exampleIML-1b.c</code>).
+  </li>
+
+  <li>Next, link <code>exampleIML-1b.s</code> with the debug flag
+    (<code class="inline-instruction">gcc -g exampleIML-1b.s -o ex1</code>).
+  </li>
+
+  <li>Launch the GNU debugger (<code>gdb</code>) on your compiled file
+    (<code class="inline-instruction">gdb ex1</code>).
+  </li>
+
+  <li>Issue the command <code class="inline-instruction">disassemble main</code>. You should see
+    output that looks something the sample below. <span class="inline-important">If it looks
+    different and you are on EOS/Arch, let me know.</span> The first column lists the address of each
+    instruction in <code>main</code>. The second column lists the address
+    of the instruction relative to the beginning of main. The third and
+    fourth columns contain the assembly instruction. Notice that the
+    instruction <code>movq %rsp, %rbp</code> has been replaced with a
+    simple <code>mov</code> instruction.
+
+    <pre>
+(7)   0x0000000000001139 &lt;+0&gt;:	push   %rbp
+(6)   0x000000000000113a &lt;+1&gt;:	mov    %rsp,%rbp
+(ex)  0x000000000000113d &lt;+4&gt;:	sub    $0x10,%rsp
+(ex)  0x0000000000001141 &lt;+8&gt;:	movl   $0x52c,-0x10(%rbp)
+(1)   0x0000000000001148 &lt;+15&gt;:	movl   $0x1619,-0xc(%rbp)
+      0x000000000000114f &lt;+22&gt;:	movl   $0x2694,-0x8(%rbp)
+      0x0000000000001156 &lt;+29&gt;:	movl   $0x8ad,-0x4(%rbp)
+(2)   0x000000000000115d &lt;+36&gt;:	mov    -0x10(%rbp),%eax
+      0x0000000000001160 &lt;+39&gt;:	sub    -0xc(%rbp),%eax
+(3)   0x0000000000001163 &lt;+42&gt;:	mov    %eax,-0x8(%rbp)
+      0x0000000000001166 &lt;+45&gt;:	mov    -0x8(%rbp),%ecx
+      0x0000000000001169 &lt;+48&gt;:	mov    -0xc(%rbp),%edx
+      0x000000000000116c &lt;+51&gt;:	mov    -0x10(%rbp),%eax
+(ex)  0x000000000000116f &lt;+54&gt;:	mov    %eax,%esi
+      0x0000000000001171 &lt;+56&gt;:	lea    0xe8c(%rip),%rdi        # 0x2004
+(4)   0x0000000000001178 &lt;+63&gt;:	mov    $0x0,%eax
+      0x000000000000117d &lt;+68&gt;:	callq  0x1030 &lt;printf@plt&gt;
+      0x0000000000001182 &lt;+73&gt;:	mov    %eax,-0x4(%rbp)
+      0x0000000000001185 &lt;+76&gt;:	mov    -0x8(%rbp),%eax
+(5)   0x0000000000001188 &lt;+79&gt;:	leaveq
+      0x0000000000001189 &lt;+80&gt;:	retq
+    </pre>
+  </li>
+
+  <!--
+(7)    0x0000000000400530 &lt;+0&gt;:	    push   %rbp
+(6)    0x0000000000400531 &lt;+1&gt;:	    mov    %rsp,%rbp
+(ex)   0x0000000000400534 &lt;+4&gt;:	    sub    $0x10,%rsp
+(ex)   0x0000000000400538 &lt;+8&gt;:	    movl   $0x52c,-0x4(%rbp)
+(1)    0x000000000040053f &lt;+15&gt;:	movl   $0x1619,-0x8(%rbp)
+   0x0000000000400546 &lt;+22&gt;:	movl   $0x2694,-0xc(%rbp)
+   0x000000000040054d &lt;+29&gt;:	movl   $0x8ad,-0x10(%rbp)
+(2)    0x0000000000400554 &lt;+36&gt;:	mov    -0x8(%rbp),%eax
+   0x0000000000400557 &lt;+39&gt;:	mov    -0x4(%rbp),%edx
+(ex)   0x000000000040055a &lt;+42&gt;:	sub    %eax,%edx
+   0x000000000040055c &lt;+44&gt;:	mov    %edx,%eax
+(3)    0x000000000040055e &lt;+46&gt;:	mov    %eax,-0xc(%rbp)
+   0x0000000000400561 &lt;+49&gt;:	mov    -0xc(%rbp),%ecx
+   0x0000000000400564 &lt;+52&gt;:	mov    -0x8(%rbp),%edx
+   0x0000000000400567 &lt;+55&gt;:	mov    -0x4(%rbp),%eax
+   0x000000000040056a &lt;+58&gt;:	mov    %eax,%esi
+   0x000000000040056c &lt;+60&gt;:	mov    $0x400620,%edi
+(4)    0x0000000000400571 &lt;+65&gt;:	mov    $0x0,%eax
+   0x0000000000400576 &lt;+70&gt;:	callq  0x400410 &lt;printf@plt&gt;
+   0x000000000040057b &lt;+75&gt;:	mov    %eax,-0x10(%rbp)
+   0x000000000040057e &lt;+78&gt;:	mov    -0xc(%rbp),%eax
+(5)    0x0000000000400581 &lt;+81&gt;:	leaveq
+   0x0000000000400582 &lt;+82&gt;:	retq
+End of assembler dump.
+</pre>
+</li>
+-->
+
+
+  <li>Cut-and-paste this information into another window.</li>
+
+  <li>Type <code class="inline-instruction">x main+54</code> to look at the machine code for the fourteenth instruction
+    (<code>mov %eax, %esi</code>). Bytes with lower addresses are displayed to the right; therefore, the instructions
+    will look as if they are printed "backwards". In this example, the first byte of the <code>mov</code>
+    instruction is <code>0x89</code>;
+    the second is <code>0xc6</code>. The remaining two bytes are part of the next instruction. If you look on page 3-508
+    in Volume 2 of the Developer's Guide, you will see that <code>0x89</code> is one of many op-codes for
+    the <code>sub</code> instruction. If you look in Table 2-2 (on page 2-6), you will see that a ModR/M byte of
+    <code>0xc6</code> indicates that parameters are registers <code>%eax</code> and <code>%esi</code>.
+    (See the purple items in <a href='IntelDevManual_Table2.2.pdf'>this marked-up version of Table 2.2</a>.)
+  </li>
+
+  <li>
+    Now, type <code class="inline-instruction">x/2 main+8</code>. The <code>/2</code> tells <code>gdb</code>
+    to print two four-byte words. (We need to print two words because the
+    instruction is 7 bytes long.) The words are displayed left-to-right in increasing order; but,
+    within each word, the byte with the lowest address appears on the right. Thus, you would read this
+    seven-byte instruction as <code>0xc745f02c050000</code>. (I know it's confusing. Remember,
+    I didn't design it, I'm just showing you how it works.)
+
+
+    <p>The first byte of this instruction is <code>0xc7</code>. If you look on page 3-508 of the Developer's Guide,
+      you will see that <code>0xc7</code> is an opcode for <code>mov</code>. (For some reason, the instruction is
+      listed as <code>movl</code> in your assembly code; but, you look up <code>mov</code>
+      in the Developer's Guide.) Notice the <code>/0</code> after the opcode.
+      If you look on page 3-2 of the Developer's Guide, you will see that the
+      <code>/0</code> tells you to ignore the <code>reg</code> field of the
+      ModR/M byte (i.e., ignore the register listed at the top).
+      Looking at the Mod and R/M bits (i.e., the leftmost column) tells us that one of the operands is memory
+      location <code>[rbp]</code> plus some immediate value. In fact, the
+      destination of this instruction is memory location <code>%RBP - 0x10</code>;
+      and, as luck would have it, the next byte, <code>0xf0</code> happens to
+      be the twos complement, hexadecimal representation of <code>-0x10</code>.
+      Finally, the last four bytes are the immediate value being stored.</p>
+
+    <p>When read "first-to-last", which is low-to-high, the last four bytes are <code>0x2c050000</code>.
+      However, we conventionally write numbers high-to-low. Thus, when you reverse the order of these bytes you
+      get
+      <code>0x00052c</code>, which is the immediate value being moved. (Does your head hurt yet?)</p>
+  </li>
+
+
+  <li> Finally, type <code class="inline-instruction">x main +4</code> to look at the <code>sub</code>
+    instruction. When you look on page 4-394 of the Developer's Guide, you will notice that the first byte,
+    <code>0x48</code>
+    does not correspond to any of the <code>sub</code> op codes. However,
+    the second byte, <code>0x83</code> does. In addition, one of the
+    choices for op code is <code>REX.W + 83</code>. A trip back up to the
+    top of Chapter 2 (specifically, Section 2.2.1 beginning on page 2-9),
+    tells us that the <code>REX</code> prefixes are used to indicate that
+    the instruction takes at least one 64-bit parameter. In particular,
+    Table 2-4 tells us that the prefix <code>0x48</code> indicates that the
+    operand size is 64 bits. All <code>REX</code> prefixes begin with a <code>4</code>.
+    At this point, we note the <code>/5</code> after the op-code,
+    look up the third byte, <code>0xec</code> in Table 2-2 to find that one
+    of the parameters is <code>%rsp</code>. Page 4-394 tells us that the
+    final parameter is an 8-bit immediate value in this case, <code>0x10</code>.
+  </li>
+</ul>
+
+
+<p>Now, it's your turn:</p>
+
+<ol start="3">
+
+  <li>List the machine instruction for each of the instructions marked
+    with a number, and identify the meaning of each byte. Clearly indicate how the source(s) and destination are
+    specified.
+    Some hints and sample output appear below.
+
+    <ul>
+
+      <li>Remember that instructions have different lengths. Don't try to
+        incorporate too much into an instruction.
+      </li>
+
+      <li>Remember that within each word, the least significant bits are on the right. This makes the instructions feel
+        "backwards", but the constants appear "forward".
+      </li>
+
+      <li>Ignore the "l" on the end of mnemonics (i.e., "<code>movl</code>" means "<code>mov</code>").</li>
+
+      <li>When necessary,
+        see Table 3-1 for the meaning of the <code>+rw</code> in the opcode.
+      </li>
+
+    </ul>
+
+
+    <p>Your answers should look something like this:</p>
+    <ul>
+
+      <li>
+
+        <table class="icTable">
+          <TR>
+            <TD>assembly instruction
+
+
+            <TD colspan=2>add %eax,%esi
+
+          </TR>
+          <TR>
+            <TD>Machine instruction (hex)
+
+
+            <TD colspan=2>0x89c6
+
+          </TR>
+          <TR>
+            <TD>Byte number
+
+
+            <td>1
+
+
+            <td>2
+
+          </tr>
+          <TR>
+            <TD>field name
+
+
+            <TD>op code
+
+
+            <TD>Mod R/M
+
+          </TR>
+          <TR>
+            <TD>Field value
+
+
+            <TD>0x01
+
+
+            <TD>0xd0
+
+          </TR>
+          <TR>
+            <TD>Field meaning
+
+
+            <TD>add
+
+
+            <td>source: %eax, destination %esi
+
+          </tr>
+          <TR>
+            <TD>Info source
+
+
+            <TD>Page 3-29
+
+
+            <td>Table 2.2.
+
+          </tr>
+        </table>
+      </li>
+
+      <li>
+        <table class="icTable">
+          <TR>
+            <TD>assembly instruction
+
+
+            <TD colspan=4>movl $52c,-0x10(%rbp)
+
+          </TR>
+          <TR>
+            <TD>Machine instruction (hex)
+
+
+            <TD colspan=4>0xc745f02c050000
+
+          </TR>
+          <TR>
+            <TD>Byte number
+
+
+            <td>1
+
+
+            <td>2
+
+
+            <td>3
+
+
+            <td>4-7
+
+          </tr>
+          <TR>
+            <TD>field name
+
+
+            <TD>op code
+
+
+            <TD>Mod R/M
+
+
+            <td>offset
+
+
+            <td>immediate value
+
+          </TR>
+          <TR>
+            <TD>Field value
+
+
+            <TD>0xc7
+
+
+            <TD>0x45
+
+
+            <td>0xf0
+
+
+            <td>0x0000052c
+
+          </TR>
+          <TR>
+            <TD>Field meaning
+
+
+            <TD>mov
+
+
+            <td>destination [RBP] + offset
+
+
+            <td>subtract 16 from RBP
+
+
+            <td>immediate value
+
+          </tr>
+          <TR>
+            <TD>Info source
+
+
+            <TD>Page 3-508
+
+
+            <td>Table 2.2
+
+
+            <td>Table 2.2
+
+
+            <td>page 3-508
+
+          </tr>
+        </table>
+      </li>
+
+      <li>
+        <table class="icTable">
+          <TR>
+            <TD>assembly instruction
+
+
+            <TD colspan=4>sub $0x10, %rsp
+
+          </TR>
+          <TR>
+            <TD>Machine instruction (hex)
+
+
+            <TD colspan=4>0x4883ec10
+
+          </TR>
+          <TR>
+            <TD>Byte number
+
+
+            <td>1
+
+
+            <td>2
+
+
+            <td>3
+
+
+            <td>4
+
+          </tr>
+          <tr>
+            <td>field name</td>
+
+
+            <td>prefix</td>
+
+
+            <td>op code</td>
+
+
+            <td>Mod R/M</td>
+            <td>Immediate value</td>
+
+          </tr>
+          <TR>
+            <TD>Field value
+
+
+            <TD>0x48
+
+
+            <TD>0x83
+
+
+            <td>0xec
+
+
+            <td>0x10
+
+          </TR>
+          <TR>
+            <TD>Field meaning
+
+
+            <TD>64-bit operands
+
+
+            <td>subtract
+
+
+            <td>destination %rbp
+
+
+            <td>immediate value 10
+
+          </tr>
+          <TR>
+            <TD>Info source
+
+
+            <td>Table 2-4
+
+
+            <td>Page 4-394
+
+
+            <td>Table 2.2
+
+
+            <td>Page 4-394
+
+          </tr>
+        </table>
+      </li>
+
+    </ul>
+
+    <p>You may find <a href="intelMachineLanguage_AnswerTemplate_2019.pdf">this template</a> helpful.</p>
+
+
+  <li>Notice that the <code>push</code> instruction is only one byte
+    long. How did the designers squeeze both the opcode and the operator
+    into one byte? (In other words, how can you tell from the machine code which register to push onto the stack?)
+  </li>
+
+
+  <li>When using Table 2-2, sometimes the Mod and R/M bits (the leftmost column) refers to the source
+    operand, and sometimes they refers to the destination. How can you tell from the machine code
+    (without seeing the assembly)
+    whether the leftmost column refers to the first or second operator? Hint:
+    Compare instructions <code>main+36</code> and <code>main+42</code>.
+  </li>
+
+  <!--  This question is similar to the "push" question above
+  <li>Instructions <code>main+61</code> and <code>main+56</code>code>
+  don't have an R/M byte. How do we know which register is the
+  destination?
+  -->
+
+  <li>How/where does instruction <code>main+15</code> encode that one of
+    the parameters is an immediate value? How is the R/M byte for this
+    instruction used? (In other words, how can you tell by looking at the machine code that one parameter is an
+    immediate value?)
+  </li>
+
+
+  <!--  This question is no good.  The immediate value is always the same length as the register.
+     It is the offsets that can have different lengths
+     <li>MIPS expands all immediate values (i.e., "constants"), even small
+     immediate values like 1, to 16 bits. In contrast, Intel places only the
+     minimum number of bytes necessary into an instruction. How does the CPU
+     determine the length of an instruction's immediate value? Be specific.
+  -->
+
+  <li>Extra Credit: Explain how the IA64 machine language encodes the "r" registers (<code>r8d</code>, <code>r9d</code>,
+    ..., <code>r15d</code>). Your explanation should include a table for this instruction: <code>sub %r11d, %r14d</code>
+  </li>
+
+</ol>
+<hr>
+
+<p>Updated Tuesday, 3 September 2019, 10:42 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>
+
+
+<!-- Key pages in Intel document:  32, 37-38, 42-44 -->

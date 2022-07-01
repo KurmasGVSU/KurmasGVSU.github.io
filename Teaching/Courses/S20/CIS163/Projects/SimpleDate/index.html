@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 163 Simple Date</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .rubric  {
+       margin-left: 25px;
+    }
+
+    .rubric th {
+       text-align: left;       
+    }
+
+    .rubric td {
+       padding-right: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 163</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Simple Date</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Summer 2020</h1></td>
+  </tr>
+</table>
+
+   <p>Complete <a href="https://rit.az1.qualtrics.com/jfe/form/SV_7PuwmCx4eZexFqZ">this <em>Optional</em> survey</a> for <b>extra credit</b>.</a>
+
+  <p>GitHub Classroom URL: <a href='https://classroom.github.com/a/gw-Ues5y'><code>classroom.github.com/a/gw-Ues5y</code></a></p>
+
+<h2 class="listHeader">Objectives:</h2>
+
+<ul>
+   <li>Review CS 162 topics</li>
+   <li>Expand upon the use of class (i.e., <code>static</code>) data and methods</li>
+   <li>Introduce enumerations</li>
+   <li>Introduce unit testing with JUnit</li>
+   <li>Provide experience developing challenging algorithms</li>
+</ul>
+
+<h2 class="listHeader">Due Dates:</h2>
+
+<ul>
+   <li>Demonstrate project is configured properly: Friday, 8 May 2020, 8:00 am</li>
+   <li>Submit test cases: Monday, 11 May 2020, 8:00 am</li>
+   <li>Final submission: Monday, 18 May 2020, 8:00 am</li>
+</ul>
+
+
+<h2>Problem Statement</h2>
+
+<p>You will implement and thoroughly test a class that stores and analyzes calendar dates</p>
+
+
+<h3 class='listHeader'>Workflow</h3>
+
+<ol>
+   <li class='listHeader'> Begin by following <a href='https://classroom.github.com/a/gw-Ues5y'>this link</a> and cloning the resulting git repository.  The key files include:
+   <ul>
+     <li><code>src/Date163.java</code>: This is the class you will be writing. To help you get started, I've provided shells for the methods you need to write.</li>
+     <li><code>test/Date163Test.java</code>: This will be your test class.  I have provided a few sample tests to help you get started.</li>      
+     <li><code>instructorTests.jar</code>: This file is used by the auto-grader.  <span class='inline-important'>Don't touch it.</span> </li>
+     <li><code>lib/junit-platform-console-standalone-1.6.2.jar</code>: This contains the JUnit library.  Your IDE probably provides it; but, the autograder needs a copy in the repo.</li>
+   </ul>
+   <li> Write a thorough set of "black box" unit tests for each method in <code>Date163</code>.  The javadoc header on each method 
+        explains what each method should do.
+        <ul>
+           <li> <span class='inline-important'>Submit these tests by Monday, 11 May 2020, 8:00 am</span></li>
+           <li>To submit your tests, use git to commit your changes with "<code>[Tests]</code>" in the commit message, then push.
+        </ul></li>
+   <li> Implement the methods in the order they appear in <code>Date163.java</code>. (They are listed from easiest to hardest.)  Each time you complete a method, run your unit tests and watch the number of failures decrease.</li>
+   <li> When your code passes all of your tests, review your tests from a "white box" perspective and add more tests if necessary.</li>
+   <li> Use git to commit and push your code.  When you push your code, my tests will run automatically.
+      <ul>
+        <li>If the automated tests all pass, congratulations!  Submit your project following the <a href='#submit'>instructions below</a>.</li>         
+        <li>If an automated test fails, then you are missing a test case in your own test suite.  Add tests until one fails, fix the broken method, and submit again.</li>
+      </ul>
+</ol>
+
+<h3 class='listHeader' id='rules'>Rules:</h3>
+<ul>
+   <li>You must implement the algorithms yourself.  You may not use <code>GregorianCalendar</code> or any other calendar library.</li>
+   <li>You must use GitHub / GitHub Classroom and use standard git tools to clone the repository and push your code.  <b class='inline-important'>Important:</b> It is important that you use standard git tools to clone this repository.  Do <em>not</em> 
+simply download the individual files from the GitHub website.  More importantly: Use standard git tools to submit your work.
+ <span class='inline-important'>Do <em>not</em> submit your code by using the GitHub website to upload files individually.</span> Every semester students permanently loose
+ work because the upload/download code incorrectly.</li>
+   <li>I will not grade your code until it passes my tests.</li>
+   <li> <span class='inline-important'>Attempting to modify, decompile, or otherwise gain access to the contents of <code>instructorTests.jar</code> (or any other file not intended for student use) is a violation of the Academic Honesty Policy.</span></li>
+   <li>The "two-digit-year" features are <em>not</em> tested automatically. (In other words, just because your automated build passes does not mean that this feature works correctly.)</li>
+   <li>Your code must follow good coding style and practice including:
+      <ul>
+         <li>inner explanatory comments where appropriate,</li>
+         <li>use of descriptive variable and method names,</li>
+         <li>use of constants (i.e., <code>static
+            final</code> variables) where appropriate (such as
+            <code>MIN_YEAR</code>), and
+         </li>
+         <li>use of private "helper" methods where necessary to avoid duplicate
+            code (for example, have the instance method <code>isLeapYear()</code> call
+            the class method <code>isLeapYear(int)</code>).
+      </ul>
+      </li>
+</ul>
+
+<h3 id='submit'>Submitting your Project</h3>
+
+<p class='listHeader'>To submit your project:</p>
+  <ol> 
+            <li> Double check that your "two digit year" features have been thoroughly tested.  (Remember, the auto-grader does not check these features.)
+            <li> Clean up your code (check for proper indention, long lines, etc.)</li>
+            <li> Make sure your code meets the standards given at the end of the <a href="#rules">"Rules" section above</a>.</li>
+            <li> <span class='inline-important'>Fill out <a href='checklist.txt'><code>checklist.txt</code></a> and add it to your repository.</span></li>
+            <li> Commit/push with "[Grade me]" in the commit message.</li>
+   </ol>
+
+<h2>Grading Rubric</h2>
+
+<table class='rubric'>
+<tr><th>Category</th><th>Points</th></tr>
+<tr><td>Timeliness</td><td>70</td></tr>
+<tr><td>Two digit year</td><td>10</td></tr>
+<tr><td>Coding style</td><td>20</td></tr>
+</table>
+
+<p>Note: Points will be deducted for insufficient testing and/or not following a TDD workflow as discussed in class.</p>
+
+<p>Timeliness is based on when your code passes the automated tests:</p>
+
+<table class='rubric'>
+<tr><th>Day</th><th>Points</th></tr>
+<tr><td>Two days early</td><td>74</td></tr>
+<tr><td>One day early</td><td>72</td></tr>
+<tr><td>On time</td><td>70</td></tr>
+<tr><td>Late</td><td>-3  points per day</td></tr>
+</table>
+
+
+<h2>Quick Git Reference</h2>
+
+<dl>
+<dt>Cloning</dt>
+<dd>To clone a repo (i.e., download it to begin using it):
+<ol>
+<li>Go to your repos main GitHub web page.</li>
+<li>Click the green button labeled "Clone or Download"</li>
+<li>Make sure the box says "Clone with SSH"</li>
+<li>Copy the URL to the clipboard.  (The URL should begin with "<code>git@github.com:</code>")</li>
+<li>From the command line, run <code class='inline-instruction'>git clone <em>the_url_you_copied</em></code></li>
+</ol>
+</dd>
+
+<dt>Committing / Pushing</dt>
+<dd>To commit changes and push them to your repo:
+  <ol>
+     <li>From the root of your repo, run <code class='inline-instruction'>git add .</code>.
+     <li>Then run <code class='inline-instruction'>git commit -m "<em>your_message_here</em>"</code>.  
+         The main purpose of the message is so you can look back on the commits and know what additional work was done for each commit. 
+         I also use commit messages to know when you are ready for me to look at your work.</li>
+      <li>Finally, run <code class='inline-instruction'>git push</code>.</li>
+   </ol>
+</dd>
+
+<dt>Pulling</dt>
+<dd>If changes were made to your repository from another location, be sure to run <code class='inline-instruction'>git pull</code> before doing additional work.  
+    There are several ways external changes can happen.  For example, 
+   <ul>
+      <li> You may be working on two different machines (e.g, a desktop and a laptop).  To switch from the desktop to the laptop, you would push the changes 
+      on the desktop , then pull those changes onto the laptop.</li>
+      <li> I may make changes to your code, either when providing feedback, or in response to a request for help.
+   </ul>
+</dd>
+</dl>
+
+<hr>
+ <p>Updated Thursday, 14 May 2020, 9:29 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>
+
+
+  

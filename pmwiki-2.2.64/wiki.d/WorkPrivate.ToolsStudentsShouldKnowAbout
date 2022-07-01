@@ -1,0 +1,14 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1180109985
+host=75.134.113.30
+name=WorkPrivate.ToolsStudentsShouldKnowAbout
+rev=1
+targets=
+text=Students should know about these features.  I'm not saying they should memorize how to use them all, but they should know they exist so they don't to things the hard way.%0a%0aStandard UNIX tools%0a*sort%0a*uniq%0a*head%0a*tail%0a*more or less%0a*man pages%0a%0a%0aShell features%0a*pipes%0a*loops%0a*Tab completion%0a*Scroll back to previous commands%0a*history%0a*!! and !%3cpartial>%0a%0aEditor features%0a*syntax highlighting%0a*deleting, adding, and moving rectangles of text (^X rt, ^X rd, and ^X rk in emacs)%0a%0aX stuff%0a* Remotely launching processes%0a* xhost+%0a %0aHow to set up ssh to login between eos boxes w/o password.  (i.e., keygen, etc.)
+time=1180109985
+author:1180109985=
+diff:1180109985:1180109985:=1,28d0%0a%3c Students should know about these features.  I'm not saying they should memorize how to use them all, but they should know they exist so they don't to things the hard way.%0a%3c %0a%3c Standard UNIX tools%0a%3c *sort%0a%3c *uniq%0a%3c *head%0a%3c *tail%0a%3c *more or less%0a%3c *man pages%0a%3c %0a%3c %0a%3c Shell features%0a%3c *pipes%0a%3c *loops%0a%3c *Tab completion%0a%3c *Scroll back to previous commands%0a%3c *history%0a%3c *!! and !%3cpartial>%0a%3c %0a%3c Editor features%0a%3c *syntax highlighting%0a%3c *deleting, adding, and moving rectangles of text (^X rt, ^X rd, and ^X rk in emacs)%0a%3c %0a%3c X stuff%0a%3c * Remotely launching processes%0a%3c * xhost+%0a%3c  %0a%3c How to set up ssh to login between eos boxes w/o password.  (i.e., keygen, etc.)%0a\ No newline at end of file%0a
+host:1180109985=75.134.113.30

@@ -1,0 +1,525 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="interfaces">Interfaces</h1>
+
+<ul>
+  <li class="q">
+    <p>Why do Java method signatures require a type?</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">discuss</span><span class="o">(</span><span class="nc">Cat</span> <span class="n">c</span><span class="o">,</span> <span class="nc">Dog</span> <span class="n">d</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">d</span><span class="o">.</span><span class="na">bark</span><span class="o">();</span>
+  <span class="n">c</span><span class="o">.</span><span class="na">meow</span><span class="o">();</span>
+  <span class="n">d</span><span class="o">.</span><span class="na">bark</span><span class="o">();</span>
+  <span class="n">d</span><span class="o">.</span><span class="na">bark</span><span class="o">();</span>
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li class="q">Could you make a language that just allowed <code>public static discuss(c, d)</code>?</li>
+  <li class="q">How easy/hard would it be to implement a language that way?</li>
+  <li>Actually, there are many languages written that way (python, ruby, JavaScript, python, etc.)</li>
+  <li class="q">What is the advantage of requiring the type?
+    <ul>
+      <li>The compiler can catch more errors.</li>
+      <li>For example, you can tell before you even run the program that <code>c.bark()</code> is a problem.</li>
+    </ul>
+  </li>
+  <li class="q">What is the disadvantage?
+    <ul>
+      <li>More syntax.</li>
+    </ul>
+  </li>
+  <li>Java, C, C++ and most other compiled languages that require you to specify types are called <em>statically typed</em>.
+    <ul>
+      <li>In general, a statically typed language won’t let you run the program unless you can verify that 
+(almost) all of the statements are valid.</li>
+    </ul>
+  </li>
+  <li>Most interpreted languages are <em>dynamically typed</em>: It is up to the programmer to make sure that 
+objects have the methods that are called. (i.e., given <code>c.bark()</code>, it is up to the programmer to make
+sure <code>c</code> is an object with a <code>bark</code> method.)
+    <ul>
+      <li>If an object doesn’t have the necessary method, it is a run-time failure (i.e., the program crashes)</li>
+      <li>Dynamically typed languages are not inferior, it just means that you have to be more thorough when testing.</li>
+    </ul>
+  </li>
+  <li>The important part of a type in Java is not what the object <em>is</em>, but what it <em>does</em> — which methods can be called.
+    <ul>
+      <li>In other words, the compiler is primarily concerned with the object’s <em>interface</em>:  The formal ways we are allowed to interact with it.</li>
+      <li>As an analogy: The LEDs and the set of buttons on your bedroom alarm clock is it’s interface.  There’s lots of interesting stuff inside; but, you only look at the numbers and push the buttons.  Likewise, there is lots of interesting stuff inside an object; but, when you use it in your code, you only interact with the public interface.</li>
+      <li>This is related to the general principle of <em>separating interface from implementation</em>.  In theory, you could swap out the guts of your clock with something from a completely different company.  But, as long as the buttons worked the same way, it wouldn’t matter.  Software applies this principle also.</li>
+    </ul>
+  </li>
+  <li>In Java, you can leverage this by defining an interface separate from the specific object that <em>implements</em> that interface.</li>
+  <li>
+    <p>For example, let’s generalize the concept of an animal:</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Animal</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="nc">String</span> <span class="nf">speak</span><span class="o">();</span>
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>This tells the compiler that anything that is an <code>Animal</code> can speak.</li>
+  <li>
+    <p>Now, we can tell the compiler which classes implement this interface:</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cat</span> <span class="kd">implements</span> <span class="nc">Animal</span> <span class="o">{</span>       
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">speak</span><span class="o">()</span> <span class="o">{</span>
+     <span class="k">return</span> <span class="s">"Meow"</span><span class="o">;</span>
+   <span class="o">}</span>         
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The benefit is that we can now write algorithms that no longer care which specific animals we are dealing with:</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">converse</span><span class="o">(</span><span class="nc">Animal</span> <span class="n">a</span><span class="o">,</span> <span class="nc">Animal</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">speak</span><span class="o">());</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">b</span><span class="o">.</span><span class="na">speak</span><span class="o">());</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">speak</span><span class="o">());</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">b</span><span class="o">.</span><span class="na">speak</span><span class="o">());</span>
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Notice that the <code>converse</code> method doesn’t care about the specifics of what <code>a</code> and <code>b</code> are, it just needs to be assured that both objects can <code>speak</code>.</li>
+  <li>Also notice that if your variable is of type <code>Animal</code>, you may only use <code>Animal</code> methods.
+    <ul>
+      <li>Try to call <code>a.rollOver()</code>.  it will be a syntax error – even if the the object passed to <code>converse</code> is actually a <code>Dog</code>.</li>
+    </ul>
+  </li>
+  <li class="to-me">Add another <code>Animal</code> class and show that VS Code can fill in missing interface methods.</li>
+</ul>
+
+<h2 id="using-interfaces-in-real-life">Using interfaces in “real life”</h2>
+
+<h3 id="inputstream-and-outputstream"><code>InputStream</code> and <code>OutputStream</code></h3>
+<ul>
+  <li>Many input sources can be abstracted as a “pipe” through which bits flow.</li>
+  <li>Imagine writing one letter on a ping pong ball and stuffing it through a pipe.  The 
+reader can then pull them out one at a time and re-construct the message.</li>
+  <li>This mental model applies to any “stream” of data:
+    <ul>
+      <li>Keyboard</li>
+      <li>File</li>
+      <li>Network connection</li>
+    </ul>
+  </li>
+  <li>Look at <a href="https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html">https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html</a></li>
+  <li>It doesn’t matter where the bytes come from as long as you can read them the same way 
+(i.e., using the same interface)
+    <ul>
+      <li>(It’s kind of like a large package box at an apartment:  You don’t care who puts the package in the box – just that you can take it out.)</li>
+    </ul>
+  </li>
+  <li class="to-do">Look at <code>SumData</code> in the sample code</li>
+</ul>
+
+<h3 id="gui-layout">GUI Layout</h3>
+<ul>
+  <li>Look at <code>OneFileCalculator.java</code> in the sample code.</li>
+  <li>Notice that we can put many different types of “widgets” into a <code>JPanel</code> (buttons, labels, text fields, etc.)</li>
+  <li>Look at the API <a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html">https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html</a></li>
+  <li>The <code>add</code> method takes a type of <code>Component</code>.</li>
+  <li>It doesn’t matter to the <code>JPanel</code> whether you are adding a button, label, text field, etc.  It only matters that
+you added something that can draw itself and knows it’s size.</li>
+  <li>(GUI is <em>much</em> more complicated than this; but, this is the relevant point for now.)</li>
+</ul>
+
+<h3 id="listeners">Listeners</h3>
+
+<ul>
+  <li>Think about Java Swing listeners.  They are a  way of telling Java what code to run when you push a button.</li>
+  <li>
+    <p>Conceptually, we just want to pass code to a button as a parameter:</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This is *not* real Java code.  I'm trying to illustrate an abstract principle.</span>
+<span class="nc">JButton</span> <span class="n">button</span> <span class="o">=</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Push me"</span><span class="o">)</span>
+<span class="n">button</span><span class="o">.</span><span class="na">onClick</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"You pushed me"</span><span class="o">);</span> <span class="o">++</span><span class="n">numPushes</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Up until Java 8 there was no way to do this.  We could only pass objects.</li>
+  <li class="q">So, how to we put code inside objects?
+    <ul>
+      <li>In a method!</li>
+    </ul>
+  </li>
+  <li class="q">How does the button know which method to call?
+    <ul>
+      <li>There has to be a convention / documentation (i.e., it’s just part of the spec – the same way you know which button to push on your radio).</li>
+    </ul>
+  </li>
+  <li>Let’s construct a simple button (more specifically, an object with a listener)
+    <ul>
+      <li class="to-me">Add an <code>addListener</code> method.</li>
+    </ul>
+  </li>
+  <li>First issue:  Need a type on the parameter to the <code>addListener</code> method. <span class="q">What should the type be?</span>
+    <ul>
+      <li>It should be an <em>interface</em></li>
+    </ul>
+  </li>
+  <li>As we’re writing the code for the button, we have no knowledge of what the actual code (i.e., “implementation”) will be.  We only know the method name.  Thus, this is a classic use of an interface.  (“There shall be a button.  It shall have a <code>doIt</code> method.  That’s all we care about.)</li>
+  <li class="to-me">Add the <code>ButtonListener</code> interface.</li>
+  <li>The challenge is then to keep our listener code from getting “separated” from the rest of our code.</li>
+  <li>Consider <code>MessageButtonListener</code>
+    <ul>
+      <li>Code is separated from the main “flow” of the app.  (Most code is in <code>main</code>; with a chunk stuck up in <code>MessageButtonListener</code>)</li>
+      <li>There is a lot of typing just to define an object that is only going to be instantiated once.</li>
+      <li>Think about abstracting <code>MessageButtonListener</code> so you can specify the message.  You have to add parameters, instance methods and such – again a lot of typing for a conceptually simple operation.</li>
+    </ul>
+  </li>
+  <li>To try and take the edge off all this extra typing, Java added things like inner classes and anonymous inner classes.
+    <ul>
+      <li>Better, but still a lot of typing.</li>
+      <li>And confusing for new students.</li>
+    </ul>
+  </li>
+  <li>The real Java Swing <code>JButton</code> does the same thing.  Except:
+    <ul>
+      <li>The interface is called <code>ActionListener</code></li>
+      <li>The method is <code>actionPerformed</code> and it takes an <code>ActionEvent</code> parameter</li>
+    </ul>
+  </li>
+  <li>Java 8 added “lambdas” which let you pass code as a parameter.
+    <ul>
+      <li>This syntax is really just interfaces under the hood.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="listeners-in-the-controller">Listeners in the controller</h3>
+
+<ul>
+  <li>Putting the listener in the controller is (mostly) the same as putting it in the view – you’re just passing the object through an extra step.
+    <ul>
+      <li>When using inner classes and lambdas, the key benefit is that you listener has the controller objects in scope instead of the view objects.</li>
+    </ul>
+  </li>
+  <li class="to-me">Show <code>mvcCalculator</code> in the Sample Code.</li>
+  <li class="to-me">Review how Qwixx works.</li>
+  <li>With the Qwixx number button listeners, we have a more interesting problem:
+    <ul>
+      <li>We want a listener on each button</li>
+      <li>We don’t want to have to add each listener “by hand” like we did for the “Roll” and “Pass” buttons.</li>
+      <li>Instead, we want to use a loop.</li>
+      <li>But, the listener needs to know which row and column was clicked.</li>
+      <li>This info can’t come as parameters because that simply isn’t part of the <code>ActionListener#actionPerformed</code> method.</li>
+      <li>Cool thing about inner classes / lambdas:  You can access variables in the enclosing scope.
+        <ul>
+          <li>Well, kind of:  You can only access them if they won’t change between the time you set up the lambda and when the code actually runs.</li>
+          <li>We fis this in <code>addNumberButtonListener</code> by copying <code>row</code> and <code>column</code> (which do change as you 
+move through the loops) into <code>final</code> variables that are local to the body of the loop.</li>
+          <li>This need to save copies in <code>final</code> variables is a quirk of Java.  I’m not aware of any other languages with a similar requirement.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>But, notice we are still in the View.  How do we transfer control back to the Controller?
+    <ul>
+      <li>Same idea as the listener.  We just need  different interface:  one that takes <code>int</code>s instead of an <code>Event</code> object.</li>
+    </ul>
+  </li>
+  <li>We could write our own interface; but, this is a common enough need that Java puts together some for us:
+    <ul>
+      <li>The package <code>java.util.function</code> provides a list of interfaces with different method signatures.</li>
+      <li>Look at <code>BiConsumer</code>:  It contains a single method called <code>apply</code> that takes two ints as parameters — just what we need.</li>
+      <li>The Controller creates a lambda that takes two ints and passes it to <code>addNumberButtonListener</code>.</li>
+      <li>The method <code>addNumberButtonListener</code> can then call this interface’s <code>apply</code> method with the row and column.</li>
+    </ul>
+  </li>
+  <li>It’s not necessary to understand all of this “magic” at this point.
+    <ul>
+      <li>As long as you understand what code in the controller runs when you click a number button, you can successfully complete the project.</li>
+      <li>If you want to understand the “magic”, I’m happy to explain it and re-explain it.</li>
+    </ul>
+  </li>
+  <li>If you are trying to decide how much time and effort to invest in understanding the magic, consider this:
+    <ul>
+      <li>Most of the complexity (e.g., the functional interface stuff) is necessary to make the static type checking of the compiler work.</li>
+      <li>Doing the same thing in a dynamically typed language like JavaScript is <em>much</em> simpler.</li>
+      <li>Of course, the cost of the simplicity in JavaScript is that you are more likely to have run-time bugs.</li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

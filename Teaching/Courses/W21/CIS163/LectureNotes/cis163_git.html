@@ -1,0 +1,511 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="git">Git</h1>
+
+<ul>
+  <li>Git is a <em>version control</em> system.
+    <ul>
+      <li>Let’s you save “snapshots” of your code as you write it so you can go back and look at older versions when necessary
+(e.g., when you decide it’s a good idea to try writing code at 3:30 a.m. on a Sunday morning)</li>
+    </ul>
+  </li>
+  <li>Your local repository is typically backed by a remote repository.</li>
+  <li>The remote repository (often GitHub.com):
+    <ul>
+      <li>provides a backup of your code in case your hard disk crashes</li>
+      <li>Gives others (i.e., me) easy access to your code
+        <ul>
+          <li>This is especially helpful in an online teaching environment: If you are having trouble, just push your code to the remote repository so I can see what you’re doing.</li>
+          <li>It is also a much easier way to submit code than trying to zip it up and email or use BB Assignment manager.</li>
+        </ul>
+      </li>
+      <li>Makes it easy for teams to work on the same project.
+        <ul>
+          <li>This doesn’t really apply to 163; but, it will be essential in later courses.</li>
+        </ul>
+      </li>
+      <li>Also makes it easy to move your code from one machine to another (e.g., laptop to desktop, or EOS to home)
+        <ul>
+          <li><em>Much</em> better than trying to use a USB drive to move files. (Much less error prone)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="github-and-github-classroom">GitHub and GitHub classroom</h2>
+<ul>
+  <li>GitHub.com is a web site that hosts remote git repositories.</li>
+  <li>Many projects store their code on GitHub so users can access it
+    <ul>
+      <li>and even work on and improve it.</li>
+    </ul>
+  </li>
+  <li class="to-me">Show a few git repositories (e.g., JUnit)</li>
+  <li>Your assignments will be posted as GitHub repositories that you clone and work on — but with a twist:</li>
+  <li>First, let’s look at a simple workflow that almost (but doesn’t quite work)
+    <ol>
+      <li>I post an assignment as a GitHub repository containing starter code and instructions.</li>
+      <li>You <em>clone</em> the repository (i.e., make a local copy)</li>
+      <li>Complete the assignment by working on the local copy.</li>
+      <li>Commit your changes and push them back to the remote repository.</li>
+      <li>I look at the remote repository and grade your project.</li>
+    </ol>
+  </li>
+  <li>Problem: If you all clone the same repo, your commits will all get merged together.
+    <ul>
+      <li>We need a separate repository for each student.</li>
+    </ul>
+  </li>
+  <li>GitHub Classroom adds this extra step (making a separate copy for each student.)</li>
+</ul>
+
+<h2 id="publicprivate-keys">Public/private keys</h2>
+
+<ul>
+  <li>A public/private key pair is a set of numbers that lets you encrypt and decrypt messages.</li>
+  <li>This process works in both directions
+    <ol>
+      <li>“Hello, World” -&gt; public key -&gt; “axquweouxw” -&gt; private key -&gt; “Hello World”</li>
+      <li>“Coffee is gross -&gt; private key -&gt; “mbnjgurjda” -&gt; public key -&gt; “Coffee is gross”.</li>
+    </ol>
+  </li>
+  <li>The private key must be kept private.
+    <ul>
+      <li>Only you should have access to it.</li>
+      <li>If somebody else gets it, that’s bad.</li>
+      <li>Like if somebody suddenly knew all of your passwords.</li>
+    </ul>
+  </li>
+  <li>The public key is designed to share with everybody.</li>
+  <li>Case 1 lets someone send you a message that only you can read.
+    <ul>
+      <li>For example, send email securely.</li>
+    </ul>
+  </li>
+  <li>Case 2 lets you send someone a message in a way that they know for sure it came from you.</li>
+  <li>You can use case 2 to avoid having to type passwords all the time.
+    <ul>
+      <li>You give a server your public key.</li>
+      <li>You write a message “It’s Fred.  Let me in” and encrypt it with your private key.</li>
+      <li>The server uses your public key to decrypt it.</li>
+      <li>If the message didn’t come from you, then attempts to decrypt it will result in gibberish.</li>
+      <li>Thus, some programs (including git) will automatically encrypt a message using your private key instead of asking you to type in a password.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="generating-and-using-keypairs">Generating and using keypairs</h3>
+<ul>
+  <li>Go to the command line (<code>Terminal</code> in mac; <code>Git Bash</code> or <code>WSL</code> in Windows; or, just use EOS)</li>
+  <li>run <code>ssh-keygen -t rsa</code></li>
+  <li>accept the defaults.
+    <ul>
+      <li>Except, you may want to add a passphrase.  It’s up to you.</li>
+    </ul>
+  </li>
+  <li>Now, look in the directory named <code>~/.ssh</code> (notice the <code>.</code>)
+    <ul>
+      <li>You should see files named <code>id_rsa</code> and <code>id_rsa.pub</code></li>
+      <li><code>id_rsa</code> is your <em>private</em> key.  Make sure it stays private.  Think of it as a password.  If it gets out, it’s like an attacker having the passwords to all your accounts.</li>
+      <li><code>id_rsa.pub</code> is your <em>public</em> key.  It is meant to be shared.</li>
+      <li>Open <code>id_rsa.pub</code>:  It is just a text file.</li>
+    </ul>
+  </li>
+  <li>Add your public key to your GitHub account.
+    <ul>
+      <li>Log into your GitHub account.</li>
+      <li>Click on your avatar in the upper right corner.</li>
+      <li>Select “Settings”</li>
+      <li>Select “SSH and GPG keys”</li>
+      <li>Cut-and-paste the text of <code>id_rsa.pub</code> into the form.</li>
+      <li>Submit and enter your password.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="setting-up-your-first-assignment">Setting up your first assignment</h2>
+
+<ul>
+  <li>Log into your GitHub account.</li>
+  <li>Click on the assignment’s GitHub Classroom link.
+    <ul>
+      <li>For Summer 2020, its <a href="https://classroom.github.com/a/gw-Ues5y">https://classroom.github.com/a/gw-Ues5y</a></li>
+    </ul>
+  </li>
+  <li>Following the link will create a new repository for you to use (separate from everybody elses)</li>
+  <li>When the process is complete, you will see a link to your personal repository for the project.  Follow that link.</li>
+</ul>
+
+<h2 id="basic-git-usage">Basic Git Usage</h2>
+
+<ul>
+  <li>Go to a github repository (e.g., the repository for one of your assignments)</li>
+  <li>Click the “Clone or Download” button.
+    <ul>
+      <li>Notice that you can either “Clone with HTTPS” or “Clone with SSH”.</li>
+      <li>If you “clone with HTTPS”, you will need to enter your username and password every time you access the repository.
+        <ul>
+          <li>This is very annoying (and discourages good git practice)</li>
+        </ul>
+      </li>
+      <li>If you “clone with SSH”, git will use your ssh key and you won’t have to put in your username/password
+        <ul>
+          <li><em>much</em> nicer.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="clone">Clone</h3>
+<ul>
+  <li>Copy the SSH URL from the “Clone or Download” dialog box.</li>
+  <li>Go to the terminal.</li>
+  <li>Navigate to the directory you intend to use for your git projects for 163.</li>
+  <li>run <code>git clone *the_url_you_copied*</code></li>
+  <li>This will create a new directory with the contents of the git repository.</li>
+  <li>When getting code from GitHub, be sure to use the <code>git clone</code> command.  Do <em>not</em> use the web interface to download the files.  Doing so will cause problems later.  (Git is not Dropbox.)</li>
+</ul>
+
+<p class="to-me"> Review classes / Objects and instance vs. static.  Then switch to testing.</p>
+
+<h3 id="add--commit--push">Add / Commit / Push</h3>
+
+<ul>
+  <li>Every so often as you are working on your project, be sure to commit your changes.</li>
+  <li>Committing your changes is what allows you to
+    <ul>
+      <li>Look back at old versions / revert to old versions</li>
+      <li>Save your code in the cloud</li>
+      <li>Move your code from one machine to another</li>
+      <li>Make your code available for me to look at.</li>
+    </ul>
+  </li>
+  <li>Pushing your changes to the cloud is actually a three-step process:
+    <ol>
+      <li>From the root directory of your project, run <code>git add .</code> (notice the final <code>.</code>)</li>
+      <li>Run <code>git commit -m '*your_message_here*'</code>.
+        <ul>
+          <li>The message is important so you can tell what was done at each step.</li>
+          <li>You can also use the message to tell me when your code is ready for grading.</li>
+        </ul>
+      </li>
+      <li>Run <code>git push</code>.  This is the command that actually pushes the code back to the cloud.
+        <ul>
+          <li>The first time your run <code>git push</code> on a branch, you will be asked to set up a “remote” branch.  Just follow the instructions.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="pull">Pull</h3>
+<ul>
+  <li>If changes are made to your repository outside of your local copy (e.g.,  if a teammate makes changes on his own machine) then you will need to run <code>git pull</code></li>
+  <li>Running <code>git pull</code> will bring any remote changes to your machine and merge them with your code.</li>
+  <li>Most of the time, git can quietly merge the changes together.</li>
+  <li>Occasionally, there may be a <em>merge conflict</em>.
+    <ul>
+      <li>Merge conflicts should only happen if two people are working on the same part of the code at the same time.</li>
+      <li>If one happens, you will have to open the file and resolve the conflict by hand.</li>
+      <li>You will see comments showing the “old” and “new” versions.  Just pick the version you want.</li>
+      <li>I’m happy to help the first time this happens.</li>
+    </ul>
+  </li>
+  <li>You will need to commit your changes before you can run <code>git pull</code>.</li>
+</ul>
+
+<h3 id="other-actions">Other actions</h3>
+<ul>
+  <li>Git is very powerful and provides a lot of actions and options.  In 163, we will only use <code>clone</code>, <code>add/commit/push</code>, and <code>pull</code>.</li>
+  <li>The other major git feature is using branches.  But, since branches are most useful for team projects, I won’t discuss them now.</li>
+  <li>Feel free to learn about and use other features.</li>
+</ul>
+
+
+</main>
+</body>
+</html>

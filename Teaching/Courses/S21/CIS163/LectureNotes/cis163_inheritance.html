@@ -1,0 +1,420 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="inheritance">Inheritance</h1>
+
+<ul>
+  <li>Suppose you are writing software for a bank.  You will have both checking and savings accounts.</li>
+  <li class="q">What methods does your <code>SavingsAccount</code> class need?</li>
+  <li class="q">What methods does your <code>CheckingAccount</code> class need?</li>
+  <li class="to-me">Differences:
+    <ul>
+      <li><code>SavingsAccount</code> only could have <code>payInterest</code></li>
+      <li><code>CheckingAccount</code> could have <code>cashCheck</code></li>
+      <li>Both have a <code>printStatement</code></li>
+    </ul>
+  </li>
+  <li>Notice that both classes are nearly identical. They share some code, and are unique in some ways also.</li>
+  <li>Because of the DRY principle (and general laziness), we want to avoid duplicating code.</li>
+  <li>The principal of <em>inheritance</em> allows us to create a class by extending and/or modify the behavior of another.</li>
+  <li>Refactor the common code into a <code>BankAccount</code> class.</li>
+  <li><code>class CheckingAccount extends BankAccount</code>
+    <ul>
+      <li><code>CheckingAccount</code> behaves as if it contains all of the <code>BankAccount</code> code. (Imagine that you cut-and-paste all of the <code>BankAccount</code> code into <code>CheckingAccount</code>)</li>
+    </ul>
+  </li>
+  <li>You can modify behavior by
+    <ul>
+      <li>Adding additional methods (e.g., <code>cashCheck</code>)</li>
+      <li>Replacing methods (e.g., <code>printStatement</code>)
+        <ul>
+          <li>This is called <em>overriding</em></li>
+          <li>Use the <code>@override</code> annotation to help avoid bugs.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>If you need to refer to the parent class, use <code>super</code>
+    <ul>
+      <li>e.g., <code>super(foo, bar)</code> to invoke parent constructor.</li>
+      <li>e.g., <code>super.printStatement</code> to print the user’s information.</li>
+    </ul>
+  </li>
+  <li>Visibility
+    <ul>
+      <li><code>public</code> Anybody has access to the field/method.</li>
+      <li><code>private</code> field/method is only visible within the class.</li>
+      <li><code>protected</code> field/method visible within the class and in subclasses</li>
+      <li>“package protected” field/method visible within the same package.</li>
+    </ul>
+  </li>
+  <li>Multiple Inheritance:
+    <ul>
+      <li>Having two different parent classes (e.g., <code>Student</code> and <code>Employee</code>)</li>
+      <li>Controversial idea.</li>
+      <li>Some languages (C++) support multiple inheritance
+        <ul>
+          <li class="q">What kind of issues need to be addressed with multiple inheritance?
+            <ul>
+              <li>What if both parents have methods with the same name?</li>
+              <li>What if both parents have fields with the same name?  (Do you have two separate <code>name</code> objects?)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Java does not.  If you think you need multiple inheritance, use one parent class and an interface.</li>
+    </ul>
+  </li>
+  <li>Use <code>super</code> to refer to the parent class when necessary
+    <ul>
+      <li>You can call methods in the parent class if they provide part of the algorithm.</li>
+      <li>You call <code>super</code> as the first line in the constructor to specify which parent constructor to use.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="inheritance-in-the-real-world--abstract-classes">Inheritance in the “real world” / Abstract classes</h2>
+
+<ul>
+  <li>GUI
+    <ul>
+      <li><code>JButton</code>, <code>JPanel</code>, <code>JTextField</code>, etc. are all <code>JComponents</code>.</li>
+      <li><code>JComponent</code> provides basic functionality such as placing and drawing.</li>
+      <li>Child classes specialize the details of the look and behavior.</li>
+      <li>There is <em>a lot</em> of inheritance in JavaSwing.</li>
+    </ul>
+  </li>
+  <li><code>InputStream</code>, <code>OutputStream</code>
+    <ul>
+      <li class="q">What is the basic operation of an <code>InputStream</code>?
+        <ul>
+          <li>Reading one byte.</li>
+        </ul>
+      </li>
+      <li>Once you know how to read one byte, reading a group of bytes is just a “convenience” feature.</li>
+      <li>Think about an <code>InputStream</code> from various sources (Keyboard, File, Network).</li>
+      <li>Given the specialized code to read one byte, the other <code>InputStream</code> methods could be identical.</li>
+      <li>This is why <code>InputStream</code> is a parent class and not just an interface: We want to implement some of the methods.</li>
+      <li>However, there is no sensible default implementation for <code>read</code>.</li>
+      <li>Thus, we mark it <em>abstract</em>.  This means that it has no implementation: The implementation is left for the subclasses.</li>
+      <li>An abstract class is any class with at least one abstract method.</li>
+      <li>You can’t instantiate abstract classes.  (What would happen if you called the abstract method?)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="gotchas">“Gotchas”:</h2>
+
+<ul>
+  <li>Avoid shadowing instance variables:  It leads to hard-to-find bug.</li>
+  <li>Use <code>@override</code> annotation to catch other subtle bugs.</li>
+  <li>Design principle:  Prefer Aggregation over Inheritance.</li>
+  <li>Inheritance is used for an “is-a” relationship (a checking account <em>is a</em> bank account)</li>
+  <li>Don’t use inheritance if the relationship is a “has-a” relationship.
+    <ul>
+      <li>For example, don’t use inheritance to give a <code>Car</code> an <code>Engine</code>.  A car “has-an” engine.  A car is not an engine.</li>
+    </ul>
+  </li>
+  <li>Don’t use inheritance when the same effect can reasonably be obtained using fields or properties.
+    <ul>
+      <li>For example:  Don’t create <code>RedDog</code> and <code>BlackDog</code> classes if all you really need is a <code>color</code> instance variable.  Save inheritance for significant differences in behavior that can not be described concisely with a few instance variables.</li>
+    </ul>
+  </li>
+  <li>One reason to avoid overusing inheritance is that it is difficult to unit test thoroughly.</li>
+</ul>
+
+<h2 id="polymorphism">Polymorphism</h2>
+<ul>
+  <li>Notice that the method that is run is determined by the type of the object, not the type of the variable.  For example, even though the variable type is <code>Animal</code>, the correct <code>speak</code> method is called.  This behavior is called polymorphism.
+    <ul>
+      <li>In the case of an interface, it is the only sensible behavior.</li>
+      <li>Just remember it applies to inheritance as well (e.g., <code>pay</code> in the lab.)</li>
+    </ul>
+  </li>
+  <li class="to-do">Show UML arrows.</li>
+</ul>
+
+</main>
+</body>
+</html>

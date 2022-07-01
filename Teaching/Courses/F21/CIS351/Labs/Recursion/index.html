@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+
+
+<html>
+<head>
+  <title>Recursion</title>
+
+  <style type="text/css">
+    img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.hasBorder, table.hasBorder td, table.hasBorder th {
+      border: 1px solid gray;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+  </style>
+</head>
+
+<body>
+<table style="border:  0; width: 100%">
+  <tr>
+    <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;">CIS 351</h1>
+    </td>
+    <td style="width: 70%">
+      <h1 style="text-align: center">Homework 8: Recursion</h1></td>
+    <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap">
+      Fall 2021</h1></td>
+  </tr>
+</table>
+
+<h3> Overview</h3>
+
+<p>
+  The purpose of this lab is to practice correct stack management by writing a recursive function.
+
+<h3 class="listHeader"> Activity</h3>
+
+<p>Please use this <a href='https://classroom.github.com/a/8iHCR9Xm'>GitHub Classroom</a> link</p>
+
+
+<p> In probability theory "n choose k" is the number of unique ways to
+  choose <code>k</code> items from a set of <code>n</code>. For
+  example "5 choose 3" is 10, because there are 10 unique ways to
+  draw three balls from a set of five (ABC, ABD, ABE, ACD, ACE,
+  ADE, BCD, BCE, BDE, and CDE).</p>
+
+<p>For this lab, you are going to implement n choose k <em>recursively</em> using this formula:
+
+<code>n choose k = (n-1 choose k) + (n-1 choose k-1)</code>
+
+<p> n choose k is defined only for positive integers where <code>n
+  &ge; k</code>. By definition
+<ul>
+  <li>n choose 0 = 1,</li>
+  <li>n choose 1 is n, and</li>
+  <li>n choose n is 1.</li>
+</ul>
+
+  Here is a <a href="NcKTest.java">test class</a> for your function. There is no test file for the driver program. You
+  must test it by hand.
+
+
+<h3 class="listHeader"> Submission</h3>
+
+<p><span class='important'>In order to earn an 'M' or 'E' for this lab, you must use conventional register usage and 
+stack-management techniques.  Simply passing the automated tests is not sufficient.</span></p>
+
+<p class="listHeader">When you are done:</p>
+<ol>
+  <li>Make sure your names are in the source code.</li>
+  <li>Commit with a <code>[Grade Me]</code> message.</li>
+</ol>
+
+<hr>
+<p>Updated Thursday, 21 October 2021, 7:59 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+
+</html>

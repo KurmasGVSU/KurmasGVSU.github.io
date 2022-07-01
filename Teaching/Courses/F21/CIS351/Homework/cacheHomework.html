@@ -1,0 +1,594 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title>Cache Homework</title>
+   <style type="text/css">
+      li {
+         padding-bottom: 15px;
+      }
+
+      li > ol > li {
+         padding-bottom: 0px;
+      }
+
+      li > ul > li {
+         padding-bottom: 0px;
+      }
+
+      ol {
+         float: none;
+      }
+
+      th {
+	  text-align: center;
+      }
+
+
+   </style>
+</head>
+
+<body>
+
+<h2 style="text-align: center"> CIS 351 Cache Homework</h2>
+
+<!-- <p>Due: Monday, 16 April, 2012</p>-->
+<p>Due: Wednesday, 25 November, 2020.  (Only problems 1-6.  We may not get to 7 and 8 this semester.)</p> 
+
+All Patterson and Hennessey problems are from the <em>3rd</em> edition.
+
+<ol>
+
+<li> (Harris and Harris, problem 8.1) In less than one page,
+   describe four everyday activities (other than using a library) that
+   exhibit temporal or spatial locality. List two activities for each
+   type of locality, and be specific.
+</li>
+
+<li> For each cache configuration below, fill in the corresponding table column
+   to show whether each reference is a hit or a miss.
+
+   <ol type="a">
+      <li> 1MB, direct-mapped cache with 4 byte blocks.</li>
+      <li> 1MB, direct-mapped cache with 8 byte blocks.</li>
+   </ol>
+
+   <p></p>
+   <table border=1>
+      <tr>
+         <th></th>
+         <th colspan="2"> Part (a)</th>
+         <th colspan="2"> Part (b)</th>
+         <th></th>
+         <th></th>
+      </tr>      
+      <tr>
+         <th>References</th>
+ 	 <th>Index</th>
+	 <th>H/M</th>
+	 <th>Index</th>
+         <th>H/M</th>
+         <th></th>
+         <th></th>
+      </tr>      
+      <tr align="center">
+         <td> 0x00000004</td>
+         <td> &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp; </td>
+         <td> &nbsp; &nbsp; &nbsp; Miss &nbsp; &nbsp; &nbsp; </td>
+         <td> &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp; </td>
+         <td> &nbsp; &nbsp; &nbsp; Miss &nbsp; &nbsp; &nbsp; </td>
+         <td> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; </td>
+         <td> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; </td>
+
+      </tr>
+      <tr align="center">
+         <td> 0x00800018</td>
+         <td>6</td>
+         <td>Miss</td>
+         <td>3</td>
+         <td>Miss</td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td> 0x00D00010</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td> 0x00000004</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td> 0x0080001C</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td>0x00D00014</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td>0x00A00008</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td>0x00A00004</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td>0x00000008</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td>0x00200030</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td>0x00200024</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td>0x00200034</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td>0x00D00034</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td>0x00200030</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+      </tr>
+   </table>
+</li>
+
+<li> There should be four rows where columns (a) and (b)
+   differ. Explain precisely how the change in cache configuration
+   produces the observed behavior differences.
+</li>
+
+<li style="page-break-before: always"> For each cache configuration below, fill in the corresponding table column
+   to show whether each reference is a hit or a miss.
+
+   <ol type="a">
+      <li> 1MB, direct-mapped cache with 4 byte blocks.</li>
+      <li> 1MB, direct-mapped cache with 8 byte blocks.</li>
+      <li> 1MB, two-way set associative cache with 8 byte blocks.</li>
+      <li>1.5MB three-way set associative cache with 8 byte blocks</li>
+   </ol>
+
+   <p></p>
+   <table border=1>
+      <tr>
+         <th></th>
+         <th colspan="2">Part (a)</th>
+         <th colspan="2">Part (b)</th>
+         <th colspan="2">Part (c)</th>
+	          <th colspan="2">Part (d)</th>
+      </tr>
+      <tr>
+         <th>References</th>
+	 <th>Index</th>
+	 <th>H/M</th>
+	 	 <th>Index</th>
+	 <th>H/M</th>
+	 	 <th>Index</th>
+	 <th>H/M</th>
+	 	 <th>Index</th>
+	 <th>H/M</th>
+      </tr>
+
+      <tr align="center">
+         <td> 0x00000018</td>
+         <td> &nbsp; &nbsp; &nbsp; 6 &nbsp; &nbsp; &nbsp; </td>
+         <td> &nbsp; &nbsp; &nbsp; Miss &nbsp; &nbsp; &nbsp; </td>
+         <td> &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp; </td>
+         <td> &nbsp; &nbsp; &nbsp; Miss &nbsp; &nbsp; &nbsp; </td>
+         <td> &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp; </td>
+         <td> &nbsp; &nbsp; &nbsp; Miss &nbsp; &nbsp; &nbsp; </td>
+         <td> &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp; </td>
+         <td> &nbsp; &nbsp; &nbsp; Miss &nbsp; &nbsp; &nbsp; </td>
+
+      </tr>
+      <tr align="center">
+         <td> 0x00D00018</td>
+         <td>6</td>
+         <td>Miss</td>
+         <td>3</td>
+         <td>Miss</td>
+         <td>3</td>
+         <td>Miss</td>
+	 <td>3</td>
+         <td>Miss</td>
+      </tr>
+      <tr align="center">
+         <td> 0x00A0003C</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+	          <td></td>
+         <td></td>
+
+      </tr>
+      <tr align="center">
+         <td> 0x00D00018</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+	        <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td> 0x00000018</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+	        <td></td>
+         <td></td>
+
+       </tr>
+      <tr align="center">
+         <td>0x00500010</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+	        <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td>0x00400004</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+	        <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td>0x00A00038</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+	        <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td>0x00400000</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+	        <td></td>
+         <td></td>
+
+      </tr>
+      <tr align="center">
+         <td>0x00600024</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+	        <td></td>
+         <td></td>
+
+      </tr>
+      <tr align="center">
+         <td>0x00500014</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+	        <td></td>
+         <td></td>
+      </tr>
+      <tr align="center">
+         <td>0x00D0001C</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+	        <td></td>
+         <td></td>
+      </tr>
+        <tr align="center">
+         <td>0x00E0001C</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+	        <td></td>
+         <td></td>
+      </tr>
+       <tr align="center">
+         <td>0x00D0001C</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+	        <td></td>
+         <td></td>
+      </tr>
+         <tr align="center">
+         <td>0x0000001C</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+	        <td></td>
+         <td></td>
+      </tr>
+   </table>
+</li>
+
+
+<li style="page-break-before: always;"> Compute the total number of bits required to implement the
+   caches described below given a 32-bit address space.
+   Fill in the requested information in the table provided. List (1) the total number of bits per line, (2) the total
+   number of bytes of SRAM needed, and (3) the "overhead" as a
+   percentage of data. (For example, a 1MB cache that requires
+   1.25MB of data total would have a 25% overhead.)
+   Don't forget to include the valid bit and any LRU bits if necessary.
+   Assume the number of LRU bits is <code>n - 1</code> for an
+   <code>n</code>-way set associative cache.
+
+   <ol type="a">
+      <li> 1MB direct-mapped cache with 1 byte blocks (Patterson and Hennessy problem 7.9)</li>
+      <li> 1MB direct-mapped cache with 4 byte blocks (Patterson and Hennessy problem 7.10)</li>
+
+      <li> 1MB 2-way set associative cache with 1 byte blocks and LRU
+         replacement (Patterson and Hennessy problem 7.25 -- almost)
+      </li>
+
+      <li> 1MB 2-way set associative cache with 4 byte blocks and LRU replacement</li>
+
+      <li> 1MB fully associative cache with 1 byte blocks and LRU
+         replacement (Patterson and Hennessy problem 7.26)
+      </li>
+
+      <li> 1MB fully associative cache with 4 byte blocks and LRU
+         replacement (Patterson and Hennessy problem 7.27)
+      </li>
+   </ol>
+
+   <p></p>
+   <table border=1>
+      <tr>
+         <th></th>
+         <th>tag</th>
+         <th>Line size</th>
+         <th>Total size (with valid)</th>
+         <th>%overhead</th>
+      </tr>
+      <tr>
+         <td>1</td>
+         <td></td>
+         <td> 21 bits/line</td>
+         <td>2,752,512 bytes (2.625MB)</td>
+         <td>162%</td>
+      </tr>
+      <tr>
+         <td>2</td>
+         <td></td>
+         <td> ___ bits/line</td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr>
+         <td>3</td>
+         <td></td>
+         <td> ___ bits/line</td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr>
+         <td>4</td>
+         <td></td>
+         <td> ___ bits/line</td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr>
+         <td>5</td>
+         <td></td>
+         <td> ___ bits/"way"</td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr>
+         <td>6</td>
+         <td></td>
+         <td> ___ bits/"way"</td>
+         <td></td>
+         <td></td>
+      </tr>
+
+   </table>
+
+<li> (Patterson and Hennessy 7.29) Suppose a byte-addressable
+   computer's address size is <code>k</code> bits, the cache size is
+   <code>S</code> bytes, the block size is <code>B</code> bytes, and
+   the cache is <code>A-</code>way set associative. Give the formulas for the
+   following in terms of <code>S</code>, <code>B</code>,
+   <code>A</code>, and <code>k</code>:
+
+   <ul>
+      <li> the number of sets (aka "lines") in the cache,
+      <li> the number of index bits in the address,
+      <li> the number of tag bits in the address,
+      <li> the number of bits needed to implement the cache.
+         (You can check your formula by applying it to the previous problem.)
+   </ul>
+   <p></p>
+</li>
+
+
+<li>Consider two CPUs:
+   <ul>
+      <li> P1 has a 1KB L1 cache with an 11.4% miss rate and a .62ns hit time.</li>
+      <li> P2 has a 2KB L1 cache with an 8% miss rate and a .66ns hit time.</li>
+   </ul>
+
+   For simplicity, assume that instruction fetches don't cause cache misses.
+   If 36% of all instructions are memory accesses (e.g.,
+   <code>lw</code> and <code>sw</code>),
+   the memory access time is
+   70ns, and the CPUs clock period is set to the cache hit time, then
+
+   <ol type="a">
+      <li> What is the CPI for each machine?</li>
+
+      <li> Which machine is faster? (Remember, they have different clock periods.)</li>
+
+      <li> Suppose a 4KB L1 cache would have a .7ns hit time. What miss rate
+         would be necessary for this CPU to out-perform the other two?
+      </li>
+
+      <li>What speedup would result from doubling the speed of P1's L1
+         cache and clock frequency while leaving the main
+         memory speed at 70ns? (In other words, what happens
+         if the clock period is now .31ns, a cache access is still 1
+         cycle, and a cache miss is still 70ns?)  </li>
+
+      <li>What speedup would result from doubling P1's main memory
+   speed (to 35ns) and leaving the clock at .62ns?</li>
+   </ol>
+
+</li>
+
+<li>
+Consider a CPU with a split L1 cache and a unified L2 cache.
+<ul>
+  <li>90% of instruction access hit in the L1 instruction cache.
+  <li>98% of the L1 instruction cache misses hit in the L2 cache.
+  <li>85% of data accesses hit in the L1 data cache.
+  <li>93% of L1 data cache misses hit in the L2 cache.
+  <li>35% of instructions make a data access.
+  <li>The L1 caches have a 1 cycle access time.
+  <li>The L2 cache has a 6 cycle access time.
+  <li>Main Memory has a 90 cycle access time.
+</ul>
+
+Compute the following:
+
+<ol>
+  <li>What is the average memory access time for instruction accesses?
+  <li>What is the average memory access time for data accesses?
+
+  <!--  <li>What is the overall average memory access time? -->
+  <!--(I dropped this problem because it isn't necessary for the two
+  remaining parts.  Because it moves in a different direction, it
+  confused the students.) -->
+
+
+  <li>What is the overall CPI?</li>
+  <li>We could double the size of each L1 cache if we made the clock
+  20% slower.  What would the new CPI need to be in order for the new
+  CPI to be faster?</li>
+
+  <li>By what percent would the L1 miss rates need to decrease
+  in order for the slower CPU to have better performance? (Assume that
+  the L2 miss rate does not change, but that the L2 and memory access
+  <em>cycle</em> times reflect the slower clock period.)</li>
+</ol>
+
+</ol>
+
+
+
+
+
+<p>
+
+   For more practice, try Harris and Harris problems 8.7, 8.8, 8.9, 8.10*, 8.11*, 8.12*
+
+</body>
+</html>

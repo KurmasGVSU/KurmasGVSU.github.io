@@ -1,0 +1,14 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1180110395
+host=75.134.113.30
+name=WorkPrivate.PotentialTAList
+rev=1
+targets=
+text=* Ron Tolliver%0a* Tom Lerchenfeld%0a* Ira Woodring%0a* Craig Labenz
+time=1180110395
+author:1180110395=
+diff:1180110395:1180110395:=1,4d0%0a%3c * Ron Tolliver%0a%3c * Tom Lerchenfeld%0a%3c * Ira Woodring%0a%3c * Craig Labenz%0a\ No newline at end of file%0a
+host:1180110395=75.134.113.30

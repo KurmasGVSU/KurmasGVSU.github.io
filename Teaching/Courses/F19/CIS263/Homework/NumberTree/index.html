@@ -1,0 +1,342 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CIS 263 Homework 2 Number Tree</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    code {
+      background: #f0f0ff;
+    }
+
+    .sample-input {
+      background: #f0f0ff;
+      width: 100px;
+      margin-left: 25px;
+    }
+
+    .sample-trees img {
+      width: 300px;
+    }
+
+    .sample-trees {
+      margin: 0 auto;
+      width: 75%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .doc {
+      font-family: monospace;
+      font-weight: normal;
+    }
+
+    .doc {
+      font-variant: normal;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 263</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Number Tree</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2019</h1></td>
+  </tr>
+</table>
+
+
+  <p>Use this GitHub Classroom link to get started: <a href='https://classroom.github.com/a/HpCYL2es'><code>classroom.github.com/a/HpCYL2es</code></a>.</p>
+
+  <div class="sample-trees"><img src="numtree-empty.jpg" alt="sample empty tree">
+    <img src="numtree-solved.jpg" alt="sample solved tree"></div>
+
+  <p>In a Number Tree puzzle, you must enter the numbers from <code>1</code> to <code>N</code> once each (for a puzzle
+    with <code>N</code> circles), such that each non-leaf of the tree contains the sum of the numbers that it is
+    connected to from above. The root and usually at least one other circle have numbers given to you, as shown in the
+    example above. </p>
+
+  <p class="list-header">For clarification:</p>
+  <ul>
+    <li>In the case where some circles have given numbers, those numbers do count toward the use of each
+      number once.
+    </li>
+    <li>The root node need not have a value between <code>1</code> and <code>N</code>.</li>
+    <li>In the description above, "above" refers to the diagram. Notice that in the diagram, the leaves are "up"
+      and the root node is "down".
+    </li>
+  </ul>
+
+  <p class="list-header">Complete the <code>NumberTree</code> class described below:</p>
+
+  <dl>
+    <dt><span class="doc">int size() const</span></dt>
+    <dd>Return the number of nodes in the tree.</dd>
+
+    <dt><span class="doc">int height() const</span></dt>
+    <dd>Return the height of the tree.</dd>
+
+    <dt><span class="doc">void load(const string&amp; str)</span></dt>
+    <dd>Initialize a <code>NumberTree</code> from a <code>string</code>.
+      <ul>
+        <li>The string will contain one line for each node.</li>
+        <li>Each line is terminated by a semi-colon.</li>
+        <li>The semi-colon after the last line is optional.</li>
+        <li>The first token in each line is the name of the node.</li>
+        <li>Remaining tokens identify the node's children.</li>
+        <li>If a node's "name" is a number, than that node's value is fixed (e.g., node "4" above).</li>
+        <li>A non-numerical node must begin with a character. (In other words, "1st" isn't a valid node name.)</li>
+        <li>You may assume the input lists child nodes before the parent.</li>
+        <li>Raise an
+          <a href="https://en.cppreference.com/w/cpp/error/invalid_argument"><code>invalid_argument</code></a>
+          exception if the input is not valid (doesn't parse, nodes are out of order, node repeated, number is out of
+          range, orphan node, etc.)
+        </li>
+      </ul>
+      <p>Sample Input:
+      <pre class="sample-input">
+A
+B
+C
+D
+4 A B
+E D 4
+F 4 B
+G B C
+19 E F G
+    </pre>
+    </dd>
+
+    <dt><span class="doc">bool verify(const string&amp; str) const;</span></dt>
+    <dd>Verify that the content of <code>str</code> represents a valid solution to the problem. The input
+      <code>str</code> describes the values to be placed in the empty nodes. Verify that those values satisfy the
+      puzzle. Specifically:
+      <ul>
+        <li>Each node's value is equal to the values of its children.</li>
+        <li>Each value between <code>1</code> to <code>N</code> is used exactly once. (Remember, this restriction
+          does not apply to the root, but does apply to nodes whose values were fixed by the problem definition.)
+        </li>
+      </ul>
+
+      <p>The input <code>str</code> will consist of a sequence of node names and values separated by semi-colons. For
+        example <code>a 1; b 2; c 3;</code></p>
+
+      <p>Raise an <a href="https://en.cppreference.com/w/cpp/error/invalid_argument"><code>invalid_argument</code></a>
+        exception if the input is not valid (doesn't parse, unknown node referenced, node is missing a value, value
+        is out of range, etc.)</p>
+
+      <p><b>Important:</b> Notice that this method is <code>const</code>. That means this method can't modify the
+        <code>NumberTree</code>, only query it. Specifically, you need to store the solution values in a data structure
+        that's local to the method. The benefit of this method being <code>const</code> is that you can now verify
+        multiple solutions without having to "reset" the object. </p>
+    </dd>
+
+    <dt><span class="doc">unordered_map&lt;string, int&gt; solve() const;</span></dt>
+    <dd>
+      <p>Find a solution to the puzzle and return a map of node names to values. Return an empty map if no solution
+      exists. You may find this function helpful:
+      <a href='http://www.cplusplus.com/reference/algorithm/next_permutation/'><code>www.cplusplus.com/reference/algorithm/next_permutation/</code></a>. Notice that this is a
+        <code>const</code> function: It may not modify the <code>NumberTree</code> object.</p>
+
+      <p>Extra credit: Find a non-brute-force solution.  In other words, find a solution that is more clever than
+        just trying assignments of values to nodes until it find one that works.</p>
+    </dd>
+  </dl>
+
+  <h2>Submission and grading</h2>
+
+  <ul>
+    <li>Please fill out this survey (optional):
+      <a href='https://rit.az1.qualtrics.com/jfe/form/SV_cvvgAFEhvcwX0gd'><code>rit.az1.qualtrics.com/jfe/form/SV_cvvgAFEhvcwX0gd</code></a>
+    </li>
+    <li>Submit the written problems in class.</li>
+    <li>Make sure all relevant code (including unit tests) is checked in to GitHub by the due date.</li>
+    <li>Unless you indicate otherwise, I will assume that the code to be graded is on the <code>master</code> branch.
+    </li>
+    <li>You are expected to fix and re-submit buggy code. Because your code will eventually be correct, your grade will
+      be based primarily on timeliness.
+    </li>
+  </ul>
+
+  <p>(Problem suggested by Zack Butler and Ivona Bezakova at the Rochester Institute of Technology.)</p>
+  <hr>
+  <p>Updated Thursday, 17 October 2019, 7:31 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>

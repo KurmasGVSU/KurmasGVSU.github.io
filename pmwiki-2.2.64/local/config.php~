@@ -1,0 +1,5 @@
+<?php
+
+$DefaultPasswords['admin'] = crypt('fred');
+
+?>

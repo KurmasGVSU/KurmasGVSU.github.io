@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 658 CSS and HTML</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    #content {
+      padding: 0 10px 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 658</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">CSS and HTML</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2020</h1></td>
+  </tr>
+</table>
+
+Based on an assignment originally developed by Prof. Engelsma.
+
+<h1>Objective</h1>
+
+<p>The objective of this assignment is to provide students with practice writing HTML and CSS.</p>
+
+<h1>Part 1: CSS</h1>
+
+<p>Craft CSS code for the following scenarios. You must craft your CSS by hand – do not use any third party CSS or JavaScript libraries in your solutions. 
+You may use <a href='https://jsfiddle.net'><code>jsfiddle.net</code></a>, or a development environment of you choice. Avoid duplicating CSS rules when possible.</p>
+
+<p>Please complete this assignment individually</p>
+
+<h2>Problem 1</h2>
+
+<img src="Images/image1.png"  alt='Sample Output for problem 1'>
+
+<p>HTML Source: </p>
+<xmp>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 1</title>
+</head>
+<body>
+    <h1> Example 1 </h1> 
+    <div class="important">
+       <p> <span class="bigtext">C</span>urabitur blandit tempus porttitor. Duis mollis, est non commodo
+           luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque 
+           ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Aenean lacinia 
+           bibendum nulla sed consectetur. Maecenas sed diam eget risus varius blandit sit amet non magna. 
+           Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. 
+           Pellentesque ornare sem lacinia quam venenatis vestibulum. 
+      </p>
+    </div>
+    <p id="signature">Mad Tertulous</p>
+</body>
+</html>
+</xmp>
+
+<p class='listHeader'>Specifications:</p>
+  <ul>
+    <li>h1 is centered with text color purple.</li>
+    <li>The element marked with id=”signature” is right justified italics.</li>
+    <li>First character in the paragraph is the Georgia font family and 40px in size.</li>
+  </ul>
+
+<h2>Problem 2</h2>
+
+<img src="Images/image2.png"  alt='Sample Output for problem 2'>
+
+<p>HTML Source: </p>
+<xmp>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 2</title>
+    <style>
+        .centered_green_box {
+            position: absolute;
+            top: calc(50% - 50px);
+            left: calc(50% - 50px);
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+
+    </style>
+
+
+</head>
+<body>
+<p id="topleft"> I am top left </p>
+<p id="bottomleft"> I am bottom left </p>
+<p id="topright"> I am top right </p>
+<p id="bottomright"> I am bottom right </p>
+<div class="centered_green_box">
+    <p class="centered"> Centered </p>
+</div>
+
+</body>
+</html>
+</xmp>
+
+<p class='listHeader'>Specifications:</p>
+  <ul>
+     <li>left justified text has a left margin of 5px.</li>
+     <li>Right justified text has a right margin of 5px.</li>
+     <li>Top/bottom margin is default.</li>
+     <li>Size of the box is 100px X 100px, with background color <code>#00FF00</code>.</li>
+     <li>Be sure the box stays in the center when the screen is resized.</li>
+  </ul>
+Hint: For the box, use absolute positioning and <code>calc</code> for compute the location.
+
+<h2>Problem 3</h2>
+
+<img src="Images/image3.png"  alt='Sample Output for problem 3'>
+
+<p>HTML Source: </p>
+<xmp>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 3</title>
+
+    <style>
+        .fancy_quote {
+            width: 200px;
+            height: 100px;
+
+            float: right;
+            font-size: 120%;
+            font-style: italic;
+        }
+    </style>
+
+</head>
+<body>
+<p> Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis
+    dapibus posuere velit aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh
+    ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. </p>
+<div class="fancy_quote">Posuere erat a ante venenatis dapibus! onec ullamcorper nulla non metus auctor</div>
+<p> Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo
+    quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam quis risus eget urna mollis ornare vel eu
+    leo. Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus
+    posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.</p>
+<p>Maecenas faucibus mollis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec ullamcorper nulla non
+    metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec
+    elit.</p>
+</body>
+</html>
+</xmp>
+
+<p class='listHeader'>Specifications:</p>
+  <ul>
+</li>paragraph text is displayed in default font.</li>
+</li>Quote box measures 200px X 100px.</li>
+</li>The font size of the quoted text is 120% larger than the default font-size.</li>
+</li>The font style of the quoted text is italic.</li>
+</ul>
+
+
+<h2>Problem 4</h2>
+
+<img src="Images/image4b.png"  alt='Sample Output for problem 4'>
+
+<img src="Images/image4.png"  alt='Sample Output for problem 4'>
+
+<p>HTML Source: </p>
+<xmp>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 4</title>
+    <style>
+        div {
+            width: 100px;
+            text-align: center;
+            margin: 10px;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        .redbox {
+            background-color: lightpink;
+            border: 10px solid red;
+        }
+
+        .yellowbox {
+            background-color: lightyellow;
+            border: 10px solid yellow;
+        }
+
+        .greenbox {
+            background-color: lightgreen;
+            border: 10px solid green;
+        }
+
+    </style>
+</head>
+<body>
+<div class="redbox">
+    Get ready!
+</div>
+<div class="yellowbox">
+    Get set!
+</div>
+<div class="greenbox">
+    Go!!
+</div>
+
+</body>
+</html>
+</xmp>
+
+<p class='listHeader'>Specifications:</p>
+  <ul>
+    <li> The boxes should begin to stack up vertically when the width of the view is reduced.</li>
+    <li> Use shades of red, yellow, green for the box background and border. Colors do not need to match the example above exactly.</li>
+    <li> The boxes are 100px wide.</li>
+    <li> Padding, margins and borders are all set to 10px.</li>
+    <li> Text should be centered in the containing box.</li>
+    <li> Avoid duplicating lines of CSS. Place settings that apply to all three boxes in their own CSS ruleset.</li>
+  </ul>
+
+
+<h2>Problem 5</h2>
+
+<img src="Images/image5.png"  alt='Sample Output for problem 5'>
+
+<p>HTML Source: </p>
+<xmp>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 5</title>
+</head>
+
+<body>
+    <ol>
+        <li> <a href="#1"> Link #1 </a> </li>
+        <li> <a href="#2"> Link #2 </a> </li>
+        <li> <a href="#3"> Link #3 </a> </li>
+    </ol>
+</body>
+
+</html>
+</xmp>
+
+<p class='listHeader'>Specifications:</p>
+  <ul>
+     <li> normal, unvisited links are red with no underline.
+     <li> Visited links are grey with no underline.
+     <li> If you hover over a link it turns red with an underline.
+     <li> When you click a link it flashes momentarily a blue color with no underline.
+</ul>
+
+
+<hr>
+<p>Updated Friday, 24 January 2020, 7:13 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+
+</body>
+</html>

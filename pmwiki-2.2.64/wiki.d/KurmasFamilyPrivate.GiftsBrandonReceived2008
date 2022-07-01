@@ -1,0 +1,14 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10.4; en-US; rv:1.9.0.3) Gecko/2008092414 Firefox/3.0.3
+author=
+csum=
+ctime=1229393373
+host=68.188.218.51
+name=KurmasFamilyPrivate.GiftsBrandonReceived2008
+rev=1
+targets=
+text=* Church (Tiffana, Jaime, and Stephanie): Book about Christmas and Ornament%0a%0a
+time=1229393373
+author:1229393373=
+diff:1229393373:1229393373:=1,2d0%0a%3c * Church (Tiffana, Jaime, and Stephanie): Book about Christmas and Ornament%0a%3c %0a
+host:1229393373=68.188.218.51

@@ -1,0 +1,14 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/419.2.1 (KHTML, like Gecko) Safari/419.3
+author=
+csum=
+ctime=1187732700
+host=148.61.39.4
+name=WorkPrivate.PossibleProgrammingProjects
+rev=1
+targets=
+text=* Deal Or No Deal (perhaps for CS 163 + GUI)%0a* Can't stop%0a* Hedgehogs%0a* Weather data visualization
+time=1187732700
+author:1187732700=
+diff:1187732700:1187732700:=1,4d0%0a%3c * Deal Or No Deal (perhaps for CS 163 + GUI)%0a%3c * Can't stop%0a%3c * Hedgehogs%0a%3c * Weather data visualization%0a\ No newline at end of file%0a
+host:1187732700=148.61.39.4

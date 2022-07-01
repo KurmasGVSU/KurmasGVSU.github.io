@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 163 Recursion, part 2</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .rubric  {
+       margin-left: 25px;
+    }
+
+    .rubric th {
+       text-align: left;       
+    }
+
+    .rubric td {
+       padding-right: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 163</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Recursion, part 2</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Summer 2020</h1></td>
+  </tr>
+</table>
+
+<h2 class="listHeader">Objectives:</h2>
+
+<ul>
+   <li>Practice recursive methods</li>
+</ul>
+
+<h2>Activity</h2>
+
+<p>You are strongly encouraged to work with a partner.</p>
+
+<p>Create and clone this GitHub Classroom repository: <a href='https://classroom.github.com/g/rphpwuLZ'><code>classroom.github.com/g/rphpwuLZ</code></a>
+
+<ol>
+<li> Determine the output of the following program.  (<em>Without</em> typing it in and running it!  
+There is a good chance you will have a similar "tracing" problem on the final.  Practice solving it "by hand.")
+
+<pre>
+public class Recursive1 {
+	private int counter = 0;
+	
+	public int stuff (int x, int y) {
+		counter++;
+		if (x &lt; 1 || (y &lt; 1))
+			return 1;
+		return x + y + stuff (x - 1, y - 2);
+		
+	}
+
+	public static void main (String[] arg) {
+		recursive1 x = new recursive1 ();
+		System.out.println("Answer = " + x.stuff(3, 3) + " Counter = " + x.counter);
+		System.out.println("Answer = " + x.stuff(6, 6) + " Counter = " + x.counter);
+  }	
+}
+</pre>
+</li>
+
+<li>Write a recursive method to compare two strings: <code>int compareTo(String s1, String s2)</code>. 
+Remember, that <code>compareTo</code> returns 
+<ul>
+  <li>a negative number if <code>s1 &lt; s2</code>,</li> 
+  <li>0 if <code>s1 == s2</code>, and</li>   
+  <li>a positive number if <code>s1 &gt; s2</code>.
+</ul>
+</li>
+
+<li>Modify (if necessary) your previous implementation so that it does not repeatedly copy part of the Strings.
+(Hint: Use the "<code>start</code>" trick we used for arrays.)</li>
+
+<li>
+Write a recursive method <code>int parseInt(String s)</code> that returns the integer represented by <code>s</code>.  
+Throw a <code>NumberFormatException</code> if <code>s</code> does not contain an integer.
+</li>
+
+<li>Write recursive code to draw a fractal.  One option is to use the starter code provided and draw the Koch 
+Snowflake.  (See <a href='http://mathworld.wolfram.com/KochSnowflake.html'><code>mathworld.wolfram.com/KochSnowflake.html</code></a>)  The starter code 
+contains the math/trigonometry for finding the different points on the line.  Another fun option is to draw
+the Sierpinski Triangle. (See <a href='https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle'><code>en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle</code></a>)
+</li>
+</ol>
+
+
+<h2>Submission</h2>
+
+Put all your solutions into the repository and commit.
+ If you worked with a partner, be sure both names are in a comment at the head of each file.
+
+
+
+
+
+<hr>
+ <p>Updated Monday, 15 June 2020, 7:47 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+
+
+</main>
+</body>
+</html>
+
+
+  

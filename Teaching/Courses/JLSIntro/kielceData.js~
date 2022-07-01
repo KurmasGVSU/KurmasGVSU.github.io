@@ -1,0 +1,22 @@
+/* Assignment data */
+({
+    Default: {
+        labNumber: {
+            JLSIntro: '2'
+        }
+    },
+
+    Override: {
+        version: 2.3,
+        jls_loc: "/home/kurmasz/public/CS451/bin",
+        jls_webloc: function (data) {
+            return data.courseGeneralURL(data) + '/Tools/JLS/JLS.jar';
+        },
+        jlsct_webloc: "http://www.cis.gvsu.edu/~kurmasz/JLSCircuitTester",
+        jls_bin: "/home/kurmasz/public/CS451/bin",
+	    current_jls_version: "The current version of JLS is 4.1.5.  Make sure you have the a build on or after 7/13/2016. ",
+
+        dlunit_loc: "/home/kurmasz/public/CS451/bin/DLUnit.jar"
+    }
+});
+

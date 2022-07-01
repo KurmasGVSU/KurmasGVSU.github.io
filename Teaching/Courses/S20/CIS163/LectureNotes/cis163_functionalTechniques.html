@@ -1,0 +1,397 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="functional-programming-techniques">Functional Programming techniques</h1>
+
+<ul>
+  <li>A recent trend in programming has been to incorporate aspects of functional programming into OO and procedural programming languages.</li>
+  <li>Specifically, we are going to look at how we can benefit from allowing programmers to pass code as if it were a parameter (i.e., pass a <em>function</em> as a parameter)</li>
+  <li>
+    <p>Imagine you have a list of Student objects, and you want to give each student a $100 credit.  The traditional way of writing this code would look something like this:</p>
+
+    <p class="language-java">for (Student s: studentList) {
+    s.applyCredit(100)
+  }</p>
+  </li>
+  <li>The functional-style approach would be to make a <code>forEach</code> method that takes the code to run as a parameter: <code>studentList.forEach( (s) -&gt; s.addCredit(100.0));</code></li>
+  <li>This by itself is not a big deal.  But, consider applying this approach to “filtering” an array:</li>
+  <li class="to-me">Show <code>filterByCredits</code></li>
+  <li class="to-me">Show <code>filter</code> and how it can be used to filter by any arbitrary rule.</li>
+  <li class="to-me">Show <code>genericFilter</code> and how we now need only write the code once:  Any <code>ArrayList</code> can use the code.</li>
+  <li><em>If</em> this method was an <code>ArrayList</code> instance method, we could chain them together.  (This is how many other programming languages work.)
+    <ul>
+      <li><code>someList.filter( (i) -&gt; i.condition1()).filter((i) -&gt; i.condition2()).filter((i) -&gt; i.condition3())</code></li>
+      <li>Although Java doesn’t, JavaScript, Ruby, and many other languages place some sort of “filter” method directly into the array class.</li>
+      <li>Java uses a related concept called “Streams”.  (More on that later.)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="map">Map</h2>
+
+<ul>
+  <li>Another common “functional” method is <code>map</code>.</li>
+  <li><code>map</code> “converts” the objects in an collection from one type to another.</li>
+  <li>Suppose we have collection of students and we want a collection of their names only.</li>
+  <li>In most languages, this would looks something like <code>myList.map((i) -&gt; i.getName());</code></li>
+  <li>Let’s look at some JavaScript examples:
+    <ul>
+      <li><code>[1, 2, 3, 4, 5, 6, 7].map((i) =&gt; i*i)</code></li>
+      <li><code>[{name: "George", age: 15}, {name: "Fred", age: 21}, {name: "Dave", age: 19}].map((i) =&gt; i.name);</code></li>
+      <li>(I’m using JavaScript, because <code>map</code> and <code>filter</code> tend to be very helpful when doing web programming.  You are more likely to use these methods in JavaScript that in Java.  Also, Java does something a bit more complicated.  I wanted to start with simpler examples.)</li>
+    </ul>
+  </li>
+  <li><code>map</code> and <code>filter</code> can be chained:
+    <ul>
+      <li><code>[1, 2, 3, 4, 5, 6, 7].map((i) =&gt; i*i).filter((i) =&gt; i % 2 == 0)</code></li>
+      <li><code>[{name: "George", age: 15}, {name: "Fred", age: 21}, {name: "Dave", age: 19}].filter((i) =&gt; i.age &gt;= 18).map((i) =&gt; i.name);</code></li>
+    </ul>
+  </li>
+  <li class="to-me">Show <code>map</code> implementation.</li>
+</ul>
+
+<h2 id="inject--reduce">Inject / Reduce</h2>
+<ul>
+  <li>JavaScript’s <code>reduce</code> function (called <code>inject</code> in Ruby) can be very powerful.</li>
+  <li>However, I find it a bit confusing.</li>
+  <li>I recommend taking note of it, but only using it when “traditional” techniques don’t work.</li>
+  <li><a href="https://thecodebarbarian.com/javascript-reduce-in-5-examples.html">https://thecodebarbarian.com/javascript-reduce-in-5-examples.html</a></li>
+</ul>
+
+<h2 id="streams">Streams</h2>
+
+<ul>
+  <li>Unlike most programming languages, Java doesn’t put <code>filter</code>, <code>map</code>, and <code>reduce</code> into its Lists/Collections.</li>
+  <li>Instead it uses a concept of a Stream.
+    <ul>
+      <li><a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html">https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html</a></li>
+    </ul>
+  </li>
+  <li>Think of a Stream as a sequence of values. (Picture a bunch of rubber ducks floating down a stream.  Each duck has a value on it.)</li>
+  <li>The methods above can apply to streams the same way they apply to arrays:
+    <ul>
+      <li>removing ducks</li>
+      <li>changing the data on each duck</li>
+    </ul>
+  </li>
+  <li>However, Streams don’t necessarily need to just be arrays.  Other options include
+    <ul>
+      <li>The same value repeated</li>
+      <li>A range of values (e.g., <code>[10, 20]</code>)</li>
+      <li>A never-ending stream of random numbers. (These methods are in the <code>Random</code> class)</li>
+      <li>A sequence of values generated by some algorithm (See <code>generate</code> method)</li>
+    </ul>
+  </li>
+  <li>Users can then apply <code>filter</code>, <code>map</code>, <code>reduce</code> etc. to the stream object.</li>
+  <li>There is extra work at the front and back end to turn arrays/ArrayLists into Streams, then the Stream back into array/array list; but, the chain of operations <em>can</em> be easier to follow.
+    <ul>
+      <li>Even if you find this style cumbersome in Java, I find it very helpful /elegant in JavaScript and Ruby.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="parallelism">Parallelism</h3>
+
+<ul>
+  <li>Another benefit of Java’s Stream approach is to help automate parallelism.</li>
+  <li>Think about <code>filter</code>.
+    <ul>
+      <li>In the vast majority of cases, each filtering decision is completely independent of other decisions.</li>
+      <li>For example, when filtering people by age, we could look at each person in parallel.</li>
+      <li>If our machine has 8 processors, we may as well use all 8 at the same time.</li>
+    </ul>
+  </li>
+  <li>Similarly, most <code>map</code> operations can run in parallel.</li>
+  <li>You create a parallel stream either
+    <ol>
+      <li>directly from a Collection, or</li>
+      <li>By calling <code>parallel</code> on a <code>Stream</code></li>
+    </ol>
+  </li>
+  <li>When possible, operations on parallel streams will run in parallel.
+    <ul>
+      <li>See <a href="https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html">https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html</a></li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

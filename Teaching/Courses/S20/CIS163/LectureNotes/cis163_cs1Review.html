@@ -1,0 +1,368 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  
+<ul>
+  <li>Classes and Objects
+    <ul>
+      <li>Blueprint / cookie cutter</li>
+      <li>product / cookie</li>
+    </ul>
+  </li>
+  <li>Instance vs class (a.k.a. “<em>static</em>”)
+    <ul>
+      <li>Instance variables are the properties that make one object distinct from another.
+        <ul>
+          <li>A date object, for example, may have month, day, and year as instance variables, as that is what we use to distinguish two dates.</li>
+        </ul>
+      </li>
+      <li>Class (aka “static”) variables are shared among all objects in a class.
+        <ul>
+          <li>Common for constants (e.g., # of days in each month)</li>
+          <li>Can also be mutable</li>
+          <li>Sometimes classes need to keep track of the number of instances.  That can be done with a class variable.</li>
+          <li>Suppose I write a date as “10/15/93”.  <span class="q"> What year is that?</span></li>
+          <li>Suppose I write a date as “10/15/22”.  <span class="q"> What year is that?</span></li>
+          <li>Suppose I write a date as “10/15/32”.  <span class="q"> What year is that?</span></li>
+          <li>Suppose I write a date as “10/15/42”.  <span class="q"> What year is that?</span></li>
+          <li>There has to be some rule for when you switch back to the 1900s.  That cutoff could be a static variable:  Changing it changes the rule for all dates.</li>
+        </ul>
+      </li>
+      <li>Instance methods are methods that rely on instance variables.  For example if I say <code>dayOfWeek()</code>, you can only provide an answer with respect to a specific object (i.e., a specific date).  The question simply doesn’t make sense otherwise.</li>
+      <li>Class methods don’t rely on any instance data.  For example, you can answer <code>isLeapYear(1954)</code> without any additional data.
+        <ul>
+          <li>Think of class methods as independent methods that are simply packaged up inside a given class for convenience / organization.  Technically, they could be placed anywhere (although that would make the code hard to follow.)</li>
+        </ul>
+      </li>
+      <li>Some software engineers prefer class methods over instance methods. <span class="q">Why?</span>
+        <ul>
+          <li>They are easier to test:  <span class="q">Why?</span> No side effects.</li>
+        </ul>
+      </li>
+      <li><span class="q">Why is the <code>main</code> method static?</span> Because when Java first begins, there are no objects.  Thus, no objects on which to invoke an instance method.</li>
+    </ul>
+  </li>
+  <li>Method <em>Overloading</em>
+    <ul>
+      <li>A class can have several methods with the same name, as long as the parameter list is different.  This is called <em>Overloading</em>.</li>
+      <li>Think of a class as a tool to help other programmers get the job done.</li>
+      <li>Overloading is a convenience to the programmer who uses that “tool.”  In most cases, the overloading isn’t necessary — just convenient.</li>
+      <li>Look at the Java String API <a href="https://https://docs.oracle.com/javase/7/docs/api/java/lang/String.html">https://https://docs.oracle.com/javase/7/docs/api/java/lang/String.html</a>
+        <ul>
+          <li>There are four different versions of <code>indexOf</code>.</li>
+          <li><code>indexOf(int ch)</code> is not necessary.  It just makes it so you can say <code>str.indexOf('x')</code> rather than <code>str.indexOf('x', 0)</code>.  Notice the convenience factor.
+            <ul>
+              <li class="q">What’s the shortest way to write <code>indexOf(char)</code> if you have already completed <code>indexOf(char, int)</code>?</li>
+              <li>Make sure you do this when completing the project.</li>
+              <li><span class="q">What does DRY stand for?</span> Don’t repeat yourself.</li>
+              <li>Be sure to look for opportunities to apply DRY in 163.  It’s part of the grading rubric.</li>
+            </ul>
+          </li>
+          <li><code>indexOf(String str)</code> does the same thing but matches strings instead of characters.  We could have given it a different name; but, since it does the same thing, it’s easier to remember just one name.</li>
+          <li class="q">Of the four <code>indexOf</code> methods, which would you implement first?  Why? How could you write the other three in terms of the first?</li>
+        </ul>
+      </li>
+      <li>The <code>SimpleDate</code> class has two different constructors <code>SimpleDate(int, int, int)</code> and <code>SimpleDate(String)</code>.  You will implement both.
+        <ul>
+          <li>In the case of this constructor, there isn’t a good way to write one in terms of the other.  But, you can factor common code out into a private helper method.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p class="to-me"> Switch to testing.</p>
+
+<h2 id="array-tricks">Array tricks</h2>
+
+<ul>
+  <li class="to-me">Discuss how to test <code>ordinalDate</code> (i.e., which test cases and why)?
+    <ul>
+      <li>Have students implement</li>
+      <li>After 5 or minutes ask to see some different approaches.</li>
+      <li>Show <code>daysInMonth</code> static final array.  Ask for ideas of how this could make the source code more concise.</li>
+      <li class="q">What else could be put in an array to make it even better?</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

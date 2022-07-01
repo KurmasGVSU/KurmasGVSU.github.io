@@ -1,0 +1,334 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Number Conversions</title>
+
+  <style>
+  
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+} 
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    ol.custom {
+      /* list-style-type: none; */
+      margin: 0;
+      padding: 0;
+    }
+
+    ol.custom > li {
+      display: block;
+      padding: 10px 0;
+      margin: 0 0 10px 0;
+    }
+
+    ol.custom > li:before {
+      content: counter(customlistcounter) ". ";
+      counter-increment: customlistcounter;
+      margin-right: 15px;
+      padding: 10px;
+
+    }
+
+    ol.custom.reset {
+      counter-reset: customlistcounter;
+    }
+
+    img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    ul {
+      margin-top: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Number Conversions</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2021</h1></td>
+  </tr>
+</table>
+
+
+<div id="main">
+  <h3> Overview</h3> The purpose of this lab is to provide students an opportunity to work closely with algorithms
+  for changing number bases.
+
+  <h3 class="listHeader">Content Preparation</h3>
+  <ul>
+    <li> Read Section 1.4 in the textbook.</li>
+    <li> Review <a href="http://www.cis.gvsu.edu/~kurmasz/CompOrgVideos/">supplemental videos 2 - 5</a>.</li>
+    <li> Write and solve 10 base conversion problems by hand (to make sure you understand the algorithm).</li>
+  </ul>
+
+  <h3 class="listHeader">Environment Preparation</h3>
+    <p> This week's lab is to write some Java code. The automated testing for this project uses JUnit 5 and Maven. Make sure you have a suitable environment set up. 
+    The easiest solution may be to use the School of Computing's EOS/Arch environment because they are already set up.  This is now even easier because you can work 
+    in EOS/Arch directly through your browser at <a href='https://cislab.hpc.gvsu.edu/'><code>https://cislab.hpc.gvsu.edu/</code></a>.  No more <code>x2Go</code>! <a href='https://hpcsupport.atlassian.net/servicedesk/customer/portal/3/article/5079217'>This page</a> provides details on how 
+    connect to EOS/Arch through a web browser.</p>
+    
+    <p class='listHeader'><a href='https://youtu.be/3BAPb_pT_U0'>This video</a> discusses the steps below in more detail.</p>
+    <ol>
+    <li> Follow <a href='https://classroom.github.com/a/SIMI5vKF'>this GitHubClassroom link</a> to generate your personal repository for next week's lab. </li>
+    <li> Clone the generated Git repository.</li>
+    <li> Open the project in the IDE of your choice.<ul>
+    <li>If you use IntelliJ, open it as a "maven" project. <em>not</em> an Eclipse project.</li>
+    <li><a href='https://hpcsupport.atlassian.net/wiki/spaces/HSD/pages/365494274/Setting+Up+VSCode+for+Java+Projects'>This knowledge base article</a>
+      explains how to configure Visual Studio Code in the EOS/Arch environment.</li>
+      </ul>    
+    </li>
+    <li> Make sure you can run the JUnit tests. In VS Code, open <code>BaseConverterStudentTest.java</code> and look for the green arrows to the left of the code.
+    (The first time you open the project, there may be a delay before they appear.)
+    <li> Change the <code>return</code> statement in <code>BaseConverter::convert</code> from <code class="inline-instruction">return ""</code> to <code class='inline-instruction'>return "0"</code>. 
+      Re-run the tests and verify that at least one test now passes.</li>
+    <li>When you have at least one test passing, commit your changes. (You do this from the command line using <code class='inline-instruction'>git add .; git commit -m your_message_here; git push</code>.  It is also possible to commit through your IDE.)
+    <li>After pushing your code, visit your repository's web page and run the automated tests.  (<a href='https://youtu.be/2EpLzyUX5XY'>This video</a> demonstrates how.)
+       <ol type='a'>
+         <li>From your repository's page, click on the <code>Actions</code> tab.</li>
+         <li>On the left, you should see a list labeled "Workflows".  Below that will be "All Workflows", and below that will be "GitHub Classroom Workflow".  Select "GitHub Classroom Workflow".</li>
+         <li>Selecting "GitHub Classroom Workflow" should cause a banner to appear with a button labeled "Run Workflow" to the right.  Open that dropdown menu and click the 
+         "Run workflow" button.</li>
+         <li>There will be a pause of 10 seconds or so and you will see a yellow dot appear that indicates that your tests are in progress.</li>
+       </ol>
+       </li>
+  </ol>
+
+  <h3 class="listHeader">Activity</h3>
+
+  <p> <!-- Use the starter code in the <a href='https://classroom.github.com/a/SIMI5vKF'>GitHub Classroom repository</a>
+    you created to  -->Write a conversion method
+    that will take in a string representing a number in a specified
+    base and convert it to another base. Do not worry so much about
+    catching error conditions; for this lab it is more important to
+    learn the number conversion process and implement the algorithm.
+  </p>
+
+  <p class='listHeader'><strong>Restrictions:</strong></p>
+  <ul>
+    <li>This week's lab is an <em><strong>individual assignment</strong></em>.</li>
+    <li>Use the provided starter code. Do not change the class name or method signatures.</li>
+    <li>You are not allowed to use <code>Integer.toString(int i, int radix)</code>, <code>Integer.parseInt(String s, int radix)</code> or any other library code that completes a
+      significant portion of the assignment. (You may, use the default <code>Integer.toString()</code> for converting a base-10 <code>int</code> to the base-10 <code>String</code> representation of that integer; just don't use a different radix.)
+    </li>
+  </ul>
+
+  <p class='listHeader'><strong>Assumptions:</strong></p>
+  <ul>
+    <li><code>input</code> will be a string representing a number in the range of 0 to 2<sup>31</sup>-1</li>
+    <li><code>base_in</code> and <code>base_out</code> fall between 2 and 36 (inclusive)</li>
+    <li>For bases over 10, use <strong>lowercase</strong> letters (Tests will fail and credit not given for uppercase!)
+    </li>
+    <li>The return should be a string containing the answer with no leading zeroes.</li>
+    <li>Do not worry about illegal input.</li>
+  </ul>
+
+  <p><strong>Testing:</strong>
+    <p>I have provided a few sample JUnit tests in <code>BaseConverterStudentTest.java</code>.  Add more of your own tests.</p>
+
+    <p>I have also written a larger suite of tests that I will use when grading your lab.  These tests will run automatically when you 
+    push your code.  If these tests fail, then you have two problems (1) a bug in your code, and (2) a missing test case (since your test suite didn't find the bug).
+    If your code fails my tests, (1) find the missing test case, (2) fix the corresponding bug, then (3) push the fix.  I won't 
+    grade your lab until it passes all my tests.</p>
+    
+  <h4 id="submission-and-grading-">Submission and Grading:</h4>
+
+  <p>  Once your code passes my tests, push the code with the string <code>[Grade Me]</code> in the commit message.</p>
+  
+  </ul>
+
+  <hr>
+
+  <p>Updated Tuesday, 7 September 2021, 10:02 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</div> <!-- end content -->
+
+</body>
+</html>

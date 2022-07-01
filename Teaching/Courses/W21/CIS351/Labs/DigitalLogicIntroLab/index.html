@@ -1,0 +1,675 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 4: Introduction to Digital Logic</title>
+
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    ul {
+      margin-top: 0;
+    }
+
+    .icTable {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Introduction to Digital Logic</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2021</h1></td>
+  </tr>
+</table>
+
+
+
+
+
+<p>Author: <a target="_top" href="http://www.cis.gvsu.edu/~wolffe">Prof. Greg Wolffe</a>.
+
+
+<hr>
+
+<h3>Warm up</h3>
+
+Questions 1 through 4 are not due for credit.
+
+<h3> Overview</h3> The purpose of this lab is to provide a simple
+introduction to basic electronics, and to investigate the principles
+of Boolean algebra. Please pay special attention to terminology,
+safety issues, and standard lab practices.
+
+<h3 class="listHeader">Activities</h3>
+<ul>
+  <li> Work your way through the following brief tutorial.</li>
+  <li> Submit a detailed lab report (one per group) that includes your
+    answers to the numbered questions.
+  </li>
+</ul>
+
+<h3 class="listHeader">Resources</h3>
+<ul>
+
+  <li> Chapters 1 - 3 describe the basics of digital logic. (See also
+    Appendix C located on the companion CD of the Patterson and Hennessy
+    textbook.)
+  </li>
+
+
+  <li><a href='https://www.electronics-tutorials.ws/resistor/res_2.html'>This site</a> explains how to
+    determine the number of Ohms a resistor provides based on the colors of its bands.
+  </li>
+
+  <li><a href='https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/ReferenceDocuments/Pinouts'>Pinouts</a> for the chips in your breadboard kits.</li>
+</ul>
+
+<h3>Equipment</h3>
+
+Familiarize yourself with the following components of your lab
+equipment toolbox:
+
+<ul>
+  <li><b>Breadboard:</b> This device is designed for rapid
+    prototyping and construction of circuits.
+    <ul>
+      <li> There are three power terminals (or binding posts) near the top
+        of the board.
+      </li>
+      <li> The board has a series of isolated tie points (holes or sockets
+        aligned in a grid) that are connected together to provide continuous
+        bus structures or strips. Component leads or wires are inserted
+        into these sockets and held firmly enough to create a solid contact
+        without requiring soldering.
+      </li>
+      <li> There are four horizontal strips of connected tie points (two
+        each across the top and bottom of the board). These sockets are
+        connected into a distribution bus and are typically used as power
+        strips or as common ground. All the holes in each 1/4 of a strip are
+        connected together.
+      </li>
+      <li> There are 128 vertical strips of 5 holes - each of the holes in
+        a strip is connected. These are used to wire together discrete
+        components.
+      </li>
+    </ul>
+
+    <p><i>Make sure you understand the built-in connections on the
+      breadboard and how to use them effectively and correctly</i>. It
+      will be used to wire together the digital circuits used in this
+      lab. </p>
+  </li>
+
+  <li><b>Power supply:</b> We will be using a conditioned
+    5V/adjustable power supply. We will use the fixed 5V lead, not
+    the.1.5-12V adjustable range. Note that the power supply must be
+    turned on, even when using the fixed lead.
+  </li>
+  <li><b>Power leads:</b> these have banana clips on each
+    end. Use them to connect the power supply to the terminals on the
+    breadboard - then connect the terminals to your distribution buses.
+  </li>
+  <li><b>LEDs (Light Emitting Diodes):</b> LEDs are simple
+    optical devices made of gallium-arsenide-phosphide that are used for
+    signal detection. Note that the longer lead represents the anode
+    side of the device. (In other words, the longer wire goes on the side attached to the positive terminal.)
+  </li>
+
+  <li><b>Resistors:</b> Various resistors are provided,
+    primarily to limit the current to the LEDs. Most LEDs will burn
+    out quickly if their current exceeds 50 mA; we will use much less than
+    that in these labs. Each resistor has a set of color-coded stripes.
+    These stripes indicate the amount of resistance in Ohms. See <a href='https://www.electronics-tutorials.ws/resistor/res_2.html'><code>https://www.electronics-tutorials.ws/resistor/res_2.html</code></a>  for information on how to read
+    the color code.
+  </li>
+
+  <li><b>Wire kit</b>: Various length wires with pre-bent ends
+    to facilitate circuit wiring.
+  </li>
+
+  <li><b>Wrist straps:</b> These are provided to guard against
+    static electricity (CMOS chips can be damaged by excess static). <i>Ground
+    these to the breadboard or negative terminal and wear one whenever you
+    are handling IC chips.</i></li>
+
+  <li><b>Logic chips:</b> Our circuits will be composed of gates
+    implemented in logic chips of the HCT family, which stands for
+    High-speed CMOS TTL-compatible (CMOS is Complementary Metal-Oxide
+    Semiconductor and TTL is Transistor-Transistor Logic). They are
+    pin compatible with the 74LS (Low-power Schottky) family of logic
+    chips. Although CMOS chips are vulnerable to static, they consume
+    considerably less power, fit more functionality per chip, and can be
+    powered by a wider range of voltage than TTL or TTL/LS chips.
+  </li>
+</ul>
+
+<p class="listHeader"><i>Some important guidelines when working with CMOS:</i></p>
+
+<ul>
+  <li> Avoid touching the pins.</li>
+
+  <li> Never connect an input signal to a CMOS chip when the power
+    is off. In other words, make sure there is power flowing through
+    pins 7 and 14 before connecting input wires to a power source.
+  </li>
+
+  <li> Do not remove power if an input signal is still present. In
+    other words, disconnect power to your inputs before disconnecting
+    power to the chip or breadboard.
+  </li>
+  <li> Unused inputs may pick up stray signals. Stray signals
+    can cause rapid oscillation in logic state, consuming excessive
+    power. If chip behavior is erratic, or the chip becomes very hot,
+    connect unused inputs to ground.
+  </li>
+</ul>
+
+<p class="listHeader"><i>To use integrated circuits with a breadboard:</i></p>
+
+<ul>
+  <li> Align the leads (pins) of the chip with the contact points on
+    each side of the center, such that each pin is isolated.
+  </li>
+  <li><i>Gently</i> press the center of the IC until it drops into
+    position.
+  </li>
+  <li> Remove the IC by using the chip extractor to carefully pry it
+    up until it can be lifted free.
+  </li>
+</ul>
+
+<h3> Creating a Simple Circuit</h3>
+
+<p><em>Before creating your first circuit, there is something you need to
+  understand about LEDs:</em> Normal, incandescent light bulbs produce
+  light by resisting the flow of electricity. This resistance produces
+  heat, which causes the filament to glow. When you drain a flashlight
+  battery, most of the energy in the battery has been converted to heat.</p>
+
+<p> In contrast, LEDs produce light by exciting electrons causing them to
+  release photons ("light particles"). This process uses use very
+  little energy. Consequently, LEDs do not resist the flow of
+  electricity. When there is nothing to resist the flow of electricity,
+  the amount of current (think "number of electrons per second")
+  increases. You may remember the following formula:</p>
+
+
+<p style='text-align: center'><b>V = IR</b></p>
+
+<p> Or, in other words, voltage equals current (in amps) times
+  resistance (in Ohms).
+
+<ol style="display: none">
+  <li> Normal List</li>
+</ol>
+
+<ol class="customx reset">
+  <li> Suppose you hooked up a red LED with a resistance of 1 micro Ohm
+    (1x10<sup>-6</sup> Ohms) directly to a 5 volt battery. Using the formula above, how much
+    current will be drawn from the battery?
+  </li>
+</ol>
+
+<p>The power supply cannot produce that many amps. However, the 1 amp
+  that the power supply can deliver is enough to damage the LED and
+  (more importantly) the breadboard. Therefore, <em>always</em> add
+  a resistor as shown in Figure 1.1 to limit the amount of current
+  through the diode to about 10mA.</p>
+
+<ol class="customx" start=2>
+  <li> LEDs typically use a fixed amount of energy, referred to as the
+    "voltage drop". A red LED has a voltage drop of 1.7V, leaving 3.3
+    volts to "push" the current through the resistor. How strong of a
+    resistor should you add to the circuit to limit the current to 10mA?
+  <LI> What value resistor should you use for a green LED with a
+    voltage-drop of 2.1 volts?
+  <li> What are the color codes for the resistors in the preceding
+    questions?
+  </li>
+</ol>
+<P>
+
+  Now that you understand the importance of using resistors, construct
+  the circuit shown in Figure 1-1 and described below.
+  <img class="center" src="Fig1-1.gif" height="263" width="274" alt="Simple LED">
+<ul>
+  <li> Connect the power supply to the positive and negative terminals
+    on the breadboard.
+  </li>
+  <li> Connect each terminal to a distribution bus (one of the
+    horizontal rows).
+  </li>
+  <li> Insert the appropriate resistor into the breadboard and connect it to
+    positive.
+  </li>
+  <li> Insert an LED and connect the resistor to the LED.The
+    LED is a diode, and will only work when the longer wire is connected to a path to positive voltage.
+  </li>
+  <li> Connect the LED to ground.</li>
+  <li> When the circuit is constructed correctly, the LED will glow
+    visibly whenever power is applied. If it glows dimly, you chose the
+    wrong resistor.
+  </li>
+</ul>
+<h3> Using Integrated Circuits</h3>
+Integrated circuits typically contain multiple logic gates and hence
+provide multiple input and output connections (called pin outs).
+Find an IC labeled 74HCT08 - this is a quad 2-input AND gate.
+That means there are four AND gates within the chip, each of which
+takes two inputs. Each AND gate implements the Boolean AND
+function.<br>
+
+<p>If the chip is positioned with the notch to your left, then pin
+  number 1 in the lower-left corner. The remaining pins are numbered
+  sequentially and counterclockwise.
+
+<p>
+  Integrated circuits need power in order to open and close the
+  transistors that implement the gates they contain. Pin 14 (in the
+  upper-left corner) is called V<sub>CC</sub>. This is where you
+  connect the source voltage. Pin 7 (in the lower-right corner) is where
+  ground voltage is applied. In other words, Pin 14 must be
+  connected through a breadboard terminal and power distribution strip
+  to the positive terminal of the battery. Likewise pin 7 must be
+  connected to the negative terminal of the battery. <i>Never place a
+  load (current and voltage) onto a pin unless the chip is also powered
+  through pins 7 and 14.</i></P>
+
+
+<p>The figure below shows the pinout for chip 74HCT08 --- a chip
+  containing four 2-input AND gates. Pins 1 and 2 are the input to the
+  first of the four AND gates, pin 3 is the output. Likewise, pins
+  4 and 5 are inputs to an AND gate with output pin 6, pins 9 and 10
+  (input) connect with pin 8 (output), and pins 12 and 13 (input) go
+  with pin 11 (output).</p>
+
+<img class="center" src="74008.gif" alt="AND pinout">
+
+<p>Your kits also include the following integrated circuits:</p>
+
+<table class="center icTable">
+  <tr>
+    <td> Designation</td>
+    <td> Operation</td>
+  </tr>
+
+  <tr>
+    <td> 74HCT00</td>
+    <td> NAND</td>
+  </tr>
+
+  <tr>
+    <td> 74HCT02</td>
+    <td> NOR</td>
+  </tr>
+
+  <tr>
+    <td> 74HCT08</td>
+    <td> AND</td>
+  </tr>
+
+  <tr>
+    <td> 74HCT32</td>
+    <td> OR</td>
+  </tr>
+
+  <tr>
+    <td> 74HCT86</td>
+    <td> XOR</td>
+  </tr>
+</table>
+
+<p>They are all quad 2-input ICs - meaning there are four gates within each chip, where each gate takes two input.
+  <a href='https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/ReferenceDocuments/Pinouts'>This page</a> shows the pinouts for these chips.
+</p>
+
+
+<p>To investigate the operation of an integrated circuit that
+  implements the AND function, construct the following circuit (Figure
+  1-3 gives the schematic): </p>
+
+<img class="center" src="Fig1-3.gif" height="265" width="331" ALT="AND gate and LED">
+
+<ul>
+  <li> Carefully insert a 74HCT08 IC into the break in the breadboard so
+    that each pin sits in its own strip.
+  </li>
+  <li> Connect the power supply between pins 7 and 14, with the positive
+    terminal on pin 14.
+  </li>
+  <li> Connect a 330-ohm resistor from output pin 3, then to an LED,
+    which is then connected to ground.
+  </li>
+  <li> Connect two wires to the input pins 1 and 2. Using these
+    wires, connect both inputs to 0V (ground) and record the logical state of the
+    LED. (In other words, is it on or off?) Then connect both inputs to 5V (HIGH) and record the logical
+    state of the LED. Then connect pin 1 to LOW and pin 2 to HIGH and
+    note the LED. Finally, swap the input wires and record the state
+    of the LED.
+  </li>
+</ul>
+Perform the following:
+<ol start="5">
+  <li> Construct a truth table from your observations.</li>
+  <li> Take the wires attached to pins 1 and 2 and leave the other
+    ends floating in the air. Describe the effect of having these
+    "floating inputs". (To get some more interesting behavior, grab the
+    floating ends with your fingers and wiggle them.)
+</OL>
+
+<h3>Switches</h3>
+
+You may find it convenient to use switches to control whether an input
+wire has a "1" or a "0" on it; however, as you noticed, floating
+inputs can cause erratic behavior. In the Resources section of the
+course web page, the page <a href='https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CIS351/ReferenceDocuments/Switches/switches.html'>Using Switches</a>
+explains how to correctly use the two types of switches in your kit.
+
+<OL start="7">
+  <li> Add switches to the circuit you built (the one shown in
+    Figure 1-3). You may use either dip switches or momentary
+    switches. Demonstrate to the instructor or lab assistant that
+    your circuit works correctly.
+</OL>
+
+<H3>Experiment</H3>
+
+<OL start="8">
+
+  <LI> Get a random IC from me. Replace your 74HCT08 with the new
+    chip. Construct a truth table from your observations. Identify the
+    type of gates the chip contains. (Your writeup needs to include the
+    letter on the chip.)
+</OL>
+
+<h3>Creating a more complex combinatorial circuit</h3>
+Digital logic is implemented by using basic logic gates as building blocks
+to create more complex circuits. A combinatorial circuit is a set
+of gates whose output function depends only on the values of its current
+inputs (i.e., there is no storage or feedback involved in the system).
+The following circuit is a common combinatorial circuit.
+<p>You will need 2 quad NAND IC's (74HCT00), 2 resistors, and 2 LEDs
+  to construct it. I suggest using DIP switches in the "pull-down"
+  configuration to control the values of A and B. Remember to use 4.7K
+  ohm resistors for your switches.
+<ul>
+  <li>
+    Connect inputs A and B to NAND gate 1.
+  </li>
+
+  <li>
+    Connect the output C of NAND gate 1 and input A to NAND gate 2. Connect
+    the output C and input B to NAND gate 3. Connect the output C of
+    NAND gate 1 to both inputs of NAND gate 4. Designate the output of
+    NAND gate 4 as Y.
+  </li>
+
+  <li>
+    Connect the output of NAND gate 2 and the output of NAND gate 3 to NAND
+    gate 5. Designate the output of NAND gate 5 as X. See Figure
+    2-3 below.
+  </li>
+
+  <li>
+    Connect two LEDs as before to both outputs Y and X of the circuit.
+    Place the LED for output Y to the left of the LED for output X.
+  </li>
+
+  <li>
+    Apply power and test the circuit.
+  </li>
+</ul>
+
+<ol start=9>
+
+
+  <li>
+    Determine the truth table from observation. Place the column
+    for <code>Y</code> to the <em>left</em> of the column
+    for <code>X</code>. In other words, treat <code>YX</code> as
+    a two-bit number.
+  </li>
+
+  <li>
+    Using your observations as a guide, describe what simple operation
+    this circuit implements. (Hint: Place the LED for output <em>y</em>
+    to the left of the LED for output <em>x</em>.)
+  </li>
+
+  <li>Demonstrate your circuit to the instructor (or lab assistant).
+  </li>
+
+  <!-- <li>Design another simple circuit that does something
+     "useful". (Your circuit does need not cure hunger. It just
+     needs to be more interesting than a random truth table.) Submit
+     a diagram of your circuit. You may, but are not required to,
+     implement your circuit on your breadboard. -->
+
+  <!-- <li> Move one or two wires so that, at all times, exactly one LED is
+  on. (Which light is on and which is off can change depending on the
+  inputs.)  Show on your labeled schematic which wires you moved and
+  where.
+  -->
+</ol>
+
+<img class='center' SRC="Fig2-3.gif" height=301 width=415 alt="Mystery circuit">
+
+<hr>
+<p>Updated Friday, 9 April 2021, 9:20 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+
+
+<!--
+Dropped because lab was too long
+<h3>
+Designing a Simple Controller</h3>
+The final aspect of this introduction to combinatorial circuits is the
+design phase; using simple digital logic to create more complex circuits.
+Based on the knowledge gained above, you are to design and construct a
+simple digital controller. The controller is to be used to activate
+a device when a particular set of input conditions is true. It should
+have the following set of characteristics:
+<ul>
+<li>
+the controller takes four inputs (A, B, C, and D) and has one output (X)</li>
+
+<li>
+the device control line (output X) must be HIGH whenever input A is ON
+and input D is OFF and either input B or input C (or both) is ON</li>
+</ul>
+Design and implement the controller:
+<ol START=13>
+<li>
+Draw a labeled schematic of your circuit specifying IC numbers and pin
+numbers.</li>
+</ol>
+Test your circuit and <b>demonstrate it to the instructor</b>.
+
+-->
+
+</body>
+</html>

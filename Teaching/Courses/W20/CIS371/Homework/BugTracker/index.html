@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 371 Bug Tracking</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    #content {
+      padding: 0 10px 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 371</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Bug Tracking</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2020</h1></td>
+  </tr>
+</table>
+
+<p>This assignment was originally designed my Prof. Engelsma</p>
+
+<p>For this sequence of assignments, you will build a simple web application using a <em>server-side</em> application of your choice 
+(Express, Rails, Flask, .etc)  The framework <em>must</em> be server-side.  You may not use client-side systems such as React, Angular, Vue, etc.</p>
+
+<p>You may work in pairs on this assignment.</p>
+
+<p>Please use this GithubClassroom URL: <a href='https://classroom.github.com/g/ZhJIQmpB'><code>classroom.github.com/g/ZhJIQmpB</code></a>
+
+
+<h1 id='part1'>Part 1: Bug Overflow – Modeling Bugs</h1>
+
+<p class='listHeader'>Use what you have learned in class to create a single model called “bug” that models 
+the bugs in a project.  (Later you will add additional models to the app.)  Bugs are represented with this 
+information:</p>
+
+<ul>
+<li>Title: a short descriptive title summarizing the problem.</li>
+<li>Description: a longer piece of text which describes the details of the problem. </li>
+<li>Issue_type: has three possible values: issue, enhancement, feature.  </li>
+<li>Priority: priority of the issue with three possible levels: low, medium, high.</li>
+<li>Status: the current status of the bug with three possible settings: open, closed, monitor.</li>
+</ul>
+
+<p>Use generate basic screens for managing bugs (list of all bugs, show bug, edit bug, and delete bug). </p>
+
+<!-- 
+<p class='listHeader'>Using the TDD approach outlined in lecture, write the automated tests and then implement the following model requirements:</p>
+<ul>
+<li>Title and description cannot be blank whenever a bug is created or edited.</li>
+<li>Issue_type, priority and status must have valid values (you should represent these values as enumerated types.) </li>
+<li>The default value of issue_type should be feature. </li>
+<li>The default value of priority should be medium.</li>
+<li>The default value of status should be open.</li>
+</ul>
+-->
+
+<p>Do not pay any attention to styling at all in this point (e.g. you need not write fancy CSS/SCSS files).  
+ Your final product should look somewhat like the screenshots inserted below.,<p>
+
+ <img src="Images/image2.png" alt="Sample Screenshot">
+ <img src="Images/image4.png" alt="Sample Screenshot">
+ <img src="Images/image3.png" alt="Sample Screenshot">
+
+<h2>Grading</h2>
+
+<p>This part of the assignment will be graded by demo.  When your project is ready, schedule a demonstration with me.</p>
+
+
+<h1 id='part2'>Part 2: Bug Overflow – Associating Users With Bugs</h1>
+
+<p>In this part of the assignment you will extend the Bug Overflow application that you started in the previous 
+section by adding a User model to the app and associating users and bugs.</p>
+
+<p class='listHeader'>Users typically report bugs, so we need to have a model for users.  In this iteration of the application, add an additional model for users. 
+ For each user you should have the following fields:</p> 
+<ul>
+<li>lname: user’s last name. </li>
+<li>fname: user’s first name.</li>
+<li>email: user’s email address.</li>
+<li>thumbnail: a reference to the user’s thumbnail image.</li>
+</ul> 
+
+<p>Generate the model and basic screens for managing users.  (list of all users, show user, edit user, and delete user). </p>
+
+<p class='listHeader'>Using the TDD approach outlined in lecture, write the automated tests and then implement the following model requirements:</p>
+<ul>
+<li>lname, fname, email cannot be blank whenever an author is created or edited.</li>
+<li>email must be unique and be a valid format for an email address. </li>
+<li>thumbnail must end with either .png, .jpg, or .gif.  It is ok to leave the thumbnail field blank. </li>
+</ul>
+
+<p>Formally model the association between users and bugs so that every bug is owned by a single user, 
+   and a single user may own many bugs.  In addition, make sure you modify the appropriate bug views so that a user can be specified
+    when a bug is entered/updated, or shown in the bug listing or bug detail views.  Make sure that you present users as 
+    "Firstname Lastname" when they are shown in views.</p> 
+ 
+<p>Do not pay any attention to styling at all in this point (e.g. you need not write much CSS/SCCS).  
+ Your final product should look like the screenshots inserted below.  Your user views (not shown below) should also be fully functional. </p>
+
+ <img src="Images/image6.png" alt="Sample Screenshot">
+ <img src="Images/image5.png" alt="Sample Screenshot">
+ <img src="Images/image1.png" alt="Sample Screenshot">
+
+<h2>Grading</h2>
+
+<p>This part of the assignment will be graded both demo and souce code evaluation.  
+When your code is ready, plese commit it with the message [grade me 2].  Then schedule a demonstration time with me.</p>
+
+
+
+<h1 id='part3'>Part 3: Bootstrap</h1>
+
+<p class='listHeader'>In this part you will focus on making your Bugs Overflow Rails app more
+attractive using a responsive frontend framework of your choice.  Use what you learned in lecture this evening
+to dress up your app using Bootstrap (or an alternate frontend framework of your choice: Foundation, etc.) 
+Here are the general requirements your solution needs to meet:</p>
+<ul>
+<li> Make your site support a universal navigation scheme with links to Home, Users, Bugs.
+<li> Add a placeholder “splash” or homepage to your app, and make it your root page. Format the home page in an attractive manner and make sure it somehow features blurbs with links to the 3 most recently entered bugs.
+<li> Style ​all​ of the view templates for one of your entity types (either bugs or users). 
+</ul>
+
+
+<p>You have some freedom to style as you see fit, but do make sure each view is reasonably attractive and fully responsive.</p>
+
+
+
+
+
+<h2>Deliverables: </h2>
+  <hr>
+  <p>Updated Wednesday, 19 February 2020, 4:58 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>

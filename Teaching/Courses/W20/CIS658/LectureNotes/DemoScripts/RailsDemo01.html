@@ -1,0 +1,631 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="rails-demo-1-working-with-models--deploying-to-heroku">Rails Demo 1: Working with Models &amp; Deploying to Heroku</h1>
+
+<p>So we’ve done “Hello World” and it was fun and easy.  It turns out that Rails can do <em>a lot</em> for us right out of the box.  Let’s take a look at how we can generate database-backed web pages.</p>
+
+<ol>
+  <li>
+    <p>Let’s assume we want to create a toy catalog.  We begin by generating scaffolding for our Toys.</p>
+
+    <pre><code> rails generate scaffold Toy name:string description:text manufacturer:string price:decimal
+</code></pre>
+  </li>
+  <li>This created a whole bunch of stuff:
+    <ul>
+      <li>views,</li>
+      <li>controllers,</li>
+      <li>database migrations,</li>
+      <li>routes (<code>rake routes</code>)</li>
+      <li>models: however, note that these models are backed by the database (sqlite by default).</li>
+      <li>(Notice that the files, directories, and database table created have names that are automatically generated based on the name <code>Toy</code>.  This is the “convention over configuration” pat of Rails.)</li>
+    </ul>
+  </li>
+  <li>
+    <p>Take a look in <code>db/migrate</code> - you’ll see a file with a name something like <code>20200123221127_create_toys.rb</code> that contains code specifying how to create the <code>Toys</code>  table in our db. (Notice that the number describes the date and time at which the migration was generated.)   In execute this code (and, thereby create the table), run</p>
+
+    <pre><code> rake db:migrate
+</code></pre>
+  </li>
+  <li>
+    <p>Notice now that we have a file named <code>db/schema.rb</code>. This file describes the current structure of the database (i.e., the <code>Toys</code> table has been created). Notice that the comment at the top of the file tells us that the content is auto-generated.  That means don’t edit this file yourself.  Use migrations.  If you run the application, you will see that we can now create and save toys.  (Go to the <code>toys</code> route.)</p>
+  </li>
+  <li>Play with the app for a bit.  Add/Edit a few toys.</li>
+</ol>
+
+<ul>
+  <li>Let’s look at the changes to the database.
+    <ul>
+      <li>run <code>rails dbconsole</code></li>
+      <li>run <code>.tables</code></li>
+      <li>run <code>pragma table_info(toys)</code></li>
+      <li>Notice that an <code>id</code> column was automatically added.</li>
+    </ul>
+  </li>
+  <li>The above command launches the sqlite3 interface.  It might be occasionally helpful to use this interface to carefully examine the current state of the database; but, 
+I wouldn’t   use this interface to make changes.  I would stick to the Rails interface for that.</li>
+  <li>Let’s look at how all the different parts of the automatically generated scaffolding work together.</li>
+  <li>Run <code>rake routes</code>.  You will see something like this:</li>
+</ul>
+
+<pre>
+          Prefix Verb   URI Pattern                     Controller#Action
+            toys GET    /toys(.:format)                 toys#index
+                 POST   /toys(.:format)                 toys#create
+         new_toy GET    /toys/new(.:format)             toys#new
+        edit_toy GET    /toys/:id/edit(.:format)        toys#edit
+             toy GET    /toys/:id(.:format)             toys#show
+                 PATCH  /toys/:id(.:format)             toys#update
+                 PUT    /toys/:id(.:format)             toys#update
+                 DELETE /toys/:id(.:format)             toys#destroy
+   welcome_index GET    /welcome/index(.:format)        welcome#index
+ welcome_goodbye GET    /welcome/goodbye(.:format)      welcome#goodbye
+            root GET    /                               welcome#index
+</pre>
+<ul>
+  <li>The web server uses the routing table to decide which code to run for a given path.</li>
+  <li>Look at the first line (<code>/toys(.:format)</code>)
+    <ul>
+      <li>This line specifies that when the path is <code>/toys</code> and the verb is <code>GET</code>, the <code>index</code> method on the <code>toys</code> controller is run.</li>
+      <li>Look at <code>app/controllers/toys_controller.rb</code></li>
+      <li>The <code>index</code> method sets the variable <code>@toys</code> to an array containing all Toys in the database.</li>
+      <li>Look at <code>app/views/toys/index.html.erb</code>.  This file generates a table containing the data for the toys.
+        <ul>
+          <li>Notice the difference between <code>&lt;% %&gt;</code> and <code>&lt;%= %&gt;</code> (with and without <code>=</code>)</li>
+          <li>(We’ll come back and look at <code>link_to</code> later.)</li>
+        </ul>
+      </li>
+      <li>Now, look at the model <code>app/models/toy.rb</code>
+        <ul>
+          <li>This class has no methods;</li>
+          <li>but, it inherits from <code>ApplicationRecord</code></li>
+          <li>The <code>ApplicationRecord</code> class provides the methods that interact with the database.
+            <ul>
+              <li>e.g., the class method <code>all</code> called by the index method.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>If you want to test out some of these <code>ApplicationRecord</code> methods, you can use the Rails console:
+        <ul>
+          <li>Run <code>rails console</code></li>
+          <li>Run <code>Toy.all</code></li>
+          <li>Run <code>Toy.find(1)</code></li>
+          <li>Run <code>Toy.create({name: 'Barbie', description: "A doll", manufacturer: 'Matell'})</code>
+            <ul>
+              <li>Now notice that the newly created toy appears in the app.</li>
+              <li>Only do this type of thing in your development environment.  Don’t screw up your test or production environments!</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Look at the 5th line (<code>/toys/:id(.format)</code>).
+    <ul>
+      <li>This line matches a path that contains <code>/toys/</code> followed by a number (e.g., <code>/toys/6</code>) when the verb is <code>GET</code></li>
+      <li>When this pattern is matched, rails runs the <code>show</code> method in the toys controller.
+        <ul>
+          <li>This body of <code>toys_controller#show</code> is empty.</li>
+          <li>Notice, however, the <code>before_action</code> method at the top of the controller.
+            <ul>
+              <li>It specifies that the <code>set_toy</code> method should be run before <code>show</code>, <code>edit</code>, <code>update</code>, and <code>destroy</code></li>
+              <li><code>params</code> is a hash that maps the placeholders in the routes (e.g, <code>:id</code>) to the actual value appearing in the path.</li>
+              <li><code>find</code> is a class method of <code>Toy</code> that returns the record with the given id.  (Remember, Rails automatically added <code>id</code> as a primary key).</li>
+            </ul>
+          </li>
+          <li>Look at <code>app/views/show.html.erb</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Are you impressed by how much happens without you having to write any code?</li>
+  <li>Are you impressed by how much happens in methods with no (apparent) code in them?</li>
+  <li>Look at the 3rd line <code>/toys/new</code>
+    <ul>
+      <li>The controller creates a new, “empty” <code>Toy</code></li>
+      <li>The view uses a “helper”
+        <ul>
+          <li>The <code>render</code> method calls the helper.</li>
+          <li>By convention, the parameter <code>form</code> is converted into <code>app/views/toys/_form.html.erb</code>.  Take a look:</li>
+          <li>This file generates an HTML form for entering the various Toy fields.</li>
+          <li>The parameter <code>toy: @toy</code> passes a hash with a key of <code>toy</code> and a value of the newly created, empty <code>@toy</code> object.
+            <ul>
+              <li>This hash then causes a local variable named <code>toy</code> to be initialized in the scope of the helper.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>If you look at the generated HTML, you will see that the form does a “<code>post</code>” to the <code>\toys</code> route.
+    <ul>
+      <li>Looking back at the routes, this corresponds to to the <code>#create</code> method on the controller</li>
+      <li>Notice that both <code>#index</code> and <code>#create</code> use a route named <code>/toys</code>, but with different verbs.</li>
+    </ul>
+  </li>
+  <li>The <code>create</code> route doesn’t return a view, but rather issues a 302 redirect to the page that displays the newly updated toy.</li>
+  <li>Look at <code>toys_controller#create</code>
+    <ul>
+      <li><code>toy_params</code> is a method that sanitizes the submitted data.</li>
+      <li><code>params</code> in an inherited controller method that returns both GET (i.e., query string) and POST values as a    single hash.  (Well, actually an object of type <code>ActionController::Parameters</code> that implements many of the same methods.)
+        <ul>
+          <li>Rails allows complex/nested data to be sent.  <a href="https://guides.rubyonrails.org/action_controller_overview.html#parameters">https://guides.rubyonrails.org/action_controller_overview.html#parameters</a></li>
+          <li>Notice that the parameters contains an item with the key <code>authenticity_token</code></li>
+          <li>If you look back at the form, you will see a hidden field of the same name.</li>
+          <li>This is a security measure to prevent XSRF (i.e., getting you to click on a link in an email that sends the POST request).</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Editing a toy is similar.
+    <ul>
+      <li>Calls “empty” <code>#edit</code> method (which really calls <code>set_toy</code>)</li>
+      <li>The view uses the same <code>_form</code> helper.</li>
+      <li>You will notice that the code is identical.  Rails “magic” figures out whether the toy passed in is new, or existing and sets the submit route accordingly.  (<a href="https://stackoverflow.com/questions/43827116/how-does-form-for-knows-what-url-path-to-go-when-the-submit-button-is-clicked">https://stackoverflow.com/questions/43827116/how-does-form-for-knows-what-url-path-to-go-when-the-submit-button-is-clicked</a>)
+        <ul>
+          <li class="to-me">Use Rails console to demonstrate <code>persisted?</code> method.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Open the Chrome developer tools, set “Preserve log” on the Network tab, and submit a change to a toy.
+    <ul>
+      <li>Notice that the request method is <code>POST</code>, even though the intended route (update) is <code>PATCH</code>.</li>
+      <li>HTML forms support only <code>GET</code> and <code>POST</code>.</li>
+      <li>Consequently, Rails has to use a work-around. Look at the HTML for the form.
+        <ul>
+          <li>The <code>method</code> in the form tag is <code>post</code>; but,</li>
+          <li>There is a hidden filed named <code>_method</code> with a value of <code>patch</code></li>
+        </ul>
+      </li>
+      <li>Apparently, <code>PATCH</code> and <code>DELETE</code> were latter additions to HTML, and  nobody ever got around to updating HTML accordingly: <a href="https://softwareengineering.stackexchange.com/questions/114156/why-are-there-are-no-put-and-delete-methods-on-html-forms">https://softwareengineering.stackexchange.com/questions/114156/why-are-there-are-no-put-and-delete-methods-on-html-forms</a></li>
+    </ul>
+  </li>
+  <li>Links: We can use the routing table to create URLs for various links (back to the list of toys, to a specific toy, etc.) however
+    <ul>
+      <li>It would result in a lot of manual fixing should you ever need to rename anything, and</li>
+      <li>Why do the hard work when Rails will do it for you?</li>
+      <li>Look at <code>edit.html.erb</code>
+        <ul>
+          <li>The <code>Back</code> link goes to the <code>toys_path</code>.</li>
+          <li>Notice that <code>toys</code> is the “prefix” for the route to the toys index.</li>
+          <li>The <code>Show</code> link goes go a specific toy.  Rails takes the object and generates the correct URL.</li>
+        </ul>
+      </li>
+      <li>Look at <code>index.html.erb</code>
+        <ul>
+          <li>Notice that <code>new_toy</code> is the “prefix” to the route for creating a new toy.</li>
+        </ul>
+      </li>
+      <li>Similar with <code>edit_toy_path</code> in <code>show.html.erb</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="deploying-your-rails-app-to-heroku">Deploying Your Rails App to Heroku</h2>
+
+<p>You’ve worked so hard on your app, and it is now wonderful and ready to change the world — once you can figure out how to deploy it.  Let’s take a look at how easy it is to deploy your app to Heroku.  <a href="https://devcenter.heroku.com/articles/getting-started-with-rails6">https://devcenter.heroku.com/articles/getting-started-with-rails6</a> Before we do this we first need to push our app out to a repo.</p>
+
+<ol>
+  <li>
+    <p>First, go out to <code>github.com</code> (or <code>bitbucket.com</code>) and create a new empty repo.</p>
+  </li>
+  <li>
+    <p>Next, if you haven’t done this yet, set up <code>git</code> in your dev environment (Those of you using cloud IDEs will need to do this for sure):</p>
+
+    <pre><code> git config --global user.name "YOUR NAME"
+ git config --global user.email "YOUR EMAIL ADDRESS"
+ git config --global core.editor vim
+</code></pre>
+  </li>
+  <li>
+    <p>When you created your Rails project, Rails already initialized an empty git repo in your project directory; but, you still need to stage / commit your updates.  Do this by typing in these commands in the top level directory of your project:</p>
+
+    <pre><code> git add . 
+ git commit -m "initial commit"
+</code></pre>
+  </li>
+  <li>
+    <p>Copy/paste these commands on your dev shell (note the repo details need to be replaced with your own repo info.  Be sure to use the ssh URL, <em>not</em> the <code>https</code> url.):</p>
+
+    <pre><code> git remote add origin git@github.com:jengelsma/cautious-eureka.git
+ git push -u origin master
+</code></pre>
+  </li>
+  <li>
+    <p>Now it is time to deploy our app to Heroku.  First go out and register for a free account on <code>heroku.com</code>.</p>
+  </li>
+  <li>
+    <p>Next, note that Heroku uses a postgres database and your app is using sqlite by default.</p>
+
+    <ol>
+      <li>
+        <p>Update <code>Gemfile</code> so that it downloads the postgres gem for the production environment. (I suspect you will have to add this group.  If you already have a <code>:production</code> group, you can just add the <code>gem 'pg'</code> line to it.)</p>
+
+        <p class="language-ruby">group :production do 
+      gem ‘pg’
+   end</p>
+      </li>
+      <li>
+        <p>The sqlite3 gem is listed at the global level in the Gemfile by default. Move that line down under the <code>development</code> and <code>test</code> groups to avoid trying to install it on Heroku when you deploy.  It will fail!</p>
+
+        <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">group</span> <span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span> <span class="k">do</span>
+     <span class="c1"># Call 'byebug' anywhere in the code to stop execution and get a debugger console</span>
+     <span class="n">gem</span> <span class="s1">'byebug'</span><span class="p">,</span> <span class="ss">platforms: </span><span class="p">[</span><span class="ss">:mri</span><span class="p">,</span> <span class="ss">:mingw</span><span class="p">,</span> <span class="ss">:x64_mingw</span><span class="p">]</span>
+  
+     <span class="c1"># Use sqlite3 as the database for Active Record</span>
+     <span class="n">gem</span> <span class="s1">'sqlite3'</span><span class="p">,</span> <span class="s1">'~&gt; 1.4'</span>
+<span class="k">end</span>
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Next, on Heroku, you will be using the postgres database instead of the default sqlite, so in the <code>config/database.yml</code> file you need to change the production database settings to be the following:</p>
+
+    <pre><code> production:
+   adapter: postgresql
+   encoding: unicode
+   # For details on connection pooling, see Rails configuration guide
+   # http://guides.rubyonrails.org/configuring.html#database-pooling
+   pool: &lt;%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %&gt;
+   database: workspace_production
+   username: workspace
+   password: &lt;%= ENV['WORKSPACE_DATABASE_PASSWORD'] %&gt;
+</code></pre>
+  </li>
+  <li>
+    <p>Then we need to run <code>bundle install</code> to update <code>Gemfile.lock</code>.  the <code>--without production</code>  asks bundle to ignore production gems for now:</p>
+
+    <pre><code> bundle install --without production
+</code></pre>
+  </li>
+  <li>
+    <p>Since we updated <code>Gemfile</code> and <code>Gemfile.lock</code> we need to commit and push them.</p>
+
+    <pre><code> git commit -am "updated gem and db for production"
+ git push origin master
+</code></pre>
+  </li>
+  <li>
+    <p>Now, make sure the Heroku CLI tools are installed in your dev environment.</p>
+
+    <pre><code>heroku version
+</code></pre>
+
+    <p>This is the command to install Heroku in the CodeAnywhere
+environment</p>
+
+    <pre><code>wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+</code></pre>
+
+    <p>(This page has instructions on installing Heroku locally: <a href="https://devcenter.heroku.com/articles/heroku-cli">https://devcenter.heroku.com/articles/heroku-cli</a>)</p>
+  </li>
+  <li>
+    <p>Are you having fun yet? Next we need to tell the Heroku toolbelt to login to our Heroku account</p>
+
+    <pre><code>heroku login -i
+</code></pre>
+  </li>
+</ol>
+
+<p>(The <code>-i</code> is for “interactive”.  Interactive mode is necessary in
+   CodeAnywhere.  If you are installing Heroku locally, you can omit
+   the <code>-i</code> and log in through your browser.)</p>
+
+<ol>
+  <li>
+    <p>Then we add our ssh keys to our Heroku account:</p>
+
+    <pre><code>heroku keys:add
+</code></pre>
+  </li>
+  <li>
+    <p>And, of course, we create and rename the app instance from Heroku’s craftily generated name to our preferred name. Mine is jre-toys1; you can pick your own and substitute it in the command below.</p>
+
+    <pre><code>heroku create
+heroku rename jre-toys1
+</code></pre>
+  </li>
+  <li>
+    <p>And at long last, we are finally ready to deploy our app to Heroku using a good old fashioned <code>git push</code>.</p>
+
+    <pre><code>git push heroku master
+</code></pre>
+  </li>
+  <li>
+    <p>And to cap off our amazing Heroku party, nothing beats a satisfying <code>rake db:migrate</code>.  If you don’t do this, your app is not going to work because your DB scheme will not be up-to-date!</p>
+
+    <pre><code>heroku run rake db:migrate
+</code></pre>
+  </li>
+  <li>
+    <p>At this point, you should be able to point your browser to your Heroku url (you can find that from the heroku portal or the command below) and be amazed at the ease in which you can now deploy a Rails app.</p>
+
+    <pre><code>heroku info -s | grep web_url
+</code></pre>
+  </li>
+</ol>
+
+</main>
+</body>
+</html>

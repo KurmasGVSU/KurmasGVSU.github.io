@@ -1,0 +1,574 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="rails-demo-5-creating-a-rest-api-with-rails">Rails Demo 5: Creating a REST API with Rails</h1>
+
+<p>Rails 5 introduces the ability to create API-only applications.  This results in a lighter-weight app that is more conducive to creating SPAs.</p>
+
+<p>Let’s explore this capability by creating a new API-only version of the Rails app we’ve built thus far.</p>
+
+<ol>
+  <li>
+    <p>First, let’s create an API only version of our blog app.</p>
+
+    <pre><code> rails new blog-api --api
+</code></pre>
+  </li>
+  <li>
+    <p>Add the <code>config.hosts</code> line to <code>config/environments/development.rb</code></p>
+
+    <pre><code>config.hosts &lt;&lt; "your-app-name.codeanyapp.com"
+</code></pre>
+  </li>
+  <li>
+    <p>Next, we generate the models for posts</p>
+
+    <pre><code> rails g model Post title:string article:text likes:integer status:integer
+</code></pre>
+  </li>
+  <li>
+    <p>Next, we generate the model for authors</p>
+
+    <pre><code>rails g model Author fname:string lname:string email:string thumbnail:string
+</code></pre>
+  </li>
+  <li>
+    <p>Run the migration:</p>
+
+    <pre><code> rake db:migrate
+</code></pre>
+  </li>
+  <li>
+    <p>Now its time to formally associate authors with posts.  First we need to create a new migration to update our database schema:</p>
+
+    <pre><code> rails g migration AddAuthorToPost author:references
+</code></pre>
+
+    <p>Sqlite3 has a “bug” that will complain if you try to run the migration as is.  Edit the generated migration file and remove <code>null: false</code> from the <code>add_reference</code> line.  (You can add this constraint later, if you like.)</p>
+  </li>
+  <li>
+    <p>Now we need to inform our models of this relationship.  We do this by adding the following line to <code>models/author.rb</code>:</p>
+
+    <pre><code> has_many :posts
+</code></pre>
+
+    <p>and the following line to <code>models/post.rb</code></p>
+
+    <pre><code> belongs_to :author
+</code></pre>
+  </li>
+  <li>
+    <p>Now go ahead and run the migration, and then examine the new <code>author_id</code> field in the posts table by examining the <code>db/schema.rb</code>.</p>
+
+    <pre><code> rake db:migrate
+</code></pre>
+  </li>
+  <li>
+    <p>Now, let’s update our routes in <code>config/routes.rb</code></p>
+
+    <pre><code> Rails.application.routes.draw do
+   resources :authors do
+     resources :posts
+   end
+ end
+</code></pre>
+  </li>
+  <li>
+    <p>Generate your controllers:</p>
+
+    <pre><code> rails g controller Authors
+ rails g controller Posts
+</code></pre>
+  </li>
+  <li>
+    <p>Before implementing the controllers we need to define some helpers.  First in 
+<code>app/controllers/concerns/response.rb</code>:</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">module</span> <span class="nn">Response</span>
+   <span class="k">def</span> <span class="nf">json_response</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="ss">:ok</span><span class="p">)</span>
+     <span class="n">render</span> <span class="ss">json: </span><span class="n">object</span><span class="p">,</span> <span class="ss">status: </span><span class="n">status</span>
+   <span class="k">end</span>
+ <span class="k">end</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Then in <code>app/controllers/concerns/exception_handler.rb</code>:</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">ExceptionHandler</span>
+  <span class="c1"># provides the more graceful `included` method</span>
+  <span class="kp">extend</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Concern</span>
+    
+  <span class="n">included</span> <span class="k">do</span>
+    <span class="n">rescue_from</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">RecordNotFound</span> <span class="k">do</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span>
+      <span class="n">json_response</span><span class="p">({</span> <span class="ss">message: </span><span class="n">e</span><span class="p">.</span><span class="nf">message</span> <span class="p">},</span> <span class="ss">:not_found</span><span class="p">)</span>
+    <span class="k">end</span>
+    
+    <span class="n">rescue_from</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">RecordInvalid</span> <span class="k">do</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span>
+      <span class="n">json_response</span><span class="p">({</span> <span class="ss">message: </span><span class="n">e</span><span class="p">.</span><span class="nf">message</span> <span class="p">},</span> <span class="ss">:unprocessable_entity</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>        
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>And to hook these up in <code>controllers/application_controller.rb</code> we need:</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">API</span>
+  <span class="kp">include</span> <span class="no">Response</span>
+  <span class="kp">include</span> <span class="no">ExceptionHandler</span>
+<span class="k">end</span>
+</code></pre></div>    </div>
+  </li>
+  <li>A Ruby <code>module</code> is just one way of “mixing in” code into many classes.
+    <ul>
+      <li>Notice that the authors and posts controllers both inherit from <code>ApplicationController</code>.
+        <ul>
+          <li><code>ApplicationController</code> then has the line <code>includes Response</code>.  This makes all methods in the <code>Response</code> module instance methods of <code>ApplicationController</code> as well as any classes that inherit from it.</li>
+          <li>(I’m not sure why Prof. Engelsma chose to use a module instead of simply adding the method to <code>ApplicationController</code>)</li>
+        </ul>
+      </li>
+      <li>The <code>ExceptionHandler</code> model does something a little different:</li>
+      <li>When it is included in <code>ApplicationController</code>, the code in the <code>included</code> block is run  inside each class.</li>
+      <li>This allows us to set up exception handing for each controller.</li>
+      <li>These exception handlers generate the appropriate json response in case the user’s request can’t be honored.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Now we can implement the author controller like this:</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">AuthorsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+     
+  <span class="n">before_action</span> <span class="ss">:set_author</span><span class="p">,</span> <span class="ss">only: </span><span class="p">[</span><span class="ss">:show</span><span class="p">,</span> <span class="ss">:update</span><span class="p">,</span> <span class="ss">:destroy</span><span class="p">]</span>
+     
+  <span class="c1"># GET /authors</span>
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="vi">@authors</span> <span class="o">=</span> <span class="no">Author</span><span class="p">.</span><span class="nf">all</span>
+    <span class="n">json_response</span><span class="p">(</span><span class="vi">@authors</span><span class="p">)</span>
+  <span class="k">end</span>
+     
+  <span class="c1"># POST /authors</span>
+  <span class="k">def</span> <span class="nf">create</span>
+    <span class="vi">@author</span> <span class="o">=</span> <span class="no">Author</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="n">author_params</span><span class="p">)</span>
+    <span class="n">json_response</span><span class="p">(</span><span class="vi">@author</span><span class="p">,</span> <span class="ss">:created</span><span class="p">)</span>
+  <span class="k">end</span>
+     
+  <span class="c1"># GET /authors/:id</span>
+  <span class="k">def</span> <span class="nf">show</span>
+    <span class="n">json_response</span><span class="p">(</span><span class="vi">@author</span><span class="p">)</span>
+  <span class="k">end</span>
+     
+  <span class="c1"># PUT /authors/:id</span>
+  <span class="k">def</span> <span class="nf">update</span>
+    <span class="vi">@author</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">author_params</span><span class="p">)</span>
+    <span class="n">head</span> <span class="ss">:no_content</span>
+  <span class="k">end</span>
+     
+  <span class="c1"># DELETE /authors/:id</span>
+  <span class="k">def</span> <span class="nf">destroy</span>
+    <span class="vi">@author</span><span class="p">.</span><span class="nf">destroy</span>
+    <span class="n">head</span> <span class="ss">:no_content</span>
+  <span class="k">end</span>
+     
+  <span class="kp">private</span>
+     
+  <span class="k">def</span> <span class="nf">author_params</span>
+    <span class="c1"># whitelist params</span>
+    <span class="n">params</span><span class="p">.</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:fname</span><span class="p">,</span> <span class="ss">:lname</span><span class="p">,</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:thumbnail</span><span class="p">,</span> <span class="ss">:created_by</span><span class="p">)</span>
+  <span class="k">end</span>
+     
+  <span class="k">def</span> <span class="nf">set_author</span>
+    <span class="vi">@author</span> <span class="o">=</span> <span class="no">Author</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+  <span class="k">end</span>
+<span class="k">end</span> 
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>And we can implement the posts controller like this:</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">class</span> <span class="nc">PostsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+   <span class="n">before_action</span> <span class="ss">:set_author</span>
+   <span class="n">before_action</span> <span class="ss">:set_author_post</span><span class="p">,</span> <span class="ss">only: </span><span class="p">[</span><span class="ss">:show</span><span class="p">,</span> <span class="ss">:update</span><span class="p">,</span> <span class="ss">:destroy</span><span class="p">]</span>
+     
+   <span class="c1"># GET /authors/:author_id/posts</span>
+   <span class="k">def</span> <span class="nf">index</span>
+     <span class="n">json_response</span><span class="p">(</span><span class="vi">@author</span><span class="p">.</span><span class="nf">posts</span><span class="p">)</span>
+   <span class="k">end</span>
+     
+   <span class="c1"># GET /authors/:author_id/posts/:id</span>
+   <span class="k">def</span> <span class="nf">show</span>
+     <span class="n">json_response</span><span class="p">(</span><span class="vi">@post</span><span class="p">)</span>
+   <span class="k">end</span>
+     
+   <span class="c1"># POST /authors/:author_id/posts</span>
+   <span class="k">def</span> <span class="nf">create</span>
+     <span class="vi">@author</span><span class="p">.</span><span class="nf">posts</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="n">post_params</span><span class="p">)</span>
+     <span class="n">json_response</span><span class="p">(</span><span class="vi">@author</span><span class="p">,</span> <span class="ss">:created</span><span class="p">)</span>
+   <span class="k">end</span>
+     
+   <span class="c1"># PUT /authors/:author_id/posts/:id</span>
+   <span class="k">def</span> <span class="nf">update</span>
+     <span class="vi">@post</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">post_params</span><span class="p">)</span>
+     <span class="n">head</span> <span class="ss">:no_content</span>
+   <span class="k">end</span>
+     
+   <span class="c1"># DELETE /authors/:author_id/posts/:id</span>
+   <span class="k">def</span> <span class="nf">destroy</span>
+     <span class="vi">@post</span><span class="p">.</span><span class="nf">destroy</span>
+     <span class="n">head</span> <span class="ss">:no_content</span>
+   <span class="k">end</span>
+     
+   <span class="kp">private</span>
+     
+   <span class="k">def</span> <span class="nf">post_params</span>
+     <span class="n">params</span><span class="p">.</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:article</span><span class="p">,</span> <span class="ss">:likes</span><span class="p">,</span> <span class="ss">:status</span><span class="p">)</span>
+   <span class="k">end</span>
+     
+   <span class="k">def</span> <span class="nf">set_author</span>
+     <span class="vi">@author</span> <span class="o">=</span> <span class="no">Author</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:author_id</span><span class="p">])</span>
+   <span class="k">end</span>
+     
+   <span class="k">def</span> <span class="nf">set_author_post</span>
+     <span class="vi">@post</span> <span class="o">=</span> <span class="vi">@author</span><span class="p">.</span><span class="nf">posts</span><span class="p">.</span><span class="nf">find_by!</span><span class="p">(</span><span class="ss">id: </span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span> <span class="k">if</span> <span class="vi">@author</span>
+   <span class="k">end</span>
+ <span class="k">end</span>
+</code></pre></div>    </div>
+  </li>
+  <li>A few things to notice:
+    <ul>
+      <li>There are no <code>new</code> and <code>edit</code> routes: An API doesn’t use forms, so we don’t need a route to    display a form.</li>
+      <li>The <code>views</code> folder is empty.</li>
+      <li>The parameters for <code>create</code> and <code>update</code> aren’t packaged inside an <code>authors</code> object.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Run <code>rails console</code> and add some authors to the DB.</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Author</span><span class="p">.</span><span class="nf">create</span><span class="p">({</span><span class="ss">fname: </span><span class="s1">'Mark'</span><span class="p">,</span> <span class="ss">lname: </span><span class="s1">'Twain'</span><span class="p">,</span> <span class="ss">email: </span><span class="s1">'mark@twain.com'</span><span class="p">,</span> <span class="ss">thumbnail: </span><span class="s1">'test.jpg'</span><span class="p">})</span>    <span class="no">Author</span><span class="p">.</span><span class="nf">create</span><span class="p">({</span><span class="ss">fname: </span><span class="s1">'William'</span><span class="p">,</span> <span class="ss">lname: </span><span class="s1">'Shakespeare'</span><span class="p">,</span> <span class="ss">email: </span><span class="s1">'will@bard.com'</span><span class="p">,</span> <span class="ss">thumbnail: </span><span class="s1">'bard.jpg'</span><span class="p">})</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Now lets try some API calls commands:</li>
+</ol>
+
+<ul>
+  <li>Visit <code>http://yourhost.com/authors</code>.  Notice the response is JSON.</li>
+  <li>Run <code>curl http://yourhost.com/authors</code>.  You also get the author data as a JSON string.</li>
+  <li>Run <code>curl -d 'fname=George&amp;lname=Orwell&amp;email=george@orwell.com&amp;thumbnail=george.jpg' https:/railsapi-kurmasz.codeanyapp.com/authors</code></li>
+  <li>Run <code>curl -d 'title=1984&amp;article=beware&amp;likes=434&amp;status=published' https://railsapi-kurmaszcodeanyapp.com/authors/2/posts</code>
+    <ul>
+      <li>Notice posts are referenced <em>through</em> the article.</li>
+      <li>When creating the post, we didn’t have to pass an author id in the parameters:  It came from the route itself.</li>
+    </ul>
+  </li>
+  <li>There is no <code>posts</code> route.  You can only access posts of a specific author:  <code>/authors/2/posts</code></li>
+  <li>Run <code>curl http://yourhost.com/authors/2/posts</code></li>
+</ul>
+
+<h1 id="cors">CORS</h1>
+
+<p>Generally speaking, conventional browsers implement a <a href="https://en.wikipedia.org/wiki/Same-origin_policy">same-origin security policy</a> when it comes to AJAX fetches.  That is, AJAX fetches to domains different from the page from which they are made are blocked by default.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">Cross-origin resource sharing</a> (CORS) is a standard that allows a web browser and server to interact in a way that permits cross-origin AJAX calls from a browser to a server.   In order to use our Rails API-only app, we need to enable CORS on it.  To do this, you need to include the following in the <code>Gemfile</code> of your rails app:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'rack-cors'</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="n">rack</span><span class="o">/</span><span class="n">cors</span><span class="err">’</span> 
+</code></pre></div></div>
+
+<p>Don’t forget to run the <code>bundle install</code> command after updating the <code>Gemfile</code>:</p>
+
+<pre><code>bundle install
+</code></pre>
+
+<p>Finally, create a new file, <code>config/initializers/cors.rb</code> with the following content:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">config</span><span class="p">.</span><span class="nf">middleware</span><span class="p">.</span><span class="nf">insert_before</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Cors</span> <span class="k">do</span>
+  <span class="n">allow</span> <span class="k">do</span>
+    <span class="n">origins</span> <span class="s1">'http://localhost:3000'</span>
+
+    <span class="n">resource</span> <span class="s1">'*'</span><span class="p">,</span>
+      <span class="ss">headers: :any</span><span class="p">,</span>
+      <span class="ss">methods: </span><span class="p">[</span><span class="ss">:get</span><span class="p">,</span> <span class="ss">:post</span><span class="p">,</span> <span class="ss">:put</span><span class="p">,</span> <span class="ss">:patch</span><span class="p">,</span> <span class="ss">:delete</span><span class="p">,</span> <span class="ss">:options</span><span class="p">,</span> <span class="ss">:head</span><span class="p">]</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Note that this configuration expects your React app to be running on port 3000.  If you are using a different port, adjust the line above accordingly.  (By default, Rails runs on port 3000 also; so, if you are running both Rails and React locally, you will have to pick a different port for one of them.)</p>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <script type="text/javascript" src="kielce3.js"></script>
+   <title>CIS 351 ALU Project</title>
+
+   <style type="text/css">
+      th {
+         text-align: left;
+         padding-right: 15px;
+      }
+
+      table.componentDescription td {
+         vertical-align: top;
+         text-align: left;
+      }
+
+      table.grading td {
+         padding-right: 15px;
+      }
+   </style>
+</head>
+
+<body>
+<table style="border: 0; width: 100%">
+  <tr>
+    <td style="width: 25%">
+      <h1 style="text-align: left">CIS 351</h1>
+    </td>
+    <td style="width: 50%">
+      <h1 style="text-align: center">Project 3: Build an ALU</h1>
+    </td>
+    <td style="width: 25%">
+      <h1 style="text-align: right">Fall 2018</h1>
+    </td>
+  </tr>
+</table>
+
+<h1 style="text-align: center">Build an ALU using JLS</h1>
+
+
+<p>
+   Combine your adder, adder/subtracter, and comparator from previous projects into a single ALU.
+   Notice that you will <em>not</em> be implementing the ALU described in the textbook. Your ALU will have different
+   operations and op codes.</p>
+
+<p>Your ALU must perform the following 16-bit operations:
+<table>
+   <tr>
+      <td>Unsigned addition</td>
+      <td>0</td>
+   </tr>
+   <tr>
+      <td>Unsigned subtraction</td>
+      <td>1</td>
+   </tr>
+   <tr>
+      <td>And</td>
+      <td>2</td>
+   </tr>
+   <tr>
+      <td>Or</td>
+      <td>3</td>
+   </tr>
+   <tr>
+      <td>Not</td>
+      <td>4</td>
+   </tr>
+   <tr>
+      <td>Xor</td>
+      <td>5</td>
+   </tr>
+   <tr>
+      <td>lui</td>
+      <td>6</td>
+   </tr>
+   <tr>
+      <td>sltu</td>
+      <td>7</td>
+   </tr>
+   <tr>
+      <td>Signed addition</td>
+      <td>8</td>
+   </tr>
+   <tr>
+      <td>Signed subtraction</td>
+      <td>9</td>
+   </tr>
+   <tr>
+      <td>slt</td>
+      <td>15</td>
+   </tr>
+</table>
+
+
+<ul>
+
+   <li>Name your inputs <code>InputA</code>, <code>InputB</code>, and <code>Op</code>.</li>
+   <li>Name your outputs <code>Output</code> and <code>Overflow</code>.
+
+
+   <li>Set the <code>Overflow</code> output to 0 if overflow doesn't apply to the given operation. Specifically, <code>Overflow</code>
+      should be 0 for all operations except signed addition and signed subtraction. (Interestingly enough, by
+      definition, unsigned addition and unsigned subtraction do not overflow.)
+   </li>
+
+   <li>The <code>not</code> operator returns the negation of <code>InputA</code>. Ignore <code>InputB</code>.</li>
+
+   <li><code>lui</code> stands for <em>load upper immediate</em>. Take the lower 8 bits of <code>InputA</code> and place
+      them in the upper 8 bits of the output. Ignore <code>InputB</code>.
+   </li>
+
+   <li><code>slt</code> stands for <em>set if less than</em>. The output should be 1 if <code>InputA</code>
+      is less than <code>InputB</code> and 0 otherwise. <code>slt</code> treats the inputs as signed integers,
+      <code>sltu</code> treats the numbers as unsigned.
+   </li>
+
+
+   <li>Your entire ALU may contain <em>one</em> adder only. Your Adder/Subtractor from the previous project should
+      already follow this design. For this project, you need to design your ALU so that your comparator uses your
+      Adder/Subtractor.
+   </li>
+</ul>
+
+
+<h2>Hints and shortcuts</h2>
+
+<ul>
+
+   <li>You may find this <a href="ALU_16bit_starter.jls">starter
+      file</a> useful. It has the input and output pins set and also contains an example of using the "group bits"
+      feature of the unbundler.
+   </li>
+
+   <li>You may find this sample test script helpful:
+     <a href="Sample16BitALUTest.java"><code>Sample16BitALUTest.java</code></a></li>
+
+
+   <li>Remember, JLS inserts the code for sub-circuits directly into the
+      circuits into which they are imported. Thus, changes to sub-circuits
+      are not seen by the circuits that contain them. If you discover a bug
+      in a sub-circuit, you must delete and re-import that sub-circuit into
+      the parent. (Again, test your subcircuits thoroughly before importing
+      them!)
+   </li>
+
+   <li>Remember that no software is perfect. This includes <code>JLS</code>
+      and <code>DLUnit</code>. It is in your best interest to start
+      early in case problems arise. Also, please e-mail me with any bugs you
+      find or feature requests you have. If JLS crashes, please e-mail me the
+      <code>JLSerror</code> file.
+   </li>
+</ul>
+
+<h2><a name="Grading">Grading</a></h2>
+
+
+<p>This assignment will be scored out of 30 points.</p>
+
+<table class="grading">
+   <tr>
+      <th>Category</th>
+      <th>Rubric</th>
+      <th>Maximum Score</th>
+   </tr>
+
+   <tr>
+      <td>Correctness</td>
+      <td></td>
+      <td></td>
+   </tr>
+
+   <tr>
+      <td>
+      <td>Not attempted</td>
+      <td>0</td>
+   </tr>
+
+
+   <tr>
+      <td></td>
+      <td>Passes some tests</td>
+      <td>1 point per op </td>
+   </tr>
+
+   <tr>
+      <td></td>
+      <td>Passes all tests</td>
+      <td>17</td>
+   </tr>
+
+   <tr>
+        <td>Date 100% correct</td>
+        <td></td>
+        <td></td>
+     </tr>
+
+     <tr>
+        <td></td>
+        <td>Two days early</td>
+        <td>12</td>
+     </tr>
+
+     <tr>
+        <td></td>
+        <td>One day early</td>
+        <td>11</td>
+     </tr>
+
+     <tr>
+        <td></td>
+        <td>On time</td>
+        <td>10</td>
+     </tr>
+
+     <tr>
+        <td></td>
+        <td>One day late</td>
+        <td>8</td>
+     </tr>
+
+     <tr>
+        <td></td>
+        <td>(-2 per day)</td>
+        <td>...</td>
+     </tr>
+
+     <tr>
+        <td></td>
+        <td>Five or more days late</td>
+        <td>0</td>
+     </tr>
+
+   <tr>
+      <td>Presentation</td>
+      <td></td>
+      <td></td>
+   </tr>
+
+   <tr>
+      <td></td>
+      <td>Documentation and Neatness</td>
+      <td>3</td>
+   </tr>
+
+</table>
+
+
+<p class="listHeader">Penalties</p>
+<ul>
+   <li>You will loose 6 points for each unnecessary copy of an adder or adder/subtracter.</li>
+   <li>You will loose 2 points for each buggy submission (-3 if the submission contains too few tests).</li>
+</ul>
+
+
+<h2>Deliverables</h2>
+
+<p>To submit your project:</p>
+
+<ol>
+   <li>Add a text box to your <code>jls</code> files that includes
+      <ul>
+         <li>your name,</li>
+         <li>the file name,</li>
+         <li>the assignment name, and</li>
+         <li>the assignment due date.</li>
+      </ul>
+   </li>
+
+   <li>Either
+      <ul>
+
+         <li>Attach all relevant <code>.jls</code> files, bug reports, and test
+            scripts using Assignment Manager. (Attaching your test scripts allows
+            me to determine how well you tested your code, and assess partial
+            credit if necessary.)
+         </li>
+
+         <li>
+            Add me (<code>kurmasz</code>) as a collaborator to your <em>private</em> GitHub or BitBucket project and
+           send me a
+           pull
+            request.
+         </li>
+      </ul>
+
+</ol>
+
+<hr>
+<p>Updated Wednesday, 17 October 2018, 3:14 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/html5_validate_w3c.png"alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>
+

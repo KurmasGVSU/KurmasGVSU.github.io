@@ -1,0 +1,216 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="gvsu-cis-263">GVSU CIS 263</h1>
+
+<h2 id="week-10--day-1">Week 10 / Day 1</h2>
+
+<h4 id="np">NP</h4>
+
+<ul>
+  <li>NP means “Non-deterministic polynomial time”.
+    <ul>
+      <li>Algorithm will run in polynomial time, if the algorithm can make an optimal guess at each stage.</li>
+      <li>Easier to think of it as an algorithm whose answer can be verified in polynomial time.</li>
+    </ul>
+  </li>
+  <li>Of course, all algorithms that run in polynomial time (i.e, “P”) are in NP.</li>
+  <li class="q">List some problems not known to be in P:
+    <ul>
+      <li>Travelling salesman problem</li>
+      <li>Satisfiability</li>
+      <li>Colorability.  (<em>Not</em> the four-color map problem!)</li>
+      <li>Max clique</li>
+      <li>Bin packing</li>
+    </ul>
+  </li>
+  <li>Similar problems can go from very easy to very hard
+    <ul>
+      <li>Schedule jobs to minimize waiting time is in P.</li>
+      <li>Minimize final completion time on a multi-processor is in NP.</li>
+    </ul>
+  </li>
+  <li>Cook-Levin theorem</li>
+</ul>
+
+<h4 id="decideability">Decideability</h4>
+
+<ul>
+  <li>The Halting Problem
+    <ul>
+      <li><code>boolean will_halt(string code, string input)</code></li>
+      <li class="q">What does <code>will_halt(troublemaker, troublemaker)</code> return?</li>
+    </ul>
+  </li>
+</ul>
+
+<pre><code>boolean troublemaker(string code, string input) {
+   if (will_halt(code, input)) {
+      while (true);
+   } else {
+     return false;
+   }
+}
+</code></pre>
+
+<ul>
+  <li>The <a href="https://en.wikipedia.org/wiki/Post_correspondence_problem">https://en.wikipedia.org/wiki/Post_correspondence_problem</a>(Post correspondence problem)
+    <ul>
+      <li>Consider an alphabet of symbols (e.g., “a”, and “b”)</li>
+      <li>Define two sets of n words
+        <ul>
+          <li>A: a ab bba</li>
+          <li>B: baa aa bb</li>
+        </ul>
+      </li>
+      <li>Can you find a sequence of indexes i1, i2, i3, … such that such that Ai1, Ai2, Ai3, … = Bi1, Bi2, Bi3, …</li>
+      <li>In this case (3, 2, 3, 1) is a solution.</li>
+      <li>In general, no algorithm is guaranteed to find a solution.</li>
+    </ul>
+  </li>
+  <li>Determining whether a player has a winning strategy in Magic the Gathering is undecidable.</li>
+</ul>
+
+<h2 id="week-10--day-2">Week 10 / Day 2</h2>
+
+<h4 id="greedy-algorithms">Greedy algorithms</h4>
+
+<ul>
+  <li class="q">What is a “greedy” algorithm.  Give examples
+    <ul>
+      <li>Giving change</li>
+      <li>Job scheduling to minimize average wait time
+        <ul>
+          <li>Just schedule shortest job first.</li>
+          <li>Extends to multi-processor system.  Given <code>P</code> processors, just sort by time then schedule in batches of <code>P</code>.</li>
+          <li>Note: Minimizing total completion time, although it sounds similar is much more difficult.</li>
+        </ul>
+      </li>
+      <li>Big picture:
+        <ul>
+          <li>Small changes to problem definition can make big changes in running time.</li>
+          <li>Knowing what problems are NP-complete, and how to do reductions can help you avoid spending a lot of time
+ trying to find an ideal solution when none exists (in practice).</li>
+        </ul>
+      </li>
+      <li>Huffman Codes</li>
+    </ul>
+  </li>
+  <li>Huffman Codes
+    <ul>
+      <li>Using 8 bits for each ASCII character is not optimal because some letters are used much more often than others.</li>
+      <li>Let more frequently used letters have shorter codes.</li>
+      <li>Combine trees with lowest total frequency.</li>
+      <li>This algorithm provides optimal tree</li>
+      <li>This is a greedy algorithm because we can make an optimal step by looking at individual nodes (rather than having
+ to consider the complete global picture).</li>
+      <li>Contrast with Max Clique, where there is no “greedy” choice that works (e.g., looking at biggest vertexes first
+ doesn’t help.)</li>
+    </ul>
+  </li>
+  <li>Where greedy algorithms don’t work: Bin Packing
+    <ul>
+      <li>Pack <code>N</code> items of given size into as few containers as possible.</li>
+      <li>(Normalize containers to size 1.  Package sizes must then be &lt; 1.)</li>
+      <li>Two versions:
+        <ul>
+          <li><em>Online</em>:  Each item must be assigned a container as it arrives.</li>
+          <li><em>Offline</em>: Get to see the entire set of items before making a decision.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="q">Is there an online bin packing algorithm that will give an optimal solution (i.e., a solution as good as the
+ optimal off-line solution?)
+    <ul>
+      <li>No.  Consider <code>M</code> items of 1/2 - ε followed by <code>M</code> items of 1/2 + ε. An optimal on-line
+  algorithm must put each of the first <code>M</code> items in a separate bin, so each of the next <code>M</code> can be paired accordingly.
+  However, a different workload with only the small items must be packed two to a container.  The online algorithm
+has no way of knowing which workload it has currently.</li>
+      <li>Any online algorithm can be forced to use at least 4/3 of the optimal number of bins. <span class="q">Why</span>
+        <ul>
+          <li class="to-me">Have students try to come up with worst-case</li>
+          <li>Think in terms of the “adversary”.  Given any online bin packing algorithm, the adversary can construct an
+ input to force an output 4/3 of of optimal or worse.</li>
+          <li>Suppose the workload starts out with 100 “small” boxes (size 1/2 - ε)
+<span class="q">What must algorithm do so adversary can’t just top and call “foul?”</span>
+            <ul>
+              <li>If algorithm pairs the small boxes up, the adversary can switch to large boxes, which will
+eventually become sub-optimal. (For example, if you stack for small boxes in two piles, adversary will then
+ send 4 large boxes, giving you 6 instead of optimal 4. FAIL.)</li>
+              <li>If algorithm doesn’t pair small boxes, adversary just declars end of input when current state is sub-optimal.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Next fit:  It either fits in previous box or starts a new box: <code>O(n)</code>
+    <ul>
+      <li><span class="q">What is running time for <code>N</code> items?</span> <code>O(n)</code>.</li>
+      <li><span class="q">How bad can this get?</span> 2x. Look at pairs of filled bins.  Sum of each pair must be at least 1, 
+otherwise they would have been combined.</li>
+      <li class="q">Is the 2x factor “tight” (i.e., is there a sequence of package sizes that results in a <code>2opt</code> number of bins?)
+        <ul>
+          <li class="to-me">Have students try to come up with worst-case</li>
+          <li>Alternate boxes of size <code>1/2</code> and <code>2/N</code>.  Optimally uses N/4 + 1 boxes.  But algorithm will use N/2 boxes.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>First fit: Place item into first box into which it fits.
+    <ul>
+      <li><span class="q">What is running time for <code>N</code> items?</span> Naively <code>O(n^2)</code>.  Can be done in <code>O(n log n)</code></li>
+      <li><span class="q">What is worst case?</span>
+        <ul>
+          <li class="to-me">Have students try to come up with worst-case</li>
+          <li>about <code>1.7opt</code>.</li>
+          <li>Consider <code>6M</code> of 1/7 + ε  followed by <code>6M</code> of 1/3 + ε followed by <code>6M</code> of 1/2 + ε
+            <ul>
+              <li>Will use <code>10M</code> bins (<code>M</code> for the 1/7, <code>3M</code> for the 1/3 and <code>6M</code> for the 1/2)</li>
+              <li>Optimal is <code>6M</code>.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Average case for random inputs is only 1.02.  Pretty good!.</li>
+    </ul>
+  </li>
+  <li>Best fit:  Place in tightest space.
+    <ul>
+      <li>Sounds good; but, has similar worst cases.</li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

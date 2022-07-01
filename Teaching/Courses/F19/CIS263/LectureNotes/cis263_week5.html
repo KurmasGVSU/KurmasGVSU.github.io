@@ -1,0 +1,282 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="gvsu-cis-263">GVSU CIS 263</h1>
+
+<h2 id="week-5--day-2">Week 5 / Day 2</h2>
+
+<h2 id="trees">Trees</h2>
+
+<ul>
+  <li>Binary Tree:  Like a list, but with two “next” nodes</li>
+  <li>Terms
+    <ul>
+      <li>Leaf</li>
+      <li>Internal node</li>
+      <li>Parent</li>
+      <li>Root</li>
+      <li>Depth: Number of edges on path to root.
+        <ul>
+          <li>(Root has depth 0)</li>
+        </ul>
+      </li>
+      <li>Height is maximum depth
+        <ul>
+          <li>(A tree with just one node has depth 0)</li>
+        </ul>
+      </li>
+      <li>“Full”:  Every node contains 0 or two children</li>
+      <li>“Complete”: All levels except the last are full</li>
+      <li>“Perfect”: All levels, including the last, are full.</li>
+    </ul>
+  </li>
+  <li>Binary trees have at most two children.  Trees in general can have any number of children.
+    <ul>
+      <li>File system.</li>
+    </ul>
+  </li>
+  <li>Binary search tree:  Smaller items go left, larger items go right.</li>
+  <li>Search
+    <ul>
+      <li class="question">Implement search algorithm.z
+        <ul>
+          <li>
+            <pre><code>BSTSearch(tree, key) {
+    cur = tree-&gt;root   
+    while (cur is not null)
+       if (key == cur-&gt;key)
+          return cur // Found
+       else if (key &lt; cur-&gt;key)
+          cur = cur-&gt;left
+       else
+          cur = cur-&gt;right
+    return null // Not found
+ }
+</code></pre>
+          </li>
+        </ul>
+      </li>
+      <li class="question">Implement search algorithm recursively.
+        <ul>
+          <li>
+            <pre><code>bool contains( const Comparable &amp; x, BinaryNode *t ) const
+{
+    if( t == nullptr )
+        return false;
+    else if( x &lt; t-&gt;element )
+        return contains( x, t-&gt;left );
+    else if( t-&gt;element &lt; x )
+        return contains( x, t-&gt;right );
+    else
+        return true;    // Match
+}
+</code></pre>
+          </li>
+        </ul>
+      </li>
+      <li class="question">What is the worst-case run time?</li>
+    </ul>
+  </li>
+  <li>Insert
+    <ul>
+      <li class="question">Implement <code>insert</code>
+        <ul>
+          <li>
+            <pre><code>BSTInsert(tree, node) {
+   if (tree-&gt;root is null)
+     tree-&gt;root = node
+     node-&gt;left = null
+     node-&gt;right = null
+   else
+     cur = tree-&gt;root
+     while (cur is not null) 
+       if (node-&gt;key &lt; cur-&gt;key)
+          if (cur-&gt;left is null)
+            cur-&gt;left = node
+            cur = null
+          else
+            cur = cur-&gt;left
+       else 
+          if (cur-&gt;right is null)
+            cur-&gt;right = node
+            cur = null
+          else
+            cur = cur-&gt;right       
+     node-&gt;left = null
+     node-&gt;right = null
+}
+</code></pre>
+          </li>
+        </ul>
+      </li>
+      <li class="question">Implement insert recursively
+        <ul>
+          <li>
+            <pre><code>void insert( const Comparable &amp; x, BinaryNode * &amp; t )
+{
+    if( t == nullptr )
+        t = new BinaryNode{ x, nullptr, nullptr };
+    else if( x &lt; t-&gt;element )
+        insert( x, t-&gt;left );
+    else if( t-&gt;element &lt; x )
+        insert( x, t-&gt;right );
+    else
+        ;  // Duplicate; do nothing
+}
+</code></pre>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Remove
+    <ul>
+      <li class="question">What are the different cases?
+        <ul>
+          <li>Removing leaf</li>
+          <li>Removing internal node with one child</li>
+          <li>Removing internal node with two children</li>
+        </ul>
+      </li>
+      <li class="question">Draw a picture of each scenario (and what should happen)
+        <ul>
+          <li>Leaf is just removed</li>
+          <li>Internal node with one child: just wire child up to the parent</li>
+          <li>Internal node with two childen:
+            <ol>
+              <li>Move <em>data</em> from leftmost node of right child.</li>
+              <li>Delete the copied node.</li>
+            </ol>
+          </li>
+          <li class="question">Why does the two-child technique work?</li>
+        </ul>
+      </li>
+      <li>
+        <pre><code>TRemove(tree, key) {
+   par = null
+   cur = tree-&gt;root
+   while (cur is not null) { // Search for node
+      if (cur-&gt;key == key) { // Node found 
+         if (!cur-&gt;left &amp;&amp; !cur-&gt;right) {        // Remove leaf
+            if (!par) // Node is root
+               tree-&gt;root = null
+            else if (par-&gt;left == cur) 
+               par-&gt;left = null
+            else
+               par-&gt;right = null
+         }
+         else if (cur-&gt;left &amp;&amp; !cur-&gt;right) {    // Remove node with only left child
+            if (!par) // Node is root
+               tree-&gt;root = cur-&gt;left
+            else if (par-&gt;left == cur) 
+               par-&gt;left = cur-&gt;left
+            else
+               par-&gt;right = cur-&gt;left
+         }
+         else if (!cur-&gt;left &amp;&amp; cur-&gt;right) {    // Remove node with only right child
+            if (!par) // Node is root
+               tree-&gt;root = cur-&gt;right
+            else if (par-&gt;left == cur) 
+               par-&gt;left = cur-&gt;right
+            else
+               par-&gt;right = cur-&gt;right
+         }
+         else {                                  // Remove node with two children
+            // Find successor (leftmost child of right subtree)
+            suc = cur-&gt;right
+            while (suc-&gt;left is not null)
+               suc = suc-&gt;left
+            successorData = Create copy of suc's data
+            BSTRemove(tree, suc-&gt;key)     // Remove successor
+            Assign cur's data with successorData
+         }
+         return // Node found and removed
+      }
+      else if (cur-&gt;key &lt; key) { // Search right
+         par = cur
+         cur = cur-&gt;right
+      }
+      else {                     // Search left
+         par = cur
+         cur = cur-&gt;left
+      }
+   }
+   return // Node not found
+}
+</code></pre>
+      </li>
+      <li>Notice the use of a reference to a pointer:
+        <ul>
+          <li>
+            <pre><code>void remove( const Comparable &amp; x, BinaryNode * &amp; t )
+{
+    if( t == nullptr )
+        return;   // Item not found; do nothing
+    if( x &lt; t-&gt;element )
+        remove( x, t-&gt;left );
+    else if( t-&gt;element &lt; x )
+        remove( x, t-&gt;right );
+    else if( t-&gt;left != nullptr &amp;&amp; t-&gt;right != nullptr ) // Two children
+    {
+        t-&gt;element = findMin( t-&gt;right )-&gt;element;
+        remove( t-&gt;element, t-&gt;right );
+    }
+    else
+    {
+        BinaryNode *oldNode = t;
+        t = ( t-&gt;left != nullptr ) ? t-&gt;left : t-&gt;right;
+        delete oldNode;
+    }
+}
+</code></pre>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Traversal
+    <ul>
+      <li>Pre-order</li>
+      <li>Post-order</li>
+      <li>In-order</li>
+      <li class="question">When is each used?</li>
+      <li class="to-me">Show expression tree</li>
+      <li class="to-me">Show file system with a pre-order traversal</li>
+    </ul>
+  </li>
+  <li class="question">What is the key to preserving <code>log(n)</code> runtime?</li>
+  <li class="question">How do we do that?</li>
+  <li>Binary Tree source from Weiss <a href="https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/BinarySearchTree.h">https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/BinarySearchTree.h</a></li>
+</ul>
+
+
+</main>
+</body>
+</html>

@@ -1,0 +1,390 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="iterators">Iterators</h1>
+
+<ul>
+  <li>“An <em>iterator</em> is an object that allows the user to acquire and use each element in a collection one at at time.”</li>
+  <li>
+    <p>Suppose you want to process each element in a linked list.  <span class="q">What is the problem with a traditional <code>for</code> loop like the one shown below?</span></p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nc">String</span> <span class="n">item</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+  <span class="c1">// do something with item</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>As we <em>iterate</em> through the list, we need to keep track of where we are.  But, we don’t want to expose the private <code>Node</code> object to the user (because he might mess up the list).</li>
+  <li>An iterator is simply an object that wraps up these internal details and presents a “safe” interface to the user (i.e., provides a mechanism for the developer to control what the user can do to the list).</li>
+  <li>Basic operations:
+    <ul>
+      <li><code>hasNext</code></li>
+      <li><code>next</code></li>
+      <li><code>remove</code></li>
+    </ul>
+  </li>
+  <li>In Java, all iterators should have these three operations (as dictated by the <code>Iterator</code> interface).  Some data structures may choose to provide more.</li>
+  <li>Java’s “<code>foreach</code>” loop is just “syntactic sugar” for using an iterator.
+    <ul>
+      <li>When you write <code>for (String s : someList)</code>, Java is really doing this:</li>
+      <li><code>for (Iterator i = someList.iterator(); i.hasNext();) { String s = i.next(); // your code here}</code></li>
+      <li>By having a consistent <code>Iterator</code> interface, you can use the same code to iterate through any data structure.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="linked-list-iterator-implementation">Linked List iterator Implementation:</h2>
+
+<ul>
+  <li class="to-me">Examine source code from book.
+    <ul>
+      <li>Note two instance variables:  <code>current</code> and <code>iteratorModCount</code></li>
+      <li><code>current</code> is initialized to <code>head</code>.
+        <ul>
+          <li>This is possible because the <code>ListIterator</code> class is defined <em>inside</em> of the <code>LinkedList</code> class.  Therefore, it has direct access to the private instance data.</li>
+          <li>This access for nested classes is a feature of Java and doesn’t apply to all programming languages.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>hasNext</code> just checks that <code>current != null</code></li>
+  <li><code>next</code> does two things
+    <ol>
+      <li>Access the data that <code>current</code> points as</li>
+      <li>Increments <code>current</code>.</li>
+    </ol>
+  </li>
+  <li><code>remove</code> is not implemented? <span class="q">Why</span>
+    <ul>
+      <li>(Note that <code>remove</code> removes the last element returned by <code>next</code>)</li>
+    </ul>
+  </li>
+  <li>Notice how this iterator limits how users can interact with <code>current</code>.</li>
+  <li>Also notice that <code>ListIterator</code> is declared <code>private</code>.  This means that users can’t even access this class directly. They can only interact with the more general <code>Iterator</code> interface.
+    <ul>
+      <li>(Look at the <code>LinkedList</code>’s <code>iterator</code> method).</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="more-iterator-uses">More iterator uses</h2>
+
+<ul>
+  <li>Java’s <code>LinkedList</code> class is a doubly-linked list.</li>
+  <li>It implements the <code>remove</code> method (probably because this can be done in <code>O(1)</code> time.)</li>
+  <li>Java’s <code>LinkedList</code> also has a <code>ListIterator</code> with more features.
+    <ul>
+      <li><code>add</code></li>
+    </ul>
+  </li>
+  <li>In theory, you could have an <code>indexOf</code> method return a <code>ListIterator</code> so you could begin iterating with a specific element.</li>
+  <li>C++ uses iterators to mark the beginning and ending element of operations like <code>sort</code>.</li>
+</ul>
+
+<h2 id="comodification">Comodification</h2>
+
+<ul>
+  <li>Modifying a list (or other data structure) will iterating over it can really mess things up.
+    <ul>
+      <li>Suppose you are pointing at element 6 on the list.  Then remove elements 6 and 7.  When you call <code>next</code> you might end up pointing at 7, even though it was removed.</li>
+    </ul>
+  </li>
+  <li>To avoid these types of problems, Java takes a <em>fail fast</em> approach and watches for “comodification”.
+    <ul>
+      <li>If such an event is detected, then an exception is raised.  This exception causes the program to fail as soon as the problem is detected.</li>
+      <li>Other languages (e.g., C++) don’t watch.  It’s up to the programmer to do it right.  When there is a mistake, it may not become evident for many lines of code, making it difficult to find the source of the bug.</li>
+      <li>This is the purpose of the <code>iteratorModCount</code> variable.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="arraylist-iterator-implementation">ArrayList iterator implementation</h2>
+
+<ul>
+  <li>An ArrayList’s iterator is just an object that wraps up the current index.</li>
+</ul>
+
+</main>
+</body>
+</html>

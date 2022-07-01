@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MIPSUnit::MSpec</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+
+        code {
+            font-size: 120%;
+        }
+
+        .multi_line_box, .single_line_box {
+            background: #ffebcd;
+            border: 1px solid;
+            padding: 5px;
+            margin: 5px;
+            position: relative;
+
+        }
+
+        .single_line_box {
+            display: inline-block;
+            left: 35px;
+        }
+
+        .multi_line_box {
+            width: 85%;
+            min-width: 300px;
+        }
+
+        .box_and_caption {
+            /* border: solid 1px;*/
+            /* text-align: center; */
+            position: relative;
+            left: 35px;
+            display: inline-block;
+            margin: 5px;
+            margin-bottom: 25px;
+        }
+
+        dd {
+            margin-bottom: 10px;
+        }
+
+        .nobreak {
+            white-space: nowrap;
+        }
+
+        .listHeader {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        ul {
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 100%;
+
+            overflow: auto;
+            color: white;
+            padding: 5px;
+            background-color: #005d95;
+            /* "Laker blue is #0065a4, but fails ARIA contrast test.
+                Color above is as close as I can get
+                https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+            */
+        }
+
+        .navigation a:link {
+            color: white;
+        }
+
+        .navigation a:visited {
+            color: white;
+        }
+
+        .navigation ul {
+            padding-left: 0;
+        }
+
+        .navigation ul li {
+            list-style-position: inside
+        }
+
+        .content {
+            position: absolute;
+            top: 0;
+            left: 160px;
+            padding: 10px;
+            overflow: auto;
+        }
+
+        /* A link that isn't displayed so that the
+           accessibility checker is happy.
+        */
+        .bypass {
+            position: absolute;
+            top: 0;
+            right: 100%;
+            z-index: 9999;
+            color: black;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<div class="navigation" id="navigation">
+    <a class='bypass' href="#content">Skip to main content</a>
+    MUnit
+    <ul>
+        <li><a href="#basics">Basics</a></li>
+        <li><a href="#advanced">Advanced</a></li>
+        <li><a href="#limitations">Why <code>MUnit</code>?</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact_info">Contact Info</a></li>
+    </ul>
+
+    <hr>
+
+    <ul>
+        <li><a href="dist/doc/index.html">Documentation</a></li>
+        <li><a href="download.html">Download</a></li>
+        <!-- <li><a href="dist/munit.jar">Download</a></li>-->
+    </ul>
+</div>
+
+<!-- Main content -->
+<div class="content" id="content">
+    <h1><code>MIPSUnit::MUnit</code></h1>
+
+    <p>Current Version: 1.4.4 released December 2020</p>
+
+    <p><code>MIPSUnit::MUnit</code> is a <code><a target="_top"
+                                                  href="http://www.junit.org">JUnit</a></code>-based unit testing
+        framework for MIPS assembly. In particular, it is a Java interface
+        to the <code><a target="_top" href="http://courses.missouristate.edu/KenVollmar/MARS/">MARS</a></code> MIPS
+        simulator that helps users write <code>JUnit</code> tests for their
+        assembly code.</p>
+
+    <p class="listHeader"><code>MUnit</code> provides methods that
+
+    <ul>
+        <li> set the initial machine state (registers and/or memory),</li>
+        <li> instruct <code>MARS</code> to simulate the function under test, and</li>
+        <li> query the final state of the simulated machine.</li>
+    </ul>
+
+    Programmers use <code>JUnit</code>'s <code><a target="_top"
+                                                  href="http://junit.sourceforge.net/javadoc/org/junit/Assert.html">Assert</a></code>
+    methods to verify that the function under test behaved as expected.
+    Errors are reported using <code>JUnit</code>'s built-in error
+    reporting mechanism.
+
+    <h2>Example Workflow</h2>
+
+    <p>Suppose you have assigned the following to your assembly language class:</p>
+
+    <div class="multi_line_box" style="left: 35px;">
+
+        Write a function named <code>in_range</code> that takes three parameters &mdash; <code>value</code>,
+        <code>min</code>,
+        and <code>max</code> &mdash; and returns 1 (for <code>true</code>) if <code class="nobreak">min &le; value &le;
+        max</code>
+        and 0 (for <code>false</code>) otherwise.
+
+        <p>Be sure that your function is named <code>in_range</code> (spelled correctly)
+            and declared in your code's <code>.globl</code> section.</p>
+    </div>
+
+    <p>Begin by writing a <code>JUnit</code> test class that describes the expected behavior of
+        <code>in_range</code>:</p>
+
+    <span class="box_and_caption">
+<a name="example1">
+   <iframe class="multi_line_box" src="InRangeTest.txt" width="450" height="665" style="width: 525px;"
+           title="example1"></iframe>
+</a>
+<br>
+   <a name="example1b"><strong>Example 1:</strong></a> Simple
+<code>MUnit</code> example.
+      (<a href="InRangeTest.java"><code>InRangeTest.java</code></a>)
+</span>
+
+    <p>Next, compile <code>InRangeTest.java</code>.
+
+    <div class="single_line_box">
+        <code>
+            javac -cp munit.jar InRangeTest.java
+        </code>
+    </div>
+
+    <p>Finally, run the tests. Pass the name of the assembly file and the
+        name of the <em>class file</em> on the command line. (Passing
+        the name of the class file is unusual, but provides a
+        way to run the tests without requiring the user to explicitly set up
+        the runtime classpath.)
+    <div class="single_line_box">
+        <code>
+            java -jar munit.jar in_range_correct.asm InRangeTest.class
+        </code>
+    </div>
+
+    <p class="listHeader">Download these files and try it yourself:</p>
+    <ul>
+        <li><a href="InRangeTest.java"><code>InRangeTest.java</code></a></li>
+        <li><a href="in_range_correct.asm"><code>in_range_correct.asm</code></a></li>
+        <li><a href="in_range_error.asm"><code>in_range_error.asm</code></a></li>
+    </ul>
+
+    <h2><a name="basics">Basics</a></h2>
+
+    <p>Users use the <a href="dist/doc/edu/gvsu/mipsunit/munit/MUnit.Register.html"><code>Registers</code></a>
+        enumeration to specify
+        registers. Including this line:
+
+    <div class="single_line_box">
+        <code>import static
+            edu.gvsu.mipsunit.munit.MUnit.Register.*;</code>
+    </div>
+
+    <p> allows users to refer to registers without further qualification.
+        Similarly, all methods are <code>static</code> members of
+        <code>MUnit</code>; thus, including
+
+    <div class="single_line_box">
+        <code>import static edu.gvsu.mipsunit.munit.MUnit.*;</code>
+    </div>
+
+    <p>allows users to call the key methods without further
+        qualification. Our goal in using the enumeration and static methods
+        was to minimize the amount of typing needed while still providing a
+        reasonable level of compile-time error checking.</p>
+
+    <p>We expect that the vast majority of users will primarily use three
+        groups of methods from the <a href="dist/doc/edu/gvsu/mipsunit/munit/MUnit.html"><code>MUnit</code></a> class:
+
+    <dl>
+        <dt><code>...data</code></dt>
+        <dd>Create a data label (i.e., a line in
+            the <code>.data</code> section) with the given values:
+            <ul>
+                <li><code>Label d1 = wordData(1, 2, 4, 9, 16, 22, 18,
+                    14);</code></li>
+                <li><code>Label c1 = byteData('a', 'b', 'c', 'd');</code></li>
+                <li><code>Label s1 = asciiData("Go, Jackets!");</code></li>
+            </ul>
+        </dd>
+        <dt><code>set</code></dt>
+        <dd>Set a register to a specific value:
+            <ul>
+                <li><code>set(t1, 16);</code> // equivalent to <code>li $t1, 16</code></li>
+                <li><code>set(t1, d1);</code> // equivalent to <code>la $t1, d1</code></li>
+            </ul>
+
+        <dt><code>run</code></dt>
+        <dd> Run the function under test.
+            <ul>
+                <li><code>run("in_range", 10, 20, 30);</code> // extra
+                    parameters placed into $a0, $a1, $a2
+                </li>
+                <li><code>run("index_of", d1, &nbsp;5, 10);</code> // <code>d1</code> is a
+                    previously-created <code>Label</code>
+            </ul>
+        </dd>
+        <dt><code>get</code></dt>
+        <dd>Get the value of the register:
+            <ul>
+                <li><code>get(v0);</code>
+            </ul>
+        </dd>
+
+        <dt><code>get...</code></dt>
+        <dd>Get values from memory:
+            <ul>
+                <li><code>getWord(d1, 3)</code> // get the word beginning 3
+                    <em>bytes</em> past <code>Label</code> <code>d1</code></li>
+                <li><code>getByte(c1, 3)</code> // get the 3rd byte past
+                    <code>Label</code> <code>c1</code></li>
+                <li><code>getWords(d1, 0, 10)</code> // get the 10 words
+                    beginning at <code>Label</code> <code>d1</code>
+                <li><code>getString(c1)</code> // get the <code>String</code> beginning at <code>Label</code> <code>
+                    c1</code> and ending with the next null character.
+            </ul>
+        </dd>
+
+        <dt><code>noOther...Modifications</code></dt>
+        <dd>Verifies
+            that every memory address modified was retrieved by some
+            "<code>get...</code>" method (thereby verifying that the
+            program didn't accidentally write to unexpected memory addresses).
+            <ul>
+                <li><a href="dist/doc/edu/gvsu/mipsunit/munit/MUnit.html#noOtherMemoryModifications--"><code>
+                    noOtherMemoryModifications</code></a>: Checks every memory location.
+                </li>
+                <li><a href="dist/doc/edu/gvsu/mipsunit/munit/MUnit.html#noOtherNonStackModifications--"><code>noOtherStaticDataModifications</code></a>:
+                    Only checks the static data section of memory (typically
+                    addresses <code>0x1000_0000</code> up to <code>0x1000_4000</code>).
+                </li>
+                <li><a href="dist/doc/edu/gvsu/mipsunit/munit/MUnit.html#noOtherNonStackModifications--"><code>noOtherNonStackModifications</code></a>:
+                    Checks both static data and the heap; but not the stack. (See
+                    the documentation for details on how stack size is determined.)
+                </li>
+            </ul>
+        </dd>
+    </dl>
+
+
+    <h2><a name="advanced">Advanced Techniques</a></h2>
+
+    <h3>Other <code>JUnit</code> features</h3>
+
+    <p>Users can take advantage of all <code>JUnit</code> features. For
+        example, adding the <code>@Before</code> method below sets register
+        <code>v0</code> to a known value before each test. Setting
+        <code>v0</code> to a value other than 0 or 1 allows us to verify that
+        the user is explicitly setting <code>v0</code> to 0 (as opposed to
+        incorrectly assuming that <code>v0</code> always contains 0 at the
+        beginning of a function).
+
+    <div class="multi_line_box" style="left: 35px;">
+<pre>
+  @Before
+  public void init_v0() {
+   set(v0, 3343);
+  }
+</pre>
+    </div>
+
+    <h3>Testing Memory</h3>
+
+    <p>When testing a program that modifies memory, not only must we
+        verify that the memory locations we expect to modify contain the
+        correct values, but we must also verify that the program didn't
+        incorrectly modify other locations. Explicitly checking every possibly
+        memory location would take a long time. Therefore <code>MUnit</code>
+        tracks which memory locations are accessed by <code>get...</code>
+        methods and provides the <code>noOther...Modifications</code>
+        methods to verify that all modified memory locations were explicitly
+        retrieved. (The choice of the word "retrieved" is intentional. We
+        can verify that the test writer <em>requested</em> the value of each modified
+        memory location; but, we cannot verify that the test writer actually
+        verified the correctness of the returned value.)</p>
+
+    <p>The sample below demonstrates how to test an assembly function that
+        reverses the contents of an array.</p>
+
+    <span class="box_and_caption">
+<a name="example2">
+   <iframe class="multi_line_box" src="ReverseTest.txt" width="750" height="420" style="width: 800px;"
+           title="Example 2"></iframe>
+</a>
+<br>
+   <strong>Example 2:</strong>Using
+<code>MUnit</code> to verify memory.
+      (<a href="ReverseTest.java"><code>ReverseTest.java</code></a>)
+</span>
+
+    <p class="listHeader">There are three methods that check different areas of data memory:</p>
+    <ul>
+        <li><a href="dist/doc/edu/gvsu/mipsunit/munit/MUnit.html#noOtherMemoryModifications--"><code>
+            noOtherMemoryModifications</code></a>: Checks every memory location.
+        </li>
+        <li><a href="dist/doc/edu/gvsu/mipsunit/munit/MUnit.html#noOtherNonStackModifications--"><code>noOtherStaticDataModifications</code></a>:
+            Only checks the static data section of memory (typically
+            addresses <code>0x1000_0000</code> up to <code>0x1000_4000</code>).
+        </li>
+        <li><a href="dist/doc/edu/gvsu/mipsunit/munit/MUnit.html#noOtherNonStackModifications--"><code>noOtherNonStackModifications</code></a>:
+            Checks both static data and the heap; but not the stack. (See
+            the documentation for details on how stack size is determined.)
+        </li>
+    </ul>
+
+
+    <p class="listHeader">Download these files and try it yourself:</p>
+    <ul>
+        <li><a href="ReverseTest.java"><code>ReverseTest.java</code></a></li>
+        <li><a href="reverse.asm"><code>reverse.asm</code></a></li>
+        <li><a href="reverse_error.asm"><code>reverse_error.asm</code></a></li>
+    </ul>
+
+
+    <h2><a name="limitations">Why <code>MUnit?</code></a></h2>
+
+    <p><code>MIPSUnit::MUnit</code> is one of two related testing
+        frameworks. The other is the <code>RSpec</code>-inspired
+        <code><a href="http://www.cis.gvsu.edu/~kurmasz/Software/mipsunit_mspec">MSpec</a></code>.</p>
+
+    <p>Whereas <code>MUnit</code> interacts directly with
+        <code>MARS</code>, <code>MSpec</code> produces an assembly file that
+        contains all the tests. This assembly file can run independently from
+        <code>MSpec</code>.
+
+    <p class="listHeader"><code>MUnit</code> has two main advantages over
+        <code>MSpec</code>:</p>
+
+    <ol>
+
+        <li> More students know Java and <code>JUnit</code> than Ruby and
+            <code>RSpec</code>; therefore, most students are likely to find
+            <code>MUnit</code> easier to use.
+        </li>
+
+        <li><code>MUnit</code> tests are better isolated from each
+            other. Because <code>MSpec</code> generates a single assembly
+            language test driver, the tests share the same low-level runtime
+            environment as the driver. This means:
+
+            <ul>
+                <li> It is not possible to
+                    completely re-set the state of the CPU between tests: For example, a
+                    program could conceivably modify the part of the <code>.data</code>
+                    section that will be input for another test.
+                </li>
+
+                <li> The driver halts after reporting the first error. Storing the
+                    results of multiple tests would require keeping some registers and
+                    memory "off limits" to programs under test. We wanted to avoid
+                    limiting the programmer for sake of the testing environment; so we
+                    report the first error only.
+                </li>
+            </ul>
+    </ol>
+
+
+    <p class="listHeader"><code>MSpec</code>'s main advantage over <code>MUnit</code> is
+        expressiveness and flexibility. We like to use very thorough,
+        exhaustive tests when evaluating students' code. Preparing such
+        thorough tests in Java/<code>JUnit</code> requires that we either
+    <ul>
+        <li> write <em>a lot</em> of separate, but very similar <code>@Test</code> methods,
+            or
+        </li>
+        <li> write a single method that tests many cases.
+    </ul>
+
+    In contrast, compare how concisely we can write an exhaustive set of
+    tests in <code>MSpec</code> for a function to compute <code>n</code> choose <code>k</code>:
+
+
+    <div>
+   <span class="box_and_caption">
+      <a name="example4">
+         <iframe class="multi_line_box" src="nck_spec.txt" width="325" height="305" style="width: 460px;"
+                 title="Example 4"></iframe>
+      </a>
+      <br>
+         <a name="example4b">Using <code>MSpec</code></a> to exhaustively test a function to compute <code>n</code> choose <code>k</code>.
+   </span>
+    </div>
+
+
+    Also, because it generates an assembly language test file, students
+    can run <code>MSpec</code>-generated tests without knowing anything
+    about <code>MSpec</code>. They don't even need to know that such a
+    program exists! In contrast, at minimum, students need to be taught
+    how to use <code>munit.jar</code> to run <code>MUnit</code> tests.
+
+
+    <p>See <a
+            href="http://www.cis.gvsu.edu/~kurmasz/Software/mipsunit_mspec">the
+        <code>MSpec</code> page</a> for more advantages of <code>MSpec</code>.</p>
+
+    <h2><a name="faq">FAQ</a></h2>
+
+    <p>What questions do you have?</p>
+
+    <dl>
+    </dl>
+
+    <h2><a name="contact_info">Contact Info</a></h2>
+
+    You can e-mail me at <em>last-name</em> <em>first-initial</em><code>@gvsu.edu</code>,
+    or see my complete contact info <a href="http://www.cis.gvsu.edu/~kurmasz/index2.html#contact_info">here</a>.
+
+    <hr style="margin-left: -15px;">
+    <em>(C) 2014 Zachary Kurmas</em>
+    <br>
+    Last updated: 7 December 2018
+</div>
+
+</body>
+
+
+</html>

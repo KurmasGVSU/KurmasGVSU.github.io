@@ -1,0 +1,14 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; WOW64; Trident/4.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.5.21022; .NET CLR 3.5.30729; .NET CLR 3.0.30618; MDDC)
+author=
+csum=
+ctime=1262366807
+host=96.42.148.165
+name=KurmasFamilyPrivate.Gifts
+rev=1
+targets=
+text=* Mr Potato Head Collection ($10) -- Mady birthday%0a* Mr Potato Head Collection ($10)%0a* Mr Potato Head Collection ($10)%0a* Tag Jr. Reading thing with two books ($20) -- Mady (sell to Mom or Grandma) or Mal for Christmas or birthday%0a* Cranium Island Game ($16) -- Ella Birthday%0a* Scooby Doo Game ($13) -- Xavier Birthday%0a%0a
+time=1262366807
+author:1262366807=
+diff:1262366807:1262366807:=1,7d0%0a%3c * Mr Potato Head Collection ($10) -- Mady birthday%0a%3c * Mr Potato Head Collection ($10)%0a%3c * Mr Potato Head Collection ($10)%0a%3c * Tag Jr. Reading thing with two books ($20) -- Mady (sell to Mom or Grandma) or Mal for Christmas or birthday%0a%3c * Cranium Island Game ($16) -- Ella Birthday%0a%3c * Scooby Doo Game ($13) -- Xavier Birthday%0a%3c %0a
+host:1262366807=96.42.148.165

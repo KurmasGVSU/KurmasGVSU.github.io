@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>CIS 658 --- Web Architectures</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    .rightAlign {
+      text-align: right;
+    }
+
+    .leftAlign {
+      text-align: left;
+    }
+
+    .centerAlign {
+      text-align: center;
+    }
+
+    .gradingTable {
+      border: 0;
+      padding-top: 10px;
+    }
+
+    .gradingTable td, .gradingTable th {
+      padding-right: 10px;
+      padding-left: 10px;
+      /* border: 1px solid blue;  // retained for debugging */
+    }
+
+    .gradingTableHeader {
+      font-size: 110%;
+    }
+
+    .pointsTable {
+      padding-left: 25px;
+      border-collapse: collapse;
+    }
+
+    .pointsCell {
+      vertical-align: top;
+    }
+
+    .underlined {
+      border-bottom: 1px solid black;
+    }
+
+    .letterGradeHeader {
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+<nav id="nav">
+  <a class='bypass' href="#content">Skip to main content</a>
+  <p><a target="_top" href="#content">Course Home</a></p>
+
+  <p><a href="syllabus.html">Syllabus</a></p>
+
+  <p><a href="timeline.html">Timeline</a></p>
+
+  <!-- <p><a href="estimated_timeline.html">Timeline</a></p> -->
+
+  <!-- <p><a target="_top" data-klink="previousCourseURL">Previous Offering</a></p> -->
+
+  <!-- <p id="currentOffering" style="DISPLAY: none"><a target="_top" data-klink="currentCourseURL">Current Offering</a>
+  </p> -->
+
+  <!--
+  <p><a href="SampleCode" style="color:white"><fontsize="2"
+  face="arial,helvetica,sans-serif">SampleCode</font></a></p>
+  -->
+
+  <hr>
+
+  <p><a href='http://www.cis.gvsu.edu/~kurmasz'>My Home</a></p>
+  <p><a href='http://www.cis.gvsu.edu/public/staffListing/index.php?page=staff&fname=Zachary&lname=Kurmas'>My Schedule</a></p>
+
+</nav>
+
+<main id="content">
+  <div>
+    <h1 style="text-align: center">
+      <span>CIS 658 Web Architectures</span><br>
+      <span>Winter 2020</span>
+    </h1>
+  </div>
+
+  <dl>
+    <dt> Contact Information:</dt>
+    <dd><style>
+    .contactInfoTable {
+        width: 100%;
+    }
+
+    .contactInfoTable td {
+        border:0;
+        margin: 3px;
+    }
+
+    .ciHeader {
+       font-weight: bold
+    }
+
+    .contactInfoTable td {
+        text-align: left;
+    }
+
+    .contactInfoTable td:nth-child(1) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(3) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(4) {
+        width: 250px;
+    }
+</style>
+
+<table class="contactInfoTable">
+    <tr>
+        <td class="ciHeader">Instructor:</td>
+        <td>Zachary Kurmas</td>
+        <td class="ciHeader">Office:</td>
+        <td>MAK C-2-316</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Phone:</td>
+        <td>331-8688</td>
+        <td class="ciHeader">Office Hours:</td>
+        <td>M 1-2; W 11-12; </td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Home page:
+        <td><a href="http://www.cis.gvsu.edu/~kurmasz" target="_top">http://www.cis.gvsu.edu/~kurmasz</a>
+        <td>
+        <td>Th 5:00-6:00 (downtown)
+    </tr>
+</table></dd>
+
+    <dt>Course Objectives:</dt>
+    <dd>
+      At the end of the course, students will be able to
+      <ul>
+        <li>Provide in-depth details of the HTTP protocol.</li>
+        <li>Construct web pages with HTML 5 and CSS 3.</li>
+        <li>Contrast W3C Web Services with RESTful Services.</li>
+        <li>Discuss how dynamic content is delivered by web servers.</li>
+        <li>Illustrate how a web browser requests resources from a server and interprets the results.</li>
+        <li>Create dynamic web pages using Javascript.</li>
+        <li>Understand the mechanisms behind responsive web apps.</li>
+        <li>Evaluate web application frameworks.</li>
+        <li>Create a full three-tier web application.</li>
+      </ul>
+    </dd>
+
+    <dt>Text:</dt>
+    <dd>
+      <ul>
+        
+        <li style="padding-bottom: 0; margin-bottom: 0">["<em>Agile Web Development Development with Rails 6</em> by Ruby and Copeland. ISBN: 978-1-68050-670-9", "<em>Learning React, 2nd Edition</em> by Porcello and Banks. ISBN: 978-1-49205-171-8"] (<em>optional</em>)</li>
+      </ul>
+    </dd>
+
+    <dt>Pre-Requsites</dt>
+    <dd> CIS 500 and CIS 501</dd>
+
+    <dt>Grading:</dt>
+    <dd>Points for this class are shown in the table
+      below. Note also the additional conditions that follow.
+
+      <table class="gradingTable">
+        <tr>
+          <th class="gradingTableHeader">Point distribution</th>
+          <th class="gradingTableHeader">Grading scale</th>
+        </tr>
+
+        <tr>
+          <td class="pointsCell">
+            <table class="pointsTable">
+              <!-- empty row -->
+              <tr>
+                <td> &nbsp;</td>
+                <td></td>
+              </tr>
+              <tr>
+                <th class="leftAlign">Category
+                <th class='rightAlign'> %
+              </tr>
+              <tr>
+                <td>Participation
+                <td class='rightAlign'> 10%
+              </tr>
+              <tr>
+                <td>Homework and Projects
+                <td class='rightAlign'> 40%
+              </tr>
+              <tr>
+                <td>Midterm Exam
+                <td class='rightAlign'> 25%
+              </tr>
+              <tr class="underlined">
+                <td class="underlined">Final Exam
+                <td class='underlined rightAlign'> 25%
+              </tr>
+              <tr>
+                <td>Total
+                <td class='rightAlign'> 100%
+              </tr>
+            </table>
+          </td>
+          <td class="scaleCell">
+            <table class="scaleTable">
+              <tr>
+                <th class="letterGradeHeader" colspan="3">Letter grade</th>
+                <th>Minimum percentage</th>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="leftAlign">A</td>
+                <td></td>
+                <td class='centerAlign'>94%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="leftAlign">A-</td>
+                <td></td>
+                <td class='centerAlign'>90%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>B+</td>
+                <td></td>
+                <td class='centerAlign'>87%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>B</td>
+                <td></td>
+                <td class='centerAlign'>84%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>B-</td>
+                <td></td>
+                <td class='centerAlign'>80%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>C+</td>
+                <td></td>
+                <td class='centerAlign'>77%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td> C</td>
+                <td></td>
+                <td class='centerAlign'>74%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>C-</td>
+                <td></td>
+                <td class='centerAlign'>70%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>D+</td>
+                <td></td>
+                <td class='centerAlign'>67%</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>D</td>
+                <td></td>
+                <td class='centerAlign'>64%
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+      </table>
+
+      Additional Conditions:
+      <ul>
+        <li> You must have a passing average on the tests to pass the class.</li>
+        <li> Your final grade may be at most one letter grade higher than your test average.</li>
+        <li> I reserve the right to make minor adjustments to the point
+          distribution. In particular, I may make minor adjustments to the
+          weights of each test if we cover more or less material than
+          expected.
+        </li>
+      </ul>
+    </dd>
+
+    <dt>Important Dates:</dt>
+    <dd>
+      <ul>
+        <li>Drop Day: <span>Friday, 6 March</span></li>
+        <li>Final Exam: <span>Thursday, 22 April, 6:00 p.m.</span></li>
+      </ul>
+    </dd>
+
+    <dt>Course Policies:</dt>
+    <dd>
+      <ul>
+        <li> Assignments are due at the beginning of class on the due date, unless specified otherwise.</li>
+
+        <li>The penalty for submitting assignments late varies by assignment. It could be as little as one or two
+          points, or as much as no credit for the assignment. However, assignments more than 14 days late may receive
+          a 0 even if "I just forgot to turn it in."
+        </li>
+
+        <li> Unless specified otherwise, all assignments are to be completed
+          individually.
+        </li>
+
+        <li> The deadline to drop with a "W" is Friday, 6 March.
+          Remember, I cannot and will not drop this class for you.
+        </li>
+
+        <LI> Attendance is required. I understand that absences are
+          occasionally necessary; however, I reserve the right to lower grades
+          for excessive absences.
+        </li>
+
+        <li>
+          This course is subject to the GVSU policies listed at <a href='http://www.gvsu.edu/coursepolicies/'><code>www.gvsu.edu/coursepolicies/</code></a>.
+        </li>
+        <!--  <LI> Quizzes may be scheduled as little as one class in advance. -->
+      </ul>
+    </dd>
+
+    <dt>Special Assistance:</dt>
+    <dd>If there is any student in this class who has special needs because of learning, physical or other disability,
+      please contact me and Disability Support Services (DSS) at 616.331.2490. Furthermore, if you have a disability and
+      think you will need assistance evacuating this classroom and/or building in an emergency situation, please make me
+      aware so I can develop a plan to assist you.
+    </dd>
+  </dl>
+
+  <hr>
+  <a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>

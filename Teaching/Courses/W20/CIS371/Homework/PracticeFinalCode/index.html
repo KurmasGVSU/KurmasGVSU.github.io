@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>CIS 371 Practice Coding Final</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+      #content {
+        padding: 0 10px 0 10px;
+      }
+      
+      .sumline td {
+        border-bottom: 1px solid black;
+      }
+
+      figure {
+        position: relative;
+        display: inline-block;
+      }
+
+     figcaption {
+       position: absolute;
+       bottom: 15px;
+       left: 25px;
+     }
+
+      .demo-image {
+          width: 400px;
+      }
+
+      ul.inner {
+        margin-bottom: 0;
+      }
+
+    </style>
+  </head>
+  <body>
+    <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 371</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Practice Coding Final</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2020</h1></td>
+  </tr>
+</table>
+    <p>Below are several practice problems for the coding portion of the final exam.  They are not due for credit.</p>
+
+    <p>GitHub Classroom link: <a href='https://classroom.github.com/a/LmV8uD1m'><code>classroom.github.com/a/LmV8uD1m</code></a></p>
+    
+    <p>For the real exam, you will be expected to use GitHub Classroom to retrieve and submit the problems.</p>
+
+    <p>Make sure your code works on several different files.  For the real exam, I will test your code on HTML files that you don't have access to.</p>
+ 
+    <h1>Problem 1: Decorate</h1>
+ 
+    <p class='listHeader'>Add JavaScript to <a href="starterCode/gettysburg.html"><code>getteysburg.html</code></a> so that when the "Decorate" button is pushed</p>
+      <ul>
+        <li> The sections of the text with the <code>all-caps</code> class become ALL CAPS, and</li>
+        <li> Each word in sections with the <code>upcase</code> class Begin With A Capital Letter.</li>
+      </ul>
+      
+      <figure>
+        <img class='demo-image' src='Images/gettysburg_before_soft.png'>
+        <figcaption>Before</figcaption>
+      </figure>
+
+      <figure>
+        <img class='demo-image' src='Images/gettysburg_after_soft.png'>
+        <figcaption>After</figcaption>
+      </figure>
+
+
+      <h1>Problem 2: Max/Min</h1>
+      
+      
+      <p class='listHeader'>Add JavaScript to <a href="starterCode/maxMin.html"><code>maxMin.html</code></a> compute and display the maximum, minimum, and average of a 
+        list of test values. When the page loads, it should display 10 input fields for 10 test scores.  There should also be a "Submit" button and a "More" button.</p>
+      <ul>
+        <li>The "Calculate" button should 
+          <ol>
+            <li>Display the maximum, minimum, and average of the test scores, and</li>
+            <li>highlight the maximum and minimum values.</li>
+            <li>Ignore empty fields</li>
+          </ol>
+        </li>
+      </li>
+      <li>The "More" button should add 10 more input fields.</li>      
+    </ul>  
+     <figure>
+        <img class='demo-image' src='Images/maxMin_before.png'>
+        <figcaption>Before</figcaption>
+      </figure>
+
+      <figure>
+        <img class='demo-image' src='Images/maxMin_more.png'>
+        <figcaption>After clicking "More"</figcaption>
+      </figure>
+
+            <figure>
+        <img class='demo-image' src='Images/maxMin_after.png'>
+        <figcaption>After clicking "Submit"</figcaption>
+      </figure>
+
+<p><b>Bonus:</b> Add a "Remove" button that, when clicked, will display a small, clickable "x" next to each input field.  Clicking an "x" will remove the corresponding input field.</p>
+
+ <h1>Problem 3: Collapsible List</h1>
+
+  <p>Write a JavaScript function (or class) that will let you show and hide the contents of a list. Specifically, look for 
+  a container with a class of <code>hideableList</code>.  That container will have another container with a class of 
+  <code>hl-header</code>.
+  Clicking on the header should toggle whether the list below is visible.  You can use <a href="starterCode/hideableLists.html"><code>hideableLists.html</code></a> for testing.
+<xmp>
+  <div class='hideableList'>
+    <p class='hl-header'>A list of states</p>
+    <ul>
+      <li>Alabama</li>
+      <li>Alaska</li>
+      <li>Arkansas</li>
+      <li>Michigan</li>
+      <li>Missouri</li>
+      <li>Mississippi</li>
+      <li>...</li>
+      <li>Wyoming</li>
+    </ul>
+  </div>
+</xmp>
+
+     <figure>
+        <img class='demo-image' src='Images/listOpen.png'>
+        <figcaption>List Open</figcaption>
+      </figure>
+
+      <figure>
+        <img class='demo-image' src='Images/listClosed.png'>
+        <figcaption>List Closed</figcaption>
+      </figure>
+
+
+<p class='listHeader'>Hints:</p>
+<ul>
+<li>Look at this as two problems:  (1) Toggling the list itself, and (2) adding/showing/hiding the triangles.  Get the list toggling working first.</li>
+<li>Write a function that adds a click handler to the <code>hideableList</code>.  You can use a local variable in that function to keep track of whether the list is visible or hidden.</li>
+<li>You will also want to remember the original display property of the list (<code>block</code>, <code>inline-block</code>, etc.)
+<li>Put the triangles at the head of the <code>hl-header</code> container.</li>
+<li>The right-facing triangle is this character: <code>'\u25BC'</code>.
+<li>The left-facing triangle is this character: <code>'\u25B6'</code>.
+<li>Here is one way to append an element as the <em>first</em> child:  
+   <code>element1.insertBefore(element2,element1.childNodes[0]);</code></li>
+</ul>   
+
+ <h1>Problem 4: AJAX</h1>
+
+<p class='listHeader'> Write a web page using only HTML, CSS, and JavaScript that displays a receipt for an online order.  
+<li>Initally display an input box that asks for an order number.</li>
+<li>When the order number is submitted, fetch the order using AJAX, then display it.
+   <ul class='inner'>
+   <li>The orders are available at <code>https://www.cis.gvsu.edu/~kurmasz/Orders/:id</code> (where <code>:id</code> is the order number).</li>
+   </ul></li>
+<li>Include the total in the display</li>
+<li>Add CSS to format the page nicely. (Note: On the exam, I will look for more stying than is present in the samples below.)</li>
+<li>Make sure that you can look up more than one order without having to refresh the page.</li>
+</ul>
+
+     <figure>
+        <img class='demo-image' src='Images/receipt_before.png'>
+        <figcaption>Before</figcaption>
+      </figure>
+
+      <figure>
+        <img class='demo-image' src='Images/receipt_after.png'>
+        <figcaption>After</figcaption>
+      </figure>
+
+<h1>Problem 5: React</h1>
+
+<p>Repeat Problem 4.  This time, use React</p>
+
+    <hr>
+    <p>Updated Monday, 6 April 2020, 2:00 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src="http://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+  </body>
+</html>

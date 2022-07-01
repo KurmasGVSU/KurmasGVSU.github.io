@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<% assignment_name = "Simple Date" %>
+<% github_classroom_url = "https://foo.bar" %>
+<% class_name = 'Date163' %>
+<% due_dates = {
+   setup: DateTime.new(2020, 5, 8, 8, 0, 0).strftime("%A, %-d %B %Y, %-l:%M %P"),
+   tests: DateTime.new(2020, 5, 11, 8, 0, 0).strftime("%A, %-d %B %Y, %-l:%M %P"),
+   final: DateTime.new(2020, 5, 18, 8, 0, 0).strftime("%A, %-d %B %Y, %-l:%M %P"),
+}
+%>
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= $d.course.shortName + ' ' + assignment_name %></title>
+  <style>
+    <%= File.read("#{$d.general.common}/coursePages.css") %>
+  </style>
+</head>
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <%= $d.general.assignmentHeader(assignment_name) %>
+
+  GitHub Classroom URL: <%= github_classroom_url.link %>
+
+<h2 class="listHeader">Objectives:</h2>
+
+<ul>
+   <li>Review CS 162 topics</li>
+   <li>Expand upon the use of class (i.e., <code>static</code>) data and methods</li>
+   <li>Introduce enumerations</li>
+   <li>Introduce unit testing with JUnit</li>
+   <li>Provide experience developing challenging algorithms</li>
+</ul>
+
+<h2 class="listHeader">Due Dates:</h2>
+
+<ul>
+   <li>Demonstrate project is configured properly: <%= due_dates[:setup] %></li>
+   <li>Submit test cases: <%= due_dates[:tests]  %></li>
+   <li>Final submission: <%= due_dates[:final]  %></li>
+</ul>
+
+
+<h2>Problem Statement / Project Requirements</h2>
+
+<p class='listHeader'> Begin by following <%= github_classroom_url.link('this link') %> and cloning the resulting git repository.  This repository will contain
+<ul>
+   <li><code><%= class_name %>.java</code>: This is the class you will be writing. To help you get started, I've provided shells for the methods you need to write.</li>
+   <li><code><%= class_name %>Test.java</code>: This will be your test class.  I have provided a few sample tests to help you get started.</li>      
+   <li><code>instructorTests.jar</code>: This file is used by the auto-grader.  Don't touch it. Attempting to modify, decompile, or otherwise gain access to the contents of this file is a violation of the Academic Honesty Policy.</li>
+</ul>
+
+<p class="listHeader">Write and thoroughly test a class that stores and analyzes calendar dates. Specifically:</p>
+
+<ul>
+   <li>Follow a Test Driven Development (TDD) process to test and implement the missing methods in <code><%= class_name %></code>.  
+   <li>Write unit tests for all the methods first.</li>
+   <li>Implement the methods in the order they appear in <code><%= class_name %>.java</code>. (They are listed from easiest to hardest.)
+</ul>
+
+<p class='listHeader'>Furthermore:</p>
+<ul>
+   <li>You must implement the algorithms yourself.  You may not use <code>GregorianCalendar</code> or any other calendar library.</li>
+   <li>You must use GitHub / GitHub Classroom and use standard git tools to clone the repository and push your code.  <b>Important:</b> It is important that you use standard git tools to clone this repository.  Do <em>not</em> 
+simply download the individual files from the GitHub website.  More importantly: Use standard git tools to submit your work.
+ Do <em>not</em> submit your code by using the GitHub website to upload files individually. Every semester students permanently loose
+ work because the upload/download code incorrectly.</li>
+   <li>My JUnit tests will run automatically when you commit code to your git repo and push.</li>
+   <li>I will not grade your code until it passes my tests.</li>
+   <li>The "two-digit-year" features are <em>not</em> tested automatically. (In other words, just because your automated build passes does not mean that this feature works correctly.)</li>
+   <li>Your code must follow good coding style and practice including:
+      <ul>
+         <li>inner explanatory comments where appropriate,</li>
+         <li>use of descriptive variable and method names,</li>
+         <li>use of constants (i.e., <code>static
+            final</code> variables) where appropriate (such as
+            <code>MIN_YEAR</code>), and
+         </li>
+         <li>use of private "helper" methods where necessary to avoid duplicate
+            code (for example, have the instance method <code>isLeapYear()</code> call
+            the class method <code>isLeapYear(int)</code>).
+      </ul>
+      </li>
+</ul>
+
+
+<h3><a name="Part1Testing">Testing Requirements</a></h3>
+
+<p>For reasons explained in class, you must write your test cases
+   <em>before</em> you begin writing your code. Generate <em>and submit</em> JUnit test cases for the following
+   methods by  <%= due_dates[:tests]  %>.</p>
+
+<ul>
+   <li><code>compareTo</code>
+   <li><code>ordinalDate</code>
+   <li><code>daysSince</code>
+   <li><code>dayOfWeek</code>
+</ul>
+
+<h2>Grading Rubric</h2>
+
+<a href="Gradesheet_SimpleDate.pdf">Gradesheet</a>.
+
+
+<h2>Deliverables and how to submit them:</h2>
+
+In order for me to easily browse through your code and make comments, I need your code organized into a single,
+<em>nicely formatted</em> <code>pdf</code> file. Simply hitting "print" in and IDE almost never produces nicely
+formatted code. See <a
+      href="http://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/General/CS163/CS163FAQ/cs163FAQ.html#PrintingCode">the
+   163 FAQ</a> for instructions on using <code>enscript</code> to generate a nicely-formatted <code>.pdf</code>
+containing your source code. Note: In order for enscript to nicely format your code, you will need
+to break long lines.
+
+
+<dl>
+   <dt><b>Demonstration of properly configured project:</b></dt>
+   <dd>
+      Due Date: <span kkey="due_dates.simpleDate_shell">TBD</span><br/>
+      Instructions: Demonstrate to the instructor in person.<br/>
+
+      <p></p>
+   </dd>
+
+   <dt><b>Test cases:</b></dt>
+   <dd>
+      Due Date: <span kkey="due_dates.simpleDate_tests">TBD</span><br/>
+      Submit the following on Blackboard:
+      <ul>
+         <li>all <code>.java</code> files containing relevant JUnit tests</li>
+         <li>A neatly-formatted <code>.pdf</code> containing all submitted code.</li>
+      </ul>
+      <p></p>
+   </dd>
+
+   <dt><b>Final submission:</b></dt>
+   <dd>
+      Due Date: <span kkey="due_dates.simpleDate_final">TBD</span>
+
+      <p></p>
+
+      In order for me to grade a project it must
+      <ul>
+         <li>have a useful <code>toString</code> method,</li>
+         <li>pass all student-written tests, and</li>
+         <li>pass all my tests.</li>
+      </ul>
+      Once your code meets the above criteria, submit the following on Blackboard
+      <ul>
+         <li>All <code>.java</code> files necessary for me to run your code.</li>
+         <li>All relevant JUnit test source code.</li>
+         <li>A neatly-formatted <code>.pdf</code> containing all relevant source code</li>
+      </ul>
+      Submit the following in person:
+      <ul>
+         <li>A copy of the <a href="Gradesheet_SimpleDate.pdf">gradesheet</a> with the front page filled out. I will
+            know that your project is ready for grading when I receive the gradesheet from you.
+         </li>
+      </ul>
+   </dd>
+</dl>
+
+<h2>Instructor-supplied resources:</h2>
+
+<ul>
+   <li><a href="simpleDateProject.jar"><code>simpleDateProject.jar</code></a>: <code>jar</code> file
+      containing the <code>ISimpleDate</code> and code to run your implementation against the instructor's
+      tests.
+   </li>
+   <li><a href="SimpleDateXXXXTest.java"><code>SimpleDateXXXXTest.java</code></a>: A sample JUnit test file</li>
+</ul>
+
+<!--
+  <h3>Extra Credit</h3>
+
+  Write a configurable version of <code>toString</code>.  This version
+  of <code>toString</code> should take a <code>String</code> as input
+  that describes how the date should be formatted.  You may choose the
+  meaning of the format string.  Here are some examples for the date 2/14/2006
+
+<ul>
+  <li> toString("DD/MM/YYYY")  "14/02/2006"
+  <li> toString("DD/MM/YYYY")  "14/02/2006"
+</ul>
+
+-->
+
+
+<hr>
+ <%= $k.data.general.footer %>
+</main>
+</body>
+</html>
+
+
+  

@@ -1,0 +1,20 @@
+version=pmwiki-2.1.27 ordered=1 urlencoded=1
+agent=Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10.4; en-US; rv:1.9.1.8) Gecko/20100202 Firefox/3.5.8
+author=
+csum=
+ctime=1273695841
+host=68.188.218.51
+name=KurmasFamilyPrivate.Shopping
+rev=3
+targets=
+text=Places to Shop%0a# Downtown Disney%0a** Mickey's Mart -- Everything $10 and under%0a*** Located between Disney Tails and Disney at Home%0a# Outlets with Disney Shops%0a**Orlando Premium Outlets%0a*** Character Premier Store -- Best Selection%0a** Prime Outlets Orlando, Mall 1%0a** Lake Buena Vista Factory Stores%0a*** Character Corner -- Smallest Selection, not as nice.%0a%0aThings to Purchase%0a# Mr. Potato Head Parts%0a** $19 for Flat Rate Box%0a** Can be purchased at:%0a*** Epcot -- Mouse Gears%0a*** Magic Kingdom -- County Bounty in Mickey's Toon Town%0a*** Downtown Disney -- Once Upon a Toy%0a** Advice: Buy plenty of arms%0a%0a
+time=1273695957
+author:1273695957=
+diff:1273695957:1273695920:=6,11c6,11%0a%3c **Orlando Premium Outlets%0a%3c *** Character Premier Store -- Best Selection%0a%3c ** Prime Outlets Orlando, Mall 1%0a%3c ** Lake Buena Vista Factory Stores%0a%3c *** Character Corner -- Smallest Selection, not as nice.%0a%3c %0a---%0a> *Orlando Premium Outlets%0a> ** Character Premier Store -- Best Selection%0a> * Prime Outlets Orlando, Mall 1%0a> * Lake Buena Vista Factory Stores%0a> ** Character Corner -- Smallest Selection, not as nice.%0a> %0a
+host:1273695957=68.188.218.51
+author:1273695920=
+diff:1273695920:1273695841:=5c5,6%0a%3c # Outlets with Disney Shops%0a---%0a> %0a> Outlets with Disney Shops%0a
+host:1273695920=68.188.218.51
+author:1273695841=
+diff:1273695841:1273695841:=1,21d0%0a%3c Places to Shop%0a%3c # Downtown Disney%0a%3c ** Mickey's Mart -- Everything $10 and under%0a%3c *** Located between Disney Tails and Disney at Home%0a%3c %0a%3c Outlets with Disney Shops%0a%3c *Orlando Premium Outlets%0a%3c ** Character Premier Store -- Best Selection%0a%3c * Prime Outlets Orlando, Mall 1%0a%3c * Lake Buena Vista Factory Stores%0a%3c ** Character Corner -- Smallest Selection, not as nice.%0a%3c %0a%3c Things to Purchase%0a%3c # Mr. Potato Head Parts%0a%3c ** $19 for Flat Rate Box%0a%3c ** Can be purchased at:%0a%3c *** Epcot -- Mouse Gears%0a%3c *** Magic Kingdom -- County Bounty in Mickey's Toon Town%0a%3c *** Downtown Disney -- Once Upon a Toy%0a%3c ** Advice: Buy plenty of arms%0a%3c %0a
+host:1273695841=68.188.218.51

@@ -1,0 +1,435 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="cis-163-introduction">CIS 163 Introduction</h1>
+
+<ul>
+  <li>CIS 163 is <em>tough</em>.  For everybody
+    <ul>
+      <li>For most students, this is the first time you can’t effectively just code “off the top of your head”
+        <ul>
+          <li class="to-me">“blueprint” analogy</li>
+          <li>Need to save time in your schedule for work to expand into.</li>
+        </ul>
+      </li>
+      <li>Bottom line: You need to be able to program <em>fluently</em>.
+        <ul>
+          <li>When you can speak fluently, you are able to focus on the content of your message (i.e., <em>what</em> you want to say) instead of the delivery (i.e. <em>how</em> to say it)</li>
+          <li>That means you need to be able to program well enough that you can focus on the algorithm rather than syntax.</li>
+        </ul>
+      </li>
+      <li>163 will be especially tough if you got less than a B 162</li>
+      <li>Almost impossible for students who got Cs.
+        <ul>
+          <li>Especially in a 12-week class</li>
+        </ul>
+      </li>
+      <li>Again, regardless of the actual grade, you need to be fluent.</li>
+    </ul>
+  </li>
+  <li>Academic Honesty
+    <ul>
+      <li>Became a big problem last semester</li>
+      <li>Handing suspected cheating takes a lot of time and effort.</li>
+      <li>Also degrades the perceived quality of the program.
+        <ul>
+          <li>I.e., harms the students who have already graduated.</li>
+        </ul>
+      </li>
+      <li>We need to take a zero-tolerance approach.
+        <ul>
+          <li>We can no longer afford to offer the benefit of the doubt.</li>
+        </ul>
+      </li>
+      <li>Bottom line: Do not look at completed code unless your own code is done.
+        <ul>
+          <li>Don’t ask to see a friend’s solution</li>
+          <li>Don’t google for completed solutions online</li>
+          <li>Don’t hire help at UpWork, Chegg, etc.</li>
+        </ul>
+      </li>
+      <li>When in doubt, seek help through official channels
+        <ul>
+          <li>Instructors</li>
+          <li>CIS success center</li>
+          <li>Tutors</li>
+        </ul>
+      </li>
+      <li>
+        <p>You are encouraged to help each other.  Just don’t do it by sharing code.</p>
+      </li>
+      <li>Plan for the course
+        <ul>
+          <li>Meet synchronously online</li>
+          <li>Use BB Collaborate session for lecture / lab</li>
+          <li>Use BB Collaborate “Course Room” for office hours.</li>
+          <li>I plan to record and post most lectures.</li>
+          <li>Some lectures will be prepared and posted in advance.</li>
+          <li>Since we aren’t relying on a physical lab, lab times may move a bit (i.e., not always be W 6 to 8.)
+            <ul>
+              <li>For example, we’ll use some of this week’s “lab” time tonight to help everybody get set up.</li>
+            </ul>
+          </li>
+          <li>I will be as flexible as possible; but, given the difficulty level of the course,
+I hesitate to make it asynchronous.  I don’t want to be giving out a bunch of Ds and 
+Fs in August.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>I can put links to lecture right on the course home page.
+    <ul>
+      <li>That makes it easy to access them; but,</li>
+      <li>Anybody browsing the Internet can watch them.</li>
+    </ul>
+  </li>
+  <li>Alternately, I can make them accessible only through BlackBoard; but, then
+it’s not as easy to get to them.</li>
+  <li>I don’t anticipate discussing any private/sensitive material in class</li>
+  <li>Poll: Any objections to keeping lectures “open”?</li>
+  <li>
+    <p>Please remind me to begin recording every lecture.</p>
+  </li>
+  <li>Poll
+    <ul>
+      <li>I can only meet during the scheduled MW time</li>
+      <li>I prefer to meet during the MW time</li>
+      <li>Let’s find a different time to meet</li>
+    </ul>
+  </li>
+  <li>Office Hours:
+    <ul>
+      <li>Officially MW 9 to 10.</li>
+      <li>But, just email to arrange another time.  I can easily jump on BB almost any time.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Course Management:</p>
+  </li>
+  <li>Course web page:  <a href="https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/S20/CIS163">https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/S20/CIS163</a>
+    <ul>
+      <li>This is your starting point when looking for information</li>
+      <li>Syllabus</li>
+      <li>List of Assignments</li>
+      <li>Timeline.  (Look here for “what did I miss” or “when is it due” type questions)</li>
+    </ul>
+  </li>
+  <li>Blackboard: Used only for
+    <ul>
+      <li>Grades</li>
+      <li>BB Collaborate</li>
+    </ul>
+  </li>
+  <li>Piazza
+    <ul>
+      <li>Announcements</li>
+      <li>General questions (e.g., questions about class or homework)</li>
+      <li>If the question might apply to more than one person, please post it to Piazza rather than email.</li>
+    </ul>
+  </li>
+  <li>Discord:
+    <ul>
+      <li>A place for you to post less-serious stuff / let out some frustration</li>
+      <li>I don’t typically monitor Discord; but, when asked, I’m happy to jump on and chat.</li>
+    </ul>
+  </li>
+  <li>Email
+    <ul>
+      <li>Private / personal questions (e.g., questions about grades)</li>
+      <li>Request office hours appointment.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Ready to get started?</p>
+
+<ul>
+  <li class="to-me">Get set up with Git.</li>
+  <li>Open project in Visual Studio code.</li>
+</ul>
+
+
+</main>
+</body>
+</html>
