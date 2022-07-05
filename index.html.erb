@@ -4,135 +4,7 @@
   <meta charset="UTF-8">
   <title>Zachary Kurmas</title>
   <style>
-    
-.nobreak {
-    white-space: nowrap;
-}
-
-/* Formatting for instructions / code */
-
-code {
-    white-space: nowrap;
-}
-
-.inline-instruction {
-    background: #EEEEEE;
-    color: blueviolet;
-    white-space: nowrap;
-    border-radius: 5px;
-    padding: 0 2px 0 2px;
-}
-
-.terminal-output {
-    background-color: black;
-    color: #00FF00;
-    margin: 5px 50px 5px 25px;
-    padding: 5px;
-    border-radius: 2px;
-    overflow: scroll;
-}
-
-.important {
-    display: inline-block;
-    padding: 5px;
-    border: 1px solid black;
-    background-color: #76d9f7;
-    border-radius: 5px;
-}
-
-.inline-important {
-    background: #EEEEEE;
-    color: #c80000;
-   /* white-space: nowrap; */
-    border-radius: 5px;
-    padding: 0 2px 0 2px;
-}
-
-/* Formatting for lists */
-
-dt {
-    font-weight: bold;
-    font-variant: small-caps;
-    font-size: 135%;
-}
-
-dd {
-    margin-bottom: 1em;
-}
-
-.listHeader {
-    padding-bottom: 0;
-    margin-bottom: 0;
-}
-
-ul, ol {
-    padding-top: 0;
-    margin-top: 0;
-}
-
-/* Navigation */
-
-#nav {
-    position: absolute;
-    width: 150px;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: #005d95;
-    /* "Laker blue is #0065a4, but fails ARIA contrast test.
-        Color above is as close as I can get
-        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
-    */
-}
-
-#nav a {
-    color: white;
-    font-family: arial, helvetica, sans-serif;
-    font-size: 90%;
-}
-
-#nav p {
-    margin-left: 10px;
-}
-
-#nav hr {
-    margin: 10px;
-}
-
-.nav-indent1 {
-    padding-left: 10px;
-}
-
-@media print {
-    #nav {
-        visibility: hidden;
-    }
-
-    #content {
-        left: 0;
-    }
-}
-
-/* A link that isn't displayed so that the
-   accessibility checker is happy.
- */
-.bypass {
-    position: absolute;
-    top: 0;
-    right: 100%;
-    z-index: 9999;
-    color: black;
-}
-
-@media screen {
-    #content {
-        position: fixed;
-        margin-left: 10px;
-        left: 150px;
-        overflow: scroll;
-        height: 100%;
-    }
-}
+    <%= $d.general.site_css %>
 
     #headerContainer {
       text-align: center;
@@ -162,35 +34,7 @@ ul, ol {
   </style>
 </head>
 <body>
-<nav id="nav">
-  <a class='bypass' href="#content">Skip to main content</a>
-  <p><a href="index.html#content">Home</a></p>
-
-  <p><a id='teachingNav' href="index.html#Teaching">Teaching</a></p>
-  
-    <p><a aria-label='Link to Teaching section of web page' class='nav-indent1' href='https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/F22/CIS343'>CIS 343</a></p>
-  
-    <p><a aria-label='Link to Teaching section of web page' class='nav-indent1' href='https://www.cis.gvsu.edu/~kurmasz/Teaching/Courses/F22/CIS371'>CIS 371</a></p>
-  
-
-  <div id="softwareNav">
-    <p><a href="software.html">Software</a></p>
-    <p><a aria-label="Link to DLUnit section on Software page" class='nav-indent1' href="Software/DLUnit">DLUnit</a></p>
-    <p><a aria-label='Link to MUnit section on Software page' class='nav-indent1' href="Software/mipsunit_munit/">MUnit</a></p>
-    <p><a arial-label='Link to KielceRB GitHub page' class='nav-indent1' href="https://www.github.com/kurmasz/KielceRB">KielceRB</a></p>
-  </div>
-
-  <p><a href="index.html#Scholarship">Scholarship</a></p>
-  <p><a class='nav-indent1' href="publications.html">Publications</a></p>
-
-  <p><a href="index.html#Advice">Advice</a></p>
-<!--  <p><a href="index.html#Humor">Humor</a></p> -->
-  <p><a href="index.html#ContactInfo">Contact info</a></p>
-  <p><a href='https://www.cis.gvsu.edu/public/staffListing/index.php?page=staff&fname=Zachary&lname=Kurmas'>My Schedule</a></p>
-
-  <p><a href="cv_public.pdf">CV</a></p>
-</nav>
-
+<%= $k.render('nav.html.erb') %>
 <main id="content">
 
   <div id='headerContainer' role="heading" aria-level="1">
@@ -330,8 +174,7 @@ ul, ol {
     e-mail: <em>"last_name first_initial"@gvsu.edu</em>
   </address>
   <hr>
-  <p>Updated Tuesday, 5 July 2022, 2:57 PM</p>
-<a href="https://validator.w3.org/check?url=referer"><img src="https://www.cis.gvsu.edu/~kurmasz/Images/html5_validate_w3c.png" alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+  <%= $d.general.footer %>
 </main>
 </body>
 </html>
