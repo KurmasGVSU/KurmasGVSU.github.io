@@ -11,7 +11,7 @@
       padding-bottom: .5em;
     }
 
-    li ol li {
+    li ol li, li ul li {
       padding-bottom: 0;
     }
 
@@ -21,6 +21,10 @@
 
     @media print {
       .top {page-break-before: always;}
+    }
+
+    ol ol {
+      list-style-type: lower-alpha;
     }
 
   </style>
@@ -93,8 +97,11 @@
   </ol>
 
   </li>
+</ol>
 
+<h2>Conditionals</h2>
 
+<ol>
   <li>Write a function to calculate a salesman's commission.  The commission is 
     <ul>
        <li>10% on all sales, plus</li>
@@ -102,11 +109,19 @@
      </ul>
    (For example, the commission on $15,000 in sales would be $1250.)
   </li>
+
+  <li>Write a function that determines the quadrant in which a point lies.  Have your function take two parameters:  <code>x</code> and <code>y</code>.
+  Write two versions of this function:
+    <ol>
+      <li>Use the <code>cond</code> construct together with <code>and</code>.</li>
+      <li>Use a nested <code>if</code> (Have the outer <code>if</code> check the x-coordinate, then have the inner, nested <code>if</code> check the y-coordinate.)</li>
+    </ol>
+  </li>
 </ol>
 
 
 <hr>
-<p>Updated Wednesday, 27 July 2022, 12:58 PM</p>
+<p>Updated Wednesday, 27 July 2022, 4:35 PM</p>
 <a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
 </body>
 </html>
