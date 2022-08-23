@@ -349,7 +349,18 @@ how complex compilers could get.</li>
       <li>Logic Programming (e.g., Prolog)</li>
     </ul>
   </li>
-  <li>From here on, most of what you see is different approaches for increasing expressiveness while maintaining reasonable performance</li>
+  <li>In my opinion, the #2 tradeoff is between writeability and reliability.
+    <ul>
+      <li>Languages that are easier to write (think Perl, JavaScript) tend to have less strict syntax and/or type checking.  However, 
+this means that the compiler can detect fewer errors potentially leading to more run-time errors</li>
+    </ul>
+  </li>
+  <li>From here on, most of what you see is
+    <ul>
+      <li>different approaches for increasing expressiveness while maintaining reasonable performance and, to a lesser extent,</li>
+      <li>approaches for writing code more succinctly without making the code hard to maintain/debug.</li>
+    </ul>
+  </li>
 </ul>
 
 <h1 id="other-key-features--tradeoffs">Other key features / tradeoffs</h1>
@@ -380,7 +391,7 @@ how complex compilers could get.</li>
       <li>Ideally, keywords and constructs have the same behavior regardless of context
         <ul>
           <li>The C pointer can be applied to any data type</li>
-          <li>Any data type can be a return value</li>
+          <li>Any data type can be a return value in java, but you can’t return an array in C.</li>
         </ul>
       </li>
       <li>However, you don’t want to do this at the cost of having obscure, strangely-defined behaviors.</li>
@@ -409,15 +420,52 @@ how complex compilers could get.</li>
   </li>
   <li>“Writeability” vs. Reliability
     <ul>
+      <li>Reliability refers to how likely you are to catch bugs.</li>
       <li>In general, the more errors the compiler / environment can catch, the sooner, quicker, and easier you can fix those errors.</li>
       <li>Many of these “catches” require type checking.</li>
       <li>Better type-checking generally requires being more explicit when writing code (think Java). Less type-checking allows for more “short-cuts”
 (think Ruby, JavaScript, and other scripting languages), but many mistakes then can’t be detected until run-time, where they are harder to 
 precisely identify and fix.</li>
+      <li>In general, the less you type, the harder it is for the compiler to catch mistakes for you.</li>
+    </ul>
+  </li>
+  <li>Readability
+    <ul>
+      <li>Limited number of operators (COBOL has hundreds)
+        <ul>
+          <li>Even if you don’t use them, you need to know to avoid them when choosing variables.</li>
+        </ul>
+      </li>
+      <li>Enough data types so you don’t have to do awkward things (like use ints for bools in C)</li>
+      <li>Prohibits variable names that match special words (e.g., no variables named “while”)</li>
       <li class="q">Which is better:  Braces for blocks <code>{}</code> or should the begin and end be more distinct <code>end if</code>, <code>end while</code> etc?</li>
       <li class="q">What about nice readable <code>end if</code> vs concise but goofy looking <code>fi</code>, <code>od</code>?</li>
     </ul>
   </li>
+  <li>Readability / Writability tradeoff:</li>
+</ul>
+
+<pre><code>use v5.10;
+
+while (&lt;STDIN&gt;) {
+    chomp;
+    say if (/z/)
+}
+</code></pre>
+
+<p>vs.</p>
+
+<pre><code>use v5.10;
+ 
+while ($_ = &lt;STDIN&gt;) {
+   chomp $_;
+   if ($_ =~ /MATCH/) {
+      say $_;
+   }
+}
+</code></pre>
+
+<ul>
   <li>Support for Abstraction
     <ul>
       <li>DRY:  Don’t repeat yourself.</li>
@@ -426,6 +474,56 @@ precisely identify and fix.</li>
     </ul>
   </li>
 </ul>
+
+<h1 id="static-vs-dynamic-typing">Static vs. Dynamic typing</h1>
+
+<ul>
+  <li>Static typing
+    <ul>
+      <li>Compiler makes sure all operations are legal before the program begins.
+        <ul>
+          <li>e.g., complains if you call a <em>bark</em> method on a <em>Cat</em> object.</li>
+        </ul>
+      </li>
+      <li>Compiler can catch more errors, but</li>
+      <li>Can make code more verbose.
+        <ul>
+          <li>Think about interfaces / generics in Java</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Dynamic typing
+    <ul>
+      <li>Validity of operations not checked until program is running.</li>
+      <li>Cuts out annoying syntax, but</li>
+      <li>Leads to more run-time errors.  (e.g., pass an object to a “sort” method that doesn’t have a “compare” operation)</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="compile-vs-interpret">Compile vs. Interpret</h1>
+
+<ul>
+  <li>Compile
+    <ul>
+      <li>Main advantage: speed</li>
+      <li>Tend to be statically-typed (thereby promoting reliability)</li>
+    </ul>
+  </li>
+  <li>Pure interpreted
+    <ul>
+      <li>Main disadvantage:  10x to 100x slower.</li>
+      <li>Tend to be dynamically typed (thereby promoting writeability)</li>
+    </ul>
+  </li>
+  <li>Hybrid
+    <ul>
+      <li>Key example: Java</li>
+    </ul>
+  </li>
+</ul>
+
 
 </main>
 </body>
