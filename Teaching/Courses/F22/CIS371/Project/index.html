@@ -205,9 +205,9 @@ ul, ol {
       <dd>
         <p>
           One of the more challenging (and hopefully fun) aspects of this project is that you are to come up with your
-          own web application idea. While there are general requirements your application must meet (see details above) you
+          own web application idea. While there are general requirements your application must meet (see details below) you
           are free to innovate and design a web experience that you are personally interested in and passionate about.</p>
-        <p>Your app must be original and innovative. It is ok to come up with a "better mousetrap", but don't simply
+        <p>Your app must be original and innovative. It is ok to come up with a "better mousetrap," but don't simply
           replicate an app that already exists. Substantially improving upon an existing app idea or giving it a novel spin
           of your own is permissible, provided your "novel spin" is functional (as opposed to simply cosmetic), and 
           requires non-trivial additions and/or changes.</p>
@@ -262,6 +262,7 @@ ul, ol {
       <dd>
     To earn a "D"
     <ul>
+      <li> Your app must be sufficiently functional to allow the user to complete at least one useful, <em>primary</em> task.</li>
       <li> Your app must contain at least two correctly functioning CRUD pages that utilize a database.</li>
       <li> Some content must be accessible to all users (including guests / those not logged in).</li>
       <li> Users who log in may access their personal content.</li>
@@ -272,23 +273,29 @@ ul, ol {
 
     To earn a "C", you must meet all the requirements for a D, plus
     <ul>
+       <li>Your app must be sufficiently complete to be of some use to someone.
        <li> The application is not merely a copy / re-implementation of an existing application.</li>
        <li> All required pages must be styled using CSS such that all components are fully visible and in reasonable place.</li>
        <li> At least one page is styled such that all components are correctly sized (e.g., there are not any "jagged" rows or columns of content).</li>
        <li> At least one page has all form elements styled nicely (as opposed to using the raw, unstyled HTML form elements).</li>
-       <li> The application contains a significant amount of custom JavaScript written by you -- as opposed to your JavaScript primarily being calls into libraries.  (Don't hesitate to use libraries -- there is no need to re-implement the wheel; but, do something that requires some non-trivial work on your part.)
-       * The application is correctly deployed somewhere (EOS, cloud platform, etc.)</li>
+       <li> The application contains custom JavaScript <em>logic</em> written by you.  By "logic" I mean things such as calculations, conditionals, and loops (as opposed to simply using a few lines of JavaScript to connect DOM elements to a JavaScript library).
+       <li>The application is correctly deployed somewhere (EOS, cloud platform, etc.)</li>
        </ul>
 
 To earn a "B", you must meet all the requirements for a C, plus
   <ul>
      <li> The application must provide some service currently unavailable in the market.  Either the application implements something completely new, or it adds non-trivial improvement to an existing app.  It is not sufficient to simply port an existing app into a new domain.  For example, it is not sufficient to make "Yelp for Tacos" unless doing so entails making a significant change or addition to Yelp.  (Simply adding a few data fields is not sufficient.)</li>
-     <li>  New users must be able to create a new account.</li>
-     <li>  The app must use some framework.  (This can be client-side, server-side, or both).</li>
      <li>  The app uses asynchronous JavaScript to update a web page.</li>
      <li>  At least one page must exhibit responsive design and look good on a variety of devices and screen sizes.</li>
-     <li>  The app must take appropriate security precautions to prevent threats such as SQL injection and XSRF.</li>
      <li>  Most of the JavaScript is covered by Unit tests.</li>
+     <li> Your app must do at least one of the following:
+        <ul>
+           <li>allow new users to create an account</li>
+           <!-- <li>use some framework (Express.js, Rails, React, Vue, etc.)</li> -->
+           <!-- <li>take appropriate security precautions to prevent threats such as SQL injection and XSRF.</li> -->
+           <li>provide features accessible only to administrative users</li>
+           <li>utilize some third-party API (e.g., Google Maps)</li>
+        </ul>
      </ul>
 
 To earn an "A", you must meet all the requirements for a B, plus
@@ -296,21 +303,20 @@ To earn an "A", you must meet all the requirements for a B, plus
     <li> The idea for this application must be sufficiently innovative that it could potentially be successful in the    marketplace (if given sufficient time and resources).</li>
     <li> All pages must exhibit near-professional styling (including, but not limited to correct sizing and placement,   appealing color choices, enhanced styling of forms, etc.) </li>
     <li>  All pages must exhibit responsive design and look good on a variety of devices and screen sizes.</li>
-    <li>  The app must utilize some third-party API (e.g., Google Maps)</li>
     <li>  All JavaScript (within reason) is covered by unit tests.</li>
     <li>  At least one page is covered by system tests.</li>
-    <li> There are features accessible only to administrative users.</li>
+   
     </ul>
 
-  <p>If a few of the requirements don't seem to apply to your proposed app, feel free to propose an alternate requirement. I am happy to adjust the requirements above if they allow you to pursue an innovative idea.  (In other words, don't let the requirements above be the reason you choose a "boring" project over an innovative one.)  However, please submit any proposed changes to the requirements to me by mid-October. (In other words, don't try to cover for missing/incomplete features by trying to change the requirements at the last minute.)</p>
+  <p>If a requirement doesn't seem to apply to your proposed app, feel free to propose an alternate requirement. (In other words, don't let the requirements above be the reason you choose a "boring" project over an innovative one.)  However, please submit any proposed changes to the requirements to me by mid-October (i.e., don't try to cover for missing/incomplete features by trying to change the requirements at the last minute.)</p>
 
     </dl>
     <p>&nbsp;</p>
-    (Thank-you to Prof. Engelsma, Prof. Adams, and Prof. Schymik for their suggestions and contributions to the writeup
+    (Thank-you to Prof. Woodring for suggestions and contributions to the writeup
     and grading rubric.)
 
     <hr>
-    <p>Updated Saturday, 27 August 2022, 8:36 PM</p>
+    <p>Updated Sunday, 28 August 2022, 4:16 PM</p>
 <a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
   </body>
 </html>
