@@ -1,0 +1,483 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h2 id="html">HTML</h2>
+
+<ul>
+  <li>HTML:  Hypertext Markup Language
+    <ul>
+      <li class="q">What is hypertext?</li>
+      <li class="q">What is Markup?</li>
+    </ul>
+  </li>
+  <li>Key idea was for content (information) to be marked up with the <em>structure</em> of the document
+and let the client present it appropriately.  (Monitor, teletype, command-line)</li>
+  <li class="to-me">Give brief introduction to HTML
+    <ul>
+      <li>Start with text document with a heading, a couple paragraphs, and a list</li>
+      <li>Add <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, and <code>&lt;li&gt;</code> tags.</li>
+    </ul>
+  </li>
+  <li><code>&lt;html&gt;</code> surrounds entire document</li>
+  <li><code>&lt;head&gt;</code> contain metadata
+    <ul>
+      <li>Title</li>
+      <li>Info for search engines</li>
+      <li>CSS</li>
+      <li>Javascript</li>
+    </ul>
+  </li>
+  <li>Main content goes in <code>&lt;body&gt;</code> tag</li>
+  <li>Ideally, we separate content from presentation.<span class="q">Why?</span>
+    <ul>
+      <li>Different technologies (monitor, command line)</li>
+    </ul>
+  </li>
+  <li>Some presentation crept into HTML (think “bold”, “i”, “center”, etc.)
+    <ul>
+      <li>In light of this principle, &lt;strong&gt; is better than &lt;b&gt;, &lt;em&gt; is better than &lt;i&gt;, etc.</li>
+    </ul>
+  </li>
+  <li>People weren’t happy with the way the browsers presented things;  Wanted more control.
+    <ul>
+      <li>Addressed (mostly) with CSS.</li>
+    </ul>
+  </li>
+  <li class="q">Now that web pages are almost exclusively viewed in web browsers (no more text), 
+ why bother with separation of structure and content?
+    <ul>
+      <li>Can easily apply the same look and feel to many pages.</li>
+      <li>Easy to “reskin” pages</li>
+      <li>May all be screens; but, screens are of very differnt sizes now (mobile, tablet, desktop)</li>
+    </ul>
+  </li>
+  <li>Terms
+    <ul>
+      <li>Tag: Just the tag itself:  <code>&lt;li&gt;</code></li>
+      <li>Element: The entire “subtree” <code>&lt;li&gt;</code>, <code>&lt;\li&gt;</code>, and everything between</li>
+      <li>Attribute: The <code>href</code> in <code>&lt;a href='foo.com'&gt;</code></li>
+      <li>Node: Everything is a type of node — Even the plain text between <code>&lt;p&gt;</code> tags.</li>
+    </ul>
+  </li>
+  <li><em>inline</em> vs <em>block</em> tags
+    <ul>
+      <li>Block tags effectively begin a new paragraph. (Begin on a new line and take full width available)</li>
+      <li>inline tags are, well, inline. (Do not begin a newline and take up only as much space as necessary)</li>
+      <li><code>&lt;div&gt;</code> is the generic block tag:  Used primarily as a placeholder for styling.</li>
+      <li><code>&lt;span&gt;</code> is the generic inline tag: Used primarily as a placeholder for styling.</li>
+    </ul>
+  </li>
+  <li>Misc
+    <ul>
+      <li><code>&lt;img&gt;</code></li>
+      <li><code>&lt;href&gt;</code></li>
+      <li>absolute vs. relative file paths
+        <ul>
+          <li class="q">Which is better?  Why?
+            <ul>
+              <li>Relative, because then they don’t break if you move the document.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><code>&amp;lt;</code>, <code>&amp;gt;</code>, <code>&amp;nbsp;</code></li>
+      <li>Comments:  <code>&lt;!-- this is a comment -&gt;</code></li>
+    </ul>
+  </li>
+  <li>HTML derives from SGML – a system for defining markup languages like HTML.</li>
+  <li>SGML contains
+    <ul>
+      <li>“Declaration” of characters and delimiters (e.g., spaces / newlines)</li>
+      <li>“Document Type definition” (DTD)  – what the elements are, their attributes, and where they can be used
+ (e.g, where they can be nested)</li>
+      <li>The semantics of the elements (i.e., what <code>&lt;ul&gt;</code> means)</li>
+    </ul>
+  </li>
+  <li>SGML provides concepts like
+    <ul>
+      <li>elements (e.g., an entire paragraph, list, etc)</li>
+      <li>attributes (e.g., the “href” in the anchor element)</li>
+      <li>escape mechanisms: \&amp;\lt; \&amp;\amp;</li>
+    </ul>
+  </li>
+  <li>SGML is complicated, partly because it is flexible
+    <ul>
+      <li>no closing <code>&lt;/li&gt;</code></li>
+      <li><code>&lt;br&gt;</code> is fine (as opposed to <code>&lt;br/&gt;</code>)</li>
+    </ul>
+  </li>
+  <li>Some sources that HTML “descends from” SGML. It seems to me more like HTML is an example 
+markup language that could be defined using SGML:
+    <ul>
+      <li>This guy agrees: <a href="https://www.w3.org/TR/WD-html40-970708/intro/sgmltut.html">https://www.w3.org/TR/WD-html40-970708/intro/sgmltut.html</a></li>
+    </ul>
+  </li>
+  <li>XML is also based on SGML, but is much more precisely structured.
+    <ul>
+      <li><code>&lt;br&gt;</code> is fine in HTML; but, XML will insist upon <code>&lt;br/&gt;</code> (i.e., closed)</li>
+      <li>In HTML, <code>&lt;/li&gt;</code> not required</li>
+    </ul>
+  </li>
+  <li class="q">What are the advantages and disadvantages of HTML vs XML?
+    <ul>
+      <li>HTML is more forgiving:  Easier to write stuff that works</li>
+      <li>XML is more precise: Easier to write parsers.</li>
+    </ul>
+  </li>
+  <li>HTML 4.0 ==&gt; xhtml
+    <ul>
+      <li>Tried xhtml:  html with precise requirements.  Didn’t stick.  Got HTML5 instead</li>
+    </ul>
+  </li>
+  <li>With the maturity of CSS, HTML 5 refocused on structure over presentation.
+    <ul>
+      <li>It introduced more tags to better describe the structure of a document, including:
+        <ul>
+          <li><code>&lt;header&gt;</code></li>
+          <li><code>&lt;nav&gt;</code></li>
+          <li><code>&lt;section&gt;</code></li>
+          <li><code>&lt;article&gt;</code></li>
+          <li><code>&lt;aside&gt;</code></li>
+          <li><code>&lt;footer&gt;</code></li>
+          <li>(Previously, this was done with <code>&lt;div&gt;</code> tags and CSS)</li>
+        </ul>
+      </li>
+      <li>HTML (before 5) also tags with semantic meaning
+        <ul>
+          <li><code>&lt;strong&gt;</code> instead of <code>&lt;b&gt;</code></li>
+          <li><code>&lt;em&gt;</code> instead of <code>&lt;i&gt;</code></li>
+          <li>These tags describe the semantic meaning of the section rather than spelling out how to style it.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="q">Given structure vs. presentation, when should Tables be used?
+    <ul>
+      <li>Only to display tabular data (i.e., when the structure of the data itself is a table)</li>
+      <li>If you are simply trying to style a page, use CSS.</li>
+    </ul>
+  </li>
+  <li>Notice that HTML/XML structure forms a tree:</li>
+</ul>
+
+<p> </p>
+
+<ul>
+  <li>head
+    <ul>
+      <li>title</li>
+    </ul>
+  </li>
+  <li>body
+    <ul>
+      <li>paragraph</li>
+      <li>h1</li>
+      <li>ul
+        <ul>
+          <li>li</li>
+          <li>li</li>
+          <li>li</li>
+        </ul>
+      </li>
+      <li>paragraph</li>
+    </ul>
+  </li>
+</ul>
+
+<p> </p>
+
+<ul>
+  <li>HTML is not the only markup language. <span>What are some others?</span>
+    <ul>
+      <li>Latex</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Tutorial: <a href="http://www.w3schools.com/html/default.asp">http://www.w3schools.com/html/default.asp</a></p>
+
+
+</main>
+</body>
+</html>

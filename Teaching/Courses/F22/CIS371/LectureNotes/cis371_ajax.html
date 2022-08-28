@@ -1,0 +1,434 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="ajax">AJAX</h1>
+
+<ul>
+  <li>AJAX stands for Asynchronous JavaScript and AJAX.
+    <ul>
+      <li>It refers to JavaScript being able to make network calls in the background and fetch data that can update the web page.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="api-server">API Server</h2>
+
+<ul>
+  <li>A web server can serve raw data instead of HTML.</li>
+  <li>Look at the <code>toys.json</code> route in <code>expressMVC</code>.  It just returns the raw array of toys.
+    <ul>
+      <li class="to-me">Run the server and visit the <code>/toys.json</code> route</li>
+      <li class="to-me">Look at developer tools.  Notice the content-type of <code>application/json</code></li>
+    </ul>
+  </li>
+  <li class="to-me">Create new toy and look at network history.  (In particular, the post data).
+    <ul>
+      <li>Any program that can generate a POST request can have the same effect.</li>
+      <li>Run <code>curl -d 'toy[name]=simon&amp;toy[description]=A+memory+game&amp;toy[manufacturer]=Milton+Bradley&amp;toy[price]=20' http://localhost:3000/toys</code></li>
+      <li>(Of course, there are security implications we haven’t discussed yet.)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="calling-api-server-from-client-side-javascript-code">Calling API server from Client-side JavaScript code.</h2>
+
+<ul>
+  <li>Browsers use an object called <code>XMLHttpRequest</code>
+    <ul>
+      <li>(sometimes abbreviated <code>XHR</code>)</li>
+    </ul>
+  </li>
+  <li>Originally designed to receive data in XML format
+    <ul>
+      <li>Browsers will automatically try to parse data as XML.</li>
+    </ul>
+  </li>
+  <li>JSON format is more common today.</li>
+  <li>To  use
+    <ul>
+      <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScript/expressMVC/public/ajax1.html">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScript/expressMVC/public/ajax1.html</a></li>
+      <li>Launch express server and visit the <code>ajax1</code> route.
+1. Provide a callback named <code>onreadystatechanged</code> to be called when data is received.
+2. Call <code>open</code> to connect to a URL.
+        <ul>
+          <li>Three parameters, (1) HTTP verb. (2) URL (3) <code>true</code> for asynchronous operation, <code>false</code> for synchronous.
+    3. Call <code>send</code>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>The <code>onreadystatechanged</code> callback will be called several times, because there are 5 “ready states”.
+    <ul>
+      <li>0: <code>UNSENT</code> (<code>open</code> not called yet)</li>
+      <li>1: <code>OPENED</code> (<code>open</code> has been called)</li>
+      <li>2: <code>HEADERS_RECEIVED</code> (<code>send</code> had been called. Headers received.)</li>
+      <li>3: <code>LOADING</code> (<code>responseText</code> holds partial data.)</li>
+      <li>4: <code>DONE</code></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState">https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState</a></li>
+      <li>In general, we are only interested in state 4.</li>
+    </ul>
+  </li>
+  <li>Once the data is complete and parsed, it can be used to update the DOM.</li>
+</ul>
+
+<h3 id="posting-ajax-data">POSTing AJAX data</h3>
+
+<ul>
+  <li>Open a connection as before
+    <ul>
+      <li>But, this time, set action to “POST”</li>
+    </ul>
+  </li>
+  <li>Add call to <code>setRequestHeader("Content-type", "application/x-www-form-urlencoded");</code> so the server knows how the data is formatted.</li>
+  <li>Pass properly encoded data to the <code>send</code> method:
+    <ul>
+      <li><code>send(encodeURI(postString));</code> (where <code>postString</code> contains the data we want to send.)</li>
+    </ul>
+  </li>
+  <li>Notice that any forwards (e.g., 302 responses) are followed.</li>
+</ul>
+
+<h3 id="same-origin-policy">Same Origin policy</h3>
+
+<ul>
+  <li>By default, browsers follow a <em>Same Origin Policy</em>
+    <ul>
+      <li>AJAX calls on web pages can only go to the server that served the .html page.</li>
+      <li>This is to prevent someone from emailing you a web link and having that page access private data
+        <ul>
+          <li>Supposed you are logged into your bank</li>
+          <li>While logged in you check your email and follow an embedded</li>
+          <li>What if that embedded link goes to a web page with JavaScript that tries to access your bank?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="to-me">Launch python server in <code>public</code> directory.  Visit <code>ajax1.html</code></li>
+  <li>Look in console.  Notice the error message “has been blocked by CORS policy”</li>
+  <li>Remember this is implemented by the <em>Browser</em> to protect the user.  The server (at least the server wrote) doesn’t care.</li>
+  <li class="q">So, how do we provide a front-end and back-end for Single Page Apps like React?
+    <ol>
+      <li>Have the back-end serve the bundled front-end code.</li>
+      <li>Use CORS</li>
+    </ol>
+  </li>
+  <li>CORS: <em>C</em>ross <em>O</em>rigin <em>R</em>esource <em>S</em>haring
+    <ul>
+      <li>There are now special headers that servers can send to tell the browser that a cross-origin request is reasonable/safe.</li>
+      <li><code>res.setHeader("Access-Control-Allow-Origin", "*");</code> will tell every browser that the cross-origin request is OK.</li>
+      <li>Don’t ever use “*” in production!</li>
+      <li>In fact, it won’t work on a site that uses authentication.</li>
+      <li>I added this header “by hand” to the <code>expressMVC</code> example. A better solution would have been to use the <code>coors</code> package. <a href="https://expressjs.com/en/resources/middleware/cors.html">https://expressjs.com/en/resources/middleware/cors.html</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="ajax-and-react">AJAX and React</h3>
+
+<ul>
+  <li>See <code>Authors_v6.jsx</code></li>
+  <li>Basic idea:
+    <ul>
+      <li>Make AJAX call, then have the callback set the authors</li>
+      <li>Make sure you use the <code>useEffect</code> hook with <code>[]</code> as a second parameter to avoid an infinite loop.</li>
+    </ul>
+  </li>
+  <li>You can use any AJAX library you like
+    <ul>
+      <li>I used the built-in <code>fetch</code></li>
+      <li><code>axios</code> is also popular: <a href="https://github.com/axios/axios">https://github.com/axios/axios</a></li>
+    </ul>
+  </li>
+  <li>A simpler way to send the data for a POST request is to use JSON (instead of the encoded URI)
+    <ul>
+      <li>Simply make the post body <code>JSON.stringify</code></li>
+      <li>Must switch to <code>app.use(bodyParser.json());</code> in express so the data is parsed correctly.</li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

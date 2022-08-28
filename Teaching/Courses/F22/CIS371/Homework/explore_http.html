@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 371 Exploring HTTP</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    #content {
+      padding: 0 10px 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 371</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Exploring HTTP</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2022</h1></td>
+  </tr>
+</table>
+
+
+Based on an assignment originally developed by Prof. Engelsma.
+
+<h1>Objective</h1>
+
+The objective of this lab is to help the student develop a deeper understanding of the HTTP protocol. Upon
+completion of this homework the student will
+
+<ul>
+  <li>understand the basic mechanics of the HTTP protocol from both a client and server perspective</li>
+</ul>
+
+
+You may work in pairs, if you wish.
+
+
+<h1>Hands-on with HTTP</h1>
+
+We're going to explore the HTTP protocol first-hand by examining its behavior when we interact with the various
+websites. We will use Chrome's Developer Tools to examine the underlying HTTP behavior. (Other web browsers have
+tools similar to Chrome's Developer Tools.)
+
+
+<dl>
+  <dt>Step 1:</dt>
+  <dd>Familiarize yourself with the built-in developer features in Chrome, or equivalent features in other
+    browsers. (From the Chrome menu, go to More Tools -&gt; Developer Tools. If you have trouble see <a
+    href="openChromeDevTools.png">this diagram</a>.)
+  </dd>
+
+  <dt>Step 2:</dt>
+  <dd>Open a <em>private browsing window</em>. (This step is important.)
+  </dd>
+
+  <dt>Step 3:</dt>
+  <dd>Open the Developer Tools, click on the "Network" tab, and check the "Disable cache" box.</dd>
+
+  <dt>Step 4:</dt>
+  <dd>
+    With Developer Tools open, click on the tab labeled "Network", then load the
+    page <a href='https://cis.gvsu.edu/~kurmasz/Humor/engin.html'><code>https://cis.gvsu.edu/~kurmasz/Humor/engin.html</code></a>
+    <span class="important"><strong>Important:</strong> Make sure you are using <code>https</code> not
+      <code>http</code></span>
+  </dd>
+
+  <dt>Step 5:</dt>
+  <dd>
+    <span class="listHeader">Select and expand the HTTP message labeled "<code>engin.html</code>". Make sure the
+      <code>Headers</code> tab is selected, then look through the <code>General</code> section for the
+      <code>Status Code</code></span>
+    <ol start="
+      ">
+      <li>
+         What browser and operating system are you using?
+      </li>
+      <li>
+         What is the Status Code; and what does it signify?
+      </li>
+      <li>
+         What would the status code be if you mis-typed "<code>engin</code>"?
+      </li>
+      <li>
+         Test your answer to the previous question by trying to fetch
+        <a href='https://cis.gvsu.edu/~kurmasz/Humor/enign.html'><code>https://cis.gvsu.edu/~kurmasz/Humor/enign.html</code></a>
+        <span class="important">(notice the misspelling).</span>
+      </li>
+    </ol>
+  </dd>
+
+
+  <dt>Step 6:</dt>
+  <dd>
+    <p class="list_header">Examine the request headers for your call to <a href='https://cis.gvsu.edu/~kurmasz/Humor/engin.html'><code>https://cis.gvsu.edu/~kurmasz/Humor/engin.html</code></a>.
+    <ol start="
+      5">
+      <li>
+         Are request headers sent by the browser or the web server?
+      </li>
+      <li>
+         What is the value of the <code>User-Agent</code> header?
+      </li>
+      <li>
+         What is the purpose of the <code>User-Agent</code> header?
+      </li>
+      <li>
+         Why does the <code>User-Agent</code> value appear to list several different web
+        browsers? (Hint: See this Stack Overflow post:
+        <a href='https://stackoverflow.com/questions/4024230/strange-user-agent-with-google-chrome'><code>https://stackoverflow.com/questions/4024230/strange-user-agent-with-google-chrome</code></a>.)
+      </li>
+      <li>
+         Visit the page using a couple other browsers (Safari, Firefox, Chrome, IE, etc.)
+        and report the different <code>User-Agent</code> strings used.
+      </li>
+      <li>
+         What is the value of the <code>Accept</code> header?
+      </li>
+      <li>
+         What is the purpose of the <code>Accept</code> header?
+      </li>
+      <li>
+         What is the purpose of the "<code>q</code>" parameter?
+        (Hint: Look
+        <a href='https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html'>here</a>.)
+      </li>
+    </ol>
+  </dd>
+
+  <dt>Step 7:</dt>
+  <dd>
+    Now, examine the response headers for your call to
+    <a href='https://cis.gvsu.edu/~kurmasz/Humor/engin.html'><code>https://cis.gvsu.edu/~kurmasz/Humor/engin.html</code></a>.
+    <ol start="
+      13">
+      <li>
+         What is the value of the <code>Content-Type</code> header?
+      </li>
+      <li>
+         What is the purpose of the <code>Content-Type</code> header?
+      </li>
+      <li>
+         List the other response headers and briefly describe their purpose.
+      </li>
+    </ol>
+  </dd>
+
+  <dt>Step 8:</dt>
+  <dd>View the actual payload of the HTTP response by clicking on the "Response" tab.
+    <ol start="
+      16">
+      <li>
+         What kind of data was received? Does it match the <code>Content-Type</code>
+        header?
+      </li>
+    </ol>
+  </dd>
+
+  <dt>Step 9:</dt>
+  <dd>
+    Visit <a href='https://cis.gvsu.edu/~kurmasz/Images/buzz1.jpg'><code>https://cis.gvsu.edu/~kurmasz/Images/buzz1.jpg</code></a>.
+    <ol start="
+      17">
+      <li>
+         What is the <code>Content-Type?</code>
+      </li>
+    </ol>
+  </dd>
+
+  </dd>
+  <dt>Step 10:</dt>
+  <dd>Uncheck the "Disable Cache" box and reload <a href='https://cis.gvsu.edu/~kurmasz/Humor/engin.html'><code>https://cis.gvsu.edu/~kurmasz/Humor/engin.html</code></a>.
+    <ol start="
+      18">
+      <li>
+         What is the status code? (If the Status Code is still 200, try refreshing again.)
+      </li>
+      <li>
+         What is the purpose of this status code? What is the benefit of returning this
+        code instead of 200?
+      </li>
+      <li>
+         What additional request headers did the browser send.
+      </li>
+      <li>
+         What does the value for <code>If-None-Match</code> represent?
+      </li>
+      <li>
+         Where did the browser get this value?
+      </li>
+    </ol>
+
+  <dt>Step 11:</dt>
+  <dd>Load the
+    page <a href='http://cis.gvsu.edu/~kurmasz/Humor/engin.html'><code>http://cis.gvsu.edu/~kurmasz/Humor/engin.html</code></a>  <span class="important"> Notice that you are
+    using <code>http</code> instead of <code>https</code></span>
+    <ol start="
+      23">
+      <li>
+        
+         What is the status code? What does this status code indicate?
+      </li>
+      <li>
+         What previously unseen response header did the server return when you requested the
+        "<code>http</code>" page?
+      </li>
+      <li>
+         How did your browser respond to this code?
+      </li>
+    </ol>
+  </dd>
+
+  <dt>Step 12:</dt>
+  <dd> Load the
+  page <a href='https://cis.gvsu.edu/~kurmasz/Images'><code>https://cis.gvsu.edu/~kurmasz/Images</code></a>  <span class="important">This URL does <em>not</em> end with a slash</span>.
+    <ol start="
+      26">
+      <li>
+        
+         What is the status code? What does this status code indicate?
+      </li>
+      <li>
+         What is the value of the <code>Location</code> response header?
+      </li>
+      <li>
+         What is difference between the status code returned for the <code>http</code> page
+        in question 23 from question 26?
+      </li>
+    </ol>
+    (Take note of how this trailing slash is handled --- especially if you are writing a web server!)
+  </dd>
+</dl>
+<hr>
+<p>Updated Friday, 26 August 2022, 5:38 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+
+</body>
+</html>

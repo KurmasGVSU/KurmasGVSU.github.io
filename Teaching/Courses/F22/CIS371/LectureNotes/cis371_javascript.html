@@ -1,0 +1,628 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="javascript">JavaScript</h1>
+
+<h2 id="history">History</h2>
+
+<ul>
+  <li>Originally designed as a language to run in the browser to
+    <ul>
+      <li>Add nice UI effects</li>
+      <li>Reduce the need for page reloads (e.g., by performing form validation locally).</li>
+    </ul>
+  </li>
+  <li>1995: Netscape creates LiveScript (quickly changed to JavaScript)</li>
+  <li>Microsoft introduces VBScript and then Jscript</li>
+  <li>1996: Netscape proposes ECMAScript specification as a standard
+    <ul>
+      <li>ECMA: European Computer Manufacturers Association</li>
+      <li><a href="https://www.ecma-international.org">https://www.ecma-international.org</a></li>
+    </ul>
+  </li>
+  <li>1997: First version of ECMA-262</li>
+  <li>2015: ES6 – later called ES2015
+    <ul>
+      <li>Introduced many of the “modern” features (classes, imports, () =&gt; notation, etc.)</li>
+    </ul>
+  </li>
+  <li>New version every year since</li>
+  <li>Current version is 10th Edition (also called ES2019)</li>
+  <li>Has capability to modify the web page (i.e., the DOM), thereby giving web apps a more native feel.  (More on that later.)</li>
+</ul>
+
+<h2 id="basics">Basics</h2>
+
+<ul>
+  <li>Similar to Java/C/C++</li>
+  <li>I will focus on the key features – especially those that are different from most programming languages.</li>
+  <li>JavaScript is <em>Dynamically Typed</em> (as opposed to Java/C/C++ which are <em>statically typed</em>)
+    <ul>
+      <li class="q">What does it mean for a language to be dynamically typed?
+        <ul>
+          <li>Variable types aren’t declared.</li>
+        </ul>
+      </li>
+      <li class="q">What are the pros and cons?
+        <ul>
+          <li>Pro:  Can leverage polymorphism without elaborate inheritance/interface structures.</li>
+          <li>Con: Compiler can’t identify when you’ve tried to call a method that doesn’t exist.</li>
+          <li>See <code>dynamicTyping.js</code> in the course sample code.</li>
+          <li>Pro: This lack of typing makes functional programming less cumbersome because we don’t have to jump through hoops to specify the type of the “lambda” parameter.</li>
+          <li>Con: Again, mistakes aren’t caught until runtime.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="key-features--differences">Key features / differences</h2>
+
+<ul>
+  <li>Template strings</li>
+  <li>Uses “Java-style” comments (both <code>//</code> and <code>/* ... */</code>)</li>
+  <li>Integers and floating point are the same type. (Try <code>typeof(1)</code> and <code>typeof(3.14159)</code>);</li>
+  <li>All objects behave like associative arrays.</li>
+  <li><code>==</code> vs <code>===</code>
+    <ul>
+      <li><code>==</code> converts both parameters to the same type before comparison (called <em>coercion</em>)</li>
+      <li><code>===</code> does not coerce parameters.  If the parameters are different types, the result is <code>false</code>.</li>
+      <li>Use <code>===</code> unless you have a good reason to use <code>==</code>.</li>
+      <li>When you use <code>==</code> add a comment explaining why.</li>
+      <li>See <code>keyFeatures.js</code></li>
+    </ul>
+  </li>
+  <li><code>null</code> and <code>undefined</code> are different.
+    <ul>
+      <li><code>null == undefined</code> is <code>true</code>:  Both convert to <code>false</code></li>
+      <li><code>null === undefined</code> is <code>false</code>: They are different types.</li>
+      <li>Be sure to check for both <code>null</code> and <code>undefined</code>.</li>
+    </ul>
+  </li>
+  <li><code>let</code> vs <code>var</code>
+    <ul>
+      <li>Variables declared using <code>let</code> have block scope (are local to the block)</li>
+      <li>Variables declared using <code>var</code> are visible throughout the function (are <em>not</em> local to the block.)</li>
+      <li>Use <code>let</code> unless you have a good reason to use <code>var</code>.</li>
+      <li>When you use <code>var</code>, and a comment explaining why.</li>
+    </ul>
+  </li>
+  <li>Some methods are asynchronous. (See <code>asynchronous.js</code>)</li>
+  <li>Use a linter (e.g., <code>JSHint</code>)</li>
+</ul>
+
+<h1 id="express">Express</h1>
+
+<ol>
+  <li><code>npm init</code> (accept defaults)</li>
+  <li><code>npm install express --save</code></li>
+  <li><code>npm install ejs --save</code> (skip if you prefer to use Pug)</li>
+  <li>
+    <p>Create <code>index.js</code> with the following content:</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">)</span>
+ <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+ <span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span>
+    
+ <span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello World!</span><span class="dl">'</span><span class="p">))</span>
+    
+ <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Example app listening on port </span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">!`</span><span class="p">))</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Launch <code>node index.js</code>
+    <ul>
+      <li>visit <code>localhost:3000</code></li>
+    </ul>
+  </li>
+  <li>Create a directory named <code>views</code>
+    <ul>
+      <li>By default, templates go here.</li>
+      <li>Convention vs. configuration.</li>
+      <li>If you want to change it:  <code>app.set('views', './your_preferred_location')</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>Create a file in <code>views</code> named <code>hello.ejs</code> (or <code>hello.pug</code>, if you prefer)</p>
+
+    <pre><code class="language-ejs">&lt;p&gt;Hello, there &lt;%= name %&gt;&lt;/p&gt;
+&lt;p&gt;Not a bad first page.&lt;/p&gt;
+</code></pre>
+  </li>
+  <li>Add <code>app.get('/', (req, res) =&gt; res.render('hello.ejs', { name: "Bob" }));</code> to <code>index.js</code>
+    <ul>
+      <li>You can also set a default template engine: <code>app.set('view engine', 'ejs')</code></li>
+      <li>Doing so allows you to leave off the <code>.ejs</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>Launch the server and visit the root page</p>
+  </li>
+  <li>Add a route
+    <ul>
+      <li>print the <code>res</code> object.</li>
+      <li>print just <code>res.query</code></li>
+      <li>Use <code>res.query</code> set a variable in the template</li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li class="to-me">Show multiplication table and processing of POST</li>
+</ul>
+
+<h2 id="mvc-model-view-controller">MVC (Model, View, Controller)</h2>
+
+<ul>
+  <li>This is a general software development design pattern.  It’s not just for web apps</li>
+  <li>Model
+    <ul>
+      <li>Represents the data / objects</li>
+      <li>Access the database</li>
+      <li>Provides the business logic</li>
+    </ul>
+  </li>
+  <li>View</li>
+  <li>Renders the web page</li>
+  <li>Controller:</li>
+  <li>Ties model and view together</li>
+  <li>Basic workflow
+    <ol>
+      <li>Receives input / action (e.g., HTTP request)</li>
+      <li>Calls appropriate model (runs the correct business logic)</li>
+      <li>Uses the results of the model’s actions to update view accordingly.</li>
+    </ol>
+  </li>
+  <li>Look at <code>Toy.js</code>
+    <ul>
+      <li>Primarily a container for a DB record</li>
+      <li>class methods represent DB accesses</li>
+    </ul>
+  </li>
+  <li>The <code>module.exports =</code> line is a module system called <em>CommonJS</em>
+    <ul>
+      <li>CommonJS was designed by Node to prevent namespace pollution (in other words, to avoid name collisions when importing multiple modules)</li>
+      <li><code>module.exports</code> is an object contains the exported elements of a module.
+        <ul>
+          <li>Sometimes it is the single exported object
+            <ul>
+              <li>(In the case of <code>express</code>, the module returns a function that creates the server object.)</li>
+            </ul>
+          </li>
+          <li>Sometimes it is an object that maps names to the several “public” elements of a module.</li>
+        </ul>
+      </li>
+      <li>Node provides a <code>require</code> method to load the code and return the <code>exports</code> object
+        <ul>
+          <li>The <code>Toy</code> module only returns one thing:  The <code>Toy</code> class.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>The most recent versions of JavaScript use new <code>import</code> and <code>export</code> statements.
+    <ul>
+      <li>Node supports these statements on an “experimental” basis.</li>
+    </ul>
+  </li>
+  <li>The routing in <code>index.js</code> maps each web request (combination of method and path) to a method on a controller.</li>
+  <li>That controller method
+    <ol>
+      <li>Accesses the model</li>
+      <li>Renders a view</li>
+    </ol>
+  </li>
+  <li class="to-me">Step through the following
+    <ul>
+      <li>Index</li>
+      <li>Show</li>
+      <li>Create</li>
+      <li>Update</li>
+      <li>Point out the use of partials.</li>
+      <li>Point out the use of the Array “find” method.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="convention-over-configuration">Convention over configuration</h3>
+
+<ul>
+  <li>By convention, Express uses pug.
+    <ul>
+      <li>If you choose to use pug, you don’t need to type anything.</li>
+      <li>If you choose to go against convention (e.g., use EJS), you need to add a line of configuration.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Similarly, by convention, the EJS templates go in a folder named <code>views</code>; but you can explicitly configure it.</p>
+  </li>
+  <li>Notice that the set of routes in <code>index.js</code> follows a pattern
+    <ul>
+      <li><code>GET /modelName</code> =&gt; <code>modelNameController#index</code></li>
+      <li><code>GET /modelName/:id</code> =&gt; <code>modelNameController#show</code></li>
+      <li>etc.</li>
+    </ul>
+  </li>
+  <li>If we agree to use this pattern for all models, we can easily write a function to automatically generate these routes.</li>
+  <li>We could also have this routing function automatically render a conventionally-named view.</li>
+  <li>We could even have a program write an outline of our model, controller, and all of our views.</li>
+  <li>Rails (and many other frameworks) do all of this.</li>
+  <li>They have steep learning curves; but, allow you to be very expressive/efficient once you become comfortable.</li>
+</ul>
+
+<h2 id="testing--jest">Testing / Jest</h2>
+
+<ul>
+  <li class="to-me">Discuss the addition of <code>isValid()</code> to the Model.</li>
+  <li>Add Jest to the project <a href="https://jestjs.io">https://jestjs.io</a>
+    <ul>
+      <li><code>npm install jest --save</code></li>
+      <li>edit the “test” line of <code>packages.json</code> to say <code>"test": "jest"</code></li>
+      <li>Add a file <code>test/Toy.test.js</code> and add some test to it.</li>
+      <li>run `npm run test</li>
+    </ul>
+  </li>
+  <li>Notice the use of “!this.name” to check for a missing name (including an empty string.)</li>
+  <li>Notice that <code>!this.price</code> doesn’t work for checking missing values, because it will also disallow <code>0.0</code></li>
+  <li class="to-me">Explain <code>parseFloat(this.price) != this.price</code></li>
+  <li class="to-me">Demonstrate <code>.only</code></li>
+  <li class="to-me">Demonstrate <code>toBeTruthy</code> and <code>toBeFalsy</code></li>
+  <li>Be sure to watch tests fail.  Watch what happens if we
+    <ol>
+      <li>Make a mistake in <code>create</code> and</li>
+      <li>Make a mistake in the test (by using a previous description).</li>
+    </ol>
+  </li>
+  <li class="to-me">Review the <code>describe</code>/<code>it</code> syntax in <code>Toy.test.js</code>
+    <ul>
+      <li>Run <code>npm run test test/Toy.test.js</code></li>
+      <li>Notice how the tests read as a sentence and describe the expected behavior (hence the <code>describe</code> block)</li>
+    </ul>
+  </li>
+  <li>To run tests by name
+    <ul>
+      <li>run <code>npm run test -- -t '#create'</code></li>
+      <li>The <code>--</code> causes the <code>-t '#create'</code> to be passed to jest instead of consumed by npm.</li>
+      <li>We need single quotes around <code>#create</code> because <code>#</code> has special meaning to the shell.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="mocking">Mocking</h3>
+
+<ul>
+  <li>Look at <code>ToyController.test.js</code>
+    <ul>
+      <li>To verify the behavior or this controller, we primarily need to verify how it interacts with the <code>request</code> and <code>response</code> objects</li>
+      <li>Setting up these objects (and avoiding any pitfalls) would be time consuming and difficult, so we use <em>mock</em> objects.</li>
+      <li>We “mock” the response object for use in the <code>#index</code> method by simply creating an object with a <code>render</code> method.</li>
+      <li>This mocked render method, doesn’t actually do anything, it just keeps track of how it is used (how many times it is called, what parameters are passed, etc.)</li>
+      <li>This tracking is done by <code>jest.fn</code></li>
+      <li class="to-me">explain the test <code>renders the index view</code></li>
+      <li class="to-me">explain the <code>#show</code> tests</li>
+      <li class="to-me">explain the <code>#new</code> tests
+        <ul>
+          <li>Explain how <code>Toy</code> and its constructor are mocked</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="databases--asynchronous-programming--promises">Databases / Asynchronous programming / Promises</h2>
+
+<ul>
+  <li>You can use the <code>sqlite</code> package to access a simple, file-based SQL database.</li>
+  <li>Challenge:  DB access is asynchronous.</li>
+  <li class="to-me">Examine <code>sqliteWithCallbacks/whyCallbacks.js</code></li>
+  <li class="to-me">examine <code>SqliteToyDB.js</code>
+    <ul>
+      <li>Notice that <code>all</code> and <code>find</code> need to take a callback method.</li>
+      <li>They should really take a second callback for errors.</li>
+    </ul>
+  </li>
+  <li>This example isn’t too bad; but, if we had a sequence of database accesses, you would need nested callbacks, which can get confusing and hard to maintain.</li>
+  <li><em>Promises</em> provide a means of organizing chains of callbacks.
+    <ul>
+      <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises</a> for an example of the “pyramid of doom”</li>
+      <li class="to-me">Examine <code>sqliteWithPromises</code></li>
+      <li>Note: At this point, the difference is small.</li>
+    </ul>
+  </li>
+  <li>Async / Await
+    <ul>
+      <li>We can use new keywords <code>async</code> and <code>await</code> to avoid callbacks at all.</li>
+      <li>If a method returns a promise, then you can just say <code>await</code> to instead obtain the <code>resolve</code> value.</li>
+      <li>Any method that uses <code>await</code> must be declared as <code>async</code>.</li>
+      <li><code>async</code> methods implicitly return promises, so you may need to <code>await</code> an async method.</li>
+      <li class="to-me">Show updated MVC
+        <ul>
+          <li>Point out that when updating, we need to use <code>function()</code> instead of <code>()=&gt;</code> to have access to <code>this</code>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>
