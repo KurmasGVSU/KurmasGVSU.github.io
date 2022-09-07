@@ -322,6 +322,44 @@
   </li>
   <li>At first only moved away from machine language as far as existing compiler technology would allow.  Hardware was expensive, which limited
 how complex compilers could get.</li>
+  <li>Also, consider the following</li>
+</ul>
+
+<pre><code>for (int i = 0; i &lt; size; ++i) {
+  c[i] = a[i] + b[i];
+}
+</code></pre>
+
+<p>vs.</p>
+
+<pre><code>for (int i = 0; i &lt; size; i+= 2) {
+  c[i] = a[i] + b[i];
+  c[i+1] = a[i+1] + b[i+1]
+}
+</code></pre>
+
+<p>vs.</p>
+
+<pre><code>int* end = c + size*sizeof(int)
+while (c &lt; end) {
+  *c = *a + *b;
+  ++a; ++b; ++c;
+  *c = *a + *b;
+  ++a; ++b; ++c;
+    *c = *a + *b;
+  ++a; ++b; ++c;
+  *c = *a + *b;
+  ++a; ++b; ++c;
+    *c = *a + *b;
+  ++a; ++b; ++c;
+  *c = *a + *b;
+  ++a; ++b; ++c;
+}
+</code></pre>
+
+<p>Top code is easiest to read; but bottom code is faster.  Over time compilers have improved to provide for “bottom” performance using “top” code.</p>
+
+<ul>
   <li>Then, in the late 50s and early 60s, we had enough computing power to re-think languages from the perspective of the programmer:
     <ul>
       <li class="q">What types of things do programmers want that machine code / assembly language doesn’t provide?
@@ -343,6 +381,7 @@ how complex compilers could get.</li>
           <li>Allowed programmers to switch primary focus from algorithms to data.</li>
           <li>Earliest programs were primarily scientific calculations and, therefore, very algorithm-centric</li>
           <li>As computers became more mainstream, they were used more and more for business, which is more data-centric.</li>
+          <li>Inheritance is an important type of re-use.</li>
         </ul>
       </li>
       <li>Functional Programming (e.g., LISP)</li>
