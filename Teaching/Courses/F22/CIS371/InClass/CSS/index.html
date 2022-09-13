@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>CSS </title>
+  <style>
+
+    li ol li, li ul li {
+      padding-bottom: 0;
+    }
+
+    .over {
+      text-decoration: overline;
+    }
+
+    @media print {
+      .top {page-break-before: always;}
+    }
+
+    ol ol {
+      list-style-type: lower-alpha;
+    }
+
+    img {
+      border: 1px black solid;
+      display: block;
+      padding-above: 10px;
+      padding-below: 10px;
+    }
+
+    dt {
+        font-size: 1.5em;
+        margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    }
+
+    .htmlBlock {
+      display: block;
+      word-wrap: normal;
+      border: 1px black solid;
+      font-family: monospace;
+      width: 75%;
+      padding: 10px;
+    }
+
+  .listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  ul {
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  </style>
+</head>
+
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 371</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">CSS </h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2022</h1></td>
+  </tr>
+</table>
+
+
+(This assignment originally designed by Prof. Engelsma.)
+
+<h1>Objective</h1>
+
+Provide practice using CSS
+
+<h1> Instructions</h1>
+Craft CSS code for the following scenarios. You must craft your CSS by hand Do not use any third party CSS or JavaScript libraries in your solutions.
+Avoid duplicating CSS rules when possible.  Style the scenarios using CSS only.  Don't modify the HTML.
+
+You may use any development environment of your choice.  One option is to use <a href='https://jsfiddle.net'><code>https://jsfiddle.net</code></a>.
+
+<dl>
+
+<!---------- example 1 -------------------->
+<dt>Problem 1</dt>
+<dd>
+
+<img src='example1_latin.png'>
+
+<h3>HTML Source:</h3>
+
+<div class='htmlBlock'>
+&lt;h1&gt; Example 1 &lt;/h1&gt; <br>&lt;div class=&quot;important&quot;&gt;<br>  &lt;p&gt; &lt;span class=&quot;bigtext&quot;&gt;C&lt;/span&gt;urabitur blandit tempus porttitor. Duis mollis, est non commodo  luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. &lt;/p&gt;<br>&lt;/div&gt;<br>&lt;p id=&quot;signature&quot;&gt;Mad Tertulous&lt;/p&gt;<br>
+</div>
+
+<p class='listHeader'>Specifications:</p>
+<ul>
+  <li><code>h1</code> is centered with text color purple.</li>
+  <li>The element marked with <code>id='signature'</code> is right-justified in italics.</li>
+  <li>First character in the paragraph is the Georgia font family and 40px in size.</li>
+</ul>
+
+
+</dd>
+
+<!---------- example 2 -------------------->
+<dt>Problem 2</dt>
+<dd>
+<img src='example2_float.png'>
+
+<h3>HTML Source:</h3>
+
+<div class='htmlBlock'>
+&lt;p&gt; Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. &lt;/p&gt;<br>&lt;div class=&quot;fancy_quote&quot;&gt;Posuere erat a ante venenatis dapibus! onec ullamcorper nulla non metus auctor&lt;/div&gt;<br> <br>&lt;p&gt; Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.&lt;/p&gt;<br>&lt;p&gt;Maecenas faucibus mollis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.&lt;/p&gt;<br>
+</div>
+
+<p class='listHeader'>Specifications:</p>
+<ul>
+<li> Paragraph text is displayed in default font.</li>
+<li> Quote box measures 200px X 100px.</li>
+<li> The font size of the quoted text is 120% larger than the default font-size.</li>
+<li> The font style of the quoted text is italic.</li>
+<li> There is 5px of space between the main text and the quoted text.</li>
+</ul>
+
+
+</dd>
+
+<!---------- example 3 -------------------->
+<dt>Problem 3</dt>
+<dd>
+<img src='example3_boxes.png'>
+
+<h3>HTML Source:</h3>
+
+<div class='htmlBlock'>
+&lt;div class=&quot;redbox&quot;&gt; Get ready!<br>&lt;/div&gt;<br>&lt;div class=&quot;yellowbox&quot;&gt;<br>Get set! &lt;/div&gt;<br>&lt;div class=&quot;greenbox&quot;&gt; Go!!<br>&lt;/div&gt;<br>
+</div>
+
+<p class='listHeader'>Specifications:</p>
+<ul>
+<li>Avoid duplicating lines of CSS. Place settings that apply to all three boxes in their own CSS ruleset.</li>
+<li>Use shades of red, yellow, green for the box background and border. Colors do not need to match the example above exactly.</li>
+<li>The boxes are 100px wide.</li>
+<li>Padding, margins and borders are all set to 10px.</li>
+<li>Text should be centered in the containing box.</li>
+<li>The boxes should begin to stack up vertically when the width of the view is reduced.</li>
+</ul>
+
+
+</dd>
+
+<!---------- example 4 -------------------->
+<dt>Problem 4</dt>
+<dd>
+<img src='example4_city_state.png'>
+
+<h3>HTML Source:</h3>
+
+<div class='htmlBlock'>
+&lt;div id=&#39;states&#39;&gt;<br>&lt;p class=&#39;listHeader&#39;&gt;States:&lt;/p&gt;<br>&lt;ul&gt;<br>  &lt;li&gt;Michigan &lt;/li&gt;<br>  &lt;li&gt;Indiana&lt;/li&gt;<br>  &lt;li&gt;Illinois&lt;/li&gt;<br>&lt;/ul&gt;<br><br>&lt;ol&gt;<br>  &lt;li&gt;California&lt;/li&gt;<br>  &lt;li&gt;Alaska&lt;/li&gt;<br>  &lt;li&gt;Texas&lt;/li&gt;<br>&lt;/ol&gt;<br><br>&lt;/div&gt;<br><br><br>&lt;div id=&#39;cities&#39;&gt;<br>&lt;p class=&#39;listHeader&#39;&gt;Cities:&lt;/p&gt;<br>&lt;ul&gt;<br>  &lt;li&gt;Detroit&lt;/li&gt;<br>  &lt;li&gt;Muncie&lt;/li&gt;<br>  &lt;li&gt;Chicago&lt;/li&gt;<br>&lt;/ul&gt;<br>&lt;/div&gt;<br>
+</div>
+
+<p class='listHeader'>Specifications:</p>
+<ul>
+  <li>The states in the unordered list should be blue.</li>
+  <li>The states in the ordered list should use the default color (i.e., don't let their color change).</li>
+  <li>The cities in the list should be green.</li>
+  <li>Modify the CSS only.  Don't modify the HTML.</li>
+</ul>
+
+
+</dd>
+
+
+
+<!---------- Problem 5 -------------------->
+<dt>Problem 5</dt>
+<dd>
+<img width='400px' src='example5_four_corners.png'>
+
+<h3>HTML Source:</h3>
+
+<div class='htmlBlock'>
+&lt;p id=&quot;topleft&quot;&gt; I am top left &lt;/p&gt;<br>&lt;p id=&quot;bottomleft&quot;&gt; I am bottom left &lt;/p&gt; &lt;p id=&quot;topright&quot;&gt; I am top right &lt;/p&gt;<br>&lt;p id=&quot;bottomright&quot;&gt; I am bottom right &lt;/p&gt; &lt;div class=&quot;centered_green_box&quot;&gt;<br> <br>&lt;p class=&quot;centered&quot;&gt; Centered &lt;/p&gt; &lt;/div&gt;<br>
+</div>
+
+<p class='listHeader'>Specifications:</p>
+<ul>
+<li> Left justified text has a left margin of 5px.</li>
+<li> Right justified text has a right margin of 5px.</li>
+<li> Top/bottom margin is default.</li>
+<li> Size of the box is 100px X 100px, with background color #00FF00.</li>
+</ul>
+
+
+
+</dd>
+</dl>
+
+
+<hr>
+<p>Updated Tuesday, 13 September 2022, 4:16 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>
