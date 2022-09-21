@@ -284,6 +284,10 @@
 <main id="content">
   <h1 id="names">Names</h1>
 
+<p>Before thinking about variables, let’s think about names in general.
+* {: .q} What else (other than variables) gets named in a programming language?
+* The term <em>identifier</em> is often used interchangeably with <em>name</em>.</p>
+
 <ul>
   <li>Exist primarily for our convenience.
     <ul>
@@ -302,19 +306,22 @@
   </li>
 </ul>
 
-<p>Consider the following
-~~~~~
-Integer Num_cars
-Integer = 42
-~~~~~</p>
+<p>Consider the following</p>
 
-<p>{q: What do you think about using keywords for variable names?}</p>
+<pre><code>Integer Num_cars
+Integer = 42
+</code></pre>
+
+<ul>
+  <li class="q">What do you think about using keywords for variable names?</li>
+  <li class="q">What about allowing a name to be both a function and a variable?</li>
+</ul>
 
 <h1 id="variables">Variables</h1>
 
 <ul>
   <li>Not just (name, value).</li>
-  <li>Completely described by six attributes {q: What are they?}
+  <li>Completely described by six attributes {: .q What are they?}
     <ol>
       <li>name</li>
       <li>location / address</li>
@@ -323,19 +330,22 @@ Integer = 42
       <li>lifetime</li>
       <li>scope</li>
     </ol>
-
+  </li>
+  <li class="q">How can a variable have different locations/addresses?
     <ul>
-      <li>
-        <ol>
-          <li>The range of values that can be held</li>
-          <li>The operations that may be performed.</li>
-        </ol>
-      </li>
-      <li>{q: What is an “Alias”?}</li>
-      <li>{q: How are aliases useful?}</li>
-      <li>{q: How are they potentially harmful?}</li>
+      <li>A local variable gets a different address (position on the stack) each time the function is called.</li>
     </ul>
   </li>
+  <li class="q">What is “type”?  What does it determine?
+    <ul>
+      <li>The range of values that can be held</li>
+      <li>The operations that may be performed.</li>
+    </ul>
+  </li>
+  <li class="q">Give an example of a “typeless” language.  (What does that even mean?)  What are the advantages and disadvantages?</li>
+  <li class="q">What is an “Alias”?</li>
+  <li class="q">How are aliases useful?</li>
+  <li class="q">How aliases they potentially harmful?</li>
 </ul>
 
 <h1 id="binding">Binding</h1>
@@ -351,6 +361,7 @@ Integer = 42
   </li>
   <li>“Binding time” is when this association is fixed.</li>
   <li>Binding time may initially appear trivial; but, is important to understanding semantic behavior</li>
+  <li>Changes in binding time can provide insight into a language’s high-level approach / perspective.</li>
   <li>In general, bindings can be “static” or “dynamic”
     <ul>
       <li>“static” means fixed before the program begins running and doesn’t change.</li>
@@ -372,13 +383,13 @@ Integer = 42
       <li>variable -&gt; type bindings can change in JavaScript.</li>
     </ul>
   </li>
-  <li>{q: Advantages of being able to change a variable’s type?}
+  <li class="q">Advantages of being able to change a variable’s type?
     <ul>
       <li>Flexibility in choosing names</li>
       <li>Ability to handle collections of mixed data</li>
     </ul>
   </li>
-  <li>{q: Disadvantages of being able to change a variable’s type?}
+  <li class="q">Disadvantages of being able to change a variable’s type?
     <ul>
       <li>Compiler can’t detect mistakes / typos.</li>
       <li>Assume <code>x</code> contains an <code>int</code> and <code>z</code> contains a <code>String</code>.  Compiler can’t detect that <code>x = z</code> is a typo if
@@ -391,77 +402,8 @@ we are allowed to change type of <code>x</code>.</li>
       <li><code>var x = 14</code> <em>implicitly</em> makes <code>x</code> an <code>int</code> in C#; but, this binding cannot be changed later.</li>
     </ul>
   </li>
+  <li class="to-me">Discuss explicit vs. implicit typing in terms of readability, writability, reliability, etc.</li>
 </ul>
-
-<p>{q: Discuss explicit vs. implicit typing in terms of readability, writability, reliability, etc.}</p>
-
-<h1 id="lifetime">Lifetime</h1>
-<ul>
-  <li>Lifetime is how long the storage for a variable is available.</li>
-  <li>In other words, the time between the storage is <em>allocated</em> and <em>deallocated</em>.</li>
-  <li>“static” means storage is allocated before the program begins and remains for the entire program.
-    <ul>
-      <li>{q: Advantages?}
-        <ul>
-          <li>Speed:  memory address can be hard-coded throughout the program.</li>
-        </ul>
-      </li>
-      <li>{q: Disadvantages?}
-        <ul>
-          <li>Can’t be used for recursion</li>
-          <li>May use extra memory (space is committed even when unnecessary – space can’t be shared.  Two functions that are never active at the same time can’t take turns using space)</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>“stack-dynamic”
-    <ul>
-      <li>Local variables that use the stack.</li>
-      <li>Space is allocated on the stack when variable is declared.</li>
-      <li>{q: Advantages}
-        <ul>
-          <li>Space only consumed while function is active.</li>
-          <li>Necessary for recursion (when multiple copies of a given function may be active)</li>
-        </ul>
-      </li>
-      <li>{q: Disadvantages}
-        <ul>
-          <li>Access time is slightly slower because of indirection (Need to compute address using stack pointer before accessing data)</li>
-        </ul>
-      </li>
-      <li>Note:  There is a difference between where a local variable is declared and when it is allocated.
-        <ul>
-          <li>Variables declared in the middle of a function may be allocated at the beginning of the function for efficiency reasons.</li>
-          <li>Variables declared in the middle of a function may or may not be accessible (in scope) at the beginning of the function.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>“Explicit heap dynamic”:  Allocated with <code>malloc</code>/<code>new</code> or something similar.
-    <ul>
-      <li>{q: Advantages:}
-        <ul>
-          <li>Needed when newly created storage must last longer than the function.</li>
-          <li>Allow data structures to grow and shrink</li>
-        </ul>
-      </li>
-      <li>{q: Disadvantages:}
-        <ul>
-          <li>Requires indirection (which can be slower)</li>
-          <li>Heap can get fragmented.</li>
-          <li>Deallocation can be challenging.  Explicit deallocation is error-prone.  Garbage collection can be expensive.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>“Implicit heap dynamic”:  Allocated automatically
-    <ul>
-      <li>e.g., <code>var x = [1, 2, 3, 4, 5]</code> // array in JavaScript</li>
-      <li>Many of the same disadvantages as explicit heap dynamic</li>
-    </ul>
-  </li>
-</ul>
-
 
 </main>
 </body>

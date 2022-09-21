@@ -5,7 +5,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Tradeoffs </title>
+  <title>Scope </title>
   <style>
     li {
       padding-bottom: .5em;
@@ -75,50 +75,72 @@
 <table class="assignmentHeader">
   <tr>
     <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 343</h1></td>
-    <td class="ah_middle_cell"><h1 class="ah_middle_content">Tradeoffs </h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Scope </h1></td>
     <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2022</h1></td>
   </tr>
 </table>
 
 
-<h1>Tradeoffs</h1>
+<h1>Scope</h1>
 
 <ol>
-<li>Name one feature of C that improves writability but hurts readability.
+  <li>Describe/write a simple program that demonstrates the usefulness of a static variable.  This should be a "real" 
+     program not a "toy" program.</li>
 
-  
+
+  <li>For each of the variables <code>a</code> - <code>d</code>, is the variable allocated statically or dynamically? 
+  Where is the variable stored? (Stack, heap, or global)
+
+<pre>
+int a;
+int main() {
+    static int b;
+    int c;
+    int *d;
+    d = malloc(sizeof(int)*3);
+}
+</pre>
 </li>
 
-<li>Name one feature of C that improves writability but hurts reliability.
-  
+<li>When are each of the variables above deallocated?</li>
+
+<li> Consider the code below:
+
+<pre>
+// The main program
+var  x;
+function  sub1() {
+  var  x;
+  function  sub2() {
+    . . .
+  }
+}
+function  sub3() {
+  . . .
+}
+</pre>
+Assume that the execution of this program is in the following unit order:
+
+<ul>
+<li> main calls sub1</li>
+<li> sub1 calls sub2</li>
+<li> sub2 calls sub3</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<ol>
+  <li> Assuming static scoping, in the following, which declaration of <code>x</code> is the correct one for a reference to <code>x</code>?
+
+<ul>
+  <li> sub1 </li>
+  <li> sub2 </li>
+  <li> sub3 </li>
+</ul>
 </li>
 
-<li>Are there any features of C that you would bring into Java given the choice?</li>
-
-<li>Explain how the idea of a void function in C is not orthogonal. (We may have mentioned this last week.) Why might it still be useful? Do you think it is worth the tradeoff?
-    
-</li>
-
-<li>Name and explain another criterion by which languages can be judged (in addition to those discussed in this chapter).</li>
-
-<li>What common programming language statement, in your opinion, is most detrimental to readability?</li>
-
-<li>Many languages distinguish between uppercase and lowercase letters in user-defined names.  What are the pros and cons of this design decision?
-
-    
+<li> Repeat part a, but assume dynamic scoping.</li>
 </ol>
-
-<li> Is it better for a programming language to 
-  <ol>
-    <li> silently ignore/fix obvious mistakes (e.g., capitalization, missing tags in HTML), or</li>
-    <li> force the programmer to make these changes explicitly?</li>
-    </ol>
-</li>
-
-<li>Describe some design trade-offs between efficiency and reliability in some language you know.
- 
-</li>
-
 </ol>
 
 (Questions in this exercise come from both Prof. Bowman and the textbook.)

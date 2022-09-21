@@ -549,14 +549,19 @@ substituted into a mostly-complete HTML documents (e.g., the Ruby example I show
           <li><code>SERVER_PORT</code></li>
           <li class="to-me">Show <code>environment.php</code>
             <ul>
-              <li>(Can either run from link on course web page, or launch <code>php -S 127.0.0.1:9000</code> from local directory.)</li>
+              <li>Can either run from link on course web page (<code>https://faculty.computing.gvsu.edu/kurmasz/environment.php</code>), 
+ or launch <code>php -S 127.0.0.1:9000</code> from local directory.)</li>
             </ul>
           </li>
         </ul>
       </li>
     </ul>
   </li>
-  <li>Notice that PHP does some pre-processing of these variables to make things easier for the programmer.</li>
+  <li>Notice that PHP does some pre-processing of these variables to make things easier for the programmer.
+    <ul>
+      <li>Specifically, notice that the query string is parsed and placed in <code>_GET</code></li>
+    </ul>
+  </li>
 </ul>
 
 <h3 id="forms">Forms</h3>
@@ -580,7 +585,7 @@ substituted into a mostly-complete HTML documents (e.g., the Ruby example I show
   <li>Data sent in the body of the HTTP request rather than in the query string.
     <ul>
       <li>Remember that HTTP request ends with a blank line.  Post data follows that blank line.</li>
-      <li class="to-do">Show how to observe values sent in Chrome developer tools.</li>
+      <li class="to-me">Show how to observe values sent in Chrome developer tools.</li>
       <li class="to-do">Notice that PHP helpfully parses this data and places it in variables so it’s ready to go.</li>
     </ul>
   </li>

@@ -283,6 +283,115 @@
 <body>
 <main id="content">
   <h1 id="scope">Scope</h1>
+<ul>
+  <li><em>Static</em> scoping, aka <em>lexical</em> scoping: The rules you already know.</li>
+  <li>Typically applies to functions.  In some languages, it may apply to blocks.</li>
+  <li>“Whole block” vs. “rest of the block”.
+    <ul>
+      <li class="q">So what happens if a variable is used before it is declared?
+        <ul>
+          <li>May be illegal (if variable must be defined before used.</li>
+          <li>Variable may just be undefined.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>“Inner” variables typically hide or “shadow” outer variables.</li>
+  <li>“global” variable:  Variables declared outside a function or class.</li>
+  <li class="q">How to access variables hidden by a narrower scope?
+    <ul>
+      <li>Some languages have a scope operator (e.g., <code>::</code>)</li>
+      <li>PHP has a special global variable that is a hash containing all globals.</li>
+      <li>Sometimes you just can’t.</li>
+    </ul>
+  </li>
+  <li><em>Dynamic</em> scoping</li>
+</ul>
+
+<pre><code>function  big() {
+  function  sub1() {
+    var  x = 7;
+  }
+  function  sub2() {
+    var  y = x;
+    var  z = 3;
+  }
+  var  x = 3;
+}
+</code></pre>
+
+<ul>
+  <li>Consider what value of <code>x</code> would be used if <code>big</code> called <code>sub1</code> which called <code>sub2 </code> vs. if <code>big</code> just called <code>sub2</code>.</li>
+  <li>This is confusing, and hard to implement.  Therefore, it isn’t common.</li>
+</ul>
+
+<h1 id="lifetime">Lifetime</h1>
+<ul>
+  <li>Lifetime is how long the storage for a variable is available.</li>
+  <li>In other words, the time between the storage is <em>allocated</em> and <em>deallocated</em>.</li>
+  <li>“static” means storage is allocated before the program begins and remains for the entire program.
+    <ul>
+      <li class="q">Advantages?
+        <ul>
+          <li>Speed:  memory address can be hard-coded throughout the program.</li>
+        </ul>
+      </li>
+      <li class="q">Disadvantages?
+        <ul>
+          <li>Can’t be used for recursion</li>
+          <li>May use extra memory (space is committed even when unnecessary – space can’t be shared.  Two functions that are never active at the same time can’t take turns using space)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>“stack-dynamic”
+    <ul>
+      <li>Local variables that use the stack.</li>
+      <li>Space is allocated on the stack when variable is declared.</li>
+      <li class="q">Advantages
+        <ul>
+          <li>Space only consumed while function is active.</li>
+          <li>Necessary for recursion (when multiple copies of a given function may be active)</li>
+        </ul>
+      </li>
+      <li class="q">Disadvantages
+        <ul>
+          <li>Access time is slightly slower because of indirection (Need to compute address using stack pointer before accessing data)</li>
+        </ul>
+      </li>
+      <li>Note:  There is a difference between where a local variable is declared and when it is allocated.
+        <ul>
+          <li>Variables declared in the middle of a function may be allocated at the beginning of the function for efficiency reasons.</li>
+          <li>Variables declared in the middle of a function may or may not be accessible (in scope) at the beginning of the function.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>“Explicit heap dynamic”:  Allocated with <code>malloc</code>/<code>new</code> or something similar.
+    <ul>
+      <li class="q">Advantages:
+        <ul>
+          <li>Needed when newly created storage must last longer than the function.</li>
+          <li>Allow data structures to grow and shrink</li>
+        </ul>
+      </li>
+      <li class="q">Disadvantages:
+        <ul>
+          <li>Requires indirection (which can be slower)</li>
+          <li>Heap can get fragmented.</li>
+          <li>Deallocation can be challenging.  Explicit deallocation is error-prone.  Garbage collection can be expensive.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>“Implicit heap dynamic”:  Allocated automatically
+    <ul>
+      <li>e.g., <code>var x = [1, 2, 3, 4, 5]</code> // array in JavaScript</li>
+      <li>Many of the same disadvantages as explicit heap dynamic</li>
+    </ul>
+  </li>
+</ul>
+
 
 </main>
 </body>
