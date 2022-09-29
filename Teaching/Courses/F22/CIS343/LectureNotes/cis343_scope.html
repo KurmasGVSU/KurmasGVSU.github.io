@@ -283,6 +283,23 @@
 <body>
 <main id="content">
   <h1 id="scope">Scope</h1>
+
+<ul>
+  <li class="to-me">Run this Python code</li>
+</ul>
+
+<pre><code>x = 3
+
+def fun1():
+    x = 4
+    fun2()
+
+def fun2():
+    print(x)
+
+fun1()
+</code></pre>
+
 <ul>
   <li><em>Static</em> scoping, aka <em>lexical</em> scoping: The rules you already know.</li>
   <li>Typically applies to functions.  In some languages, it may apply to blocks.</li>
@@ -322,7 +339,44 @@
 
 <ul>
   <li>Consider what value of <code>x</code> would be used if <code>big</code> called <code>sub1</code> which called <code>sub2 </code> vs. if <code>big</code> just called <code>sub2</code>.</li>
-  <li>This is confusing, and hard to implement.  Therefore, it isn’t common.</li>
+  <li>Although dynamic scoping is easier to implement, most people find it more difficult to deal with.  No modern languages have dynamic scoping as a default.
+To the best of my knowledge, only Perl and Common Lisp even offer it as an option.</li>
+  <li>
+    <p>Tex (the typesetting system) <em>does</em> use dynamic scoping. Knuth chose dynamic scoping for TeX because he wanted style settings such as font and size to be inherited from the caller when a macro is called without having to give these as explicit parameters or using global variables for these. Explicit parameters would be far too cumbersome, as there are a lot of style settings, and using global variables would mean that you would explicitly have to set a style back to what it was before after temporarily changing it. So instead of</p>
+
+    <p><code>\it{italic text \bf{boldface text} italic text}</code></p>
+  </li>
+</ul>
+
+<p>if Tex used static scoping, you would have to do this</p>
+
+<p><code>\it italic text \bf boldface text \it normal text</code></p>
+
+<ul>
+  <li><em>Referencing Environment</em> is the collection of all visible variables.</li>
+</ul>
+
+<h1 id="closure">Closure</h1>
+
+<ul>
+  <li class="to-me">Examine <code>closures.scm</code></li>
+  <li>Imagine, if you will, a silly carnival- or pinball-like game where you collect points
+then get lots of bonus points for a variety of reasons.</li>
+  <li>Look at the <code>apply-bonuses</code> function.  It takes an array of lambdas.  Each lambda 
+examines the points and decides how much of a bonus to add.  The output is the point total 
+after applying the bonuses.  (Bonuses are applied based on the original point total.  Bonus A does not affect Bonus B for this example.)</li>
+  <li>In <code>bonus-set1</code>, we write a separate lambda for each bonus.  Notice, however, that some of these 
+lambdas are quite similar.</li>
+  <li>These “similar” rules could be abstracted into functions like <code>bonus-if-above</code>; but, they can’t be used directly by <code>apply-bonuses</code> because the interface/signature isn’t right:  It doesn’t have the correct number of parameters.</li>
+  <li>We could write a lambda to call these methods; but, that would save us much typing.</li>
+  <li>Another idea is to change <code>bonus-if-above</code> slightly so that it <em>constructs</em> a lambda based on parameters.</li>
+  <li>We can then crate our list of bonus rules as shown with <code>bonus-set2</code>.</li>
+  <li class="q">Where do the parameters get stored between the time the rule lambda is “constructed” and when it is applied?  (Notice that in a language like C, the storage for the parameters to <code>make-*</code> are reclaimed when the function exits.)
+    <ul>
+      <li>In the “closure” around the lambda.</li>
+      <li>When a lambda is created, it contains more than just code: It contains it’s entire referencing environment.</li>
+    </ul>
+  </li>
 </ul>
 
 <h1 id="lifetime">Lifetime</h1>
