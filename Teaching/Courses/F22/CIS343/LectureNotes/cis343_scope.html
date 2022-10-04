@@ -374,7 +374,8 @@ lambdas are quite similar.</li>
   <li class="q">Where do the parameters get stored between the time the rule lambda is “constructed” and when it is applied?  (Notice that in a language like C, the storage for the parameters to <code>make-*</code> are reclaimed when the function exits.)
     <ul>
       <li>In the “closure” around the lambda.</li>
-      <li>When a lambda is created, it contains more than just code: It contains it’s entire referencing environment.</li>
+      <li>When a lambda is created, it contains more than just code: It contains it’s entire referencing environment.
+k</li>
     </ul>
   </li>
 </ul>
@@ -382,7 +383,7 @@ lambdas are quite similar.</li>
 <h1 id="lifetime">Lifetime</h1>
 <ul>
   <li>Lifetime is how long the storage for a variable is available.</li>
-  <li>In other words, the time between the storage is <em>allocated</em> and <em>deallocated</em>.</li>
+  <li>In other words, the time between the storage is <em>allocated</em> and <em>de-allocated</em>.</li>
   <li>“static” means storage is allocated before the program begins and remains for the entire program.
     <ul>
       <li class="q">Advantages?
