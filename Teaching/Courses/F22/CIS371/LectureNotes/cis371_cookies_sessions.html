@@ -347,7 +347,11 @@
       <li>TLDR:  Treat an object named <code>cookies</code> as a hash.</li>
     </ul>
   </li>
-  <li>Express interface to cookies: <a href="https://expressjs.com/en/api.html#res.cookie">https://expressjs.com/en/api.html#res.cookie</a></li>
+  <li>Express interface to cookies: <a href="https://expressjs.com/en/api.html#res.cookie">https://expressjs.com/en/api.html#res.cookie</a>
+    <ul>
+      <li>Best used with <code>cookie-parser</code> middleware <a href="https://www.npmjs.com/package/cookie-parser">https://www.npmjs.com/package/cookie-parser</a></li>
+    </ul>
+  </li>
   <li>Remember:
     <ul>
       <li>Browsers don’t have to accept cookies.  Avoid using them for “mission critical” features.</li>
@@ -414,6 +418,9 @@ during each request.
   <li>To use sessions in Express, install the <code>express-session</code> package
     <ul>
       <li><a href="https://www.npmjs.com/package/express-session">https://www.npmjs.com/package/express-session</a></li>
+      <li>This package stores session data on the server <em>not</em> in a cookie.</li>
+      <li>If you do store session data in a cookie (which you shouldn’t), make sure the 
+cookie is secure (i.e., encrypted) so that it is obvious if a user modifies it.</li>
     </ul>
   </li>
 </ul>
