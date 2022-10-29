@@ -282,7 +282,7 @@
 </head>
 <body>
 <main id="content">
-  <h2 id="client-side-web-pages">Client-side web pages</h2>
+  <h2 id="client-side-web-pages--single-page-apps-spa">Client-side web pages / Single Page Apps (SPA)</h2>
 
 <ul>
   <li>Consider Facebook:  Notice that when you scroll down the page, you never get to the bottom. Instead, new posts get inserted and the list seems to go on “forever”</li>
@@ -296,6 +296,26 @@
   </li>
   <li>This technique often involves creating new DOM elements on the fly (like we say last week).</li>
   <li>Client-side frameworks like React, Angular, and Vue take this to the extreme and construct the entire DOM on the client “on the fly”</li>
+  <li>Such apps are called “single-page apps” because they are effectively just one page that is repeatedly updated.</li>
+  <li class="q">What are the advantages and disadvantages of such an approach?
+    <ul>
+      <li>Advantages
+        <ul>
+          <li>Faster</li>
+          <li>Can feel more like a native app</li>
+          <li>Can re-use the server for both web and mobile products</li>
+        </ul>
+      </li>
+      <li>Disadvantages
+        <ul>
+          <li>“Deep linking” can be challenging.</li>
+          <li>SEO can be challenging (but possible if you are careful)</li>
+          <li>Code quality of SPAs may be lower (e.g., more redundancy)</li>
+          <li>Cross-site scripting is a bigger issue.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 <h3 id="client-side-quick-start">Client-side “Quick Start”</h3>
@@ -363,9 +383,9 @@
   <li>Look at <code>jsx1.jsx</code></li>
   <li>To convert JSX to JavaScript “by hand”
     <ol>
-      <li>Install the Babel Command Line Interface: <code>npm install babel-cli</code></li>
-      <li>Install the React Preset for Babel: <code>npm install babel-preset-react</code></li>
-      <li>Run <code>./node_modules/.bin/babel --presets react  ./jsx1.jsx</code></li>
+      <li>Install the Babel Command Line Interface: <code>npm install --save-dev @babel/core @babel/cli</code></li>
+      <li>Install the React Preset for Babel: <code>npm install @babel/preset-react</code></li>
+      <li>Run <code>npx babel --presets=@babel/preset-react jsx1.jsx</code>  (<code>npx babel</code> is a short-cut for <code>./node_modules/.bin/babel</code>)</li>
     </ol>
   </li>
   <li>Notice how the “html-like” syntax is converted into “regular” javaScript.
