@@ -87,23 +87,6 @@
   <li>Describe/write a simple program that demonstrates the usefulness of a static variable.  This should be a "real" 
      program not a "toy" program.</li>
 
-
-  <li>For each of the variables <code>a</code> - <code>d</code>, is the variable allocated statically or dynamically? 
-  Where is the variable stored? (Stack, heap, or global)
-
-<pre>
-int a;
-int main() {
-    static int b;
-    int c;
-    int *d;
-    d = malloc(sizeof(int)*3);
-}
-</pre>
-</li>
-
-<li>When are each of the variables above deallocated?</li>
-
 <li> Consider the code below:
 
 <pre>
@@ -143,9 +126,34 @@ Assume that the execution of this program is in the following unit order:
 </ol>
 </ol>
 
+<h1>Lifetime</h1>
+
+<ol>
+  <li>For each of the variables <code>a</code> - <code>d</code>, is the variable allocated statically or dynamically? 
+  Where is the variable stored? (Stack, heap, or global)
+
+<pre>
+int a;
+int main() {
+    static int b;
+    int c;
+    int *d;
+    d = malloc(sizeof(int)*3);
+}
+</pre>
+</li>
+
+<li>When are each of the variables above deallocated?</li>
+
+<li>Dynamic type binding is closely related to implicit heap-dynamic variables. Explain this relationship.</li>
+
+
+
+</ol>
+
 (Questions in this exercise come from both Prof. Bowman and the textbook.)
 <hr>
-<p>Updated Tuesday, 20 September 2022, 5:08 PM</p>
+<p>Updated Thursday, 3 November 2022, 3:31 PM</p>
 <a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
 </body>
 </html>
