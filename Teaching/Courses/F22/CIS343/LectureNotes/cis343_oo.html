@@ -344,12 +344,21 @@ between programming units)</li>
   <li>Subclasses and subtypes
     <ul>
       <li>“Principle of Substitution”:  It works to assign B to a reference of type A.</li>
-      <li>B should have the same behavior as A when using inherited methods</li>
+      <li>B should also have the same <em>behavior</em> as A when using inherited methods</li>
       <li>In this case B is a “subtype” of A</li>
       <li>Not all subclasses are sub-types:  B is not a subtype if it overrides one of As 
 public methods.</li>
       <li>“A subtype inherits interfaces and behavior, while a subclass inherits implementation, primarily to promote code re-use”</li>
       <li>“Most static-typed languages that support object-oriented programming are designed so that subclasses are subtypes, unless the programmer specifically designs a subclass that has behavior that differs from that of its parent class.”</li>
+      <li>Inheritance usually causes the subclass to implement that parent classes interface.
+        <ul>
+          <li class="q">What is the primary exception?
+            <ul>
+              <li>C++ if you choose <code>private</code> inheritance.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
       <li class="q">Can we design a language that enforces that a subclass be a “true” subtype when requested?</li>
     </ul>
   </li>
