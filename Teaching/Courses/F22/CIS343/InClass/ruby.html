@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Ruby </title>
+  <style>
+    li {
+      padding-bottom: .5em;
+    }
+
+    li ol li, li ul li {
+      padding-bottom: 0;
+    }
+
+    .over {
+      text-decoration: overline;
+    }
+
+    @media print {
+      .top {page-break-before: always;}
+    }
+
+    ol ol {
+      list-style-type: lower-alpha;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 343</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Ruby </h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2022</h1></td>
+  </tr>
+</table>
+
+
+<ol>
+  <li>Write a function to convert fahrenheit to celsius.  The formula is 
+  <code>c = 5/9(f - 32)</code>
+  </li>
+
+  <li>Write a function to compute the distance between two points on the coordinate plane.
+  Have your function take four parameters <code>x1</code>, <code>y1</code>, <code>x2</code>, and <code>y2</code>.
+  </li>
+
+  <li>Write a function <code>rectangle(width, height)</code> that prints a rectangle of asterisks with the given width and height.</li>
+
+  <li>Write a function that uses <code>each</code> to count the number of occurrences of <code>item</code> in an array.</li>
+  <li>Now use the built-in <code>Array#select</code> method.</li>
+
+  <li>Take an array of integers.  Use <code>Array#each</code> to print the even integers.<li>
+  <li>Now, use <code>Array.select</code> to filter and return only the even integers, then print them out.</li>
+  
+  <li> Given an array of symbol values representing an ensemble and a hash that maps instruments to sections, 
+       write a method called <code>tabulate_sections</code>
+       that produces a hash that maps instrument sections to the number of instruments in that section of the ensemble. For example, 
+       given the input
+       <br>
+          <code>ensemble = [:piano, :clarinet, :oboe, :trumpet, :frenchhorn, :violin, :piano, :oboe, :cello]</code> and<br>
+          <code>section = { piano: :percussion, clarinet: :woodwind, oboe: :woodwind, flute: :woodwind, trumpet: :brass, frenchhorn: :brass, violin: :string, oboe: :woodwind, cello: :string, viola: :string, timpani: :percussion}</code>
+       <br>
+       the function should return <code>{percussion: 2, woodwind: 3, brass: 2, strings: 2}</code>.
+</li>
+<li>Repeat the previous exercise, but try to find the must "Rubyesque" solution (i.e., try chaining a bunch of functions together.)  Consider methods
+like <code>Hash#values</code>, <code>Array#uniq</code>, <code>Array#select</code>, <code>Array#map</code>, and <code>Array#reduce</code>.</li>
+
+<li>Write your own version of <code>Array#select</code>.</li>
+</ol>
+
+<hr>
+<p>Updated Friday, 4 November 2022, 11:38 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>
