@@ -362,8 +362,128 @@ public methods.</li>
       <li class="q">Can we design a language that enforces that a subclass be a “true” subtype when requested?</li>
     </ul>
   </li>
-  <li class="q">Should everything be an object?</li>
+  <li class="q">Can you have polymorphism without inheritance?  If so, explain how.</li>
+  <li class="q">
+    <p>Can you have inheritance without polymorphism?</p>
+  </li>
+  <li class="q">Should everything be an object? (Pros / Cons)
+    <ul>
+      <li>Boxing/unboxing in Java</li>
+    </ul>
+  </li>
+  <li>Overload vs. override
+    <ul>
+      <li><code>@Override</code> in Java.</li>
+      <li>Notice annotations serve an interesting purpose. <code>@Override</code> doesn’t affect 
+running of program, but provides helpful information for the compiler.</li>
+      <li><code>@Test</code> in JUnit does affect program running when using reflection.</li>
+    </ul>
+  </li>
+  <li class="q">How can we use polymorphism in place of lambdas/first-class functions?
+    <ul>
+      <li>“Function objects”.  Objects with a well known method can be used to pass code.</li>
+    </ul>
+  </li>
+  <li>Java Inner classes (static and non-static)
+    <ul>
+      <li>Often used to reduce the syntax of creating function objects for button callbacks.</li>
+      <li class="q">Can a object of a given class (say <code>Matrix</code>) access the private members of 
+other objects of the same class?  Why or why not?
+        <ul>
+          <li>Same author.  Consequences of that direct access should be clearly known and understood.</li>
+        </ul>
+      </li>
+      <li>By this same logic, outer classes in Java can access private data of inner classes.</li>
+    </ul>
+  </li>
+  <li>Think about polymorphism in a static vs. dynamic environment.
+    <ul>
+      <li>In C++, compiler can build a “dispatch” table for each type.
+We may not know the type of an object  until runtime, but we do have a table ready to go to look up the right method on the fly.</li>
+      <li>Scripting languages have to work their way up the hierarchy until they find a method with the desired name.</li>
+    </ul>
+  </li>
 </ul>
+
+<h2 id="ruby--open-classes">Ruby / Open classes</h2>
+<ul>
+  <li>Everything is an object</li>
+  <li>Instance variables <em>must</em> be private. Exposing instance variables is done by defining getter/setter methods.
+    <ul>
+      <li>(Of course there is syntactic sugar to support this.)</li>
+    </ul>
+  </li>
+  <li class="to-me">Look at “openness” of classes in JavaScript
+    <ul>
+      <li>Can add method to an individual object (but not “base” types like String and Number.)
+        <ul>
+          <li>Notice that trying to add a method to String doesn’t cause an error!</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Now, look at openness of classes in Ruby.
+    <ul>
+      <li class="to-me">Add method to Class by reopening class</li>
+      <li class="to-me">Add method to specific object of class <code>def objName.new_method</code></li>
+      <li>More orthogonal.</li>
+    </ul>
+  </li>
+  <li>Show how code that defines a class is just code.  You can do “work” inside a class definition.</li>
+  <li>In fact, when you run ruby as a script, you are effectively executing code inside the definition of 
+the class <code>Object</code>
+    <ul>
+      <li class="to-me"><code>p self.class</code></li>
+      <li>defining methods “outside” of a class is effectively adding a new method to the private section of the <code>Object</code> class.</li>
+      <li>(define a method, instantiate a new <code>Object</code> and call the method.  Now, type <code>public</code> and do it again!.)</li>
+      <li>In some sense you are doing this:</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Object</span>
+
+  <span class="kp">private</span> 
+   
+   <span class="c1"># your script code here</span>
+</code></pre></div></div>
+
+<ul>
+  <li>When you do this:</li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">Dog</span>
+     <span class="nb">attr_accessor</span> <span class="ss">:size</span>
+</code></pre></div></div>
+
+<p><code>attr_accessor</code> is a method that runs code that follows a template to create new methods.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="vg">$the_name</span> <span class="o">=</span> <span class="s2">"size"</span>
+
+<span class="k">class</span> <span class="nc">Dog</span>
+  <span class="nb">puts</span> <span class="s2">"Name is </span><span class="si">#{</span><span class="vg">$the_name</span><span class="si">}</span><span class="s2">"</span>
+  <span class="nb">attr_accessor</span> <span class="vg">$the_name</span><span class="p">.</span><span class="nf">to_sym</span>
+<span class="k">end</span>
+
+<span class="n">dog</span> <span class="o">=</span> <span class="no">Dog</span><span class="p">.</span><span class="nf">new</span>
+<span class="nb">p</span> <span class="n">dog</span>
+<span class="n">dog</span><span class="p">.</span><span class="nf">size</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="nb">p</span> <span class="n">dog</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Classes are just an instance of the class <code>Class</code>.</li>
+  <li><code>class Cat</code> in some sense does something like <code>Cat = Class.new</code> followed by 
+method calls to add instance data and methods.</li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Cat</span> <span class="o">=</span> <span class="no">Class</span><span class="p">.</span><span class="nf">new</span>
+<span class="no">Cat</span><span class="p">.</span><span class="nf">attr_accessor</span> <span class="ss">:size</span>
+
+<span class="n">my_cat</span> <span class="o">=</span>  <span class="no">Cat</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">my_cat</span><span class="p">.</span><span class="nf">size</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="nb">p</span> <span class="n">my_cat</span>
+</code></pre></div></div>
 
 </main>
 </body>
