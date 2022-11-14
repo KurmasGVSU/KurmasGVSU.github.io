@@ -362,6 +362,60 @@
 <span class="nb">p</span> <span class="n">h</span><span class="p">.</span><span class="nf">e</span>
 </code></pre></div></div>
 
+<h2 id="java-reflection-example">Java Reflection Example</h2>
+
+<pre><code class="language-Java">import java.lang.reflect.*;
+import java.lang.annotation.*;
+import java.util.*;
+
+class Reflection {
+
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface MyTest {
+        String name() default "&lt;NoName&gt;";
+    }
+
+
+    public void method1(int a, int b) {
+        System.out.println(a + b);
+    }
+
+    public String method2(String a, float b ) {
+        return a + b;
+    }
+
+    @MyTest
+    public void testMethod1() {
+        System.out.println("Running test method 1");
+    }
+
+    @MyTest(name = "Bob the Test Method")
+    public void testMethod2() {
+        System.out.println("Running test method 2");
+    }
+
+public static void main(String[] args) throws IllegalAccessException, InvocationTargetException {
+
+    List&lt;Method&gt; testMethods = new ArrayList&lt;&gt;();
+
+    for (Method m : Reflection.class.getDeclaredMethods()) {
+        System.out.println(m);      
+        for (Annotation a: m.getAnnotations()) {
+            System.out.println("\t" + a);
+            if (a.annotationType().equals(MyTest.class)) {
+                testMethods.add(m);
+            }
+        }  
+    }
+    
+    System.out.println("Running test methods:");
+        for (Method m : testMethods) {
+            m.invoke(new Reflection());
+        }
+    }
+}
+</code></pre>
+
 </main>
 </body>
 </html>
