@@ -285,6 +285,13 @@
   <h1 id="bootstraphttpsgetbootstrapcom"><a href="https://getbootstrap.com">Bootstrap</a></h1>
 
 <ul>
+  <li>At a high level:  Lots of CSS styling (with a little JS help)
+    <ul>
+      <li><a href="https://www.w3schools.com/bootstrap5/">W3Schoosl tutorial</a></li>
+      <li>Helpful book from O’Reilley: <em>Mastering Bootstrap 4 (2nd ed)</em> Jakobus and Marah
+(https://learning.oreilly.com/library/view/mastering-bootstrap-4/9781788834902/)</li>
+    </ul>
+  </li>
   <li>Multiple ways to install
     <ul>
       <li>Links to CDN</li>
@@ -309,9 +316,31 @@
       <li><code>container</code> is basic container element.</li>
       <li><code>row</code> contains items that belong in a logical row.</li>
       <li>12 virtual columns</li>
-      <li>Elements in a row fill the row, unless styled differently</li>
-      <li>The <code>sm</code>, <code>lg</code>, etc. apply styling only for widths <em>above</em> the cutoff.</li>
-      <li>Use <code>col-*</code> for widths below “small” (applies to all widths)</li>
+      <li>Elements in a row fill the row, unless styled differently.</li>
+      <li>Bootstrap defines categories of screen size
+        <ul>
+          <li>xs &lt; 576px</li>
+          <li>sm &gt;= 576px</li>
+          <li>md &gt;= 768px</li>
+          <li>lg &gt;=992px</li>
+          <li>xl &gt;= 1200px</li>
+          <li>xxl &gt;= 1400px</li>
+        </ul>
+      </li>
+      <li>The <code>sm</code>, <code>lg</code>, etc. apply styling only for widths <em>above</em> the cutoff.
+        <ul>
+          <li><code>d-none</code> sets <code>display: none</code> for all sizes</li>
+          <li><code>d-lg-block</code> sets block styling for <code>lg</code> sizes <em>and above</em></li>
+          <li><code>d-xl-none</code> sets <code>display: none</code> for <code>xl</code> sizes <em>and above</em></li>
+          <li>Styling for larger breakpoints overrides styling for smaller.</li>
+        </ul>
+      </li>
+      <li>Withing a <code>row</code>, use <code>col-</code> class to specify the fraction of the row the item should take up.
+        <ul>
+          <li>Use <code>col-*</code> for widths below “small” (applies to all widths)</li>
+          <li>Default is for element to consume entire row.</li>
+        </ul>
+      </li>
       <li class="to-me">Slowly make window narrower.
         <ul>
           <li>When the width falls below “large”, row “c” switches to groups of 3 (because <code>3x4 = 12</code>)</li>
@@ -322,19 +351,25 @@
       <li>Notice the “choppy” movement when resizing the window.
         <ul>
           <li>Change <code>container</code> to <code>container-fluid</code> and notice how it smooths out.</li>
+          <li>Change to <code>container-lg</code> and notice the switch to fluid at the lg level.</li>
         </ul>
       </li>
     </ul>
   </li>
   <li>Look at <code>nestedColumns.html</code>
     <ul>
-      <li>At the “medium” breakpoint, the outer groups switch from 4 to 2.</li>
+      <li>At the “medium” breakpoint, the outer groups switch from 4 to 2.
+        <ul>
+          <li>Outer groups are never fewer than 2 (from the <code>col-6</code>)</li>
+        </ul>
+      </li>
       <li>At the “small” breakpoint, the inner groups switch from 3 to 1.</li>
     </ul>
   </li>
   <li>Look at <code>equalWidthColumns.html</code>
     <ul>
       <li>Notice that the row will wrap when the words don’t fit anymore.</li>
+      <li>3rd example sets <code>oh</code> class which will hide the overflow.</li>
     </ul>
   </li>
   <li>Other adjustments:
@@ -342,10 +377,19 @@
       <li><code>offset</code> adds blank space. (Previous to Bootstrap 4 this was <code>col-offset</code>)</li>
       <li><code>justify-content-start</code>,<code>justify-content-end</code>, <code>justify-content-center</code></li>
       <li class="to-me">Add an offset to c7, then justify right.</li>
+      <li>(https://getbootstrap.com/docs/5.0/layout/grid/)</li>
     </ul>
   </li>
 </ul>
 
+<h2 id="other-features">Other Features</h2>
+<ul>
+  <li>Reboot:  Changes to default styles that many people find useful:
+    <ul>
+      <li>(https://getbootstrap.com/docs/5.0/content/reboot/)</li>
+    </ul>
+  </li>
+</ul>
 
 </main>
 </body>
