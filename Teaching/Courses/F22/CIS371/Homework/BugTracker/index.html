@@ -218,6 +218,7 @@ information:</p>
 
 <p>Generate basic screens for managing bugs (list of all bugs, show bug, edit bug, and delete bug). </p>
 
+<p>Use <code>sqlite3</code> or some other "real" database.  Don't use my fake "in-memory" DB.</p>
 <!-- 
 <p class='listHeader'>Using the TDD approach outlined in lecture, write the automated tests and then implement the following model requirements:</p>
 <ul>
@@ -268,6 +269,8 @@ section by adding a <code>User</code> model to the app and associating users and
    and a single user may own many bugs.  In addition, make sure you modify the appropriate bug views so that a user can be specified
     when a bug is entered/updated, or shown in the bug listing or bug detail views.  Make sure that you present users as 
     "Firstname Lastname" when they are shown in views.</p> 
+
+ <p>Bugs should reference their user by the user's primary key (e.g., the id).  Don't link Bugs to user by the user's name, since names aren't necessarily unique.</p>  
  
 <p>Pay little attention to styling at this point (e.g. you need not write much CSS/SCCS).  
  Your final product should look like the screenshots inserted below.  Your user views (not shown below) should also be fully functional. </p>
@@ -283,7 +286,7 @@ When your code is ready, please commit it with the message <code>[grade me 2]</c
 
 <h1 id='part3'>Part 3: Bootstrap</h1>
 
-<p class='listHeader'>In this part you will focus on making your Bugs Overflow Rails app more
+<p class='listHeader'>In this part you will focus on making your Bugs Overflow app more
 attractive using a responsive frontend framework of your choice.  Use what you learned in lecture to dress up 
 your app using Bootstrap (or an alternate frontend framework of your choice: Foundation, etc.) 
 Here are the general requirements your solution needs to meet:</p>
@@ -296,13 +299,13 @@ Here are the general requirements your solution needs to meet:</p>
 
 <p>You have some freedom to style as you see fit, but do make sure each view is reasonably attractive and fully responsive.</p>
 
-
+<b>Important:</b>  If you prefer, you can use Bootstrap to style your React app instead.
 
 
 
 <h2>Deliverables: </h2>
   <hr>
-  <p>Updated Sunday, 25 September 2022, 6:46 PM</p>
+  <p>Updated Thursday, 17 November 2022, 2:14 PM</p>
 <a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
 </main>
 </body>
