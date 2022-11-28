@@ -329,39 +329,107 @@ configure the mock to look for the parameter “toyz”.  Your unit test will pa
   </li>
 </ul>
 
-<h1 id="testing-react">Testing React</h1>
+<h1 id="linting">Linting</h1>
 
 <ul>
-  <li>High-level approach to <em>unit</em> testing:
-    <ol>
-      <li>Render a component in a test environment, and</li>
-      <li>Verify that the output is correct.</li>
-    </ol>
-  </li>
-  <li>The <em>React Testing Library</em> provides useful helpers
+  <li>Checks for
     <ul>
-      <li><a href="https://testing-library.com/docs/react-testing-library/intro">https://testing-library.com/docs/react-testing-library/intro</a></li>
+      <li>style</li>
+      <li>patterns that are likely to be errors.</li>
     </ul>
   </li>
-  <li>Calling <code>render</code> returns an object with a lot of helpful objects / methods.
+  <li>To install ESLint
     <ul>
-      <li><code>let stuff = render(&lt;AuthorForm/&gt;)</code></li>
-    </ul>
-  </li>
-  <li>It is easier to use object deconstruction to just grab the items we need
-    <ul>
-      <li><code>let {container} = render(&lt;AuthorForm/&gt;)</code></li>
-      <li><code>container</code> is now the DOM element for the AuthorForm.</li>
-      <li>We can run typical HTML queries on it (e.g., <code>getElementById</code>, <code>querySelector</code>)</li>
-      <li><code>render</code> also returns a list of query helpers that lets you do things like search for elements by text.
+      <li><code>npm install eslint --save-dev</code></li>
+      <li><code>npx eslint --init</code>
         <ul>
-          <li>See <a href="https://testing-library.com/docs/react-testing-library/cheatsheet">https://testing-library.com/docs/react-testing-library/cheatsheet</a> for details / documentation</li>
+          <li>(creates <code>.eslintrc.json</code>  You can customize to fit your own rules/style)</li>
+        </ul>
+      </li>
+      <li>Two helpful additions:
+        <ul>
+          <li>add <code>"react/prop-types": 0</code> to <code>rules</code></li>
+          <li>add <code>"jest": true</code> to <code>env</code></li>
         </ul>
       </li>
     </ul>
   </li>
+  <li>Notice that VSCode picks up on this and underlines problems.</li>
+  <li>You can also run <code>npx eslint src</code> from the command line
+    <ul>
+      <li class="to-me">Show errors in <code>App.js</code></li>
+    </ul>
+  </li>
+  <li>Running <code>npm install eslint-plugin-react-hooks --save-dev</code> will allow ESLint to find common mistakes in hook usage.
+    <ul>
+      <li>Book mentions other useful plug-ins.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="testing-react">Testing React</h1>
+
+<ul>
+  <li>High-level approach to <em>unit</em> testing React:
+    <ol>
+      <li>Render a component in a test environment, and</li>
+      <li>Examine the rendered component.</li>
+    </ol>
+  </li>
+  <li>React recommends using Jest.</li>
+  <li>Node does not automatically have the DOM API available.
+    <ul>
+      <li>Jest includes an npm package called <code>jsdom</code> for this purpose.</li>
+    </ul>
+  </li>
+  <li>The <em>React Testing Library</em> provides useful helpers that extend <code>jsdom</code> among other things.
+    <ul>
+      <li><a href="https://testing-library.com/docs/react-testing-library/intro">https://testing-library.com/docs/react-testing-library/intro</a></li>
+    </ul>
+  </li>
+  <li>React encourages tests to be structured around how the user interacts with the component rather 
+than the “implementation” of the component.
+    <ul>
+      <li>In other words, they argue it is better to look for visible features (e.g., text) than classes.</li>
+      <li>(However, if a component can be conditionally rendered, it’s not clear to me that looking for 
+text is the best way to verify the conditional.)</li>
+    </ul>
+  </li>
+  <li class="to-me">Look at <code>Color.test.js</code>
+    <ul>
+      <li>First example finds element with <code>.colorbox</code>.  (See caveat above)l</li>
+      <li>Second example looks for expected text to be visible.</li>
+      <li>Third example tests the callback.</li>
+    </ul>
+  </li>
+  <li class="to-me">Look at <code>NewColorForm</code>
+    <ul>
+      <li>Verifies conditional formatting based on edit mode.</li>
+      <li>Verifies callbacks are wired up correctly.</li>
+      <li>Notice that the complete “controlled” component not tested, because the <code>useState</code> hook
+is in a higher level component.</li>
+    </ul>
+  </li>
+  <li>The <code>fireEvent</code> method allows us to create interactions and test the resulting behavior.
+    <ul>
+      <li>See <a href="https://testing-library.com/docs/react-testing-library/cheatsheet">https://testing-library.com/docs/react-testing-library/cheatsheet</a> for details / documentation</li>
+    </ul>
+  </li>
+  <li>The <code>react-testing-library</code> intentionally doesn’t directly support “shallow” testing: Rendering a component and mocking its children.
+    <ul>
+      <li>They argue that this promotes tests that aren’t helpful.</li>
+      <li>For example, the test focus more on what methods are called than whether calling those methods has the desired effect.  (Think about how <code>NewColorForm</code> and <code>ColorList</code> interact – calling callbacks is meaningless unless it makes the desired action happen)</li>
+    </ul>
+  </li>
+  <li>Notice that there is no public interface to functions defined within components.
+    <ul>
+      <li>In the case of <code>App.js</code>, there are a lot of helper functions.</li>
+      <li>The functions outside of the App component (<code>uuidv4</code> and <code>intToColor</code>) can be exported and tested.</li>
+      <li>The nested functions are so tightly integrated with the state of the component, that they can probably only be effectively tested as part of the component itself.</li>
+    </ul>
+  </li>
   <li>
-    <p>The <code>fireEvent</code> method allows us to create interactions and test the resulting behavior.</p>
+    <p>Keep in mind that there is certainly not agreement about this.  You will have to figure out what makes sense given the specifics of the project and the culture of the company you work for.</p>
   </li>
   <li>Also note:
     <ul>
@@ -371,19 +439,6 @@ configure the mock to look for the parameter “toyz”.  Your unit test will pa
       <li>test feels more like an end-to-end test</li>
     </ul>
   </li>
-  <li>The <code>react-testing-library</code> intentionally doesn’t directly support “shallow” testing: Rendering a component and mocking its children.
-    <ul>
-      <li>They argue that this promotes tests that aren’t helpful.</li>
-      <li>For example, the test focus more on what methods are called than whether calling those methods has the desired effect.  (Think about how <code>AuthorList</code> and <code>AuthorForm</code> interact – calling callbacks is meaningless unless it makes the desired action happen)</li>
-    </ul>
-  </li>
-  <li>Notice that there is no public interface to functions defined within components.
-    <ul>
-      <li>In the case of Authors, there is relatively little logic — mostly just a sequence of method calls.  In this case, see above comment about the usefulness of tests.</li>
-      <li>In the case that there <em>is</em> a lot of logic, then that code should often be factored out into a helper class where it can be thoroughly tested.</li>
-    </ul>
-  </li>
-  <li>Keep in mind that there is certainly not agreement about this.  You will have to figure out what makes sense given the specifics of the project and the culture of the company you work for.</li>
 </ul>
 
 <h2 id="end-to-end-testing">End to End testing</h2>
@@ -477,7 +532,7 @@ configure the mock to look for the parameter “toyz”.  Your unit test will pa
       <li><code>require('expect')</code> provides access to the Jest matchers</li>
       <li>Most of the Selenium methods return promises.
         <ul>
-          <li>Notice the use of <code>then</code> after calls to <code>findElement</code></li>
+          <li>Notice the use of <code>then</code> (or <code>await</code>) after calls to <code>findElement</code></li>
         </ul>
       </li>
       <li>The steps are expected to return a promise so that the runner knows how to progress</li>
