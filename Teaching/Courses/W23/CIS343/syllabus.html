@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CIS 343 --- Structure of Programming Languages</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .rightAlign {
+      text-align: right;
+    }
+
+    .leftAlign {
+      text-align: left;
+    }
+
+    .centerAlign {
+      text-align: center;
+    }
+
+  
+
+    .gradingTable td, .gradingTable th {
+      padding-right: 10px;
+      padding-left: 10px;
+      /* border: 1px solid blue;  // retained for debugging */
+    }
+
+    .gradingTableHeader {
+      font-size: 110%;
+    }
+
+    .pointsTable {
+      padding-left: 25px;
+      border-collapse: collapse;
+    }
+
+    .pointsCell {
+      vertical-align: top;
+    }
+
+    .underlined {
+      border-bottom: 1px solid black;
+    }
+
+    .underlined_row td {
+      border-bottom: 1px solid black;
+      padding-bottom: 5px;
+    }
+
+
+    .letterGradeHeader {
+      padding-right: 10px;
+    }
+
+  .gradingTable {
+      border: 0;
+      padding-top: 25px;
+    }
+
+  .gradingTable tr td:nth-child(2), 
+  .gradingTable tr td:nth-child(4), 
+  .gradingTable tr td:nth-child(6), 
+  .gradingTable tr td:nth-child(8) {
+    border-left: 1px solid black;
+    padding-left: 10px;
+    margin-left: 20px;
+  }
+
+  .gradingTable tr td:nth-child(1), 
+  .gradingTable tr td:nth-child(3), 
+  .gradingTable tr td:nth-child(5), 
+  .gradingTable tr td:nth-child(7) {
+    padding-right: 10px;
+  }
+  </style>
+</head>
+
+<body>
+<div id="nav">
+
+  <p><a target="_top" href="index.html">Course Home</a></p>
+
+  <p><a href="syllabus.html">Syllabus</a></p>
+
+  <p><a href="timeline.html">Timeline</a></p>
+
+  <p><a href="learningObjectives.pdf">Learning Objectives</a></p>
+  
+  <!-- <p><a href="estimated_timeline.html">Timeline</a></p> -->
+
+  <!-- <p><a target="_top" data-klink="previousCourseURL">Previous Offering</a></p> -->
+
+  <!-- <p id="currentOffering" style="DISPLAY: none"><a target="_top" data-klink="currentCourseURL">Current Offering</a>
+  </p> -->
+
+  <!--
+  <p><a href="SampleCode" style="color:white"><fontsize="2"
+  face="arial,helvetica,sans-serif">SampleCode</font></a></p>
+  -->
+
+  <hr>
+
+  <p><a href='http://localhost:8000'>My Home</a></p>
+  <p><a href='http://localhost:8000/mySchedule.html'>My Schedule</a></p>
+
+</div>
+
+
+<div id="content">
+
+  <div>
+    <h2 style="text-align: center">
+      <span>CIS 343 Structure of Programming Languages</span><br>
+      <span>Winter 2023</span>
+    </h2>
+  </div>
+
+  <dl>
+    <dt> Contact Information:</dt>
+    <dd><style>
+    .contactInfoTable {
+        width: 100%;
+    }
+
+    .contactInfoTable td {
+        border:0;
+        margin: 3px;
+    }
+
+    .ciHeader {
+       font-weight: bold
+    }
+
+    .contactInfoTable td {
+        text-align: left;
+    }
+
+    .contactInfoTable td:nth-child(1) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(3) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(4) {
+        width: 250px;
+    }
+</style>
+
+<table class="contactInfoTable">
+    <tr>
+        <td class="ciHeader">Instructor:</td>
+        <td>Zachary Kurmas</td>
+        <td class="ciHeader">Office:</td>
+        <td>MAK C-2-316</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Phone:</td>
+        <td>(616)-331-8688</td>
+        <td class="ciHeader">Office Hours:</td>
+        <td>MWF 10-11; MW 1-2 </td>
+    </tr>
+    <tr>
+      <td class="ciHeader">Home page:
+	<td><a href='http://localhost:8000'><code>http://localhost:8000</code></a></td>
+      <td>
+    </tr>
+</table>
+
+</dd>
+
+    <dt>Course Objectives:<dt>
+    <dd>At the completion of the course, students will be able to
+      <ul>
+        <li>examine issues in language analysis and parsing,</li>
+        <li>develop programs using three programming paradigms, </li>
+        <li>describe three major programming paradigms, and</li>
+        <li>compare issues in language analysis and parsing.</li>
+      </ul>
+      <!-- Complete <a href='learningObjectives.pdf'>list of detailed Learning objectives</a>. -->
+    </dd>
+
+   <dt>Instruction Format</dt>
+   <dd>This course will meet face-to-face as scheduled for lecture and lab. Attendance is <em>required</em>.  
+   Many lectures may be "flipped", which means you will
+   be expected to have watched the assigned video content before attending lecture.  A few course meetings may be asynchronous.
+      
+       <dt>Text:</dt>
+    <dd>
+      <ul>
+        <li style="padding-bottom: 0; margin-bottom: 0"><em>Concepts of Programming Languages (12th edition)</em> by Robert W. Sebesta. ISBN: 9780134997186.  
+      </ul>
+    </dd>
+
+    <dt>Pre-Requsites</dt>
+    <dd> MTH 225, CIS 241, and CIS major/minor standing.  In addition, students are expected to be comfortable programming in Java and using <code>git</code>.</dd>
+
+    <!-- 
+
+    <b>Plus/minus modifiers:<b> If you score a 80\% or higher on the comprehensive portion of the final exam, 
+    you will earn a ``+'' on your base grade. If you score a 60\% or lower, you will earn a ``-'' on the base grade. 
+    The final exam has no other effect on your course grade. 
+    I may add a plus or minus to a course grade for other reasons, at my discretion. 
+    In particular, if you are close to completing all the requirements for a grade, I will take your situation under 
+    consideration and possibly give a plus or minus. 
+
+    <p>Please note, Grand Valley State does not award grades of A+ or D-. </p>
+    -->
+    
+    </dd>
+    
+    <dt>Important Dates:</dt>
+    <dd>
+      <ul>
+        <li>Drop Day: <span>Friday, 10 March</span></li>
+        <li>Final Exam: <span>Thursday,27 April, 8:00 a.m. or 10:00 a.m.</span></li>
+      </ul>
+    </dd>
+
+    <dt>Course Policies:</dt>
+    <dd>
+      <ul>
+        <li> I do not re-schedule labs, exams, or quizzes except in
+          cases of extreme emergencies. Business trips are not emergencies.
+        </li>
+
+        <li> The deadline to drop with a "W" is Friday, 10 March.
+          Remember, I cannot and will not drop this class for you.
+        </li>
+
+        <LI> Attendance is required. I understand that absences are
+          occasionally necessary; however, I reserve the right to lower grades
+          for excessive absences.
+        </li>
+
+        <li>
+          This course is subject to the GVSU policies listed at <a href='http://www.gvsu.edu/coursepolicies/'><code>http://www.gvsu.edu/coursepolicies/</code></a> as well as standard university COVID policies.
+        </li>
+        <!--  <LI> Quizzes may be scheduled as little as one class in advance. -->
+      </ul>
+    </dd>
+
+    <dt>Special Assistance:</dt>
+    <dd>If there is any student in this class who has special needs because of learning, physical or other disability,
+      please contact me and Disability Support Services (DSS) at 616.331.2490. Furthermore, if you have a disability and
+      think you will need assistance evacuating this classroom and/or building in an emergency situation, please make me
+      aware so I can develop a plan to assist you.
+    </dd>
+
+  <dt id='grading'>Grading:</dt>
+    <dd> Your grade in this course will be <em>specifications-based</em> rather than points-based.  The requirements for 
+     grades of A-, B, C, D, and F is given in the table below.  Notice also the special criteria for an A.
+
+
+
+
+<p><b>Important:</b> The number of deliverables and the requirement for each letter grade are subject to change. The list of objectives is coming soon.</p>
+
+
+<table class='gradingTable'>
+<tr><th class='leftAlign'>Category</th><th colspan=2 class='leftborder'>D</th><th colspan=2>C</th><th colspan=2>B</th><th colspan=2>A-</th></tr>
+
+<tr><td> Learning Objectives</td>
+ 
+  <td>Mastered:</td><td> 8/11</td>
+ 
+  <td>Mastered:</td><td> 9/11</td>
+ 
+  <td>Mastered:</td><td> 9/11</td>
+ 
+  <td>Mastered:</td><td> 10/11</td>
+
+</tr>
+<tr class='underlined_row'><td></td>
+ 
+  <td>Progressing:</td><td> 8/11</td>
+ 
+  <td>Progressing:</td><td> 10/11</td>
+ 
+  <td>Progressing:</td><td> 11/11</td>
+ 
+  <td>Progressing:</td><td> 11/11</td>
+
+
+<tr><td>Projects</td>
+ 
+  <td>Passed all tests:</td><td> 3/4</td>
+ 
+  <td>Passed all tests:</td><td> 3/4</td>
+ 
+  <td>Passed all tests:</td><td> 4/4</td>
+ 
+  <td>Passed all tests:</td><td> 4/4</td>
+
+</tr>
+
+<tr class='underlined_row'><td></td>
+ 
+  <td>Mostly complete</td><td> 3/4</td>
+ 
+  <td>Mostly complete</td><td> 4/4</td>
+ 
+  <td></td><td></td>
+ 
+  <td></td><td></td>
+
+</tr>
+
+<tr class='underlined_row'><td>Term Paper</td>
+ 
+  <td class='centerAlign'> D</td><td></td>
+ 
+  <td class='centerAlign'> C-</td><td></td>
+ 
+  <td class='centerAlign'> B-</td><td></td>
+ 
+  <td class='centerAlign'> A</td><td></td>
+
+</tr>
+
+<tr><td>Timeliness</td>
+ 
+  <td>Late days:</td><td> &le; 50</td>
+ 
+  <td>Late days:</td><td> &le; 25</td>
+ 
+  <td>Late days:</td><td> &le; 15</td>
+ 
+  <td>Late days:</td><td> &le; 10</td>
+
+</tr>
+
+</table>
+
+<p class='listHeader'><b>Earning an 'A'</b>: Notice that the criteria above are for an <em>A-</em>
+not an <em>A</em>.  To earn a "straight" A, you must meet the criteria for an A- <em>and</em> 
+get an 85% or better on the final exam.
+
+
+<!----
+There is no set criteria for an A. 
+In addition to meeting all the criteria for an A- (given in the table above), students who earn an 'A' students must
+also demonstrate an exceptional depth of understanding of the course material.
+Students may demonstrate this depth of understanding in several  ways including:</p>
+<ul>
+<li>Providing unusually insightful answers during class discussion.
+<li>Regularly earning Ms or Es on learning objectives the first time they are offered.
+<li>Earning many Es on learning objectives, projects, and other assignments.
+<li>Adding optional features to projects.
+</ul>
+-->
+
+<p><b>+/- modifiers</b>: There will be a comprehensive final exam.  If you score 80% or higher on this exam, you will earn a "+" on your 
+base grade.  If you score 60% or lower, you will earn a "-".  The final exam has no other effect on your course grade.  I may add a plus or minus to a course grade for other reasons at my discretion.  For example, i reserve the right to add a "-" to your grade for excessive absences.  Note:  GVSU does not award grades of A+ or D-.</p>
+
+<p><b>Learning Objectives</b>:  Learning Objectives are skills that students are expected to acquire by the end of the course.  Most learning objectives will be assessed using test/quiz questions; a few will be assessed as part of a lab, project, or homework.  Learning objectives will be scored with either "M" for "Master" or "P" for "Progressing".  Students earn an “M” when they have clearly demonstrated a thorough understanding of the learning objective (e.g., answer the related test questions without any mistakes --- or perhaps a very trivial mistake like a math error).  Students earn "P" if their work indicates that they have a partial, but useful understanding of the topic (e.g., their answer is structured correctly, correctly applies the fundamentals, but has missing or incorrect details). </p> 
+
+<p><b>EMPX</b>: Most submissions (other than test/quiz questions and homework) will be scored using the EMPX metric.  (See the 
+<a href='#empx'>diagram</a> below.)  A mark of "E" or "M" indicates that the submission is complete and clearly demonstrates that the student understands the relevant concepts.  A mark of "P" indicates that the student is making progress, but the assignment require additional work/revision.  A mark of "X" not sufficiently complete to assess.</p>
+
+  <img id=empx" src="EMPX-rubric-2021.png" width=600px>
+
+</dd>
+
+
+  </dl>
+
+  <hr>
+  <p>Updated Monday, 26 December 2022, 10:30 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</div>
+</body>
+</html>
