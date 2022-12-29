@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Kawa Scheme </title>
+  <style>
+    li {
+      padding-bottom: .5em;
+    }
+
+    li ol li, li ul li {
+      padding-bottom: 0;
+    }
+
+    .over {
+      text-decoration: overline;
+    }
+
+    @media print {
+      .top {page-break-before: always;}
+    }
+
+    ol ol {
+      list-style-type: lower-alpha;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 343</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Kawa Scheme </h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2023</h1></td>
+  </tr>
+</table>
+
+
+
+<h2>Basics</h2>
+<ol>
+  <li>Write a function to convert fahrenheit to celsius.  The formula is 
+  <code>c = 5/9(f - 32)</code>
+  </li>
+
+  <li>Write a function to compute the distance between two points on the coordinate plane.
+  Have your function take four parameters <code>x1</code>, <code>y1</code>, <code>x2</code>, and <code>y2</code>.
+  Try this one twice:
+  <ol>
+    <li>The first time use a <code>let</code> statement to avoid explicitly subtracting values twice.</li>
+    <li>The second time, write and use a helper function to compute <code>x<sup>2</code>.</li>
+  </ol>
+
+  </li>
+</ol>
+
+<h2>Conditionals</h2>
+
+<ol>
+  <li>Write a function to calculate a salesman's commission.  The commission is 
+    <ul>
+       <li>10% on all sales, plus</li>
+       <li>an additional 5% on sales over $10,000.</li>
+     </ul>
+   (For example, the commission on $15,000 in sales would be $1750.)
+  </li>
+
+  <li>Write a function that determines the quadrant in which a point lies.  Have your function take two parameters:  <code>x</code> and <code>y</code>.
+  Write two versions of this function:
+    <ol>
+      <li>Use the <code>cond</code> construct together with <code>and</code>.</li>
+      <li>Use a nested <code>if</code> (Have the outer <code>if</code> check the x-coordinate, then have the inner, nested <code>if</code> check the y-coordinate.)</li>
+    </ol>
+  </li>
+</ol>
+
+<h2> Recursion</h2>
+
+<ol>
+<li>Write a function <code>log2(val)</code> that returns the integer log base 2 of <code>val</code>. 
+(Use the function <code>truncate-quotient</code> to perform integer division.)</li>
+
+<li> Write a function <code>count-up(from to)</code> that prints all the integers from <code>from</code> to <code>to</code> (inclusive).</li>
+
+
+
+<li>Write a function <code>rectangle(width, height)</code> that prints a rectangle of asterisks with the given width and height.</li>
+
+<li>Write a function <code>div-mod(divisor dividend)</code> that returns the quotient and remainder from dividing <code>divisor</code> by <code>dividend</code>.  For example, <code>(div-mod 17 5)</code> should 
+return <code>(3, 2)</code> because <code>17 / 5 = 3</code> and <code>17 % 5 = 2</code>. Hint:  You might want a helper function.</li>
+</ol>
+
+<h2>Lists</h2>
+
+<ol>
+  <li>Write a function that returns the length of a list</li>
+  <li>Write a function that counts the number of occurrences of <code>item</code> in the list.</li>
+  <li>Write a function that inserts <code>item</code> into the list at position <code>x</code>.</li>
+  <li>Write a function that inserts <code>item</code> into the list after the first occurrence of <code>loc-val</code>.</li>
+  <li>Write a function that reverses a list.</li>
+</ol>
+
+<h2>Lambdas</h2>
+
+<ol>
+<li>Use the <code>map</code> function to convert a list of <code>(firstName, lastName)</code> pairs instructor a list of strings formatted <code>"lastName, firstName"</code>.
+    (One option is to use <code>format</code> to build the string.)</li>
+    <li>Implement your own version of <code>map</code>.</li>
+  <li>Write a function <code>select</code> that returns the list of items that meet the given criteria.  Specifically, <code>select</code> should take a lambda as a parameter.  The output list should include all items for which the lambda returns <code>true</code>.</li>
+  <li>Use your <code>select</code> function to return all the positive numbers in a list.</li>
+  <li>Use your <code>select</code> function to write a new function <code>high-enough threshold lst</code> that returns all numbers in <code>lst</code> that are greater than or equal to <code>threshold</code>.
+      (To be clear: <code>high-enough</code> should call <code>threshold</code>.)
+  </li>
+  <li>Implement <code>forEach from to action</code> that runs <code>(action index)</code> for each value of 
+  <code>index</code> between <code>from</code> and <code>to</code> (inclusive).</li>
+</ol>
+
+<hr>
+<p>Updated Wednesday, 28 December 2022, 3:13 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

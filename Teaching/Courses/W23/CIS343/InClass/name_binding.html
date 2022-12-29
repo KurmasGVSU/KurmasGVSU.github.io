@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Binding and Scope </title>
+  <style>
+    li {
+      padding-bottom: .5em;
+    }
+
+    li ol li, li ul li {
+      padding-bottom: 0;
+    }
+
+    .over {
+      text-decoration: overline;
+    }
+
+    @media print {
+      .top {page-break-before: always;}
+    }
+
+    ol ol {
+      list-style-type: lower-alpha;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 343</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Binding and Scope </h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2023</h1></td>
+  </tr>
+</table>
+
+
+<h1>Name</h1>
+
+<ol>
+  <li> Which of the following identifier forms is most readable?  Support your decision.
+     <ol>
+        <li><code>sumOfSales</code></li>
+        <li><code>sum_of_sales</code></li>
+        <li><code>SUMOFSALES</code></li>
+    </ol>
+  </li>
+
+  
+  <li>In most programming languages, names may not begin with a number.  Why not?</li>
+
+  <li>What are the main disadvantages of allowing variable names to be keywords?
+  
+    
+  </li>
+
+  <li>Under what conditions would it be helpful for a language to allow variable names that are keywords?
+    
+  
+  </li>
+</ol>
+
+<h1>Binding</h1>
+
+<ol>
+  <li>In C, the symbol `+` is bound to the addition operator at language design time.
+    <ol>
+      <li>Are there any languages where the `+` symbol is bound at compile time?  If so, which ones? If not, why not?</li>
+      <li>Are there any languages where the `+` symbol is bound at run time. If so, which ones?  If not, why not?</li>
+      </ol>
+    </li>
+
+</ol>
+
+<h1>Type</h1>
+
+
+<ol>
+  <li>Suppose a language did not maintain any type information at all (either compile-time or run-time).  Give some examples of 
+      common code snippets that simply would not work.
+
+      
+  </li>
+      
+  <li>Some languages prefix variables with clues as to the variables' types. 
+      For example, we know the Perl variable <code>$name</code> is a scalar of some kind. 
+      Similarly, in FORTRAN, variables named <code>i</code>, <code>j</code>, <code>k</code>, 
+      and <code>l</code> are assumed to be integers.
+      Consider your favorite language. 
+      Would you support adding naming rules like the following?
+
+      <ul>
+        <li> integer variable names must start with <code>i</code></li>
+        <li> floating-point variable names must start with <code>f</code></li>
+        <li> and so on ...</li>
+      </ul>
+       Why or why not?
+     </ul>
+  </li>
+</ol>
+
+
+(Questions in this exercise come from both Prof. Bowman and the textbook.)
+<hr>
+<p>Updated Wednesday, 28 December 2022, 3:13 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

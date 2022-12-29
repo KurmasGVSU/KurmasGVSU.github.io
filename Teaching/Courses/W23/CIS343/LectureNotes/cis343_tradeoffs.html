@@ -1,0 +1,569 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="gvsu-cis-343">GVSU CIS 343</h1>
+
+<h1 id="the-main-tradeoff">The Main Tradeoff</h1>
+
+<ul>
+  <li>Languages make many tradeoffs</li>
+  <li>In my opinion, the main tradeoff is between <em>performance</em> and <em>expressiveness</em>
+    <ul>
+      <li>The best performing languages require you to frame the problem from the computer’s perspective
+        <ul>
+          <li>Machine code,</li>
+          <li>assembly,</li>
+          <li>C</li>
+        </ul>
+      </li>
+      <li>At every step you are (more or less) specifying exactly what the machine should do (this is called <em>imperative programming</em>)
+        <ul>
+          <li>Because you have such fine-grained control over the low-level operation, it is more straightforward to optimize.</li>
+        </ul>
+      </li>
+      <li>However, it would be much easier if we could simply describe what we want the computer to do using the techniques we use to describe problems to each other.</li>
+      <li>When doing this, we then need to translate the program into machine instructions.  The further we are from the machine language, the less efficient the translation is.</li>
+    </ul>
+  </li>
+  <li>We initially started with machine language, then slowly increased abstraction:
+    <ul>
+      <li>First languages were machine languages: 1s and 0s.</li>
+      <li>Created assembly languages to represent the 1s and 0s in human-readable form.</li>
+      <li>Each assembly language statement corresponded to one machine language statement.</li>
+      <li>Still had to rephrase the problem in a hardware-centric way, but it was easier to type.</li>
+    </ul>
+  </li>
+  <li>Next steps automatically converted formulas and more complex steps into assembly
+    <ul>
+      <li>Fortran (FORmula TRANslation)</li>
+      <li>C</li>
+    </ul>
+  </li>
+  <li>At first only moved away from machine language as far as existing compiler technology would allow.  Hardware was expensive, which limited
+how complex compilers could get.</li>
+  <li>Also, consider the following</li>
+</ul>
+
+<pre><code>for (int i = 0; i &lt; size; ++i) {
+  c[i] = a[i] + b[i];
+}
+</code></pre>
+
+<p>vs.</p>
+
+<pre><code>for (int i = 0; i &lt; size; i+= 2) {
+  c[i] = a[i] + b[i];
+  c[i+1] = a[i+1] + b[i+1]
+}
+</code></pre>
+
+<p>vs.</p>
+
+<pre><code>int* end = c + size*sizeof(int)
+while (c &lt; end) {
+  *c = *a + *b;
+  ++a; ++b; ++c;
+  *c = *a + *b;
+  ++a; ++b; ++c;
+    *c = *a + *b;
+  ++a; ++b; ++c;
+  *c = *a + *b;
+  ++a; ++b; ++c;
+    *c = *a + *b;
+  ++a; ++b; ++c;
+  *c = *a + *b;
+  ++a; ++b; ++c;
+}
+</code></pre>
+
+<p>Top code is easiest to read; but bottom code is faster.  Over time compilers have improved to provide for “bottom” performance using “top” code.</p>
+
+<ul>
+  <li>Then, in the late 50s and early 60s, we had enough computing power to re-think languages from the perspective of the programmer:
+    <ul>
+      <li class="q">What types of things do programmers want that machine code / assembly language doesn’t provide?
+        <ul>
+          <li>variables with meaningful names.  (Early languages limited the names you could choose)</li>
+          <li>loop constructs.  (Initially done with branch / goto)</li>
+          <li>scope / encapsulation (The ability to re-use variable names and/or treat functions independently)</li>
+          <li>data structures (structs, records, unions, objects, etc.)</li>
+          <li class="q">In what ways to do you conceive problem solutions differently from a computer?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Natural language is, of course, still science fiction, but people looked at ideas “in the middle” of the tradeoff spectrum
+    <ul>
+      <li>Early innovations (scope, data structures) — helped programmers better organize / keep better track of what they were doing.</li>
+      <li>Object-Oriented Programming (e.g., Smalltalk)
+        <ul>
+          <li>Allowed programmers to switch primary focus from algorithms to data.</li>
+          <li>Earliest programs were primarily scientific calculations and, therefore, very algorithm-centric</li>
+          <li>As computers became more mainstream, they were used more and more for business, which is more data-centric.</li>
+          <li>Inheritance is an important type of re-use.</li>
+        </ul>
+      </li>
+      <li>Functional Programming (e.g., LISP)</li>
+      <li>Logic Programming (e.g., Prolog)</li>
+    </ul>
+  </li>
+  <li>In my opinion, the #2 tradeoff is between writeability and reliability.
+    <ul>
+      <li>Languages that are easier to write (think Perl, JavaScript) tend to have less strict syntax and/or type checking.  However, 
+this means that the compiler can detect fewer errors potentially leading to more run-time errors</li>
+    </ul>
+  </li>
+  <li>From here on, most of what you see is
+    <ul>
+      <li>different approaches for increasing expressiveness while maintaining reasonable performance and, to a lesser extent,</li>
+      <li>approaches for writing code more succinctly without making the code hard to maintain/debug.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="other-key-features--tradeoffs">Other key features / tradeoffs</h1>
+
+<p>(In other words, what makes a language “good”?)</p>
+
+<ul>
+  <li>Limited / careful use of operator overloading
+    <ul>
+      <li class="q">How many different ways is <code>*</code> used in C?
+        <ul>
+          <li>multiplication</li>
+          <li>Pointer declaration</li>
+          <li>Pointer dereferencing</li>
+        </ul>
+      </li>
+      <li class="q">How many different ways is <code>&amp;</code> used in C++?</li>
+    </ul>
+  </li>
+  <li>Names have a clear, obvious meaning
+    <ul>
+      <li class="q">What does <code>static</code> mean in C/C++?</li>
+      <li class="q">What does <code>grep</code> mean in the UNIX environment?  Is there any way to guess this based on general computing knowledge?</li>
+    </ul>
+  </li>
+  <li>Orthogonality vs. obscure behavior
+    <ul>
+      <li>Ideally, keywords and constructs have the same behavior regardless of context
+        <ul>
+          <li>The C pointer can be applied to any data type</li>
+          <li>Any data type can be a return value in java, but you can’t return an array in C.</li>
+        </ul>
+      </li>
+      <li>However, you don’t want to do this at the cost of having obscure, strangely-defined behaviors.</li>
+      <li>Poor overloading is one example of poor orthogonality.</li>
+    </ul>
+  </li>
+  <li>Expressiveness vs. Simplicity
+    <ul>
+      <li class="q">In C/Java how many ways are can you think of to add 1 to <code>count</code>?
+        <ul>
+          <li><code>count = count + 1</code></li>
+          <li><code>count += 1</code></li>
+          <li><code>++count</code></li>
+          <li><code>count++</code></li>
+        </ul>
+      </li>
+      <li class="q">What is the tradeoff?
+        <ul>
+          <li>Allowing multiple options makes it easy / more concise to write, but potentially harder to read.
+(Person reading the code needs to know all the “tricks”)</li>
+          <li>Taken to the extreme, you can have “write only” code (like Perl)</li>
+        </ul>
+      </li>
+      <li>Balance: Can easily write what you want, but only need to know a few constructs to both read and write the code.</li>
+    </ul>
+  </li>
+  <li>“Writeability” vs. Reliability
+    <ul>
+      <li>Reliability refers to how likely you are to catch bugs.</li>
+      <li>In general, the more errors the compiler / environment can catch, the sooner, quicker, and easier you can fix those errors.</li>
+      <li>Many of these “catches” require type checking.</li>
+      <li>Better type-checking generally requires being more explicit when writing code (think Java). Less type-checking allows for more “short-cuts”
+(think Ruby, JavaScript, and other scripting languages), but many mistakes then can’t be detected until run-time, where they are harder to 
+precisely identify and fix.</li>
+      <li>In general, the less you type, the harder it is for the compiler to catch mistakes for you.</li>
+    </ul>
+  </li>
+  <li>Readability
+    <ul>
+      <li>Limited number of operators (COBOL has hundreds)
+        <ul>
+          <li>Even if you don’t use them, you need to know to avoid them when choosing variables.</li>
+        </ul>
+      </li>
+      <li>Enough data types so you don’t have to do awkward things (like use ints for bools in C)</li>
+      <li>Prohibits variable names that match special words (e.g., no variables named “while”)</li>
+      <li class="q">Which is better:  Braces for blocks <code>{}</code> or should the begin and end be more distinct <code>end if</code>, <code>end while</code> etc?</li>
+      <li class="q">What about nice readable <code>end if</code> vs concise but goofy looking <code>fi</code>, <code>od</code>?</li>
+    </ul>
+  </li>
+  <li>Readability / Writability tradeoff:</li>
+</ul>
+
+<pre><code>use v5.10;
+
+while (&lt;STDIN&gt;) {
+    chomp;
+    say if (/z/)
+}
+</code></pre>
+
+<p>vs.</p>
+
+<pre><code>use v5.10;
+ 
+while ($_ = &lt;STDIN&gt;) {
+   chomp $_;
+   if ($_ =~ /MATCH/) {
+      say $_;
+   }
+}
+</code></pre>
+
+<ul>
+  <li>Support for Abstraction
+    <ul>
+      <li>DRY:  Don’t repeat yourself.</li>
+      <li>How easily do languages let you re-use code and/or data structures?</li>
+      <li>How can you re-use code / data structures across types without complex syntax to allow for type</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="static-vs-dynamic-typing">Static vs. Dynamic typing</h1>
+
+<ul>
+  <li>Static typing
+    <ul>
+      <li>Compiler makes sure all operations are legal before the program begins.
+        <ul>
+          <li>e.g., complains if you call a <em>bark</em> method on a <em>Cat</em> object.</li>
+        </ul>
+      </li>
+      <li>Compiler can catch more errors, but</li>
+      <li>Can make code more verbose.
+        <ul>
+          <li>Think about interfaces / generics in Java</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Dynamic typing
+    <ul>
+      <li>Validity of operations not checked until program is running.</li>
+      <li>Cuts out annoying syntax, but</li>
+      <li>Leads to more run-time errors.  (e.g., pass an object to a “sort” method that doesn’t have a “compare” operation)</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="compile-vs-interpret">Compile vs. Interpret</h1>
+
+<ul>
+  <li>Compile
+    <ul>
+      <li>Main advantage: speed</li>
+      <li>Tend to be statically-typed (thereby promoting reliability)</li>
+    </ul>
+  </li>
+  <li>Pure interpreted
+    <ul>
+      <li>Main disadvantage:  10x to 100x slower.</li>
+      <li>Tend to be dynamically typed (thereby promoting writeability)</li>
+    </ul>
+  </li>
+  <li>Hybrid
+    <ul>
+      <li>Key example: Java</li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

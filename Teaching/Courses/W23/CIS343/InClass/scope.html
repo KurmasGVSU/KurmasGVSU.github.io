@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Scope </title>
+  <style>
+    li {
+      padding-bottom: .5em;
+    }
+
+    li ol li, li ul li {
+      padding-bottom: 0;
+    }
+
+    .over {
+      text-decoration: overline;
+    }
+
+    @media print {
+      .top {page-break-before: always;}
+    }
+
+    ol ol {
+      list-style-type: lower-alpha;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 343</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Scope </h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2023</h1></td>
+  </tr>
+</table>
+
+
+<h1>Scope</h1>
+
+<ol>
+  <li>Describe/write a simple program that demonstrates the usefulness of a static variable.  This should be a "real" 
+     program not a "toy" program.</li>
+
+<li> Consider the code below:
+
+<pre>
+// The main program
+var  x;
+function  sub1() {
+  var  x;
+  function  sub2() {
+    . . .
+  }
+}
+function  sub3() {
+  . . .
+}
+</pre>
+Assume that the execution of this program is in the following unit order:
+
+<ul>
+<li> main calls sub1</li>
+<li> sub1 calls sub2</li>
+<li> sub2 calls sub3</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<ol>
+  <li> Assuming static scoping, in the following, which declaration of <code>x</code> is the correct one for a reference to <code>x</code>?
+
+<ul>
+  <li> sub1 </li>
+  <li> sub2 </li>
+  <li> sub3 </li>
+</ul>
+</li>
+
+<li> Repeat part a, but assume dynamic scoping.</li>
+</ol>
+</ol>
+
+<h1>Lifetime</h1>
+
+<ol>
+  <li>For each of the variables <code>a</code> - <code>d</code>, is the variable allocated statically or dynamically? 
+  Where is the variable stored? (Stack, heap, or global)
+
+<pre>
+int a;
+int main() {
+    static int b;
+    int c;
+    int *d;
+    d = malloc(sizeof(int)*3);
+}
+</pre>
+</li>
+
+<li>When are each of the variables above deallocated?</li>
+
+<li>Dynamic type binding is closely related to implicit heap-dynamic variables. Explain this relationship.</li>
+
+
+
+</ol>
+
+(Questions in this exercise come from both Prof. Bowman and the textbook.)
+<hr>
+<p>Updated Wednesday, 28 December 2022, 3:13 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>

@@ -1,0 +1,390 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="abstract-data-types-adt">Abstract Data Types (ADT)</h1>
+
+<ul>
+  <li>For many of you, your first programming language was an Object-oriented language.</li>
+  <li>The basic idea of objects and classes can be abstracted to the concept of an Abstract Data Type (ADT)</li>
+  <li class="q">What is “abstraction”
+    <ul>
+      <li>Abstraction is a way of looking at some entity that only focuses on the most significant parts.</li>
+    </ul>
+  </li>
+  <li>Two main types of abstraction:
+    <ul>
+      <li>Process abstraction (i.e. functions)</li>
+      <li>Data abstraction / composite data (e.g., <code>struct</code>s in C.)</li>
+    </ul>
+  </li>
+  <li>ADT encloses both the data <em>and</em> the subprograms that operate on that data.
+    <ul>
+      <li>(Doesn’t that sound like the way classes were first described?)</li>
+    </ul>
+  </li>
+  <li>Access control is a key feature of ADTs
+    <ul>
+      <li>Hides information that the client (i.e., “user”) doesn’t need to know.</li>
+      <li>Prevent access to underlying data in an uncontrolled manner.</li>
+      <li>Separates interface from implementation.</li>
+      <li class="q">Why is this helpful?
+        <ol>
+          <li>Allows changes/improvements to the implementation without breaking existing code.</li>
+          <li>Reduces the chances of internal data being put in an unanticipated state.
+            <ul>
+              <li>Imagine directly setting an Array’s length to a negative number.</li>
+              <li>When, how often should code check for this possibility?</li>
+              <li class="q">What characteristic does this describe?</li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+      <li>Consider using <code>structs</code> to program in an “OO style” in C.
+        <ul>
+          <li class="q">What’s missing?</li>
+          <li>Protection against changing values in the <code>struct</code> without checking for validity.</li>
+        </ul>
+      </li>
+      <li>In theory, and ADT’s data should be accessed through functions only.  But, many OO languages allow public instance variables.
+        <ul>
+          <li class="q">Why?</li>
+          <li class="q">What language qualities does this affect?</li>
+          <li class="q">What about instance variables that are read-only? What problems does this solve? What problems remain?
+            <ul>
+              <li>Improves writaility (less to write)</li>
+              <li>But, then changing the way data is stored might break existing code.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="q">What are the main benefits of ADTs?
+    <ul>
+      <li>They reduce complexity.  We can focus on the relevant details and forget the less important details.</li>
+      <li>They provide a namespace to help reduce name collisions.</li>
+    </ul>
+  </li>
+  <li>Consider this:  In some sense all built-in types (e.g., float) are ADTs.
+    <ul>
+      <li class="q">How so?</li>
+      <li>We don’t (necessarily) have direct access to the individual bits of the float.</li>
+      <li>We don’t need to know how the float is stored, we simply have a set of operations (+, -, *, /, etc.) that manipulate the float.</li>
+      <li>If the representation were to change, very few programs would break (only the exceedingly few that perform individual bit manipulations).</li>
+    </ul>
+  </li>
+  <li class="q">What features does a language need to support ADTs?
+    <ul>
+      <li>A way to declare the type (i.e., the bundled component data )</li>
+      <li>A way to expose what should be public and hide what should be private.</li>
+      <li>A way to provide external visibility for the name and interface .</li>
+    </ul>
+  </li>
+  <li>Other choices
+    <ul>
+      <li>Parameterization — e.g., templates in C++ and generics in Java.</li>
+      <li>How access control is specified.
+        <ul>
+          <li class="q">Which is better C++ “block” style public/private or Java “per-method” style?</li>
+        </ul>
+      </li>
+      <li>Whether interface and implementation are specified together (e.g., Java, Ruby, JavaScript) or separately (C++)
+        <ul>
+          <li class="q">Pros and cons of each?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Encapsulation: Many languages also provide some sort of “package” or “module” system to avoid name collisions among ADTs.</li>
+  <li>“Friends”.  Think about multiplying a vector and a matrix
+    <ul>
+      <li class="q">How does C++ give access to the internals of both?</li>
+      <li class="q">How does Java?</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>
