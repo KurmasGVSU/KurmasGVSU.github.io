@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>CIS 371 Semester Project</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+      #content {
+        padding: 0 10px 0 10px;
+      }
+      
+      .sumline td {
+        border-bottom: 1px solid black;
+      }
+
+      .strike {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 371</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Semester Project</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2023</h1></td>
+  </tr>
+</table>
+
+    Implement an web app of your choice. Your web app must
+    be new and innovative: It must either provide a useful service not currently available in other web apps, or
+    provide an existing service in a new, innovative way.
+
+
+    <p><b>Proposal Due:</b> Wednesday, 1 February</br>
+      <b> Project Due:</b> Monday, 17 April</p>
+
+    <dl>
+      <dt>Innovation</dt>
+      <dd>
+          One of the more challenging (and hopefully fun) aspects of this project is that you are to come up with your
+          own web application idea. While there are general requirements your application must meet (see details below) you
+          are free to innovate and design a web experience that you are personally interested in and passionate about.</p>
+        <p>Your app must be original and innovative. It is ok to come up with a "better mousetrap," but don't simply
+          replicate an app that already exists. Substantially improving upon an existing app idea or giving it a novel spin
+          of your own is permissible, provided your "novel spin" is functional (as opposed to simply cosmetic), and 
+          requires non-trivial additions and/or changes.</p>
+        <p>You also may take an existing idea and apply it to a new domain, as long as the conversion requires the
+          addition of innovative features. (For example, implementing "Yelp for U-Pick Blueberries" wouldn't make for a
+          good project, because you would be simply copying Yelp and changing the name of some fields.)
+        </p>
+        <p>To come up with an idea, think about web experiences that frustrate you. What existing sites have missing
+          features (in your opinion)? What web app do you wish somebody would write? Talk to your friends. What apps
+          do <em>they</em> wish somebody would write?</p>
+      </dd>
+
+   <dt>Use of Previous and/or Collaborative Work</dt>
+      <dd>
+        Projects must be entirely your own work. They may not be re-branded tutorials and/or book examples.  (For example, you may not take a "Toy Store" tutorial and convert it into a "Book Store" project.)  You may also not use any of the examples from this course as the base of your project. 
+        
+        
+        <p>You may use <em>your</em> previous projects (a personal side project, a project for a previous course, even a project from work) as a basis for your CIS 371 project provided:
+        <ol>
+          <li>You disclose that the project is based on previous work, and </li>
+          <li>the basis project is <em class='inline-important'>almost entirely your own work</em>.  For example, <em>you may not use a project from work if that project was developed by a team</em>.</li>
+        </ol>
+        
+        <p>Projects that are heavily based on the work of others will receive a failing grade.</p>
+
+        <p>You may not use ChatGPT or similar software to write any part of your project.</p>
+      </dd>
+
+      <dt class="listHeader">Deadlines and Deliverables</dt>
+      <dd>
+      By Wednesday, 1 February, please submit
+      <ul>
+        <li>A brief description of the app you propose to implement (including a description of its innovative aspects)</li>
+        <li>A GitHub or Bitbucket repository to which I have read access.</li>
+      </ul>
+      By Monday, 17 April, please submit
+      <ul>
+        <li>Instructions on how to access the app (e.g., the URL).</li>
+        <li>Credentials for an account that I may use to test the app.</li>
+      </ul>
+      </dd>
+
+      
+        <dt>Lightening Talks</dt>
+        <dd>
+          Each student will give a 5 – 8 minute presentation during the week of Monday, 17 April. Your talk should consist
+          of a brief overview of the idea underlying your app, the implementation and a live demonstration of the features of
+          your web app.
+        </dd>
+      
+
+
+      <dt>Grading</dt>
+      <dd>
+    To earn a "D"
+    <ul>
+      <li> Your app must be sufficiently functional to allow the user to complete at least one useful, <em>primary</em> task.</li>
+      <li> Your app must contain at least two correctly functioning CRUD pages that utilize a database.</li>
+      <li> Some content must be accessible to all users (including guests / those not logged in).</li>
+      <li> Users who log in may access their personal content.</li>
+      <li> Users (whether logged in or guests) are not able to access the content of others.</li>
+      <li> At least one page must be styled using CSS such that all components are fully visible and appear in a reasonable place.</li>
+      <li> At least one page must use JavaScript to improve user interaction (e.g., validate input before   contacting the server). </li>
+      </ul>
+
+    To earn a "C", you must meet all the requirements for a D, plus
+    <ul>
+       <li>Your app must be sufficiently complete to be of some use to someone.
+       <li> The application is not merely a copy / re-implementation of an existing application.</li>
+       <li> All required pages must be styled using CSS such that all components are fully visible and in reasonable place.</li>
+       <li> At least one page is styled such that all components are correctly sized (e.g., there are not any "jagged" rows or columns of content).</li>
+       <li> At least one page has all form elements styled nicely (as opposed to using the raw, unstyled HTML form elements).</li>
+       <li> The application contains custom JavaScript <em>logic</em> written by you.  By "logic" I mean things such as calculations, conditionals, and loops (as opposed to simply using a few lines of JavaScript to connect DOM elements to a JavaScript library).
+       <li>The application is correctly deployed somewhere (EOS, cloud platform, etc.)</li>
+       </ul>
+
+To earn a "B", you must meet all the requirements for a C, plus
+  <ul>
+     <li> The application must provide some service currently unavailable in the market.  Either the application implements something completely new, or it adds non-trivial improvement to an existing app.  It is not sufficient to simply port an existing app into a new domain.  For example, it is not sufficient to make "Yelp for Tacos" unless doing so entails making a significant change or addition to Yelp.  (Simply adding a few data fields is not sufficient.)</li>
+     <li>  The app uses asynchronous JavaScript to update a web page.</li>
+     <li>  Some of the JavaScript is covered by Unit tests.</li>
+     <li> Your app must do at least one of the following:
+        <ul>
+           <li>allow new users to create an account</li>
+           <!-- <li>use some framework (Express.js, Rails, React, Vue, etc.)</li> -->
+           <!-- <li>take appropriate security precautions to prevent threats such as SQL injection and XSRF.</li> -->
+           <li>provide features accessible only to administrative users</li>
+           <li>utilize some third-party API (e.g., Google Maps)</li>
+        </ul>
+     </ul>
+
+To earn an "A", you must meet all the requirements for a B, plus
+    <ul>
+    <li> The idea for this application must be sufficiently innovative that it could potentially be successful in the    marketplace (if given sufficient time and resources).</li>
+    <li> All pages must exhibit near-professional styling (including, but not limited to correct sizing and placement,   appealing color choices, enhanced styling of forms, etc.) </li>
+    <li>  At least one page must exhibit responsive design and look good on a variety of devices and screen sizes.</li>
+    <li>  All non-trivial JavaScript is covered by unit tests (if it can reasonably be unit-tested).</li>
+    <li class='strike'>  At least one page is covered by system tests.</li>  
+    </ul>
+
+  <p>If a requirement doesn't seem to apply to your proposed app, feel free to propose an alternate requirement. (In other words, don't let the requirements above be the reason you choose a "boring" project over an innovative one.)  However, please submit any proposed changes to the requirements to me by mid-October (i.e., don't try to cover for missing/incomplete features by trying to change the requirements at the last minute.)</p>
+
+    </dl>
+    <p>&nbsp;</p>
+    (Thank-you to Prof. Woodring for suggestions and contributions to the writeup
+    and grading rubric.)
+
+    <hr>
+    <p>Updated Monday, 9 January 2023, 9:24 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+  </body>
+</html>
