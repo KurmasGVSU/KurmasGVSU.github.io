@@ -290,6 +290,7 @@
       <li>Web browser: Program used to request and display information</li>
       <li>Web server: Program used to provide information</li>
       <li>These programs usually run on different machines.</li>
+      <li>Browser asks server for info.  Server replies. Browser displays</li>
     </ul>
   </li>
   <li>Crash course in Networking
@@ -311,7 +312,7 @@
           <li>Streams (both input and output) can be attached to files. (That’s how we read and write to files.)</li>
           <li>Streams called “<em>pipes</em>” can connect different processes.</li>
           <li>Can even attache streams to <code>String</code>s or <code>byte</code> arrays.</li>
-          <li>In many languages, streams provide a common interface so that methods can take a generic Stream object as a
+          <li>In many languages, streams are <em>interfaces</em> so that methods can take a generic Stream interface as a
  parameter and be written agnostic of the source/destination of the data.
             <ul>
               <li>In other words, the method need not know whether the data is coming from the keyboard or a file.</li>
@@ -321,15 +322,15 @@
  tricky).</li>
         </ul>
       </li>
-      <li>A connection between programs running on different machines is called a “<em>socket</em>”.
+      <li>A connection between programs running on different machines is called a “<em>socket</em>”. (Well, technically the abstraction of the connection.)
         <ul>
           <li>Sockets are objects typically created by the operating system.</li>
-          <li>In Java, a Socket object contains methods that return input and output stream objects.</li>
+          <li>In Java, a Socket object contains methods that return input and output Streams.</li>
           <li>These stream objects returned by sockets is how data is sent between programs (in particular, web browsers and
  web servers)</li>
           <li>Imagine you ask your assistant “Connect me to the White House”.  A few minutes later she brings you a cell
   phone, and you begin a conversation.  You don’t really know for sure how she connected you, all that matters is
-that you now have an object that allows you to communicate.</li>
+that you now have an object that allows you to communicate. This is conceptually what creating a socet does.</li>
         </ul>
       </li>
       <li>Each computer connected to the Internet is assigned a unique number called an “IP address”.</li>
@@ -386,6 +387,32 @@ to generate its requests differently (e.g., “Speak” Dutch instead of English
       <li>URI uniquely identifies an object, URL tells you where it is (how to get it)</li>
       <li>URL is a subset of URI.  (In other words, a URL identifies and object <em>and</em> tells you how to get it)</li>
       <li><a href="https://dev.to/flippedcoding/what-is-the-difference-between-a-uri-and-a-url-4455">https://dev.to/flippedcoding/what-is-the-difference-between-a-uri-and-a-url-4455</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="web-transaction-demo">Web Transaction Demo</h3>
+
+<ul>
+  <li class="to-do">Show demo conversation
+    <ul>
+      <li>Launch python server on EOS in <code>/home/kurmasz/Courses/CIS371/CIS371-SampleCode/SimpleWebClient</code>
+        <ul>
+          <li>e.g., <code>python -m http.server</code></li>
+        </ul>
+      </li>
+      <li>Connect with telnet</li>
+      <li>Fetch <code>opt.index.html</code></li>
+      <li>Fetch <code>/</code></li>
+      <li>Notice I add blank line</li>
+      <li>Notice Server responds with
+        <ul>
+          <li>Response</li>
+          <li>Response headers</li>
+          <li>Blank line</li>
+          <li>Content</li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ul>
@@ -493,39 +520,70 @@ to generate its requests differently (e.g., “Speak” Dutch instead of English
   </li>
 </ul>
 
-<h3 id="web-browser">Web Browser</h3>
-
+<h3 id="https">HTTPS</h3>
 <ul>
-  <li>We can use <code>telnet</code> to “pretend” to be a web browser.
+  <li>Same “language”, just encrypted.</li>
+  <li>Imagine a “box” at each end of the “pipe” that represents the stream. One end encrypts the communication, the other end decrypts it so
+    <ol>
+      <li>Eavesdroppers can’t decipher the message</li>
+      <li>If someone in the middle tries to modify the message, the client and sever can detect the change.</li>
+    </ol>
+  </li>
+  <li>HTTPS uses port 443.</li>
+  <li>Setting up HTTPS servers is difficult, so we usually use HTTP servers in development
     <ul>
-      <li>telnet simply opens a socket that we can use to send and receive text.</li>
-      <li class="to-do">Log into EOS, visit <code>http://35.39.165.174:8080/</code>
-        <ul>
-          <li>(It’s just a simple WordPress site)</li>
-        </ul>
-      </li>
-      <li class="to-do">Now use telnet to visit site:
-        <ul>
-          <li><code>telnet 35.39.165.174 8080</code></li>
-          <li><code>GET / HTTP/1.0</code></li>
-          <li>&lt;blank line&gt;</li>
-          <li>Examine the result:
-            <ul>
-              <li>Notice response headers</li>
-              <li>Notice blank line</li>
-              <li>Followed by HTML</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li class="to-do">This time <code>GET /2019/12/20/ HTTP/1.0</code>
-        <ul>
-          <li>Notice that you get a different web page.</li>
-        </ul>
-      </li>
+      <li>Almost all production servers are now HTTPS, even when data isn’t sensitive.</li>
     </ul>
   </li>
-  <li class="to-do">Try <code>www.gvsu.edu</code> and take not of 301 response</li>
+  <li>To encrypt/decrypt client and server need a shared secret.</li>
+  <li>Trick is securely agreeing on a secret key.</li>
+  <li>Solution: use RSA public/private keypairs.
+    <ol>
+      <li>Client connects to server</li>
+      <li>Server responds with public key (this can be unencrypted)</li>
+      <li>Client creates secret key, encrypts it with public key, sends to server.</li>
+      <li>Server decrypts message</li>
+      <li>Client and server continue to communicate using shared secret key</li>
+    </ol>
+  </li>
+  <li class="q">What is missing / what is the security hole here?
+    <ul>
+      <li>What if someone intercepts the public key and forges it?</li>
+      <li>That’s why we have <em>certificate authorities</em>:</li>
+    </ul>
+  </li>
+  <li>Server doesn’t just send its public key, it sends an <em>SSL Certificate</em> that contains
+    <ul>
+      <li>public key</li>
+      <li>IP address, owner, and other identifying information for the server</li>
+      <li>Name and digital signature of Certificate Authority</li>
+    </ul>
+  </li>
+  <li>Certificate Authority: An independent, trusted company that can verify that a public key hasn’t been forged.
+    <ul>
+      <li>Cloudflare</li>
+      <li>IdenTrust</li>
+      <li>DigiCert</li>
+      <li>GoDaddy</li>
+    </ul>
+  </li>
+  <li>More Info:
+    <ul>
+      <li><a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-ce">https://www.cloudflare.com/learning/ssl/what-is-an-ssl-ce</a></li>
+      <li><a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/">https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Certificate_authority">https://en.wikipedia.org/wiki/Certificate_authority</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="web-browser-again">Web Browser (again)</h3>
+
+<ul>
+  <li class="to-do">Try <code>www.gvsu.edu</code> and take note of 301 response
+    <ul>
+      <li>Remember the <code>host</code> header is not optional</li>
+    </ul>
+  </li>
   <li>There are very few “http” sites left. Almost all are “https”, which
     <ul>
       <li>verifies the identity of the server</li>
@@ -537,7 +595,7 @@ set up the encryption.
     <ul>
       <li><code>openssl s_client -crlf -connect www.gvsu.edu:443</code></li>
       <li class="to-do">Notice the various response headers (cache, cookies, etc.)</li>
-      <li class="to-do">Visit <code>https://www.cis.gvsu.edu/~kurmasz</code>.
+      <li class="to-do">Visit <code>https://kurmasgvsu.github.io</code>.
         <ul>
           <li>This page is much simpler, and is easier to see the content in the returned HTML.</li>
         </ul>
@@ -575,6 +633,7 @@ set up the encryption.
       <li>Hence, <code>host</code> header required by HTTP 1.1</li>
     </ul>
   </li>
+  <li class="to-do">relate to actions taken by web browser.</li>
   <li><code>BasicHTTPTransaction.java</code> can only connect with HTTP servers.</li>
   <li>To connect to HTTPS, use <code>BasicHTTPSTransaction.java</code></li>
   <li>Compile and run <code>BasicHTTPSTransaction</code>
@@ -752,7 +811,7 @@ cached data still happens to be valid</li>
   </li>
 </ul>
 
-<h3 id="https">HTTPS</h3>
+<h3 id="https-more-detail">HTTPS (More detail)</h3>
 
 <ul>
   <li>Problem with HTTP:  Anybody with access to network equipment can see contents of HTTP requests and responses.
