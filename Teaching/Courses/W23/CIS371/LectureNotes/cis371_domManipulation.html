@@ -1,0 +1,369 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="dom-manipulation">DOM Manipulation</h1>
+
+<ul>
+  <li>DOM stands for <em>D</em>ocument <em>O</em>bject <em>M</em>odel.  It is an API to access 
+represent the structure of a document:
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model</a></li>
+    </ul>
+  </li>
+  <li>The DOM is not unique to JavaScript. Many programming languages implement the DOM.</li>
+  <li>Thus, interacting with an .html document is similar in most languages.  The 
+class names and method names should be familiar.
+    <ul>
+      <li>Sample <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/Java_DOM">DOM Parsing in Java</a></li>
+      <li><a href="https://docs.oracle.com/javase/7/docs/api/org/w3c/dom/package-summary.html">Java DOM</a></li>
+      <li><a href="https://docs.python.org/3/library/xml.dom.html">Python DOM</a></li>
+      <li><a href="https://www.php.net/manual/en/book.dom.php">PHP DOM</a></li>
+    </ul>
+  </li>
+  <li class="to-me">Walk through <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/JavaScriptDOM">rawDomNavigation</a>
+    <ul>
+      <li><code>childNodes</code> is a <code>NodeList</code> object (not an array)
+        <ul>
+          <li>But, <code>NodeList</code> does have a <code>forEach</code> method.</li>
+        </ul>
+      </li>
+      <li>the body’s first node is a text node containing the blank space between the 
+<code>&lt;body&gt;</code> tag and the <code>&lt;h1&gt;</code> tag.</li>
+      <li>Everything is a <code>Node</code>, not just Elements (i.e., the stuff with tags)
+<code>#text</code> is a kind of node.  So is <code>#comment</code></li>
+      <li>nodeType is an int.  You have to look up the name of the type that goes with each int.</li>
+      <li>Look at the <code>&lt;ul&gt;</code> to see the difference between textContent and innerHTML</li>
+    </ul>
+  </li>
+  <li>In JavaScript, you can access information by navigating through the DOM from the top; 
+but, we usually use one of three methods to grab the object(s) we are specifically 
+interested in.
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById">getElementById()</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName">getElementsByClassName()</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName">getElementsByTagName()</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector">querySelector</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">querySelectorAll</a></li>
+    </ul>
+  </li>
+  <li>Notice the “number” of the noun.
+    <ul>
+      <li><code>getElementById</code> is singular.  It returns a single object.</li>
+      <li><code>getElementsByClassName</code> is plural.  It returns an <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection">HTMLCollection</a> of objects.</li>
+    </ul>
+  </li>
+  <li><code>HTMLCollection</code>s can be tricky:
+    <ul>
+      <li>They <em>mostly</em> behave like arrays
+        <ul>
+          <li>You can use <code>[]</code> notation to access elements</li>
+          <li>They have a <code>length</code> method.  But,</li>
+        </ul>
+      </li>
+      <li>They <em>don’t</em> have most (now) standard array methods like <code>forEach</code> and <code>map</code>.</li>
+      <li><em>However</em> You can use <code>Array.from</code> to create an Array based on an <code>HTMLCollection</code>
+        <ul>
+          <li>Be aware:  an <code>HTMLCollection</code> is a “live” list:  It will change as the DOM is updated, whereas
+an Array is a “static” list:  It will not be updated.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="to-me">Walk through <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptDOM/basicDOMManipulation.js">basicDOMManipulation</a></li>
+  <li class="to-me">Walk through <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptDOM/eventVsThis.html">eventVsThis</a>
+    <ul>
+      <li>Note specifically:
+        <ul>
+          <li>the difference between <code>function</code> and <code>() =&gt;</code>, and</li>
+          <li>that the difference need not be relevant.  Just use <code>li[i]</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="to-me">Walk through <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptDOM/placementOfScript.html">placementOfScript.html</a></li>
+</ul>
+
+</main>
+</body>
+</html>
