@@ -1,0 +1,573 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="resources-routing-and-mvc">Resources, Routing, and MVC</h1>
+
+<ul>
+  <li>Many web apps (especially those that are “server-side” or “back-end”) 
+are designed around the idea of “Resources” (Think “nouns” from OO design.)
+    <ul>
+      <li>Book</li>
+      <li>Car</li>
+      <li>Student</li>
+      <li>User</li>
+      <li>Order</li>
+      <li>Ticket</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="model">Model</h2>
+
+<ul>
+  <li>Each Resource is typically described as an object that we call the “model”
+    <ul>
+      <li>This model has the basic properties as instance variables.</li>
+      <li>e.g. a Toy might have a name, description, price, and manufacturer</li>
+      <li>e.g., a User might have a first name, last name, password, and an “admin” flag.</li>
+      <li>Often these correspond directly to the columns in the corresponding database table.</li>
+    </ul>
+  </li>
+  <li>We separate the model from the rest of the code because the model’s implementation does 
+not depend on the framework (Express, Rails, etc): In theory, you could change frameworks without modifying models.</li>
+  <li>The model is <em>primarily</em> a description of an individual resource; but, it may also contain
+some “business logic” (e.g., validation rules.)</li>
+  <li>Other business logic goes in different classes in the Model section
+    <ul>
+      <li><code>ToyAnalyzer</code> (e.g., collect statistics about toys)</li>
+      <li>Rules about who is allowed to own/buy a certain toy (e.g., must be 12 to own a BB gun.)</li>
+      <li>DB access code.  (Sometimes integrated into the Resource model, sometimes separate.)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="operations-and-routes">Operations and routes</h2>
+
+<ul>
+  <li>Every resource has four basic operations:
+    <ul>
+      <li>Create</li>
+      <li>Read</li>
+      <li>Update</li>
+      <li>Delete</li>
+      <li>(affectionately called CRUD)</li>
+    </ul>
+  </li>
+  <li>Each operation needs a unique URL/Route.</li>
+  <li>These routes can be arbitrary, but they tend to follow a pattern:
+    <ul>
+      <li><code>GET /toy</code> &lt;— list (read) all toys</li>
+      <li><code>GET /toy/:id</code> &lt;— show (read) the toy with the given id</li>
+      <li><code>POST /toy</code> &lt;— create a new toy</li>
+      <li><code>POST /toy/:id</code> &lt;— edit (update) an existing toy.</li>
+      <li><code>GET /toy/new</code> &lt;— Display the form to create a new toy</li>
+      <li><code>GET /toy/:id/edit</code> &lt;—  Display the form to edit a toy.</li>
+      <li><code>DELETE</code> is interesting.  We’ll talk about it later.</li>
+    </ul>
+  </li>
+  <li>Notice how you could write a simple program to create these routes given the name of a resource.
+(Most frameworks have such a feature.)</li>
+  <li>Now, we could just stuff all the necessary code into <code>index.js</code>; but that wouldn’t be good design.
+    <ul>
+      <li>It would get messy (wouldn’t scale well)</li>
+      <li>It would mix “framework” code with “business code” (e.g., the model)</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cm">/* Display all toys (read) */</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/toys</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">})</span>
+
+<span class="cm">/* Create a new toy */</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/toys</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">})</span>
+
+<span class="cm">/* Display a form to create a new toy */</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/toys/new</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">})</span>
+
+<span class="cm">/* Display (read) details for one toy. 
+   :id represents a "route parameter" */</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/toys/:id</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">})</span>
+
+<span class="cm">/* Edit(update) a toy */</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/toys/:id</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="c1">// ..</span>
+<span class="p">})</span>
+
+<span class="cm">/* Display a form to edit (update) a toy */</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/toys/:id/edit</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="controller">Controller</h2>
+
+<ul>
+  <li>The code that “glues” the route to the appropriate logic is called the “Controller”</li>
+  <li>It “controls” the flow of the program</li>
+  <li>In many frameworks, the Controller is a class.</li>
+  <li>The method name for each operation is somewhat standard:
+    <ul>
+      <li><code>GET /toy</code> —&gt; <code>index</code> —&gt; list (read) all toys</li>
+      <li><code>GET /toy/:id</code> —&gt; <code>show</code> –&gt; list (read) one toy</li>
+      <li><code>POST /toy</code> —&gt; <code>create</code> –&gt; create a new toy</li>
+      <li><code>POST /toy/:id</code> —&gt; <code>update</code> –&gt; update a toy.</li>
+      <li><code>GET /toy/new</code> —&gt; <code>newToy</code> –&gt; Send new toy form</li>
+      <li><code>GET /toy/:id/new</code> —&gt; <code>edit</code> –&gt; Send edit toy form</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Display all toys */</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/toys</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">toyController</span><span class="p">.</span><span class="nx">index</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="cm">/* Create a new toy */</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/toys</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">toyController</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="cm">/* Display a form to create a new toy */</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/toys/new</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">toyController</span><span class="p">.</span><span class="nx">newToy</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="cm">/* Display details for one toy.  
+   :id represents a "route parameter" */</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/toys/:id</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">toyController</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="cm">/* Edit a toy */</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/toys/:id/edit</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">toyController</span><span class="p">.</span><span class="nx">edit</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="cm">/* Update a toy */</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/toys/:id</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">toyController</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Notice that you can write a function that will automatically create the code above given (a) the name of the resource, and (b) a Controller object.</p>
+  </li>
+  <li>
+    <p>The main job of the controller is to</p>
+    <ol>
+      <li>Call the correct model method(s)</li>
+      <li>Render the correct view.</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="view">View</h2>
+
+<ul>
+  <li>In “server-side” app, the view is the template code that generates the web page that the user sees.</li>
+  <li>In this context, views are separate because they aren’t usually “plain” code (e.g., just JavaScript, just Ruby, etc.).  They are templates that mix HTML with code in some way.</li>
+</ul>
+
+<h2 id="database">Database</h2>
+
+<ul>
+  <li>There are <em>many</em> databases and many ways of connecting to a DB. I’m going to 
+punt on this for now, and just treat the <code>ToyDB</code> object as a “black box” that we 
+call methods on.
+    <ul>
+      <li>(I personally don’t like “magic” stuff when I teach, but you’ll see why I put this off.)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="putting-it-all-together">Putting it all Together</h2>
+
+<ul>
+  <li class="to-me">walk through showing the list of toys.
+    <ul>
+      <li>Show that <code>toy</code> in .ejs is an Object with properties</li>
+      <li>Show how view uses .ejs to build links to edit and show routes.
+        <ul>
+          <li>(Many frameworks have a library to automate this.  Something like <code>route_for(toy)</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="to-me">walk through showing the details of one toy.
+    <ul>
+      <li>Routes can have parameters (e.g., the <code>:id</code>)</li>
+    </ul>
+  </li>
+  <li class="to-me">walk through the creation of a new toy.</li>
+  <li>This requires the use of two routes / controller methods
+    <ol>
+      <li>The first one displays the form,</li>
+      <li>The second one responds to the form submission and creates the object.</li>
+    </ol>
+  </li>
+  <li>Notice that one .ejs file can include another.</li>
+</ul>
+
+<h1 id="database-1">Database</h1>
+
+<ul>
+  <li>There are many data storage options
+    <ul>
+      <li>Traditional relational databases (<a href="https://www.mysql.com">MySQL</a>, <a href="https://www.oracle.com">Oracle</a>, etc.)
+        <ul>
+          <li><a href="https://expressjs.com/en/guide/database-integration.html#mysql">Integrate with Express</a></li>
+        </ul>
+      </li>
+      <li>“light” relational databases (<a href="https://www.sqlite.org/index.html">SQLite3</a>)
+        <ul>
+          <li><a href="https://expressjs.com/en/guide/database-integration.html#sqlite">Integrate with Express</a></li>
+        </ul>
+      </li>
+      <li>“NoSQL” databases (<a href="https://www.mongodb.com">MongoDB</a>)
+        <ul>
+          <li><a href="https://expressjs.com/en/guide/database-integration.html#sqlite">Integrate with Express</a></li>
+        </ul>
+      </li>
+      <li><a href="https://www.mongodb.com">Firebase</a></li>
+      <li>Other options with Express: <a href="https://expressjs.com/en/guide/database-integration.html#mongodb">https://expressjs.com/en/guide/database-integration.html#mongodb</a></li>
+    </ul>
+  </li>
+  <li>I will start with SQLite because it is file-based and doesn’t require the installation of any separate 
+tools/processes (just an npm package).</li>
+  <li>Regardless of what you choose, put your DB access in a separate class, so it can be easily swapped out 
+if you decide to change DB’s.
+    <ul>
+      <li>Better yet, give these different DB classes identical interfaces so they are easy to swap out.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="sqlite">SQLite</h2>
+
+<ul>
+  <li>Basic idea:
+    <ul>
+      <li>Create DB object from local file containing DB.</li>
+      <li>Then just issue SQL commands</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sqlite3</span><span class="p">.</span><span class="nx">Database</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/toys.sqlite</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="dl">'</span><span class="s1">CREATE TABLE Toys (id INTEGER PRIMARY KEY, name TEXT NOT NULL, description TEXT NOT NULL, manufacturer TEXT NOT NULL, price REAL NOT NULL);</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>There are several methods for issuing SQL commands: <a href="https://github.com/TryGhost/node-sqlite3/wiki/API">https://github.com/TryGhost/node-sqlite3/wiki/API</a>
+    <ul>
+      <li><code>run</code>: Good when you aren’t expecting results.</li>
+      <li><code>get</code>: Good when you expect one row of results.</li>
+      <li><code>all</code>: Good when you expect many rows of results.</li>
+      <li>There are others, but the three above work for me.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="callbacks--promises">Callbacks / Promises</h2>
+
+<ul>
+  <li>The SQLite API is written to use callbacks.</li>
+  <li>Rather than waiting for the DB operation to complete, you pass a lambda to the 
+DB method that is executed when the operation completes.</li>
+  <li>This is a new style of programming for many of you.  It will take some getting used to.</li>
+</ul>
+
+</main>
+</body>
+</html>
