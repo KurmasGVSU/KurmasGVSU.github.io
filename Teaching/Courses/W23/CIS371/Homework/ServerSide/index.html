@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 371 Server Side</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    #content {
+      padding: 0 10px 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+<main id="theMain">
+  <a class='bypass' href="#theMain">Skip to main content</a>
+  <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 371</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Server Side</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2023</h1></td>
+  </tr>
+</table>
+
+
+<p>Based on an assignment originally originally designed by Prof. Engelsma</p>
+
+<p>For this sequence of assignments, you will build a simple web application using a <em>server-side</em> framework of your choice 
+(Express, Rails, Flask, .etc)  The framework <em>must</em> be server-side.  You may not use client-side systems such as React, Angular, Vue, etc.</p>
+
+<p>This is a solo assignment.</p>
+
+<p>Please use this GithubClassroom URL: <a href='https://classroom.github.com/a/7ul6DBJp'><code>https://classroom.github.com/a/7ul6DBJp</code></a>
+
+
+<h1 id='part1'>Part 1: Basic CRUD</h1>
+
+<p class='listHeader'>Use what you have learned in class to create a single resource/model. You can design any model you like, 
+provided that it has at least four properties, and those properties are a mix of types. (Hint: Pick something from your project.)</p>
+
+
+<p>If you are completely stumped, you can create a <code>Bug</code> resource that models 
+the bugs in a project.  (Later you will add additional models to the app.)  Bugs are represented with this 
+information:</p>
+
+<ul>
+<li>Title: a short descriptive title summarizing the problem.</li>
+<li>Description: a longer piece of text which describes the details of the problem. </li>
+<li>Issue_type: has three possible values: issue, enhancement, feature.  </li>
+<li>Priority: priority of the issue with three possible levels: low, medium, high.</li>
+<li>Status: the current status of the bug with three possible settings: open, closed, monitor.</li>
+</ul>
+
+<p>Generate basic screens for managing your resource (list of all items, show item, edit item, and delete item). </p>
+
+<p>Use <code>sqlite3</code> or some other "real" relational database. (Don't use my fake "in-memory" DB.)</p>
+
+<p>Pay little attention to styling at this point (e.g. you need not write fancy CSS/SCSS files).  
+ Your final product should look somewhat like the screenshots inserted below:<p>
+
+ <img src="Images/image2.png" alt="Sample Screenshot">
+ <img src="Images/image4.png" alt="Sample Screenshot">
+ <img src="Images/image3.png" alt="Sample Screenshot">
+
+<h2>Grading</h2>
+
+<p>This part of the assignment will be graded by demo.  When your project is ready, schedule a demonstration with me.</p>
+
+<h1 id='part2'>Part 2: Coming Soon</h1>
+
+<h1 id='part3'>Part 3: Coming Soon</h1>
+
+  <hr>
+  <p>Updated Monday, 20 February 2023, 6:05 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</main>
+</body>
+</html>
