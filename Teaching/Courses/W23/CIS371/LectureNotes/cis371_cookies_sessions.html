@@ -293,6 +293,8 @@
   <li>Background: The web was originally designed to be stateless; but, that can (obviously) be inconvenient.
     <ul>
       <li>HTTP itself <em>is</em> stateless.  Any necessary state must be maintained by either the browser or the server.</li>
+      <li>Client has to remember <em>something</em>. Even if most data is on the server, we need a way for the server to 
+know who is “talking” to it.</li>
     </ul>
   </li>
   <li>Cookies are sent in request and response headers
@@ -316,16 +318,16 @@
           <li>Most frameworks will generate this string for you.</li>
           <li>If no expires value is given, cookie expires when the browser session ends.
             <ul>
-              <li>(This is one reason some web sites suggest you close your browser when finished.)</li>
+              <li>This is one reason some web sites suggest you close your browser when finished.</li>
+              <li><em>But</em> some browsers now restore sessions.  When in doubt, set up an explicit expiration.</li>
             </ul>
           </li>
         </ul>
       </li>
       <li><code>path</code>: The path on the server where the cookie is available.
         <ul>
-          <li>Defaults to the current path</li>
-          <li>If document is <code>/Teaching/Courses/CIS371/index.html</code>, then cookie only visible to files in <code>/Teaching/Courses/CIS371</code></li>
-          <li>If path is set to <code>/</code>, then all files on server see cookie</li>
+          <li>If set to <code>/Teaching/Courses/CIS371</code>, then cookie only visible to files in that directory or below.</li>
+          <li>Defaults to <code>/</code> (at least in Express) which means  all files on server see cookie</li>
         </ul>
       </li>
       <li><code>domain</code>: The (sub)domain that the cookie is available to.
@@ -336,11 +338,13 @@
       <li><code>secure</code>: Only return cookie over <code>HTTPS</code>.
         <ul>
           <li>This affects browser only.  It is the server’s responsibility to decide whether to send a cookie.</li>
+          <li>“secure” cookies will be sent to localhost over http.</li>
         </ul>
       </li>
       <li><code>httponly</code>: When <code>true</code> cookie is <em>not</em> accessible through JavaScript.</li>
     </ul>
   </li>
+  <li>Check out <a href="https://faculty.computing.gvsu.edu/kurmasz/simpleCookie.php">https://faculty.computing.gvsu.edu/kurmasz/simpleCookie.php</a></li>
   <li>To “delete” a cookie, just give it an expiration time in the past.</li>
   <li>Rails interface to cookies:  <a href="https://api.rubyonrails.org/v6.0.2/classes/ActionDispatch/Cookies.html">https://api.rubyonrails.org/v6.0.2/classes/ActionDispatch/Cookies.html</a>
     <ul>
@@ -350,6 +354,14 @@
   <li>Express interface to cookies: <a href="https://expressjs.com/en/api.html#res.cookie">https://expressjs.com/en/api.html#res.cookie</a>
     <ul>
       <li>Best used with <code>cookie-parser</code> middleware <a href="https://www.npmjs.com/package/cookie-parser">https://www.npmjs.com/package/cookie-parser</a></li>
+    </ul>
+  </li>
+  <li>Walk through <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/Cookies">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/Cookies</a>
+    <ul>
+      <li>cookieDemo</li>
+      <li>listCookies</li>
+      <li>setCookies</li>
+      <li>Show expiration</li>
     </ul>
   </li>
   <li>Remember:
@@ -370,6 +382,14 @@
           <li>This is what is meant by “third-party cookies”:  You visit <code>a.com</code> and get asked to save/send a cookie from <code>b.com</code> that has some kind of embedded content.</li>
         </ul>
       </li>
+    </ul>
+  </li>
+  <li>Client side:  <code>CookieStore</code> is a new JavaScript that allows you to access cookies in the browser
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CookieStore">https://developer.mozilla.org/en-US/docs/Web/API/CookieStore</a></li>
+      <li>Example usage:  <code>await cookieStore.getAll()</code>  (Object is named <code>cookieStore</code>)</li>
+      <li>Only works over https or localhost</li>
+      <li>cookies must <em>not</em> be created with <code>httpOnly</code></li>
     </ul>
   </li>
 </ul>
@@ -394,6 +414,7 @@ during each request.
       <li>That long, random string is a key to a set of data for that particular user.</li>
       <li>When the user visits another page, the cookie is returned and matched up with the data.</li>
       <li>Make sure string is long and random enough that it can’t be guessed.</li>
+      <li>String is often encrypted/hashed data to detect tampering.</li>
     </ul>
   </li>
   <li>Rails automatically sets up a session for you (whether you need one or not)
@@ -423,6 +444,7 @@ during each request.
 cookie is secure (i.e., encrypted) so that it is obvious if a user modifies it.</li>
     </ul>
   </li>
+  <li>Give session cookies a short expiration time.</li>
 </ul>
 
 
