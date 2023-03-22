@@ -489,6 +489,167 @@
   </li>
 </ul>
 
+<h2 id="same-thing-from-a-different-perspective">Same thing from a different perspective:</h2>
+
+<h3 id="ingredient">Ingredient</h3>
+
+<ul>
+  <li>Using React, you get to “define new tags” to represent one component of your page/UI.
+    <ul>
+      <li>e.g., <code>&lt;Ingredient&gt;</code></li>
+    </ul>
+  </li>
+  <li>Forget everything else for a moment, and imagine someone “gives” you a new <code>&lt;Ingredient&gt;</code> tag:
+    <ul>
+      <li>anywhere you put <code>&lt;Ingredient&gt;</code> in your page, an ingredient appears.</li>
+    </ul>
+  </li>
+  <li>So, how are these components defined?</li>
+  <li>Just a function that returns an element:
+    <ul>
+      <li><code>function Ingredient() { return  React.createElement("li", null, "This is an ingredient")}</code></li>
+    </ul>
+  </li>
+  <li>But, we normally would use JSX to define that element:
+    <ul>
+      <li><code>function Ingredient() { return  &lt;li&gt;This is an ingredient&lt;/li&gt;;}</code></li>
+    </ul>
+  </li>
+  <li>However, you need to provide additional information: You need to specify the
+    <ul>
+      <li>amount</li>
+      <li>measurement</li>
+      <li>name</li>
+      <li><code>&lt;Ingredient amount="1" measurement="cup" name="Pine Nuts"&gt;</code></li>
+      <li>(Generally, these wouldn’t be hard-coded, but I did that here to keep things simple)</li>
+    </ul>
+  </li>
+  <li>The attributes become a parameter to the function.</li>
+  <li>However, rather than having one parameter per attribute, they are all combined into a single object
+(typically called <code>props</code>)
+    <ul>
+      <li><code>function Ingredient(props) { return &lt;li&gt; {props.amount} {props.measurement} {props.name} &lt;/li&gt;; }</code></li>
+    </ul>
+  </li>
+  <li>You can also use a JavaScript syntax short-cut called “object deconstruction”
+    <ul>
+      <li><code>{amount, measurement, name} = props</code></li>
+      <li>Can do the same thing with a parameter</li>
+      <li><code>function Ingredient({amount, measurement, name}) { return &lt;li&gt; {amount} {measurement} {name} &lt;/li&gt;; }</code></li>
+    </ul>
+  </li>
+  <li>Summary: Define a new component with a function that takes an object (key/value pairs) as input 
+and returns a DOM object as output.
+    <ul>
+      <li>Typical way of defining that DOM object is to use JSX.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="ingredientlist">IngredientList</h3>
+
+<ul>
+  <li>Now we want a list of ingredients.</li>
+  <li>Assume we “magically” get this component as part of HTML:
+    <ul>
+      <li><code>&lt;IngredientList&gt;</code></li>
+      <li>But, we need to provide an array of ingredients for it to display</li>
+      <li><code>&lt;IngredientList ingredients="[{amount: '1', measurement: 'cup', ...}]&gt;</code></li>
+    </ul>
+  </li>
+  <li>How to implement:
+    <ul>
+      <li class="to-me">See <code>IngredientListDemo</code> in <code>recipe1.jsx</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>You <em>could</em> do this:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">IngredientListDemo</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">ul</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nx">IngredientList</span><span class="p">(</span><span class="nx">props</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="nx">IngredientList</span><span class="p">(</span><span class="nx">props</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="nx">IngredientList</span><span class="p">(</span><span class="nx">props</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+        <span class="p">...</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>But, it would be more common to use JSX</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">IngredientListDemo</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">props</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">;</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">ingredients</span><span class="dl">"</span> <span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Ingredient</span> <span class="nx">amount</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">amount</span><span class="p">}</span> <span class="nx">measurement</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">measurement</span><span class="p">}</span> <span class="nx">name</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">name</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="dl">'</span><span class="s1">0</span><span class="dl">'</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Ingredient</span> <span class="nx">amount</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">amount</span><span class="p">}</span> <span class="nx">measurement</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">measurement</span><span class="p">}</span> <span class="nx">name</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">name</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="dl">'</span><span class="s1">1</span><span class="dl">'</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Ingredient</span> <span class="nx">amount</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">amount</span><span class="p">}</span> <span class="nx">measurement</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">measurement</span><span class="p">}</span> <span class="nx">name</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">name</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="dl">'</span><span class="s1">2</span><span class="dl">'</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Ingredient</span> <span class="nx">amount</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">amount</span><span class="p">}</span> <span class="nx">measurement</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">measurement</span><span class="p">}</span> <span class="nx">name</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">name</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="dl">'</span><span class="s1">3</span><span class="dl">'</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="sr">/ul&gt;</span><span class="err">;
+</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p>But, rather than list each ingredient by hand, use a loop:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">IngredientList</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">ingredients</span><span class="dl">"</span> <span class="o">&gt;</span> <span class="p">{</span>
+        <span class="nx">props</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">Ingredient</span> <span class="nx">amount</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">amount</span><span class="p">}</span> <span class="nx">measurement</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">measurement</span><span class="p">}</span> <span class="nx">name</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>        <span class="p">))}</span>
+    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p><span class="to-me">Move the call to map before return so it is clearer what’s going on:</span></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">ingredientList</span> <span class="o">=</span> <span class="nx">props</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">Ingredient</span> <span class="nx">amount</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">amount</span><span class="p">}</span> <span class="nx">measurement</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">measurement</span><span class="p">}</span> <span class="nx">name</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>        <span class="p">))}</span>
+</code></pre></div></div>
+
+<h3 id="another-shortcut">Another shortcut:</h3>
+
+<ul>
+  <li>Notice the redundancy here: <code>&lt;Ingredient amount={item.amount} measurement={item.measurement} name={item.name} key={index} /&gt;</code></li>
+  <li>The syntax <code>...item</code> breaks the object apart into separate variables (<code>amount = foo.amount</code>, etc.)
+    <ul>
+      <li><code>&lt;Ingredient {...item} key={index} /&gt;</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="state">State</h2>
+
+<ul>
+  <li>You can put a callback on a DOM element’s <code>onClick</code> property.
+    <ul>
+      <li><code>&lt;h2 onClick={() =&gt; console.log(</code>You clicked on recipe ${props.name}<code>)}&gt; {props.name} &lt;/h2&gt;</code></li>
+    </ul>
+  </li>
+  <li>Suppose we only want to show one recipe at a time.  We need to remember which recipe we are looking at.</li>
+  <li>We could pass the <code>Menu</code> component a list of recipes and store index of which one to show.
+    <ul>
+      <li class="to-me"><code>recipe2.jsx Menu_Broken</code></li>
+    </ul>
+  </li>
+  <li>The button clicks work, but the view isn’t updated.
+    <ul>
+      <li>Nothing is triggering the page to re-render.</li>
+      <li>Simply having a local variable doesn’t quite do what we need.</li>
+      <li>The state needs to be stored somewhere that react can watch it.</li>
+      <li>Also, notice that <code>currentIndex</code> can only be accessed/modified from within the function.</li>
+    </ul>
+  </li>
+  <li class="to-me">Look at <code>ReactRecipe::stateUsingClosures.js</code></li>
+  <li>By wrapping the state up in a closure, we can abstract away the details of <em>how</em> the value is stored.</li>
+  <li>It could be a local variable, an entry in a hash table, stored in a DB, etc.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Menu</span><span class="p">({</span> <span class="nx">title</span><span class="p">,</span> <span class="nx">recipes</span> <span class="p">})</span> <span class="p">{</span>
+     <span class="nx">int</span> <span class="nx">currentIndex</span> <span class="o">=</span> <span class="nx">recipes</span><span class="p">.</span><span class="nx">length</span> <span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">recipe</span> <span class="o">=</span> <span class="nx">recipes</span><span class="p">[</span><span class="nx">currentIndex</span><span class="p">];</span>
+</code></pre></div></div>
+
 <h2 id="bootstrap-and-react">Bootstrap and React</h2>
 
 <ul>
