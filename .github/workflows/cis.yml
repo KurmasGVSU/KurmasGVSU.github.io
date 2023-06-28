@@ -10,9 +10,8 @@ jobs:
         runs-on: ubuntu-latest
         steps:
            - uses: actions/checkout@v3
-             with:
-                ref: cis
-           - run: git fetch origin main --depth 1
+           - run: git fetch origin cis --depth 1
+           - run: git checkout --progress --force -B cis refs/remotes/origin/cis
            - run: git branch
            - run: git merge main
            - uses: jacobtomlinson/gha-find-replace@v2
