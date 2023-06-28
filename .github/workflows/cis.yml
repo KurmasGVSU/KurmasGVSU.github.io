@@ -19,11 +19,10 @@ jobs:
              with: 
                 find: "http://localhost:8000"
                 replace: "https://faculty.computing.gvsu.edu/kurmasz/"
-                regex: false
-                exclude: "{.git/**, .github/**}"
+                regex: false                
            - run: git config user.name github-actions
            - run: git config user.email github-actions@github.com     
-           - run: git add .
+           - run: git add -- . ':!.github'
            - run: git commit -m 'substitute URLs for CIS server'
            - run: cat .github/workflows/cis.yml 
            - run: git push
