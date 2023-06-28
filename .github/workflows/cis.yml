@@ -1,0 +1,24 @@
+name: Deploy to CIS web server
+
+on:
+    push:
+        branches: ["main"]
+    workflow_dispatch:
+
+jobs:
+    adjust_urls:
+        runs-on: ubuntu-latest
+        steps:
+           - uses: actions/checkout@v3
+             with:
+                ref: cis
+           - run: git merge main
+           - uses: jacobtomlinson/gha-find-replace@v2
+             with: 
+                find: "http://localhost:8000"
+                replace: "https://faculty.computing.gvsu.edu/kurmasz/"
+                regex: false
+           - run: git add .
+           - run: git commit -m 'substitute'
+           - run: git push
+    
