@@ -10,15 +10,18 @@ jobs:
         runs-on: ubuntu-latest
         steps:
            - uses: actions/checkout@v3
-           - uses: actions/checkout@v3
              with:
                 ref: cis
+           - run: git fetch origin main --depth 1
            - run: git branch
+           - run: git merge main
            - uses: jacobtomlinson/gha-find-replace@v2
              with: 
                 find: "http://localhost:8000"
                 replace: "https://faculty.computing.gvsu.edu/kurmasz/"
                 regex: false
+           - run: git config user.name github-actions
+           - run: git config user.email github-actions@github.com     
            - run: git add .
            - run: git commit -m 'substitute'
            - run: git branch
