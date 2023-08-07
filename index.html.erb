@@ -31,10 +31,68 @@
       padding-top: 10px;
     }
 
+  .pastCourses {
+    border: 1px solid #f2f2f2;
+    border-collapse: collapse;
+  }
+
+    .pastCourses th {
+      padding-right: 35px;
+      text-align: left;
+    }
+
+    .pastCourses td {
+      text-align: left;
+      vertical-align: top;
+      padding-right: 35px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
+
+  .pastCourses tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
   </style>
 </head>
 <body>
 <%= $k.render('nav.html.erb') %>
+<% 
+  courses = {
+    # !!! Year is the start of the _academic_ year. So, courses[2023][:winter] is actually _W24_
+    2023 => {
+      fall: [:CIS500],
+      winter: [],
+      ss: []
+    },
+    2022 =>  {
+      fall: [ :CIS343, :CIS371  ],
+      winter: [ :CIS343, :CIS371  ],
+      ss: []
+    },
+    2021 => {
+      fall: [:CIS351],
+      winter: [:CIS351],
+      ss: [],
+    },
+    2020 => {
+     fall: [:CIS351],
+      winter: [:CIS351],
+      ss: [:CIS163],
+    },
+    2019 => {
+     fall: [:CIS263, :CIS451],
+      winter: [:CIS371, :CIS658],
+      ss: [:CIS163],
+    },
+    2018 => {
+     fall: [:CIS162, :CIS351],
+      winter: [:CIS451, :CIS658],
+      ss: [],
+    },
+
+  }
+%>
+
 <main id="content">
 
   <div id='headerContainer' role="heading" aria-level="1">
@@ -114,6 +172,21 @@
   <hr>
 
   <h2 id="Teaching">Teaching</h2>
+
+<table class='pastCourses'>
+  <tr><th>Academic Year</th><th>Fall</th><th>Winter</th><th>Spring/Summer</th></tr>
+  <% courses.keys.sort {|a, b| b <=>a }.each do |year| %>
+    <tr>
+      <td class='ay'><%= "#{year}-#{year+1}" %></td>
+      <td> <%= $d.general.semesterCourseList($d.semester.shortName('F', year), courses[year][:fall]) %></td>
+      <td> <%= $d.general.semesterCourseList($d.semester.shortName('W', year+1), courses[year][:winter]) %></td>
+      <td> <%= $d.general.semesterCourseList($d.semester.shortName('S', year+1), courses[year][:ss]) %></td>
+   </tr>
+  <% end %>
+
+</table>
+
+
 
   <hr>
 

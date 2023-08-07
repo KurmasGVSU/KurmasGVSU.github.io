@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CIS 500 --- Fundamentals of Software Practice</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+    .rightAlign {
+      text-align: right;
+    }
+
+    .leftAlign {
+      text-align: left;
+    }
+
+    .centerAlign {
+      text-align: center;
+    }
+
+  
+
+    .gradingTable td, .gradingTable th {
+      padding-right: 10px;
+      padding-left: 10px;
+      /* border: 1px solid blue;  // retained for debugging */
+    }
+
+    .gradingTableHeader {
+      font-size: 110%;
+    }
+
+    .pointsTable {
+      padding-left: 25px;
+      border-collapse: collapse;
+    }
+
+    .pointsCell {
+      vertical-align: top;
+    }
+
+    .underlined {
+      border-bottom: 1px solid black;
+    }
+
+    .underlined_row td {
+      border-bottom: 1px solid black;
+      padding-bottom: 5px;
+    }
+
+
+    .letterGradeHeader {
+      padding-right: 10px;
+    }
+
+  .gradingTable {
+      border: 0;
+      padding-top: 25px;
+    }
+
+  .gradingTable tr td:nth-child(2), 
+  .gradingTable tr td:nth-child(4), 
+  .gradingTable tr td:nth-child(6), 
+  .gradingTable tr td:nth-child(8) {
+    border-left: 1px solid black;
+    padding-left: 10px;
+    margin-left: 20px;
+  }
+
+  .gradingTable tr td:nth-child(1), 
+  .gradingTable tr td:nth-child(3), 
+  .gradingTable tr td:nth-child(5), 
+  .gradingTable tr td:nth-child(7) {
+    padding-right: 10px;
+  }
+  </style>
+</head>
+
+<body>
+<div id="nav">
+
+  <p><a target="_top" href="index.html">Course Home</a></p>
+
+  <p><a href="syllabus.html">Syllabus</a></p>
+
+  <p><a href="timeline.html">Timeline</a></p>
+
+  <!-- <p><a href="learningObjectives.pdf">Learning Objectives</a></p> -->
+  
+  <!-- <p><a href="estimated_timeline.html">Timeline</a></p> -->
+
+  <!-- <p><a target="_top" data-klink="previousCourseURL">Previous Offering</a></p> -->
+
+  <!-- <p id="currentOffering" style="DISPLAY: none"><a target="_top" data-klink="currentCourseURL">Current Offering</a>
+  </p> -->
+
+  <!--
+  <p><a href="SampleCode" style="color:white"><fontsize="2"
+  face="arial,helvetica,sans-serif">SampleCode</font></a></p>
+  -->
+
+  <hr>
+
+  <p><a href='http://localhost:8000'>My Home</a></p>
+  <p><a href='https://www.gvsu.edu/computing/module-officehours-index.htm?userId=3198C5B9-BBE4-A648-BC24DF41E859FD18&siteModuleId=3178A9F5-C72C-B4A4-4F15D6794E34F230'>My Schedule</a></p>
+
+</div>
+
+
+<div id="content">
+
+  <div>
+    <h2 style="text-align: center">
+      <span>CIS 500 Fundamentals of Software Practice</span><br>
+      <span>Fall 2023</span>
+    </h2>
+  </div>
+
+  <dl>
+    <dt> Contact Information:</dt>
+    <dd><style>
+    .contactInfoTable {
+        width: 100%;
+    }
+
+    .contactInfoTable td {
+        border:0;
+        margin: 3px;
+    }
+
+    .ciHeader {
+       font-weight: bold
+    }
+
+    .contactInfoTable td {
+        text-align: left;
+    }
+
+    .contactInfoTable td:nth-child(1) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(3) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(4) {
+        width: 250px;
+    }
+</style>
+
+<table class="contactInfoTable">
+    <tr>
+        <td class="ciHeader">Instructor:</td>
+        <td>Zachary Kurmas</td>
+        <td class="ciHeader">Office:</td>
+        <td>MAK C-2-316</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Phone:</td>
+        <td>(616)-331-8688</td>
+        <td class="ciHeader">Office Hours:</td>
+        <td>MW 1:30-2:30 (DCIH)</td>
+    </tr>
+    <tr>
+      <td class="ciHeader">Home page:
+	<td><a href='http://localhost:8000'><code>http://localhost:8000</code></a></td>
+      <td></td>
+      <td>TTh 3:00 - 4:00 (DCIH) </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>T 1:00-2:00 (MAK)</td>
+    </tr>
+</table>
+
+</dd>
+
+    <dt>Course Objectives:<dt>
+    <dd>At the completion of the course, students will be able to
+      <ul>
+          <li>Design and implement programs in an object-oriented language.</li>
+          <li>Solve problems using object-oriented principles – encapsulation, inheritance, and polymorphism.</li>
+          <li>Analyze and use common searching algorithms.</li>
+          <li>Analyze and use common sorting algorithms.</li>
+          <li>Use strings, linked-lists, stacks, queues, and trees to solve computing problems.</li>
+          <li>Analyze run-time performance of algorithms using Big-O notation.</li>
+          <li>Use command-line to compile and execute programs.</li>
+      </ul>
+      <!-- Complete <a href='learningObjectives.pdf'>list of detailed Learning objectives</a>. -->
+    </dd>
+
+   <dt>Instruction Format</dt>
+   <dd>This course will meet face-to-face as scheduled for lecture. Attendance is <em>required</em>.  
+   Many lectures may be "flipped", which means you will
+   be expected to have read the assigned material and/or watched the assigned video content before attending lecture.  A few course meetings may be asynchronous.
+      
+       <dt>Text:</dt>
+    <dd>
+      <ul>
+        <li style="padding-bottom: 0; margin-bottom: 0"><em>Programming in Python 3 with zyLabs</em> by Bailey Miller.  <a href='https://learn.zybooks.com/zybook/GVSUCIS500Fall2023'><code>https://learn.zybooks.com/zybook/GVSUCIS500Fall2023</code></a>. 
+        <li style="padding-bottom: 0; margin-bottom: 0"><em>Problem Solving with Algorithms and Data Structures using Python</em> by Brad Miller and David Ranum.  <a href='https://runestone.academy/ns/books/published/pythonds/index.html'><code>https://runestone.academy/ns/books/published/pythonds/index.html</code></a>.  
+      </ul>
+    </dd>
+
+    <dt>Prerequisites</dt>
+    <dd> Students must have experience in some high-level programming language (C, Java, C#, etc).</dd>
+
+    <!-- 
+
+    <b>Plus/minus modifiers:<b> If you score a 80\% or higher on the comprehensive portion of the final exam, 
+    you will earn a ``+'' on your base grade. If you score a 60\% or lower, you will earn a ``-'' on the base grade. 
+    The final exam has no other effect on your course grade. 
+    I may add a plus or minus to a course grade for other reasons, at my discretion. 
+    In particular, if you are close to completing all the requirements for a grade, I will take your situation under 
+    consideration and possibly give a plus or minus. 
+
+    <p>Please note, Grand Valley State does not award grades of A+ or D-. </p>
+    -->
+    
+    </dd>
+    
+    <dt>Important Dates:</dt>
+    <dd>
+      <ul>
+        <li>Drop Day: <span>Friday, 10 November</span></li>
+        <li>Final Exam: <span>Tuesday, 12 December, 4:00; or Wednesday, 13 December 2:00 or 4:00</span></li>
+      </ul>
+    </dd>
+
+    <dt>Course Policies:</dt>
+    <dd>
+      <ul>
+        <li> I do not re-schedule labs, exams, or quizzes except in
+          cases of extreme emergencies. Business trips are not emergencies.
+        </li>
+
+        <li> The deadline to drop with a "W" is Friday, 10 November.
+          Remember, I cannot and will not drop this class for you.
+        </li>
+
+        <LI> Attendance is required. I understand that absences are
+          occasionally necessary; however, I reserve the right to lower grades
+          for excessive absences.
+        </li>
+
+        <li>
+          This course is subject to the GVSU policies listed at <a href='http://www.gvsu.edu/coursepolicies/'><code>http://www.gvsu.edu/coursepolicies/</code></a> as well as standard university COVID policies.
+        </li>
+
+        <li>You are not <em>under any circumstances</em> allowed to use code that is written by others specifically for you or
+        specifically for a CIS 500 assignment. 
+        In particular, you may not use code written by ChatGPT or similar software. On homeworks and projects, you may use <em>existing</em> code on sites like Stack Overflow to 
+        address a specific, well-defined problem that represents a small portion of the overall assignment. When using code 
+        from such resources, you must cite the source.</li>
+      </ul>
+    </dd>
+
+    <dt>Special Assistance:</dt>
+    <dd>If there is any student in this class who has special needs because of learning, physical or other disability,
+      please contact me and Disability Support Services (DSS) at 616.331.2490. Furthermore, if you have a disability and
+      think you will need assistance evacuating this classroom and/or building in an emergency situation, please make me
+      aware so I can develop a plan to assist you.
+    </dd>
+
+  <dt id='learningTargets'>Learning Targets:</dt>
+  <dd> Rather than having a small number of "high stakes" exams, we will have weekly quizzes. 
+  Each quiz question will evaluate one of the learning targets listed below. Rather than receiving a numerical 
+  score, each submission will be scored as either "Success" or "Retry". To demonstrate that you have met a learning target, 
+  you must successfully complete quiz questions on that target during <em>two</em> separate weeks. You are not penalized if an attempt is not successful, 
+  you simply need to attempt that learning target again on a future quiz. <b>Important:</b> You may only complete four quiz questions in any given week, 
+  so plan ahead. (In other words, you can't wait and try to meet all of the learning targets during the last two weeks of class!)</p>
+
+  <p class='listHeader'>The learning targets are divided into two groups: "Programming" and "Other".</p>
+
+  <ul>
+  <li> Programming-based learning targets:
+    <ol>
+        <li>Write code using conditionals (including compound conditions, else, and else-if)</li>
+        <li>Write code that uses loops to iterate over arrays and/or strings.</li>
+        <li>Write code that calls multiple functions/methods (including nesting function/method calls).</li>
+        <li>Write code that uses a Dictionary and/or a Set.</li>
+        <li>Write code that instantiates and uses multiple objects.</li>
+        <li>Write code that utilizes an external library.</li>
+    </ol>
+  </li>
+  <li>Other learning targets:
+    <ol>
+      <li>Write unit tests for a function or method.</li>
+      <li>Predict the output of code that uses an inheritance hierarchy.</li>
+      <li>Predict the output of a recursive function/method.</li>
+      <li>Determine the big-O run time of a section of code.</li>
+      <li>Demonstrate understanding of the various search and sorting methods presented.</li>
+      <li>Draw the state of a stack, queue, or binary tree, after a series of operations.</li>
+    </ol>
+  </li>
+  </ul>
+
+  </dd>
+
+  <dt id='projects'>Projects:</dt>
+  <dd> There will be four projects. Projects will be scored using the EMPN metric.  (See the 
+    <a href='#empn'>diagram</a> below.)  A mark of "E" or "M" indicates that the submission is complete and 
+    clearly demonstrates that the student understands the concepts covered by the project. 
+     A mark of "P" indicates that the student is making progress, but the project require additional work/revision.  
+     A mark of "N" indicates that the project not sufficiently complete to assess. Students are expected to revise and 
+     re-submit projects until they have earned an "M" or better.</p>
+
+  <img id="empn" src="EMPNrubric_notYet.png" width=600px>
+
+  <p><b>Late Days:</b> Students will ideally have submitted a project that meets expectations by the stated due date. There is not 
+  an explicit penalty if a project still needs revision after the due date; but, I will track the total number of "late days" 
+  (days elapsed between the due date and when the student submits a project that meets expectations). Accumulating an excessive number of 
+  late days will lower the final grade.</p>
+
+</dd>
+
+  <dt id='grading'>Grading:</dt>
+    <dd> Your grade in this course will be <em>specifications-based</em> rather than points/percentage-based. The requirements for 
+     grades of A-, B, C, D, and F is given in the table below.  Notice also the special criteria for an A.
+
+
+
+<table class='gradingTable'>
+<tr><th class='leftAlign'>Category</th><th colspan=2 class='leftborder'>D</th><th colspan=2>C</th><th colspan=2>B</th><th colspan=2>A-</th></tr>
+
+<tr class='underlined_row'><td>Programming Learning Targets</td>
+ 
+  <td>Complete:</td><td> 2/6</td>
+ 
+  <td>Complete:</td><td> 3/6</td>
+ 
+  <td>Complete:</td><td> 5/6</td>
+ 
+  <td>Complete:</td><td> 6/6</td>
+
+</tr>
+<tr class='underlined_row'><td>Other Learning Targets</td>
+ 
+  <td>Complete:</td><td> 1/6</td>
+ 
+  <td>Complete:</td><td> 2/6</td>
+ 
+  <td>Complete:</td><td> 3/6</td>
+ 
+  <td>Complete:</td><td> 5/6</td>
+
+</tr>
+
+<tr><td>Projects</td>
+ 
+  <td>Meets Expectations:</td><td> 0/4</td>
+ 
+  <td>Meets Expectations:</td><td> 1/4</td>
+ 
+  <td>Meets Expectations:</td><td> 3/4</td>
+ 
+  <td>Meets Expectations:</td><td> 4/4</td>
+
+</tr>
+
+<tr class='underlined_row'><td></td>
+ 
+  <td>Progressing</td><td> 2/4</td>
+ 
+  <td>Progressing</td><td> 3/4</td>
+ 
+  <td>Progressing</td><td> 4/4</td>
+ 
+  <td></td><td></td>
+
+</tr>
+
+<!--
+<tr class='underlined_row'><td>Term Paper</td>
+ 
+  <td class='centerAlign'> </td><td></td>
+ 
+  <td class='centerAlign'> </td><td></td>
+ 
+  <td class='centerAlign'> </td><td></td>
+ 
+  <td class='centerAlign'> A</td><td></td>
+
+</tr>
+-->
+
+<tr><td>Timeliness</td>
+ 
+  <td>Late days:</td><td> &le; 50</td>
+ 
+  <td>Late days:</td><td> &le; 25</td>
+ 
+  <td>Late days:</td><td> &le; 15</td>
+ 
+  <td>Late days:</td><td> &le; 10</td>
+
+</tr>
+
+</table>
+
+<p class='listHeader'><b>Earning an 'A'</b>: Notice that the criteria above are for an <em>A-</em>
+not an <em>A</em>.  To earn a "straight" A, you must meet the criteria for an A- <em>and</em> 
+get an 85% or better on the final exam.
+
+
+<!----
+There is no set criteria for an A. 
+In addition to meeting all the criteria for an A- (given in the table above), students who earn an 'A' students must
+also demonstrate an exceptional depth of understanding of the course material.
+Students may demonstrate this depth of understanding in several  ways including:</p>
+<ul>
+<li>Providing unusually insightful answers during class discussion.
+<li>Regularly earning Ms or Es on learning objectives the first time they are offered.
+<li>Earning many Es on learning objectives, projects, and other assignments.
+<li>Adding optional features to projects.
+</ul>
+-->
+
+<p><b>+/- modifiers</b>: There will be a comprehensive final exam.  If you score 80% or higher on this exam, you will earn a "+" on your 
+base grade.  If you score 60% or lower, you will earn a "-".  The final exam has no other effect on your course grade.  I may add a plus or minus to a course grade for other reasons at my discretion.  For example, i reserve the right to add a "-" to your grade for excessive absences.  Note:  GVSU does not award grades of A+ or D-.</p>
+
+<p><b>Learning Objectives</b>:  Learning Objectives are skills that students are expected to acquire by the end of the course.  Most learning objectives will be assessed using test/quiz questions; a few will be assessed as part of a lab, project, or homework.  Learning objectives will be scored with either "M" for "Meets Expectations" or "P" for "Progressing".  Students earn an “M” when they have clearly demonstrated a thorough understanding of the learning objective (e.g., answer the related test questions without any mistakes --- or perhaps a very trivial mistake like a math error).  Students earn "P" if their work indicates that they have a partial, but useful understanding of the topic (e.g., their answer is structured correctly, correctly applies the fundamentals, but has missing or incorrect details). </p> 
+
+
+
+
+  </dl>
+
+  <hr>
+  <p>Updated Wednesday, 26 July 2023, 7:36 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</div>
+</body>
+</html>

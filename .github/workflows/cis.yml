@@ -22,8 +22,7 @@ jobs:
                 regex: false                
            - run: git config user.name github-actions
            - run: git config user.email github-actions@github.com     
-           - run: git add -- . ':!.github'
+           - run: git add -- . ':!.github'  # the replace action will modify line 20 above. Don't add/commit that change
            - run: git commit -m 'substitute URLs for CIS server'
-           - run: cat .github/workflows/cis.yml 
            - run: git push
     
