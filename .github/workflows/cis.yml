@@ -16,7 +16,7 @@ jobs:
            - run: git config user.email github-actions@github.com  
            - run: git fetch origin cis  # action only fetches one branch.  We need to fetch the other explicitly
            - run: git checkout --progress --force -B cis refs/remotes/origin/cis
-           - run: git merge main
+           - run: git merge main --strategy-option theirs
            - uses: jacobtomlinson/gha-find-replace@v2
              with: 
                 find: "http://localhost:8000"
