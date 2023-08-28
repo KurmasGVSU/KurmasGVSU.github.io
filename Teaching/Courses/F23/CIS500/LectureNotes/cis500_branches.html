@@ -282,94 +282,37 @@
 </head>
 <body>
 <main id="content">
-  <h1 id="chapter-1">Chapter 1</h1>
+  <h1 id="conditionals">Conditionals</h1>
 
 <ul>
-  <li>Again, I assume these concepts are familiar. I’m just going to highlight the aspects that are 
-specific to Python.</li>
-  <li>Open “In-Class 1”
+  <li>if</li>
+  <li>if-else</li>
+  <li>if-elsif-else</li>
+  <li>if-elsif-elsif-elsif-else</li>
+  <li>Indentation matters
     <ul>
-      <li>Log into PrairieLearn,</li>
-      <li>navigate to the assessment named “In-Class 1”</li>
-      <li>Set up a group, if you like.</li>
-      <li>Launch the workspace</li>
-      <li>Open <code>playspace</code></li>
-      <li>“play” with it.  Both the markdown and the code.</li>
+      <li>Spaces different than tabs</li>
     </ul>
   </li>
-  <li class="to-me">Demonstrate some markdown features
+  <li>Operator chaining <code>a &lt; b  C</code>
     <ul>
-      <li>list</li>
-      <li>code</li>
-      <li>bold/italics</li>
+      <li>somewhat unique to Python</li>
     </ul>
   </li>
-  <li class="to-me">Demonstrate some python features
+  <li><code>and</code> / <code>or</code> / <code>not</code></li>
+  <li>implicit vs explicit ranges
     <ul>
-      <li>variables carry from window to window.</li>
-      <li>if you run cell-by-cell, the code goes in execution order, not “top-down”</li>
+      <li>i.e., choosing order of if statements carefully</li>
     </ul>
   </li>
-</ul>
-
-<h2 id="variables">Variables</h2>
-<ul>
-  <li>Letters, numbers, underscores.</li>
-  <li>Can’t start with a number.</li>
-  <li>Convention is to use <code>snake_case</code> not <code>camelCase</code></li>
-  <li>Avoid names that begin with two underscores.</li>
-  <li>Doesn’t need to be declared (like with C or Java).  Just assign a value (<code>x = 7</code>)</li>
-  <li>Can’t be read before being assigned.
-    <ul>
-      <li class="to-me">modify sample code to reference variable that doesn’t exist and show resulting error.</li>
-    </ul>
-  </li>
-  <li>String literals go in quotes.</li>
-</ul>
-
-<h2 id="output">Output</h2>
-<ul>
-  <li><code>print</code> method</li>
-  <li>comma-separated list of items to print.</li>
-  <li>Python inserts space between parameters!
-    <ul>
-      <li>This is different from many other languages.</li>
-      <li class="to-me">Give demo.</li>
-    </ul>
-  </li>
-  <li><code>print</code> ends with a newline by default.
-    <ul>
-      <li>To override:  <code>print('No newline', end=' ')</code></li>
-    </ul>
-  </li>
-  <li>You can also use string interpolation.
-    <ul>
-      <li>Put <code>f</code> before string.</li>
-      <li>Put code to be interpolated in braces.</li>
-      <li>Notice that braces can contain code, not just variable.
-  <code>print(f"The cost with tax is ${cost*1.06}")</code></li>
-      <li>zyBook uses comma-separated list. You can use whichever technique you prefer.</li>
-      <li>https://www.programiz.com/python-programming/string-interpolation</li>
-    </ul>
-  </li>
-  <li>Use string interpolation to format floating-point values</li>
-  <li><code>print(f'{myFloat:.2f}')</code></li>
-  <li>You can also use the same pattern to format integers
- <code>printf(f'{someInt:.05})</code> to produce leading zeros.</li>
-</ul>
-
-<h2 id="input">Input</h2>
-<ul>
-  <li><code>input()</code> returns the entire line (except the newline) typed by the user <em>as a string</em></li>
-  <li>return value of <code>input</code> is always a string</li>
-  <li>use <code>int()</code> function to convert it to an integer.
-    <ul>
-      <li class="to-do">show what happens if you forget conversion</li>
-      <li><code>f = input()
-  print(f"You entered-&gt;{f+4}&lt;-")</code></li>
-    </ul>
-  </li>
-  <li>Use <code>float()</code> to convert to floating-point.</li>
+  <li>chain of if vs. else-if</li>
+  <li>nested if</li>
+  <li>integers and floats can be compared.  (One is coerced)</li>
+  <li>can’t directly compare strings and integers</li>
+  <li><code>is</code> vs ==</li>
+  <li>watch for ‘if x = 9:’ (instead of ==)</li>
+  <li>conditional/ ternary operator</li>
+  <li>Expression trees</li>
 </ul>
 
 </main>

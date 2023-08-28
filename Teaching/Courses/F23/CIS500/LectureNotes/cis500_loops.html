@@ -282,95 +282,165 @@
 </head>
 <body>
 <main id="content">
-  <h1 id="chapter-1">Chapter 1</h1>
+  <h1 id="loops">Loops</h1>
 
 <ul>
-  <li>Again, I assume these concepts are familiar. I’m just going to highlight the aspects that are 
-specific to Python.</li>
-  <li>Open “In-Class 1”
+  <li>While loop
     <ul>
-      <li>Log into PrairieLearn,</li>
-      <li>navigate to the assessment named “In-Class 1”</li>
-      <li>Set up a group, if you like.</li>
-      <li>Launch the workspace</li>
-      <li>Open <code>playspace</code></li>
-      <li>“play” with it.  Both the markdown and the code.</li>
-    </ul>
-  </li>
-  <li class="to-me">Demonstrate some markdown features
-    <ul>
-      <li>list</li>
-      <li>code</li>
-      <li>bold/italics</li>
-    </ul>
-  </li>
-  <li class="to-me">Demonstrate some python features
-    <ul>
-      <li>variables carry from window to window.</li>
-      <li>if you run cell-by-cell, the code goes in execution order, not “top-down”</li>
+      <li>Repeatedly echo <code>input()</code> until <code>q</code></li>
+      <li><code>q</code> is a “sentinel value”</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="variables">Variables</h2>
+<p><code>
+str = input()
+while str != 'q':
+     print('You said: ', str)
+     str = input()
+</code></p>
+
 <ul>
-  <li>Letters, numbers, underscores.</li>
-  <li>Can’t start with a number.</li>
-  <li>Convention is to use <code>snake_case</code> not <code>camelCase</code></li>
-  <li>Avoid names that begin with two underscores.</li>
-  <li>Doesn’t need to be declared (like with C or Java).  Just assign a value (<code>x = 7</code>)</li>
-  <li>Can’t be read before being assigned.
-    <ul>
-      <li class="to-me">modify sample code to reference variable that doesn’t exist and show resulting error.</li>
-    </ul>
-  </li>
-  <li>String literals go in quotes.</li>
+  <li>Get numbers until sentinel is seen to compute average (from book)</li>
 </ul>
 
-<h2 id="output">Output</h2>
+<p>````
+values_sum = 0
+num_values = 0</p>
+
+<p>curr_value = int(input())</p>
+
+<p>while curr_value &gt; 0: # Get values until 0 (or less)
+    values_sum += curr_value
+    num_values += 1
+    curr_value = int(input())
+print(f’Average: {values_sum / num_values:.0f}\n’)
+````</p>
+
 <ul>
-  <li><code>print</code> method</li>
-  <li>comma-separated list of items to print.</li>
-  <li>Python inserts space between parameters!
-    <ul>
-      <li>This is different from many other languages.</li>
-      <li class="to-me">Give demo.</li>
-    </ul>
-  </li>
-  <li><code>print</code> ends with a newline by default.
-    <ul>
-      <li>To override:  <code>print('No newline', end=' ')</code></li>
-    </ul>
-  </li>
-  <li>You can also use string interpolation.
-    <ul>
-      <li>Put <code>f</code> before string.</li>
-      <li>Put code to be interpolated in braces.</li>
-      <li>Notice that braces can contain code, not just variable.
-  <code>print(f"The cost with tax is ${cost*1.06}")</code></li>
-      <li>zyBook uses comma-separated list. You can use whichever technique you prefer.</li>
-      <li>https://www.programiz.com/python-programming/string-interpolation</li>
-    </ul>
-  </li>
-  <li>Use string interpolation to format floating-point values</li>
-  <li><code>print(f'{myFloat:.2f}')</code></li>
-  <li>You can also use the same pattern to format integers
- <code>printf(f'{someInt:.05})</code> to produce leading zeros.</li>
+  <li>Print growth of savings in an account (from book)
+````
+initial_savings = 10000
+interest_rate = 0.05</li>
 </ul>
 
-<h2 id="input">Input</h2>
+<p>print(f’Initial savings of ${initial_savings}’)
+print(f’at {interest_rate*100:.0f}% yearly interest.\n’)</p>
+
+<p>years = int(input(‘Enter years: ‘))
+print()</p>
+
+<p>savings = initial_savings
+i = 1  # Loop variable
+while i &lt;= years:  # Loop condition
+    print(f’ Savings at beginning of year {i}: ${savings:.2f}’)
+    savings = savings + (savings*interest_rate)
+    i = i + 1  # Increment loop variable</p>
+
+<p>print(‘\n’)
+````</p>
+
 <ul>
-  <li><code>input()</code> returns the entire line (except the newline) typed by the user <em>as a string</em></li>
-  <li>return value of <code>input</code> is always a string</li>
-  <li>use <code>int()</code> function to convert it to an integer.
+  <li class="q">
+    <p>How to add additional principal once per year?</p>
+  </li>
+  <li>
+    <p>Quick intro to a list
+<code>
+array = ['a', 'b', 'c', 'd', 'e']
+print(array[0])
+print(array[3])
+array[4] = 'changed'
+print(array)
+</code></p>
+  </li>
+  <li>Use <code>for</code> loop to sum over a list.</li>
+  <li>Use <code>for</code> to loop through a string and count ‘e’s</li>
+  <li>inClass basic loops:
     <ul>
-      <li class="to-do">show what happens if you forget conversion</li>
-      <li><code>f = input()
-  print(f"You entered-&gt;{f+4}&lt;-")</code></li>
+      <li>guessing game</li>
+      <li>count_evens</li>
+      <li>max_int</li>
+      <li>contains_negative</li>
     </ul>
   </li>
-  <li>Use <code>float()</code> to convert to floating-point.</li>
 </ul>
+
+<h2 id="range">Range</h2>
+
+<ul>
+  <li>Intermediate loops
+    <ul>
+      <li>is_strictly_increasing</li>
+    </ul>
+  </li>
+  <li><code>range</code>
+    <ul>
+      <li>end value <em>not</em> included.</li>
+      <li>can add a step</li>
+      <li>step can be negative (to count down)</li>
+      <li class="q">What happens if step is negative but range is not <code>range(5, 10, -1)</code></li>
+      <li><code>range</code> is better than <code>while</code> since range won’t let you accidentally write an infinite loop</li>
+    </ul>
+  </li>
+</ul>
+
+<p><code>
+for index in range(3, 5):
+    print(f"value at {index}: {array[index]}")
+</code>
+* Show how to do <code>is_strictly_increasing</code> with <code>range</code>
+* Show how to do <code>is_strictly_increasing</code> with <code>break</code></p>
+
+<h2 id="break-and-continue">Break and Continue</h2>
+
+<ul>
+  <li><code>break</code> immediately ends a loop:</li>
+</ul>
+
+<p>````
+for val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]:
+   if val &gt; 5:
+      break
+    print(val)
+```</p>
+
+<ul>
+  <li>Continue skips the rest of the loop</li>
+</ul>
+
+<p><code>
+for val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]:
+   if val % 3 == 0
+      continue
+    print(val)
+</code></p>
+
+<h2 id="loop-else">Loop else</h2>
+
+<ul>
+  <li>
+    <p>If you put an <code>else</code> on a loop, that block runs only if the loop runs to completion. 
+<code>
+for val in [1, 3, 5, 9, 7, 11, 221, 339, 446]:
+if val % 2 == 0:
+  print(f"{val} is the first even number on the list")
+else:
+print("There were no even numbers on the list")
+</code></p>
+  </li>
+  <li>
+    <p>When you want both the index and the value, use <code>enumerate</code></p>
+  </li>
+</ul>
+
+<p>````
+origins = [4, 8, 10]</p>
+
+<p>for (index, value) in enumerate(origins):
+    print(f’Element {index}: {value}’)
+````</p>
+
 
 </main>
 </body>
