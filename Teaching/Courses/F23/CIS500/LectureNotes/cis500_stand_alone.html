@@ -1,0 +1,457 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="python-outside-of-a-notebook">Python outside of a notebook</h1>
+
+<ul>
+  <li>Create a folder in the <code>Documents</code> directory</li>
+  <li>Open VS Code, then open that folder</li>
+  <li>Create a Hello, World! program
+    <ul>
+      <li>Need an input so it doesn’t terminate immediately.</li>
+    </ul>
+  </li>
+  <li>Double-click on python program to execute it.
+    <ul>
+      <li>Also show how to run on mac</li>
+    </ul>
+  </li>
+  <li>Show how to run directly in VS code.</li>
+  <li>Traditional way to write code: Put it in a file.
+    <ul>
+      <li>With languages like Python, that program should run on any computer with python installed.</li>
+    </ul>
+  </li>
+  <li>Challenges:
+    <ul>
+      <li>Doesn’t scale well to large programs.  (Code is hard to organize / manage)</li>
+      <li>Can be tricky to test.</li>
+    </ul>
+  </li>
+  <li>Solution:
+    <ul>
+      <li>split code over multiple files.</li>
+      <li>These different files are called “modules”</li>
+    </ul>
+  </li>
+  <li>A module is just a python file.
+    <ul>
+      <li>The functions in that file can be accessed by other files using an <code>import</code> statement.</li>
+    </ul>
+  </li>
+  <li>
+    <p>In general, put related code that might be re-used together into a module.</p>
+  </li>
+  <li>Create <code>demo_date.py</code>
+    <ul>
+      <li>write <code>days_in_month</code> (use lookup method)</li>
+      <li>write <code>tomorrow</code></li>
+    </ul>
+  </li>
+  <li>Write and use driver program</li>
+</ul>
+
+<h1 id="unit-testing">Unit Testing</h1>
+
+<ul>
+  <li class="q">How do you know when your program is “done” and bug free?</li>
+  <li>You need a better system than just playing with it for awhile and not noticing any bugs.
+    <ul>
+      <li>You need a specific test plan.</li>
+    </ul>
+  </li>
+  <li class="q">What tests should we run for <code>days_in_month</code>?</li>
+  <li class="q">how about <code>tomorrow</code>?  What do we do when you can’t run every possible input?</li>
+  <li>Better yet, you want an automated way of running the tests.
+    <ul>
+      <li>Any time you change the code, you want to be able to <em>easily</em> verify that you haven’t 
+introduced any bugs.</li>
+      <li>Doing this manually gets tedious/boring in a hurry.</li>
+    </ul>
+  </li>
+  <li>Conventional approach is to use a <em>Unit Test Framework</em>.</li>
+  <li>
+    <p>There are several; but, in this class we’ll use <code>unittest</code> because it comes with Python.</p>
+  </li>
+  <li>Key steps
+    <ul>
+      <li>import <code>unittest</code> (this contains code that makes the automated tests work)</li>
+      <li>create a class.  We’ll talk more about what exactly classes are later.</li>
+      <li>Write tests.
+        <ul>
+          <li>test names must begin with <code>test</code>.</li>
+          <li>must take one parameter named <code>self</code>.  (That’s part of the class thing.)</li>
+        </ul>
+      </li>
+      <li>Two key concepts: <em>expected</em> and <em>observed</em> values.
+        <ul>
+          <li>Need to compute the expected (i.e., “correct”) answer</li>
+          <li>Run your code to get the observed value.</li>
+          <li>Make sure they are equal.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Having <em>expected</em> and <em>observed</em> variables not necessary, but can be helpful.</li>
+  <li>To run the tests: <code>python3 -m unittest demo_date_test.py</code>
+    <ul>
+      <li>The <code>-m</code> tells python to run the module as a stand-alone program.
+        <ul>
+          <li>This lets you deploy larger programs as modules, if that’s helpful.</li>
+          <li>(<code>python3 -m http.server</code> is a quick and dirty web server if you ever need one.)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Notice the output when there aren’t any bugs.</li>
+  <li class="to-me">introduce a bug and re-run</li>
+  <li><code>assertEqual</code> takes an optional third parameter if you want a more detailed message.
+    <ul>
+      <li class="to-me">demonstrate</li>
+    </ul>
+  </li>
+  <li>There are several different <em>assert</em> functions (https://docs.python.org/3/library/unittest.html#unittest.TestCase). The most common are
+    <ul>
+      <li><code>assertEqual</code></li>
+      <li><code>assertNotEqual</code></li>
+      <li><code>assertTrue</code></li>
+      <li><code>assertFalse</code></li>
+      <li><code>assertIn</code></li>
+    </ul>
+  </li>
+  <li>Notice that by putting functions in <code>demo_date</code> we have separated our “number crunching” functions 
+from the code that interacts with the user. This often makes testing easier.</li>
+</ul>
+
+<h1 id="designing-tests">Designing tests</h1>
+
+<ul>
+  <li>How many tests are enough? What tests do we choose when we can’t test everything?</li>
+  <li>First step: “Black box tests”.
+    <ul>
+      <li>Imagine I give you a handheld electronic device and tell you it determines whether a year is a leap year.  Your job is to figure out if it works.  What years would you give it?</li>
+      <li>Called “black box” because you treat the function as a black (opaque) box: You don’t know what’s in it.</li>
+      <li>Instead, you rely on the “rules” of the process you are automating — e.g., the rules for leap year.</li>
+    </ul>
+  </li>
+  <li>Second step “white box” testing. Once your code is written, look inside it (as if it is a transparent box) and make sure each line is tested
+    <ul>
+      <li>for example, both halves of an <code>if</code> statement</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="git-and-github">Git and GitHub</h1>
+
+<ul>
+  <li><code>git</code> is a <em>version control system</em>.  It is a tool that keeps track of your changes
+over time, so if you mess something up, you can go back and get the working version.</li>
+  <li><code>gitHub</code> is a web service that will store you git repos “in the cloud” which allows you to
+    <ol>
+      <li>Share your code with others</li>
+      <li>Keep your code safe if your laptop fails.</li>
+    </ol>
+  </li>
+</ul>
+
+<p>In this class we are going to use git and GitHub so you can share your code with me.
+This makes it easy for me to see your code (either for submitting assignments or just asking for help).
+It also makes it easy for me to send feed back to you.</p>
+
+<p>In general, the code for your projects will go in a gitHub repo that gets shared with me.</p>
+
+<p>GitHub Classroom is a GitHub tool that simplifies the process of setting up a repo.  Basically, I’ll give you a URL. When you click on that link, GitHub will create the repo for you, populate it with any “starter code” and add me as a collaborator.</p>
+
+<ul>
+  <li class="to-me">Walk through setting up Project 1.</li>
+  <li>Show git clone</li>
+  <li>
+    <p>Show, git add / git commit / git push</p>
+  </li>
+  <li>https://docs.python.org/3/library/unittest.html</li>
+</ul>
+
+</main>
+</body>
+</html>
