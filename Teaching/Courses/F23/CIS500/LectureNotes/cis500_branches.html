@@ -286,32 +286,96 @@
 
 <ul>
   <li>if</li>
-  <li>if-else</li>
-  <li>if-elsif-else</li>
-  <li>if-elsif-elsif-elsif-else</li>
+  <li>if-else
+    <ul>
+      <li><code>max_value</code></li>
+    </ul>
+  </li>
+  <li>if-elsif-else
+    <ul>
+      <li>too hot / too cold / just right</li>
+    </ul>
+  </li>
+  <li>if-elsif-elsif-elsif-else
+    <ul>
+      <li>Letter grades</li>
+    </ul>
+  </li>
   <li>Indentation matters
     <ul>
       <li>Spaces different than tabs</li>
     </ul>
   </li>
+  <li><code>=</code> vs <code>==</code></li>
   <li>Operator chaining <code>a &lt; b  C</code>
     <ul>
       <li>somewhat unique to Python</li>
     </ul>
   </li>
-  <li><code>and</code> / <code>or</code> / <code>not</code></li>
+  <li><code>and</code> / <code>or</code> / <code>not</code>
+    <ul>
+      <li><code>!=</code> as shortcut for <code>not x == y</code></li>
+    </ul>
+  </li>
   <li>implicit vs explicit ranges
     <ul>
       <li>i.e., choosing order of if statements carefully</li>
+      <li>Look at letter grades again.</li>
     </ul>
   </li>
   <li>chain of if vs. else-if</li>
-  <li>nested if</li>
+  <li>nested if
+    <ul>
+      <li>Compute bonus for different structures
+        <ul>
+          <li>Structure A: 10% for sales over 10,000</li>
+          <li>Structure B: $100 if sales is a multiple of 5.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
   <li>integers and floats can be compared.  (One is coerced)</li>
+  <li>strings can be compared using <code>==</code>, <code>&lt;</code>, <code>&lt;=</code>, etc.</li>
   <li>can’t directly compare strings and integers</li>
+  <li>Avoid comparing <code>float</code> using <code>==</code>
+    <ul>
+      <li class="q">Why?</li>
+    </ul>
+  </li>
   <li><code>is</code> vs ==</li>
-  <li>watch for ‘if x = 9:’ (instead of ==)</li>
-  <li>conditional/ ternary operator</li>
+  <li>watch for <code>if x = 9:</code> (instead of <code>==</code>)
+    <ul>
+      <li>
+        <p>Example</p>
+
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">print_discount</span><span class="p">(</span><span class="n">has_discount</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">has_discount</span> <span class="o">=</span> <span class="bp">True</span><span class="p">):</span>
+      <span class="k">print</span><span class="p">(</span><span class="s">'You have a discount!'</span><span class="p">)</span>
+  <span class="k">else</span> 
+      <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"No discount.  (Your status </span><span class="si">{</span><span class="n">has_discount</span><span class="si">}</span><span class="s">)"</span><span class="p">)</span>
+      
+<span class="n">print_discount</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Actually, this is a syntax error. Need to use <code>:=</code>.</li>
+      <li>The requirement of the <code>:</code> is to avoid this common mistake.</li>
+    </ul>
+  </li>
+  <li>Order of operations
+    <ul>
+      <li>precedence: <code>not</code>, <code>and</code>, <code>or</code></li>
+      <li><code>not x or y</code> is evaluated as <code>(not x) or y</code>.</li>
+      <li><code>x == 5 or y == 10 and z != 10</code> is evaluated as <code>(x == 5) or ((y == 10) and (z != 10))</code> because <code>and</code> has precedence over <code>or</code>.</li>
+      <li>When in doubt, just use parentheses.</li>
+    </ul>
+  </li>
+  <li>
+    <p>conditional/ ternary operator</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">parity</span> <span class="o">=</span> <span class="s">'even'</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s">'odd'</span>
+</code></pre></div>    </div>
+  </li>
   <li>Expression trees</li>
 </ul>
 

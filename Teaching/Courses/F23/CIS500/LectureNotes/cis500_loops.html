@@ -288,71 +288,66 @@
   <li>While loop
     <ul>
       <li>Repeatedly echo <code>input()</code> until <code>q</code></li>
-      <li><code>q</code> is a “sentinel value”</li>
+      <li>
+        <p><code>q</code> is a “sentinel value”</p>
+
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="k">while</span> <span class="nb">str</span> <span class="o">!=</span> <span class="s">'q'</span><span class="p">:</span>
+ <span class="k">print</span><span class="p">(</span><span class="s">'You said: '</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+ <span class="nb">str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+</code></pre></div>        </div>
+      </li>
     </ul>
   </li>
-</ul>
+  <li>
+    <p>Get numbers until sentinel is seen to compute average (from book)</p>
 
-<p><code>
-str = input()
-while str != 'q':
-     print('You said: ', str)
-     str = input()
-</code></p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">values_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">num_values</span> <span class="o">=</span> <span class="mi">0</span>
+  
+<span class="n">curr_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+     
+<span class="k">while</span> <span class="n">curr_value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># Get values until 0 (or less)
+</span>    <span class="n">values_sum</span> <span class="o">+=</span> <span class="n">curr_value</span>
+    <span class="n">num_values</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">curr_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Average: </span><span class="si">{</span><span class="n">values_sum</span> <span class="o">/</span> <span class="n">num_values</span><span class="p">:.</span><span class="mi">0</span><span class="n">f</span><span class="si">}</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Print growth of savings in an account (from book)</p>
 
-<ul>
-  <li>Get numbers until sentinel is seen to compute average (from book)</li>
-</ul>
-
-<p>````
-values_sum = 0
-num_values = 0</p>
-
-<p>curr_value = int(input())</p>
-
-<p>while curr_value &gt; 0: # Get values until 0 (or less)
-    values_sum += curr_value
-    num_values += 1
-    curr_value = int(input())
-print(f’Average: {values_sum / num_values:.0f}\n’)
-````</p>
-
-<ul>
-  <li>Print growth of savings in an account (from book)
-````
-initial_savings = 10000
-interest_rate = 0.05</li>
-</ul>
-
-<p>print(f’Initial savings of ${initial_savings}’)
-print(f’at {interest_rate*100:.0f}% yearly interest.\n’)</p>
-
-<p>years = int(input(‘Enter years: ‘))
-print()</p>
-
-<p>savings = initial_savings
-i = 1  # Loop variable
-while i &lt;= years:  # Loop condition
-    print(f’ Savings at beginning of year {i}: ${savings:.2f}’)
-    savings = savings + (savings*interest_rate)
-    i = i + 1  # Increment loop variable</p>
-
-<p>print(‘\n’)
-````</p>
-
-<ul>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">initial_savings</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">interest_rate</span> <span class="o">=</span> <span class="mf">0.05</span>
+  
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Initial savings of $</span><span class="si">{</span><span class="n">initial_savings</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'at </span><span class="si">{</span><span class="n">interest_rate</span><span class="o">*</span><span class="mi">100</span><span class="p">:.</span><span class="mi">0</span><span class="n">f</span><span class="si">}</span><span class="s">% yearly interest.</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+  
+<span class="n">years</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'Enter years: '</span><span class="p">))</span>
+<span class="k">print</span><span class="p">()</span>
+  
+<span class="n">savings</span> <span class="o">=</span> <span class="n">initial_savings</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Loop variable
+</span><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">years</span><span class="p">:</span>  <span class="c1"># Loop condition
+</span>    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">' Savings at beginning of year </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s">: $</span><span class="si">{</span><span class="n">savings</span><span class="p">:.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+    <span class="n">savings</span> <span class="o">=</span> <span class="n">savings</span> <span class="o">+</span> <span class="p">(</span><span class="n">savings</span><span class="o">*</span><span class="n">interest_rate</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Increment loop variable
+</span>  
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
   <li class="q">
     <p>How to add additional principal once per year?</p>
   </li>
   <li>
-    <p>Quick intro to a list
-<code>
-array = ['a', 'b', 'c', 'd', 'e']
-print(array[0])
-print(array[3])
-array[4] = 'changed'
-print(array)
-</code></p>
+    <p>Quick intro to a list</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="s">'changed'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</code></pre></div>    </div>
   </li>
   <li>Use <code>for</code> loop to sum over a list.</li>
   <li>Use <code>for</code> to loop through a string and count ‘e’s</li>
@@ -380,66 +375,67 @@ print(array)
       <li>can add a step</li>
       <li>step can be negative (to count down)</li>
       <li class="q">What happens if step is negative but range is not <code>range(5, 10, -1)</code></li>
-      <li><code>range</code> is better than <code>while</code> since range won’t let you accidentally write an infinite loop</li>
+      <li>
+        <p><code>range</code> is better than <code>while</code> since range won’t let you accidentally write an infinite loop</p>
+
+        <p class="language-python">~~~~
+ for index in range(3, 5):
+     print(f”value at {index}: {array[index]}”)
+ ~~~~</p>
+      </li>
     </ul>
   </li>
+  <li>Show how to do <code>is_strictly_increasing</code> with <code>range</code></li>
+  <li>Show how to do <code>is_strictly_increasing</code> with <code>break</code></li>
 </ul>
-
-<p><code>
-for index in range(3, 5):
-    print(f"value at {index}: {array[index]}")
-</code>
-* Show how to do <code>is_strictly_increasing</code> with <code>range</code>
-* Show how to do <code>is_strictly_increasing</code> with <code>break</code></p>
 
 <h2 id="break-and-continue">Break and Continue</h2>
 
 <ul>
-  <li><code>break</code> immediately ends a loop:</li>
+  <li>
+    <p><code>break</code> immediately ends a loop:</p>
+
+    <p class="language-python">~~~~
+ for val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]:
+    if val &gt; 5:
+       break
+     print(val)
+ ~~~~</p>
+  </li>
+  <li>
+    <p>Continue skips the rest of the loop</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">]:</span>
+   <span class="k">if</span> <span class="n">val</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span>
+      <span class="k">continue</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
 </ul>
-
-<p><code>
-for val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]:
-   if val &gt; 5:
-      break
-    print(val)
-</code></p>
-
-<ul>
-  <li>Continue skips the rest of the loop</li>
-</ul>
-
-<p><code>
-for val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]:
-   if val % 3 == 0
-      continue
-    print(val)
-</code></p>
 
 <h2 id="loop-else">Loop else</h2>
 
 <ul>
   <li>
-    <p>If you put an <code>else</code> on a loop, that block runs only if the loop runs to completion. 
-<code>
-for val in [1, 3, 5, 9, 7, 11, 221, 339, 446]:
-if val % 2 == 0:
-  print(f"{val} is the first even number on the list")
-else:
-print("There were no even numbers on the list")
-</code></p>
+    <p>If you put an <code>else</code> on a loop, that block runs only if the loop runs to completion.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">221</span><span class="p">,</span> <span class="mi">339</span><span class="p">,</span> <span class="mi">446</span><span class="p">]:</span>
+  <span class="k">if</span> <span class="n">val</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s"> is the first even number on the list"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"There were no even numbers on the list"</span><span class="p">)</span>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>When you want both the index and the value, use <code>enumerate</code></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">origins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">origins</span><span class="p">):</span>
+  <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Element </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div>    </div>
   </li>
 </ul>
-
-<p>````
-origins = [4, 8, 10]</p>
-
-<p>for (index, value) in enumerate(origins):
-    print(f’Element {index}: {value}’)
-````</p>
 
 
 </main>
