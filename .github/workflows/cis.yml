@@ -19,7 +19,7 @@ jobs:
            - run: git merge main --strategy-option theirs
            - uses: jacobtomlinson/gha-find-replace@v2
              with: 
-                find: "http://localhost:8000"
+                find: "https://faculty.computing.gvsu.edu/kurmasz"
                 replace: "https://faculty.computing.gvsu.edu/kurmasz/"
                 regex: false                   
            - run: git add -- . ':!.github'  # the replace action will modify line 20 above. Don't add/commit that change

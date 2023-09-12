@@ -4,135 +4,7 @@
   <meta charset="UTF-8">
   <title>Zachary Kurmas</title>
   <style>
-    
-.nobreak {
-    white-space: nowrap;
-}
-
-/* Formatting for instructions / code */
-
-code {
-    white-space: nowrap;
-}
-
-.inline-instruction {
-    background: #EEEEEE;
-    color: blueviolet;
-    white-space: nowrap;
-    border-radius: 5px;
-    padding: 0 2px 0 2px;
-}
-
-.terminal-output {
-    background-color: black;
-    color: #00FF00;
-    margin: 5px 50px 5px 25px;
-    padding: 5px;
-    border-radius: 2px;
-    overflow: scroll;
-}
-
-.important {
-    display: inline-block;
-    padding: 5px;
-    border: 1px solid black;
-    background-color: #76d9f7;
-    border-radius: 5px;
-}
-
-.inline-important {
-    background: #EEEEEE;
-    color: #c80000;
-   /* white-space: nowrap; */
-    border-radius: 5px;
-    padding: 0 2px 0 2px;
-}
-
-/* Formatting for lists */
-
-dt {
-    font-weight: bold;
-    font-variant: small-caps;
-    font-size: 135%;
-}
-
-dd {
-    margin-bottom: 1em;
-}
-
-.listHeader {
-    padding-bottom: 0;
-    margin-bottom: 0;
-}
-
-ul, ol {
-    padding-top: 0;
-    margin-top: 0;
-}
-
-/* Navigation */
-
-#nav {
-    position: absolute;
-    width: 150px;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: #005d95;
-    /* "Laker blue is #0065a4, but fails ARIA contrast test.
-        Color above is as close as I can get
-        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
-    */
-}
-
-#nav a {
-    color: white;
-    font-family: arial, helvetica, sans-serif;
-    font-size: 90%;
-}
-
-#nav p {
-    margin-left: 10px;
-}
-
-#nav hr {
-    margin: 10px;
-}
-
-.nav-indent1 {
-    padding-left: 10px;
-}
-
-@media print {
-    #nav {
-        visibility: hidden;
-    }
-
-    #content {
-        left: 0;
-    }
-}
-
-/* A link that isn't displayed so that the
-   accessibility checker is happy.
- */
-.bypass {
-    position: absolute;
-    top: 0;
-    right: 100%;
-    z-index: 9999;
-    color: black;
-}
-
-@media screen {
-    #content {
-        position: fixed;
-        margin-left: 10px;
-        left: 150px;
-        overflow: scroll;
-        height: 100%;
-    }
-}
+    <%= $d.general.site_css %>
 
     #headerContainer {
       text-align: center;
@@ -183,34 +55,43 @@ ul, ol {
   </style>
 </head>
 <body>
-<nav id="nav">
-  <a class='bypass' href="#content">Skip to main content</a>
-  <p><a href="index.html#content">Home</a></p>
+<%= $k.render('nav.html.erb') %>
+<% 
+  courses = {
+    # !!! Year is the start of the _academic_ year. So, courses[2023][:winter] is actually _W24_
+    2023 => {
+      fall: [:CIS500],
+      winter: [],
+      ss: []
+    },
+    2022 =>  {
+      fall: [ :CIS343, :CIS371  ],
+      winter: [ :CIS343, :CIS371  ],
+      ss: []
+    },
+    2021 => {
+      fall: [:CIS351],
+      winter: [:CIS351],
+      ss: [],
+    },
+    2020 => {
+     fall: [:CIS351],
+      winter: [:CIS351],
+      ss: [:CIS163],
+    },
+    2019 => {
+     fall: [:CIS263, :CIS451],
+      winter: [:CIS371, :CIS658],
+      ss: [:CIS163],
+    },
+    2018 => {
+     fall: [:CIS162, :CIS351],
+      winter: [:CIS451, :CIS658],
+      ss: [],
+    },
 
-  <p><a id='teachingNav' href="index.html#Teaching">Teaching</a></p>
-  
-    <p><a aria-label='Link to Teaching section of web page' class='nav-indent1' href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/F23/CIS500'>CIS 500</a></p>
-  
-
-  <div id="softwareNav">
-    <p><a href="software.html">Software</a></p>
-    <p><a aria-label="Link to DLUnit section on Software page" class='nav-indent1' href="Software/DLUnit">DLUnit</a></p>
-    <p><a aria-label='Link to MUnit section on Software page' class='nav-indent1' href="Software/mipsunit_munit/">MUnit</a></p>
-    <p><a arial-label='Link to KielceRB GitHub page' class='nav-indent1' href="https://www.github.com/kurmasz/KielceRB">KielceRB</a></p>
-  </div>
-
-  <p><a href="index.html#Scholarship">Scholarship</a></p>
-  <p><a class='nav-indent1' href="publications.html">Publications</a></p>
-
-  <p><a href="index.html#Advice">Advice</a></p>
-<!--  <p><a href="index.html#Humor">Humor</a></p> -->
-  <p><a href="index.html#ContactInfo">Contact info</a></p>
-  <p><a href='https://www.gvsu.edu/computing/module-officehours-index.htm?userId=3198C5B9-BBE4-A648-BC24DF41E859FD18&siteModuleId=3178A9F5-C72C-B4A4-4F15D6794E34F230'>My Schedule</a></p>
-
-  <p><a href="cv_public.pdf">CV</a></p>
-</nav>
-
-
+  }
+%>
 
 <main id="content">
 
@@ -294,49 +175,14 @@ ul, ol {
 
 <table class='pastCourses'>
   <tr><th>Academic Year</th><th>Fall</th><th>Winter</th><th>Spring/Summer</th></tr>
-  
+  <% courses.keys.sort {|a, b| b <=>a }.each do |year| %>
     <tr>
-      <td class='ay'>2023-2024</td>
-      <td> <a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/F23/CIS500'>CIS500</a></td>
-      <td> </td>
-      <td> </td>
+      <td class='ay'><%= "#{year}-#{year+1}" %></td>
+      <td> <%= $d.general.semesterCourseList($d.semester.shortName('F', year), courses[year][:fall]) %></td>
+      <td> <%= $d.general.semesterCourseList($d.semester.shortName('W', year+1), courses[year][:winter]) %></td>
+      <td> <%= $d.general.semesterCourseList($d.semester.shortName('S', year+1), courses[year][:ss]) %></td>
    </tr>
-  
-    <tr>
-      <td class='ay'>2022-2023</td>
-      <td> <a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/F22/CIS343'>CIS343</a><br><a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/F22/CIS371'>CIS371</a></td>
-      <td> <a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/W23/CIS343'>CIS343</a><br><a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/W23/CIS371'>CIS371</a></td>
-      <td> </td>
-   </tr>
-  
-    <tr>
-      <td class='ay'>2021-2022</td>
-      <td> <a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/F21/CIS351'>CIS351</a></td>
-      <td> <a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/W22/CIS351'>CIS351</a></td>
-      <td> </td>
-   </tr>
-  
-    <tr>
-      <td class='ay'>2020-2021</td>
-      <td> <a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/F20/CIS351'>CIS351</a></td>
-      <td> <a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/W21/CIS351'>CIS351</a></td>
-      <td> <a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/S21/CIS163'>CIS163</a></td>
-   </tr>
-  
-    <tr>
-      <td class='ay'>2019-2020</td>
-      <td> <a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/F19/CIS263'>CIS263</a><br><a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/F19/CIS451'>CIS451</a></td>
-      <td> <a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/W20/CIS371'>CIS371</a><br><a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/W20/CIS658'>CIS658</a></td>
-      <td> <a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/S20/CIS163'>CIS163</a></td>
-   </tr>
-  
-    <tr>
-      <td class='ay'>2018-2019</td>
-      <td> <a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/F18/CIS162'>CIS162</a><br><a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/F18/CIS351'>CIS351</a></td>
-      <td> <a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/W19/CIS451'>CIS451</a><br><a href='https://faculty.computing.gvsu.edu/kurmasz/Teaching/Courses/W19/CIS658'>CIS658</a></td>
-      <td> </td>
-   </tr>
-  
+  <% end %>
 
 </table>
 
@@ -401,8 +247,7 @@ ul, ol {
     e-mail: <em>"last_name first_initial"@gvsu.edu</em>
   </address>
   <hr>
-  <p>Updated Thursday, 6 July 2023, 10:42 AM</p>
-<a href="https://validator.w3.org/check?url=referer"><img src='https://faculty.computing.gvsu.edu/kurmasz/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+  <%= $d.general.footer %>
 </main>
 </body>
 </html>
