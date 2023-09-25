@@ -1,0 +1,401 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="lists">Lists</h1>
+
+<ul>
+  <li>Ordered collection of “stuff”</li>
+  <li>Similar to what’s called an ‘array’ in other languages.
+    <ul>
+      <li>Although “stuff” doesn’t all have to be the same type.</li>
+      <li><code>[1, 'a', 3.14159]</code> is a valid list.</li>
+    </ul>
+  </li>
+  <li>An example of a <em>container</em> in Python.</li>
+  <li>is <em>mutable</em> (can be changed)
+    <ul>
+      <li>strings are not mutable.</li>
+    </ul>
+  </li>
+  <li><code>len(lst)</code> returns the number of items on the list.</li>
+  <li class="to-do">How to swap the values in two variables?</li>
+  <li class="to-do">Swap first and last elements of the list (in-class 9)</li>
+</ul>
+
+<h2 id="useful-list-operations--methods">Useful list operations / methods</h2>
+
+<ul>
+  <li>Create list from “iterable” things
+    <ul>
+      <li><code>list("abc")</code></li>
+      <li><code>list(range(5, 10))</code></li>
+    </ul>
+  </li>
+  <li>Avoid using <code>list</code> as a variable name.</li>
+  <li>Merge lists together:
+    <ul>
+      <li><code>[1, 2, 3] + ['a', 'b', 'c']</code></li>
+    </ul>
+  </li>
+  <li>Grab a sublist:
+    <ul>
+      <li><code>lst = ['a', 'b', 'c', 'd', 'e', 'f']</code> then <code>lst[2:5]</code></li>
+    </ul>
+  </li>
+  <li>Remove element from a list:
+    <ul>
+      <li><code>del lst[3]</code></li>
+    </ul>
+  </li>
+  <li>Append an item:
+    <ul>
+      <li><code>x = [1, 2, 3]</code> then <code>x.append(4)</code></li>
+      <li>Notice that <code>[1, 2, 3] + 4</code> doesn’t work to add single item.</li>
+    </ul>
+  </li>
+  <li>Insert an item at a specific location
+    <ul>
+      <li><code>lst.insert(3, 'q')</code></li>
+    </ul>
+  </li>
+  <li>Review other useful methods in zyBook 8.2 and 8.3</li>
+</ul>
+
+<h2 id="index-of-out-of-bounds">Index of out of bounds</h2>
+
+<ul>
+  <li class="to-do">Show what causes index out of bounds errors</li>
+</ul>
+
+<h2 id="multi-dimensional-lists">Multi-dimensional lists</h2>
+
+<ul>
+  <li>You can nest lists
+    <ul>
+      <li><code>[['George', 'Washington'], ['John', 'Adams'], ['Thomas', 'Jefferson']]</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="modifying-lists-in-loops">Modifying lists in loops.</h2>
+
+<ul>
+  <li>
+    <p>Double all the values in a list</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+<span class="n">lst</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span> <span class="o">*</span><span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li class="to-do">Return a new list that is double the old (without modifying the input). (in-Class 9)</li>
+  <li>List comprehension
+    <ul>
+      <li><code>[i * 2 for i in lst]</code></li>
+      <li><code>[i.lower() for in words]</code></li>
+      <li>
+        <p><code>[int(i) for i in inp.split()]</code> (One line of input with many numbers)</p>
+
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">]]</span>
+<span class="n">sum_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sum_list</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Slices
+    <ul>
+      <li><code>lst[2:5]</code></li>
+      <li><code>lst[-1]</code></li>
+      <li>Notice the difference between <code>lst[0]</code> and <code>lst[0:1]</code></li>
+    </ul>
+  </li>
+  <li>Build a new array that is the reverse of a given array.  (in-class 9)</li>
+  <li>Reverse an array ‘in place’  (in-class 9)</li>
+</ul>
+
+</main>
+</body>
+</html>

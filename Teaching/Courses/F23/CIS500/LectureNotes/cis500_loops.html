@@ -339,14 +339,16 @@
   <li class="q">
     <p>How to add additional principal once per year?</p>
   </li>
-  <li>
-    <p>Quick intro to a list</p>
+  <li>Quick intro to a list
+    <ul>
+      <li>Note: Avoid using <code>list</code> as a variable name.</li>
+    </ul>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-<span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="s">'changed'</span>
-<span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">lst</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="s">'changed'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
 </code></pre></div>    </div>
   </li>
   <li>Use <code>for</code> loop to sum over a list.</li>
@@ -357,6 +359,8 @@
       <li>count_evens</li>
       <li>max_int</li>
       <li>contains_negative</li>
+      <li>is_prime</li>
+      <li>num_primes</li>
     </ul>
   </li>
 </ul>
@@ -364,10 +368,18 @@
 <h2 id="range">Range</h2>
 
 <ul>
-  <li>Intermediate loops
-    <ul>
-      <li>is_strictly_increasing</li>
-    </ul>
+  <li>Write tests for <code>strictly-increasing</code> (In-Class 6)</li>
+  <li>
+    <p>Try to do <code>strictly-increasing</code> with standard for-each loop.</p>
+  </li>
+  <li>When you loop over part of a list or string, you need to specify the indices you want.</li>
+  <li>In this case, you often need to know the length of the item:</li>
+  <li>
+    <p>Use built-in function <code>len</code> to get the length</p>
+
+    <pre class="language-python"><code class="language-~">lst = ['a', 'b', 'c', 'd', 'e']
+print(len(lst))
+</code></pre>
   </li>
   <li><code>range</code>
     <ul>
@@ -378,15 +390,15 @@
       <li>
         <p><code>range</code> is better than <code>while</code> since range won’t let you accidentally write an infinite loop</p>
 
-        <p class="language-python">~~~~
- for index in range(3, 5):
-     print(f”value at {index}: {array[index]}”)
- ~~~~</p>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+   <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"value at </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">lst</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div>        </div>
       </li>
+      <li class="to-me">use <code>list(range(...))</code> to demonstrate what range is created.</li>
     </ul>
   </li>
   <li>Show how to do <code>is_strictly_increasing</code> with <code>range</code></li>
-  <li>Show how to do <code>is_strictly_increasing</code> with <code>break</code></li>
+  <li>Look at <code>is_equal</code> on in-Class 6.</li>
 </ul>
 
 <h2 id="break-and-continue">Break and Continue</h2>
@@ -395,12 +407,14 @@
   <li>
     <p><code>break</code> immediately ends a loop:</p>
 
-    <p class="language-python">~~~~
- for val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]:
-    if val &gt; 5:
-       break
-     print(val)
- ~~~~</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">]:</span>
+   <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+      <span class="k">break</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Show how to do <code>is_strictly_increasing</code> with <code>break</code></p>
   </li>
   <li>
     <p>Continue skips the rest of the loop</p>
@@ -408,7 +422,7 @@
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">]:</span>
    <span class="k">if</span> <span class="n">val</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span>
       <span class="k">continue</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+   <span class="k">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -422,6 +436,7 @@
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">221</span><span class="p">,</span> <span class="mi">339</span><span class="p">,</span> <span class="mi">446</span><span class="p">]:</span>
   <span class="k">if</span> <span class="n">val</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s"> is the first even number on the list"</span><span class="p">)</span>
+    <span class="k">break</span>
 <span class="k">else</span><span class="p">:</span>
   <span class="k">print</span><span class="p">(</span><span class="s">"There were no even numbers on the list"</span><span class="p">)</span>
 </code></pre></div>    </div>
@@ -435,8 +450,10 @@
   <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Element </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
 </code></pre></div>    </div>
   </li>
+  <li class="to-me">
+    <p>Do <code>count_successors</code> for homework</p>
+  </li>
 </ul>
-
 
 </main>
 </body>
