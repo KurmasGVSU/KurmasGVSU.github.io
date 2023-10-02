@@ -396,6 +396,39 @@
   <li>Reverse an array ‘in place’  (in-class 9)</li>
 </ul>
 
+<h2 id="tuples">Tuples</h2>
+
+<ul>
+  <li>
+    <p>Tuples are essentially immutable lists.</p>
+
+    <pre class="language-python"><code class="language-~">t = ('a', 'b', 'c')
+t[0]
+t[0] = 7
+print(t)
+</code></pre>
+  </li>
+  <li>Useful for binding items together as a single conceptual object:
+    <ul>
+      <li><code>(2010, 12, 1)</code></li>
+      <li>Using a tuple would have given us a means for returning a date from a function.</li>
+      <li class="to-do">go back and change the <code>tomorrow</code> function.</li>
+    </ul>
+  </li>
+  <li>Notice that using <code>date[0]</code> and <code>date[1]</code> can be a bit ambiguous.</li>
+  <li>
+    <p>Named Tuples address this:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Date</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s">'Date'</span><span class="p">,</span> <span class="p">[</span><span class="s">'year'</span><span class="p">,</span> <span class="s">'month'</span><span class="p">,</span> <span class="s">'day'</span><span class="p">])</span>
+<span class="n">today</span> <span class="o">=</span> <span class="n">Date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>The first parameter is the name that is displayed when printed.</li>
+  <li>Named tuples are immutable. (You can’t change them, you need to 
+create a new one.)</li>
+  <li class="to-do">Update <code>tomorrow</code> to use named tuple.cd</li>
+</ul>
+
 </main>
 </body>
 </html>
