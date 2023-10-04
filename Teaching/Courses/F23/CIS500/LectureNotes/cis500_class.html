@@ -285,29 +285,124 @@
   <h1 id="classes-and-objects">Classes and Objects</h1>
 
 <ul>
-  <li>
-    <p>An object is the variables that describe a single conceptual object (Car, Student, List, String, etc) combined with the method (“functions”) that operate on that data.</p>
+  <li>As programs get larger, it can become challenging to organize our code and keep track of all the parts/functions.</li>
+  <li>Modules do help, but it is an incomplete solution.</li>
+  <li>A second key component is being able to bundle data into one single object.
+    <ul>
+      <li>For example a single variable called <code>date</code> instead of managing separate <code>month</code>, <code>day</code>, and <code>year</code> variables.</li>
+      <li>Named tuples help with this.</li>
+    </ul>
+  </li>
+  <li>Object-oriented programming combines these two ideas, and is currently the dominant technique used for organizing code.</li>
+  <li>We interact with the word in terms of objects: table, chair, car, person, stove, etc.</li>
+  <li>When thinking about an object, we consider two main things:
+    <ul>
+      <li>It’s properties</li>
+      <li>How we can interact with it.</li>
+    </ul>
+  </li>
+  <li>A car may have properties like
+    <ul>
+      <li>number of seats,</li>
+      <li>engine size/type</li>
+      <li>number of doors</li>
+      <li>color</li>
+    </ul>
+  </li>
+  <li>We interact with a car using the steering wheel and pedals (among other things).</li>
+  <li>All variables refer to some object.</li>
+  <li>Some objects have very simply properties:
+    <ul>
+      <li><code>i = 17</code> is “just” a number</li>
+    </ul>
+  </li>
+  <li>Most objects naturally have many properties.
+    <ul>
+      <li>A Date has a month, day and year.</li>
+    </ul>
+  </li>
+  <li>Objects have a set of actions that let us interact with them.
+    <ul>
+      <li><code>ordinal_date</code></li>
+      <li><code>days_elapsed</code> etc.</li>
+    </ul>
   </li>
   <li>
-    <p class="langauge-python">Time
-~~~~
-class Time:
-  “”” A class that represents a time of day “””
-  def <strong>init</strong>(self):
-      self.hours = 0
-      self.minutes = 0
-~~~~</p>
+    <p>A <em>class</em> is a blueprint that describes what properties an object has and what actions can be performed on it.</p>
+  </li>
+  <li>
+    <p>This says that an object that is a <code>Date</code> has year, month, and day as a property.</p>
+
+    <pre class="langauge-python"><code>class Date:
+  """ A class that represents a date """
+  def __init__(self):
+      self.year = 0
+      self.month = 0
+      self.day = 0
+</code></pre>
+  </li>
+  <li>
+    <p>This says that an object that is a <code>Time</code> has a hour and a minute.</p>
+
+    <pre class="langauge-python"><code>class Time:
+    """ A class that represents a time of day """
+    def __init__(self):
+        self.hours = 0
+        self.minutes = 0
+</code></pre>
+
+    <pre class="langauge-python"><code>date1 = Date()
+date1.year = 2022
+date1.month = 11
+date1.day = 4
+
+print(f"date1 is {date1.year}-{date1.month}-{date1.day}")
+
+date2 = Date()
+date2.year = 2024
+date2.month = 7
+date2.day = 4
+</code></pre>
+  </li>
+  <li>Notice above that <code>date1</code> and <code>date2</code> are different objects.  (Just like these are different pens/desks, etc.).</li>
+  <li>Each object has different values for it’s properties.</li>
+  <li>But, since <code>date1</code> and <code>date2</code> are members of the same <em>class</em>, they have the same set of properties (month, day, year)</li>
+  <li>In some sense, a class is a “blueprint” that tells how to construct an object.</li>
+</ul>
+
+<h3 id="methods">Methods</h3>
+
+<ul>
+  <li>
+    <p><em>instance methods</em> are functions defined within a class.  They provide the means for interacting with an object.</p>
+
+    <pre class="langauge-python"><code class="language-~">def make_string(self):
+  return f"{self.year}-{self.month}-{self.day}"
+  
+print(date1.make_string())
+</code></pre>
+
+    <pre class="langauge-python"><code>def increment_minute(self):
+  self.minute += 1
+  if (self.minute &gt;= 60):
+    self.hour += 1
+</code></pre>
   </li>
 </ul>
 
-<h2 id="terms">Terms</h2>
+<h2 id="next-steps">Next steps</h2>
 <ul>
-  <li>class</li>
-  <li>object</li>
-  <li>instance</li>
-  <li>instance variables</li>
-  <li>method</li>
-  <li>constructor</li>
+  <li>Constructor</li>
+  <li>class variables</li>
+  <li>encapsulation / information hiding.
+    <ul>
+      <li>alarm clock example</li>
+      <li>separate interface from implementation</li>
+      <li>put underscore in front of “private” methods.</li>
+      <li>Avoid accessing instance variables directly.</li>
+      <li>“Perl doesn’t have an infatuation with enforced privacy. It would prefer that you stayed out of its living room because you weren’t invited, not because it has a shotgun”</li>
+    </ul>
+  </li>
 </ul>
 
 </main>
