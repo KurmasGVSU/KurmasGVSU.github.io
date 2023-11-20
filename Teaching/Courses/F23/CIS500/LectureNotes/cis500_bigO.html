@@ -1,0 +1,778 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="introduction-to-sorting">Introduction to sorting.</h1>
+<ul>
+  <li>Build a selection sort.</li>
+  <li>Build an insertion sort.</li>
+  <li>Build a bubble sort.</li>
+</ul>
+
+<h1 id="analysis-of-algorithms">Analysis of Algorithms</h1>
+
+<ul>
+  <li class="to-me">Show three implementations of <code>ordinal_date</code></li>
+  <li class="q">What criteria might you use to decide which one is “better” than the other?
+    <ul>
+      <li>Speed</li>
+      <li>Memory usage</li>
+      <li>Energy usage</li>
+      <li>A combination of both</li>
+      <li>Simplicity / maintainability</li>
+    </ul>
+  </li>
+  <li class="q">What is the difference between throughput and latency?
+    <ul>
+      <li class="q">Which is more important?</li>
+    </ul>
+  </li>
+  <li>These big questions are important; but, we’ll leave them for other courses (where they are more directly applicable).</li>
+  <li>For now, we’ll focus solely on time (i.e., latency) as the measure of performance.</li>
+  <li>At first this seems simple:  Get out a stopwatch and see which one is faster.  But, it’s not quite that easy.</li>
+  <li class="q">What if one sorting algorithm is faster for small arrays and the other is faster for large arrays?
+    <ul>
+      <li class="q">How can this even happen?</li>
+      <li>Imagine this situation:  My 15-year old has a show-shoveling business.  It takes about 30 minutes per driveway. (<span class="to-me">Plot <code>30*x</code></span>).  My uncle has a snow plowing business.  It takes only 10 minutes per driveway.  But, his snowplow requires 1 hour of maintenance each day. (<span class="to-me">Plot <code>10*x + 60</code></span>)</li>
+      <li>In almost all cases, we are most interested in the long-term behavior (i.e., the speed when given the largest inputs).  That’s usually where any innovations are most beneficial.</li>
+    </ul>
+  </li>
+  <li class="q">Can the CPU determine which algorithm is faster?  If so, how?
+    <ul>
+      <li>Think about sorting an array at a very high level:  You have (more or less) two activities: (a) comparing elements, and (b) moving them around.  You can take two approaches: Do lots of comparisons and think carefully about where to move things, then make as few movements as possible, or (b) make quick decisions, even if you have to make extra movements.  Which approach is faster depends on the relative speed of comparing elements vs moving them (i.e., alu speed vs. memory speed)</li>
+    </ul>
+  </li>
+  <li>Look at ordinal date 2 and 3.  Which is faster <em>might</em> depend on which programming language you use (e.g., whether array slicing is done by copying).</li>
+  <li>With the plowing example, the machine “wins” because it is faster than the human.  In general, which wins depends on  the relative speed of the human and the plow.
+    <ul>
+      <li>A sufficiently fast human beat a sufficiently slow machine.</li>
+      <li class="to-me">Graph with different contains  (e.g., a human that can shovel in 7 seconds).</li>
+      <li>This means that there isn’t a fundamentally difference in the two shovelling approach: The difference is simply a matter of whether the human or machine is faster. (Running an algorithm on a faster machine doesn’t make it a ‘better’ algorithm.  It just means you have a better machine.)</li>
+    </ul>
+  </li>
+  <li>Similarly, you can “cheat” and pick whether selection sort or bubble sort wins by putting the winner on a faster CPU – so can we really call one algorithm “better”, or are we comparing machines instead of algorithms?</li>
+  <li>However, our shoveling model fails to consider fatigue: When the human shovels, each driveway takes longer than the last.  Watch what happens when we modify the model to something like <span class="to-me">7*x<sup>1.1</sup></span>.
+    <ul>
+      <li>Because the human slows down but the machine doesn’t, the machine is eventually faster.</li>
+      <li class="to-me">Make the human faster and show that he still eventually loses.</li>
+      <li>Notice that the graphs have different shapes:  The increase at different rates.  (The human’s time increases at a faster rate.)</li>
+    </ul>
+  </li>
+  <li>It is the growth rate that is important when comparing algorithms.  By looking at the growth rate (i.e., the shape of the curve), we can focus on the performance of the <em>algorithm</em> independently of the quirks/speed of the particular CPU and/or programming language.</li>
+  <li>At a high level, we want to do this:
+    <ol>
+      <li>Graph the running time of each algorithm (on any CPU using any programming language).</li>
+      <li>Examine the shape of the curve.
+        <ul>
+          <li>If the curves have the same shape, then we say they are “equal” regardless of which one looks faster.</li>
+          <li>If the curves have different shapes, then the the curve that stays lower as size becomes infinitely large is faster.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>The trick, of course, is to formalize “same shape”.</li>
+</ul>
+
+<h2 id="big-o">Big-O</h2>
+
+<ul>
+  <li>Goal: A system for comparing algorithms independent from the machines they run on and the size of any specific input.</li>
+  <li>Idea: Count lines of code executed (<em>not</em> lines of source code in the .java file!) and present as a function of input size (i.e., T(n))</li>
+  <li class="to-me">Go through examples
+    <ul>
+      <li><code>Examples#sumArray</code>
+        <ul>
+          <li>How many operations are in the <code>for</code> statement</li>
+          <li>How many operations are in <code>answer = answer + values[i];</code>?</li>
+        </ul>
+      </li>
+      <li><code>Examples#multiplyArray</code>
+        <ul>
+          <li>Same <code>T(n)</code> but, sum should be faster, right?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="q">What are the limitations?
+    <ul>
+      <li>Different input sizes.</li>
+      <li>Not all lines of code take the same amount of time. <span class="q">Give some examples</span>
+        <ul>
+          <li><code>x + y</code> vs. <code>x - y</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Bottom line:  The value you get for <code>T(n)</code> is necessarily going to be noisy.</li>
+  <li class="q">How to we address limitations
+    <ul>
+      <li>Consider the right side of the graph (large inputs)</li>
+      <li>Assume any to single operations differ by most a constant amount of time (e.g., that multiplication is at most <code>c</code> times slower than addition) and count them all as “1”.</li>
+      <li>This means that you remove constants from your <code>T(n)</code> (because they are just approximations).</li>
+      <li>If you get a result of, say, <code>T(n) = 15n</code>, just call it <code>n</code>. The 15 is just a guess, and you know you have an upper bound of <code>cn</code>.</li>
+      <li>This is reasonable, because it is the closest you can come without considering CPU-specific details.</li>
+      <li>In other words, its the closest you can come considering the algorithm only.</li>
+    </ul>
+  </li>
+  <li class="q">What are the advantages and disadvantages of this decision?
+    <ul>
+      <li>Advantage:  Don’t have to worry about minor details like
+        <ul>
+          <li>relative speed of <code>+</code> and <code>*</code>.</li>
+          <li>precisely how many operations are in statements like <code>array[i]</code></li>
+        </ul>
+      </li>
+      <li>Disadvantage: You can’t determine formally whether <code>addSum</code> or <code>addMultiply</code> is faster.</li>
+    </ul>
+  </li>
+  <li>But, “disadvantage” isn’t really a big deal.
+    <ul>
+      <li>First, I could bring you two reasonable machines where <code>add</code> was faster than <code>multiply</code>.  (One machine would be much older and slower than the other, but I could do it.)</li>
+      <li>Second, when looking at the “big picture” the differences are minor.</li>
+    </ul>
+  </li>
+  <li class="to-me">compute <code>T(n)</code> for the two mode operations. Then graph the results.
+    <ul>
+      <li>Once you get to n = 100, the differences between the two <code>n</code> functions are negligible compared to the difference to the <code>n^2</code> functions — The coefficient isn’t needed to “tell the story”.</li>
+      <li>The <code>n</code> function will eventually always be faster than the <code>n^2</code> function, regardless of the coefficients.  (Unlike two <code>n</code> functions, where the constants determine which is faster.)</li>
+    </ul>
+  </li>
+  <li>This is the key idea of comparing algorithms:  We say Algorithm A is faster than Algorithm B if A is <em>eventually</em> <em>always</em> faster than B, regardless of the machines chosen.</li>
+  <li>Goal isn’t to totally order algorithms, but to put them in different “buckets”</li>
+  <li>If you can choose which algorithm runs faster by playing games with the CPUs, we put the two algorithms in the same “bucket”.</li>
+</ul>
+
+<h1 id="take-2----bottom-up-approach">Take 2 – Bottom-Up Approach</h1>
+
+<ul>
+  <li>We describe an algorithm’s performance with a <em>growth function</em> <code>T(n)</code> that gives a visual representation of how time <em>grows</em> as the input grows.</li>
+  <li>For example:
+    <ul>
+      <li>Finding the maximum value in an array would look something like this:  <span class="to-me">(Show linear function)</span>
+        <ul>
+          <li>This shows that searching an array of 200 takes about twice as long as searching an array of 100.</li>
+        </ul>
+      </li>
+      <li>Sorting an array looks something like this:  <span>(Show <code>n log n</code> function)</span>.
+        <ul>
+          <li>This shows that searching an array of 200 takes about 2.3 times as long as searching an array of 100.</li>
+        </ul>
+      </li>
+      <li>Deciding whether an array of integers can be broken into two groups with equal sums looks something like this:<span>(Show <code>2^(n/2)</code> function)</span>
+        <ul>
+          <li>This shows that adding just two more elements to the array will double the amount of time taken!</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>The purpose of this function is to show <em>growth</em> (the pattern) not the precise time taken.
+    <ol>
+      <li>It is difficult to identify the precise time needed for any given operation (e.g., exactly how much slower is multiplication than addition)?
+        <ul>
+          <li>(The reasons for this are even more complex/subtle than you might imagine.  We explain why in CIS 451.)</li>
+        </ul>
+      </li>
+      <li>We want to focus on properties of the algorithm itself and downplay differences that are caused by the CPU, programming language, and/or compiler.
+        <ul>
+          <li>The precise difference in speed between addition and multiplication is CPU dependent.  We don’t want that difference to factor into our analysis of the algorithm (general approach to solving the problem).</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>To avoid both of these issues, when determining <code>T(n)</code>, each constant-time operation (or set of operations) counts as 1, regardless of the actual time taken.
+    <ul>
+      <li><code>a + b</code></li>
+      <li><code>a * b</code></li>
+      <li><code>a == b</code></li>
+      <li><code>array.length</code></li>
+      <li><code>array[x] = array[y] + array[z]</code></li>
+    </ul>
+  </li>
+  <li>By “constant time”, we mean an operation that takes the same amount of time each time it is executed regardless of the input or its size. (Note how everything above is constant time.)</li>
+  <li>Remember, we count it all as <code>1</code> because the actual differences in time between such operations depend on the details of the CPU and/or compiler; but, we want to consider only the properties of the algorithm itself.</li>
+  <li>Because the constants are not precise, we put algorithms into groups by the “order” of the <code>T(n)</code>.
+    <ul>
+      <li>All linear functions go in a group called <code>O(n)</code> or “big O of <code>n</code>”</li>
+      <li>All quadratic functions go in a group called <code>O(n^2)</code> or “big O of <code>n^2</code>.</li>
+    </ul>
+  </li>
+  <li>There is a precise mathematical definition for when two different “<code>T</code>” functions go in the same order; but, for now,
+    <ul>
+      <li>The key idea is curves with the same shape go in the same group.</li>
+      <li>Think about what happens when the input size increases:
+        <ul>
+          <li>If doubling the input doubles the output, then put it in the <code>O(n)</code> group.</li>
+          <li>If doubling the input quadruples the output, then put it in the <code>O(n^2)</code> group.</li>
+          <li>If adding just one more input doubles the output, then put it in the <code>O(2^n)</code> (i.e., “exponential”) group.
+            <ul>
+              <li>(Side note:  A pet peeve of mine is when people say “exponential growth” for something that is just really quadratic.  In fact, I’m beginning to see people use the term “exponential” for anything that is more than linear!)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>The general trick for finding the right group:
+        <ol>
+          <li>Remove all the constants</li>
+          <li>Look at the biggest term (e.g., largest exponent in a polynomial)</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>General approach to finding <code>T(n)</code>:
+    <ul>
+      <li>Work from the inside out.</li>
+      <li>Just count blocks of “1” as a single “1”.  (After all we are throwing out the constants.)</li>
+      <li>When you come to a loop, multiply the inside by the number of times the loop runs.</li>
+    </ul>
+  </li>
+  <li class="to-me">Look at <code>sumArray</code>, <code>multiplyArray</code>, <code>sumArray_v2</code>, <code>locationOfMax</code>.
+    <ul>
+      <li>Notice that they all get simplified to <code>n</code>.  This means they in the same class: Differences in performance could possibly be caused by things not related to the algorithm (compiler, CPU, etc.)
+        <ul>
+          <li>In other words, within this group, I can choose which one looks the fastest by picking (perhaps unfairly) which machine each algorithm runs on.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="to-me">Analyze <code>fastMode</code>.  (This one has a subtlety that we can ignore for now)</li>
+  <li class="to-me">Analyze <code>slowMode</code>.
+    <ul>
+      <li class="q">What do we do about the <code>if</code> statement?
+        <ul>
+          <li>In this case, nothing special.  We can simply count the whole block as “1”.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>T(n)</code> for <code>slowMode</code> is <code>O(n^2)</code>.
+    <ul>
+      <li>This means that there is a fundamental difference between the two that goes beyond CPU speed.</li>
+      <li>We can’t make <code>slowMode</code> look faster by playing games with the CPU or compiler.</li>
+      <li>The shape of the growth function curves is different:  <code>slowMode</code> grows much faster.</li>
+      <li>Actually, the more relevant insight is that the growth for</li>
+      <li><code>fastMode</code> is faster regardless of any CPU or compiler changes because the time for <code>slowMode</code> grows so much faster.</li>
+      <li>Given enough input, the fast algorithm will always come out ahead in the end.
+        <ul>
+          <li>This is what the formal mathematical definition of “big-O” captures.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="context-for-big-o">Context for Big-O</h2>
+<ul>
+  <li>In general, Computer Science focuses on big-O because this is where the most fundamental / significant / interesting differences are.
+    <ul>
+      <li>The complexity class an algorithm belongs to determines how it can be used / scaled.</li>
+      <li>A <code>O(n)</code> algorithm can typically be scaled as a problem / business grows:  If you have twice as much input, you need twice as much computing power.  If input correlates to income, you are in good shape.</li>
+      <li>A <code>O(n^2)</code> algorithm does not scale nicely.  If you have twice as much input, you need four times as much computing power.  If input correlates to income, the size of your business is limited.
+        <ul>
+          <li>You can still handle big problems with current technology; but, it gets expensive fast.</li>
+        </ul>
+      </li>
+      <li>A <code>O(2^n)</code> algorithm is generally considered “intractable”:  Reasonable sized problems (more than a few thousand inputs) are generally considered unsolvable in any practical sense.
+        <ul>
+          <li>This isn’t simply an economic limit; but, a physical one: real-world problems of reasonable size would either require a computer bigger than the known universe, or would take far more time than the age of the universe to solve.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Within a complexity class, there are certainly faster and slower algorithms.
+    <ul>
+      <li>Consider <code>sumAndProduct</code>.
+        <ul>
+          <li>It is <code>O(n)</code>.</li>
+          <li>But, it is clearly slower than either <code>sum</code> or <code>product</code>.</li>
+          <li>But the difference in speed is minor and obvious.</li>
+          <li>The algorithm can be used in the same context as other <code>O(n)</code> algorithms.</li>
+          <li>Studying it isn’t going to teach us any thing fundamental about Computer Science that we won’t learn studying other <code>O(n)</code> algorithms.</li>
+        </ul>
+      </li>
+      <li>There is certainly a place for optimizing code from an “engineering” perspective:  make it go faster and save money; but,
+        <ul>
+          <li>Doing so is more “work” than “learning”.</li>
+          <li>The details are often implementation dependant, so the lessons don’t necessarily generalize in a useful way.</li>
+          <li>That’s why we don’t do a lot of this in the undergrad curriculum.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="bestworstaverage-case">Best/Worst/Average case</h2>
+
+<ul>
+  <li>In almost all cases, when we analyze algorithms, we are interested in the worst case.
+    <ul>
+      <li class="q">Why?</li>
+    </ul>
+  </li>
+  <li>Sometimes the average case is more relevant; but, the analysis is <em>much</em> more difficult.</li>
+</ul>
+
+<h2 id="more-examples">More Examples</h2>
+
+<ul>
+  <li><code>linearSearch</code></li>
+  <li><code>trick1</code></li>
+  <li><code>trick2</code></li>
+  <li><code>trick3</code></li>
+  <li><code>meetEverybody</code></li>
+  <li><code>sumSome</code></li>
+  <li><code>binarySearch</code></li>
+</ul>
+
+<h2 id="olog-n">O(log n)</h2>
+
+<ul>
+  <li>An algorithm with <code>O(log n)</code> time is a big win.
+    <ul>
+      <li>As a practical matter, you can’t do better. <span class="q">Why</span>
+        <ul>
+          <li>Just about the only thing faster than <code>log n</code> is constant. An algorithm whose time doesn’t grow as input grows can’t really be considering all the input.  (Or has a hard upper limit on the input size.)</li>
+        </ul>
+      </li>
+      <li>Some people consider <code>log n</code> complexity “effectively constant” (not a serious comment).  <span class="q">Why?</span>
+        <ul>
+          <li>There is a practical upper limit on how big the value of <code>log n</code> can get.  In order for <code>log n</code> to reach 100, <code>n</code> would be bigger than the number of particles in the universe.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="q">Why do we say <code>O(log n)</code> and not <code>O(log&lt;sub&gt;10&lt;/sub&gt; n)</code> or <code>O(log&lt;sub&gt;2&lt;/sub&gt; n)</code>?
+    <ul>
+      <li>Logs with different bases differ by a constant (see change of base formula) and we ignore constants.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="subtleties">Subtleties</h2>
+<ul>
+  <li class="q">What is the big-O running time of the addition algorithm you learned in first grade?
+    <ul>
+      <li><code>O(n)</code></li>
+    </ul>
+  </li>
+  <li class="q">Think carefully:  What is the <em>size</em> of the input?
+    <ul>
+      <li>The size of the input is the length of the binary string.  Thus, when you enter an integer <code>i</code>, the input size is really <code>log i</code>.</li>
+    </ul>
+  </li>
+  <li>In CIS 351, we will learn a <code>O(log n)</code> algorithm.</li>
+  <li>With that in mind, <span>What is the big-O running time of the simplest algorithm for primarily testing</span>?
+    <ul>
+      <li><code>O(sqrt(2^n)) = O(2^(n/2))</code></li>
+    </ul>
+  </li>
+  <li class="q">If the addition algorithm is <code>O(log n)</code>, why can we count addition statements as constant?</li>
+</ul>
+
+<h2 id="formalities">Formalities</h2>
+
+<ul>
+  <li>Formally, big-O is a way of comparing the growth rate of functions.</li>
+  <li>We often use it for running time; but, it can be applied to anything (including memory used or cost)</li>
+  <li>Formally: When we say <code>f</code> is <code>O(g)</code>, we mean that <code>f</code> does not grow faster than <code>g</code>.
+    <ul>
+      <li>We often get lazy and assume this means that <code>f</code> and <code>g</code> grow at the same rate.</li>
+      <li>This is <em>wrong</em>.  big-O is more like <code>&amp;le</code> than <code>==</code></li>
+      <li>For example, it is technically correct to say that <code>n</code> is <code>O(n^2)</code>; although we don’t often do this.</li>
+    </ul>
+  </li>
+  <li>The formal definition is:  <code>f</code> is <code>O(g)</code> if there exist constants <code>N</code> and <code>c</code> such that <code>f(x) &lt; c*g(x)</code> for all <code>x &amp;gt N</code>.
+    <ul>
+      <li>The <code>N</code> is the eventually part:  We only care about very large values of <code>x</code>.</li>
+      <li>The <code>c</code> takes care of the constant we throw out.  Or, if you prefer, it represents putting the fast algorithm on the slowest machine possible.</li>
+      <li>If there is a <code>c</code> that makes the inequality work, that means that <code>f</code> does not grow faster than <code>g</code>.</li>
+      <li>If <code>f</code> did grow faster than <code>g</code>, then it doesn’t matter how small <code>c</code> gets, <code>f(x)</code> will eventually become larger because it grows  faster.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="monday-29-june">Monday 29 June</h2>
+
+<ul>
+  <li>Interface clarification
+    <ul>
+      <li>“<em>Interface</em>” can have a general and specific meaning:</li>
+      <li>There is a formal Java construct called an interface that provides a list of methods that implementing classes must implement.</li>
+      <li>However, when you use the inheritance mechanism <code>extends Foo</code> (whether it be from a “concrete” or “abstract” class), you are also applying the general concept of an interface:  The subclass inherits the parent class’s interface</li>
+    </ul>
+  </li>
+  <li>Review:
+    <ul>
+      <li>Trying to describe time taken by an algorithm given the size of the input</li>
+      <li>Trying to estimate time taken by counting operations</li>
+      <li>It is impractical to be precise because
+        <ol>
+          <li>What counts as a single operation is machine/OS/programming language dependant.</li>
+          <li>Different operations take different amounts of time.</li>
+        </ol>
+      </li>
+      <li>Instead, we
+        <ol>
+          <li>Count all groups of constant-time operations as “1”</li>
+          <li>Throw out constants and keep only high-order term</li>
+        </ol>
+      </li>
+      <li>This puts algorithms in groups by their growth rate
+        <ul>
+          <li>Within a given group, there may be faster and slower algorithms, but they all grow at the same rate (e.g., same thing happens to time when input size doubles).</li>
+          <li>Within a given group we can use “tricks” to choose which one looks fastest.</li>
+          <li>Given two algorithms in different groups, one will eventually always be faster.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Exponential:  constant^n (where n describes input size)
+Polynomial:   n^constant (exponent is constant)</p>
+
+<ul>
+  <li>Basic approach
+    <ol>
+      <li>Work from the inside out.</li>
+      <li>Groups of constant-time operations count as “1”</li>
+      <li><code>if-else</code>: Take max of the two (for a worst-case analysis)</li>
+      <li>loops: multiply</li>
+      <li>method calls:  Use big-O of the method.
+        <ul>
+          <li>Be sure to look at the size of the input.  It may not be the same as the method you are analyzing.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>“Tricks” to watch for
+    <ol>
+      <li>Loops that run a constant amount of time</li>
+      <li><code>if-else</code> where one side is taken almost all the time.</li>
+      <li><code>1 + 2 + 3 + 4 + 5 + ... + n</code> pattern</li>
+    </ol>
+  </li>
+  <li><code>O(log n)</code> time (e.g., binary search)
+    <ul>
+      <li>Remember: When using big-O, don’t include the base</li>
+    </ul>
+  </li>
+  <li>Binary search
+    <ul>
+      <li>How it works</li>
+      <li>How to analyze</li>
+      <li class="q">Re-write recursively</li>
+      <li class="to-me">Generate graph with big-O lab</li>
+    </ul>
+  </li>
+  <li>Finding big-O for recursive problems
+    <ul>
+      <li>Write <code>T(n)</code> with a recursive definition.</li>
+      <li>Either
+        <ol>
+          <li>“Unwind” the definition until you see a pattern</li>
+          <li>There are some standard patterns you will learn either in MTH 225/325 or CIS 263.</li>
+        </ol>
+      </li>
+      <li>Note:  <code>String#substring</code> is a <code>O(n)</code> operation.  This makes recursive calls that use this method quite expensive (often <code>O(n^2)</code>).
+        <ul>
+          <li>It’s better to use helper methods with <code>index</code> (like we did for arrays).</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="to-me">Time recursive Fibonacci.
+    <ul>
+      <li class="q">Why is it so slow?</li>
+      <li class="q">How to fix (without reverting back to iterative method)?</li>
+    </ul>
+  </li>
+  <li class="q">What is the running time of the recursive maze solver?
+    <ul>
+      <li>(It looks exponential; but, it’s not.  Why?)</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>
