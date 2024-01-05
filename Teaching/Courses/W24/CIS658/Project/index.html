@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIS 658 Semester Project</title>
+  <style>
+    
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        margin-right: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+    #content {
+      padding: 0 10px 0 10px;
+    }
+
+    .sumline td {
+      border-bottom: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 658</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Semester Project</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2024</h1></td>
+  </tr>
+</table>
+
+
+Implement an web app of your choice using either Ruby on Rails or React. Your web app must
+be new and innovative: It must either provide a useful service not currently available in other web apps, or
+provide an existing service in a new, better, and/or innovative way.
+
+<p><b>Due:</b> Monday, 22 April (This is a hard deadline.)</p>
+
+<dl>
+  <dt>Features</dt>
+  <dd>
+    <span class="listHeader">Your web app must:</span>
+    <ul>
+      <li> utilize a database.,</li>
+      <li> be significantly more complex than two or three "CRUD" pages,</li>
+      <li> utilize a responsive CSS framework of your choice (Bootstrap, Pure, etc.) so that your web app looks great on
+        mobile devices as well as desktops,
+      </li>
+      <li> have at least one UI feature that uses AJAX,</li>
+      <li> include both unit tests and end-to-end tests, and</li>
+      <li> expose the key data persisted in your apps database via a RESTful web service.
+      </li>
+    </ul>
+
+    <p>The web service should be documented somewhere obvious in your web app (e.g. a "developers" link on your page
+      footer, or about page).</p>
+
+    <p>Make sure all forms, fields, etc. are implemented. Your web app should be completely implemented at the
+      conclusion of this project.
+    </p>
+  </dd>
+
+  <dt>Innovation</dt>
+  <dd>
+    <p>
+      One of the more challenging (and hopefully fun) aspects of this project is that you are to come up with your
+      own web application idea. While there are general requirements your application must meet (see details above) you
+      are free to innovate and design a web experience that you are personally interested in and passionate about.</p>
+
+    <p>Your app must be original and innovative. It is ok to come up with a "better mousetrap", but don't simply
+      replicate an app that already exists. Substantially improving upon an existing app idea or giving it a novel spin
+      of your own is permissible, provided your "novel spin" is functional (as opposed to simply cosmetic).</p>
+
+    <p>You also may take an existing idea and apply it to a new domain, as long as the conversion requires the
+      addition of innovative features. (For example, implementing "Yelp for U-Pick Blueberries" wouldn't make for a
+      good project, because you would be simply copying Yelp and changing the name of some fields.)
+    </p>
+
+    <p>To come up with an idea, think about web experiences that frustrate you. What existing sites have missing
+      features (in your opinion)? What web app do you wish somebody would write? Talk to your friends. What apps
+      do <em>they</em> wish somebody would write?</p>
+  </dd>
+
+  <dt>Deployment</dt>
+  <dd>
+    You must deploy your app on a cloud-based hosting provider (e.g., Google Cloud using your credits).
+  </dd>
+
+  <dt class="listHeader">Deliverables</dt>
+  <dd>
+    <ul>
+      <li>Submit a brief description of the app you propose to implement by
+        <span class="inline-instruction">Monday, 19 February</span> (no more than one page!).
+      </li>
+      <li>Submit a URL to a public Github or Bitbucket repository with your
+        final code.
+      </li>
+      <li>Submit a copy of your final presentation in a readable format (e.g., *.pdf, *.pptx, *.key).</li>
+      <li>Email me a link to the deployed app as well as any credentials I will need to use it on my own.</li>
+    </ul>
+  </dd>
+
+  <dt>Lightening Talks</dt>
+  <dd>
+    Each student will give a 5 – 8 minute presentation on the evening of Monday, 22 April. Your talk should consist
+    of a brief overview of the idea underlying your app, the implementation and a live demonstration of the features of
+    your web app.
+  </dd>
+
+  <dt>Grading Rubric</dt>
+  <dd>
+     <em>TBD</em>
+
+  
+
+</dl>
+
+<p>&nbsp;</p>
+
+(Thank-you to Prof. Engelsma, Prof. Adams, and Prof. Schymik for their suggestions and contributions to the writeup
+and grading rubric.)
+
+<hr>
+<p>Updated Thursday, 4 January 2024, 7:39 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+
+</body>
+</html>

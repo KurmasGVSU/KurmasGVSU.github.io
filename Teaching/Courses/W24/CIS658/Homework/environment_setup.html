@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>CIS 658 Environment Setup</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        margin-right: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+      #content {
+        padding: 0 10px 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="theMain">
+      <a class='bypass' href="#theMain">Skip to main content</a>
+      <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 658</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Environment Setup</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2024</h1></td>
+  </tr>
+</table>
+
+      <p class='listHeader'>Set up development and deployment environments for use with this course. Specifically:</p>
+      <ol>
+        <li>Create a GitHub account, if you don't already have one. (If you do already have one, there is no need to create another.)
+          <li>Once you have your GitHub account:
+            <ul>
+              <li>follow this GitHub classroom link to create your CIS 658 "progress report" repository: <a href='(Remind instructor to post link)'><code>(Remind instructor to post link)</code></a></li>
+              <li>clone the newly created repository.</li>
+            </ul>
+          </li>
+          <li>Configure a Linux or macOS development environment and install the following:
+            <ul>
+              <li><a href='https://git-scm.com/'>git</a></li>
+              <li><a href='https://rvm.io/'>rvm</a></li>
+              <li><a href='https://www.ruby-lang.org/en/'>Ruby</a> version 3.2.2 or later. (Use <code>rvm</code> to install.)</li>
+              <li>The Ruby on Rails gem (<code>gem install rails</code>)</li>
+              <li><a href='https://github.com/nvm-sh/nvm'>nvm</a> <em>(optional)</em></li>
+              <li><a href='https://nodejs.org'>Node.js</a> version 21.5 or later. (It is up to you whether you want to use <cod>nvm</code>.)</li>
+            </ul>
+          </li>
+          <li>Choose a deployment environment and (if necessary) create an account. This environment may be the same as your development environment provided:
+            <ol type='a'>
+              <li>I can access your running, deployed applications without special access to the environment, and</li>
+              <li>the environment either remains active continuously or automatically resumes when necessary.</li>
+            </ol>
+            This means your deployment environment can not be either EOS or your laptop, because I won't be able to access your web server. Some options 
+            for a deployment environment include (but are not limited to):
+            <ul>
+              <li><a href='https://cloud.google.com'>Google Cloud</a> This is free to you because I have some education credits you can use for the semester.</li>
+              <li>https://www.heroku.com/.link('Heroku') %>. Popular, but not free.</li>
+              <li><a href='https://fly.io/'>Fly.io</a>. Similar to Heroku, but has an ultra-low-cost tier.
+              </ul>
+              Unless you have a clear preference, I suggest using the Google Cloud because this is the environment I will
+              demonstrate in class. If you choose a different environment, I may not be able to help if you run into difficulty.
+            </ol>
+            <p class='listHeader'> When you have completed the steps above send me an email with the following:
+              <ol>
+                <li>Your GitHub account name.</li>
+                <li>A description of your development environment (which OS? which machine/service?)</li>
+                <li>A screenshot of running <code>ruby -v</code> and <code>node -v</code> in your development environment.</li>
+                <li>A description of your deployment environment (which service?)</li>
+              </ol>
+              <hr>
+              <p>Updated Thursday, 4 January 2024, 7:46 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+            </main>
+          </body>
+        </html>

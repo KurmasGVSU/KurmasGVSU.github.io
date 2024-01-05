@@ -1,0 +1,669 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="ruby">Ruby</h1>
+
+<p>There are many languages used to generate dynamic web content.  We’re going to start with Ruby on Rails.  In order to
+ break up the long evening, we’re going to do some Ruby for a while.</p>
+
+<ul>
+  <li>Why Ruby?
+    <ol>
+      <li>Has all the major advantages of php and perl without many of the disadvantages</li>
+      <li>Designed from the ground up as OO, thereby avoiding the awkwardness</li>
+      <li>Has a number of aspects of functional programming built in.
+        <ul>
+          <li>When used properly, these make your programs easier to write / more elegant.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>When most people think of functional programming they think of lisp (or, perhaps scheme).
+    <ul>
+      <li class="q">What does LISP stand for?
+        <ul>
+          <li>Lots of stupid parenthesis</li>
+        </ul>
+      </li>
+      <li>At one time functional programming had a bad name, because pure functional programming can make simple things
+  difficult.</li>
+      <li>In my opinion, Ruby gives the best of both worlds:
+        <ul>
+          <li>OO when it is helpful</li>
+          <li>functional when it is helpful</li>
+        </ul>
+      </li>
+      <li>Functional programming paradigms are slowly making their way into other languages
+        <ul>
+          <li>Javascript</li>
+          <li>C#</li>
+          <li>Java (albeit poorly)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Learning Ruby will help you effectively utilize newer language features.</li>
+  <li>Ruby has a different way of writing code.  This is called “idiomatic”
+Ruby. Although you can write familiar Java-style code,
+    <ol>
+      <li>You will miss out on opportunities for better code</li>
+      <li>People might laugh at you.</li>
+    </ol>
+  </li>
+  <li>Key Ruby ideas
+    <ul>
+      <li>
+        <p>Basics are not too different from what you’ve seen before:</p>
+
+        <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">puts</span> <span class="s2">"Hello, World"</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="nb">puts</span> <span class="s2">"5 + 6 = </span><span class="si">#{</span><span class="n">z</span><span class="si">}</span><span class="s2">"</span>
+    
+<span class="k">if</span> <span class="n">z</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">z</span><span class="si">}</span><span class="s2"> is even"</span>
+<span class="k">else</span> 
+    <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">z</span><span class="si">}</span><span class="s2"> is odd"</span>
+<span class="k">end</span>        
+</code></pre></div>        </div>
+      </li>
+      <li>variables don’t need type</li>
+      <li>variables don’t need <code>$</code></li>
+      <li>variables use underscores (e.g., <code>multi_word_variable_name</code>) <em>not</em> “camel-case” (e.g., <code>doNotNameVariablesLikeThis</code>)</li>
+      <li>Can <em>interpolate</em> variables into strings using the <code>#{}</code> construct
+        <ul>
+          <li>
+            <p>Interpolation is done in double quotes only:</p>
+
+            <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">q</span> <span class="o">=</span> <span class="mi">44</span>
+ <span class="nb">puts</span> <span class="s1">'No Interpolation in single quotes: #{q}'</span>
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>Can place code inside brackets</p>
+
+            <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="s2"> = </span><span class="si">#{</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="si">}</span><span class="s2">"</span>
+      
+<span class="nb">name</span> <span class="o">=</span> <span class="s1">'bob'</span>
+<span class="nb">puts</span> <span class="s2">"Hello, </span><span class="si">#{</span><span class="nb">name</span><span class="p">.</span><span class="nf">capitalize</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Symbols and Hashes
+        <ul>
+          <li>Symbols are like immutable strings.</li>
+          <li>They are typically used wherever you would use a constant string and/or enum in Java or C.
+            <ul>
+              <li>method parameters that select options by name <code>build_distribution(:uniform)</code> or <code>build_distribution(:normal)</code></li>
+              <li>passing method and/or variable name as parameters (you’ll see examples of this in Rails.)</li>
+              <li>keys for hashes (i.e., associative arrays)</li>
+            </ul>
+          </li>
+          <li>Hashes are associative arrays:  arrays where the index doesn’t have to be an integer.
+            <ul>
+              <li>
+                <p>Keys for hashes can be anything; but, symbols are most common</p>
+
+                <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># The "key: value" syntax here is a short-cut for initializing hashes.</span>
+ <span class="c1"># The old syntax was ":key =&gt; value"</span>
+ <span class="n">my_dog</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="ss">name: </span><span class="s2">"Spot"</span><span class="p">,</span>
+        <span class="ss">age: </span><span class="mi">4</span><span class="p">,</span>
+        <span class="ss">weight: </span><span class="mi">14</span>
+ <span class="p">}</span>
+            
+ <span class="c1"># Add a year to the age</span>
+ <span class="c1"># Notice the use of a symbol for the hash key.</span>
+ <span class="n">my_dog</span><span class="p">[</span><span class="ss">:age</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+ <span class="nb">puts</span> <span class="s2">"My dog, </span><span class="si">#{</span><span class="n">my_dog</span><span class="p">[</span><span class="ss">:name</span><span class="p">]</span><span class="si">}</span><span class="s2"> is now </span><span class="si">#{</span><span class="n">my_dog</span><span class="p">[</span><span class="ss">:age</span><span class="p">]</span><span class="si">}</span><span class="s2"> years old."</span>
+            
+ <span class="c1"># Sometimes you will want an empty hash to fill later</span>
+ <span class="n">empty_hash</span> <span class="o">=</span> <span class="p">{}</span>
+            
+ <span class="n">empty_hash</span><span class="p">[</span><span class="ss">:january</span><span class="p">]</span> <span class="o">=</span> <span class="mi">31</span>
+ <span class="n">empty_hash</span><span class="p">[</span><span class="ss">:feb</span><span class="p">]</span> <span class="o">=</span> <span class="mi">28</span>
+</code></pre></div>                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Classes and methods
+        <ul>
+          <li>Constructor is always named <code>initialize</code></li>
+          <li>Instance variables begin with <code>@</code> and do not need to be explicitly declared.</li>
+          <li>Method parameters do not need types
+            <ul>
+              <li class="q">Why do some languages (e.g., Java) require types?</li>
+            </ul>
+          </li>
+          <li>Last expression of a method becomes its return value
+            <ul>
+              <li>Don’t use explicit <code>return</code> statement unless necessary.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Stats</span>
+
+  <span class="c1"># constructor is named "initialize"</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+
+    <span class="c1"># instance variables begin with "@"</span>
+    <span class="vi">@values</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># create an empty array</span>
+    <span class="vi">@sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="vi">@sum_sq</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">end</span>
+
+  <span class="c1"># Notice that parameters don't need a type</span>
+  <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="vi">@values</span> <span class="o">&lt;&lt;</span> <span class="n">value</span>
+    <span class="vi">@sum</span> <span class="o">+=</span> <span class="n">value</span>
+    <span class="vi">@sum_sq</span> <span class="o">+=</span> <span class="n">value</span> <span class="o">*</span> <span class="n">value</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">mean</span>
+    <span class="c1"># value of last expression becomes return value for the method</span>
+    <span class="vi">@sum</span><span class="p">.</span><span class="nf">to_f</span> <span class="o">/</span> <span class="vi">@values</span><span class="p">.</span><span class="nf">count</span> <span class="c1"># to_f is "to float"</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">median</span>
+    <span class="n">sorted_values</span> <span class="o">=</span> <span class="vi">@values</span><span class="p">.</span><span class="nf">sort</span>
+    <span class="n">mid</span> <span class="o">=</span> <span class="vi">@values</span><span class="p">.</span><span class="nf">count</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="c1"># notice that the if statement takes the value of the</span>
+    <span class="c1"># last line of the block that is run</span>
+    <span class="k">if</span> <span class="p">(</span><span class="vi">@values</span><span class="p">.</span><span class="nf">count</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">(</span><span class="vi">@values</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">+</span> <span class="vi">@values</span><span class="p">[</span><span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="k">else</span>
+      <span class="vi">@values</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span>
+    <span class="k">end</span>
+  <span class="k">end</span> <span class="c1"># method median</span>
+<span class="k">end</span> <span class="c1"># class Stats</span>
+
+<span class="n">s1</span> <span class="o">=</span> <span class="no">Stats</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">s1</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">s1</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">s1</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="nb">puts</span> <span class="s2">"Mean is </span><span class="si">#{</span><span class="n">s1</span><span class="p">.</span><span class="nf">mean</span><span class="si">}</span><span class="s2">.  Median: </span><span class="si">#{</span><span class="n">s1</span><span class="p">.</span><span class="nf">median</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="n">s1</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="s2">"Mean is </span><span class="si">#{</span><span class="n">s1</span><span class="p">.</span><span class="nf">mean</span><span class="si">}</span><span class="s2">.  Median: </span><span class="si">#{</span><span class="n">s1</span><span class="p">.</span><span class="nf">median</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<h3 id="code-blocks">Code blocks</h3>
+
+<ul>
+  <li>It is often helpful to be able to pass blocks of code (or methods) as parameters to other methods.
+    <ul>
+      <li>Think about button handlers in Java Swing: When calling <code>button.addEventListener(...)</code> 
+what you really want is to specify the code to be executed when the button is clicked.
+        <ul>
+          <li>The obnoxious “Anonymous inner class” syntax in Java is what was was used before Java added lambdas in Java 1.8.</li>
+        </ul>
+      </li>
+      <li>
+        <p>Think about the selection sort algorithm</p>
+
+        <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">traditional_selection_sort</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>      
+   <span class="c1"># Don't write for loops this way! Use the idiomatic values.each I'll show you in a minute.</span>
+   <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="nf">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+       <span class="n">min_loc</span> <span class="o">=</span> <span class="n">i</span>
+       <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">..</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="nf">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+           <span class="c1"># It would be nice to make the "&lt;" a parameter so you can</span>
+           <span class="c1"># compare objects using any algorithm.</span>
+           <span class="n">min_loc</span> <span class="o">=</span> <span class="n">j</span> <span class="k">if</span> <span class="n">values</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">values</span><span class="p">[</span><span class="n">min_loc</span><span class="p">]</span>
+       <span class="k">end</span>
+           
+       <span class="c1"># swap values[i] and values[min_loc]        </span>
+       <span class="n">temp</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+       <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">min_loc</span><span class="p">]</span>
+       <span class="n">values</span><span class="p">[</span><span class="n">min_loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span>
+   <span class="k">end</span>
+   <span class="n">values</span>
+<span class="k">end</span>
+   
+<span class="nb">p</span> <span class="n">traditional_selection_sort</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+</code></pre></div>        </div>
+      </li>
+      <li>The code above will only sort numbers in ascending order.</li>
+      <li>Sorting in descending order requires cutting-and-pasting the code and changing one character ‘&lt;’ to ‘&gt;’</li>
+      <li>The code to sort more complex objects (e.g., Students by GPA) is 99% the same.
+        <ul>
+          <li class="q">How would we modify the code to sort Students?</li>
+        </ul>
+      </li>
+      <li>Code blocks allows us to use one method for storing and pass in the comparison algorithm.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">selection_sort</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> 
+
+    <span class="c1"># Don't write for loops this way! Use the idiomatic values.each I'll show you in a minute.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="nf">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">min_loc</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">..</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="nf">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">min_loc</span> <span class="o">=</span> <span class="n">j</span> <span class="k">if</span> <span class="k">yield</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">values</span><span class="p">[</span><span class="n">min_loc</span><span class="p">])</span>
+        <span class="k">end</span>       
+
+        <span class="c1"># swap values[i] and values[min_loc]</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">min_loc</span><span class="p">]</span>
+        <span class="n">values</span><span class="p">[</span><span class="n">min_loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span>
+    <span class="k">end</span>
+    <span class="n">values</span>
+<span class="k">end</span>
+
+<span class="c1"># Sorted low to high</span>
+<span class="nb">p</span> <span class="n">selection_sort</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span> <span class="p">{</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">|</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">}</span>
+
+<span class="c1"># Sorted high to low</span>
+<span class="nb">p</span> <span class="n">selection_sort</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span> <span class="p">{</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">|</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">}</span>
+
+<span class="c1"># Sort dogs by age</span>
+
+<span class="n">dog1</span> <span class="o">=</span> <span class="p">{</span><span class="ss">name: </span><span class="s1">'Fido'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">14</span><span class="p">,</span> <span class="ss">weight: </span><span class="mi">6</span><span class="p">}</span>
+<span class="n">dog2</span> <span class="o">=</span> <span class="p">{</span><span class="ss">name: </span><span class="s1">'Spot'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">4</span><span class="p">,</span> <span class="ss">weight: </span><span class="mi">12</span><span class="p">}</span>
+<span class="n">dog3</span> <span class="o">=</span> <span class="p">{</span><span class="ss">name: </span><span class="s1">'Rover'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">12</span><span class="p">,</span> <span class="ss">weight: </span><span class="mi">22</span><span class="p">}</span>
+
+<span class="nb">p</span> <span class="n">selection_sort</span><span class="p">([</span><span class="n">dog1</span><span class="p">,</span> <span class="n">dog2</span><span class="p">,</span> <span class="n">dog3</span><span class="p">])</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">|</span> <span class="n">a</span><span class="p">[</span><span class="ss">:age</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">[</span><span class="ss">:age</span><span class="p">]}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Ruby makes heavy use of the block syntax.</li>
+  <li>Most loops use it.
+    <ul>
+      <li><em>Don’t</em> do this:  <code>for i in 0..(array.count - 1)</code>. You will get lauged at.</li>
+      <li>Idiomatic ruby uses blocks:  <code>array.each { |i|  ... }</code></li>
+    </ul>
+  </li>
+  <li>In the rare case you also need the loop index, use <code>each_with_index</code>
+    <ul>
+      <li><code>array.each_with_index { |item, index| puts "Item number #{index} is #{item}"}</code></li>
+    </ul>
+  </li>
+  <li>Use <code>{}</code> syntax when block fits on one line.</li>
+  <li>
+    <p>Use <code>do-end</code> syntax when block needs more than one line:</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array</span><span class="p">.</span><span class="nf">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">"Item number </span><span class="si">#{</span><span class="n">index</span><span class="si">}</span><span class="s2"> is </span><span class="si">#{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+</code></pre></div>    </div>
+  </li>
+  <li>The <code>map</code> method converts one array into another:</li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="n">squared</span> <span class="o">=</span> <span class="n">array</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="p">}</span>
+<span class="nb">p</span> <span class="n">squared</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="ss">first: </span><span class="s1">'George'</span><span class="p">,</span> <span class="ss">last: </span><span class="s1">'Washington'</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="ss">first: </span><span class="s1">'John'</span><span class="p">,</span> <span class="ss">last: </span><span class="s1">'Adams'</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="ss">first: </span><span class="s1">'Thomas'</span><span class="p">,</span> <span class="ss">last: </span><span class="s1">'Jefferson'</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="ss">first: </span><span class="s1">'James'</span><span class="p">,</span> <span class="ss">last: </span><span class="s1">'Madison'</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="ss">first: </span><span class="s1">'James'</span><span class="p">,</span> <span class="ss">last: </span><span class="s1">'Monroe'</span> <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">full_names</span> <span class="o">=</span> <span class="n">names</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="s2">"</span><span class="si">#{</span><span class="n">i</span><span class="p">[</span><span class="ss">:last</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">i</span><span class="p">[</span><span class="ss">:first</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">}</span>
+<span class="nb">p</span> <span class="n">full_names</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Open classes
+    <ul>
+      <li>
+        <p>You can add methods to classes</p>
+
+        <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">String</span> 
+   <span class="k">def</span> <span class="nf">first</span>
+      <span class="nb">self</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+   <span class="k">end</span>
+<span class="k">end</span>
+    
+<span class="nb">puts</span> <span class="s2">"Hello"</span><span class="p">.</span><span class="nf">first</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Can also add methods to specific objet instances.</li>
+      <li>Rails does this a lot; but,</li>
+      <li>Don’t overuse it.</li>
+    </ul>
+  </li>
+  <li>Misc.
+    <ul>
+      <li>Method names are allowed to end in ‘?’ and ‘!’</li>
+      <li>Characters have no semantic value; but, by convention
+        <ul>
+          <li>’?’ methods used for methods that ask questions:  <code>nil?</code>, <code>has_key?</code></li>
+          <li>’!’ methods used for methods that modify an object <code>sort</code> vs <code>sort!</code></li>
+        </ul>
+      </li>
+      <li><code>Array</code> comes with a lot of useful methods:
+        <ul>
+          <li><a href="https://ruby-doc.org/core-2.4.1/Array.html">API</a></li>
+          <li><code>select</code></li>
+          <li><code>include?</code></li>
+          <li><code>compact</code></li>
+          <li><code>count</code></li>
+          <li><code>first</code></li>
+          <li><code>last</code></li>
+          <li><code>select</code></li>
+          <li><code>max</code></li>
+          <li><code>min</code></li>
+          <li><code>push</code></li>
+          <li><code>pop</code></li>
+          <li><code>reject</code></li>
+          <li><code>reverse</code></li>
+          <li><code>slice</code></li>
+          <li><code>uniq</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Sample Ruby files:
+    <ul>
+      <li><a href="RubyExamples/basic1.rb">Basic Ruby</a></li>
+      <li><a href="RubyExamples/symbolsAndHashes.rb">Symbols and Hashes</a></li>
+      <li><a href="RubyExamples/stats.rb">Classes</a></li>
+      <li><a href="RubyExamples/code_blocks.rb">Code Blocks</a></li>
+    </ul>
+  </li>
+  <li><a href="https://www.w3resource.com/ruby-exercises/">For more practice</a></li>
+</ul>
+
+</main>
+</body>
+</html>
