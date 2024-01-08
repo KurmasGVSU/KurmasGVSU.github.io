@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<% assignment_name = "Exploring HTTP"
+   sample_https_page = 'kurmasgvsu.github.io/Humor/engin.html'
+   https_link = "<a href='https://#{sample_https_page}'><code>https://#{sample_https_page}</code></a>"
+   http_link = "<a href='http://#{sample_https_page}'><code>http://#{sample_https_page}</code></a>"
+
+   sample_image_link = 'kurmasgvsu.github.io/Images/buzz1.jpg'
+   https_image_link = "<a href='https://#{sample_image_link}'><code>https://#{sample_image_link}</code></a>"
+
+   dir_link_no_slash = 'kurmasgvsu.github.io/Images'
+   https_dir_no_slash = "<a href='https://#{dir_link_no_slash}'><code>https://#{dir_link_no_slash}</code></a>"
+%>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= $d.course.shortName + ' ' + assignment_name %></title>
+    <style>
+      <%= File.read("#{$d.general.common}/coursePages.css") %>
+      #content {
+        padding: 0 10px 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <%= $d.general.assignmentHeader(assignment_name) %>
+    Based on an assignment originally developed by Prof. Engelsma.
+    <h1>Objective</h1>
+    The objective of this lab is to help the student develop a deeper understanding of the HTTP protocol. Upon
+    completion of this homework the student will
+    <ul>
+      <li>understand the basic mechanics of the HTTP protocol from both a client and server perspective</li>
+    </ul>
+    You may work in pairs, if you wish.
+    If you get stumped, stop by my office and ask for help. Don't just copy and paste answers from the web/ChatGPT.
+    <p class='important'>Please submit <em>typed</em> answers.</p>
+    <h1>Hands-on with HTTP</h1>
+    We're going to explore the HTTP protocol first-hand by examining its behavior when we interact with the various
+    websites. We will use Chrome's Developer Tools to examine the underlying HTTP behavior. (Other web browsers have
+    tools similar to Chrome's Developer Tools.)
+    <% step_count = 0
+   question_count = 1
+%>
+    <dl>
+      <dt>Step <%= (step_count += 1) %>:</dt>
+      <dd>Familiarize yourself with the built-in developer features in Chrome, or equivalent features in other
+        browsers. (From the Chrome menu, go to More Tools -&gt; Developer Tools. If you have trouble see <a
+    href="openChromeDevTools.png">this diagram</a>.)
+      </dd>
+      <dt>Step <%= (step_count += 1) %>:</dt>
+      <dd>Open a <em>private browsing window</em>. (This step is important.)
+      </dd>
+      <dt>Step <%= (step_count += 1) %>:</dt>
+      <dd>Open the Developer Tools, click on the "Network" tab, and check the "Disable cache" box.</dd>
+      <dt>Step <%= (step_count += 1) %>:</dt>
+      <dd>
+        With Developer Tools open, click on the tab labeled "Network", then load the
+        page <%= https_link %>
+        <span class="important"><strong>Important:</strong> Make sure you are using <code>https</code> not
+          <code>http</code></span>
+      </dd>
+      <dt>Step <%= (step_count += 1) %>:</dt>
+      <dd>
+        <span class="listHeader">Select and expand the HTTP message labeled "<code>engin.html</code>". Make sure the
+          <code>Headers</code> tab is selected, then look through the <code>General</code> section for the
+          <code>Status Code</code></span>
+        <ol start="
+      <% question_count %>">
+          <li>
+            <% question_count += 1 %> What browser and operating system are you using?
+          </li>
+          <li>
+            <% question_count += 1 %> What is the Status Code; and what does it signify?
+          </li>
+          <li>
+            <% question_count += 1 %> What would the status code be if you mis-typed "<code>engin</code>"?
+          </li>
+          <li>
+            <% question_count += 1 %> Test your answer to the previous question by trying to fetch
+            <%= https_link.gsub(/engin/, 'enign') %>
+            <span class="important">(notice the misspelling).</span>
+          </li>
+        </ol>
+      </dd>
+      <dt>Step <%= (step_count += 1) %>:</dt>
+      <dd>
+        <p class="list_header">Examine the request headers for your call to <%= https_link %>.
+          <ol start="
+      <%= question_count %>">
+            <li>
+              <% question_count += 1 %> Are request headers sent by the browser or the web server?
+            </li>
+            <li>
+              <% question_count += 1 %> What is the value of the <code>User-Agent</code> header?
+            </li>
+            <li>
+              <% question_count += 1 %> What is the purpose of the <code>User-Agent</code> header?
+            </li>
+            <li>
+              <% question_count += 1 %> Why does the <code>User-Agent</code> value appear to list several different web
+              browsers? (Hint: See this Stack Overflow post:
+              <%= $k.link('https://stackoverflow.com/questions/4024230/strange-user-agent-with-google-chrome') %>.)
+            </li>
+            <li>
+              <% question_count += 1 %> Visit the page using a couple other browsers (Safari, Firefox, Chrome, IE, etc.)
+              and report the different <code>User-Agent</code> strings used.
+            </li>
+            <li>
+              <% question_count += 1 %> What is the value of the <code>Accept</code> header?
+            </li>
+            <li>
+              <% question_count += 1 %> What is the purpose of the <code>Accept</code> header?
+            </li>
+            <li>
+              <% question_count += 1 %> What is the purpose of the "<code>q</code>" parameter in the "Accept" value?
+              (Hint: Look
+              <%= $k.link('https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html', "here") %>.)
+            </li>
+          </ol>
+        </dd>
+        <dt>Step <%= (step_count += 1) %>:</dt>
+        <dd>
+          Now, examine the response headers for your call to
+          <%= https_link %>.
+          <ol start="
+      <%= question_count %>">
+            <li>
+              <% question_count += 1 %> What is the value of the <code>Content-Type</code> header?
+            </li>
+            <li>
+              <% question_count += 1 %> What is the purpose of the <code>Content-Type</code> header?
+            </li>
+            <li>
+              <% question_count += 1 %> List the other response headers and briefly describe their purpose.
+            </li>
+          </ol>
+        </dd>
+        <dt>Step <%= (step_count += 1) %>:</dt>
+        <dd>View the actual payload of the HTTP response by clicking on the "Response" tab.
+          <ol start="
+      <%= question_count %>">
+            <li>
+              <% question_count += 1 %> What kind of data was received? Does it match the <code>Content-Type</code>
+              header?
+            </li>
+          </ol>
+        </dd>
+        <dt>Step <%= (step_count += 1) %>:</dt>
+        <dd>
+          Visit <%= https_image_link %>.
+          <ol start="
+      <%= question_count %>">
+            <li>
+              <% question_count += 1 %> What is the <code>Content-Type?</code>
+            </li>
+          </ol>
+        </dd>
+      </dd>
+      <dt>Step <%= (step_count += 1) %>:</dt>
+      <dd>Uncheck the "Disable Cache" box and reload <%= https_link %>.
+        <ol start="
+      <%= question_count %>">
+          <li>
+            <% question_count += 1 %> What is the status code? (If the Status Code is still 200, try refreshing again.)
+          </li>
+          <li>
+            <% question_count += 1 %> What is the purpose of this status code? What is the benefit of returning this
+            code instead of 200?
+          </li>
+          <li>
+            <% question_count += 1 %> What additional request headers did the browser send.
+          </li>
+          <li>
+            <% question_count += 1 %> What does the value for <code>If-None-Match</code> represent?
+          </li>
+          <li>
+            <% question_count += 1 %> Where did the browser get this value?
+          </li>
+        </ol>
+        <dt>Step <%= (step_count += 1) %>:</dt>
+        <dd>Load the
+          page <%= http_link %>  <span class="important"> Notice that you are
+            using <code>http</code> instead of <code>https</code></span>
+          <ol start="
+      <%= question_count %>">
+            <li>
+              <% ref_h = question_count %>
+              <% question_count += 1 %> What is the status code? What does this status code indicate?
+            </li>
+            <li>
+              <% question_count += 1 %> What previously unseen response header did the server return when you requested the
+              "<code>http</code>" page?
+            </li>
+            <li>
+              <% question_count += 1 %> How did your browser respond to this code?
+            </li>
+          </ol>
+        </dd>
+        <!-- 
+  <dt>Step <%= (step_count += 1) %>:</dt>
+  <dd> Load the
+  page <%= https_dir_no_slash %>  <span class="important">This URL does <em>not</em> end with a slash</span>.
+    <ol start="
+      <%= question_count %>">
+      <li>
+        <% dir_h = question_count %>
+        <% question_count += 1 %> What is the status code? What does this status code indicate?
+      </li>
+      <li>
+        <% question_count += 1 %> What is the value of the <code>Location</code> response header?
+      </li>
+      <li>
+        <% question_count += 1 %> What is difference between the status code returned for the <code>http</code> page
+        in question <%= ref_h %> from question <%= dir_h %>?
+      </li>
+    </ol>
+    (Take note of how this trailing slash is handled --- especially if you are writing a web server!)
+  </dd>
+  -->
+      </dl>
+      <hr>
+      <%= $d.general.footer %>
+    </body>
+  </html>

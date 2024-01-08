@@ -1,0 +1,503 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="color-list--react-with-api">Color List / React with API</h1>
+
+<h2 id="props-down--state-up">Props Down / State Up</h2>
+
+<ul>
+  <li class="to-me">Demonstrate ColorList</li>
+  <li class="to-me">Sketch App -&gt; ColorList -&gt; Color -&gt; StarRating -&gt; Star</li>
+  <li class="q">Where should the numerical ranking be stored?
+    <ul>
+      <li>In general, as “low” as possible.  In this case it <em>could</em> be the StarRating.</li>
+      <li>However, because we need to send changes to the API, this data is actually stored in the <code>App</code> component.</li>
+    </ul>
+  </li>
+  <li>When data is stored “above” the component with the listener, we need a way of calling the appropriate 
+function in the parent component.
+    <ul>
+      <li>In other words, the Star’s <code>onClick</code> property needs to be set to a function inside <code>App</code>.</li>
+    </ul>
+  </li>
+  <li>We write a function <code>updateRating</code> inside App.
+    <ul>
+      <li>This function takes as input the star’s ID and new rating,</li>
+      <li>then updates the state accordingly (using the <code>set</code> function returned by the <code>useState</code> hook)</li>
+    </ul>
+  </li>
+  <li>We must now pass this function down through the hierarchy.
+    <ul>
+      <li>Notice that <code>ColorList</code> has an <code>update</code> attribute.</li>
+      <li>Notice also that the value of this attribute is the function <em>object</em>.  We are not invoking the function, just passing it along.</li>
+    </ul>
+  </li>
+  <li><code>Color</code> has an attribute <code>onColorRatingUpdated</code></li>
+  <li><code>StarRating</code> has an attribute <code>onRatingUpdated</code></li>
+  <li>In principle, this function object is being passed down through the hierarchy.</li>
+  <li>When the item at the bottom of the hierarchy is clicked, the function that was passed down executes.
+    <ul>
+      <li>This is similar to the JavaScript MVC setup where the controller hands the callback to the View.</li>
+    </ul>
+  </li>
+  <li>Imagine the President writing down some instructions, putting them in an envelope, and handing them to the Provost.
+    <ul>
+      <li>The Provost passes the envelope to the Dean</li>
+      <li>The Dean passes the envelope to the Director</li>
+      <li>The Director passes it to me,</li>
+      <li>Then I open the envelope and follow the directions.</li>
+      <li>When you write a function’s <em>name</em> only, you are “passing the envelope”</li>
+      <li>When you write a function, followed by parentheses <code>()</code>, you are opening the envelope and following the directions.</li>
+    </ul>
+  </li>
+  <li>Now, the story is a bit over-simplified in this case, because we need to stop on the way up and add some data.
+    <ul>
+      <li><code>Star</code> has the attribute <code>onStarClicked</code>.  The value passed here is simply passed to the <code>FaStar</code> component.</li>
+    </ul>
+  </li>
+  <li>When we click on a star, we need to know <em>which</em> star was clicked (so we know the rating).
+Thus, <code>StarRating</code> passes a lambda to the star’s <code>onStarClicked</code>.  This lambda adds the star’s numeric value 
+when calling the “upstream” lambda.</li>
+  <li>Likewise <code>ColorList</code> adds the color’s id when passing the call “up”.</li>
+</ul>
+
+<h2 id="need-to-rebuild-not-update-objects">Need to rebuild, not update objects</h2>
+
+<ul>
+  <li>When updating state, you need to <em>rebuild</em> arrays and objects, not just update them.</li>
+  <li class="to-do">Look at <code>App#updateRating</code>.  Notice that we are building a new array.</li>
+  <li class="to-do">use <code>updateRatingBROKEN</code> and show that it doesn’t work.</li>
+</ul>
+
+<h2 id="api-call">API Call</h2>
+
+<ul>
+  <li>Now we want to grab data the “real” way:  From an API server</li>
+  <li class="to-me">show <code>ColorListAPI</code>
+    <ul>
+      <li>Very simple because it doesn’t have any authentication/login</li>
+      <li>Notice use of port 3001. (API and React need to use different ports)</li>
+      <li>Notice the use of <code>res.json</code> to send raw data</li>
+      <li class="to-me">visit <code>localhost:3001/colors</code> and see raw .json returned.</li>
+    </ul>
+  </li>
+  <li><code>fetch</code> makes an network request and returns a promise with the response.
+    <ul>
+      <li>request is GET by default, but this can be configured.</li>
+      <li>Notice that handling .json is a two-step process.  First <code>then</code>
+gets the response as text.  Next, we need to parse it as JSON to
+create the desired JavaScript object.</li>
+      <li>Once we have the object, we can use the state hook to set the colors.</li>
+    </ul>
+  </li>
+  <li><code>useEffect</code> hook is code that is (potentially) run after every render
+(i.e., after every time components are redrawn — which happens every 
+time state changes.)
+    <ul>
+      <li><code>useEffect</code> calls <code>fetchColors</code>.
+        <ul>
+          <li>Notice the <code>[]</code> as the 2nd parameter. This is the list of objects
+the hook should watch, and only re-run when items in the list change.</li>
+          <li>We only want to fetch colors upon page load, so we pass an empty array.</li>
+          <li class="to-me">See what happens if the brackets are removed.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cors">CORS</h2>
+
+<ul>
+  <li class="to-me">Remove CORS headers from the API. Then try to run the app.  Notice the CORS error in the browser.</li>
+  <li>The problem is that JavaScript sent from website X (the React server) is trying to
+connect to website Y (the ColorsAPI)</li>
+  <li class="q">Why is this a security issue?  (Hint: Think about cookies.)
+    <ul>
+      <li>Suppose you are logged into Facebook on Tab A.  Then you visit kittenpics.com in
+Tab B; <em>but</em> that site contains JavaScript code that makes a <code>fetch</code> call to Facebook.
+Your browser will send the session cookie and return the private data.</li>
+    </ul>
+  </li>
+  <li class="q">Why is this a security risk?  <em>Your</em> data is being sent to _your_machine?
+    <ul>
+      <li>Because the “bad” JavaScript could take the data and send it somewhere else.</li>
+    </ul>
+  </li>
+  <li class="to-me">Add the CORS header: <code>res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000")</code>
+    <ul>
+      <li>The protocol, hostname, <em>and</em> port must all match.</li>
+    </ul>
+  </li>
+  <li class="q">Who is responsible for implementing this security feature? The browser or the server?
+    <ul>
+      <li>The <em>browser</em>.  The server returns the data, but the browser dumps it when it doesn’t find the correct CORS header.</li>
+      <li>The security risk isn’t in sending the data (the credentials are, present after all).  The security risk is in what the browser does with it.</li>
+      <li>You can configure some browsers to ignore CORS issues.</li>
+      <li>You can write your own browsers to handle data however you want.</li>
+    </ul>
+  </li>
+  <li>Note:  This is just one small part of CORS.  It gets more complicated.  Sorry.</li>
+</ul>
+
+<h2 id="post">Post</h2>
+
+<ul>
+  <li class="to-me">Turn CORS back on.  Go to <code>ColorList2</code>.  Add a color.</li>
+  <li class="to-me">Look at <code>NewColorForm.jsx</code>.
+    <ul>
+      <li>Text field</li>
+      <li>Color picker</li>
+      <li>Two buttons</li>
+    </ul>
+  </li>
+  <li>Notice the form has an <code>onSubmit</code> property.</li>
+  <li>There are two ways to “connect” HTML input items to React
+    <ul>
+      <li>Controlled, and</li>
+      <li>Uncontrolled.</li>
+    </ul>
+  </li>
+  <li>With Uncontrolled, The HTML component stores it’s own state, and React just grabs the current state when the form is submitted.</li>
+  <li>With controlled, we use React to store the component’s state, so React always has the up-to-date values.</li>
+  <li><code>ColorList2</code> uses controlled components: Every time a field is change, <code>App#updateFormData</code> is called and updates a state hook containing the data for the Color object currently being edited.</li>
+  <li>When the form is submitted, <code>App#submit</code> is called.
+    <ul>
+      <li>Need to call <code>event.preventDefault</code> to prevent the default behavior for forms, which is sending the form data to a URL and loading a new page.</li>
+      <li><strong>Don’t forget this step</strong></li>
+      <li><code>fetch</code> is called and configured to send a <code>POST</code> request.
+        <ul>
+          <li>Notice that parameters are all in an object. (This makes them effectively keyword parameters.)</li>
+          <li>Notice the content type (<code>json</code>)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>API sends new Color object back.
+    <ul>
+      <li class="q">Why?</li>
+      <li>DB creates a PK. Client side needs to know that new PK.</li>
+    </ul>
+  </li>
+  <li>There is another level of CORS here.</li>
+</ul>
+
+<h2 id="cors-part-2">CORS, part 2</h2>
+
+<ul>
+  <li>When fetching all the colors, the server sent the data and the browser kept it out of the hands of the calling script.</li>
+  <li>This scenario doesn’t work for POST.</li>
+  <li class="q">Why?
+    <ul>
+      <li>What if the POST request was “Pay Bob $10,000?”</li>
+      <li>Because the POST can potentially change the DB state, we need to be sure
+it was actually authorized/intended by the user.</li>
+      <li>Remember: If the user is logged in using another tab, the session cookie will be sent.</li>
+    </ul>
+  </li>
+  <li>As a result, the browser need to do a “preflight”:  It makes a request using the verb <code>OPTIONS</code> to make sure the cross-origin request is allowed.</li>
+  <li>When making cross-origin requests, many “non-standard” parameters need to be specifically authorized. In this case, the use of the json content-type.  Hence, the additional line in the <code>use</code> block.</li>
+  <li>To tighten things up, there are also CORS headers to allow/disallow things like specific verbs (GET/POST/DELETE) and/or headers.</li>
+</ul>
+
+<h2 id="update">Update</h2>
+
+<ul>
+  <li>Notice that we use the same form for both adding a color and updating color.</li>
+  <li>The <code>editMode</code> property tells the form whether to set up for an “Add” or an “Update”
+    <ul>
+      <li>It controls the labels.</li>
+    </ul>
+  </li>
+  <li>Each color has an edit button. Pushing the edit button changes the <code>editMode</code> state
+in <code>App</code>, which re-draws the form.
+    <ul>
+      <li>It also sets the <code>colorToEdit</code> state, so that color info is displayed in the form.</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>
