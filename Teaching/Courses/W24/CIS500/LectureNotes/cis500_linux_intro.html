@@ -297,12 +297,14 @@
       <li>Terminal is the program that opens a window, runs a program, and allows text I/O.
         <ul>
           <li>e.g., <code>Terminal.app</code></li>
+          <li class="to-me">Launch <code>XQuartz</code> then run <code>xterm ./hello_world</code></li>
+          <li><code>xterm</code> provides a window in which to run <code>hello_world</code></li>
         </ul>
       </li>
       <li>The “shell” is a specific program that runs in the terminal that allows you to tell the operating system what to do.
         <ul>
           <li>Common shells include <code>sh</code>, <code>bash</code>, <code>csh</code>, <code>tcsh</code>, <code>zsh</code>.</li>
-          <li>They are more a like than different.</li>
+          <li>They are more alike than different.</li>
           <li>I will use <code>bash</code> for this course.</li>
         </ul>
       </li>
@@ -323,8 +325,93 @@
         </ul>
       </li>
       <li>programs to execute.</li>
+      <li>If you type something, you either (a) run the built-in command, or run a program with that name.</li>
+      <li><code>python</code> runs the program named <code>python</code>.</li>
     </ul>
   </li>
+</ul>
+
+<h2 id="file-system">File system</h2>
+
+<ul>
+  <li>Groups of files are called <em>directories</em></li>
+  <li>Directories and folders are effectively the same thing.</li>
+  <li>Files are organized in a hierarchical tree.
+    <ul>
+      <li>Just like folders are nested withing folders, directories are nested within directories.</li>
+    </ul>
+  </li>
+  <li class="to-do">Open inClass 6.  Browse file system graphically.</li>
+  <li>In a terminal, we do this with text commands
+    <ul>
+      <li><code>ls</code>:  List the files</li>
+      <li><code>cd</code>: _c_hange _d_irectory</li>
+      <li><code>ls -l</code>: <em>long</em>: Show file properties.</li>
+      <li><code>ls -a</code>: show <em>all</em> files – including hidden files.</li>
+    </ul>
+  </li>
+  <li>Hidden files begin with <code>.</code>
+    <ul>
+      <li class="to-me">Create hidden file and show that it only appears when using <code>-a</code></li>
+    </ul>
+  </li>
+  <li>Two special hidden files:
+    <ul>
+      <li><code>.</code>: current directory</li>
+      <li><code>..</code>: parent directory</li>
+    </ul>
+  </li>
+  <li><code>cd ..</code> to move up.</li>
+  <li><code>pwd</code>: print working directory</li>
+  <li><code>cat</code>: displays the contents of a file</li>
+  <li><code>head</code>: displays the first few lines</li>
+  <li>A <em>path</em> is a sequence of directories that identifies a file.</li>
+  <li>Two types
+    <ul>
+      <li>Absolute:
+        <ul>
+          <li>a “full” name</li>
+          <li>path shows how to get to the file from the root.</li>
+        </ul>
+      </li>
+      <li>Relative
+        <ul>
+          <li>A “local” name</li>
+          <li>path shows how to get to the file from the current working directory.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>When you use <code>cat</code> or <code>head</code> (or many other programs) you supply a path of some kind.
+    <ul>
+      <li class="to-me">Give examples.</li>
+      <li>current directory (with and without <code>.</code>)</li>
+      <li>parent directory</li>
+      <li>sibling directory</li>
+      <li>absolute path</li>
+    </ul>
+  </li>
+  <li>Which type of path you use depends on the context
+    <ul>
+      <li>Just as whether you use GPS coordinates, or “how to get there” directions depends on the context.</li>
+    </ul>
+  </li>
+  <li>Key idea: You can reference the desired file from anywhere
+    <ul>
+      <li>You only need to change directories if you want to.</li>
+    </ul>
+  </li>
+  <li class="to-me">show how wildcards/globs work</li>
+</ul>
+
+<h2 id="running-python-as-a-program">Running Python as a program</h2>
+
+<ul>
+  <li>Although Jupyter notebooks are becoming increasingly popular, many python programs are
+intended to “stand alone” like the other programs on your computer.</li>
+  <li>Put the desired code in a file with the .py extension.</li>
+  <li>run <code>python _paht_to_file</code></li>
+  <li class="to-me">Give an example.</li>
 </ul>
 
 
