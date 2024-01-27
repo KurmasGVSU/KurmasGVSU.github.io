@@ -282,39 +282,7 @@
 </head>
 <body>
 <main id="content">
-  <h1 id="preliminary">Preliminary</h1>
-
-<ul>
-  <li>Origins of the web discussion</li>
-  <li>Key points of CSS
-    <ul>
-      <li>Separation of content and style</li>
-      <li>Which rule applies
-        <ol>
-          <li>Default</li>
-          <li>External</li>
-          <li>Head</li>
-          <li>Inline</li>
-        </ol>
-      </li>
-      <li>Use of class and id
-        <ul>
-          <li>and how this can create “conflicting rules”</li>
-          <li><code>id-class-tag</code> rule for resolving conflicts.</li>
-        </ul>
-      </li>
-      <li>Box model</li>
-      <li>Browser developer mode
-        <ul>
-          <li>Examine box model.</li>
-          <li>Poke new values into CSS</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="web-servers">Web Servers</h1>
+  <h1 id="web-servers">Web Servers</h1>
 <ul>
   <li class="to-me">Review basic HTTP protocol and messages sent between the client and the server.</li>
   <li>At first, a URL was a machine name and a filename.</li>
@@ -346,7 +314,7 @@
       <li>Return <code>index.html</code> if it exists.</li>
       <li>Return a directory listing otherwise (sometimes.)
         <ul>
-          <li>Demonstrate with built-in Python server running local copy of my web page</li>
+          <li class="to-me">Demonstrate with built-in Python server running local copy of my web page</li>
         </ul>
       </li>
     </ul>
@@ -369,25 +337,28 @@
 <ul>
   <li>Having to customize an entire web server to run code specific to your app is not ideal.
     <ul>
-      <li>Maintaining a web site and a web server requires two very different skill sets.</li>
+      <li>Creating/Maintaining a web site and a web server requires two very different skill sets.
+        <ul>
+          <li>In some sense, the web server code is much “lower” level.</li>
+        </ul>
+      </li>
       <li>Separate the two so those responsible can focus on their area of strength.</li>
     </ul>
   </li>
-  <li>Better idea: If a file name has a programming language extension (<code>.pl</code>, <code>.py</code>, <code>.php</code>, etc.)
-run that file and send the resulting output.
+  <li>Idea: If a file name has a programming language extension (<code>.pl</code>, <code>.py</code>, <code>.php</code>, etc.) and/or in the <code>cgi-bin</code> directory, run that file and send the resulting output.
     <ul>
       <li>Uses <code>fork</code> and <code>exec</code>, for what it’s worth.</li>
     </ul>
   </li>
   <li class="q">What are some “rough edges” with this approach?
-    <ul>
+    <ol>
       <li>Writing a program that generates HTML as output is messy
         <ul>
           <li>See <code>whoHTML</code> in <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/SimpleHTTPServer/Who.java">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/SimpleHTTPServer/Who.java</a></li>
         </ul>
       </li>
       <li>We need a way of passing parameters to the program. (e.g., what zip code do you want the weather for?)</li>
-    </ul>
+    </ol>
   </li>
 </ul>
 
@@ -404,6 +375,7 @@ run that file and send the resulting output.
           <li>POST</li>
         </ul>
       </li>
+      <li class="q">Pros/Cons?</li>
     </ul>
   </li>
   <li>URL:
@@ -431,11 +403,11 @@ run that file and send the resulting output.
       <li>Notice the key/value pair.</li>
     </ul>
   </li>
-  <li class="q">What are the limitations/challenges of this approach?
+  <li class="q">What details need to be worked out to make this work?
     <ul>
       <li>How to handle multiple parameters?</li>
       <li>How to handle escaping <code>?</code>, <code>&amp;</code>, <code>=</code>, etc.?</li>
-      <li>How to handle spaces?</li>
+      <li>How to handle spaces and unprintable characters?</li>
     </ul>
   </li>
   <li class="to-me">Do a google query and look at the URL.</li>
@@ -516,6 +488,7 @@ HERE
 </span></code></pre></div></div>
 
 <ul>
+  <li>Notice that the bulk of the code is HTML,  not python/perl. This seems kind of backward.</li>
   <li>The next advancement was PHP which made the content of the “here” document the default, and the code was “escaped”.
     <ul>
       <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/Templating/colorDemo.php">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/Templating/colorDemo.php</a></li>
@@ -529,11 +502,21 @@ HERE
       <li>Newer ideas often “bolted” on awkwardly</li>
     </ul>
   </li>
-  <li>
-    <p>As a result, many other approaches use the same key ideas, but are more elegant.</p>
-  </li>
-  <li>Also, as web sites became more interactive and complicated, it made sense to re-integrate the web server and the dynamic content generator.  Hence, <em>Frameworks</em></li>
+  <li>As a result, many other approaches use the same key ideas, but are more elegant.</li>
 </ul>
+
+<h2 id="frameworks">Frameworks</h2>
+
+<p>Imagine you are designing a system to create dynamic web pages. What types of features are you looking for?
+* A library of functions to do common tasks (so you don’t have to re-invent the wheel)
+* You might want to have your system just automatically call these functions for you saving even more time.
+* Frameworks are the result of these attempts to automate as much as possible allowing users to implement a web page with as little coding as reasonable.
+* When designing a framework, there is a fundamental tension between <em>configuration</em> and <em>convention</em>.
+  * What things should be explicitly spelled out?
+  * What things should just happen by “magic” if the code is written using certain names/patterns?
+* There is no right answer, which is why there is a long list of frameworks.
+* However, frameworks tend to follow similar patterns and have a number of things in common.
+  * So, the goal here is not to make you an expert using any particular framework, but to highlight common patterns/techniques so that when you go to learn a specific framework, it doesn’t seem completely foreign and you have a mental model you can leverage.</p>
 
 </main>
 </body>

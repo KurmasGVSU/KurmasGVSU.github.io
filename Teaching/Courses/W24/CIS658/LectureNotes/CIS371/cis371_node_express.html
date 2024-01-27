@@ -336,10 +336,42 @@
   </li>
 </ul>
 
+<h2 id="templating">Templating</h2>
+
+<ul>
+  <li>Stands for Embedded JavaScript.</li>
+  <li>Embed JavaScript into HTML.</li>
+  <li>Write HTML, but use <code>&lt;% %&gt;</code> to insert javascript.</li>
+  <li>Can be run from the command line.
+    <ul>
+      <li class="to-me">Run <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/Templating/colorDemo.ejs">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/Templating/colorDemo.ejs</a></li>
+    </ul>
+  </li>
+  <li>
+    <p><code>&lt;%= %&gt;</code> vs <code>&lt;% &gt;</code> vs <code>&lt;%- &gt;</code></p>
+  </li>
+  <li>Most languages have a similar library.
+    <ul>
+      <li>Ruby (erb)</li>
+      <li>Python (jinja)</li>
+    </ul>
+  </li>
+  <li>There is a second style of template that some developers like better</li>
+  <li>This style uses indenting instead of open/close tags.</li>
+  <li>The argument is that it is easier to read/write once you get used to it.
+    <ul>
+      <li>I can see their point. I used this style when I was at Atomic Object; but, 
+now that I no longer do web dev daily, I like the other style better.</li>
+    </ul>
+  </li>
+  <li>JavaScript (pug)</li>
+  <li>ruby (haml)</li>
+</ul>
+
 <h2 id="express">Express</h2>
 
 <ul>
-  <li class="to-me">Begin with a quick overview of <a href="`https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/asynchronous1.js`">asynchronous programming</a></li>
+  <li class="to-me">Begin with a quick overview of <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/asynchronous1.js">asynchronous programming</a></li>
   <li>Express is a web server written in Javascript.
     <ul>
       <li>Download from <code>https://expressjs.com/</code></li>
@@ -348,7 +380,8 @@
   <li>Basic idea:  You instantiate a server object, then provide callbacks that determine 
 the response for each path on your site.
     <ul>
-      <li>See <a href="`https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressIntro/simple_sendHTML.js`">this file</a> for a very simple example.</li>
+      <li>See <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressIntro/first_sendHTML.js">this file</a> for a very simple example.</li>
+      <li>See <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressIntro/simple_sendHTML.js">this file</a> for more common implementation.</li>
     </ul>
   </li>
   <li class="to-me">Show <code>simple_sendHTML.js</code></li>
@@ -365,6 +398,7 @@ the response for each path on your site.
       <li class="to-me">Put it after the <code>express.static</code>.</li>
     </ul>
   </li>
+  <li class="to-me">Look at <code>index.js</code></li>
   <li class="to-me">Show how to render <code>.ejs</code></li>
   <li class="to-me">Show how query string is parsed.</li>
   <li class="to-me">Put the two together.</li>
