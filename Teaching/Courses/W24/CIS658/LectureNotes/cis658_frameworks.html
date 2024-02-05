@@ -385,7 +385,7 @@ you can produce new designs more quickly; but, your product won’t be as versat
   </li>
 </ul>
 
-<h3 id="key-framework-patterns">Key framework patterns</h3>
+<h2 id="key-framework-patterns">Key framework patterns</h2>
 
 <ul>
   <li>Although there are <em>many</em> different frameworks, there are many similar underlying themes with different implementations.
@@ -404,19 +404,26 @@ you can produce new designs more quickly; but, your product won’t be as versat
       <li>Client-Side framework / Single Page Apps (Angular, Vue, React) sends most of the web page display logic to the client. Server is API-only to collect the data to display.</li>
     </ul>
   </li>
-  <li>Model-View-Controller
+</ul>
+
+<h3 id="model-view-controller">Model-View-Controller</h3>
+
+<ul>
+  <li>This is a general software development design pattern.  It’s not just for web apps</li>
+  <li>Model
     <ul>
-      <li>This is a general software development design pattern.  It’s not just for web apps</li>
-      <li>Model
-        <ul>
-          <li>Represents the data / objects</li>
-          <li>Access the database</li>
-          <li>Provides the business logic</li>
-        </ul>
-      </li>
-      <li>View</li>
+      <li>Represents the data / objects</li>
+      <li>Access the database</li>
+      <li>Provides the business logic</li>
+    </ul>
+  </li>
+  <li>View
+    <ul>
       <li>Renders the web page</li>
-      <li>Controller:</li>
+    </ul>
+  </li>
+  <li>Controller:
+    <ul>
       <li>Ties model and view together</li>
       <li>Basic workflow
         <ol>
@@ -427,24 +434,70 @@ you can produce new designs more quickly; but, your product won’t be as versat
       </li>
     </ul>
   </li>
-  <li>Resource
+</ul>
+
+<h3 id="resource">Resource</h3>
+<ul>
+  <li>Using this model, a URL is, in general, a <em>resource</em> rather than a specific artifact like a file</li>
+  <li>Motivation: Many web sites designed around basic operations on objects/resources such as
     <ul>
-      <li>A URL is, in general, a <em>resource</em> not a specific artifact (e.g., file)</li>
-      <li>Many frameworks adopt the general concept of a resource, where a url like <code>http://abes.com/book/48734</code>
-refers to a specific book in the database.  Notice that this isn’t a specific page or script.
-Other common resources:
-        <ul>
-          <li>User</li>
-          <li>Order</li>
-          <li>Comment</li>
-        </ul>
-      </li>
+      <li>User</li>
+      <li>Order</li>
+      <li>Comment</li>
+      <li>Article</li>
+      <li>Activity</li>
     </ul>
   </li>
-  <li>Routing:
+  <li>Four basic operations:
     <ul>
-      <li>URL/Resource identifies a controller (not a specific file) plus the HTML verb (GET, POST, PUT, etc.)</li>
-      <li>Most frameworks have a convention and/or configuration that maps resource names to the controller object responsible for that resource.</li>
+      <li>Create</li>
+      <li>Read</li>
+      <li>Update</li>
+      <li>Delete</li>
+    </ul>
+  </li>
+  <li>In principle: We need a path for each operation
+    <ul>
+      <li><code>mysite.com/user/create</code></li>
+      <li><code>mysite.com/user/4434</code></li>
+      <li><code>mysite.com/user/4434/edit</code></li>
+      <li>….</li>
+    </ul>
+  </li>
+  <li>In a non-opinionated framework like Express, you would have to spell all this out.
+    <ul>
+      <li>Doing so would begin to feel quite repetitive</li>
+    </ul>
+  </li>
+  <li>Opinionated frameworks like Rails allow you to set everything in one step
+    <ul>
+      <li>Provided you agree with the conventions (i.e. names) they choose.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="routing">Routing:</h3>
+<ul>
+  <li>URL/Resource identifies a controller (not a specific file) plus the HTML verb (GET, POST, PUT, etc.)</li>
+  <li>Most frameworks have a convention and/or configuration that maps resource names to the controller object responsible for that resource.</li>
+</ul>
+
+<h3 id="orm">ORM</h3>
+<ul>
+  <li>Object-Relational Mapping</li>
+  <li>Automatically move between objects and rows in a relational database:
+    <ul>
+      <li>Table &lt;==&gt; Class</li>
+      <li>Rows &lt;==&gt; instances of the class (i.e, objects)</li>
+      <li>Columns &lt;===&gt; properties of an object</li>
+    </ul>
+  </li>
+  <li>In addition, class methods help with things like searching.</li>
+  <li>Idea is to avoid having to write SQL (in most cases).</li>
+  <li>If classes share names with tables and properties share names with columns,
+this <em>convention</em> can avoid a lot of <em>configuration</em>.
+    <ul>
+      <li>(It also helps that Ruby is dynamically typed)</li>
     </ul>
   </li>
 </ul>

@@ -1,0 +1,380 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="rails">Rails</h1>
+
+<ul>
+  <li>Rails is a “server-side” framework (like Express).
+    <ul>
+      <li>In general, the main logic of the web site is all done on the server.</li>
+      <li>Most updates have to go “through” the server and result in a page refresh.
+        <ul>
+          <li>(Although we can use some JavaScript to cut down on this.)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Rails is <em>opinionated</em>.
+    <ul>
+      <li>It will configure a lot of things for you automatically — if you do this the “Rails” way
+        <ul>
+          <li>Database</li>
+          <li>Routes</li>
+          <li>Templates</li>
+        </ul>
+      </li>
+      <li>It will also automate many processes
+        <ul>
+          <li>Processing query strings / post parameters</li>
+          <li>Getting/setting cookies</li>
+          <li>Sessions</li>
+          <li>protecting things with passwords</li>
+          <li>Protecting form submission from XSRF.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>At it’s most fundamental level, it shares ideas with Express; but</li>
+  <li>
+    <p>It does <em>a lot</em> more for you.</p>
+  </li>
+  <li>To get started you need to be comfortable with several key ideas:
+    <ul>
+      <li>Templates (erb)</li>
+      <li>Routes / Resources</li>
+      <li>MVC</li>
+      <li>ORM (automatically mapping objects to database tables)</li>
+    </ul>
+
+    <h2 id="demo">Demo</h2>
+
+    <ul>
+      <li><code>gem install rails</code></li>
+      <li><code>bin/rails new demo</code></li>
+      <li class="to-me">Show all the code that is automatically generated.
+        <ul>
+          <li>It’s great not to have to write all that code; but, it takes awhile to learn what to modify.</li>
+        </ul>
+      </li>
+      <li class="to-me">launch rails. Edit config if necessary</li>
+      <li class="to-me"><code>bin/rails generate controller Say hello goodbye</code></li>
+      <li>A controller is the code that responds to an incoming request.
+        <ul>
+          <li>We created a controller named <code>Say</code> that responds to two different requests <code>hello</code> and <code>goodbye</code></li>
+          <li>There is now a class named <code>Say</code> with methods <code>hello</code> and <code>goodbye</code></li>
+          <li class="to-me">Look at <code>config/routes.rb</code></li>
+          <li>The generator also modified <code>routes.rb</code> to add two routes: <code>say/hello</code> and <code>say/goodbye</code></li>
+          <li>The convention is that when you visit a URL named <code>say/hello</code>, then Rails will run the <code>hello</code> method in the <code>Say</code> class</li>
+        </ul>
+      </li>
+      <li class="to-me">Launch the app and visit the routes.
+        <ul>
+          <li>Notice that the Controller doesn’t do anything.</li>
+          <li>Another convention: Absent any directions to the contrary, after <code>Say#hello</code> runs, Rails will 
+return the result of using template <code>views/say/hello.html.erb</code></li>
+        </ul>
+      </li>
+      <li>Bottom line: I can run a generator that will create a controller and views for me. I just need to supply the specific content!</li>
+      <li>Notice the conventions.</li>
+      <li class="to-me">Add <code>Time.now</code> to template.</li>
+      <li>This works; but, it is not the best design. Ideally, when using MVC, the view should be “dumb”. It should only display data – it shouldn’t generate.
+        <ul>
+          <li>Let’s move the generation to the controller.</li>
+        </ul>
+      </li>
+      <li class="to-me">Add <code>@time = Time.now</code> to the controller.</li>
+      <li class="to-me">Use <code>&lt;%= @time &gt;</code> in view</li>
+      <li>In Ruby variables that begin with <code>@</code> are instance variables in a class.
+        <ul>
+          <li>(The template code is executed in the context of the controller.)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>
