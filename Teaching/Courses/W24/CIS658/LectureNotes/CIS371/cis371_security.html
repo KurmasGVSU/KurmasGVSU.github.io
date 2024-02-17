@@ -366,6 +366,22 @@
       <li>https://owasp.org/www-community/attacks/csrf</li>
     </ul>
   </li>
+  <li>Imagine a form at your bank that sends money to another person.
+    <ul>
+      <li>Form does a POST to a route like <code>/transfer</code></li>
+    </ul>
+  </li>
+  <li class="q">How can this same request be sent from another site?
+    <ul>
+      <li>Another site can have the same form with the same action.</li>
+    </ul>
+  </li>
+  <li class="q">Why can’t just anybody send a POST to the route and transfer money from your account?
+    <ul>
+      <li>Need to be logged in (i.e., need the session cookie)</li>
+    </ul>
+  </li>
+  <li class="q">How can we get your browser to send your session cookie from a different web page?</li>
   <li>Key idea: Cookies always go back to the server that sent them <em>regardless of the window/tab</em>.</li>
   <li class="q">How can a malicious site send a request on your behalf? Hint: It uses a form, not JS.
     <ul>
@@ -382,6 +398,13 @@ but it could also have fields identical to the “transfer money” form from 53
       <li>Synchronizer Token: When sending a page with a form, embed a hidden field with a random number.</li>
       <li>When that form is submitted check for the presence of that random number.</li>
       <li>evil.com won’t have it.</li>
+    </ul>
+  </li>
+  <li>Rails automatically adds this “invisible” token
+    <ul>
+      <li class="to-me">Inspect a form and show the “hidden” input named <code>authenticity_token</code></li>
+      <li>If you use rails as an API (e.g., for React), you need to disable this authenticity token.</li>
+      <li>(Need to use CORS instead; but, that’s a discussion for a different day.)</li>
     </ul>
   </li>
 </ul>

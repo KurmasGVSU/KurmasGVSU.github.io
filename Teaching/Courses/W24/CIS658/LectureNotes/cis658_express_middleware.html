@@ -282,79 +282,46 @@
 </head>
 <body>
 <main id="content">
-  <h1 id="express-revisited">Express revisited.</h1>
+  <h1 id="middleware-in-express">Middleware in Express</h1>
 
 <ul>
-  <li class="q">Any questions?</li>
-  <li>Basic idea:
+  <li>Look at <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/ExpressRouting">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/ExpressRouting</a></li>
+  <li>First few examples (<code>books</code>, <code>toys</code>) just demonstrate that the first route to match is run, so choose route orders carefully.</li>
+  <li class="q">Any questions about <code>req</code> and <code>res</code> parameters?</li>
+  <li>The <code>authors</code> routes demonstrate the use of <code>next</code>
     <ul>
-      <li>Route matches</li>
-      <li>Run code that generates content.</li>
-      <li>Several ways to generate content:
+      <li>Calling <code>next()</code> runs the code for the next route that matches.  (e.g., <code>/authors/105</code>)</li>
+    </ul>
+  </li>
+  <li>You can also provide a list of blocks. In this case, <code>next()</code> invokes the next block in the list.
+    <ul>
+      <li>See <code>/cars/150</code></li>
+    </ul>
+  </li>
+  <li>If <code>next()</code> is called on the last handler on the list, then move to the next matching route.</li>
+  <li>These blocks can also be defined as separate functions and used with multiple routes.
+    <ul>
+      <li>See <code>/dogs</code> and <code>numbersOnly</code></li>
+      <li>See <code>/colors</code> and both <code>numbersOnly</code> and <code>evensOnly</code></li>
+    </ul>
+  </li>
+  <li>This is how we can enforce logins in frameworks like Express
+    <ul>
+      <li>See <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/ExpressSession">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/ExpressSession</a></li>
+    </ul>
+  </li>
+  <li>There is one short-cut:  <code>use</code>.
+    <ul>
+      <li><code>use</code> applies the block to every route.</li>
+      <li>Things like <code>app.use(bodyParser.urlencoded({ extended: true }))</code> and <code>app.use(session({...})</code> 
+are just hooks that cause “setup” code to run before a routes “primary” block is run.
         <ul>
-          <li>Return a string</li>
-          <li>Return the contents of a file</li>
-          <li>Run a template and return the results.</li>
+          <li>e.g., parse the request for post parameters, check the session cookie, etc.</li>
         </ul>
       </li>
     </ul>
   </li>
-  <li>Let’s peek “under the hood” of Express.
-    <ul>
-      <li>Goal here is not to teach you how to write your own version of Express, 
-but rather to remove the feeling that Express is “magic”</li>
-      <li>Once you have a feel for how these tools are (or might be) implemented, 
-it is easier to remember how to use them, and/or debug your code.</li>
-    </ul>
-  </li>
-  <li class="to-me">Look at <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/SimpleHTTPServer/python_server_v1.py">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/SimpleHTTPServer/python_server_v1.py</a>
-    <ul>
-      <li>This is more-or-less a Python version of what I showed in Java last week (without most of the error checking)</li>
-      <li class="to-me">Highlight the part of this version that is replaced in Express.</li>
-    </ul>
-  </li>
-  <li class="to-me">Now look at <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressIntro/use_mini_express.py">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressIntro/use_mini_express.py</a>
-    <ul>
-      <li>Path identifies the code to run, which then generates content.</li>
-    </ul>
-  </li>
-  <li class="to-me">Show the code in <code>mini_express.py</code> that executes this code.</li>
-  <li>Notice that these functions can take parameters.
-    <ul>
-      <li>In this example, the parameters are the parsed query parameters. But, in Express, the parameters contain that and <em>a lot</em> more; but the principle is the same.</li>
-    </ul>
-  </li>
-  <li class="to-me">demonstrate the calculator route.</li>
 </ul>
-
-<h1 id="convention-vs-configuration">Convention vs. Configuration</h1>
-
-<ul>
-  <li>Visit the ExpressJS web page (<a href="https://expressjs.com/">https://expressjs.com/</a>) and notice that it claims to be “unopinionated”</li>
-  <li>Notice how everything in Express is “spelled out”:
-    <ul>
-      <li>Name of route and how they are mapped to code</li>
-      <li>Which template system to use</li>
-      <li>Where to look for files,</li>
-      <li>etc.</li>
-    </ul>
-  </li>
-  <li>Similarly, in the <code>use_mini_express</code> example, each route has to be explicitly mapped 
-to a function.</li>
-  <li>But what if we used a convention: A path <code>foo</code> should execute a function named <code>foo_route</code>
-    <ul>
-      <li class="to-do">Look at <code>make_routes</code></li>
-    </ul>
-  </li>
-  <li>There are many potential conventions
-    <ul>
-      <li>Default template (pug or ejs)</li>
-      <li>Default location/directory for templates</li>
-    </ul>
-  </li>
-</ul>
-
-<p><span class="to-me">Switch to “Framework” notes.</span></p>
 
 </main>
 </body>
