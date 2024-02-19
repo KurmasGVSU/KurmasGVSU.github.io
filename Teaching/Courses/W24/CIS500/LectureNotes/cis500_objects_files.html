@@ -377,12 +377,23 @@
 <ul>
   <li>remember the <code>include csv</code></li>
   <li>Short-cut: List comprehension: <code>row = [int(val) for val in raw_row]</code></li>
+  <li class="to-me">Show the “long” version of above.</li>
 </ul>
 
-<h2 id="topics-for-later">Topics for later:</h2>
+<h2 id="dictreader">DictReader</h2>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">def</span> <span class="nf">sample_open_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">csv_file</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+    <span class="c1"># _don't_ call next
+</span>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="topics-for-later">Topics for later:</h2>
 <ul>
-  <li><code>DictReader</code></li>
   <li>Use pandas or numpy to read csv</li>
   <li>Dictionary comprehensions</li>
 </ul>
