@@ -1,0 +1,377 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="creating-a-rest-api-with-rails">Creating a REST API with Rails</h1>
+
+<p>Rails has the ability to create API-only applications.  This results in a lighter-weight app that is more conducive to creating SPAs.</p>
+
+<ol>
+  <li>
+    <p>First, let’s create an API only version of our blog app.</p>
+
+    <pre><code> rails new color_list_api_rails --api
+</code></pre>
+  </li>
+  <li>
+    <p>Next, we generate the model for authors</p>
+
+    <pre><code>bin/rails g scaffold Color title:string uuid:string color:integer rating:integer
+</code></pre>
+  </li>
+  <li>
+    <p>Run the migration:</p>
+
+    <pre><code> bin/rails db:migrate
+</code></pre>
+  </li>
+  <li>
+    <p>Let’s seed the database with some colors.</p>
+  </li>
+</ol>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Color</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">title: </span><span class="s1">'Ocean at noon'</span><span class="p">,</span> <span class="ss">color: </span><span class="mh">0x029eb6</span><span class="p">,</span> <span class="ss">rating: </span><span class="mi">5</span><span class="p">,</span> <span class="ss">uuid: </span><span class="s1">'0175d1f0-a8c6-41bf-8d02-df5734d829a4'</span><span class="p">)</span>
+<span class="no">Color</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">uuid: </span><span class="s2">"83c7ba2f-7392-4d7d-9e23-35adbe186046"</span><span class="p">,</span><span class="ss">title: </span><span class="s2">"Lawn"</span><span class="p">,</span><span class="n">color</span><span class="p">:</span><span class="mh">0x2534486</span><span class="p">,</span> <span class="n">rating</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span>
+<span class="no">Color</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">uuid: </span><span class="s2">"a11e3995-b0bd-4d58-8c48-5e49ae7f7f23"</span><span class="p">,</span><span class="ss">title: </span><span class="s2">"Bright red"</span><span class="p">,</span><span class="ss">color: </span><span class="mh">0x16711680</span><span class="p">,</span><span class="n">rating</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span>
+<span class="no">Color</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">uuid: </span><span class="s2">"49fef18c-475c-4ff7-b2de-7adfdbcbaa24"</span><span class="p">,</span><span class="ss">title: </span><span class="s2">"Orange"</span><span class="p">,</span><span class="n">color</span><span class="p">:</span><span class="mh">0xca8102</span><span class="p">,</span><span class="ss">rating: </span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>bin/rails db:seed</p>
+
+<ol>
+  <li>
+    <p>Now just launch the server</p>
+
+    <p>bin/rails server</p>
+
+    <p>and go to the <code>colors</code> route.</p>
+  </li>
+  <li>
+    <p>A few things to notice:</p>
+    <ul>
+      <li>There are no <code>new</code> and <code>edit</code> routes: An API doesn’t use forms, so we don’t need a route to display a form.</li>
+      <li>There are no views for <code>Color</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h1 id="cors-raw">CORS (Raw)</h1>
+
+<p>Generally speaking, conventional browsers implement a <a href="https://en.wikipedia.org/wiki/Same-origin_policy">same-origin security policy</a> when it comes to AJAX fetches.  That is, AJAX fetches to domains different from the page from which they are made are blocked by default.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">Cross-origin resource sharing</a> (CORS) is a standard that allows a web browser and server to interact in a way that permits cross-origin AJAX calls from a browser to a server.   In order to use our Rails API-only app, we need to enable CORS on it.</p>
+
+<p>We can do this the “raw” way by adding the header manually: Add the following to <code>index</code> in the controller.</p>
+
+<p><code>response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"</code></p>
+
+<h1 id="cors-package">CORS (package)</h1>
+
+<p>To do this, you need to include the following in the <code>Gemfile</code> of your rails app:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'rack-cors'</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="n">rack</span><span class="o">/</span><span class="n">cors</span><span class="err">’</span> 
+</code></pre></div></div>
+
+<p>Don’t forget to run the <code>bundle install</code> command after updating the <code>Gemfile</code>:</p>
+
+<pre><code>bundle install
+</code></pre>
+
+<p>Finally, create a new file, <code>config/initializers/cors.rb</code> with the following content:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">config</span><span class="p">.</span><span class="nf">middleware</span><span class="p">.</span><span class="nf">insert_before</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Cors</span> <span class="k">do</span>
+  <span class="n">allow</span> <span class="k">do</span>
+    <span class="n">origins</span> <span class="s1">'http://localhost:3000'</span>
+
+    <span class="n">resource</span> <span class="s1">'*'</span><span class="p">,</span>
+      <span class="ss">headers: :any</span><span class="p">,</span>
+      <span class="ss">methods: </span><span class="p">[</span><span class="ss">:get</span><span class="p">,</span> <span class="ss">:post</span><span class="p">,</span> <span class="ss">:put</span><span class="p">,</span> <span class="ss">:patch</span><span class="p">,</span> <span class="ss">:delete</span><span class="p">,</span> <span class="ss">:options</span><span class="p">,</span> <span class="ss">:head</span><span class="p">]</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Note that this configuration expects your React app to be running on port 3000.  If you are using a different port, adjust the line above accordingly.  (By default, Rails runs on port 3000 also; so, if you are running both Rails and React locally, you will have to pick a different port for one of them.)</p>
+
+</main>
+</body>
+</html>
