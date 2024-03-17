@@ -504,6 +504,254 @@ passes a function as a prop.  The lower-level component calls this function to r
   <li>Switch to building a Rails API so colors don’t have to be “hard coded”.</li>
 </ul>
 
+<h1 id="march">18 March</h1>
+
+<h2 id="review-1">Review:</h2>
+<ul>
+  <li>Page organized as a hierarchy.</li>
+  <li>Data passed down through the hierarchy as “props”.</li>
+  <li>State saved at the highest level of the hierarchy were it is needed using <code>useState</code>.
+    <ul>
+      <li><code>useState</code> defined inside a component (but not in the return block.</li>
+      <li>It is not defined in the global scope.</li>
+    </ul>
+  </li>
+  <li>To change state, pass a function down through the props.
+    <ul>
+      <li>That function is invoked “below” where the handler is — and usually passed parameters.</li>
+      <li>The function is defined in the same scope as the <code>useState</code> hook so that it can modify the state.</li>
+      <li>Modifying state causes components to re-render.</li>
+      <li>To modify state, objects must be <em>replaced</em>, not modified.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="callbacks-vs-promises">Callbacks vs. Promises</h2>
+
+<ul>
+  <li>JavaScript is asynchronous by nature and, therefore, uses a lot of callbacks.
+    <ul>
+      <li>Think about handlers and timers.</li>
+    </ul>
+  </li>
+  <li>Callbacks can lead to code that is difficult to read and organize
+    <ul>
+      <li>I’ll show an example in a minute.</li>
+    </ul>
+  </li>
+  <li>A better way to handle asynchronous code is <code>Promises</code></li>
+</ul>
+
+<h3 id="callbacks">Callbacks</h3>
+
+<ul>
+  <li><code>sqlite3</code> and <code>Express</code>: <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqliteCallbacks/db/SqliteToyDB.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqliteCallbacks/db/SqliteToyDB.js</a>
+    <ul>
+      <li>Notice that the <code>all</code> method call sends both (a) an SQL statement to the SQLite engine <em>and</em> (b) a callback — code that is executed when the request is complete.</li>
+      <li>The list of rows is passed as a parameter to the callback, it is <em>not</em> the function’s return value!</li>
+    </ul>
+  </li>
+  <li class="to-me">Also look at <code>find</code>, <code>create</code>, and <code>update</code>.</li>
+  <li>Using the DB elsewhere in the code requires a callback (<code>show</code> in <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqliteCallbacks/controllers/ToyController.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqliteCallbacks/controllers/ToyController.js</a>)
+    <ul>
+      <li>Notice that the calls to <code>render</code> as well as the error handling end up nested inside the call to <code>ToyDB.find</code></li>
+      <li>At the moment this is not terrible; but, it does take some getting used to.</li>
+      <li>Notice that if the controller had multiple steps, control flow would not be strictly “top to bottom”.  It would be “top to bottom, then back to the callback”</li>
+    </ul>
+  </li>
+  <li>Notice that the error handling is a bit clunky.</li>
+  <li>Notice the potential for SQL injection.</li>
+  <li>
+    <p>The use of <code>this.lastID</code> requires the use of <code>function</code> vs. <code>() =&gt;</code></p>
+  </li>
+  <li class="q">What is the benefit of this quirky callback system?
+    <ul>
+      <li>Concurrent behavior</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="callback-hell">“Callback Hell”</h3>
+
+<ul>
+  <li>Look at bottom of <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqliteCallbacks/db/SqliteToyDB.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqliteCallbacks/db/SqliteToyDB.js</a></li>
+  <li><code>toysBelow</code> and <code>toysAbove</code> are simple enough.</li>
+  <li>Now, what if we want to combine the results of two separate SQL calls (i.e., <code>extremes</code>)
+    <ul>
+      <li>Ignore the fact that this particular example could be a single SQL statement.</li>
+      <li>One call must be nested inside the other.
+        <ul>
+          <li>Logical flow is not “top to bottom” but rather “outside to inside”</li>
+          <li>(This is also true of the simpler cases; but, just not quite as obvious.)</li>
+          <li>Imagine what adding error handling could do to this code</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>What happens when there is a long sequence of callbacks that must be made:
+    <ul>
+      <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/callbackHell.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/callbackHell.js</a></li>
+      <li>Even writing separate functions doesn’t help much.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="promises">Promises</h2>
+
+<ul>
+  <li>A class / programming style that replaces “callback hell” with a more sequential-feeling style.
+    <ul>
+      <li>The basic features can actually be implemented in “user space” — no need for special programming language features.</li>
+      <li>Of course, Promises are built into JavaScript.
+        <ul>
+          <li>(Not sure if there are aspects that do require specific PL, either to exist or for performance reasons.)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Fundamentally, a Promise is an object that takes an asynchronous callback as a parameter.</li>
+  <li>The parameters to the callback are the callbacks to the asynchronous function.
+    <ul>
+      <li>I know that sentence makes no sense.</li>
+    </ul>
+  </li>
+  <li>Promise object also has a <code>next</code> method that is invoked when the the inner asynchronous call is complete.</li>
+  <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/timerPromise.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/timerPromise.js</a>
+    <ul>
+      <li>Moves the callback from inside the <code>setTimeout</code> call itself, to a subsequent call to <code>next</code>.</li>
+      <li>For one invocation, this is a minor change; but, it allows us to chain callbacks rather than nest them.</li>
+    </ul>
+  </li>
+  <li>Even more important benefit of Promises is improvement in error handling.
+    <ul>
+      <li>First, imagine having an if/then error check at every level of the nested callback.</li>
+      <li>Now, consider <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/timerPromiseWithFeedback.mjs">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/timerPromiseWithFeedback.mjs</a></li>
+      <li>Specifically look at <code>askAreYouUp</code>. (<code>io.question</code> is asynchronously fetching keyboard input.)</li>
+    </ul>
+  </li>
+  <li>Now back to the DB: <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqlitePromises/db/SqliteToyDB.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqlitePromises/db/SqliteToyDB.js</a>
+    <ul>
+      <li><code>allToys</code> on the implementation side is not much different
+        <ul>
+          <li>The call to the DB itself is still asynchronous (that’s the way that library was written).</li>
+          <li>We need to pass a callback.</li>
+          <li>But, but wrapping up the DB access in a promise, the “consumer” of the DB class has cleaner code: <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqlitePromises/controllers/ToyController.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqlitePromises/controllers/ToyController.js</a></li>
+          <li>Well, not a huge difference … yet.</li>
+        </ul>
+      </li>
+      <li><code>next</code> can take a parameter. Parameters passed to <code>resolve</code> become the parameters to <code>next</code>.</li>
+      <li>Similar for <code>reject</code> and <code>catch</code>.</li>
+      <li class="to-me">show how <code>find</code> uses both <code>resolve</code> and <code>reject</code> and <code>show</code> uses <code>catch</code>
+        <ul>
+          <li>again, not a huge change; but, the error detection is not so ‘ad-hoc’.</li>
+        </ul>
+      </li>
+      <li>The real power if Promises comes when we either
+        <ol>
+          <li>Want to run multiple queries in parallel (<code>all</code>), or</li>
+          <li>Need to sequence multiple queries and want clean error handling.</li>
+        </ol>
+      </li>
+      <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqlitePromises/db/promiseDemo.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqlitePromises/db/promiseDemo.js</a></li>
+      <li>Promises were a lifesaver when writing code for SpectrumHealth when we needed to pull data from the userDB, the Epic medical records DB, and the Priority Health insurance DB all at the same time.</li>
+    </ul>
+  </li>
+  <li>You will rarely create your own Promises. It is far more common that you will use libraries that already use Promises.
+    <ul>
+      <li>So, you will be getting Promise objects as return values from library calls, and</li>
+      <li>then using <code>then</code> and <code>catch</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="using-fetch-with-promises-to-connect-to-api">Using <code>fetch</code> with Promises to connect to API</h2>
+
+<ul>
+  <li>Back to <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ColorList1_fetch/src/App.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ColorList1_fetch/src/App.js</a>
+    <ul>
+      <li class="to-me">Look at the <code>fetchColors</code> method.</li>
+      <li><code>fetch</code> is a built in JavaScript function.</li>
+      <li>It returns a <code>Promise</code>.</li>
+      <li>When the “fetched” data is ready, the callback inside of <code>then</code> is invoked.</li>
+      <li>The data returned from the server is the <code>response</code> parameter.</li>
+      <li>The callback/Promise system prevents the JavaScript engine from stalling while 
+waiting for the API to respond.</li>
+    </ul>
+  </li>
+  <li>There is a subtlety here: The <code>fetch</code> callback is made when the server begins to return data.</li>
+  <li>If the amount of data returned is large; we may want to
+    <ol>
+      <li>wait for the entire response, or</li>
+      <li>process chunks of the response as it comes in.</li>
+    </ol>
+  </li>
+  <li>Therefore, the methods of the response object that provide content also return a <code>Promise</code> — a chain!</li>
+  <li>Calling <code>response.json()</code> returns a promise that is resolved when the entire data response is un-marshalled into a JavaScript object.
+    <ul>
+      <li>It is a common beginner mistake to forget this second promise and attempt to use <code>response.json()</code> directly.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="adding-api-calls-to-colorlist">Adding API calls to <code>ColorList</code></h1>
+
+<ul>
+  <li>We already saw the code that fetches the data from the server. Now, let’s wire it up.</li>
+  <li>The <code>useEffect</code> hook is code that runs code in the background.
+    <ul>
+      <li>Notice that we don’t want the page load to stall waiting for the API data.</li>
+      <li>Specifically, we don’t want a blank screen or a “spinning wheel” or something like that.</li>
+      <li>We want a meaningful page to load quickly, then get updated when the rest of the data arrives.</li>
+    </ul>
+  </li>
+  <li>To achieve this
+    <ul>
+      <li>We add two <code>useState</code> hooks</li>
+      <li><code>loading</code> keeps track of whether we are in the process of loading data.</li>
+      <li><code>message</code> keeps track of the message that will be displayed to the user indicating what is going on.</li>
+    </ul>
+  </li>
+  <li><code>useEffect</code> runs the specified block of code after initial render.
+    <ul>
+      <li>First it sets <code>loading</code> to true, which re-renders the page with a “loading…” message.</li>
+      <li>When data is finally ready
+        <ul>
+          <li><code>message</code> “turned off”</li>
+          <li><code>loading</code> set to <code>false</code></li>
+          <li>Color data updated.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="to-me">Show what happens if
+    <ul>
+      <li>delay changed</li>
+      <li>API raises exception</li>
+      <li>API shut down.</li>
+    </ul>
+  </li>
+  <li><strong>IMPORTANT</strong> Notice the second parameter to <code>useEffect</code>
+    <ul>
+      <li>It specifies dependencies – values that when changed should cause the hook to re-run.</li>
+      <li>Notice that changing <code>reloadCount</code> reloads the data from the server.</li>
+      <li>If I replace with an empty array, <code>useEffect</code> <em>never</em> re-runs.</li>
+      <li>If I omit the parameter, then it re-runs if <em>any</em> state changes.
+        <ul>
+          <li>This is bad because the whole purpose of the hook is to change <code>colors</code></li>
+          <li>The result is an infinite loop</li>
+        </ul>
+      </li>
+      <li>Take care: Some values will always appear different (e.g., arrays built on the fly).
+        <ul>
+          <li><code>useMemo</code> will create a consistent “hash” value when necessary.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="api-updates">API Updates</h1>
+
 </main>
 </body>
 </html>
