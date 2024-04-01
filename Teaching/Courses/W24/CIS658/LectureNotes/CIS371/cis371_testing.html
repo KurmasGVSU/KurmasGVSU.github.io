@@ -323,6 +323,15 @@ configure the mock to look for the parameter “toyz”.  Your unit test will pa
       <li>Need many fewer.
         <ul>
           <li>In theory, you don’t need to provide every possible input to the end-to-end tests.  Differences in logic / algorithms handled by unit tests.  You just need to test the different workflows / integrations.</li>
+          <li>For example, your unit tests thoroughly verify that the correct discount is applied 
+given a set of conditions (age, student status, vip, etc.)</li>
+          <li>The end-to-end test need only verify that
+            <ol>
+              <li>the application behaves correctly when any discount is given, and</li>
+              <li>the application correctly passes the parameters to the algorithm (e.g., the 
+  text boxes are “hooked up” correctly.)</li>
+            </ol>
+          </li>
         </ul>
       </li>
     </ul>

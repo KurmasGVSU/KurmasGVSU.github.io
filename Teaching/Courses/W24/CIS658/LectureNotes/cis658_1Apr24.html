@@ -1,0 +1,389 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="cucumber-revisited">Cucumber revisited</h1>
+<ul>
+  <li>Review how the feature works
+    <ul>
+      <li>Some of the steps are my “error checking” steps.</li>
+    </ul>
+  </li>
+  <li>Selenium is a program that drives web browsers in general
+    <ul>
+      <li>It has bindings in many different languages  <a href="https://www.selenium.dev/downloads/">https://www.selenium.dev/downloads/</a></li>
+      <li>Each web browser needs its own driver.</li>
+      <li>The Chromedriver is an npm package that can be used with the <code>cucumber-js</code> package.</li>
+    </ul>
+  </li>
+  <li>Look at <code>setup.js</code>
+    <ul>
+      <li>API and react must be launched outside of cucumber
+        <ul>
+          <li>(There are probably ways of automating this)</li>
+        </ul>
+      </li>
+      <li>“magic” to get an object that can talk to the browser: 
+ <code>let driver = new Builder().forBrowser('chrome').build()</code></li>
+      <li><code>Before</code> block resets API to make tests consistent.</li>
+      <li>Look at <code>When('I visit the root page')</code></li>
+      <li>Look at <code>Then('I should see {int} colors'</code>
+        <ul>
+          <li>Parameter</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Fundamental step in cucumber is finding node in the DOM, either to drive the DOM 
+  or to verify that the content is as expected.</li>
+  <li>Locator: Many ways to locate an element:
+    <ul>
+      <li><a href="https://www.selenium.dev/documentation/webdriver/elements/locators/">https://www.selenium.dev/documentation/webdriver/elements/locators/</a></li>
+      <li class="to-me">show syntax in different languages.</li>
+    </ul>
+  </li>
+  <li>Finding elements
+    <ul>
+      <li><a href="https://www.selenium.dev/documentation/webdriver/elements/finders/">https://www.selenium.dev/documentation/webdriver/elements/finders/</a></li>
+      <li><code>findElement</code> (singular): Returns the first matching element.
+        <ul>
+          <li>Notice that this is asynchronous</li>
+        </ul>
+      </li>
+      <li><code>findElements</code> (plural): Returns all matching elements.</li>
+      <li>You can use multiple steps (as shown in the web page)
+        <ul>
+          <li>Or use css selector or XPATH</li>
+        </ul>
+      </li>
+      <li>You can also search by content (e.g., the text that appears in the element)
+        <ul>
+          <li><code>findElements</code> will return an empty list, <code>findElement</code> will raise an exception if it can’t find what it’s looking for.</li>
+          <li>So, one test strategy is to look for expected text and know that if it doesn’t appear the test will fail.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>XPATH: A very powerful way to identify an element in a DOM</li>
+  <li><a href="https://www.w3schools.com/xml/xpath_intro.asp">https://www.w3schools.com/xml/xpath_intro.asp</a></li>
+  <li><code>/</code> vs <code>//</code>: <a href="https://www.w3schools.com/xml/xpath_syntax.asp">https://www.w3schools.com/xml/xpath_syntax.asp</a>
+    <ul>
+      <li><code>//section</code> in sample code</li>
+    </ul>
+  </li>
+  <li>
+    <p>So far, so good, but you can do this with css selectors.  But, it gets better:</p>
+  </li>
+  <li>Finding the specific edit button.
+    <ul>
+      <li>How do I know <em>which</em> edit button I want?</li>
+      <li>The only defining characteristic is the title (the <code>h1</code> inside the section.)</li>
+      <li>Notice that the edit button is a “nephew” of the distinguishing <code>h1</code>.</li>
+      <li>We need to identify the correct section, then go get the edit button it contains.</li>
+      <li>Read the <code>[]</code> as “such that”:
+        <ul>
+          <li>Find a section <em>such that</em> it contains an <code>h1</code> whose text is …</li>
+          <li>Outside the <code>[]</code> the expression continues with <code>//button</code></li>
+          <li>The use of <code>//</code> means that the button doesn’t have to be a direct child of the <code>section</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Code is very similar in Ruby:
+    <ul>
+      <li><code>/Users/kurmasz/Documents/Courses/Old/CS371/General/CS371_SampleCode/TestingDemo/features</code></li>
+      <li>However, regular expression syntax used more heavily.</li>
+    </ul>
+  </li>
+  <li>Capybara is a higher-level abstraction than Selenium
+    <ul>
+      <li><a href="https://github.com/teamcapybara/capybara">https://github.com/teamcapybara/capybara</a></li>
+      <li><code>./CIS658/Code/TempBlog/features</code></li>
+    </ul>
+  </li>
+  <li>Challenge:  Knowing how long to wait.</li>
+</ul>
+
+</main>
+</body>
+</html>
