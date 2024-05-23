@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CIS 500 --- Fundamentals of Software Practice</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        margin-right: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+              .kielceAssignmentTable {
+           border-spacing: 35px 0;
+        }        
+
+        .kielceAssignmentTable tr th {
+          text-align: left;          
+        }
+
+        .kielceAssignmentTable tr td {
+          vertical-align: top;
+        }
+
+        .kielceAssignmentTable_due {
+           white-space:  nowrap;
+        }
+
+        .kielceAssignmentTable_title {
+            white-space: nowrap;
+        }
+
+        .exam {
+            background-color: lightgreen;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div id="nav">
+
+  <p><a target="_top" href="index.html">Course Home</a></p>
+
+  <p><a href="syllabus.html">Syllabus</a></p>
+
+  <p><a href="timeline.html">Timeline</a></p>
+
+  <!-- <p><a href="learningObjectives.pdf">Learning Objectives</a></p> -->
+  
+  <!-- <p><a href="estimated_timeline.html">Timeline</a></p> -->
+
+  <!-- <p><a target="_top" data-klink="previousCourseURL">Previous Offering</a></p> -->
+
+  <!-- <p id="currentOffering" style="DISPLAY: none"><a target="_top" data-klink="currentCourseURL">Current Offering</a>
+  </p> -->
+
+  <!--
+  <p><a href="SampleCode" style="color:white"><fontsize="2"
+  face="arial,helvetica,sans-serif">SampleCode</font></a></p>
+  -->
+
+  <hr>
+
+  <p><a href='http://localhost:8000'>My Home</a></p>
+  <p><a href='https://www.gvsu.edu/computing/module-officehours-index.htm?userId=3198C5B9-BBE4-A648-BC24DF41E859FD18&siteModuleId=3178A9F5-C72C-B4A4-4F15D6794E34F230'>My Schedule</a></p>
+
+</div>
+
+    <div id="content">
+      <div>
+        <h2 style="text-align: center">
+          <span>CIS 500 Fundamentals of Software Practice</span><br>
+          <span>Winter 2024</span>
+        </h2>
+      </div>
+      <dl>
+        <dt> Contact Information:</dt>
+        <dd><style>
+    .contactInfoTable {
+        width: 100%;
+    }
+
+    .contactInfoTable td {
+        border: 0;
+        margin: 3px;
+    }
+
+    .ciHeader {
+        font-weight: bold
+    }
+
+    .contactInfoTable td {
+        text-align: left;
+    }
+
+    .contactInfoTable td:nth-child(1) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(3) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(4) {
+        width: 250px;
+    }
+</style>
+
+<table class="contactInfoTable">
+    <tr>
+        <td class="ciHeader">Instructor:</td>
+        <td>Zachary Kurmas</td>
+        <td class="ciHeader">Office:</td>
+        <td>MAK C-2-316 / DCIH 530G</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Phone:</td>
+        <td>(616)-331-8688</td>
+        <td class="ciHeader">Office Hours:</td>
+        <td>MW 2:30-4:00 (DCIH)</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Home page:</td>
+        <td>
+            <a href='http://localhost:8000'><code>http://localhost:8000</code></a>
+        </td>
+        <td></td>
+        <td>TTh In Allendale by appointment </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+<p>E-mail is the best way to contact me. During the week, expect a reply within 24 hours. Also, feel free to visit my
+    office any time the door is open,
+    even if it isn't officially office hours.</p>
+
+<p>For Winter semester, I plan to be downtown in DCIH on Mondays and Wednesdays only. I will be
+    in my Allendale office most Tuesdays and some Thursdays. If you already on the Allendale
+    campus, feel free to drop by. However, before making a special trip to Allendale,
+    I suggest emailing me to make sure I'm available.</p>
+        </dd>
+        <dt>Course Documents:
+          <dd>
+            <ul>
+              <li><a href="syllabus.html">Syllabus</a>
+                <li><a target="_top" href="https://www.gvsu.edu/computing/academic-honesty-30.htm">CIS Academic Honesty Policy</a></li>
+              </ul>
+              <dt>Announcements:</dt>
+              <dd> I will post announcements at <a target="_top" href="https://piazza.com/gvsu/winter2024/cis500">Piazza</a>.
+                Please check there regularly.
+              </dd>
+              <dt>Discussion Board:</dt>
+              <dd>Please post questions about homework, projects, etc. to <a target="_top" href="https://piazza.com/gvsu/winter2024/cis500">Piazza</a>. Doing
+                so allows everybody to see the question and answer and saves me the time of answering the same question multiple
+                times. Other students can also answer your question, which may help you get a faster response.
+              </dd>
+              <dt>PrairieLearn:</dt>
+              <dd>To access the PrairieLearn module for this course, visit <a href='https://us.prairielearn.com/pl/course_instance/145814'><code>https://us.prairielearn.com/pl/course_instance/145814</code></a>.
+                Choose "Log in with Google" and use your GVSU gmail account credentials.
+              </dd>
+              <dt>Grades:</dt>
+              <dd>
+                I will push a grade report into your Progress Report git repository about once per week.
+                <!-- I will post grades on <a target="_top" href="https://mybb.gvsu.edu">Blackboard</a>. -->
+              </dd>
+              <!--
+
+    <dt>Assignments:
+    <dd>
+          <table class='kielceAssignmentTable'>
+      <tr>
+         <th>Due</th>
+         <th>Name</th>
+         <th>Details</th>
+      </tr>
+</table>
+
+    </dd>
+-->
+              <dt>Text:</dt>
+              <dd>
+                The official textbook for this class is
+                <ul>
+                  <li style="padding-bottom: 0; margin-bottom: 0"><em>Foundations of Python Programming: Functions First Edition</em> by Matthew Hrehirchuk et al..  <a href='https://runestone.academy/ns/books/published/foppff/frontmatter-1.html?mode=browsing'><code>https://runestone.academy/ns/books/published/foppff/frontmatter-1.html?mode=browsing</code></a><br>
+                    (This is an online textbook accessible through <a href='https://landing.runestone.academy/'>Runestone</a>.)</li>
+                </ul>
+              </ol>
+              These books are also recommended. Both are freely available through the library's subscription to O'Reilly books.
+              <ul>
+                <li style="padding-bottom: 0; margin-bottom: 0"><em>The Linux Command Line (2nd ed.)</em> by William E. Shotts. ISBN: 978-1-59327-952-3 </li>
+                <li style="padding-bottom: 0; margin-bottom: 0"><em>Efficient Linux at the Command Line</em> by Daniel J. Barrett. ISBN: 978-1098113407 </li>
+              </ul>
+            </dd>
+            <dt>Reference:</dt>
+            <dd>
+              <ul>
+                <li>Online Python textbooks:
+                  <ul>
+                    <li><a href='https://runestone.academy/ns/books/published/fopp/index.html?mode=browsing'>Foundations of Python Programming</a> (the text on which our textbook is based).
+                      <li><a href='https://runestone.academy/ns/books/published/httlacs/thinkcspy-3.html?mode=browsing'>How to Think Like a Computer Scientist.</a>
+                        <li>The <a href='https://blockpy.cis.udel.edu/assignments/textbook/bakery_textbook'>interactive textbook</a>
+                          from the <a href='https://python-bakery.github.io'>Python Bakery</a> project.
+                          <li> <a href='https://snakebear.science'>The Python and Pandas Field Guide</a></li>
+                          <li><a href='https://learnpythontherightway.com/'>Learn Python the Right Way</a>
+                            (also available as a <a href='https://i.ritzastatic.com/learn-python-the-right-way/learn-python-the-right-way.pdf'>pdf</a>a </li>
+                        </ul>
+                      </li>
+                      <li>Other Python resources:
+                        <ul>
+                          <li>The <a href='https://www.python.org/'>official Python web site</a></li>
+                          <li>Tutorial/Reference from <a href='https://www.w3schools.com/python/default.asp'>W3Schools</a></li>
+                          <li><a href='https://docs.python.org/3/library/'>Standard Library</a></li>
+                          <li>Reference for <a href='https://fstring.help/'>format strings</a></li>
+                        </ul>
+                      </li>
+                      <li>Git resources:
+                        <ul>
+                          <li>The <a href='https://git-scm.com/'>official git web site</a></li>
+                          <li><a href='https://gitforwindows.org/'>git for Windows</a> (also called "git bash")</li>
+                        </ul>
+                      </li>
+                      <li>Setting up an ssh public/private keypair for use with GitHub:
+                        <ul>
+                          <li><a href='https://www.youtube.com/watch?v=vw1k0PUpSeM'>My video</a></li>
+                        </ul>
+                      </li>
+                      <li><a href='https://youtube.com/playlist?list=PLzV58Zm8FuBKtREubmlbKHnPI-_LZlkzH&si=AUNs8F1jkDiiFTlr'>YouTube playlist</a> containing videos about Linux by Philip Gao.</li>
+                    </ul>
+                  </dd>
+                </dl>
+                <hr>
+                <p>Updated Thursday, 23 May 2024, 4:01 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+              </div>
+            </body>
+          </html>
