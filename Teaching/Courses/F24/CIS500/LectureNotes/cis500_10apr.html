@@ -1,0 +1,427 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="pandas-quick-review">Pandas Quick review</h1>
+
+<ul>
+  <li><code>import pandas as pd</code>
+    <ul>
+      <li>The <code>as</code> part allows you to say <code>pd</code> instead of the “full” <code>pandas</code></li>
+    </ul>
+  </li>
+  <li>Open a <code>.csv</code> or <code>.xlsx</code>.
+    <ul>
+      <li>File can be compressed. No need to do anything special (as long as system can determine what kind of compression)</li>
+    </ul>
+  </li>
+  <li>DataFrame is a 2D representation of data.
+    <ul>
+      <li>Kind of like a worksheet</li>
+    </ul>
+  </li>
+  <li>Accessing like an array gives a column by name
+    <ul>
+      <li><code>print(df['name'])</code></li>
+      <li><code>print(df['team'])</code></li>
+      <li><code>print(df[['name', 'team']])</code>
+        <ul>
+          <li>Notice the use of the nested array <code>[[</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>To access rows, use <code>loc</code> or <code>iloc</code>
+    <ul>
+      <li><code>iloc</code> uses row numbers</li>
+      <li><code>loc</code> uses row index.
+        <ul>
+          <li>Need to specify index column</li>
+          <li>can be done with  <code>index_col</code> param to <code>read_*</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Can specify multiple rows:
+    <ul>
+      <li><code>df.loc[['WAS', 'JAX']]</code></li>
+      <li>Again note the nested array.</li>
+      <li>Second parameter is a list of desired columns.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="pandas-filters">Pandas Filters</h2>
+
+<ul>
+  <li>Applying a logical operator to a column gives a series of <code>True</code> and <code>False</code>.
+    <ul>
+      <li><code>df['team'] == 'JAX'</code></li>
+    </ul>
+  </li>
+  <li>Passing this result to <code>df[]</code> generates the values that pass the filter.
+    <ul>
+      <li><code>df[df['team'] == 'JAX']</code></li>
+    </ul>
+  </li>
+  <li>See a given column for rows matching a criteria.
+    <ul>
+      <li><code>print(df.loc[df['team'] == 'JAX', 'games'])</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="linux-review">Linux Review</h1>
+
+<ul>
+  <li>
+    <p>Add notes to your ‘cheat sheet’</p>
+  </li>
+  <li>Write python programs in a separate file
+    <ul>
+      <li><code>argv</code> takes parameters from the command line.</li>
+    </ul>
+  </li>
+  <li>File re-direction</li>
+  <li>Piping</li>
+</ul>
+
+<h1 id="new-linux-utilities">New Linux utilities</h1>
+
+<ul>
+  <li><code>echo</code>
+    <ul>
+      <li>Create a file with text</li>
+    </ul>
+  </li>
+  <li><code>cat</code></li>
+  <li><code>grep</code>
+    <ul>
+      <li>What is the default filename for my script?
+        <ul>
+          <li><code>cd CIS500/W24</code></li>
+          <li><code>grep csv compare_pl.rb</code></li>
+        </ul>
+      </li>
+      <li>Can check multiple files at once
+        <ul>
+          <li><code>grep csv *.rb</code></li>
+        </ul>
+      </li>
+      <li>Another example:
+        <ul>
+          <li><code>gunzip -c</code> sends unzipped data to the standard output.</li>
+          <li>Can use to give the file a different name and/or not remove the original.</li>
+          <li>Can use it to quickly check things.
+            <ul>
+              <li><code>gunzip -c | grep WAS</code></li>
+            </ul>
+          </li>
+          <li>Doesn’t always work, but sometimes good for quick-and-dirty.
+            <ul>
+              <li><code>gunzip -c | grep 8</code> — not just days suspended.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>grep -v</code>
+    <ul>
+      <li><code>cd ./Old/CS371/General/Homework/Calendar_php/</code></li>
+      <li><code>ls -l | grep -v '~'</code></li>
+      <li>Is every source in the NFL csv a web page?
+        <ul>
+          <li><code>gunzip -c foo.csv | grep -v http</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>head</code>, <code>tail</code>, <code>less</code></li>
+  <li><code>sort</code></li>
+  <li><code>wc</code></li>
+</ul>
+
+</main>
+</body>
+</html>
