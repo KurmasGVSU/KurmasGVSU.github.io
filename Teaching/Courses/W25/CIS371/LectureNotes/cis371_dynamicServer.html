@@ -1,0 +1,656 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="dynamic-web-servers">Dynamic Web Servers</h1>
+
+<ul>
+  <li>The simple mental model of a web server is that the path names a static file that is returned 
+(html, image, text, etc)</li>
+  <li>However, the web server can interpret the path however it wants.</li>
+  <li>Typical web servers (e.g., the CIS web server) already have some files that are treated specially
+    <ul>
+      <li>Files that look like <code>~kurmasz</code> are converted into <code>/home/users/kurmasz/public_html</code></li>
+      <li>When requesting a directory, either <code>index.html</code> or a directory listing is returned</li>
+    </ul>
+  </li>
+  <li>We can add “special” commands to our sample web server
+    <ul>
+      <li>See <code>ServerWithWhoCommand.java</code></li>
+      <li>If the path happens to be <code>who</code>, <code>whoText</code>, or <code>exit</code>, the server does something special (as opposed to simply returning the file)</li>
+    </ul>
+  </li>
+  <li>We would like to generalize this.
+    <ul>
+      <li>Our current model requires adding code to the server (and re-compiling the server)</li>
+      <li>That’s is certainly not efficient (and probably not secure)</li>
+      <li>We want a way to have a server run code that isn’t part of the server (preferably a secure way)</li>
+      <li>The high level concept is called “fork and exec”: One program can launch another</li>
+      <li>Web server launches another program that generates the web page on the fly.</li>
+      <li>The web server and the “child” program communicate through a kind of stream called a “pipe”.</li>
+      <li>Idea: Have web server assume files in a special place (historically <code>cgi-bin</code>) are programs to be executed.</li>
+      <li class="to-me">Look at <code>DynamicServer1.java</code>
+        <ul>
+          <li><code>cgi-bin\Who.java</code> generates a web page</li>
+          <li><code>cgi-bin\Now.java</code> is a simple clock.</li>
+        </ul>
+      </li>
+      <li>Notice that we can add new commands without recompiling or restarting the server.</li>
+    </ul>
+  </li>
+  <li>We want a way of writing code that generates HTML that isn’t tedious.
+    <ul>
+      <li>Look at <code>data/cgi-bin/Who.java</code>.  Having to surround all your HTML with <code>string.append</code> would get tiresome quickly.</li>
+      <li>Perhaps Java, C, C++ aren’t the best languages for generating HTML (or, rather, long strings in general)
+        <ul>
+          <li><img src="Images/charlesV.jpg" alt="" /></li>
+          <li><a href="https://media.allauthor.com/images/quotes/img/charles-v-quote-i-speak-spanish-to-god-italian-to-women.jpg">https://media.allauthor.com/images/quotes/img/charles-v-quote-i-speak-spanish-to-god-italian-to-women.jpg</a></li>
+        </ul>
+      </li>
+      <li>Scripting languages (perl, python, ruby, etc.) tend to be a bit more flexible.</li>
+      <li>Examine <code>data/cgi-bin/findSomeone.pl</code>.
+        <ul>
+          <li>Notice most of the HTML is in the “here document” at the bottom.</li>
+          <li>This is better; but, it still buries the HTML inside another document.</li>
+        </ul>
+      </li>
+      <li class="q">How could we do better?</li>
+      <li>Examine <code>data/cgi-bin/findSomeone.thtml</code> and <code>findSome.rb</code>
+        <ul>
+          <li><code>thtml</code> file focuses on html with a couple of placeholders</li>
+          <li><code>rb</code> file does the computation.</li>
+          <li>placeholders substituted in at the last minute.</li>
+        </ul>
+      </li>
+      <li class="q">Does this sound like anything you know / know about?</li>
+      <li>This is how PHP got started.</li>
+    </ul>
+  </li>
+  <li>PHP was the start of many attempts to simplify web programming
+    <ul>
+      <li>Began as some macros (similar to what I did above) and expanded into a full programming language.</li>
+      <li>PHP by default just spits out the text of the file.
+        <ul>
+          <li class="to-me">Run <code>php chadh01.html</code></li>
+        </ul>
+      </li>
+      <li>Anything inside the <code>&lt;?php echo "This is PHP" ?&gt;</code> is interpreted PHP code.
+        <ul>
+          <li>In other words, you can mix the actual code into the HTML</li>
+          <li>as much or as little as makes sense for your particular application.</li>
+          <li class="to-me">Run <code>cgi-bin\helloWorld.php</code></li>
+          <li>This is similar to the Ruby behavior; but, it lets you do more than just drop variables in.</li>
+        </ul>
+      </li>
+      <li>PHP is more tightly integrated into web servers.  Therefor, it has a lot of functions built-in that are common to web programming:
+        <ul>
+          <li>Fetching query string parameters</li>
+          <li>Reading/Setting headers (including cookies)</li>
+          <li>Handling form data.</li>
+        </ul>
+      </li>
+      <li>You are welcome to use PHP for your project; but, lecture will focus
+on more recent development.
+        <ul>
+          <li>PHP originally designed for small amounts of code.</li>
+          <li>PHP not originally OO; but had OO “bolted” on to the side.</li>
+          <li>Thus, PHP can be feel awkward at times – especially when compared to more recently developed tools.
+            <ul>
+              <li>For example, large code-only files are entirely escaped with <code>&lt;?php .... ?&gt;</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Other common (and once common) templating engines
+    <ul>
+      <li>Ruby ERB</li>
+      <li>Java Java Server Pages (JSP)</li>
+      <li>Razor (C# and other .NET)</li>
+      <li>Jinja (Python – used by Flask)</li>
+    </ul>
+  </li>
+  <li>PHP is not bad.  It just didn’t have the benefit of hindsight that more modern examples have.</li>
+</ul>
+
+<h2 id="recap">Recap</h2>
+
+<ol>
+  <li>Servers can generate HTML on the fly
+    <ul>
+      <li>e.g., generating a directory listing</li>
+    </ul>
+  </li>
+  <li>Servers can launch external program whose output is a web page.
+    <ol>
+      <li>Could be just any other program that generates HTML in an ad-hoc method.</li>
+      <li>Could be a two-part system:  code calculates several key variables, then they aer 
+substituted into a mostly-complete HTML documents (e.g., the Ruby example I showed)</li>
+      <li>HTML and code are mixed</li>
+    </ol>
+  </li>
+</ol>
+
+<ul>
+  <li>Many of the first “web apps” used technique #1 with perl.
+    <ul>
+      <li>“Here” documents were a transition to technique #2.</li>
+    </ul>
+  </li>
+  <li class="to-do">Remember: High-level ideas are what is important, not the language details.</li>
+  <li>PHP was one of the first to employ technique #3:
+    <ul>
+      <li>Document is basically HTML,  but can switch to running code.</li>
+      <li class="to-me">Look at <code>colorDemo.php </code>in <code>SampleCode/Templates</code></li>
+      <li>Some code sections generate HTML.  Others just contain code (e.g., set variables, define         functions)</li>
+      <li>You can even define methods inside PHP</li>
+    </ul>
+  </li>
+  <li>Sometimes the PHP code itself generates HTML tags because the alternative 
+(repeatedly opening and closing PHP sections gets ugly)</li>
+  <li>Notice the php section that just contains closing curly brace.</li>
+  <li>The last section uses a more modern functional technique (<code>array_map</code>); it’s a bit awkwardly implemented in and older language like PHP.</li>
+  <li>Ruby cleaned things up a bit with ERB. (See <code>colorDemo.html.erb</code>)
+    <ul>
+      <li>Tag is shorter <code>&lt;%=</code> vs <code>&lt;?php</code></li>
+      <li>Two types of tag:
+        <ul>
+          <li><code>&lt;%=</code> for code that generates output (i.e. no need for explicit <code>echo</code>)</li>
+          <li><code>&lt;%</code> for code containing code without output (e.g, variable definitions)</li>
+        </ul>
+      </li>
+      <li>The last section shows a more modern functional programming approach
+        <ul>
+          <li>Less switching between HTML and code; but,</li>
+          <li>Code not as easy to read — especially if you are new to functional techniques.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>EJS is a JavaScript library that behaves similarly.
+    <ul>
+      <li>In .ejs note difference between <code>&lt;%= %&gt;</code> and <code>&lt;%-  %&gt;</code></li>
+    </ul>
+  </li>
+  <li>Jinja is a Python library that behaves similarly.</li>
+  <li>These template engines (PHP, ERB, EJS) look a lot like HTML.</li>
+  <li>There is a second style of template that provide “shortcuts”</li>
+  <li class="to-me">Show <code>colorTemplate.haml</code>
+    <ul>
+      <li>No closing tag.  Instead contents of tag are determined by indentation.</li>
+      <li>This is also true of code.  (Notice the “foreach” loops.)</li>
+      <li>Short-cuts for adding classes and ids. (<code>li:important</code> or <code>li#first</code>)</li>
+      <li>The <code>=</code> is a short-cut for grabbing variables.</li>
+    </ul>
+  </li>
+  <li>Pug (formerly Jade) is a HAML-style template engine for JavaScript</li>
+  <li>ERB-style is easier to get started with; but colleagues at AO calim that HAML is better once you get used to it.</li>
+  <li>There are a few “#2”-style template engines, including Mustache and Handlebars
+    <ul>
+      <li>Simpler, but not as powerful.</li>
+      <li>Mustache is a syntax that has been implemented in many languages.</li>
+      <li>Handlebars is a Javascript-only extension to Mustache.</li>
+      <li>Both are a play on the appearance of this syntax: <code>{{  }}</code></li>
+    </ul>
+  </li>
+  <li>My recommendation:
+    <ul>
+      <li>If you plan to work with PHP, this is a good opportunity to use PHP.</li>
+      <li>If you plan to work with Rails, this is  good opportunity to use ERB.</li>
+      <li>Otherwise, pick one of the JavaScript engines.  (Both work with Express)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="node--npm">Node / NPM</h2>
+
+<ul>
+  <li>Node is a JavaScript engine that you can run from the command line.</li>
+  <li>nvm is “node version manager”.  Helpful if you work on projects that are picky about their node version.</li>
+  <li class="to-me">Show a simple ‘hello world’ app in a clean directory.</li>
+  <li><code>npm</code> is the <code>N</code>ode <code>P</code>ackage <code>M</code>anager. It makes it easy to install libraries for your use.
+    <ul>
+      <li>You must begin with <code>npm init</code>.  (Accept the defaults for now.)
+        <ul>
+          <li>This creates a <code>packages.json</code> file describing the app and its dependencies.</li>
+        </ul>
+      </li>
+      <li>At a high level, there are two types of packages:
+        <ol>
+          <li>Libraries containing code to import into your own JS projects.</li>
+          <li>Command-line tools written in JavaScript.</li>
+        </ol>
+      </li>
+      <li>Use <code>npm install foo</code> to install packages.
+        <ul>
+          <li>By default, packages are installed locally to your <code>node_modules</code> directory.</li>
+          <li>Adding the <code>--save</code> flag will update the dependency list in <code>node_modules</code></li>
+          <li>Adding the <code>-g</code> flag will install the module globally (i.e., make it accessible to all your projects.)</li>
+          <li>I would not use <code>-g</code> for libraries: It could lead to version conflicts.</li>
+          <li>You may consider using <code>-g</code> to install command-line scripts</li>
+          <li>If you choose to install a command-line script locally, you can access it through <code>node_modules/.bin</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="input-from-web-apps">Input from web apps</h2>
+
+<ul>
+  <li>For web apps to be most useful, they need input from the user
+    <ul>
+      <li>e.g., Name of city to get the weather in.</li>
+    </ul>
+  </li>
+  <li>Two main sources of input <code>GET</code> and <code>POST</code></li>
+</ul>
+
+<h3 id="get">GET</h3>
+
+<ul>
+  <li>The last part of the URL is the <em>query string</em>
+    <ul>
+      <li>A <code>?</code> followed by a set of key-value pairs</li>
+      <li>Key-value pairs are separated by <code>&amp;</code></li>
+      <li><code>http://www.weather.com/daily?city=Allendale&amp;state=Michigan</code></li>
+      <li>Some characters (e.g., a space) need to be re-encoded
+        <ul>
+          <li>Space becomes <code>%20</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Now, we need a way of passing the query string into the code.</li>
+  <li>The convention is to use <em>environment variables</em>
+    <ul>
+      <li>Specifically, the query string is passed in a variable named <code>QUERY_STRING</code></li>
+      <li>Server typically passes other helpful information in other variables
+        <ul>
+          <li>Request headers</li>
+          <li><code>DOCUMENT_ROOT</code></li>
+          <li><code>REQUEST_URI</code></li>
+          <li><code>SERVER_PORT</code></li>
+          <li class="to-me">Show <code>environment.php</code>
+            <ul>
+              <li>Can either run from link on course web page (<code>https://faculty.computing.gvsu.edu/kurmasz/environment.php</code>), 
+ or launch <code>php -S 127.0.0.1:9000</code> from local directory.)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Notice that PHP does some pre-processing of these variables to make things easier for the programmer.
+    <ul>
+      <li>Specifically, notice that the query string is parsed and placed in <code>_GET</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="forms">Forms</h3>
+
+<ul>
+  <li>Used to collect data in a web page and send it to the server.</li>
+  <li class="to-me">Show <code>formDemo.php</code>.
+    <ul>
+      <li>Highlight syntax and different types of input.</li>
+      <li>Highlight how <code>name</code> and <code>value</code> are used.</li>
+      <li>Highlight the change in the query string.</li>
+    </ul>
+  </li>
+  <li>The action <em>may</em> but need not be the same page.  (In this case, it is the same page.)</li>
+</ul>
+
+<h3 id="post">POST</h3>
+
+<ul>
+  <li>Second way to send data to the server is to <em>Post</em> it.</li>
+  <li>Data sent in the body of the HTTP request rather than in the query string.
+    <ul>
+      <li>Remember that HTTP request ends with a blank line.  Post data follows that blank line.</li>
+      <li class="to-me">Show how to observe values sent in Chrome developer tools.</li>
+      <li class="to-do">Notice that PHP helpfully parses this data and places it in variables so it’s ready to go.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="get-vs-post">GET vs POST</h3>
+
+<ul>
+  <li class="q">When to use GET and when to use POST?</li>
+  <li>Get should be used for <em>idempotent</em> actions.</li>
+  <li class="q">What does idempotent mean?</li>
+  <li class="q">Why should GET be idempotent?
+    <ul>
+      <li>Philosophical: Fits original intent of GET and POST</li>
+      <li>Practical: Query strings can be bookmarked (i.e., easy to repeat).</li>
+    </ul>
+  </li>
+  <li class="q">How about security?</li>
+  <li>Common rumor that GET is less secure.  However,
+    <ul>
+      <li>With HTTP, both values can be “sniffed”.</li>
+      <li>WIth HTTPS both values are encrypted.</li>
+    </ul>
+  </li>
+  <li>However, the “bookmarkability” of GET data / query strings makes it 
+easier to accidentally leak data.</li>
+</ul>
+
+<h3 id="other-verbs">Other verbs</h3>
+
+<ul>
+  <li>Rather than thinking about objects on the web primarily as files (either .html or code), many framework prefer to think of objects on the web as <em>resources</em> (e.g., books, toys, passengers, etc)
+    <ul>
+      <li>There are four basic actions you can do to a resource: CRUD</li>
+      <li class="q">What does CRUD stand for?
+        <ul>
+          <li>Create</li>
+          <li>Read</li>
+          <li>Update</li>
+          <li>Delete</li>
+        </ul>
+      </li>
+      <li>HTTP has added verbs to support these actions
+        <ul>
+          <li>PUT:  Supply a complete, modified version of a resource</li>
+          <li>PATCH: Supply instructions for updating/modifying a resource without completely replacing it.</li>
+          <li>DELETE: Delete a resource</li>
+        </ul>
+      </li>
+      <li>HTML forms can only use GET and POST, so web frameworks have to use workarounds for updates and deletes.</li>
+      <li><a href="https://en.wikipedia.org/wiki/Patch_verb">https://en.wikipedia.org/wiki/Patch_verb</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

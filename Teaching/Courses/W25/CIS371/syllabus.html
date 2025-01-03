@@ -1,0 +1,514 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CIS 371 --- Web Application Programming</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        margin-right: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+
+      .rightAlign {
+        text-align: right;
+      }
+
+      .leftAlign {
+        text-align: left;
+      }
+
+      .centerAlign {
+        text-align: center;
+      }
+
+      .gradingTable {
+        border: 0;
+        padding-top: 10px;
+      }
+
+      .gradingTable td, .gradingTable th {
+        padding-right: 10px;
+        padding-left: 10px;
+        /* border: 1px solid blue;  // retained for debugging */
+      }
+
+      .gradingTableHeader {
+        font-size: 110%;
+      }
+
+      .pointsTable {
+        padding-left: 25px;
+        border-collapse: collapse;
+      }
+
+      .pointsCell {
+        vertical-align: top;
+      }
+
+      .underlined {
+        border-bottom: 1px solid black;
+      }
+
+      .letterGradeHeader {
+        padding-right: 10px;
+      }
+
+
+
+      .gradingTable td, .gradingTable th {
+        padding-right: 10px;
+        padding-left: 10px;
+        /* border: 1px solid blue;  // retained for debugging */
+      }
+
+      .gradingTableHeader {
+        font-size: 110%;
+      }
+
+      .pointsTable {
+        padding-left: 25px;
+        border-collapse: collapse;
+      }
+
+      .pointsCell {
+        vertical-align: top;
+      }
+
+      .underlined {
+        border-bottom: 1px solid black;
+      }
+
+      .underlined_row td {
+        border-bottom: 1px solid black;
+        padding-bottom: 5px;
+      }
+
+
+      .letterGradeHeader {
+        padding-right: 10px;
+      }
+
+        .gradingTable {
+        border: 0;
+        padding-top: 25px;
+      }
+
+        .gradingTable tr td:nth-child(2),
+        .gradingTable tr td:nth-child(4),
+        .gradingTable tr td:nth-child(6),
+        .gradingTable tr td:nth-child(8) {
+      border-left: 1px solid black;
+      padding-left: 10px;
+      margin-left: 20px;
+        }
+
+        .gradingTable tr td:nth-child(1),
+        .gradingTable tr td:nth-child(3),
+        .gradingTable tr td:nth-child(5),
+        .gradingTable tr td:nth-child(7) {
+      padding-right: 10px;
+        }
+
+      .gradingTable .leftborder {
+        border-left: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav">
+  <a class='bypass' href="#content">Skip to main content</a>
+
+  <p><a target="_top" href="index.html">Course Home</a></p>
+
+  <p><a href="syllabus.html">Syllabus</a></p>
+
+  <p><a href="timeline.html">Timeline</a></p>
+
+  <!-- <p><a href="estimated_timeline.html">Timeline</a></p> -->
+
+  <!-- <p><a target="_top" data-klink="previousCourseURL">Previous Offering</a></p> -->
+
+  <!-- <p id="currentOffering" style="DISPLAY: none"><a target="_top" data-klink="currentCourseURL">Current Offering</a>
+  </p> -->
+
+  <!--
+  <p><a href="SampleCode" style="color:white"><fontsize="2"
+  face="arial,helvetica,sans-serif">SampleCode</font></a></p>
+  -->
+
+  <hr>
+
+  <p><a href='http://localhost:8000'>My Home</a></p>
+  <p><a href='https://www.gvsu.edu/computing/module-officehours-index.htm?userId=3198C5B9-BBE4-A648-BC24DF41E859FD18&siteModuleId=3178A9F5-C72C-B4A4-4F15D6794E34F230'>My Schedule</a></p>
+
+</nav>
+    <main id="content">
+      <div>
+        <h1 style="text-align: center">
+          <span>CIS 371 Web Application Programming</span><br>
+          <span>Winter 2025</span>
+        </h1>
+      </div>
+      <dl>
+        <dt> Contact Information:</dt>
+        <dd><style>
+    .contactInfoTable {
+        width: 100%;
+    }
+
+    .contactInfoTable td {
+        border: 0;
+        margin: 3px;
+    }
+
+    .ciHeader {
+        font-weight: bold
+    }
+
+    .contactInfoTable td {
+        text-align: left;
+    }
+
+    .contactInfoTable td:nth-child(1) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(3) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(4) {
+        width: 250px;
+    }
+</style>
+
+<table class="contactInfoTable">
+    <tr>
+        <td class="ciHeader">Instructor:</td>
+        <td>Zachary Kurmas</td>
+        <td class="ciHeader">Office:</td>
+        <td>MAK C-2-316 / DCIH 530G</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Phone:</td>
+        <td>(616)-331-8688</td>
+        <td class="ciHeader">Office Hours:</td>
+        <td>MW 11:00-noon (Allendale)</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Home page:</td>
+        <td>
+            <a href='http://localhost:8000'><code>http://localhost:8000</code></a>
+        </td>
+        <td></td>
+        <td>MW 3:00-4:00 (DCIH 530G) </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+<p>E-mail is the best way to contact me. During the week, expect a reply within 24 hours. Also, feel free to visit my
+    office any time the door is open, even if it isn't officially office hours.</p>
+
+</dd>
+        <dt>Course Objectives:</dt>
+        <dd>
+          After successful completion of the course, students will be able to:
+          <ul>
+            <li>Develop server side scripts to support a web application</li>
+            <li>Develop client side scripts that interact with users and server side scripts</li>
+            <li>Combine client and server scripts with third-party libraries to enhance applications</li>
+            <li>Construct a stylesheet to achieve basic formatting</li>
+            <li>Utilize web APIs to send and receive data between client and server</li>
+            <li>Analyze and construct a web site that solves a large problem</li>
+          </ul>
+          Specific <a href="learningObjectives.pdf">learning objective</a>
+        </dd>
+        <dt>Text:</dt>
+        <dd>
+          We will not have a formal text.
+        </dd>
+        <dt>Prerequisites</dt>
+        <dd> CIS 163 and CIS 333 or CIS 353</dd>
+        <dt>Important Dates:</dt>
+        <dd>
+          <ul>
+            <li>Drop Day: <span>Friday, 21 March</span></li>
+            <li>Final Exam: <span>Monday, 21 April 10:00 a.m. - noon.</span></li>
+          </ul>
+        </dd>
+        <dt>Course Policies:</dt>
+        <dd>
+          <ul>
+            <li> Assignments are due at the beginning of class on the due date, unless specified otherwise.</li>
+            <li>In general, programming assignments will not be graded until they are working properly.</li>
+            <li> Unless specified otherwise, all assignments are to be completed
+              individually.
+            </li>
+            <li> The deadline to drop with a "W" is Friday, 21 March.
+              Remember, I cannot and will not drop this class for you.
+            </li>
+            <LI> Attendance is required. I understand that absences are
+              occasionally necessary; however, I reserve the right to lower grades
+              for excessive absences.
+            </li>
+            <li>
+              This course is subject to the GVSU policies listed at <a href='http://www.gvsu.edu/coursepolicies/'><code>http://www.gvsu.edu/coursepolicies/</code></a>
+              as well as the <a href='https://www.gvsu.edu/computing/academic-honesty-30.htm'>CIS Academic Honesty Policy</a>.
+            </li>
+            <li>You are not <em>under any circumstances</em> allowed to use code that is written by others specifically for you or
+              specifically for a CIS 371 assignment. 
+              In particular, you may not use code written by ChatGPT or similar software. On homeworks and projects, you may use <em>existing</em> code on sites like Stack Overflow to 
+              address a specific, well-defined problem that represents a small portion of the overall assignment. When using code 
+              from such resources, you must cite the source.</li>
+          </ul>
+        </dd>
+        <dt>Special Assistance:</dt>
+        <dd>If there is any student in this class who has special needs because of learning, physical or other disability,
+          please contact me and Disability Support Services (DSS) at 616.331.2490. Furthermore, if you have a disability and
+          think you will need assistance evacuating this classroom and/or building in an emergency situation, please make me
+          aware so I can develop a plan to assist you.
+        </dd>
+        <dt id='grading'>Grading:</dt>
+        <dd> We will have weekly quizzes instead of a midterm and final exam. These quizzes will be points-based.
+          <p>The remainder of your grade will be <em>proficiency-based</em>. This course has 27 specific 
+            <a href="learningObjectives.pdf">learning objectives</a>.
+            I will use quiz questions to evaluate 12 of those objectives. I will evaluate the remaining 15 
+            (the ones marked with a superscript 'h') using the homework and semester project.  
+            The requirements for 
+            grades of A, B, C, D, and F is given in the table below. 
+            
+            <table class='gradingTable'>
+              <tr>
+                <th class='leftAlign'>Category</th>
+                <th colspan=2 class='leftborder'>D</th>
+                <th colspan=2>C</th>
+                <th colspan=2>B</th>
+                <th colspan=2>A</th>
+              </tr>
+              <tr class='underlined_row'>
+                <td><a href='learningObjectives.pdf'>"Quiz"&nbsp;Objectives</a> </td>
+                <!-- 
+                
+                  <td>Meets Expectations:</td><td> 6/10</td>
+                
+                  <td>Meets Expectations:</td><td> 7/10</td>
+                
+                  <td>Meets Expectations:</td><td> 8/10</td>
+                
+                  <td>Meets Expectations:</td><td> 9/10</td>
+                
+                -->
+                
+                  <td class='centerAlign leftborder' colspan='2'>&ge; 60%</td>
+                
+                  <td class='centerAlign leftborder' colspan='2'>&ge; 70%</td>
+                
+                  <td class='centerAlign leftborder' colspan='2'>&ge; 80%</td>
+                
+                  <td class='centerAlign leftborder' colspan='2'>&ge; 90%</td>
+                
+              </tr>
+              <!-- 
+              <tr class='underlined_row'>
+                <td></td>
+                
+                  <td>Progressing:</td><td> 8/10</td>
+                
+                  <td>Progressing:</td><td> 9/10</td>
+                
+                  <td>Progressing:</td><td> 10/10</td>
+                
+                  <td>Progressing:</td><td> 10/10</td>
+                
+              -->
+              <tr class='underlined_row'>
+                <td>Homework<sup>*</sup></td>
+                
+                  <td>Complete / thoughtful:</td><td> 8/12</td>
+                
+                  <td>Complete / thoughtful:</td><td> 9/12</td>
+                
+                  <td>Complete / thoughtful:</td><td> 10/12</td>
+                
+                  <td>Complete / thoughtful:</td><td> 11/12</td>
+                
+              </tr>
+              <tr class='underlined_row'>
+                <td>Semester Project</td>
+                
+                  <td class='centerAlign leftborder' colspan='2'> D</td>
+                
+                  <td class='centerAlign leftborder' colspan='2'> C</td>
+                
+                  <td class='centerAlign leftborder' colspan='2'> B</td>
+                
+                  <td class='centerAlign leftborder' colspan='2'> A</td>
+                
+              </tr>
+              <tr>
+                <td>Timeliness</td>
+                
+                  <td>Late days:</td><td> &le; 50</td>
+                
+                  <td>Late days:</td><td> &le; 25</td>
+                
+                  <td>Late days:</td><td> &le; 15</td>
+                
+                  <td>Late days:</td><td> &le; 10</td>
+                
+              </tr>
+            </table>
+            <sup>*</sup> Up to three homework objectives can be satisfied by the equivalent feature in your semester project.
+            For example, if your semester project makes heavy use of React, you could allow your project to fulfill the requirements
+            of the React-based assignments.  Similarly, if your semester project uses Bootstrap (or a similar framework), you 
+            can use your project to fulfill the requirements of the Responsive homework.
+            <p><b>+/- modifiers</b>: Your semester project will determine whether your base grade is modified with a + or a -.  For example, if you meet the 
+              criteria for a 'B', but your project earns an 'A', your final grade will be a B+.</p>
+            <!-- 
+            <p><b>Learning Objectives</b>:  Learning Objectives are skills that students are expected to acquire by the end of the course.  Most learning objectives will be assessed using test/quiz questions; a few will be assessed as part of a lab, project, or homework.  Learning objectives will be 
+              scored with either "M" for "Meets Expectations" or "P" for "Progressing".  Students earn an “M” when they have clearly demonstrated a thorough understanding of the learning objective (e.g., answer the related test questions without any mistakes --- or perhaps a very trivial mistake like a math error).  Students earn "P" if their work indicates that they have a partial, but useful understanding of the topic (e.g., their answer is structured correctly, correctly applies the fundamentals, but has missing or incorrect details). </p>
+<p><b>Core Learning Objectives</b>: Several learning targets are classified as "Core" learning objectives.  These represent the course's most important, fundamental concepts. 
+ Students must master these concepts to pass the course.</p> -->
+            <p><b>EMPN</b>: Most submissions (other than test/quiz questions and homework) will be scored using the EMPN metric.  (See the 
+              <a href='#empn'>diagram</a> below.)  A mark of "E" or "M" indicates that the submission is complete and clearly demonstrates that the student understands the relevant concepts.  A mark of "P" indicates that the student is making progress, but the assignment require additional work/revision.  A mark of "X" not sufficiently complete to assess.</p>
+            <img id=empn" src="EMPNrubric_notYet.png" width=600px>
+          </dd>
+        </dl>
+        <hr>
+        <p>Updated Monday, 30 December 2024, 10:36 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+      </main>
+    </body>
+  </html>

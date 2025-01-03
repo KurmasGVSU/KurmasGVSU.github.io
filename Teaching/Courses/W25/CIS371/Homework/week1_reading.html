@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>CIS 371 WWW History and Basics</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        margin-right: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+      #content {
+        padding: 0 10px 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="theMain">
+      <a class='bypass' href="#theMain">Skip to main content</a>
+      <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 371</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">WWW History and Basics</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2025</h1></td>
+  </tr>
+</table>
+
+      <p>
+        Please read the following articles. The first two articles should be read <em>before</em> Wednesday's class.
+        The questions below will help highlight the more important details.
+      </p>
+      <p class="listHeader">Articles</p>
+      <ul>
+        <li><a href='https://www.w3.org/History/1989/proposal.html'>Original WWW Proposal</a></li>
+        <li><a href='https://dl.acm.org/citation.cfm?doid=179606.179671'>Formal WWW article in the ACM magazine</a> (You will need to be logged into the GVSU library in
+          order to access this article's full text.)
+        </li>
+        <li><a href='https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177'>HTTP: The protocol Every Web Developer Must Know</a></li>
+        <li><a href='https://developers.google.com/web/progressive-web-apps/'>Progressive Web App Video</a> (focus
+          on the first 8 minutes)
+        </li>
+        <li><a href='https://stackoverflow.com/questions/176264/what-is-the-difference-between-a-uri-a-url-and-a-urn'>Stack Overflow article about URIs, URLs and URNs</a></li>
+      </ul>
+      <p class="listHeader">Questions</p>
+      <ol>
+        <li>For whom was Tim Berners-Lee working when he came up with the idea for the WWW?</li>
+        <li>Describe the main problem he was trying to solve.</li>
+        <li>Where did he get the idea of a "web"?</li>
+        <li>What type of structure/solution does Berners-Lee explicitly avoid?</li>
+        <li>What motivates Berners-Lee to say "CERN is a model in miniature of the rest of
+          world in a few years time. CERN meets now some problems
+          which the rest of the world will have to face soon"?
+        </li>
+        <li>"Another person must be able to find the
+          information, sometimes without knowing what he is looking for." What does Berners-Lee mean by this?
+          Describe a time when you have done this.
+        </li>
+        <li>According to Berners-Lee, what is the main problem with using keywords to organize/find data?</li>
+        <li>When was the term "Hypertext" coined?</li>
+        <li>What kind of web page corresponds roughly to the "Personal Skills Inventory" mentioned by Berners-Lee?</li>
+        <li>Give an example of how modern web servers "...provide existing information in a form matching the standard
+          interface."
+        </li>
+        <li>How does Berners-Lee describe the web in the 1994 CACM article?</li>
+        <li>How does he describe the browsing experience?</li>
+        <li>List several tools that Berners-Lee envisions the Web replacing.  Did it?</li>
+        <li>What is a "hierarchical space"?</li>
+        <li>Why does Berners-Lee claim that HTTP is "perhaps misnamed"?</li>
+        
+        <li>What are two competitors to the WWW described in the 1994 paper?</li>
+        <li>List some advantages and disadvantages of these competing systems.</li>
+        <li>Which points from "the future" have come true? Which have not?</li>
+        <li>How much did the WWW grow from 1993 to 1994?</li>
+        <li>Is the web as easy to update as it is to read?</li>
+        
+      </ol>
+      <hr>
+      <p>Updated Monday, 30 December 2024, 10:44 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+    </main>
+  </body>
+</html>

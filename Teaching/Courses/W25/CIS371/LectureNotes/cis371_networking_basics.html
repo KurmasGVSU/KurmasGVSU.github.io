@@ -1,0 +1,460 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="week-1-day-1">Week 1, Day 1</h1>
+
+<ul>
+  <li>Let’s start with an “old school” model of the web, back when everything was static data.</li>
+  <li class="to-me">Demonstrate visiting <a href="http://example.com">http://example.com</a> or some other web page. Perhaps <a href="https://web.archive.org/web/19970212132224/http://www.gvsu.edu/">https://web.archive.org/web/19970212132224/http://www.gvsu.edu/</a></li>
+  <li>At a high level, “using the web” was fundamentally
+    <ol>
+      <li>Your computer asking another computer for some information</li>
+      <li>The other computer sending that information</li>
+      <li>Your computer displaying a “pretty picture” of that information</li>
+    </ol>
+  </li>
+  <li>
+    <p>So, let’s start by going through what it takes for your computer to “ask for” and “receive” information from another computer.</p>
+  </li>
+  <li>Actually, before we do that, let’s review the <em>separation of implementation and interface</em>.
+    <ul>
+      <li>Recall linked lists and dynamic arrays (lists, vectors) from CIS 163.</li>
+      <li>Both store items in a sequence (there is a first item, a second item, a third item, etc.)</li>
+      <li>Both have the same fundamental operations (<code>get</code>, <code>put</code>, <code>add_at_end</code>, <code>remove_from_end</code>)</li>
+      <li>If you implement both a linked list and a vector using the interface (i.e., the methods have identical signatures — names and parameters), then you can swap one for another without modifying your code (other than to specify which type of list to use). Your code should still run, just with different performance characteristics.</li>
+    </ul>
+  </li>
+  <li>This use of a common interface to different implementations is common in application design.</li>
+  <li>Another common use is the serial I/O interface.
+    <ul>
+      <li>The sending of data from one place to another is often conceptualized as a <em>stream</em>.</li>
+      <li>Think of it as writing 1s and 0s on ping pong balls and shoving them into a pipe and having them pop out the other end in the same order.</li>
+      <li>Think about printing to the terminal. In some sense you are “shoving” letters into a pipe only to have them “pop out” on the screen.</li>
+      <li>In python the <code>print</code> function is (more or less) a short-cut for <code>sys.stdout.write</code>
+        <ul>
+          <li><code>sys.stdout.write('Hello, World!\n')</code></li>
+        </ul>
+      </li>
+      <li>When you write to a file, you do something like this:
+        <ul>
+          <li><code>f = open('...')</code></li>
+          <li><code>f.write('Hello, World\n')</code></li>
+          <li>(Notice the use of <code>write</code> in both cases.)</li>
+        </ul>
+      </li>
+      <li>You can write a function that is agnostic to where the data is being sent:</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">send_message</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+  <span class="n">output</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">'Hello, World!</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+
+<span class="n">send_message</span><span class="p">(</span><span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="n">send_message</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">'new_file.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Key idea: The same code can write to either the screen or a file without needing any changes (other than the one line that sets up where the output goes).</li>
+  <li>The same is true for reading data. If you use <code>sys.stdin.readline()</code> instead of <code>input()</code>, code that reads from the keyboard is nearly identical to code that reads from a file.</li>
+  <li>When you run the <code>open()</code> function in Python, the library that implements <code>open</code> returns to you an object with <code>readline</code> and <code>write</code> methods that are somehow “connected” to the desired file.</li>
+  <li>There are similar built-in functions in Python that return to you an object with <code>readline</code> and <code>write</code> methods that is “magically” connected to a program running on another computer.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="c1"># Connect to the other machine and set up the stream
+</span><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="p">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+<span class="n">s</span><span class="p">.</span><span class="n">connect</span><span class="p">((</span><span class="s">"www.example.com"</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">makefile</span><span class="p">(</span><span class="s">'rw'</span><span class="p">)</span>  <span class="c1"># At this point, 'stream' is similar to what is returned from 'open'
+</span>
+<span class="c1"># "Talk" to the other machine.
+</span><span class="n">stream</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"GET / HTTP/1.0</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="n">stream</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"host: www.example.com</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="n">stream</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="n">stream</span><span class="p">.</span><span class="n">flush</span><span class="p">()</span>
+
+<span class="c1"># Listen to the reply
+</span><span class="n">headers</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">().</span><span class="n">split</span><span class="p">(</span><span class="s">':'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"WTF: </span><span class="si">{</span><span class="n">parts</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">parts</span>
+        <span class="n">headers</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">())</span>
+</code></pre></div></div>
+
+<h1 id="networking-basics">Networking Basics</h1>
+
+<ul>
+  <li>To explain this code, we need a little more networking background.
+    <ul>
+      <li>(Many of you already know this; but, let’s make sure everybody is on the same page.)</li>
+    </ul>
+  </li>
+  <li>We need to identify the machine we want to talk to.
+    <ul>
+      <li>Machines are assigned IP addresses (e.g., <code>93.184.215.14</code>)
+        <ul>
+          <li>If you have a machine you want to connect to the Internet, you need to get an IP from your ISP.</li>
+          <li>The Internet Assigned Numbers Authority (IANA) manages the distribution of IP addresses.</li>
+        </ul>
+      </li>
+      <li>Humans prefer names to numbers (e.g., <code>example.com</code>)</li>
+      <li>A web service called <code>DNS</code> (Domain Name System) takes a name and returns the corresponding number.</li>
+      <li>The networking library does this lookup for us, so we can ask for a connection to 
+<code>example.com</code>, and as part of the <code>connect</code> call, the name gets converted to the number
+used by the underlying network.</li>
+    </ul>
+  </li>
+  <li>Also need to identify which program on the machine.
+    <ul>
+      <li>Many different programs can run on one machine.</li>
+      <li>We use a <em>port</em> to specify a program.
+        <ul>
+          <li>Think of it like an old-school “exchange” on a telephone number.</li>
+        </ul>
+      </li>
+      <li>When a server program starts up, it needs to register with the operating system saying, effectively:
+“If somebody knocks on the door and asks for ‘port 80’, send the traffic to me”.</li>
+    </ul>
+  </li>
+  <li>For convenience and consistency, certain programs/services have a conventional port
+    <ul>
+      <li>HTTP: 80</li>
+      <li>HTTPS: 443</li>
+      <li>SMTP (email): 25</li>
+      <li>Secure email: 587</li>
+      <li>SSH: 22</li>
+      <li><a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers">https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers</a></li>
+      <li>Using a convention means we can remember the name only, and we don’t have to remember a random
+number along with each name.</li>
+    </ul>
+  </li>
+  <li>Programs must have administrator access to request ports below 1024.
+    <ul>
+      <li>This prevents regular users from “spoofing” services (e.g. launching their own, unofficial web server on port 80).</li>
+    </ul>
+  </li>
+  <li>So, in the example above, <code>connect(('example.com', 80))</code> asks the networking system to open a connection to machine registered as <code>example.com</code> – specifically to the program that has registered as “listening” to port 80.</li>
+  <li>At this point, the two programs “talk” to each other by reading and writing to the established stream.</li>
+</ul>
+
+<h2 id="ssl">SSL</h2>
+
+<ul>
+  <li>In the “old days”, data was sent over the Internet using clear text.</li>
+  <li>Anybody with access to any of the routers along the message’s path could read the message.</li>
+  <li>The solution was to encrypt data before putting on the network.
+    <ul>
+      <li>This encryption is often done using SSL: _S_ecure _S_ockets _L_ayer.</li>
+      <li>Using SSL means adding handlers on each side of the stream to encrypt/decrypt data.</li>
+      <li>Also need to add extra steps at the beginning to choose and exchange the secret key used for encryption.</li>
+    </ul>
+  </li>
+  <li>Secure connections typically use a different port.
+    <ul>
+      <li>For example, 80 for unencrypted web traffic, and 443 for encrypted web traffic.</li>
+      <li>25 for unencrypted email and 587 for encrypted email.</li>
+      <li>(Using a different port is how the client knows whether to open an encrypted or unencrypted connection.)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>{: .to-me} Switch to <a href="cis371_browsersAndServers.html">Browsers and Servers notes</a></p>
+
+
+</main>
+</body>
+</html>

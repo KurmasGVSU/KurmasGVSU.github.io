@@ -1,0 +1,418 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="security">Security</h1>
+
+<p><strong>Important</strong>: Security and Secure Coding is a much bigger topic that I can cover here.  (Or, in fact, much bigger than I am qualified to cover.)
+  * Recognize my limits, and don’t assume you know more than you think you do.
+  * Make friends with an expert.</p>
+
+<h2 id="code-injection">Code injection</h2>
+
+<ul>
+  <li>Keep code and data separate.</li>
+  <li>Don’t allow user input to become executable code.</li>
+  <li>If you come from a C/C++/Java background, this may sound trivial.  But, in the world of scripting languages, it is frighteningly easy.</li>
+  <li>Consider the <code>expressMVC</code> example.
+    <ul>
+      <li>Enter the following as a description:  `You should <em>sanitize</em> your input.</li>
+      <li>Notice that you see the tags when you show this new toy.</li>
+      <li>Now change <code>&lt;%=</code> to <code>&lt;%-</code> in <code>toyShow.ejs</code>.</li>
+      <li>Notice that we can see the formatting.</li>
+      <li>That may sound cool; but, edit it to forget the closing tag.</li>
+      <li>Now, edit it to include <code>&lt;img src='https://cis.gvsu.edu/~kurmasz/Images/buzz1.jpg'&gt;</code></li>
+      <li>What if that image src was <code>https://evil.com/evil.php?evilParameters</code></li>
+      <li>Now, how about <code>&lt;script&gt;console.log("Uh oh")&lt;/script&gt;</code></li>
+      <li>Can you see how this is a bad idea that could get worse?</li>
+    </ul>
+  </li>
+  <li>Rails sanitizes output by default
+    <ul>
+      <li>to override, append <code>.html_safe</code> to string</li>
+    </ul>
+  </li>
+  <li>Another approach would be to sanitize the data as soon as it comes into the app.
+    <ul>
+      <li>See <code>express-validator</code> package for JavaScript Express</li>
+      <li>Sanitizing input for Rails seems less necessary since the output is so well sanitized.  But, it could still be a good idea in certain situations.</li>
+      <li>Think carefully how/when/whether you want the data sanitized.  Turning <code>&lt;&gt;</code> into <code>&amp;lt;&amp;gt</code> won’t have the intended effect when using <code>&lt;%= %&gt;</code> in EJS.</li>
+    </ul>
+  </li>
+  <li>Beware of calls that will “execute” strings
+    <ul>
+      <li>JavaScript’s <code>eval</code> – <code>eval('console.log("Hello, there")')</code>;</li>
+      <li>Ruby’s <code>eval</code></li>
+      <li>Never allow user input into <code>eval</code> calls.</li>
+      <li>Better yet, avoid them altogether.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="sql-injection">SQL Injection</h3>
+
+<ul>
+  <li>SQL Injection is another way user input can sneak into executable code.</li>
+  <li>
+    <p>Consider this line of code:</p>
+
+    <p class="language-javascript">sqlStmt = <code>SELECT * from Authors where name="${nameInput}"</code>;</p>
+  </li>
+  <li>Now imagine that <code>nameInput</code> is pulled directly from an HTML form and contains 
+<code>Fred"; DROP TABLE Authors; SELECT * from Authors where name="</code></li>
+  <li>The resulting value of <code>sqlStmt</code> will be <code>SELECT * from Authors where name="Fred"; DROP TABLE Authors; SELECT * from Authors where name=""</code></li>
+  <li>The user has managed to <em>inject</em> his own SQL code into your application.</li>
+  <li>In other words, the user was able to run an arbitrary SQL statement.</li>
+  <li>Protections
+    <ul>
+      <li>Sanitizing input (e.g., escaping quotation marks, semi-colons, etc.)</li>
+      <li>SQL libraries that will only run one command per call (unless overridden)</li>
+      <li>SQL libraries that contain query builders.
+        <ul>
+          <li>Active Record (used by Rails) lets you write queries this way: <code>Client.where(first_name: nameInput)</code></li>
+          <li>These query builder libraries presumably check the parameters carefully and/or are structured in such a way that malicious parameter values generate invalid SQL.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="https://xkcd.com/327/">https://xkcd.com/327/</a></li>
+</ul>
+
+<h2 id="csrf-xsrf">CSRF XSRF</h2>
+
+<ul>
+  <li>Cross-site request forgery
+    <ul>
+      <li>https://owasp.org/www-community/attacks/csrf</li>
+    </ul>
+  </li>
+  <li>Imagine a form at your bank that sends money to another person.
+    <ul>
+      <li>Form does a POST to a route like <code>/transfer</code></li>
+    </ul>
+  </li>
+  <li class="q">How can this same request be sent from another site?
+    <ul>
+      <li>Another site can have the same form with the same action.</li>
+    </ul>
+  </li>
+  <li class="q">Why can’t just anybody send a POST to the route and transfer money from your account?
+    <ul>
+      <li>Need to be logged in (i.e., need the session cookie)</li>
+    </ul>
+  </li>
+  <li class="q">How can we get your browser to send your session cookie from a different web page?</li>
+  <li>Key idea: Cookies always go back to the server that sent them <em>regardless of the window/tab</em>.</li>
+  <li class="q">How can a malicious site send a request on your behalf? Hint: It uses a form, not JS.
+    <ul>
+      <li>You are logged into 53.com in one tab</li>
+      <li>You visit evil.com in another tab</li>
+      <li>evil.com displays a form (e.g., sign up for a newsletter)</li>
+      <li>forms can have hidden fields.  So, this form may have visible “username” and “email”, 
+but it could also have fields identical to the “transfer money” form from 53.com</li>
+      <li>When you click “Submit”, the data is posted to 53.com and your session cookie goes with it!</li>
+    </ul>
+  </li>
+  <li class="q">How can you prevent this attack?
+    <ul>
+      <li>Synchronizer Token: When sending a page with a form, embed a hidden field with a random number.</li>
+      <li>When that form is submitted check for the presence of that random number.</li>
+      <li>evil.com won’t have it.</li>
+    </ul>
+  </li>
+  <li>Rails automatically adds this “invisible” token
+    <ul>
+      <li class="to-me">Inspect a form and show the “hidden” input named <code>authenticity_token</code></li>
+      <li>If you use rails as an API (e.g., for React), you need to disable this authenticity token.</li>
+      <li>(Need to use CORS instead; but, that’s a discussion for a different day.)</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

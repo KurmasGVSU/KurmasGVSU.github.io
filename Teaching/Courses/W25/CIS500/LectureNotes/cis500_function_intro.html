@@ -1,0 +1,452 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="functions">Functions</h1>
+
+<ul>
+  <li>A named chunk of coded that can be used multiple times.
+    <ul>
+      <li>Avoids need to repeatedly re-write the same code over and over</li>
+      <li>Helps organize code into manageable abstractions.
+        <ul>
+          <li>Think “Engine” as opposed to “block, pistons, rods, etc.”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Python supplies many useful functions
+    <ul>
+      <li><code>max</code></li>
+      <li><code>min</code></li>
+      <li><code>abs</code></li>
+      <li><code>round</code></li>
+      <li><code>input</code></li>
+      <li><code>int</code></li>
+      <li><code>float</code></li>
+    </ul>
+  </li>
+  <li>Remember parentheses when calling function, otherwise nothing happens
+    <ul>
+      <li>Because a function without parentheses is a value.</li>
+      <li><code>print(min(44, 15))</code></li>
+      <li><code>print(min)</code></li>
+    </ul>
+  </li>
+  <li>This is usually a problem with functions that take zero parameters, like <code>exit</code>
+    <ul>
+      <li class="to-me">Show <code>exit</code> vs. <code>exit()</code> in REPL.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="libraries-and-import-statements">Libraries and import statements</h2>
+
+<ul>
+  <li>Python provides <em>a lot</em> of functions. To help with organization and avoid name collisions, these
+functions are organized into different <em>packages</em>.
+    <ul>
+      <li>If all built-in functions were global, then you might have trouble picking function names that weren’t already “taken”.</li>
+      <li>Putting functions in packages also helps you know where to look.</li>
+    </ul>
+  </li>
+  <li>Consider the <code>math</code> package: https://docs.python.org/3/library/math.html
+    <ul>
+      <li>If you are browsing for the name of a particular function, it is easier to browse through this shorter list.</li>
+    </ul>
+  </li>
+  <li>Two steps to using a library function:
+    <ul>
+      <li><code>import math</code></li>
+      <li>Use “full name” of function (e.g., <code>math.sqrt(14)</code>)</li>
+      <li>(There are short-cuts that I’ll show later).</li>
+    </ul>
+  </li>
+  <li>This page https://docs.python.org/3/library/functions.html provides
+    <ul>
+      <li>List of functions in the “global” namespace.</li>
+      <li>List of packages you can browse.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="writing-your-own-functions">Writing your own functions</h2>
+
+<ul>
+  <li>Basic format:</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+  <span class="n">statements</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Use indentation to show what is part of the function.</li>
+  <li>Docstring: Describe what the function does and what each parameter is for.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fahrenheit_to_celsius</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+  <span class="s">""" Converts a temperature in Fahrenheit to Celsius """</span>
+  <span class="n">c</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="mi">9</span><span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="o">-</span><span class="mi">32</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">c</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Formal vs. actual parameters.
+    <ul>
+      <li>The writer of a function and the user of a function are typically two different people. We don’t want to require that they use the same variable names. (In fact, doing so would create a lot of name collisions)</li>
+      <li class="to-me">Use a <code>subtract</code> method as a running example.</li>
+    </ul>
+  </li>
+  <li>actual parameters mapped to formal parameters in order.
+    <ul>
+      <li class="to-me">show difference between <code>subtract(5, 4)</code> and <code>subtract(4, 5)</code></li>
+      <li class="to-me">repeat above using variables.</li>
+      <li class="to-me">Use an example where formal and actual parameters have the same names.</li>
+      <li class="to-me">switch to show that it is the order that matters</li>
+    </ul>
+  </li>
+  <li>Variables have <em>scope</em>
+    <ul>
+      <li>The <code>a</code> inside a function is different from the <code>a</code> outside of it.</li>
+      <li>(Mostly.)</li>
+    </ul>
+  </li>
+  <li><code>none</code> is not 0.</li>
+  <li><code>return</code> is the always the last line executed.
+    <ul>
+      <li>Lines after a <code>return</code> never run.</li>
+      <li class="to-me">Add a <code>print</code> after the <code>return</code> in <code>subtract</code>.</li>
+    </ul>
+  </li>
+  <li>Demonstrate that variables have local scope.</li>
+  <li>Global variables can be seen inside of functions.
+    <ul>
+      <li>Don’t do this: It leads to confusing code.</li>
+    </ul>
+  </li>
+  <li class="to-me">Do problem 1 in In-Class 3</li>
+</ul>
+
+<h2 id="type-annotations">Type annotations</h2>
+
+<ul>
+  <li>Type annotations
+    <ul>
+      <li>Used to show the user what data type is expected.</li>
+      <li>Makes code easier to read.</li>
+      <li>The annotations are for readability only, they do <em>not</em> affect how the program is run.
+(i.e., they are not used at runtime.)</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">duplicate</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="s">"""Returns a string containing two copies of `msg`"""</span>
+
+    <span class="k">return</span> <span class="n">msg</span> <span class="o">+</span> <span class="n">msg</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">duplicate</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="s">"""Returns a string containing two copies of `msg`"""</span>
+
+    <span class="k">return</span> <span class="n">msg</span> <span class="o">+</span> <span class="n">msg</span>
+</code></pre></div></div>
+
+<ul>
+  <li class="to-me">Look at apothem example from Section 4.10
+    <ul>
+      <li>https://runestone.academy/ns/books/published/gvsu_cis500_w24/functions_functions-can-call-other-functions-composition.html</li>
+    </ul>
+  </li>
+  <li><code>print</code> vs. <code>return</code></li>
+  <li>Don’t repeat yourself.</li>
+</ul>
+
+</main>
+</body>
+</html>

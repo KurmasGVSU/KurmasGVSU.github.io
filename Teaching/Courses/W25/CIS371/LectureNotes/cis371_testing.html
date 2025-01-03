@@ -1,0 +1,630 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="testing">Testing</h1>
+
+<p><img src="Images/testingPyramid.jpg" alt="" /></p>
+
+<ul>
+  <li>Testing Pyramid: <a href="https://bit.ly/3dX0fap">https://bit.ly/3dX0fap</a>
+    <ul>
+      <li>Many unit tests (which are fast and cheap)</li>
+      <li>Fewer integration tests</li>
+      <li>Even fewer end-to-end tests</li>
+    </ul>
+  </li>
+  <li>Unit tests thoroughly test logic and the basic operation of all your components.
+    <ul>
+      <li>Tend to be “cheap”: Can be written and executed quickly.</li>
+      <li>Dependencies often mocked (so as to test only the unit in question)</li>
+    </ul>
+  </li>
+  <li>Integration tests verify that the components integrate correctly.
+    <ul>
+      <li>Passing tests with mocks is not helpful if the mocks are set up incorrectly.</li>
+      <li>Suppose you write a unit test that passes a parameter “toyz” instead of “Toys” and also
+configure the mock to look for the parameter “toyz”.  Your unit test will pass but still have a bug.
+        <ul>
+          <li>This is one reason why you write tests before you write code (so you don’t copy the bugs in your code over into the tests).</li>
+          <li>This is also one reason why you watch your tests fail.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>End-to-end tests are the ultimate extension of integration tests:  Watch everything all work together.
+    <ul>
+      <li>Tend to be “expensive”:
+        <ul>
+          <li>Complex to set up (e.g., database needs to be in a certain state)</li>
+          <li>Often slow to run</li>
+        </ul>
+      </li>
+      <li>Need many fewer.
+        <ul>
+          <li>In theory, you don’t need to provide every possible input to the end-to-end tests.  Differences in logic / algorithms handled by unit tests.  You just need to test the different workflows / integrations.</li>
+          <li>For example, your unit tests thoroughly verify that the correct discount is applied 
+given a set of conditions (age, student status, vip, etc.)</li>
+          <li>The end-to-end test need only verify that
+            <ol>
+              <li>the application behaves correctly when any discount is given, and</li>
+              <li>the application correctly passes the parameters to the algorithm (e.g., the 
+  text boxes are “hooked up” correctly.)</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="linting">Linting</h1>
+
+<ul>
+  <li>Checks for
+    <ul>
+      <li>style</li>
+      <li>patterns that are likely to be errors.</li>
+    </ul>
+  </li>
+  <li>To install ESLint
+    <ul>
+      <li><code>npm install eslint --save-dev</code></li>
+      <li><code>npx eslint --init</code>
+        <ul>
+          <li>(creates <code>.eslintrc.json</code>  You can customize to fit your own rules/style)</li>
+        </ul>
+      </li>
+      <li>Two helpful additions:
+        <ul>
+          <li>add <code>"react/prop-types": 0</code> to <code>rules</code></li>
+          <li>add <code>"jest": true</code> to <code>env</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Notice that VSCode picks up on this and underlines problems.</li>
+  <li>You can also run <code>npx eslint src</code> from the command line
+    <ul>
+      <li class="to-me">Show errors in <code>App.js</code></li>
+    </ul>
+  </li>
+  <li>Running <code>npm install eslint-plugin-react-hooks --save-dev</code> will allow ESLint to find common mistakes in hook usage.
+    <ul>
+      <li>Book mentions other useful plug-ins.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="testing-react">Testing React</h1>
+
+<ul>
+  <li>Notice that when testing an MVC triad in JS, there is often no 
+unit tests for the view.  This is because the <code>document</code> object
+doesn’t exist outside of a web browser, and is hard to mock. 
+(The DOM objects it uses are quite complicated.)</li>
+  <li>Testing React is challenging because it blends the model and view.</li>
+  <li>High-level approach to <em>unit</em> testing React:
+    <ol>
+      <li>Render a component in a test environment, and</li>
+      <li>Examine the rendered component.</li>
+    </ol>
+  </li>
+  <li>React recommends using Jest.</li>
+  <li>Node does not automatically have the DOM API available.
+    <ul>
+      <li>Jest includes an npm package called <code>jsdom</code> for this purpose.</li>
+    </ul>
+  </li>
+  <li>The <em>React Testing Library</em> provides useful helpers that extend <code>jsdom</code> among other things.
+    <ul>
+      <li><a href="https://testing-library.com/docs/react-testing-library/intro">https://testing-library.com/docs/react-testing-library/intro</a></li>
+    </ul>
+  </li>
+  <li>React encourages tests to be structured around how the user interacts with the component rather 
+than the “implementation” of the component.
+    <ul>
+      <li>In other words, they argue it is better to look for visible features (e.g., text) than classes.</li>
+      <li>(However, if a component can be conditionally rendered, it’s not clear to me that looking for 
+text is the best way to verify the conditional.)</li>
+    </ul>
+  </li>
+  <li class="to-me">Look at <code>Color.test.js</code>
+    <ul>
+      <li>First example finds element with <code>.colorbox</code>.  (See caveat above)</li>
+      <li>Second example looks for expected text to be visible.</li>
+      <li>Third example tests the callback.</li>
+    </ul>
+  </li>
+  <li>I’m not sure how you would unit test the code in the callback.</li>
+  <li>My first thought is to move as much “complex” code as possible to a separate class so it can be unit tested separately.</li>
+  <li class="to-me">Look at <code>NewColorForm</code>
+    <ul>
+      <li>Verifies conditional formatting based on edit mode.</li>
+      <li>Verifies callbacks are wired up correctly.</li>
+      <li>Notice that the complete “controlled” component not tested, because the <code>useState</code> hook
+is in a higher level component.</li>
+    </ul>
+  </li>
+  <li>The <code>fireEvent</code> method allows us to create interactions and test the resulting behavior.
+    <ul>
+      <li>See <a href="https://testing-library.com/docs/react-testing-library/cheatsheet">https://testing-library.com/docs/react-testing-library/cheatsheet</a> for details / documentation</li>
+    </ul>
+  </li>
+  <li>The <code>react-testing-library</code> intentionally doesn’t directly support “shallow” testing: Rendering a component and mocking its children.
+    <ul>
+      <li>They argue that this promotes tests that aren’t helpful.</li>
+      <li>For example, the test focus more on what methods are called than whether calling those methods has the desired effect.  (Think about how <code>NewColorForm</code> and <code>ColorList</code> interact – calling callbacks is meaningless unless it makes the desired action happen)</li>
+    </ul>
+  </li>
+  <li>Notice that there is no public interface to functions defined within components.
+    <ul>
+      <li>In the case of <code>App.js</code>, there are a lot of helper functions.</li>
+      <li>The functions outside of the App component (<code>uuidv4</code> and <code>intToColor</code>) can be exported and tested.</li>
+      <li>The nested functions are so tightly integrated with the state of the component, that they can probably only be effectively tested as part of the component itself.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Keep in mind that there is certainly not agreement about this.  You will have to figure out what makes sense given the specifics of the project and the culture of the company you work for.</p>
+  </li>
+  <li>Also note:
+    <ul>
+      <li>Mocking the API</li>
+      <li>use of <code>data-</code> attribute</li>
+      <li>CSS to access <code>data-</code> attribute</li>
+      <li>test feels more like an end-to-end test</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="end-to-end-testing">End to End testing</h2>
+
+<ul>
+  <li>Basic idea of end-to-end tests for a web app is to use the app as the user would: By interacting with a web browser.</li>
+  <li>Need three key pieces
+    <ul>
+      <li>A <em>web driver</em>: A tool to programmatically interact with a browser.</li>
+      <li>A test framework to specify what should be done (and the expected results)</li>
+      <li>Some “glue” to translate the test steps into web driver actions.</li>
+    </ul>
+  </li>
+  <li>Selenium (<a href="https://www.selenium.dev/">https://www.selenium.dev/</a>) is one of the most popular web drivers.
+    <ul>
+      <li>There are several others (WebKit, Cypress, Puppeteer, Waitr).</li>
+      <li>There are also libraries that abstract the different web drivers
+        <ul>
+          <li>Capybara: <a href="https://teamcapybara.github.io/capybara/">https://teamcapybara.github.io/capybara/</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Some browsers need a 3rd party tool to interact with web drivers
+    <ul>
+      <li><a href="https://chromedriver.chromium.org/downloads">https://chromedriver.chromium.org/downloads</a></li>
+      <li>On macOS you may have to override the quarantine:
+        <ul>
+          <li><code>xattr -d com.apple.quarantine chromedriver</code></li>
+          <li><a href="https://stackoverflow.com/questions/60362018/macos-catalinav-10-15-3-error-chromedriver-cannot-be-opened-because-the-de">https://stackoverflow.com/questions/60362018/macos-catalinav-10-15-3-error-chromedriver-cannot-be-opened-because-the-de</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Cucumber <a href="https://cucumber.io">https://cucumber.io</a> is a platform for specifying end-to-end tests
+    <ul>
+      <li>Used in BDD (Behavior Driven Development)</li>
+      <li>Gherkin is the English-like language used to describe the desired behavior
+        <ul>
+          <li>When I visit the root page</li>
+          <li>Then I should see a list of authors</li>
+        </ul>
+      </li>
+      <li class="to-me">Look at <code>ColorList3_routing/features/edit.feature</code></li>
+    </ul>
+  </li>
+  <li>Cucumber requires <em>step definitions</em> to translate Gherkin statements into web driver commands
+    <ul>
+      <li>Cucumber provides “glue” in many languages (Ruby, JavaScript, Java, etc.)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cucumber-and-javascript">Cucumber and JavaScript</h2>
+
+<ol>
+  <li>Download and install any necessary browser components: <a href="https://www.npmjs.com/package/selenium-webdriver">https://www.npmjs.com/package/selenium-webdriver</a>
+  * On macOS you may have to override the quarantine:
+    <ul>
+      <li><code>xattr -d com.apple.quarantine chromedriver</code></li>
+      <li><a href="https://stackoverflow.com/questions/60362018/macos-catalinav-10-15-3-error-chromedriver-cannot-be-opened-because-the-de">https://stackoverflow.com/questions/60362018/macos-catalinav-10-15-3-error-chromedriver-cannot-be-opened-because-the-de</a></li>
+    </ul>
+  </li>
+  <li>Install Selenium: <code>npm install --save-dev selenium-webdriver</code></li>
+  <li>Install Cucumber: <code>npm install --save-dev cucumber</code></li>
+  <li>Create a <code>features</code> directory</li>
+  <li>Create a <code>features/support</code> directory.</li>
+  <li>
+    <p>Create a file (e.g., <code>authors.feature</code>) and add a Scenario</p>
+
+    <div class="language-cucumber highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">Feature</span><span class="p">:</span> Authors
+   
+  <span class="kn">Scenario</span><span class="p">:</span> Visit the root page
+    <span class="nf">When </span>I visit the home page
+    <span class="nf">Then </span>I should see the loading message
+    <span class="nf">When </span>I wait for the authors to load
+    <span class="nf">Then </span>I should see a list of authors
+</code></pre></div>    </div>
+  </li>
+  <li>Create a file <code>features/support/steps.js</code>
+    <ul>
+      <li>See <a href="https://www.selenium.dev/selenium/docs/api/javascript/module/selenium-webdriver/">https://www.selenium.dev/selenium/docs/api/javascript/module/selenium-webdriver/</a></li>
+    </ul>
+  </li>
+  <li>Launch your React and API servers
+    <ul>
+      <li>This could also be automated; but, I’m trying to keep the example simple.</li>
+    </ul>
+  </li>
+  <li>Run <code>npx cucumber-js</code></li>
+</ol>
+
+<ul>
+  <li>Note:
+    <ul>
+      <li><code>require('expect')</code> provides access to the Jest matchers</li>
+      <li>Most of the Selenium methods return promises.
+        <ul>
+          <li>Notice the use of <code>then</code> (or <code>await</code>) after calls to <code>findElement</code></li>
+        </ul>
+      </li>
+      <li>The steps are expected to return a promise so that the runner knows how to progress</li>
+      <li>The <code>/^..$/</code> pattern in the regular expression assures that the entire string is matched.
+        <ul>
+          <li>You could also just pass a string.</li>
+        </ul>
+      </li>
+      <li>Notice the <code>AfterAll</code> block to terminate the driver.
+        <ul>
+          <li>Sometimes it is helpful to leave it running for debugging.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="to-me">Comment out the <code>setCurrentAuthor(emptyAuthor)</code> line in <code>Authors.jsx</code> (currently line 50)
+    <ul>
+      <li>This was an actual bug I found when writing these sample tests</li>
+    </ul>
+  </li>
+  <li>Waiting.
+    <ul>
+      <li>Waiting is a big challenge with external end-to-end tests.</li>
+      <li>The test system needs to wait for the React updates to take place; but, it can be difficult to know when they are complete.</li>
+      <li>Conventional approach is to wait for a change in the DOM to indicate the update took place.</li>
+      <li>Waits need a timeout.
+        <ul>
+          <li>If the timeout is too short, then you get false negatives</li>
+          <li>If timeout is too long test run for a <em>long</em> time — especially if there are failures.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Many approaches to getting a consistent / predictable set of test data.
+    <ol>
+      <li>Test back-end API separately then mock out the back end.
+        <ul>
+          <li>Not a true end-to-end test.</li>
+          <li>Although there are advantages (mostly speed) to doing most of your e2e tests this way and having only a minimal number of “true” e2e tests to make sure the front end and and back end play nice.</li>
+        </ul>
+      </li>
+      <li>Have a dedicated test database that can be re-set between tests.
+        <ul>
+          <li>Allows for more thorough e2e tests, but, can be <em>very</em> slow if the data set is complex (e.g, EPIC at Spectrum)</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li class="to-me">
+    <p>Show my e2e test setup for <code>blogAPI</code></p>
+  </li>
+  <li>There are libraries that make it a bit easier:
+    <ul>
+      <li><a href="https://www.npmjs.com/package/jest-cucumber">https://www.npmjs.com/package/jest-cucumber</a></li>
+      <li>(Note: I haven’t used this yet.)</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="cypress">Cypress</h1>
+<ul>
+  <li>Runs right <em>in</em> the browser, so it makes the waiting issue less pronounced</li>
+  <li>Calls are also asynchronous under the hood</li>
+  <li>You can combine cypress with cucumber: <a href="https://wanago.io/2020/01/13/javascript-testing-cypress-cucumber/">https://wanago.io/2020/01/13/javascript-testing-cypress-cucumber/</a></li>
+</ul>
+
+
+</main>
+</body>
+</html>

@@ -1,0 +1,706 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h2 id="client-side-web-pages--single-page-apps-spa">Client-side web pages / Single Page Apps (SPA)</h2>
+
+<ul>
+  <li>Consider Facebook:  Notice that when you scroll down the page, you never get to the bottom. Instead, new posts get inserted and the list seems to go on “forever”</li>
+  <li>This is an application of a technique called <em>AJAX</em>: Asynchronous Javascript and XML
+    <ul>
+      <li>(Although, we tend to use JSON more than XML these days.)</li>
+      <li>JavaScript running on the browser makes an HTTP request back to the server</li>
+      <li>The server returns raw data (usually in XML or JSON form),</li>
+      <li>The client-side JavaScript then inserts that data into the DOM (e.g., creates new posts and puts them at the end of the list.)</li>
+    </ul>
+  </li>
+  <li>This technique often involves creating new DOM elements on the fly (like we say last week).</li>
+  <li>Client-side frameworks like React, Angular, and Vue take this to the extreme and construct the entire DOM on the client “on the fly”</li>
+  <li>Such apps are called “single-page apps” because they are effectively just one page that is repeatedly updated.</li>
+  <li class="q">What are the advantages and disadvantages of such an approach?
+    <ul>
+      <li>Advantages
+        <ul>
+          <li>Faster</li>
+          <li>Can feel more like a native app</li>
+          <li>Can re-use the server for both web and mobile products</li>
+        </ul>
+      </li>
+      <li>Disadvantages
+        <ul>
+          <li>“Deep linking” can be challenging.</li>
+          <li>SEO can be challenging (but possible if you are careful)</li>
+          <li>Code quality of SPAs may be lower (e.g., more redundancy)</li>
+          <li>Cross-site scripting is a bigger issue.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="client-side-quick-start">Client-side “Quick Start”</h3>
+
+<ul>
+  <li>Every web page contains an object named <code>document</code>.  This object describes the entire web page.</li>
+  <li>This object has several methods that allow us to grab specific elements
+    <ul>
+      <li><code>getElementById()</code></li>
+      <li><code>getElementsByClassName()</code></li>
+      <li><code>getElementsByTagName()</code></li>
+      <li><code>getElementsByName()</code></li>
+      <li>Notice that all but the first one return a <em>list</em> of elements.</li>
+    </ul>
+  </li>
+  <li>Can run the above methods on other elements to search only part of the DOM.</li>
+  <li>Once we have a “handle” on an element, we can manipulate it.  We can
+    <ul>
+      <li>Change the text</li>
+      <li>Remove it from the DOM</li>
+      <li>Add sub-elements to it.</li>
+      <li>Change it’s style</li>
+    </ul>
+  </li>
+  <li class="to-me">Load <code>basicDOMManipulation.html</code>.  Open the console and run
+    <ul>
+      <li><code>document.getElementById('favorite').innerHTML += " (My favorite")</code></li>
+      <li><code>document.getElementById('favorite').style.color = 'green'</code></li>
+      <li><code>document.getElementById('favorite').style.visibility='hidden'</code></li>
+      <li><code>document.getElementById('favorite').style.display='none'</code></li>
+      <li><code>document.getElementById('favorite').style.display='inline'</code></li>
+    </ul>
+  </li>
+  <li>Many fancy UI tricks are simply manipulating the DOM.
+    <ul>
+      <li>First section:  Callbacks</li>
+      <li>Second section: Hiding elements</li>
+      <li>Third section: Adding elements to the DOM</li>
+      <li>Fourth section: Change listener / showing error message</li>
+    </ul>
+  </li>
+  <li>Note: Most of the <code>get</code> methods return a DOM list.  This is <em>not</em> an array, so methods like <code>forEach</code> don’t work.</li>
+  <li class="to-me">Look at <code>sortingStudents.js</code></li>
+  <li class="to-me">Look at <code>varVsLetSubtlty.js</code> (shows how <code>let</code> correctly sets up closure)</li>
+  <li class="to-me">Look at <code>eventVsThis.html</code> (also shows how to clone nodes, when necessary)</li>
+  <li class="to-me">Look at <code>placementOfScripts.html</code> (also shows how to clone nodes, when necessary)</li>
+</ul>
+
+<h2 id="react">React</h2>
+
+<ul>
+  <li>We can write JavaScript that will create an entire web page “on the fly”
+    <ul>
+      <li class="to-me">Look at <code>clientSideDomCreation.{html,js}</code></li>
+    </ul>
+  </li>
+  <li>Using raw JavaScript would obviously be tedious, so React provides some helper methods
+    <ul>
+      <li class="to-me">Look at <code>reactDomCreation.{html,js}</code></li>
+      <li>(You will need to launch a server – won’t run directly from a file)</li>
+    </ul>
+  </li>
+  <li>Even this syntax would get tedious quickly, so React provides a more HTML-like syntax called JSX.</li>
+  <li>Browsers can’t handle JSX directly.  Code containing JSX needs to first be “transpiled” into straight JavaScript.</li>
+  <li>Look at <code>jsx1.jsx</code></li>
+  <li>To convert JSX to JavaScript “by hand”
+    <ol>
+      <li>Install the Babel Command Line Interface: <code>npm install --save-dev @babel/core @babel/cli</code></li>
+      <li>Install the React Preset for Babel: <code>npm install @babel/preset-react</code></li>
+      <li>Run <code>npx babel --presets=@babel/preset-react jsx1.jsx</code>  (<code>npx babel</code> is a short-cut for <code>./node_modules/.bin/babel</code>)</li>
+    </ol>
+  </li>
+  <li>Notice how the “html-like” syntax is converted into “regular” javaScript.
+    <ul>
+      <li>(Note:  The <code>jsx</code> extension is not necessary, I use it only because it makes VS Code happy.)</li>
+    </ul>
+  </li>
+  <li>Like EJS and other templating languages, we can mix the JSX with “regular” javascript.
+    <ul>
+      <li>Look at <code>jsx2.jsx</code></li>
+      <li>How is this helpful? Imagine loading <code>states</code> from an API call.</li>
+    </ul>
+  </li>
+  <li>With React/JSX we can define our own components.  (It’s kind of like making up our own HTML tags on the fly.)
+    <ul>
+      <li>A standard design approach is to break a page down into hierarchical (i.e., nested) components.</li>
+      <li>Consider displaying recipes <img src="Images/recipes_react.png" alt="" /></li>
+      <li>We can define components like this:  <img src="Images/recipe_components_react.png" alt="" />
+        <ul>
+          <li><code>Recipe</code>, <code>IngredientsList</code>, <code>Instructions</code>, <code>Ingredient</code> (not shown)</li>
+        </ul>
+      </li>
+      <li>
+        <p>To create a new component, simply write a function that returns a React element:</p>
+
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">IngredientsList</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span>
+    <span class="dl">"</span><span class="s2">ul</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">{</span><span class="na">className</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ingredients</span><span class="dl">"</span><span class="p">},</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">li</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1 cup unsalted butter</span><span class="dl">"</span><span class="p">),</span>
+    <span class="p">...</span>
+     <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">li</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0.5 teaspoon salt</span><span class="dl">"</span><span class="p">),</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Better yet, use JSX:</p>
+
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">IngredientsList</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">className</span><span class="o">=</span><span class="dl">'</span><span class="s1">ingredients</span><span class="dl">'</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="mi">1</span> <span class="nx">cup</span> <span class="nx">unsalted</span> <span class="nx">butter</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>      <span class="p">...</span>
+      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="mf">0.5</span> <span class="nx">teaspoon</span> <span class="nx">salt</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>  <span class="p">);</span>          
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Even better: rather than hard-coding the ingredients, we can pass them as a parameter called <code>props</code></p>
+
+        <pre><code>function IngredientsList(props) {
+  return (
+    &lt;ul className='ingredients"&gt;
+      {props.list.map((ingredient, i) =&gt; (
+        &lt;Ingredient key={i} {...}&gt;
+      ))}
+  );
+}
+</code></pre>
+      </li>
+      <li class="to-me">Look at <code>recipe1.jsx</code> in the sample code.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="jsx-details">JSX Details</h3>
+
+<ul>
+  <li>JSX “in-depth” https://reactjs.org/docs/jsx-in-depth.html</li>
+  <li>User-defined components must be capitalized.
+    <ul>
+      <li>(Well, to be precise, the names those objects are assigned to must be capitalized.)</li>
+      <li>built-in types like <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> are lower-case</li>
+    </ul>
+  </li>
+  <li>The JSX element type can’t be a general expression.
+    <ul>
+      <li>If the component you want to use is conditional, then use an <code>if</code> statement to assign the type to a variable.</li>
+    </ul>
+  </li>
+  <li>Booleans, null, and undefined are ignored.
+    <ul>
+      <li>However, 0 is not ignored (i.e., don’t assume <em>all</em> “falsy” values are ignored.)</li>
+    </ul>
+  </li>
+  <li>Shortcuts:
+    <ul>
+      <li>You can set a prop to a string literal: <code>&lt;MyComponent message="hello, world."&gt;</code></li>
+      <li>Props default to true</li>
+      <li>Use the spread operator to pass an existing props object
+        <ul>
+          <li>Long way: <code>&lt;Greeting firstName='Ben' lastName='Hector" /&gt;</code></li>
+          <li>Short way: `const props = {firstName: ‘Ben’, lastName: ‘Hector’}; &lt;Greeting {…props}/&gt;</li>
+          <li>This is especially helpful when passing props down through a hierarchy.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="same-thing-from-a-different-perspective">Same thing from a different perspective:</h2>
+
+<h3 id="ingredient">Ingredient</h3>
+
+<ul>
+  <li>Using React, you get to “define new tags” to represent one component of your page/UI.
+    <ul>
+      <li>e.g., <code>&lt;Ingredient&gt;</code></li>
+    </ul>
+  </li>
+  <li>Forget everything else for a moment, and imagine someone “gives” you a new <code>&lt;Ingredient&gt;</code> tag:
+    <ul>
+      <li>anywhere you put <code>&lt;Ingredient&gt;</code> in your page, an ingredient appears.</li>
+    </ul>
+  </li>
+  <li>So, how are these components defined?</li>
+  <li>Just a function that returns an element:
+    <ul>
+      <li><code>function Ingredient() { return  React.createElement("li", null, "This is an ingredient")}</code></li>
+    </ul>
+  </li>
+  <li>But, we normally would use JSX to define that element:
+    <ul>
+      <li><code>function Ingredient() { return  &lt;li&gt;This is an ingredient&lt;/li&gt;;}</code></li>
+    </ul>
+  </li>
+  <li>However, you need to provide additional information: You need to specify the
+    <ul>
+      <li>amount</li>
+      <li>measurement</li>
+      <li>name</li>
+      <li><code>&lt;Ingredient amount="1" measurement="cup" name="Pine Nuts"&gt;</code></li>
+      <li>(Generally, these wouldn’t be hard-coded, but I did that here to keep things simple)</li>
+    </ul>
+  </li>
+  <li>The attributes become a parameter to the function.</li>
+  <li>However, rather than having one parameter per attribute, they are all combined into a single object
+(typically called <code>props</code>)
+    <ul>
+      <li><code>function Ingredient(props) { return &lt;li&gt; {props.amount} {props.measurement} {props.name} &lt;/li&gt;; }</code></li>
+    </ul>
+  </li>
+  <li>You can also use a JavaScript syntax short-cut called “object deconstruction”
+    <ul>
+      <li><code>{amount, measurement, name} = props</code></li>
+      <li>Can do the same thing with a parameter</li>
+      <li><code>function Ingredient({amount, measurement, name}) { return &lt;li&gt; {amount} {measurement} {name} &lt;/li&gt;; }</code></li>
+    </ul>
+  </li>
+  <li>Summary: Define a new component with a function that takes an object (key/value pairs) as input 
+and returns a DOM object as output.
+    <ul>
+      <li>Typical way of defining that DOM object is to use JSX.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="ingredientlist">IngredientList</h3>
+
+<ul>
+  <li>Now we want a list of ingredients.</li>
+  <li>Assume we “magically” get this component as part of HTML:
+    <ul>
+      <li><code>&lt;IngredientList&gt;</code></li>
+      <li>But, we need to provide an array of ingredients for it to display</li>
+      <li><code>&lt;IngredientList ingredients="[{amount: '1', measurement: 'cup', ...}]&gt;</code></li>
+    </ul>
+  </li>
+  <li>How to implement:
+    <ul>
+      <li class="to-me">See <code>IngredientListDemo</code> in <code>recipe1.jsx</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>You <em>could</em> do this:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">IngredientListDemo</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">ul</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nx">IngredientList</span><span class="p">(</span><span class="nx">props</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="nx">IngredientList</span><span class="p">(</span><span class="nx">props</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="nx">IngredientList</span><span class="p">(</span><span class="nx">props</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+        <span class="p">...</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>But, it would be more common to use JSX</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">IngredientListDemo</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">props</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">;</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">ingredients</span><span class="dl">"</span> <span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Ingredient</span> <span class="nx">amount</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">amount</span><span class="p">}</span> <span class="nx">measurement</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">measurement</span><span class="p">}</span> <span class="nx">name</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">name</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="dl">'</span><span class="s1">0</span><span class="dl">'</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Ingredient</span> <span class="nx">amount</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">amount</span><span class="p">}</span> <span class="nx">measurement</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">measurement</span><span class="p">}</span> <span class="nx">name</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">name</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="dl">'</span><span class="s1">1</span><span class="dl">'</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Ingredient</span> <span class="nx">amount</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">amount</span><span class="p">}</span> <span class="nx">measurement</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">measurement</span><span class="p">}</span> <span class="nx">name</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">name</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="dl">'</span><span class="s1">2</span><span class="dl">'</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Ingredient</span> <span class="nx">amount</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">amount</span><span class="p">}</span> <span class="nx">measurement</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">measurement</span><span class="p">}</span> <span class="nx">name</span><span class="o">=</span><span class="p">{</span><span class="nx">list</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">name</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="dl">'</span><span class="s1">3</span><span class="dl">'</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="sr">/ul&gt;</span><span class="err">;
+</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p>But, rather than list each ingredient by hand, use a loop:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">IngredientList</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">ingredients</span><span class="dl">"</span> <span class="o">&gt;</span> <span class="p">{</span>
+        <span class="nx">props</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">Ingredient</span> <span class="nx">amount</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">amount</span><span class="p">}</span> <span class="nx">measurement</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">measurement</span><span class="p">}</span> <span class="nx">name</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>        <span class="p">))}</span>
+    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p><span class="to-me">Move the call to map before return so it is clearer what’s going on:</span></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">ingredientList</span> <span class="o">=</span> <span class="nx">props</span><span class="p">.</span><span class="nx">ingredients</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">Ingredient</span> <span class="nx">amount</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">amount</span><span class="p">}</span> <span class="nx">measurement</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">measurement</span><span class="p">}</span> <span class="nx">name</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>        <span class="p">))}</span>
+</code></pre></div></div>
+
+<h3 id="another-shortcut">Another shortcut:</h3>
+
+<ul>
+  <li>Notice the redundancy here: <code>&lt;Ingredient amount={item.amount} measurement={item.measurement} name={item.name} key={index} /&gt;</code></li>
+  <li>The syntax <code>...item</code> breaks the object apart into separate variables (<code>amount = foo.amount</code>, etc.)
+    <ul>
+      <li><code>&lt;Ingredient {...item} key={index} /&gt;</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="state">State</h2>
+
+<ul>
+  <li>You can put a callback on a DOM element’s <code>onClick</code> property.
+    <ul>
+      <li><code>&lt;h2 onClick={() =&gt; console.log(</code>You clicked on recipe ${props.name}<code>)}&gt; {props.name} &lt;/h2&gt;</code></li>
+    </ul>
+  </li>
+  <li>Suppose we only want to show one recipe at a time.  We need to remember which recipe we are looking at.</li>
+  <li>We could pass the <code>Menu</code> component a list of recipes and store index of which one to show.
+    <ul>
+      <li class="to-me"><code>recipe2.jsx Menu_Broken</code></li>
+    </ul>
+  </li>
+  <li>The button clicks work, but the view isn’t updated.
+    <ul>
+      <li>Nothing is triggering the page to re-render.</li>
+      <li>Simply having a local variable doesn’t quite do what we need.</li>
+      <li>The state needs to be stored somewhere that react can watch it.</li>
+      <li>Also, notice that <code>currentIndex</code> can only be accessed/modified from within the function.</li>
+    </ul>
+  </li>
+  <li class="to-me">Look at <code>ReactRecipe::stateUsingClosures.js</code></li>
+  <li>By wrapping the state up in a closure, we can abstract away the details of <em>how</em> the value is stored.</li>
+  <li>It could be a local variable, an entry in a hash table, stored in a DB, etc.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Menu</span><span class="p">({</span> <span class="nx">title</span><span class="p">,</span> <span class="nx">recipes</span> <span class="p">})</span> <span class="p">{</span>
+     <span class="nx">int</span> <span class="nx">currentIndex</span> <span class="o">=</span> <span class="nx">recipes</span><span class="p">.</span><span class="nx">length</span> <span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">recipe</span> <span class="o">=</span> <span class="nx">recipes</span><span class="p">[</span><span class="nx">currentIndex</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h2 id="bootstrap-and-react">Bootstrap and React</h2>
+
+<ul>
+  <li>To install Bootstrap in a React project:
+    <ul>
+      <li>Add <code>npm</code> modules <code>bootstrap</code> and <code>react-bootstrap</code></li>
+      <li>Add <code>import 'bootstrap/dist/css/bootstrap.css'</code> to <code>index.js</code></li>
+    </ul>
+  </li>
+  <li>Bootstrap in <code>AuthorsForm</code> :
+    <ul>
+      <li><code>form-group</code> and <code>form-control</code> classes (<a href="https://getbootstrap.com/docs/4.3/components/forms/">https://getbootstrap.com/docs/4.3/components/forms/</a>)</li>
+      <li><code>btn</code> and <code>btn-primary</code></li>
+    </ul>
+  </li>
+  <li>Bootstrap in <code>AuthorList</code>
+    <ul>
+      <li>The list is <code>container-fluid</code></li>
+      <li>The table is set with <code>table</code> and <code>table-hover</code>(<a href="https://getbootstrap.com/docs/4.3/content/tables/">https://getbootstrap.com/docs/4.3/content/tables/</a>)</li>
+      <li>Each table row is marked as a <code>row</code> with <code>col-md-3</code> so table stacks up at a medium size.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="conventional-react-deploy">Conventional React Deploy</h3>
+<ul>
+  <li>Including React from CDN is for development only.</li>
+  <li>Conventional approach is to bundle all the code into a single .js file.
+    <ul>
+      <li>Webpack (<a href="https://webpack.js.org">https://webpack.js.org</a>): Tool used to bundle many JavaScript files into a single <code>.js</code> file</li>
+      <li>Babel: Converts code from one form to another.  Used for two purposes:
+        <ol>
+          <li>Convert JSX to JavaScript</li>
+          <li>Convert imports into form that all browsers will understand.</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>If you used <code>create-react-app</code> you can just run <code>npm run build</code>
+    <ul>
+      <li>Look in <code>build</code> directory.  You’ll see everything you need ready to go.</li>
+      <li>Launch a simple server (e.g., Python) and you are all set!</li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>
