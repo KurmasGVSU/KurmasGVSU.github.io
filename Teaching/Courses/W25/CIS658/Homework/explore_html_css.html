@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>CIS 658 Exploring HTML/CSS</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        margin-right: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+      #content {
+        padding: 0 10px 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 658</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Exploring HTML/CSS</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2025</h1></td>
+  </tr>
+</table>
+
+    <h1>Objective</h1>
+    <p class='listHeader'> The main objectives of this homework are to:</p>
+    <ul>
+      <li>Spend a little time writing HTML/CSS, and</li>
+      <li>Get something deployed to the web.</li>
+    </ul>
+    <h1>Part 1: Explore HTML and CSS</h1>
+    <ol>
+      <li>Read/Review textbook chapters 3, 5, 6, and 7.</li>
+      <li>Set a timer and spend about 30 minutes exploring (i.e., "playing with") HTML.
+        Make sure you understand the basics of HTML, including:
+        <ul>
+          <li>What the basic tags do</li>
+          <li>How to nest tags</li>
+          <li><code>div</code> vs. <code>span</code></li>
+          <li>How to create links</li>
+          <li>How to embed images</li>
+        </ul>
+      </li>
+      <li>Set a timer and spend about 60 minutes exploring (i.e., "playing with") CSS.
+        Make sure you understand the basics of CSS, including:
+        <ul>
+          <li>The basic syntax for setting properties on an element (font, color, etc.).</li>
+          <li>Using selectors (class, tag, and id)</li>
+          <li>The box model (borders, margin, padding)</li>
+        </ul>
+        This website <a href='https://jsfiddle.net'><code>https://jsfiddle.net</code></a> is a good "sandbox" for this type of exploration.</li>
+      <li>Make a point of both 
+        <ol type='a'>
+          <li>Linking to an external stylesheet (e.g., <code>&lt;link rel="stylesheet"...</code>), and</li>
+          <li>Including some rules in the <code>.html</code> document's head using 
+            the <code>&lt;style&gt;</code> tag.</li>
+        </ol>
+      </li>
+      <li>If you have time left after becoming comfortable with the basics (of if you already know all the 
+        basics because you have extensive HTML and CSS experience), take some time to explore something new. 
+        <ul>
+          <li>Visit the <a href='https://www.w3schools.com/css/default.asp'>W3School's CSS page</a>,
+            Look at the "Advanced" section in the navigation bar, and try something new.</li>
+          <li>You may also want to try out the new CSS <a href='https://css-tricks.com/snippets/css/complete-guide-grid/'>Grid</a>
+            layout.</li>
+        </ul>
+      </li>
+    </ol>
+    <h1>Part 2: Deploy a web page</h1>
+    Deploy a web page you created (either from the exercise above, or from your portfolio) to 
+    the deployment server you intend to use for this course.
+    <ul>
+      <li>If you are deploying static web pages only, you may use a very simple server such as 
+        <code>python -m http.server</code> or JavaScript's 
+        <a href='https://www.npmjs.com/package/http-server'><code>http-server</code></a>.</li>
+      <li>You may run your server on any port you choose (i.e., you can use port 80; but, you don't have to).</li>
+    </ul>
+    <p>I will look over your submissions between 8:00 a.m. and 10:00 p.m. on Tuesday, 23 January.
+      Please be sure your deployment environment is up (or wakeable) during this time.  
+      There is no need to keep your environment running (and, therefore, using limited credits) 
+      outside of this window.
+    </p>
+    <h1>Submission</h1>
+    When you are ready to submit, simply email me the URL for your web page (including the port number, if necessary).
+    <hr>
+    <p>Updated Friday, 3 January 2025, 3:16 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+  </body>
+</html>

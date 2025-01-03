@@ -1,0 +1,527 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="web-servers">Web Servers</h1>
+<ul>
+  <li class="to-me">Review basic HTTP protocol and messages sent between the client and the server.</li>
+  <li>At first, a URL was a machine name and a filename.</li>
+  <li>Server simply opened the file and sent it back.</li>
+  <li>Example: <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/SimpleHTTPServer">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/SimpleHTTPServer</a>
+    <ul>
+      <li><code>cd ~/Documents/Courses/KurmasGVSU.github.io/Teaching/Courses/W24/CIS658/</code></li>
+      <li><code>java -cp ~/Documents/Courses/CIS371/SampleCode/SimpleHTTPServer HTMLOnlyServer</code></li>
+      <li>visit <code>index.html</code></li>
+      <li>Notice the command received: <code>GET /index.html HTTP/1.1</code>
+        <ul>
+          <li>Line 42: <code>String command = input.readLine();</code></li>
+          <li>Split into three pieces. Line 54: <code>String[] parts = command.split("\\s+");</code></li>
+          <li>Open file</li>
+          <li>Print headers</li>
+          <li>print blank line</li>
+          <li>Loop through and take from file and send as response.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="hard-coded-dynamic-server">“Hard-Coded” Dynamic Server</h2>
+
+<ul>
+  <li class="q">What happens when you enter a directory instead of a file?
+    <ul>
+      <li>Return <code>index.html</code> if it exists.</li>
+      <li>Return a directory listing otherwise (sometimes.)
+        <ul>
+          <li class="to-me">Demonstrate with built-in Python server running local copy of my web page</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Key idea: The “path” part of a URL is just text. It has no official semantic meaning.
+    <ul>
+      <li>The web server can treat/interpret it however it wants.</li>
+    </ul>
+  </li>
+  <li class="to-me">Show <code>ServerWithWhoCommand</code>
+    <ul>
+      <li><code>whoText</code></li>
+      <li><code>whoHTML</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="generalized-dynamic-server-cgi">Generalized Dynamic Server (CGI)</h2>
+
+<ul>
+  <li>Having to customize an entire web server to run code specific to your app is not ideal.
+    <ul>
+      <li>Creating/Maintaining a web site and a web server requires two very different skill sets.
+        <ul>
+          <li>In some sense, the web server code is much “lower” level.</li>
+        </ul>
+      </li>
+      <li>Separate the two so those responsible can focus on their area of strength.</li>
+    </ul>
+  </li>
+  <li>Idea: If a file name has a programming language extension (<code>.pl</code>, <code>.py</code>, <code>.php</code>, etc.) and/or in the <code>cgi-bin</code> directory, run that file and send the resulting output.
+    <ul>
+      <li>Uses <code>fork</code> and <code>exec</code>, for what it’s worth.</li>
+    </ul>
+  </li>
+  <li class="q">What are some “rough edges” with this approach?
+    <ol>
+      <li>Writing a program that generates HTML as output is messy
+        <ul>
+          <li>See <code>whoHTML</code> in <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/SimpleHTTPServer/Who.java">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/SimpleHTTPServer/Who.java</a></li>
+        </ul>
+      </li>
+      <li>We need a way of passing parameters to the program. (e.g., what zip code do you want the weather for?)</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="passing-parameters">Passing “parameters”</h2>
+
+<ul>
+  <li>Imagine you are writing a web app that shows the current weather.</li>
+  <li>You need some way for the user to specify which city/zip to display.
+    <ul>
+      <li class="q">Ideas?
+        <ul>
+          <li>Path</li>
+          <li>Query string</li>
+          <li>POST</li>
+        </ul>
+      </li>
+      <li class="q">Pros/Cons?</li>
+    </ul>
+  </li>
+  <li>URL:
+    <ul>
+      <li>Remember that the server can interpret the path any way it likes.</li>
+      <li><code>http://myweather.com/today/49401</code>.  First part of path could be the page, second part the zip code.</li>
+      <li class="q">Challenge?
+        <ul>
+          <li>The server has to be customized to interpret the path properly.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>CGI</code>: Common Gateway Interface
+    <ul>
+      <li>Original standard for specifying how a web server sent parameters to the external program.
+        <ul>
+          <li><a href="https://www.w3.org/CGI/">https://www.w3.org/CGI/</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Common_Gateway_Interface">https://en.wikipedia.org/wiki/Common_Gateway_Interface</a></li>
+        </ul>
+      </li>
+      <li>Part before <code>?</code> was name of script to run.</li>
+      <li>Part after <code>?</code> was the parameters.</li>
+      <li>e.g., <code>http://myweather.com/today.php?zip=49401</code></li>
+      <li>Notice the key/value pair.</li>
+    </ul>
+  </li>
+  <li class="q">What details need to be worked out to make this work?
+    <ul>
+      <li>How to handle multiple parameters?</li>
+      <li>How to handle escaping <code>?</code>, <code>&amp;</code>, <code>=</code>, etc.?</li>
+      <li>How to handle spaces and unprintable characters?</li>
+    </ul>
+  </li>
+  <li class="to-me">Do a google query and look at the URL.</li>
+  <li class="to-me">Visit <a href="https://faculty.computing.gvsu.edu/kurmasz/formDemo.php">https://faculty.computing.gvsu.edu/kurmasz/formDemo.php</a> and examine GET URLs generated.</li>
+  <li><code>CGI</code> defines a standard for all of this.</li>
+  <li><code>POST</code>:
+    <ul>
+      <li>You can also send data in the body of the request.</li>
+      <li>Remember the blank line after the request headers? POST data goes after that.</li>
+      <li class="to-me">Visit <a href="https://faculty.computing.gvsu.edu/kurmasz/formDemo.php">https://faculty.computing.gvsu.edu/kurmasz/formDemo.php</a> and examine the POST request generated (using Network -&gt; Payload in developer tools)</li>
+    </ul>
+  </li>
+  <li>(More on <code>GET</code> vs. <code>POST</code> later.)</li>
+  <li>Old CGI workflow:
+    <ul>
+      <li>Server would separate the query string from the path and send it as input to the external script, and</li>
+      <li>Server would read body from POST requests and send it as input to the external script.</li>
+      <li>All external scripts were responsible for parsing these parameters to obtain useful information.</li>
+      <li>This was usually done by common libraries to avoid duplicating code.</li>
+    </ul>
+  </li>
+  <li>Early goal: “Automate” the handling of these parameters to minimize redundant code that must appear in each script.</li>
+</ul>
+
+<h2 id="writing-programs-that-generate-html">Writing programs that generate HTML.</h2>
+
+<ul>
+  <li>If done naively, writing programs that produce HTML as output can be quite messy.</li>
+  <li>Idea 1a: String interpolation.
+    <ul>
+      <li><code>print(f"The value of x is {x}")</code></li>
+    </ul>
+  </li>
+  <li>Idea 1b: “Here” documents
+    <ul>
+      <li>Analogous approaches in many languages.</li>
+      <li>Pretend that the line <code>name = "bob"</code> is a function call that does something like
+get weather data, looks up a flight status, etc.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">name</span> <span class="o">=</span> <span class="s">"bob"</span>
+
+<span class="n">doc_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"""
+   &lt;html&gt;
+     &lt;head&gt;
+        &lt;title&gt;My Dynamic Web Page&lt;/title&gt;
+     &lt;/head&gt;
+     &lt;body&gt;
+     &lt;h1&gt;Welcome&lt;/h1&gt;
+        Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s">!
+     &lt;/body&gt;
+   &lt;/html&gt;"""</span>
+   
+<span class="k">print</span><span class="p">(</span><span class="n">doc_string</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>“Old school” CGI perl programs looked something like this:</li>
+</ul>
+
+<div class="language-perl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nv">POSIX</span><span class="p">;</span>
+
+<span class="k">my</span> <span class="nv">$time</span> <span class="o">=</span> <span class="nv">strftime</span> <span class="p">"</span><span class="s2">%H:%M</span><span class="p">",</span> <span class="nb">localtime</span> <span class="nb">time</span><span class="p">;</span>
+
+<span class="k">print</span> <span class="s">&lt;&lt;HERE
+&lt;html&gt;
+&lt;body&gt;
+&lt;h2&gt; Hello, World!&lt;/h2&gt;
+
+&lt;p&gt;At the tone time time (at the server) will be $time.&lt;/p&gt;
+
+(from perl)
+&lt;/body&gt;
+&lt;/html&gt;
+HERE
+</span></code></pre></div></div>
+
+<ul>
+  <li>Notice that the bulk of the code is HTML,  not python/perl. This seems kind of backward.</li>
+  <li>The next advancement was PHP which made the content of the “here” document the default, and the code was “escaped”.
+    <ul>
+      <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/Templating/colorDemo.php">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/Templating/colorDemo.php</a></li>
+    </ul>
+  </li>
+  <li>This is not a bad idea at all — many, many web sites generated using PHP.</li>
+  <li class="q">Limitations of PHP?  Why is it not so popular?
+    <ul>
+      <li>It was the first attempt at smoothing out the rough edges.</li>
+      <li>First version was very simple / “quick and dirty” (e.g., no “OO”)</li>
+      <li>Newer ideas often “bolted” on awkwardly</li>
+    </ul>
+  </li>
+  <li>As a result, many other approaches use the same key ideas, but are more elegant.</li>
+</ul>
+
+<h2 id="frameworks">Frameworks</h2>
+
+<p>Imagine you are designing a system to create dynamic web pages. What types of features are you looking for?
+* A library of functions to do common tasks (so you don’t have to re-invent the wheel)
+* You might want to have your system just automatically call these functions for you saving even more time.
+* Frameworks are the result of these attempts to automate as much as possible allowing users to implement a web page with as little coding as reasonable.
+* When designing a framework, there is a fundamental tension between <em>configuration</em> and <em>convention</em>.
+  * What things should be explicitly spelled out?
+  * What things should just happen by “magic” if the code is written using certain names/patterns?
+* There is no right answer, which is why there is a long list of frameworks.
+* However, frameworks tend to follow similar patterns and have a number of things in common.
+  * So, the goal here is not to make you an expert using any particular framework, but to highlight common patterns/techniques so that when you go to learn a specific framework, it doesn’t seem completely foreign and you have a mental model you can leverage.</p>
+
+</main>
+</body>
+</html>

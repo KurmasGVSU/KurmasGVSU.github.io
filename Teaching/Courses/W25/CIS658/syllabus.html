@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CIS 658 --- Web Architectures</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        margin-right: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+      .rightAlign {
+        text-align: right;
+      }
+
+      .leftAlign {
+        text-align: left;
+      }
+
+      .centerAlign {
+        text-align: center;
+      }
+
+      .gradingTable {
+        border: 0;
+        padding-top: 10px;
+      }
+
+      .gradingTable td, .gradingTable th {
+        padding-right: 10px;
+        padding-left: 10px;
+        /* border: 1px solid blue;  // retained for debugging */
+      }
+
+      .gradingTableHeader {
+        font-size: 110%;
+      }
+
+      .pointsTable {
+        padding-left: 25px;
+        border-collapse: collapse;
+      }
+
+      .pointsCell {
+        vertical-align: top;
+      }
+
+      .underlined {
+        border-bottom: 1px solid black;
+      }
+
+      .letterGradeHeader {
+        padding-right: 10px;
+      }
+
+      .centered {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav">
+  <a class='bypass' href="#content">Skip to main content</a>
+  <p><a target="_top" href="index.html">Course Home</a></p>
+  <p><a href="syllabus.html">Syllabus</a></p>
+  <p><a href="timeline.html">Timeline</a></p>
+  <!-- <p><a href="estimated_timeline.html">Timeline</a></p> -->
+  <!-- <p><a target="_top" data-klink="previousCourseURL">Previous Offering</a></p> -->
+  <!-- <p id="currentOffering" style="DISPLAY: none"><a target="_top" data-klink="currentCourseURL">Current Offering</a>
+  </p> -->
+  <!--
+  <p><a href="SampleCode" style="color:white"><fontsize="2"
+  face="arial,helvetica,sans-serif">SampleCode</font></a></p>
+  -->
+  <hr>
+  <p><a href='http://localhost:8000'>My Home</a></p>
+  <p><a href='https://www.gvsu.edu/computing/module-officehours-index.htm?userId=3198C5B9-BBE4-A648-BC24DF41E859FD18&siteModuleId=3178A9F5-C72C-B4A4-4F15D6794E34F230'>My Schedule</a></p>
+</nav>
+
+    <main id="content">
+      <div>
+        <h1 style="text-align: center">
+          <span>CIS 658 Web Architectures</span><br>
+          <span>Winter 2025</span>
+        </h1>
+      </div>
+      <dl>
+        <dt> Contact Information:</dt>
+        <dd><style>
+    .contactInfoTable {
+        width: 100%;
+    }
+
+    .contactInfoTable td {
+        border: 0;
+        margin: 3px;
+    }
+
+    .ciHeader {
+        font-weight: bold
+    }
+
+    .contactInfoTable td {
+        text-align: left;
+    }
+
+    .contactInfoTable td:nth-child(1) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(3) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(4) {
+        width: 250px;
+    }
+</style>
+
+<table class="contactInfoTable">
+    <tr>
+        <td class="ciHeader">Instructor:</td>
+        <td>Zachary Kurmas</td>
+        <td class="ciHeader">Office:</td>
+        <td>MAK C-2-316 / DCIH 530G</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Phone:</td>
+        <td>(616)-331-8688</td>
+        <td class="ciHeader">Office Hours:</td>
+        <td>MW 11:00-noon (Allendale)</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Home page:</td>
+        <td>
+            <a href='http://localhost:8000'><code>http://localhost:8000</code></a>
+        </td>
+        <td></td>
+        <td>MW 3:00-4:00 (DCIH 530G) </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+<p>E-mail is the best way to contact me. During the week, expect a reply within 24 hours. Also, feel free to visit my
+    office any time the door is open, even if it isn't officially office hours.</p>
+
+</dd>
+        <dt>Course Objectives:</dt>
+        <dd>
+          At the end of the course, students will be able to
+          <ul>
+            <li>Provide in-depth details of the HTTP protocol.</li>
+            <li>Construct web pages with HTML 5 and CSS 3.</li>
+            <li>Contrast W3C Web Services with RESTful Services.</li>
+            <li>Discuss how dynamic content is delivered by web servers.</li>
+            <li>Illustrate how a web browser requests resources from a server and interprets the results.</li>
+            <li>Create dynamic web pages using Javascript.</li>
+            <li>Understand the mechanisms behind responsive web apps.</li>
+            <li>Evaluate web application frameworks.</li>
+            <li>Create a full three-tier web application.</li>
+          </ul>
+        </dd>
+        <dt>Text:</dt>
+        <dd>
+          <ul>
+            <li style="padding-bottom: 0; margin-bottom: 0"><em>Client-Side Web Development.</em> by Joel Ross and Mike Freeman.  <a href='https://info340.github.io/'><code>https://info340.github.io/</code></a></li>
+            <li style="padding-bottom: 0; margin-bottom: 0"><em>Agile Web Development Development with Rails 7</em> by Ruby and Thomas. ISBN: 978-1-68050-929-8  (Available free through GVSU library)</li>
+            <li style="padding-bottom: 0; margin-bottom: 0"><em>Learning React, 2nd Edition</em> by Porcello and Banks. ISBN: 978-1-49205-171-8  (Available free through GVSU library)</li>
+          </ul>
+        </dd>
+        <dt>Prerequisites:</dt>
+        <dd> CIS 500, CIS 511, CIS 512. Students must also be proficient in at least one high-level, general-purpose programming language.</dd>
+        <dt id='grading'>Grading:</dt>
+        <dd>
+          <p><b>Homework and Quizzes:</b>  Homework and quiz questions will be scored using the EMPN metric.  (See the 
+            <a href='#empn'>diagram</a> below.)  A mark of "E" or "M" indicates that the submission is complete and 
+            clearly demonstrates that the student understands the concepts covered by the assignment. 
+            A mark of "P" indicates that the student is making progress, but the assignment requires additional work/revision.  
+            A mark of "N" indicates that the assignment not sufficiently complete to assess. Students are expected to revise and 
+            re-submit homework until they have earned an "M" or better. However, <em>submissions and re-submissions of 
+              homework will only be accepted for 10 days following the due date</em>.
+          </p>
+          <img id="empn" src="EMPNrubric_notYet.png" width=600px>
+          <p><b>Late Days:</b> Students will ideally submit assignments that meet expectations by the stated due date. There is not 
+            an explicit penalty if a project still needs revision after the due date; but, I will track the total number of "late days" 
+            (days elapsed between the due date and when the student submission meets expectations). Accumulating an excessive number of 
+            late days will lower the final grade.  Important: Unless stated otherwise, all assignments must be submitted by the end of the day Wednesday, 17 April. </p>
+          <p><b>Final Grade:</b>The final grade in this course is <em>specification-based</em> rather than points-based. You will receive the highest grade for which 
+            you meet all the requirements:
+            <table class='gradingTable'>
+              <tr>
+                <th class='leftAlign'>Category</th>
+                <th colspan=1 class='leftborder'>D</th>
+                <th colspan=1>C</th>
+                <th colspan=1>B</th>
+                <th colspan=1>A</th>
+              </tr>
+              
+              <tr>
+                <td>Homework<sup>*</sup> </td>
+                <td class='centered'>8/16</td>
+                <td class='centered'>9/16</td>
+                <td class='centered'>11/16</td>
+                <td class='centered'>12/16</td>
+              </tr>
+              <tr>
+                <td>Midterm </td>
+                <td class='centered'>60%</td>
+                <td class='centered'>70%</td>
+                <td class='centered'>77%</td>
+                <td class='centered'>87%</td>
+              </tr>
+              <tr>
+                <td>Semester Project </td>
+                <td class='centered'> D</td>
+                <td class='centered'> C-</td>
+                <td class='centered'> B-</td>
+                <td class='centered'> A</td>
+              </tr>
+              <tr>
+                <td>Late Days </td>
+                <td class='centered'> &le; 30</td>
+                <td class='centered'> &le; 25</td>
+                <td class='centered'> &le; 20</td>
+                <td class='centered'> &le; 12</td>
+              </tr>
+            </table>
+            <sup>*</sup>The value in the Homework row is the number of submissions that achieve a mark of "M" or "E".
+          </dd>
+          <dt>Important Dates:</dt>
+          <dd>
+            <ul>
+              <li>Drop Day: <span>Friday, 21 March</span></li>
+              <li>Final Exam: <span>Monday, 21 April, 6:00 p.m.</span></li>
+            </ul>
+          </dd>
+          <dt>Course Policies:</dt>
+          <dd>
+            <ul>
+              <li> Assignments are due at the beginning of class on the due date, unless specified otherwise.</li>
+              <li>The penalty for submitting assignments late varies by assignment. It could be as little as one or two
+                points, or as much as no credit for the assignment. However, assignments more than 14 days late may receive
+                a 0 even if "I just forgot to turn it in."
+              </li>
+              <li> Unless specified otherwise, all assignments are to be completed
+                individually.
+              </li>
+              <li> The deadline to drop with a "W" is Friday, 21 March.
+                Remember, I cannot and will not drop this class for you.
+              </li>
+              <LI> Attendance is required. I understand that absences are
+                occasionally necessary; however, I reserve the right to lower grades
+                for excessive absences.
+              </li>
+              <li>
+                This course is subject to the GVSU policies listed at <a href='http://www.gvsu.edu/coursepolicies/'><code>http://www.gvsu.edu/coursepolicies/</code></a>.
+              </li>
+              <!--  <LI> Quizzes may be scheduled as little as one class in advance. -->
+            </ul>
+          </dd>
+          <dt>Special Assistance:</dt>
+          <dd>If there is any student in this class who has special needs because of learning, physical or other disability,
+            please contact me and Disability Support Services (DSS) at 616.331.2490. Furthermore, if you have a disability and
+            think you will need assistance evacuating this classroom and/or building in an emergency situation, please make me
+            aware so I can develop a plan to assist you.
+          </dd>
+        </dl>
+        <hr>
+        <a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+      </main>
+    </body>
+  </html>
