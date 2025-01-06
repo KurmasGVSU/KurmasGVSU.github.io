@@ -303,13 +303,18 @@
   </li>
   <li>Actually, before we do that, let’s review the <em>separation of implementation and interface</em>.
     <ul>
+      <li>Alarm clock example.</li>
       <li>Recall linked lists and dynamic arrays (lists, vectors) from CIS 163.</li>
       <li>Both store items in a sequence (there is a first item, a second item, a third item, etc.)</li>
       <li>Both have the same fundamental operations (<code>get</code>, <code>put</code>, <code>add_at_end</code>, <code>remove_from_end</code>)</li>
       <li>If you implement both a linked list and a vector using the interface (i.e., the methods have identical signatures — names and parameters), then you can swap one for another without modifying your code (other than to specify which type of list to use). Your code should still run, just with different performance characteristics.</li>
     </ul>
   </li>
-  <li>This use of a common interface to different implementations is common in application design.</li>
+  <li>This use of a common interface to different implementations is common in application design.
+    <ul>
+      <li>Quite common in web development also (e.g., middleware).</li>
+    </ul>
+  </li>
   <li>Another common use is the serial I/O interface.
     <ul>
       <li>The sending of data from one place to another is often conceptualized as a <em>stream</em>.</li>
@@ -450,9 +455,8 @@ number along with each name.</li>
       <li>(Using a different port is how the client knows whether to open an encrypted or unencrypted connection.)</li>
     </ul>
   </li>
+  <li class="to-me">Switch to <a href="cis371_browsersAndServers.html">Browsers and Servers notes</a></li>
 </ul>
-
-<p>{: .to-me} Switch to <a href="cis371_browsersAndServers.html">Browsers and Servers notes</a></p>
 
 
 </main>
