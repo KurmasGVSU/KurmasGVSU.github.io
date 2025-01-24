@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>CIS 371 Simple Web Server</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        margin-right: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+      #content {
+        padding: 0 10px 0 10px;
+      }
+
+      .dl1 {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .dl1 ol {
+        margin-bottom: 0;
+      }
+
+      dd {
+        margin-bottom: 0px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <main id="theMain">
+      <a class='bypass' href="#theMain">Skip to main content</a>
+      <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 371</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Simple Web Server</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2025</h1></td>
+  </tr>
+</table>
+
+
+      <p>You may optionally complete this homework in teams of two.  When you follow the link below, you will be given the option 
+        to either create a new team, or join an existing team.</p>
+
+      GitHub Classroom URL: <a href='https://classroom.github.com/a/-zMjkgY8'><code>https://classroom.github.com/a/-zMjkgY8</code></a><br>
+      <a href='https://youtu.be/_xDdq5DXeNQ'>This video</a> demonstrates how to use GitHub Classroom with this assignment.
+
+
+      <h1>Objective</h1>
+
+      Learn the inner workings of a basic web server to better understand what underlies web platforms. In particular,
+      students will observe the details of
+      <ul>
+        <li> interpreting an incoming request,</li>
+        <li> identifying and finding the requested resource,</li>
+        <li> preparing the proper response (which may be an error message), and</li>
+        <li> delivering the content (which could be either text or binary data).</li>
+      </ul>
+
+      <h2>Details</h2>
+
+      <p>Write a simple web server. You may (but are not required to) use <code>my_http_server.py</code> as a starting point. (This 
+        file is nearly identical to the code I walk through in <a href='https://youtu.be/iskqTsWcvDs'>this video</a>. 
+        You may use any language you like; you are not required to use Python.</p>
+
+      <p class="listHeader">Your web server must:</p>
+      <ul>
+        <li>Listen on port 8534 by default. (You can make this configurable, if you like; but, 8534 needs to be the
+          default.)
+        </li>
+        <li>Correctly serve text, html, pdf, and images (gif, png, and jpeg). You may support additional types if you
+          like.
+        </li>
+        <li>Your response headers must include <code>Content-Type</code>, <code>Content-Length</code>, and <code>Connection</code>.
+          <ul>
+            <li>You may assume the content type from the file's extension.</li>
+            <li>You may hard-code the file extension to mime-type mapping.</li>
+            <li>If there is no file extension, or if the file extension not recognized, use "<code>text/plain</code>"</li>
+          </ul>
+        </li>
+        <li>Return a 404 error when appropriate. (The response should also include a brief HTML message describing the
+          problem.)
+        </li>
+        <li>If the requested document is a directory:
+          <ul>
+            <li>Return <code>index.html</code>, if present (and if <code>index.html</code> is a readable, regular file).</li>
+            <li>Otherwise, return a simple directory listing (with links). Important: Your link to
+              subdirectories must end with '<code>/</code>', otherwise, the web browser won't properly reset the base
+              directory. (In other words, your <code>href</code> needs <code>Images/</code> not just <code>Images</code>.)
+            </li>
+          </ul>
+          <li>If the requested document is a directory and does not end with a <code>/</code>, return a 301 and redirect to a 
+            correctly formed URL. (For example, if the path is <code>/Pictures</code>, redirect to <code>/Pictures/</code>.)</li>
+        </li>
+      </ul>
+
+      <h2 class="listHeader">Challenges</h2>
+      <ol>
+        <li>Make your server multi-threaded so that it can serve multiple requests at once.</li>
+        <li> Implement an HTTPS server. Warning: I hear that getting the certificates
+          set up correctly can be challenging. I've never done this; so, if you run into trouble, I'll be of limited help.
+        </li>
+      </ol>
+
+      <h2 class="listHeader">Rules</h2>
+      <ul>
+        <li>You may work on this assignment in teams of at most two.</li>
+        <li>You may use any language you like. Realize, however, that I will be of limited help if you choose something
+          other than Python or Java. (I know C, C++, and Ruby well; but, I don't know much about the particular networking
+          libraries.
+          I do not know any <code>.net</code> languages. I do not know Windows well.)
+        </li>
+        <li>You may use standard socket and I/O libraries. You may <em>not</em> use any libraries that implement significant
+          web server functionality (e.g., <code>com.sun.net.httpserver</code>).
+        </li>
+        <li>Cite <em>any</em> sources you consult. Avoid ChatGPT and other sources that provide complete (or nearly complete) solutions.</li>
+        <li>Every file should begin with a comment that includes the names of all team members.</li>
+        <li>Follow good design practices. In particular, break your code into methods to avoid code duplication and to
+          keep methods from getting too long.
+        </li>
+      </ul>
+
+      <h2>Submission and Grading</h2>
+
+      <p>If you use Python, this project will be partially auto-tested using GitHub Actions. Begin by using following
+        <a href='https://classroom.github.com/a/-zMjkgY8'>this link</a> to create a repository for this project. Once you have created your
+        repository for this assignment, clone the repo to your local machine. Your repository
+        will contain the following files:</p>
+
+      <dl class="dl1">
+        <dt><code>my_http_server.py</code></dt>
+        <dd>This is the example I covered in the video (plus a little bit of extra sample code you might find helpful). 
+          You don't have to use this file, or any of the code in it. 
+        </dd>
+        <dt><code>http_socket.py</code></dt>
+        <dd>This is the socket "wrapper" used by the sample code. You are welcome to modify this if you like.
+        </dd>
+        <dt><code>.github</code></dt>
+        <dd>Configuration files for GitHub Actions.  Don't mess with files here.  (Attempting
+          to modify the testing process to either (1) create a "false pass", or (2) examine the test cases is a 
+          serious violation of the
+          <a href='https://www.gvsu.edu/computing/academic-honesty-30.htm'>CIS Academic Honesty Policy</a>.)
+        </dd>
+        <dt><code>studentData</code></dt>
+        <dd>This directory contains files you can use to test your server.</dd>
+        <dt><code>testPlan.txt</code></dt>
+        <dd>Complete this document to specify how you will test your server.</dd>
+        <dt><code>MyStaticWebServer.java</code></dt>
+        <dd>This is the starter code for the Java version of the assignment. You are welcome to use it if you find it helpful.
+        </dd>
+      </dl>
+
+      <h3 class="listHeader">Steps for completion and submission</h3>
+
+      <ol>
+        <li>Begin by writing your test cases. Look through the requirements above, and write a short paragraph describing
+          how you will verify that your server meets each requirement. (<code>testPlan.txt</code> includes a couple
+          samples.)
+        </li>
+        <li>Write your code. Make sure your name appears in all files.</li>
+        <li>If you are using Python for this assignment, 
+          name your file <code>my_http_server.py</code> so the autograder can find it. (If you aren't using Python, 
+          I'll have to run the tests by hand.)</li>
+        <li>When your code passes all of your tests, push to the <code>main</code> branch.</li>
+        <li>Go to the <code>Actions</code> tab on the GitHub page for this project and launch the tests.</li>
+      </li>
+      <li>If your code fails my tests:
+        <ul>
+          <li>Figure out what is missing from your test plan and add it.</li>
+          <li>Fix your code</li>
+          <li>Resubmit.</li>
+        </ul>
+        Your test plan should indicate which tests were added in response to failing CI builds. (If you have many
+        failing CI builds, but no additional tests cases, I'll know you didn't follow the testing procedure.)
+      </li>
+      <li>When your code passes the GitHub tests, schedule a demo with me.</li>
+    </ol>
+
+    <h2 class="listHeader">Hints and Reminders</h2>
+    <ul>
+      <li>Remember to call <code>close</code> on your socket at the end of every call. Forgetting to close a socket
+        may cause the <em>next</em> request to hang.</li>
+      <li>You must have a written test plan (described above).</li>
+      <li><span class="inline-important">This project will not be graded until it passes all of my tests.</span> Your
+        grade is based primarily on <em>when</em> you get all the automated tests passing. (Code design and testing will
+        also factor into your grade.)
+      </li>
+      <li class="listHeader">There are two stages to passing the tests.
+        <ol>
+          <li>First, your code must pass the automated tests in GitHub</li>
+          <li>Then, you must demonstrate your server to me and demonstrate that it can properly handle requests from
+            a standard web browser
+          </li>
+        </ol>
+        <span class="inline-important">It is your responsibility to schedule a demo time with me.</span>
+      </li>
+      <li>Every file should include all team member names.</li>
+      <li>If you are using Python, you might find these library functions helpful:
+        <ul>
+          <li><code> os.listdir()</code></li>
+          <li><code>os.path.isdir()</code></li>
+          <li><code>os.path.exists()</code></li>
+          <li><code>os.path.isfile()</code></li>
+          <li><code>os.access(index_path, os.R_OK)</code></li>
+        </ul>
+      </ul>
+
+      <hr>
+      <p>Updated Friday, 24 January 2025, 9:29 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+    </main>
+  </body>
+</html>

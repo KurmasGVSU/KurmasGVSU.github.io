@@ -252,7 +252,8 @@ ul, ol {
         <li>How you got the letters centered in each box</li>
       </ul>
 
-      <p>When you are ready for me to give feedback, make a commit to your git repo that contains the message <code>[Grade Me Part 1]</code>.
+      <h3>Submission</h3>
+      <p>When you are ready for me to give feedback, make a commit to your git repo that contains the message <code>[Grade Me, Part 1]</code>.
         If you decide to combine Part 1 and Part 2, please make a commit containing the message <code>[Defer to Part 2]</code>.</p>
       <hr>
 
@@ -272,68 +273,94 @@ ul, ol {
             <li> The word to be guessed (i.e., the answer -- which also tells you the number of columns in the board), </li>
             <li> The sequence (an array) of guesses thus far.</li>
           </ol>
-          You may hard-code these parameters at the top of your template code, if you prefer.</li>
+          I encourage you to get these parameter values from the query string; but, you may hard-code them at the top of your template code, if you prefer.</li>
         <li>For this part, you are not required to color the keys correctly.</li>
-        <li>Put your answer to Part 1 in a safe place so I can still see it. (In other words, give your Part 1 answer a new name, or
-          take care not to clobber your Part 1 answer when preparing Part 2.)
-          <li>In preparation for the next phase,  please add a unique id to each display box and letter box.  The ids should look something like <code>box-3-2</code>
-            and <code>letter-q</code>.
-            <li>You may use the template to generate CSS as well.  (You may need to do this to get the widths and placement correct.)</li>
+        <li>Put your answer to Part 1 in a safe place so I can still see it. (For example, give your Part 1 answer a new name.)</li>
+        <li>In preparation for the next phase,  please add a unique id to each display box and letter box.  The ids should look something like <code>box-3-2</code>
+          and <code>letter-q</code>.</li>
+        <li>You may use the template to generate CSS as well.  (You may need to do this to get the widths and placement correct.)</li>
+      </ul>
+      <img id='wordle2' src='wordle6x8.png' alt='6x8 Wordle board' width="350px"/>
+
+      <h3>Python/Jinja Scaffolding</h3>
+
+      <p>If you decide to use <code>jinja</code> as your templating system, I have set up a <code>Flask</code> server 
+        that will render the <code>jinja</code> file for you. Simply put a file with a <code>j2</code> extension in 
+        <code>Flask/templates</code>. Use the basename of that file as a path. (For example, if your file is named 
+        <code>wordle_part2.j2</code>, then you would visit <code>http://localhost:5000/wordle_part2</code>) There are default
+        parameters hard-coded into <code>wordle_server.py</code>, but you can override them by passing parameters in the query
+        string: <code>http://localhost:5000/wordle_part2?max_guesses=9&guesses=hello,kitty&answer=visit</code>.</p>
+
+      <p class='listHeader'>To use the provided Flask server</p>
+      <ol>
+        <li><code>cd</code> into the <code>Flask</code> directory.</li>
+        <li>Set up a virtual python environment, if desired</li>
+        <li>Run <code class='inline-instruction'>pip install -r requirements.txt</code></li>
+        <li>Run <code class='inline-instruction'>python wordle_server.py</code></li>
+      </ol>
+
+      <p>Flask uses 5000 as a default port. However, that conflicted with another service on my Mac, so you may have to use <code>-p</code> to choose a different port.</p>
+
+
+      <h3>JavaScript/EJS Scaffolding</h3>
+      <p> If you decide to use <code>ejs</code> as your templating system, I have set up an <code>ExpressJS</code> server that will (1) render the <code>.ejs</code>
+        file for you, and (2) process the query string, and (3) pass the relevant parameters to the template. (You are not required to use this setup. You may also change
+        my setup as you see fit.)</p>
+      <p class='listHeader'>If you choose to use the provided server, do the following:</p>
+      <ol>
+        <li>Run <code>npm install</code> to install <code>express</code>, <code>ejs</code>, and <code>Jest</code> locally.</li>
+        <li>Place your <code>.ejs</code> file in the <code>view</code> directory and give it a name that begins with with "<code>wordle</code>".</li>
+      </ol>
+      <p class='listHeader'>The <code>Express</code> server will pass query string parameters <code>maxAttempts</code> and <code>guesses</code> to your template as local variables. 
+        If you named your template file <code>wordle_part2.ejs</code>, you could test it by </p>
+      <ol>
+        <li>Running <code>node index.js</code> from the command line.</li>
+        <li>Pointing your web browser to <code>http://localhost:3000/wordle_part2?maxAttempts=8&guesses=short,shots,farce,seven</code></li>
+      </ol>
+      <p>(You can run/examine <code>wordle_demo</code> to see how the routing and parameters are handled.)</p>
+      <hr>
+
+      <h3>Submission</h3>
+      <p>When you are ready for me to give feedback, make a commit to your git repo that contains the message <code>[Grade Me, Part 2]</code>.
+        Leave a note telling me which template file you want me to grade.</p>
+
+
+      <h1 id='part3'>Part 3: Implement the game </h1>
+      <p>Add JavaScript to your Wordle board so that you can play the game.  
+        <p class='listHeader'>Rules:</p>
+        <ul>
+          <li>You may work in teams of up to two.</li>
+          <li>Your implementation must be client-side only. (Obviously, you will need a server to provide the page and JavaScript; but,
+            once the page loads, you shouldn't talk to the server again.)</li>
+          <li>Use plain JavaScript:  <em>Don't</em> use React, Angular, Vue, etc.</li>
+          <li> You may either (1) write JavaScript to dynamically create the board based on the game parameters, or  
+            (2) add JavaScript to your template from Part 2 (in which case you'll need to re-run the template to change the paramters of the game).</li>
+          <li>Your implementation must use Model-View-Controller design (i.e., separate Model, View, and Controller) classes.  (If you have a different design in mind, feel free to ask.)</li>
+          <li>All state should be stored in the model.</li>
+          <li>Your view may not modify your model.</li>
+          <li>You may use as much or as little of the provided starter code as you like.</li>
+          <li>Put your answer to Part 2 in a safe place so I can still see it. (In other words, give your part 2 answer a new name, or
+            take care not to clobber your Part 2 answer when preparing Part 3.)
           </ul>
-          <img id='wordle2' src='wordle6x8.png' alt='6x8 Wordle board' width="350px"/>
-          <h3>Scaffolding</h3>
-          <p> If you decide to use <code>ejs</code> as your templating system, I have set up an <code>ExpressJS</code> server that will (1) render the <code>.ejs</code>
-            file for you, and (2) process the query string, and (3) pass the relevant parameters to the template. (You are not required to use this setup. You may also change
-            my setup as you see fit.)</p>
-          <p class='listHeader'>If you choose to use the provided server, do the following:</p>
+          <p>As with Part 2, you may use the provided code as a starting point. The <code>js</code> directory contains the outline of a Model, View, and Controller for 
+            Wordle. These files demonstrate how to add listeners to the keys, and how the Controller can connect the Model and the View. This sample code also grabs 
+            the parameters for the game (<code>maxAttempts</code> and the <code>answer</code>) from the query string.  (See <code>js/Wordle.js</code>.)</p>
+          <p>(If you prefer, you can skip directly to <a href='#part4'>Part 4</a> and complete them together as one assignment.)</p>
+          <hr>
+          <h1 id='part4'>Part 4: Add unit tests</h1>
+          Add unit tests to your model and controller. (I suggest you use Jest; but, you may pick any test framework you like.)
+          <h2>Setting up Jest</h2>
+          <p class='listHeader'>To run your Wordle code directly in a browser, you will want to use the 
+            <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import'>ES 6 module import syntax</a>. This ES6 syntax is different from 
+            the <em>CommonJS</em> syntax used by Node, which causes problems when testing.  To address the differing import syntax, we will use a package called 
+            <a href='https://babeljs.io'>Babel</a> to transform the code into something that Node handles.</p>
+          <p class='listHeader'>The starter code has <code>Jest</code> and <code>Babel</code> already set up. However, if you need to add it to your project:</p>
           <ol>
-            <li>Run <code>npm install</code> to install <code>express</code>, <code>ejs</code>, and <code>Jest</code> locally.</li>
-            <li>Place your <code>.ejs</code> file in the <code>view</code> directory and give it a name that begins with with "<code>wordle</code>".</li>
-          </ol>
-          <p class='listHeader'>The <code>Express</code> server will pass query string parameters <code>maxAttempts</code> and <code>guesses</code> to your template as local variables. 
-            If you named your template file <code>wordle_part2.ejs</code>, you could test it by </p>
-          <ol>
-            <li>Running <code>node index.js</code> from the command line.</li>
-            <li>Pointing your web browser to <code>http://localhost:3000/wordle_part2?maxAttempts=8&guesses=short,shots,farce,seven</code>
-            </ol>
-            <p>(You can run/examine <code>wordle_demo</code> to see how the routing and parameters are handled.)
-              <hr>
-              <h1 id='part3'>Part 3: Implement the game </h1>
-              <p>Add JavaScript to your Wordle board so that you can play the game.  
-                <p class='listHeader'>Rules:</p>
-                <ul>
-                  <li>You may work in teams of up to two.</li>
-                  <li>Your implementation must be client-side only. (Obviously, you will need a server to provide the page and JavaScript; but,
-                    once the page loads, you shouldn't talk to the server again.)</li>
-                  <li>Use plain JavaScript:  <em>Don't</em> use React, Angular, Vue, etc.</li>
-                  <li> You may either (1) write JavaScript to dynamically create the board based on the game parameters, or  
-                    (2) add JavaScript to your template from Part 2 (in which case you'll need to re-run the template to change the paramters of the game).</li>
-                  <li>Your implementation must use Model-View-Controller design (i.e., separate Model, View, and Controller) classes.  (If you have a different design in mind, feel free to ask.)</li>
-                  <li>All state should be stored in the model.</li>
-                  <li>Your view may not modify your model.</li>
-                  <li>You may use as much or as little of the provided starter code as you like.</li>
-                  <li>Put your answer to Part 2 in a safe place so I can still see it. (In other words, give your part 2 answer a new name, or
-                    take care not to clobber your Part 2 answer when preparing Part 3.)
-                  </ul>
-                  <p>As with Part 2, you may use the provided code as a starting point. The <code>js</code> directory contains the outline of a Model, View, and Controller for 
-                    Wordle. These files demonstrate how to add listeners to the keys, and how the Controller can connect the Model and the View. This sample code also grabs 
-                    the parameters for the game (<code>maxAttempts</code> and the <code>answer</code>) from the query string.  (See <code>js/Wordle.js</code>.)</p>
-                  <p>(If you prefer, you can skip directly to <a href='#part4'>Part 4</a> and complete them together as one assignment.)</p>
-                  <hr>
-                  <h1 id='part4'>Part 4: Add unit tests</h1>
-                  Add unit tests to your model and controller. (I suggest you use Jest; but, you may pick any test framework you like.)
-                  <h2>Setting up Jest</h2>
-                  <p class='listHeader'>To run your Wordle code directly in a browser, you will want to use the 
-                    <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import'>ES 6 module import syntax</a>. This ES6 syntax is different from 
-                    the <em>CommonJS</em> syntax used by Node, which causes problems when testing.  To address the differing import syntax, we will use a package called 
-                    <a href='https://babeljs.io'>Babel</a> to transform the code into something that Node handles.</p>
-                  <p class='listHeader'>The starter code has <code>Jest</code> and <code>Babel</code> already set up. However, if you need to add it to your project:</p>
-                  <ol>
-                    <li>Set up <code>npm</code> in your project: <span class='inline-instruction'>npm init -y</span></li>
-                    <li>Install <code>Jest</code>: <span class='inline-instruction'>npm install --save-dev jest</span></li>
-                    <li>Install <code>Babel</code>: <span class='inline-instruction'>npm install --save-dev babel-jest @babel/core @babel/preset-env</span></li>
-                    <li>Configure Babel by creating a file named <code>babel.config.js</code> with the following content:
-                      <pre>
+            <li>Set up <code>npm</code> in your project: <span class='inline-instruction'>npm init -y</span></li>
+            <li>Install <code>Jest</code>: <span class='inline-instruction'>npm install --save-dev jest</span></li>
+            <li>Install <code>Babel</code>: <span class='inline-instruction'>npm install --save-dev babel-jest @babel/core @babel/preset-env</span></li>
+            <li>Configure Babel by creating a file named <code>babel.config.js</code> with the following content:
+              <pre>
 module.exports = {
   presets: [
     [
@@ -347,19 +374,19 @@ module.exports = {
   ],
 };
 </pre>
-                    </li>
-                    <li>Edit the <code>"scripts"/"test"</code> property in <code>package.json</code> to equal <code>jest</code>
-                    </ol>
-                    <p>You can now run your Jest tests from the command line with <span class='inline-instruction'>npm test</span>.</p>
-                    <h1>Submission</h1>
-                    <p class='listHeader'>I will grade the parts of this assignment separately.</p>
-                    <ul>
-                      <li>When Part <code>n</code> is complete, commit to the <code>main</code> branch with a commit message that includes "<code>[grade me n]</code>" 
-                        (the square brackets are important).</li>
-                    </ul>
-                    <hr>
-                    <p>Updated Wednesday, 22 January 2025, 10:16 AM</p>
+            </li>
+            <li>Edit the <code>"scripts"/"test"</code> property in <code>package.json</code> to equal <code>jest</code>
+            </ol>
+            <p>You can now run your Jest tests from the command line with <span class='inline-instruction'>npm test</span>.</p>
+            <h1>Submission</h1>
+            <p class='listHeader'>I will grade the parts of this assignment separately.</p>
+            <ul>
+              <li>When Part <code>n</code> is complete, commit to the <code>main</code> branch with a commit message that includes "<code>[grade me n]</code>" 
+                (the square brackets are important).</li>
+            </ul>
+            <hr>
+            <p>Updated Wednesday, 22 January 2025, 1:02 PM</p>
 <a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
-                  </main>
-                </body>
-              </html>
+          </main>
+        </body>
+      </html>
