@@ -292,36 +292,141 @@
   <li>The simple mental model of a web server is that the path names a static file that is returned 
 (html, image, text, etc)</li>
   <li>However, the web server can interpret the path however it wants.</li>
-  <li>Typical web servers (e.g., the CIS web server) already have some files that are treated specially
+  <li>Typical web servers (e.g., the original CIS web server) already have some files that are treated specially
     <ul>
-      <li>Files that look like <code>~kurmasz</code> are converted into <code>/home/users/kurmasz/public_html</code></li>
+      <li>Files that look like <code>~kurmasz</code> are converted into <code>/home/users/kurmasz/public_html</code>
+        <ul>
+          <li class="q">How might you add this to your web server?</li>
+        </ul>
+      </li>
       <li>When requesting a directory, either <code>index.html</code> or a directory listing is returned</li>
     </ul>
   </li>
   <li>We can add “special” commands to our sample web server
     <ul>
-      <li>See <code>ServerWithWhoCommand.java</code></li>
-      <li>If the path happens to be <code>who</code>, <code>whoText</code>, or <code>exit</code>, the server does something special (as opposed to simply returning the file)</li>
-    </ul>
-  </li>
-  <li>We would like to generalize this.
-    <ul>
-      <li>Our current model requires adding code to the server (and re-compiling the server)</li>
-      <li>That’s is certainly not efficient (and probably not secure)</li>
-      <li>We want a way to have a server run code that isn’t part of the server (preferably a secure way)</li>
-      <li>The high level concept is called “fork and exec”: One program can launch another</li>
-      <li>Web server launches another program that generates the web page on the fly.</li>
-      <li>The web server and the “child” program communicate through a kind of stream called a “pipe”.</li>
-      <li>Idea: Have web server assume files in a special place (historically <code>cgi-bin</code>) are programs to be executed.</li>
-      <li class="to-me">Look at <code>DynamicServer1.java</code>
+      <li>See <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/SimpleHTTPServer/dynamic_content_server.py">dynamic_content_server.py</a></li>
+      <li>If the path happens to be <code>datetime</code>, <code>timedate</code>, or <code>current_allendale_temperature</code>, the server generates 
+an HTML response “on the fly”.</li>
+      <li>Notice that data can come from different places:
         <ul>
-          <li><code>cgi-bin\Who.java</code> generates a web page</li>
-          <li><code>cgi-bin\Now.java</code> is a simple clock.</li>
+          <li>The server itself (the current time)</li>
+          <li>Another web site / service</li>
+          <li>A database (not shown)</li>
         </ul>
       </li>
-      <li>Notice that we can add new commands without recompiling or restarting the server.</li>
     </ul>
   </li>
+  <li>Responding to a path need not be a simple <code>==</code>.
+    <ul>
+      <li>Notice the <code>or</code> in <code>timedate</code> or <code>datetime</code></li>
+      <li>We could even use a regular expression.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="user-data">User data</h2>
+
+<ul>
+  <li>Dynamic servers are most useful when the user can send data (i.e., a specific request)</li>
+  <li>Three main ways to send data:
+    <ol>
+      <li>Query string</li>
+      <li>In the path/route itself</li>
+      <li>In the request body (i.e., from a Post).</li>
+    </ol>
+  </li>
+  <li>Early on, the query string was common.
+    <ul>
+      <li>query string is the part after the <code>?</code></li>
+      <li>key-value pairs separated by <code>&amp;</code></li>
+      <li>see <code>current_temperature_query</code></li>
+    </ul>
+  </li>
+  <li>Current frameworks commonly use parts of the path as parameters
+    <ul>
+      <li>see <code>current_temperature_route</code></li>
+    </ul>
+  </li>
+  <li>HTML forms can generate query strings
+    <ul>
+      <li>See <code>form_with_get.html</code></li>
+      <li>See <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/HTMLForms/formDemo.php">form_demo.php</a></li>
+    </ul>
+  </li>
+  <li>HTML forms can also be configured to POST the data 
+(instead of generating a GET request with a query string)
+    <ul>
+      <li>With a POST, the data is sent in the request body.</li>
+      <li>(More on the difference between GET and POST later.)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="frameworks">Frameworks</h2>
+
+<ul>
+  <li>Two key issues:
+    <ul>
+      <li>First: Writing HTML “inside” another programming language sucks. (We’ll come back to this.)</li>
+    </ul>
+  </li>
+  <li>Second: We would like to generalize this process of adding code to a path/route
+    <ul>
+      <li>Our current model requires adding code to the server (and – depending on the language — re-compiling the server)</li>
+      <li>That’s is certainly not efficient (and probably not secure – not to mention error prone)</li>
+      <li>It also violates good design (e.g., the One Responsibility Principle)</li>
+      <li>We want a way to have a server run code that isn’t part of the server (preferably a secure way)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cgi">CGI</h3>
+<ul>
+  <li>Originally the server would simply “fork and exec” another process to create the content.</li>
+  <li>Web server launches another program that generates the web page on the fly.</li>
+  <li>The web server and the “child” program communicate through a kind of stream called a “pipe”.</li>
+  <li>Original idea: Have web server assume files in a special place (historically <code>cgi-bin</code>) are programs to be executed.</li>
+  <li class="to-me">Look at <code>DynamicServer1.java</code>
+    <ul>
+      <li><code>cgi-bin\Who.java</code> generates a web page</li>
+      <li><code>cgi-bin\Now.java</code> is a simple clock.</li>
+    </ul>
+  </li>
+  <li>Notice that we can add new commands without recompiling or restarting the server.</li>
+  <li>This is not terrible, and it is not completely unheard of. But, I haven’t heard of any graduates ever<br />
+using “old-school” CGI bin.
+    <ul>
+      <li>One interesting quirk: parameters passed through environment variables.</li>
+      <li>Earliest dynamic web sites were often written in perl using CGI.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="modern-framework-style">Modern Framework style</h3>
+
+<ul>
+  <li>A web server is written in the same language that generates the dynamic content:
+    <ul>
+      <li>PHP</li>
+      <li>Flask -&gt; Python</li>
+      <li>Express -&gt; JavaScript</li>
+      <li>Rails -&gt; Ruby</li>
+    </ul>
+  </li>
+  <li>The framework provides
+    <ul>
+      <li>a way for users to associate paths/routes with code to run</li>
+      <li>Common routines (e.g. parsing the query string and request body)</li>
+      <li>“Hooks” for things like security, cookies, sessions, etc. (called “middleware”)</li>
+    </ul>
+  </li>
+  <li>Most modern frameworks rely on functions being “first class objects” that can be 
+passed as parameters like any other value.</li>
+</ul>
+
+<h1 id="previous-version-of-notes">Previous Version of notes</h1>
+
+<ul>
   <li>We want a way of writing code that generates HTML that isn’t tedious.
     <ul>
       <li>Look at <code>data/cgi-bin/Who.java</code>.  Having to surround all your HTML with <code>string.append</code> would get tiresome quickly.</li>
