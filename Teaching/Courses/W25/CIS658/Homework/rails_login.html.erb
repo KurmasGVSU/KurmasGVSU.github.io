@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<% assignment_name = "Rails Part 3" %>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= $d.course.shortName + ' ' + assignment_name %></title>
+    <style>
+      <%= File.read("#{$d.general.common}/coursePages.css") %>
+      #content {
+        padding: 0 10px 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <%= $d.general.assignmentHeader(assignment_name) %>
+    <h1>Objective</h1>
+    <p class='listHeader'> The main objective of this homework is to configure a Rails app to have a login.</p>
+    <h1>Assignment</h1>
+    <p class='listHeader'>Add a User table to your Rails application and add the ability to log in to the application. 
+      Configure actions to require a login as appropriate. (Some actions should require a login; others need not.)</p>
+    <p>You will need a Users table; but, implementing all four CRUD operations for a User is optional. (You may simply 
+      create a few users in <code>db/seeds.rb</code>.)</p>
+    <p class='listHeader'>When you are ready to submit,</p>
+    <ol>
+      <li>Include the message <code>[Grade Me, part 3]</code> when committing your git repo.</li>
+      <li>Deploy your server and email me the URL.</li>
+    </ol>
+    <hr>
+    <%= $d.general.footer %>
+  </body>
+</html>

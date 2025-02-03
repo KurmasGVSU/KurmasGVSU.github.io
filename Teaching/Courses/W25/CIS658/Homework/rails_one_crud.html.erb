@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<% assignment_name = "Rails Part 1" %>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= $d.course.shortName + ' ' + assignment_name %></title>
+    <style>
+      <%= File.read("#{$d.general.common}/coursePages.css") %>
+      #content {
+        padding: 0 10px 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <%= $d.general.assignmentHeader(assignment_name) %>
+    <h1>Objective</h1>
+    <p class='listHeader'> The main objective of this homework is to learn how to set up and begin a project using the Rails framework.</p>
+
+    <h1>Assignment</h1>
+
+    <p>Follow this GitHub Classroom link and put your code in the repository generated: <%= 'https://classroom.github.com/a/gYyZTqiD'.link %></p>
+
+    <p class='listHeader'>Prepare a simple web site using Rails.  In particular, your site should allow you to perform the basic CRUD 
+      (create, read, update, delete) operations on one resource (a Book, Item, User, etc.). You may choose anything you like; but 
+      keep in mind:
+      <p>
+        <ul>
+          <li>You will need a resource with at least one property that you can use to filter in an interesting way (more than 
+            just a simple string "contains")</li>
+          <li>The next homework will have you 
+            add a second resource that is linked to the first. (For example, if you create a "BlogPost" resource for this homework, 
+            you could create a "Comment" resource for the next homework.)</li>
+        </ul>
+        <p class='listHeader'>Some ideas include:</p>
+        <ul>
+          <li>An <code>Artwork</code> resource with title, artist, year, medium, dimensions, and current location/gallery (among other properties). 
+            You could filter/search by dimension, date range, and/or location.</li>
+          <li>A <code>Volunteer</code> resource with name, contact info, skills, and availability properties. You could filter /
+            search by skills and/or availability.</li>
+          <li>A <code>BoardGame</code> resource with title, publisher, release year, min/max players, and playtime properties (among others).</li>
+        </ul>
+
+
+        <p>You are welcome to use the textbook and/or online tutorials; however, your submission needs to be a 
+          clear step away from the tutorial.  In particular, it cannot be a simple "string replace".  For example,
+          if you follow a tutorial for implementing a Toy resource, don't simply replace "Toy" with "Book", "name" with "title",
+          "manufacturer" with "author", etc.  Instead choose a resource with a different number of properties, and a 
+          different mix of types.</p>
+
+        <p>You are welcome to use a CSS framework such as Tailwind or Bootstrap; but, it's not required.</p>
+
+
+        <h1>Submission</h1>
+
+        <p class='listHeader'>When you are ready to submit, 
+          <ol>
+            <li>Include the message <code>[Grade Me, Part 1]</code> when committing your git repo.</li>
+            <li>Deploy your server and email me the URL.</li>
+          </ol>
+          <hr>
+          <%= $d.general.footer %>
+        </body>
+      </html>

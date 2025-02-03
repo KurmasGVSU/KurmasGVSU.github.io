@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<% assignment_name = "Rails Part 2" %>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= $d.course.shortName + ' ' + assignment_name %></title>
+    <style>
+      <%= File.read("#{$d.general.common}/coursePages.css") %>
+      #content {
+        padding: 0 10px 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <%= $d.general.assignmentHeader(assignment_name) %>
+
+    <h1>Objective</h1>
+    <p class='listHeader'> The main objective of this homework is to use the ActiveRecord ORM with two linked tables.</p>
+
+    <h1>Assignment</h1>
+    <p class='listHeader'>Add a second table and any relevant CRUD operations to the previous homework. This table should be linked 
+      in a sensible way to your first table. For example, if you have an application focused on Artwork, add an
+      Artist resource. Make sure that</p>
+    <ul>
+      <li>Any Artwork resource is linked to a valid Artist resource.</li>
+      <li>Your app should verify that the linking makes sense. For example, the Artwork's publication year should fall 
+        during the Artist's lifetime.</li>
+    </ul>
+
+    <p>For this assignment, simply update the repository you use for the previous homework. However, take care to 
+      preserve the Part 1 you submitted. One option is to create a new branch for Part 1. (That way, you can start 
+      on Part 2 before I look at Part 1.)
+    </p>
+
+
+    <p class='listHeader'>When you are ready to submit:</p>
+    <ol>
+      <li>Include the message <code>[Grade Me, Part 2]</code> when committing your git repo.</li>
+      <li>Deploy your server and email me the URL.</li>
+    </ol>
+    <hr>
+    <%= $d.general.footer %>
+  </body>
+</html>
