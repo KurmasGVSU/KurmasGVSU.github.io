@@ -288,8 +288,7 @@
 <main id="content">
   <h1 id="ruby">Ruby</h1>
 
-<p>There are many languages used to generate dynamic web content.  We’re going to start with Ruby on Rails.  In order to
- break up the long evening, we’re going to do some Ruby for a while.</p>
+<p>There are many languages used to generate dynamic web content.  We’re going to start with Ruby on Rails.  In order to break up the long evening, we’re going to do some Ruby for a while.</p>
 
 <ul>
   <li>Why Ruby?
@@ -318,7 +317,7 @@
           <li>functional when it is helpful</li>
         </ul>
       </li>
-      <li>Functional programming paradigms are slowly making their way into other languages
+      <li>As of 2024, Functional programming paradigms have made their way into other languages
         <ul>
           <li>Javascript</li>
           <li>C#</li>
@@ -351,11 +350,26 @@ Ruby. Although you can write familiar Java-style code,
 <span class="k">else</span> 
     <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">z</span><span class="si">}</span><span class="s2"> is odd"</span>
 <span class="k">end</span>        
+
+<span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">first_name</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Hello, </span><span class="si">#{</span><span class="n">first_name</span><span class="si">}</span><span class="s2">. It's nice to meet you"</span>
+
+<span class="n">greet</span><span class="p">(</span><span class="s1">'George'</span><span class="p">)</span>
 </code></pre></div>        </div>
       </li>
-      <li>variables don’t need type</li>
-      <li>variables don’t need <code>$</code></li>
-      <li>variables use underscores (e.g., <code>multi_word_variable_name</code>) <em>not</em> “camel-case” (e.g., <code>doNotNameVariablesLikeThis</code>)</li>
+      <li>Ruby implementation of common ideas:
+        <ul>
+          <li>Means of interpolating strings (<code>#{foo}</code>)</li>
+          <li>Use of <code>end</code> to terminate blocks</li>
+          <li>parens are optional for <code>if</code> conditions and method calls (most of the time)</li>
+          <li>Note: In ruby, everything is an object, so there are no function calls, only method calls.</li>
+        </ul>
+      </li>
+      <li>variables use underscores (e.g., <code>multi_word_variable_name</code>) <em>not</em> “camel-case” (e.g., <code>doNotNameVariablesLikeThis</code>)
+        <ul>
+          <li>or <code>first_name</code> vs. <code>firstName</code></li>
+        </ul>
+      </li>
       <li>Can <em>interpolate</em> variables into strings using the <code>#{}</code> construct
         <ul>
           <li>
@@ -408,10 +422,10 @@ Ruby. Although you can write familiar Java-style code,
  <span class="nb">puts</span> <span class="s2">"My dog, </span><span class="si">#{</span><span class="n">my_dog</span><span class="p">[</span><span class="ss">:name</span><span class="p">]</span><span class="si">}</span><span class="s2"> is now </span><span class="si">#{</span><span class="n">my_dog</span><span class="p">[</span><span class="ss">:age</span><span class="p">]</span><span class="si">}</span><span class="s2"> years old."</span>
             
  <span class="c1"># Sometimes you will want an empty hash to fill later</span>
- <span class="n">empty_hash</span> <span class="o">=</span> <span class="p">{}</span>
+ <span class="n">days_in_month</span> <span class="o">=</span> <span class="p">{}</span>
             
- <span class="n">empty_hash</span><span class="p">[</span><span class="ss">:january</span><span class="p">]</span> <span class="o">=</span> <span class="mi">31</span>
- <span class="n">empty_hash</span><span class="p">[</span><span class="ss">:feb</span><span class="p">]</span> <span class="o">=</span> <span class="mi">28</span>
+ <span class="n">days_in_month</span><span class="p">[</span><span class="ss">:january</span><span class="p">]</span> <span class="o">=</span> <span class="mi">31</span>
+ <span class="n">days_in_month</span><span class="p">[</span><span class="ss">:feb</span><span class="p">]</span> <span class="o">=</span> <span class="mi">28</span>
 </code></pre></div>                </div>
               </li>
             </ul>
@@ -489,65 +503,132 @@ Ruby. Although you can write familiar Java-style code,
 <h3 id="code-blocks">Code blocks</h3>
 
 <ul>
-  <li>It is often helpful to be able to pass blocks of code (or methods) as parameters to other methods.
+  <li>It is often helpful to be able to pass blocks of code (or methods) as parameters to other methods.</li>
+  <li>Recall the discussion on first-class functions and the <code>filter</code> function.
     <ul>
-      <li>Think about button handlers in Java Swing: When calling <code>button.addEventListener(...)</code> 
-what you really want is to specify the code to be executed when the button is clicked.
+      <li>In particular, remember that the filter function could either be a separate named function, 
+or a “lambda” – an anonymous function defined inline.</li>
+      <li>The use of these anonymous “functions” is so common in Ruby that there is a special syntax for it.</li>
+      <li>Every method implicitly accepts a code block as a parameter. (It is technically  not a lambda; but
+the difference isn’t important.)
         <ul>
-          <li>The obnoxious “Anonymous inner class” syntax in Java is what was was used before Java added lambdas in Java 1.8.</li>
+          <li>
+            <table>
+              <tbody>
+                <tr>
+                  <td>`filter(students) {</td>
+                  <td>s</td>
+                  <td>s[:gpa] &gt; 3.0 }</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
         </ul>
       </li>
-      <li>
-        <p>Think about the selection sort algorithm</p>
-
-        <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">traditional_selection_sort</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>      
-   <span class="c1"># Don't write for loops this way! Use the idiomatic values.each I'll show you in a minute.</span>
-   <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="nf">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-       <span class="n">min_loc</span> <span class="o">=</span> <span class="n">i</span>
-       <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">..</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="nf">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-           <span class="c1"># It would be nice to make the "&lt;" a parameter so you can</span>
-           <span class="c1"># compare objects using any algorithm.</span>
-           <span class="n">min_loc</span> <span class="o">=</span> <span class="n">j</span> <span class="k">if</span> <span class="n">values</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">values</span><span class="p">[</span><span class="n">min_loc</span><span class="p">]</span>
-       <span class="k">end</span>
-           
-       <span class="c1"># swap values[i] and values[min_loc]        </span>
-       <span class="n">temp</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-       <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">min_loc</span><span class="p">]</span>
-       <span class="n">values</span><span class="p">[</span><span class="n">min_loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span>
-   <span class="k">end</span>
-   <span class="n">values</span>
-<span class="k">end</span>
-   
-<span class="nb">p</span> <span class="n">traditional_selection_sort</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
-</code></pre></div>        </div>
-      </li>
-      <li>The code above will only sort numbers in ascending order.</li>
-      <li>Sorting in descending order requires cutting-and-pasting the code and changing one character ‘&lt;’ to ‘&gt;’</li>
-      <li>The code to sort more complex objects (e.g., Students by GPA) is 99% the same.
-        <ul>
-          <li class="q">How would we modify the code to sort Students?</li>
-        </ul>
-      </li>
-      <li>Code blocks allows us to use one method for storing and pass in the comparison algorithm.</li>
+      <li>Notice that this block is not passed as a parameter, but is just added at the end of the method  call.</li>
+      <li>The above <code>{}</code> syntax is for short, one-line code blocks.  There is also a multi-line version:</li>
     </ul>
   </li>
 </ul>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">selection_sort</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> 
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">filter</span><span class="p">(</span><span class="n">students</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+   <span class="n">s</span><span class="p">[</span><span class="ss">:gpa</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">3.0</span>
+<span class="k">end</span>
 
-    <span class="c1"># Don't write for loops this way! Use the idiomatic values.each I'll show you in a minute.</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="nf">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">min_loc</span> <span class="o">=</span> <span class="n">i</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">..</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="nf">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="n">min_loc</span> <span class="o">=</span> <span class="n">j</span> <span class="k">if</span> <span class="k">yield</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">values</span><span class="p">[</span><span class="n">min_loc</span><span class="p">])</span>
-        <span class="k">end</span>       
-
-        <span class="c1"># swap values[i] and values[min_loc]</span>
-        <span class="n">temp</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">min_loc</span><span class="p">]</span>
-        <span class="n">values</span><span class="p">[</span><span class="n">min_loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span>
+<span class="n">filter</span><span class="p">(</span><span class="n">students</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+    <span class="c1"># You can't be on probation until </span>
+    <span class="c1">#you have completed 30 hours.</span>
+    <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="ss">:credit_hours</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">30</span>
+      <span class="kp">false</span>
+    <span class="k">elsif</span> <span class="n">s</span><span class="p">[</span><span class="ss">:credit_hours</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">60</span>
+      <span class="n">s</span><span class="p">[</span><span class="ss">:gpa</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">2.0</span>
+    <span class="k">elsif</span> <span class="n">s</span><span class="p">[</span><span class="ss">:credit_hours</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">90</span>
+      <span class="n">s</span><span class="p">[</span><span class="ss">:gpa</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">2.25</span>
+    <span class="k">else</span>
+      <span class="n">s</span><span class="p">[</span><span class="ss">:gpa</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">2.5</span>
     <span class="k">end</span>
-    <span class="n">values</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Only one block can be passed using this special syntax. Fortunately, it is exceptionally 
+rare for a method to require more than one block/lambda.</li>
+  <li>Ruby programmers use this block syntax <em>everywhere</em> — especially for loops:</li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sum_list</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+  <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">numbers</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">num</span><span class="o">|</span>
+    <span class="n">sum</span> <span class="o">+=</span> <span class="n">num</span>
+  <span class="n">sum</span>  <span class="c1"># &lt;---- yes, this is common in Ruby</span>
+<span class="k">end</span> 
+
+<span class="k">def</span> <span class="nf">is_increasing</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+  <span class="n">numbers</span><span class="p">.</span><span class="nf">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">num</span><span class="p">,</span> <span class="n">index</span><span class="o">|</span>
+    <span class="k">if</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="n">numbers</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+      <span class="k">return</span> <span class="kp">false</span>
+    <span class="k">end</span>
+  <span class="k">end</span> 
+  <span class="kp">true</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">is_increasing_v2</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+  <span class="n">numbers</span><span class="p">.</span><span class="nf">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">num</span><span class="p">,</span> <span class="n">index</span><span class="o">|</span>
+    <span class="k">return</span> <span class="kp">false</span> <span class="k">if</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="n">numbers</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+  <span class="k">end</span> 
+  <span class="kp">true</span>
+<span class="k">end</span>
+
+<span class="c1"># Ruby has an insane number of "convenience method" built-in!</span>
+<span class="k">def</span> <span class="nf">is_increasing</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+  <span class="n">numbers</span><span class="p">.</span><span class="nf">each_cons</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">|</span>
+    <span class="k">return</span> <span class="kp">false</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;=</span> <span class="n">b</span>
+  <span class="k">end</span>
+  <span class="kp">true</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<ul>
+  <li>When writing Rails apps, you will <em>use</em> a lot of methods that take a block as input;
+but you won’t write many.  But if you do, you use <code>yield</code> to invoke the block</li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
+  <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">list</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span> <span class="n">answer</span> <span class="o">&lt;&lt;</span> <span class="n">item</span> <span class="k">if</span> <span class="k">yield</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="p">}</span>
+  <span class="n">answer</span>
+<span class="k">end</span>
+
+<span class="c1">#</span>
+<span class="c1"># Again, there is an even more ruby-like way to do this:</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">filter2</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
+  <span class="c1"># "inject" is often called "reduce" in other languages.</span>
+  <span class="n">list</span><span class="p">.</span><span class="nf">inject</span><span class="p">([])</span> <span class="k">do</span> <span class="o">|</span><span class="n">accumulator</span><span class="p">,</span> <span class="n">item</span><span class="o">|</span>
+    <span class="n">accumulator</span> <span class="o">&lt;&lt;</span> <span class="n">item</span> <span class="k">if</span> <span class="k">yield</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="n">accumulator</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Here is <code>selection_sort</code> written in idiomatic Ruby:</li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">selection_sort</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="n">list</span><span class="p">.</span><span class="nf">length</span>
+  <span class="p">(</span><span class="mi">0</span><span class="o">...</span><span class="n">n</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+    <span class="n">min_index</span> <span class="o">=</span> <span class="n">i</span>
+
+    <span class="c1"># Find the minimum element in the unsorted portion</span>
+    <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">...</span><span class="n">n</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">j</span><span class="o">|</span>
+      <span class="n">min_index</span> <span class="o">=</span> <span class="n">j</span> <span class="k">if</span> <span class="k">yield</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">list</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Swap the found minimum element with the first element of the unsorted portion</span>
+    <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">list</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">list</span><span class="p">[</span><span class="n">min_index</span><span class="p">],</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">unless</span> <span class="n">i</span> <span class="o">==</span> <span class="n">min_index</span>
+  <span class="k">end</span>
+  <span class="n">list</span>
 <span class="k">end</span>
 
 <span class="c1"># Sorted low to high</span>
@@ -557,7 +638,6 @@ what you really want is to specify the code to be executed when the button is cl
 <span class="nb">p</span> <span class="n">selection_sort</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span> <span class="p">{</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">|</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">}</span>
 
 <span class="c1"># Sort dogs by age</span>
-
 <span class="n">dog1</span> <span class="o">=</span> <span class="p">{</span><span class="ss">name: </span><span class="s1">'Fido'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">14</span><span class="p">,</span> <span class="ss">weight: </span><span class="mi">6</span><span class="p">}</span>
 <span class="n">dog2</span> <span class="o">=</span> <span class="p">{</span><span class="ss">name: </span><span class="s1">'Spot'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">4</span><span class="p">,</span> <span class="ss">weight: </span><span class="mi">12</span><span class="p">}</span>
 <span class="n">dog3</span> <span class="o">=</span> <span class="p">{</span><span class="ss">name: </span><span class="s1">'Rover'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">12</span><span class="p">,</span> <span class="ss">weight: </span><span class="mi">22</span><span class="p">}</span>
@@ -566,28 +646,8 @@ what you really want is to specify the code to be executed when the button is cl
 </code></pre></div></div>
 
 <ul>
-  <li>Ruby makes heavy use of the block syntax.</li>
-  <li>Most loops use it.
-    <ul>
-      <li><em>Don’t</em> do this:  <code>for i in 0..(array.count - 1)</code>. You will get lauged at.</li>
-      <li>Idiomatic ruby uses blocks:  <code>array.each { |i|  ... }</code></li>
-    </ul>
-  </li>
-  <li>In the rare case you also need the loop index, use <code>each_with_index</code>
-    <ul>
-      <li><code>array.each_with_index { |item, index| puts "Item number #{index} is #{item}"}</code></li>
-    </ul>
-  </li>
-  <li>Use <code>{}</code> syntax when block fits on one line.</li>
-  <li>
-    <p>Use <code>do-end</code> syntax when block needs more than one line:</p>
-
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array</span><span class="p">.</span><span class="nf">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="o">|</span>
-  <span class="nb">puts</span> <span class="s2">"Item number </span><span class="si">#{</span><span class="n">index</span><span class="si">}</span><span class="s2"> is </span><span class="si">#{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-</code></pre></div>    </div>
-  </li>
-  <li>The <code>map</code> method converts one array into another:</li>
+  <li>The <code>map</code> method converts one array into another. It is especially 
+popular in Ruby</li>
 </ul>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
@@ -622,7 +682,7 @@ what you really want is to specify the code to be executed when the button is cl
 </code></pre></div>        </div>
       </li>
       <li>Can also add methods to specific objet instances.</li>
-      <li>Rails does this a lot; but,</li>
+      <li>Rails does this <em>a lot</em>; but,</li>
       <li>Don’t overuse it.</li>
     </ul>
   </li>
@@ -659,7 +719,7 @@ what you really want is to specify the code to be executed when the button is cl
   </li>
   <li>Sample Ruby files:
     <ul>
-      <li><a href="RubyExamples/basic1.rb">Basic Ruby</a></li>
+      <li><a href="RubyExamples/ruby_demo.rb">Basic Ruby</a></li>
       <li><a href="RubyExamples/symbolsAndHashes.rb">Symbols and Hashes</a></li>
       <li><a href="RubyExamples/stats.rb">Classes</a></li>
       <li><a href="RubyExamples/code_blocks.rb">Code Blocks</a></li>

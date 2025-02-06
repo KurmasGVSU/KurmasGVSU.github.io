@@ -286,9 +286,46 @@
 </head>
 <body>
 <main id="content">
-  <h1 id="frameworks">Frameworks</h1>
+  
+<ul>
+  <li>Parameter as part of the route?
+    <ul>
+      <li>(Did we cover that last week?)</li>
+    </ul>
+  </li>
+  <li>Review <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/tree/master/FunctionsAsParameters">functions as parameters</a></li>
+</ul>
+
+<h1 id="framework-implementation">Framework Implementation</h1>
 
 <ul>
+  <li>Routes are just maps between patterns and the code that should run in response.</li>
+  <li>The simple case is matching a path directly.</li>
+  <li>A common additional feature is to let the pattern have parameters (e.g., by 
+using regular expressions)</li>
+  <li>Frameworks also do a lot of “background” work
+    <ul>
+      <li>parsing the query string</li>
+      <li>parsing any data in the message body</li>
+      <li>sending/receiving cookies</li>
+      <li>enforcing access restrictions</li>
+      <li>connecting to a DB.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="frameworks">Frameworks</h1>
+
+<ul>
+  <li>Frameworks feel like a lot of “magic words”, but they all have very similar underlying
+principles/features.</li>
+  <li>Suppose you wrote 10 different apps. The ideal framework contains all the code that 
+is identical among the apps so that your code is limited precisely to what is unique 
+for that given app.
+    <ul>
+      <li>(Of course, reaching that ideal is not possible. But, we try to get close)</li>
+    </ul>
+  </li>
   <li>At this point, you know a lot (but certainly not all) of what you need to know to write a decent web app:
     <ol>
       <li>Client sends URL that is the name of a scripting language file (ruby, python, perl, etc)</li>
@@ -408,6 +445,12 @@ you can produce new designs more quickly; but, your product won’t be as versat
       <li>Client-Side framework / Single Page Apps (Angular, Vue, React) sends most of the web page display logic to the client. Server is API-only to collect the data to display.</li>
     </ul>
   </li>
+</ul>
+
+<h3 id="quick-overview-of-nodenpm-as-there-are-questions">
+* Quick overview of node/npm (as there are questions).</h3>
+<ul>
+  <li>Show how to spin up a quick Express server.</li>
 </ul>
 
 <h3 id="model-view-controller">Model-View-Controller</h3>
