@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>CIS 371 Server Side</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        margin-right: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+      #content {
+        padding: 0 10px 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <main id="theMain">
+      <a class='bypass' href="#theMain">Skip to main content</a>
+      <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 371</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Server Side</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2025</h1></td>
+  </tr>
+</table>
+
+
+      <p>Based on an assignment originally originally designed by Prof. Engelsma</p>
+
+      <p>For this sequence of assignments, you will build a simple web application using a <em>server-side</em> framework of your choice 
+        (Express, Rails, Flask, .etc)  The framework <em>must</em> be server-side. You may not use client-side systems such as React, Angular, Vue, etc.</p>
+
+      <p>This is a solo assignment.</p>
+
+      <p>Please use this GithubClassroom URL: <a href='7ul6DBJp'><code>7ul6DBJp</code></a>
+
+
+        <h1 id='part1'>Part 1: Basic CRUD</h1>
+
+        <p class='listHeader'>Use what you have learned in class to create a single resource/model. You can design any model you like, 
+          provided that</p>
+        <ul>
+          <li> it has at least four properties,</li>
+          <li> those properties are a mix of types</li>
+          <li> at least one property can be filtered in an "interesting" way (more than 
+            just a simple string "contains")</li>
+        </ul>
+
+        <p class='listHeader'>You may use something from your proposed project (if that makes sense). Other ideas include:</p>
+        <ul>
+          <li>An <code>Artwork</code> resource with title, artist, year, medium, dimensions, and current location/gallery (among other properties). 
+            You could filter/search by dimension, date range, and/or location.</li>
+          <li>A <code>Volunteer</code> resource with name, contact info, skills, and availability properties (among others). You could filter /
+            search by skills and/or availability.</li>
+          <li>A <code>BoardGame</code> resource with title, publisher, release year, min/max players, and playtime properties (among others).</li>
+        </ul>
+
+        <p>Generate basic screens for managing your resource (list of all items, show item, edit item, and delete item). </p>
+
+        <p>Use <code>sqlite3</code>, Firestore, MongoDB, or some other "real" database. (Don't use my fake "in-memory" DB.)</p>
+
+        <p>You need not pay much attention to styling at this point (e.g. you need not write fancy CSS/SCSS files).  
+          Your final product can be as simple as the screenshots inserted below:</p>
+
+        <img src="Images/image2.png" alt="Sample Screenshot">
+        <img src="Images/image4.png" alt="Sample Screenshot">
+        <img src="Images/image3.png" alt="Sample Screenshot">
+
+        <p>You are welcome to use the textbook and/or online tutorials; however, your submission needs to be a 
+          clear step away from the tutorial.  In particular, it cannot be a simple "string replace".  For example,
+          if you follow a tutorial for implementing a Toy resource, don't simply replace "Toy" with "Book", "name" with "title",
+          "manufacturer" with "author", etc.  Instead choose a resource with a different number of properties, and a 
+          different mix of types.</p>
+
+
+        <h2>Grading</h2>
+
+        <p>This part of the assignment will be graded by demo.  When your project is ready, commit your code with the message <code>[Grade Me, Part 1</code>
+          and schedule a demonstration with me.</p>
+
+        <p>Please make sure your database contains at least 7 instances of your resource (7 Authors, 7 Books, etc.)</p>
+
+
+        <h1 id='part2'>Part 2: Cookie</h1>
+
+        Implement a cookie-based "history" feature to your website. Specifically, your "index" page should provide "show" links to 
+        the 3 most recently viewed items. (For simplicity, you can simply keep track of items viewed by means of the "show" route.)
+
+        <p>This part of the assignment will be graded by demo.  When your project is ready, commit your code with the message <code>[Grade Me, Part 2</code>
+          and schedule a demonstration with me.</p>
+
+        <h1 id='part3'>Part 3: Session</h1>
+
+        Add the ability to login into your site.  You will need to add a <code>User</code> table with stored passwords. You will also need to
+        modify your resource from Part 1 so that users who are logged in only have access to the objects they "own". 
+
+        <p>This part of the assignment will be graded by demo.  When your project is ready, commit your code with the message <code>[Grade Me, Part 3</code>
+          and schedule a demonstration with me.</p>
+
+
+        <h1 id='part4'>Part 4: Responsive design / CSS framework</h1>
+
+        <p class='listHeader'>In this part you will focus on making your app more
+          attractive using a responsive frontend framework of your choice.  Use what you learned in lecture to dress up 
+          your app using a CSS framework of your choice Bootstrap, Foundation, Tailwind, etc.).
+          Here are the general requirements your solution needs to meet:</p>
+        <ul>
+          <li> Make your site support a universal navigation scheme with links to Home, Users, and your resource from Part 1.</li>
+          <li> Add a placeholder “splash” or homepage to your app, and make it your root page. Format the home page in an attractive 
+            manner and make sure it somehow features blurbs with links to the 3 most recently entered items.</li>
+          <li> Style ​all​ of the view templates for your resource from Part 1.</li>
+        </ul>
+
+
+        <p>You have some freedom to style as you see fit, but do make sure each view is reasonably attractive and fully responsive.</p>
+
+        <b>Important:</b>  If you prefer, you can make either your React app or your project responsive.
+
+
+        <hr>
+        <p>Updated Monday, 10 February 2025, 11:50 AM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+      </main>
+    </body>
+  </html>
