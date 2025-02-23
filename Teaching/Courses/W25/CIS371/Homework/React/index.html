@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>CIS 371 React</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        margin-right: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+      #content {
+        padding: 0 10px 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <main id="theMain">
+      <a class='bypass' href="#theMain">Skip to main content</a>
+      <style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 371</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">React</h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2025</h1></td>
+  </tr>
+</table>
+
+
+      <p>This assignment was originally designed my Prof. Engelsma</p>
+
+      <p>Please use this GithubClassroom URL: <a href='https://classroom.github.com/a/Z71YsSd8'><code>https://classroom.github.com/a/Z71YsSd8</code></a></p>
+
+      <p class='listHeader'>For this sequence of assignments, you will build an app using <a href='https://reactjs.org'>React</a>.
+        You can make any app you like, as long as it isn't a copy of a tutorial or book example.  For example, you can 
+        use your app from the Express homeworks, or part of your project.</p>
+
+      <h1 id='part1'>Part 1: A simple view</h1>
+
+      <p class='listHeader'>Write a very simple React app that will display a list of items/object. 
+        Over the next few assignments, you will be building up a "full" app that uses State and and an API.  For this first part, you can use 
+        the simplifications listed below (which will make this assignment similar to the recipe example in the "React 3" video); or, you can skip directly to 
+        the "real" way of doing things.  (The tradeoff is between a simpler first step, and avoiding having to rewrite part of your app later.) 
+        Specifically, for this first step, you may:</p>
+      <ul>
+        <li>Place all your components into one file (as opposed to having a separate file for each component).</li>
+        <li>Place all of your data in a single array (as opposed to loading it from a file or API call).</li>
+      </ul>
+
+      <p class='listHeader'>You must:</p>
+      <ul>
+        <li>Use JSX</li>
+        <li>Use props</li>
+      </ul>
+
+      <h1 id='part2'>Part 2: A complete view</h1>
+
+      <p>Now complete the view so all CRUD operations work. 
+        </p>
+
+      <p>Add just enough styling so that the view doesn't look terrible.  For example here, I just added some widths, and borders with rounded edges:  </p>
+
+      <img src='authorView1.png'>
+
+      <h1 id='part3'>Part 3: Connect to API and Validate</h1>
+
+      <p>Connect your view to a real API of your choice (Express, Rails, Firebug, etc.).  
+        Also, add validation so that bad data doesn't get entered into the DB. Both the client and the server should validate the data.
+      </p>
+
+      <p><b>Important:</b> Don't allow duplicate email addresses.</p>
+
+      
+
+      <h1 id='part4'>Part 4: Add Login/Session</h1>
+
+      <p class='listHeader'>Add the ability to log in to an app. You can satisfy this in one of three ways:</p>
+      <ul>
+        <li>This React app</li>
+        <li>Your Express app</li>
+        <li>Your project</li>
+      </ul>
+
+      <p>You will need both a User table and sessions.</p>
+
+
+      <h1>Submission</h1>
+
+      <p>Just commit your code with the message [grade me x] (where <em>x</em> is the current part number). 
+        Please include a screen shot of your app in your commit.</p>
+
+      <hr>
+      <p>Updated Sunday, 23 February 2025, 3:38 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+    </main>
+  </body>
+</html>
