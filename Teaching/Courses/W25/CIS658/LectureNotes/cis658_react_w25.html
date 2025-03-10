@@ -1,0 +1,785 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="react">React</h1>
+
+<h2 id="review">Review</h2>
+
+<ul>
+  <li>Questions about “raw” DOM creation?
+    <ul>
+      <li><code>createElement</code></li>
+      <li><code>innerText</code></li>
+      <li><code>addChild</code></li>
+      <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactJSXIntro/clientSideDomCreation.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactJSXIntro/clientSideDomCreation.js</a></li>
+    </ul>
+  </li>
+  <li>
+    <p><code>reactDOMCreation.{html,js}</code></p>
+  </li>
+  <li>Use of <code>React.createElement</code> to simplify the above process.
+    <ul>
+      <li>Combines element creation, addition of attributes/style, and the addition of children.</li>
+      <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactJSXIntro/complexDOMcreateElement.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactJSXIntro/complexDOMcreateElement.js</a></li>
+    </ul>
+  </li>
+  <li>Use of JSX as a “shortcut” to writing calls to <code>React.createElement</code>
+    <ul>
+      <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactJSXIntro/jsx1.jsx">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactJSXIntro/jsx1.jsx</a></li>
+      <li>In general, a block of JSX should produce a DOM element (i.e., the results of running <code>React.createElement</code>)</li>
+      <li><code>runBabel</code></li>
+    </ul>
+  </li>
+  <li>Can insert JavaScript into JSX using <code>{}</code>.
+    <ul>
+      <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactJSXIntro/jsx2.jsx">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactJSXIntro/jsx2.jsx</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="video-preview">Video Preview</h2>
+
+<ul>
+  <li>Quick introduction to component and props.
+    <ul>
+      <li><code>ReactRecipe</code></li>
+      <li><code>Ingredient</code>
+        <ul>
+          <li>Returns an element</li>
+          <li>Uses props to hold dynamic data (single object with key/value pairs)</li>
+        </ul>
+      </li>
+      <li><code>IngredientList</code>
+        <ul>
+          <li>Attributes are collected into a single “props” object</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptBasics/deconstructingArrays.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptBasics/deconstructingArrays.js</a></li>
+</ul>
+
+<h1 id="other-stuff">Other stuff</h1>
+
+<ul>
+  <li class="to-me">Show video slide with components</li>
+  <li>We want to display a list of recipes.</li>
+  <li>We want to avoid duplicating code.</li>
+  <li>Notice we are repeating the same pattern with different data.</li>
+  <li>So, this should be analogous to calling a function with different parameters.</li>
+  <li>Each recipe is further broken into sub-components (like helper functions)</li>
+  <li><code>IngredientList</code>
+    <ul>
+      <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactRecipe/exampleComponent1.jsx">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactRecipe/exampleComponent1.jsx</a></li>
+    </ul>
+  </li>
+  <li>A component can be used elsewhere almost as if it were an HTML tag:
+    <ul>
+      <li><code>&lt;IngredientList&gt;</code></li>
+    </ul>
+  </li>
+  <li>To make it abstract, we pass parameters.</li>
+  <li>Well, one parameter to be specific, called “props”.</li>
+  <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactRecipe/recipe1.jsx">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactRecipe/recipe1.jsx</a></li>
+  <li class="to-me">Look at the data: An array of nested JavaScript objects (i.e., key-value pairs)</li>
+  <li class="to-me">Look at “innermost” component: <code>Ingredient</code>
+    <ul>
+      <li>Notice that an object describing an ingredient has three properties: <code>name</code>, <code>amount</code>, and <code>measurement</code></li>
+      <li>We can refer to those inside the JSX.</li>
+    </ul>
+  </li>
+  <li class="to-me">Look at data structure for <code>ingredients</code>:  Just an array.</li>
+  <li class="to-me">Now look at <code>IngredientListDemo</code>
+    <ul>
+      <li>This time the <code>props</code> object has just one key: <code>ingredients</code></li>
+      <li>Notice how we use the sub-component <code>Ingredient</code> with an HTML-tag-like syntax.</li>
+      <li>Notice how we pass parameters using <code>key=value</code> syntax.
+        <ul>
+          <li>These key/values are passed as a single parameter (i.e. <code>props</code>)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="to-me">Now look at the “real” <code>IngredientList</code></li>
+  <li class="to-me"><code>Instructions</code></li>
+  <li class="to-me"><code>Recipe</code></li>
+  <li class="to-me"><code>Menu</code></li>
+  <li class="to-me">Insert into DOM</li>
+</ul>
+
+<h2 id="javascript-short-cuts">Javascript short-cuts</h2>
+
+<ul>
+  <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptBasics/deconstructingArrays.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptBasics/deconstructingArrays.js</a></li>
+  <li>Deconstructing arrays (<code>useState</code>)</li>
+  <li>Array spread operator
+    <ul>
+      <li>Spread out</li>
+      <li>re-group</li>
+    </ul>
+  </li>
+  <li>Deconstructing objects (<code>props</code>)
+    <ul>
+      <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptBasics/deconstructingObjects.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptBasics/deconstructingObjects.js</a></li>
+    </ul>
+  </li>
+  <li class="to-me">show constructing an object, then compare it to the “old” way:</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">fname</span><span class="p">,</span> <span class="nx">lname</span><span class="p">,</span> <span class="nx">occupation</span> <span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Notice that variable names become key names: </span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">person2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">fname</span><span class="p">:</span> <span class="nx">fname</span><span class="p">,</span>
+    <span class="na">lname</span><span class="p">:</span> <span class="nx">lname</span><span class="p">,</span>
+    <span class="na">occupation</span><span class="p">:</span> <span class="nx">occupation</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Does this redundancy look familiar?</li>
+  <li>Use <code>...</code> on objects to clone objects
+    <ul>
+      <li>And add properties when cloning.</li>
+    </ul>
+  </li>
+  <li class="to-me">Look at <code>recipe3.jsx</code></li>
+</ul>
+
+<h2 id="state">State</h2>
+
+<ul>
+  <li class="to-me"><code>stateUsingClosures.js</code>: <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactRecipe/stateUsingClosures.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ReactRecipe/stateUsingClosures.js</a></li>
+  <li><code>recipe2.jsx</code>
+    <ul>
+      <li>The component functions are responsible for rendering (drawing) the components.</li>
+      <li>We can’t store state inside these functions, because the state would get re-set every time 
+a component was re-rendered.</li>
+      <li>We don’t want to simply throw state into a global variable (for all the reasons that global variables 
+can be problematic).</li>
+      <li>The closure-based <code>useState</code> solves this issue:
+        <ul>
+          <li>State is stored outside the function; but,</li>
+          <li>access to that state is still limited to the scope of the function.</li>
+        </ul>
+      </li>
+      <li>Also, the hook does more than simply store state.  The inner workings also look at state changes to optimize 
+re-rendering.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="colorlist">ColorList</h2>
+<ul>
+  <li>Demonstrate <code>ColorList1_fetch</code></li>
+  <li>Note: This is covered in the book. Probably more effective to read at your own pace than try to learn everything from me in “real time”.  I’ll try to point out the confusing parts here.</li>
+  <li><code>Star.jsx</code>
+    <ul>
+      <li>Shape is imported from a library.</li>
+      <li><code>selected</code> determines the color</li>
+      <li><code>onStarClicked</code> is a function passed down from above</li>
+      <li>When a star is clicked, then that function is called</li>
+    </ul>
+  </li>
+  <li><code>StarRating.jsx</code>
+    <ul>
+      <li><code>totalStars</code> (how many iterations to run the loop)</li>
+      <li><code>selectedStars</code> (the rating)</li>
+      <li><code>onRatingUpdated</code> (function to call when the rating changes)</li>
+      <li class="to-me">Explain how <code>selectedStars</code> generates the visual of the rating</li>
+      <li class="to-me">Explain how clicking a specific star causes <code>onRatingUpdated</code> to be called with the
+new rating as a parameter.</li>
+      <li class="to-me">Highlight the difference between <code>onClick={foo}</code> in <code>Star.jsx</code> and <code>onClick={() =&gt; foo()}</code> 
+here. (Emphasize the use of the closure to keep track of <code>i</code>.)</li>
+      <li>Notice that we need to store the rating at a higher level, so it is passed down to this level (rather than there being a <code>useState</code> here)</li>
+    </ul>
+  </li>
+  <li><code>Color.jsx</code>
+    <ul>
+      <li><code>title</code> prop</li>
+      <li>color is displayed as a <code>div</code> with a given <code>backgroundColor</code></li>
+      <li><code>StarRating</code> is the list of stars (i.e., it contains the individual <code>Star</code> components)</li>
+      <li>A <code>color</code> object contains several properties (title, color, rating, etc).  <code>title</code> and <code>backgroundColor</code> are used directly here.  <code>rating</code> is passed down to the <code>StarRating</code>.</li>
+    </ul>
+  </li>
+  <li><code>ColorList.jsx</code>
+    <ul>
+      <li>Just iterates through an array of colors.</li>
+    </ul>
+  </li>
+  <li><code>App.js</code>:
+    <ul>
+      <li>For now, just the form and the list of colors.</li>
+      <li>Notice that this component is the “source of truth” for the color data.
+        <ul>
+          <li>The color data must be stored here (and is “pushed down” into the components)</li>
+          <li>Any changes must be passed “up” to this level.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>When a star is clicked, rather than changing a local state, it needs to call a function in the 
+“upper-level” component letting it know what happened. To make this happen, each upper-level component
+passes a function as a prop.  The lower-level component calls this function to report activity/state change.  Thus, when a star is clicked, it starts a chain of function calls all the way back up into the <code>updateRating</code> function in the <code>App</code> component.
+    <ul>
+      <li><code>App</code> to <code>ColorList</code>: “Call this function if the rating changes.”</li>
+      <li><code>ColorList</code> to <code>Color</code> “Call this function if the rating changes.”</li>
+      <li>…</li>
+      <li>Notice that this is not the same function all the way down (although it can be).</li>
+      <li><strong>Important</strong> Notice that when the list of colors changes, a <strong>new list</strong> is created.
+        <ul>
+          <li><code>updateRating</code> calls <code>setColors</code> on a new list of colors. It does not simply modify the existing list.</li>
+          <li>If you just modify the existing list, then the React engine may not detect the change and perform the update.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="forms">Forms</h2>
+<ul>
+  <li><code>NewColorForm.jsx</code></li>
+  <li>Controlled vs. uncontrolled components.</li>
+  <li>Notice the use of local state and also callback to higher level.</li>
+</ul>
+
+<h1 id="api">API</h1>
+<ul>
+  <li>Switch to building a Rails API so colors don’t have to be “hard coded”.</li>
+</ul>
+
+<h1 id="march">18 March</h1>
+
+<h2 id="review-1">Review:</h2>
+<ul>
+  <li>Page organized as a hierarchy.</li>
+  <li>Data passed down through the hierarchy as “props”.</li>
+  <li>State saved at the highest level of the hierarchy were it is needed using <code>useState</code>.
+    <ul>
+      <li><code>useState</code> defined inside a component (but not in the return block.</li>
+      <li>It is not defined in the global scope.</li>
+    </ul>
+  </li>
+  <li>To change state, pass a function down through the props.
+    <ul>
+      <li>That function is invoked “below” where the handler is — and usually passed parameters.</li>
+      <li>The function is defined in the same scope as the <code>useState</code> hook so that it can modify the state.</li>
+      <li>Modifying state causes components to re-render.</li>
+      <li>To modify state, objects must be <em>replaced</em>, not modified.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="callbacks-vs-promises">Callbacks vs. Promises</h2>
+
+<ul>
+  <li>JavaScript is asynchronous by nature and, therefore, uses a lot of callbacks.
+    <ul>
+      <li>Think about handlers and timers.</li>
+    </ul>
+  </li>
+  <li>Callbacks can lead to code that is difficult to read and organize
+    <ul>
+      <li>I’ll show an example in a minute.</li>
+    </ul>
+  </li>
+  <li>A better way to handle asynchronous code is <code>Promises</code></li>
+</ul>
+
+<h3 id="callbacks">Callbacks</h3>
+
+<ul>
+  <li><code>sqlite3</code> and <code>Express</code>: <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqliteCallbacks/db/SqliteToyDB.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqliteCallbacks/db/SqliteToyDB.js</a>
+    <ul>
+      <li>Notice that the <code>all</code> method call sends both (a) an SQL statement to the SQLite engine <em>and</em> (b) a callback — code that is executed when the request is complete.</li>
+      <li>The list of rows is passed as a parameter to the callback, it is <em>not</em> the function’s return value!</li>
+    </ul>
+  </li>
+  <li class="to-me">Also look at <code>find</code>, <code>create</code>, and <code>update</code>.</li>
+  <li>Using the DB elsewhere in the code requires a callback (<code>show</code> in <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqliteCallbacks/controllers/ToyController.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqliteCallbacks/controllers/ToyController.js</a>)
+    <ul>
+      <li>Notice that the calls to <code>render</code> as well as the error handling end up nested inside the call to <code>ToyDB.find</code></li>
+      <li>At the moment this is not terrible; but, it does take some getting used to.</li>
+      <li>Notice that if the controller had multiple steps, control flow would not be strictly “top to bottom”.  It would be “top to bottom, then back to the callback”</li>
+    </ul>
+  </li>
+  <li>Notice that the error handling is a bit clunky.</li>
+  <li>Notice the potential for SQL injection.</li>
+  <li>
+    <p>The use of <code>this.lastID</code> requires the use of <code>function</code> vs. <code>() =&gt;</code></p>
+  </li>
+  <li class="q">What is the benefit of this quirky callback system?
+    <ul>
+      <li>Concurrent behavior</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="callback-hell">“Callback Hell”</h3>
+
+<ul>
+  <li>Look at bottom of <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqliteCallbacks/db/SqliteToyDB.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqliteCallbacks/db/SqliteToyDB.js</a></li>
+  <li><code>toysBelow</code> and <code>toysAbove</code> are simple enough.</li>
+  <li>Now, what if we want to combine the results of two separate SQL calls (i.e., <code>extremes</code>)
+    <ul>
+      <li>Ignore the fact that this particular example could be a single SQL statement.</li>
+      <li>One call must be nested inside the other.
+        <ul>
+          <li>Logical flow is not “top to bottom” but rather “outside to inside”</li>
+          <li>(This is also true of the simpler cases; but, just not quite as obvious.)</li>
+          <li>Imagine what adding error handling could do to this code</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>What happens when there is a long sequence of callbacks that must be made:
+    <ul>
+      <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/callbackHell.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/callbackHell.js</a></li>
+      <li>Even writing separate functions doesn’t help much.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="promises">Promises</h2>
+
+<ul>
+  <li>A class / programming style that replaces “callback hell” with a more sequential-feeling style.
+    <ul>
+      <li>The basic features can actually be implemented in “user space” — no need for special programming language features.</li>
+      <li>Of course, Promises are built into JavaScript.
+        <ul>
+          <li>(Not sure if there are aspects that do require specific PL, either to exist or for performance reasons.)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Fundamentally, a Promise is an object that takes an asynchronous callback as a parameter.</li>
+  <li>The parameters to the callback are the callbacks to the asynchronous function.
+    <ul>
+      <li>I know that sentence makes no sense.</li>
+    </ul>
+  </li>
+  <li>Promise object also has a <code>next</code> method that is invoked when the the inner asynchronous call is complete.</li>
+  <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/timerPromise.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/timerPromise.js</a>
+    <ul>
+      <li>Moves the callback from inside the <code>setTimeout</code> call itself, to a subsequent call to <code>next</code>.</li>
+      <li>For one invocation, this is a minor change; but, it allows us to chain callbacks rather than nest them.</li>
+    </ul>
+  </li>
+  <li>Even more important benefit of Promises is improvement in error handling.
+    <ul>
+      <li>First, imagine having an if/then error check at every level of the nested callback.</li>
+      <li>Now, consider <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/timerPromiseWithFeedback.mjs">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/JavaScriptAsynchronous/timerPromiseWithFeedback.mjs</a></li>
+      <li>Specifically look at <code>askAreYouUp</code>. (<code>io.question</code> is asynchronously fetching keyboard input.)</li>
+    </ul>
+  </li>
+  <li>Now back to the DB: <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqlitePromises/db/SqliteToyDB.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqlitePromises/db/SqliteToyDB.js</a>
+    <ul>
+      <li><code>allToys</code> on the implementation side is not much different
+        <ul>
+          <li>The call to the DB itself is still asynchronous (that’s the way that library was written).</li>
+          <li>We need to pass a callback.</li>
+          <li>But, but wrapping up the DB access in a promise, the “consumer” of the DB class has cleaner code: <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqlitePromises/controllers/ToyController.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqlitePromises/controllers/ToyController.js</a></li>
+          <li>Well, not a huge difference … yet.</li>
+        </ul>
+      </li>
+      <li><code>next</code> can take a parameter. Parameters passed to <code>resolve</code> become the parameters to <code>next</code>.</li>
+      <li>Similar for <code>reject</code> and <code>catch</code>.</li>
+      <li class="to-me">show how <code>find</code> uses both <code>resolve</code> and <code>reject</code> and <code>show</code> uses <code>catch</code>
+        <ul>
+          <li>again, not a huge change; but, the error detection is not so ‘ad-hoc’.</li>
+        </ul>
+      </li>
+      <li>The real power if Promises comes when we either
+        <ol>
+          <li>Want to run multiple queries in parallel (<code>all</code>), or</li>
+          <li>Need to sequence multiple queries and want clean error handling.</li>
+        </ol>
+      </li>
+      <li><a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqlitePromises/db/promiseDemo.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ExpressMVCSqlitePromises/db/promiseDemo.js</a></li>
+      <li>Promises were a lifesaver when writing code for SpectrumHealth when we needed to pull data from the userDB, the Epic medical records DB, and the Priority Health insurance DB all at the same time.</li>
+    </ul>
+  </li>
+  <li>You will rarely create your own Promises. It is far more common that you will use libraries that already use Promises.
+    <ul>
+      <li>So, you will be getting Promise objects as return values from library calls, and</li>
+      <li>then using <code>then</code> and <code>catch</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="using-fetch-with-promises-to-connect-to-api">Using <code>fetch</code> with Promises to connect to API</h2>
+
+<ul>
+  <li>Back to <a href="https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ColorList1_fetch/src/App.js">https://github.com/kurmasz-SampleCode/CIS371-SampleCode/blob/master/ColorList1_fetch/src/App.js</a>
+    <ul>
+      <li class="to-me">Look at the <code>fetchColors</code> method.</li>
+      <li><code>fetch</code> is a built in JavaScript function.</li>
+      <li>It returns a <code>Promise</code>.</li>
+      <li>When the “fetched” data is ready, the callback inside of <code>then</code> is invoked.</li>
+      <li>The data returned from the server is the <code>response</code> parameter.</li>
+      <li>The callback/Promise system prevents the JavaScript engine from stalling while 
+waiting for the API to respond.</li>
+    </ul>
+  </li>
+  <li>There is a subtlety here: The <code>fetch</code> callback is made when the server begins to return data.</li>
+  <li>If the amount of data returned is large; we may want to
+    <ol>
+      <li>wait for the entire response, or</li>
+      <li>process chunks of the response as it comes in.</li>
+    </ol>
+  </li>
+  <li>Therefore, the methods of the response object that provide content also return a <code>Promise</code> — a chain!</li>
+  <li>Calling <code>response.json()</code> returns a promise that is resolved when the entire data response is un-marshalled into a JavaScript object.
+    <ul>
+      <li>It is a common beginner mistake to forget this second promise and attempt to use <code>response.json()</code> directly.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="adding-api-calls-to-colorlist">Adding API calls to <code>ColorList</code></h1>
+
+<ul>
+  <li>We already saw the code that fetches the data from the server. Now, let’s wire it up.</li>
+  <li>The <code>useEffect</code> hook is code that runs code in the background.
+    <ul>
+      <li>Notice that we don’t want the page load to stall waiting for the API data.</li>
+      <li>Specifically, we don’t want a blank screen or a “spinning wheel” or something like that.</li>
+      <li>We want a meaningful page to load quickly, then get updated when the rest of the data arrives.</li>
+    </ul>
+  </li>
+  <li>To achieve this
+    <ul>
+      <li>We add two <code>useState</code> hooks</li>
+      <li><code>loading</code> keeps track of whether we are in the process of loading data.</li>
+      <li><code>message</code> keeps track of the message that will be displayed to the user indicating what is going on.</li>
+    </ul>
+  </li>
+  <li><code>useEffect</code> runs the specified block of code after initial render.
+    <ul>
+      <li>First it sets <code>loading</code> to true, which re-renders the page with a “loading…” message.</li>
+      <li>When data is finally ready
+        <ul>
+          <li><code>message</code> “turned off”</li>
+          <li><code>loading</code> set to <code>false</code></li>
+          <li>Color data updated.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="to-me">Show what happens if
+    <ul>
+      <li>delay changed</li>
+      <li>API raises exception</li>
+      <li>API shut down.</li>
+    </ul>
+  </li>
+  <li><strong>IMPORTANT</strong> Notice the second parameter to <code>useEffect</code>
+    <ul>
+      <li>It specifies dependencies – values that when changed should cause the hook to re-run.</li>
+      <li>Notice that changing <code>reloadCount</code> reloads the data from the server.</li>
+      <li>If I replace with an empty array, <code>useEffect</code> <em>never</em> re-runs.</li>
+      <li>If I omit the parameter, then it re-runs if <em>any</em> state changes.
+        <ul>
+          <li>This is bad because the whole purpose of the hook is to change <code>colors</code></li>
+          <li>The result is an infinite loop</li>
+        </ul>
+      </li>
+      <li>Take care: Some values will always appear different (e.g., arrays built on the fly).
+        <ul>
+          <li><code>useMemo</code> will create a consistent “hash” value when necessary.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

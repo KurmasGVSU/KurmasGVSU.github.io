@@ -288,9 +288,12 @@
 <main id="content">
   <h1 id="security">Security</h1>
 
-<p><strong>Important</strong>: Security and Secure Coding is a much bigger topic that I can cover here.  (Or, in fact, much bigger than I am qualified to cover.)
-  * Recognize my limits, and don’t assume you know more than you think you do.
-  * Make friends with an expert.</p>
+<p><strong>Important</strong>: Security and Secure Coding is a much bigger topic that I can cover here.  (Or, in fact, much bigger than I am qualified to cover.)</p>
+
+<ul>
+  <li>Recognize my limits, and don’t assume you know more than you think you do.</li>
+  <li>Make friends with an expert.</li>
+</ul>
 
 <h2 id="code-injection">Code injection</h2>
 
@@ -300,13 +303,17 @@
   <li>If you come from a C/C++/Java background, this may sound trivial.  But, in the world of scripting languages, it is frighteningly easy.</li>
   <li>Consider the <code>expressMVC</code> example.
     <ul>
-      <li>Enter the following as a description:  `You should <em>sanitize</em> your input.</li>
+      <li>Enter the following as a description:  <code>You should &lt;em&gt;sanitize&lt;/em&gt; your input</code>.</li>
       <li>Notice that you see the tags when you show this new toy.</li>
       <li>Now change <code>&lt;%=</code> to <code>&lt;%-</code> in <code>toyShow.ejs</code>.</li>
       <li>Notice that we can see the formatting.</li>
       <li>That may sound cool; but, edit it to forget the closing tag.</li>
-      <li>Now, edit it to include <code>&lt;img src='https://cis.gvsu.edu/~kurmasz/Images/buzz1.jpg'&gt;</code></li>
-      <li>What if that image src was <code>https://evil.com/evil.php?evilParameters</code></li>
+      <li>Now, edit it to include <code>&lt;img src='https://faculty.computing.gvsu.edu/kurmasz/Images/buzz1.jpg'&gt;</code></li>
+      <li>What if that image src was <code>https://evil.com/evil.php?evilParameters</code>
+        <ul>
+          <li>(Think tracking.)</li>
+        </ul>
+      </li>
       <li>Now, how about <code>&lt;script&gt;console.log("Uh oh")&lt;/script&gt;</code></li>
       <li>Can you see how this is a bad idea that could get worse?</li>
     </ul>
@@ -316,10 +323,9 @@
       <li>to override, append <code>.html_safe</code> to string</li>
     </ul>
   </li>
-  <li>Another approach would be to sanitize the data as soon as it comes into the app.
+  <li>Another (usually better) approach would be to sanitize the data as soon as it comes into the app.
     <ul>
       <li>See <code>express-validator</code> package for JavaScript Express</li>
-      <li>Sanitizing input for Rails seems less necessary since the output is so well sanitized.  But, it could still be a good idea in certain situations.</li>
       <li>Think carefully how/when/whether you want the data sanitized.  Turning <code>&lt;&gt;</code> into <code>&amp;lt;&amp;gt</code> won’t have the intended effect when using <code>&lt;%= %&gt;</code> in EJS.</li>
     </ul>
   </li>
