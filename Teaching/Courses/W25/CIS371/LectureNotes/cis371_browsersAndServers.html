@@ -482,63 +482,6 @@ to generate its requests differently (e.g., “Speak” Dutch instead of English
   </li>
 </ul>
 
-<h3 id="https">HTTPS</h3>
-<ul>
-  <li><a href="https://howhttps.works/">https://howhttps.works/</a></li>
-  <li>Same “language”, just encrypted.</li>
-  <li>Imagine a “box” at each end of the “pipe” that represents the stream. One end encrypts the communication, the other end decrypts it so
-    <ol>
-      <li>Eavesdroppers can’t decipher the message</li>
-      <li>If someone in the middle tries to modify the message, the client and sever can detect the change.</li>
-    </ol>
-  </li>
-  <li>HTTPS uses port 443.</li>
-  <li>Setting up HTTPS servers is difficult, so we usually use HTTP servers in development
-    <ul>
-      <li>Almost all production servers are now HTTPS, even when data isn’t sensitive.</li>
-    </ul>
-  </li>
-  <li>To encrypt/decrypt client and server need a shared secret.</li>
-  <li>Trick is securely agreeing on a secret key.</li>
-  <li>Solution: use RSA public/private keypairs.
-    <ol>
-      <li>Client connects to server</li>
-      <li>Server responds with public key (this can be unencrypted)</li>
-      <li>Client creates secret key, encrypts it with public key, sends to server.</li>
-      <li>Server decrypts message</li>
-      <li>Client and server continue to communicate using shared secret key</li>
-    </ol>
-  </li>
-  <li class="q">What is missing / what is the security hole here?
-    <ul>
-      <li>What if someone intercepts the public key and forges it?</li>
-      <li>That’s why we have <em>certificate authorities</em>:</li>
-    </ul>
-  </li>
-  <li>Server doesn’t just send its public key, it sends an <em>SSL Certificate</em> that contains
-    <ul>
-      <li>public key</li>
-      <li>IP address, owner, and other identifying information for the server</li>
-      <li>Name and digital signature of Certificate Authority</li>
-    </ul>
-  </li>
-  <li>Certificate Authority: An independent, trusted company that can verify that a public key hasn’t been forged.
-    <ul>
-      <li>Cloudflare</li>
-      <li>IdenTrust</li>
-      <li>DigiCert</li>
-      <li>GoDaddy</li>
-    </ul>
-  </li>
-  <li>More Info:
-    <ul>
-      <li><a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate/">https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate/</a></li>
-      <li><a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/">https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/</a></li>
-      <li><a href="https://en.wikipedia.org/wiki/Certificate_authority">https://en.wikipedia.org/wiki/Certificate_authority</a></li>
-    </ul>
-  </li>
-</ul>
-
 <h3 id="web-browser-again">Web Browser (again)</h3>
 
 <ul>

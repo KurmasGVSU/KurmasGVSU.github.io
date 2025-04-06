@@ -1,0 +1,382 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sa {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="https">HTTPS</h1>
+<ul>
+  <li><a href="https://howhttps.works/">https://howhttps.works/</a></li>
+  <li>
+    <p>Same “language”, just encrypted.</p>
+  </li>
+  <li>Three main aspects
+    <ol>
+      <li>Privacy</li>
+      <li>Integrity</li>
+      <li>Identification</li>
+    </ol>
+  </li>
+  <li>Imagine a “box” at each end of the “pipe” that represents the stream. One end encrypts the communication, the other end decrypts it so
+    <ol>
+      <li>Eavesdroppers can’t decipher the message</li>
+      <li>If someone in the middle tries to modify the message, the client and sever can detect the change.</li>
+      <li>Both parties know for certain whom they are talking to.</li>
+    </ol>
+  </li>
+  <li>HTTPS uses port 443.</li>
+  <li>Setting up HTTPS servers is difficult, so we usually use HTTP servers in development
+    <ul>
+      <li>Almost all production servers are now HTTPS, even when data isn’t sensitive.</li>
+    </ul>
+  </li>
+  <li>To encrypt/decrypt client and server need a shared secret.</li>
+  <li>Trick is securely agreeing on a secret key.</li>
+  <li>Solution: use RSA public/private keypairs.
+    <ul>
+      <li>Data encrypted with one key can be decrypted with the other.</li>
+      <li>Data encrypted with my public key can only be read by the person for whom it is intended (privacy)</li>
+      <li>Data encrypted with my private key can be ready by anybody (since my public key is public); but 
+anyone reading the message can be certain it came from me (since I’m the only one with my private key) (identification)</li>
+      <li>Modifying an encrypted stream (even by 1 byte) results in gibberish with extremely high probability (integrity).</li>
+    </ul>
+  </li>
+  <li>Workflow that <em>almost</em> works:
+    <ol>
+      <li>Client connects to server</li>
+      <li>Server responds with public key (this can be unencrypted)</li>
+      <li>Client creates secret key, encrypts it with public key, sends to server.</li>
+      <li>Server decrypts message</li>
+      <li>Client and server continue to communicate using shared secret key</li>
+    </ol>
+  </li>
+  <li class="q">What is missing / what is the security hole here?
+    <ul>
+      <li>What if someone intercepts the public key and forges it?</li>
+      <li>That’s why we have <em>certificate authorities</em>:</li>
+    </ul>
+  </li>
+  <li>Server doesn’t just send its public key, it sends an <em>SSL Certificate</em> that contains
+    <ul>
+      <li>public key</li>
+      <li>IP address, owner, and other identifying information for the server</li>
+      <li>Name and digital signature of Certificate Authority</li>
+    </ul>
+  </li>
+  <li><em>In principle</em>, the signing authority could encrypt a company’s certificate with it’s private key.
+    <ul>
+      <li>The public key comes pre-installed on your machine, so you can only read / make sense of certificates that are signed by 
+trusted authorities.</li>
+    </ul>
+  </li>
+  <li>This isn’t actually how certificates work, there are intermediate steps to promote scalability.
+    <ul>
+      <li>But, the key point is that the Certificate Authority system provides a trusted path for your computer to get 
+a set of public keys that can verify the identities of other parties in a secure transaction.</li>
+      <li>This is why setting up your own https server (without purchasing a full certificate) is difficult: You have to 
+take special steps to configure any computer connecting to the server so that it will accept the certificate.  (Or
+configure the browser to ignore the lack of a verifiable certificate.)</li>
+    </ul>
+  </li>
+  <li>Certificate Authority: An independent, trusted company that can verify that a public key hasn’t been forged.
+    <ul>
+      <li>Cloudflare</li>
+      <li>IdenTrust</li>
+      <li>DigiCert</li>
+      <li>GoDaddy</li>
+    </ul>
+  </li>
+  <li>More Info:
+    <ul>
+      <li><a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate/">https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate/</a></li>
+      <li><a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/">https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Certificate_authority">https://en.wikipedia.org/wiki/Certificate_authority</a></li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>
