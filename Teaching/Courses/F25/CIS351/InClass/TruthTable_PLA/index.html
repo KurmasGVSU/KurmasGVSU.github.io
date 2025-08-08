@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Truth Tables and PLA </title>
+  <style>
+    li {
+      padding-bottom: .5em;
+    }
+
+    li ol li {
+      padding-bottom: 0;
+    }
+
+    .over {
+      text-decoration: overline;
+    }
+
+    @media print {
+      .top {page-break-before: always;}
+    }
+
+  </style>
+</head>
+
+<body>
+
+<style>
+  table.assignmentHeader {
+    border: 1px solid black;
+    background-color: lightyellow;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+
+  td.ah_outside_cell {
+    width: 15%;
+  }
+
+  td.ah_left_cell {
+    padding-left: 20px;
+  }
+
+  td.ah_right_cell {
+    padding-right: 20px;
+  }
+
+  td.ah_middle_cell {
+    width: 70%;
+  }
+
+  .ah_left_content {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ah_middle_content {
+    text-align: center;
+  }
+
+  .ah_right_content {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+</style>
+<table class="assignmentHeader">
+  <tr>
+    <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Truth Tables and PLA </h1></td>
+    <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Fall 2025</h1></td>
+  </tr>
+</table>
+
+
+<ol>
+  <li>The video shows how to make a circuit that detects multiples of 3. 
+  Follow a similar procedure to build a circuit that detects multiples of 5.
+  (Fill out the truth table, then complete the circuit diagram.)
+
+     
+     <img src="pla_pattern.jpg" alt="PLA Pattern">
+     
+  </li>
+
+  <li class='top'> Picture a typical 7-line LED display (e.g., one digit of a
+    typical digital alarm clock --- see the diagram below). You are
+    going to design a combinatorial circuit that controls whether
+    the top-left LED is
+    lit (LED z_<sub>2</sub> to be precise). LED z_<sub>2</sub> is
+    lit for numbers 0, 4, 5, 6, 8, and 9; and blank for all
+    other inputs --- including invalid inputs.
+
+    <img src="led_example_0-9.jpeg" alt="Description of LED digits">
+
+    <ol type="A">
+      <li> Write the truth table for this circuit. (The circuit is
+        for LED z_<sub>2</sub> only. Do not include columns for
+        other LEDs.)
+      </li>
+      <li> Draw the logic diagram for this combinatorial circuit in a "PLA-style".</li>
+    </ol>
+    
+     <img src="pla_pattern.jpg" alt="PLA Pattern">
+     
+  </li>
+
+  <li>Video 2 showed how to build AND and OR gates using relays.  A NOR gate has the truth table shown below.
+
+<!-- 
+  <table>
+  <tr><th>A</th><th>B</th><th>A NOR B</th></tr>
+  <tr><td>0</td><td>0</td><td>1</td></tr>
+  <tr><td>0</td><td>0</td><td>1</td></tr>
+  <tr><td>0</td><td>0</td><td>1</td></tr>
+  <tr><td>0</td><td>0</td><td>1</td></tr>
+  </table>
+-->
+
+  Design a single relay using the pattern in the video that implements a NOR gate.<br>
+
+  <img src="nor-table.png", alt="NOR table", width="20%">
+  <img src="and_relay.jpeg", alt="AND relay" width="35%">
+  <img src="or_relay.jpeg", alt="OR relay" width="30%">
+</li>
+</ol>
+
+
+<hr>
+<p>Updated Tuesday, 5 August 2025, 1:14 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+</body>
+</html>
