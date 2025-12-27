@@ -1,0 +1,506 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="cis-451-week-11">CIS 451 Week 11</h1>
+
+<h3 id="synchronization">Synchronization</h3>
+
+<ul>
+  <li>To effectively use multiple threads, you typically need some mechanism for mutual exclusion:  Guaranteeing that a
+ segment of code is run while no other thread is an a corresponding sensitive area.
+    <ul>
+      <li>For example: Producer thread adds data to a shared array, consumer removes data from that array.  The sections
+in each thread that access the array must be mutually exclusive</li>
+      <li>Producer:  <code>++last; buffer[last] = newItem</code></li>
+      <li>Consumer:  <code>itemToConsume = buffer[last]; --last;</code></li>
+      <li class="q">What happens if code gets executed <code>c1</code>, <code>p1</code>, <code>p2</code>, <code>c2</code>?</li>
+      <li>Conventional solution is to make sure consumer can’t execute it’s “critical section” while consumer is executing
+ its critical section.</li>
+    </ul>
+  </li>
+  <li>In a single-processor system an <em>atomic</em> <code>testAndSet</code> instruction can provide the basis for mutual exclusion
+    <ul>
+      <li><code>top: tas r1, addr, 1; bnez r1 top</code></li>
+      <li>This guards against threads/processes being interleaved.</li>
+      <li>This needs to be a special instruction built into the hardware — even in single processor CPU.</li>
+    </ul>
+  </li>
+  <li>In a multi-core / multiprocessor system the two threads may be running at the same time on different cores.
+    <ul>
+      <li>Typical algorithms still applicable
+        <ul>
+          <li>Test and set</li>
+          <li>atomic exchange</li>
+          <li>fetch-and-increment</li>
+        </ul>
+      </li>
+      <li>However, these require an atomic mem read / mem write combination.  This can be difficult to do efficiently.</li>
+      <li>More common approach is not requiring atomicity, but detecting when a read/write pair gets interrupted.</li>
+      <li>MIPS and RISC V use <code>load reserved</code> and <code>store conditional</code>
+        <ul>
+          <li><code>load reserved</code> loads data from the requested address, then creates a <em>reservation</em> on the memory address 
+(i.e., stores the address somewhere “safe”)</li>
+          <li><code>store conditional</code> verifies that the reservation is still in place and returns a 0 if success, non-zero if fail.</li>
+          <li>To be specific, an intervening store (or invalidation message on the bus) will overwrite the reservation and
+ cause other stores to fail.
+            <ul>
+              <li>context switch also invalidates reservation</li>
+            </ul>
+          </li>
+          <li>“Atomic” exchange of <code>x4</code> and data located at <code>addr1</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<pre><code>try:   mov x3 &lt;-- x4
+       lr  x2 &lt;-- addr
+       sc  x3, addr1  # stores value of x3 *and* x3 gets 0 for success, 1 for failure
+       bnez x3, try   # loop if fails
+       mov x4 &lt;-- x2
+</code></pre>
+
+<ul>
+  <li>Register value and memory value should be atomically swapped.</li>
+  <li>If another memory access to <code>addr</code> intervenes, then attempt fails and we try again.
+    <ul>
+      <li><code>lr</code> places <code>addr</code> in a special register called the <em>reserve</em> register</li>
+      <li>When cache sees an invalidate message come in, and the address for that message is 
+the one in the <code>reserve</code> register, then the subsequent <code>sc</code> must fail.</li>
+      <li>Note that the bus access protocol ensures that all processors will agree on which 
+<code>sc</code> is first (and which others must fail).</li>
+    </ul>
+  </li>
+</ul>
+
+<pre><code>        li x2 &lt;-- #1
+lockit: EXCH x2, 0(addr_of_lock)
+        bnez x2, lockit
+</code></pre>
+
+<ul>
+  <li>Kind of like “test and set”</li>
+  <li>In other words,
+    <ul>
+      <li>set <code>x2</code> equal to 1.</li>
+      <li>Do an atomic swap with the memory address of the lock</li>
+      <li>If <code>x2</code> comes back with a 0 in it, then the lock wasn’t held previously
+and the process now has the lock.</li>
+      <li>Otherwise, the lock is in use, try again.</li>
+    </ul>
+  </li>
+  <li class="q">Problem with doing this in a multiprocessor system?
+    <ul>
+      <li>The <code>sc</code> will cause coherency messages.</li>
+      <li>The spinning will cause <em>a lot</em> of coherency messages.</li>
+    </ul>
+  </li>
+  <li class="q">How to improve?
+    <ul>
+      <li>Do a simple read first.  (Don’t try to acquire the lock until you know it’s free).</li>
+      <li>The simple read won’t cause traffic.</li>
+      <li>Eventually, the write that frees the lock will cause a coherence message to be sent
+which will update the cached copy and allow your code to progress to the acquisition stage.</li>
+    </ul>
+  </li>
+</ul>
+
+<pre><code>lockit: ld x2 &lt;-- 0(lock_addr)
+        bnez x2, lockit
+        li x2 &lt;-- #1
+lockit: EXCH x2, 0(addr_of_lock)
+        bnez x2, lockit
+</code></pre>
+
+<h2 id="consistency">Consistency</h2>
+
+<ul>
+  <li>Coherence ensures that multiple processors see a consistent view of memory.</li>
+  <li>But, does not answer <em>how</em> consistent.</li>
+  <li>Sounds like a simple question; but, it is very difficult.</li>
+</ul>
+
+<pre><code>P1:     A = 0;          P2:     B = 0;
+        ......                  .....
+        A = 1;                  B = 1;
+L1:     if (B == 0) ... L2:     if (A == 0)
+</code></pre>
+
+<ul>
+  <li>If writes are serialized and take effect immediately, then it <em>should</em> 
+be impossible for both <code>if</code> statements to run (i.e., for both <code>A</code> and <code>B</code> to be 0)</li>
+  <li>What if the write invalidate messages are delayed?  (Think “cross in the mail”)
+    <ul>
+      <li>Should this be allowed?</li>
+      <li>Under what circumstances?</li>
+    </ul>
+  </li>
+  <li>Sequential consistency:
+    <ul>
+      <li>Require that the system behave as if the two codes were “shuffled together”</li>
+      <li>This requirement would rule out the situation above.</li>
+      <li>Can be implemented by requiring that stores block until all invalidations are complete.</li>
+      <li>Can also be implemented by delaying next memory access until the previous one is complete.</li>
+      <li>Effective, but can cause delays in busy or big systems (where response would be slow).</li>
+      <li>Writes can take 100+ cycles to complete.
+        <ul>
+          <li>Establish ownership (50+)</li>
+          <li>Send invalidate (10)</li>
+          <li>Time to receive acknowledgement of invalidate (80+)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Assume programs are synchronized.
+    <ul>
+      <li>That is, there is a pair synchronization ops between a write on one processor and a read on another. 
+(For example, a mutual exclusion lock)</li>
+      <li>If there isn’t, there is a <em>data race</em></li>
+      <li>This is a reasonable assumption; because most programs are synchronized.
+        <ul>
+          <li>Mutex, semaphores, locks, critical sections — all that good stuff from 452.</li>
+          <li>It is difficult to reason about programs that aren’t — even if the underlying hardware has sequential
+ consistency.</li>
+        </ul>
+      </li>
+      <li>Common approach is to use a relaxed consistency model that can use synchronization to behave as if the 
+system had sequential consistency.</li>
+      <li>Many processors use “release consistency”, which means that consistency is only guaranteed among special
+ operations that acquire and release locks on shared data.
+        <ul>
+          <li>RISC also has a <code>FENCE</code> operation that ensures that all previous operations have completed.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cross-cutting-issues-section-57">Cross-cutting issues (Section 5.7)</h3>
+
+<ul>
+  <li>Compiler optimization
+    <ul>
+      <li>Currently programs must usually be synchronized, because otherwise it is difficult for compilers to optimize code.</li>
+      <li>If the synchronization is done behind the scenes by the consistency model, then compilers don’t know which 
+reads and writes are shared and which aren’t.  This affects
+        <ul>
+          <li>Reordering</li>
+          <li>register allocation</li>
+        </ul>
+      </li>
+      <li>Whether/how compilers can leverage more precise consistency models is an open research question.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="raid">RAID</h3>
+
+<ul>
+  <li>Disks have long latency (even SSDs, currently)</li>
+  <li>One solution is to read data in parallel by striping data across disks.</li>
+  <li class="q">What is the problem?
+    <ul>
+      <li>One failure ruins all of the data.</li>
+      <li>Probability of failure increases exponentially</li>
+    </ul>
+  </li>
+  <li>Solution RAID
+    <ul>
+      <li>Redundant Array of Inexpensive/Independant Disks</li>
+    </ul>
+  </li>
+  <li>Different levels
+    <ul>
+      <li>RAID 0: Striping.  Gives performance but risks failures</li>
+      <li>RAID 1: Mirroring.</li>
+      <li>RAID 1/0: Striped mirroring.  Performance, but uses 2X space or more.</li>
+      <li>RAID 2-4:  Not typically used.</li>
+      <li>RAID 5: Striping with parity.</li>
+    </ul>
+  </li>
+  <li>RAID 5:
+    <ul>
+      <li>Simple explanation:  One parity disk.</li>
+      <li class="q">problem?
+        <ul>
+          <li>Parity disk becomes a bottleneck</li>
+        </ul>
+      </li>
+      <li class="q">Solution?
+        <ul>
+          <li>Rotate the parity block around so it’s not always on the same disk.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="warehouse-scale-computing">Warehouse scale Computing</h2>
+
+<ul>
+  <li>Nicholas Carr Quote from 1st page of chapter</li>
+  <li>An alternative to SMPs are clusters:  Groups of independent networked machines.
+    <ul>
+      <li>Clusters work well for highly parallelizable problems that require little synchronization.</li>
+      <li>Often cheaper than SMPs, because build from commodity hardware.</li>
+    </ul>
+  </li>
+  <li>The natural extension of a cluster is a Warehouse Scale Computer
+    <ul>
+      <li>50,000 - 100,000 servers in a big building.</li>
+      <li>Think Google, Amazon, etc.</li>
+    </ul>
+  </li>
+  <li>Slightly different focus
+    <ul>
+      <li>Clusters focus on thread level parallelism (parts of a single problem)
+        <ul>
+          <li>Often using OpenMP or MPI for message-passing synchronization</li>
+        </ul>
+      </li>
+      <li>Warehouse scale computers focus on <em>request</em> level parallelism
+        <ul>
+          <li>Think about serving web requests</li>
+          <li>These requests tend to be very independent and require very little synchronization.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Other differences with clusters:
+    <ul>
+      <li>Clusters tend to be homogeneous (multiple copies of the same HW — like EOS)</li>
+      <li>Warehouses tend to be heterogeneous.  Either
+        <ul>
+          <li>to provide different levels of service to different customers, or</li>
+          <li>because they can (and it can be cheaper)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Differences with SMP:
+    <ul>
+      <li>SMP designers don’t tend to worry about operational cost.  Cost is dominated by the cost of the machine itself.</li>
+      <li>WHC costs are dominated by operational cost (electricity, cooling)</li>
+      <li>With WHC small savings in operational costs add up quickly</li>
+    </ul>
+  </li>
+  <li>With WHC, location counts.  <span class="q">Give examples</span>
+    <ul>
+      <li>Need population center nearby for staff</li>
+      <li>Nearby source of inexpensive power</li>
+      <li>Need good Internet connectivity
+        <ul>
+          <li>Singapore and Australia are close, but Internet bandwidth is lacking</li>
+        </ul>
+      </li>
+      <li>Low risk of environmental problems (earthquake, tornado, etc.)</li>
+      <li>Cool weather is a plus.</li>
+      <li>Things like local laws and taxes matter</li>
+    </ul>
+  </li>
+  <li>WHC must be cost effective at low utilization
+    <ul>
+      <li>WHC are often way over-provisioned to handle bursts.</li>
+      <li>“spare” capacity can’t consume too much power when not in use.</li>
+    </ul>
+  </li>
+  <li>WHC need a plan to handle failures
+    <ul>
+      <li>Appropriate redundancy</li>
+      <li>Ability to recover</li>
+    </ul>
+  </li>
+  <li>Job scheduling
+    <ul>
+      <li>With 50,000+ machines, performance varies greatly between machines — even supposedly homogeneous ones.
+        <ul>
+          <li>Scheduling is dynamic, watching when jobs finish and assigning new tasks accordingly.</li>
+          <li>Not unusual to re-submit a job if it takes too long in case the current CPU/machine is slow because of some
+ sort of failure.
+            <ul>
+              <li>Take result of first job to finish.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Lots of redundancy for performance reasons.
+    <ul>
+      <li>e.g., data is often replicated for performance reasons (e.g., to be close to where it’s needed)</li>
+    </ul>
+  </li>
+  <li>Consistency models very relaxed where possible
+    <ul>
+      <li>Sometimes it is not necessary for all replicas to agree precisely.</li>
+      <li>“Eventual consistency” for video sharing</li>
+    </ul>
+  </li>
+  <li>Typical configuration:
+    <ul>
+      <li>10s of machines in a single rack.</li>
+      <li>Switch at the top of the rack.</li>
+      <li>Groups of racks called “arrays” with a switch for the array</li>
+      <li>Entire warehouse comprises many arrays.
+        <ul>
+          <li>Arrays may even have their own hierarchy.</li>
+        </ul>
+      </li>
+      <li>This means, of course, that administrators need to take care to place related applications in the same rack to get
+ best communication time.</li>
+    </ul>
+  </li>
+  <li>This hierarchy “collapses” the differences in latency between RAM and disk
+    <ul>
+      <li>Huge difference in latency between RAM and disk within a machine.</li>
+      <li>Very small difference at the top of the hierarchy.</li>
+      <li>See Figure 6.6</li>
+      <li><img src="SlideImages/latencyinWSC.png" alt="" width="450px" /></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="efficiency-and-cost-section-64">Efficiency and Cost (Section 6.4)</h4>
+
+<ul>
+  <li>Infrastructure costs for power distribution and cooling are the majority of the construction costs of a WSC.</li>
+  <li>Actual power usage inside a Google Warehouse in 2012:
+    <ul>
+      <li>42% to power processors</li>
+      <li>12% to power DRAM</li>
+      <li>14% for disks</li>
+      <li>5% for networking</li>
+      <li>15% for cooling overhead (not sure why term “overhead” used.)</li>
+      <li>8% for power overhead</li>
+      <li>4% miscellaneous</li>
+    </ul>
+  </li>
+  <li>PUE (Power utilization effectiveness) used to measure efficiency.
+    <ul>
+      <li>(Total facility power ) / (IT equipment power)</li>
+      <li>Sample of 19 data centers showed PUE of 1.33 to 3.03.</li>
+      <li>AC ranged from .3 to 1.4 times IT power</li>
+      <li>Google improved from 1.22 to 1.12 from 2008 through 2017</li>
+      <li>Does not account for performance  — smallest PUE is not necessarily cheapest $/operation</li>
+    </ul>
+  </li>
+  <li>Effects of latency
+    <ul>
+      <li>Increasing latency had a much larger effect on total time to completion.</li>
+      <li>Cutting response time by 30% led to a 70% decrease in total interaction time
+        <ul>
+          <li class="q">Any ideas why?
+            <ul>
+              <li>Hypothesis: Distraction</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Another study showed a 200ms delay at server produced 500ms increase in time to next click.
+        <ul>
+          <li>Revenue dropped linear with increase in delay</li>
+          <li>User satisfaction also dropped linearly</li>
+        </ul>
+      </li>
+      <li>Effects lingered
+        <ul>
+          <li>After 200ms delay, usage was down 0.1% four weeks after latency returned to normal</li>
+          <li>400ms delay produced lingering 0.2% decrease</li>
+          <li>This results in the loss of a lot of money</li>
+        </ul>
+      </li>
+      <li class="q">How to set latency targets in response?
+        <ul>
+          <li>Can’t just pick average.  Need a target for 99% of users below <code>x</code></li>
+          <li>The very slow ones are lost revenue.  At some point, faster than noticeable doesn’t help.
+So, you don’t want the very fast ones to “give permission” for slow ones.</li>
+        </ul>
+      </li>
+      <li>Goals called <em>SLO</em>s  Service Level Objectives</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="section-65">Section 6.5</h4>
+
+<ul>
+  <li>Economies of scale
+    <ul>
+      <li>$4.6 per GB per year for WSC vs $26/GB for a data center</li>
+      <li>7.1x reduction in administrative costs (1000 servers/admin vs 140)</li>
+      <li>7.3x reduction in networking costs ($13/Mbit/month vs $95)</li>
+      <li>Can also purchase equipment in larger volumes.</li>
+    </ul>
+  </li>
+  <li>Warehouses tend to serve several customers.</li>
+  <li>Even when warehouse built for one primary client, excess is leased out to public. 
+<span class="q">Why</span>
+    <ul>
+      <li>Public tends to have different peaks, so resources can be used more efficiently.</li>
+    </ul>
+  </li>
+  <li>In 2007 many power supplies were only 60% to 80% efficient</li>
+</ul>
+
+<h4 id="section-67-----example-google-warehouse">Section 6.7 — Example Google Warehouse</h4>
+
+<ul>
+  <li>They avoid typical A/C whenever possible
+    <ul>
+      <li>Hot air forced up and into heat exchanger with cool water</li>
+      <li>Water cooled on the roof using evaporation, when possible.
+        <ul>
+          <li>Finland’s warehouse uses cold water from Gulf of Finland</li>
+        </ul>
+      </li>
+      <li>Some traditional A/C/ capacity present when necessary.</li>
+      <li>Designed to operate at 80, rather than the 65 to 70 of a 
+traditional data center
+        <ul>
+          <li>Allows for cooling towers to work in most cases (as opposed to traditional A/C)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Power delivered as AC to each rack, then 48V DC down the rack to the 
+individual servers.</li>
+  <li>Each warehouse has diesel generators for power failures
+    <ul>
+      <li>But, they take 10s of seconds to spin up.</li>
+      <li>UPS on each rack to fill the gap</li>
+      <li>Contracts for continuous diesel delivery for extended outages.</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

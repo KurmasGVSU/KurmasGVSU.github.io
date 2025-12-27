@@ -1,0 +1,199 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="cis-451-week-3">CIS 451 Week 3</h1>
+
+<h2 id="addressing-modes">Addressing Modes</h2>
+
+<ul>
+  <li>Addressing modes
+    <ul>
+      <li class="question">How does the machine differentiate between <code>add r1 &lt;= r2 + r3</code> and <code>add r1 &lt;= r2 + 6</code>?</li>
+      <li>Addressing modes: How the machine interprets the parameters.</li>
+      <li class="question">What are some different addressing modes?
+        <ul>
+          <li>Register Direct</li>
+          <li>Register Indirect</li>
+          <li>Memory Direct</li>
+          <li>Memory Indirect</li>
+          <li>Offset / Displacement</li>
+          <li>Immediate</li>
+          <li>Implicit</li>
+          <li class="to-me">Pass out handout from Stallings</li>
+        </ul>
+      </li>
+      <li>One difference between ISAs (and a decision to make when designing CPUs) is which/how many addressing modes are 
+supported.</li>
+      <li>IA86 supports memory addresses in arithmetic; MIPS does not.  <span class="question">Why</span> ?
+        <ul>
+          <li class="to-me">Display MIPS single-cycle diagram.</li>
+        </ul>
+      </li>
+      <li>Load/Store vs. Register/Memory</li>
+      <li>CISC vs. RISC</li>
+      <li>Not always black and white.  RISC processors can have a few complex addressing modes
+        <ul>
+          <li>Offset addressing in MIPS</li>
+          <li>load word looks like this <code>lw $t0, 8($a0)</code></li>
+          <li class="question">Do we need all three parameters?</li>
+          <li class="question">What is the benefit of the third parameter? (Or, alternately the cost of removing it?)</li>
+          <li class="question">How can we quantify these benefits?</li>
+          <li class="question">What is the latency of the single-cycle CPU?
+            <ul>
+              <li><code>t = n*p</code></li>
+            </ul>
+          </li>
+          <li class="question">How does removing the offset affect <code>p</code> (in general)?</li>
+          <li class="question">How does removing the offset affect <code>n</code>?</li>
+          <li class="to-me">Look at diagram of single-cycle CPU from Harris and Harris and discuss specific performance values.</li>
+          <li class="question">How does removing the offset affect <code>p</code> (specifically. Give numbers)?</li>
+          <li>Notice that whether the third parameter improves performance depends on the program/workload!
+            <ul>
+              <li>Suppose only 85% of memory instructions require a helper.</li>
+              <li>Compare performance when 20% and 35% of instructions are <code>lw</code> or <code>sw</code></li>
+              <li><code>725 * (1 + (.35*.85)) = 940</code></li>
+              <li><code>725 * (1 + (.20*.85)) = 848</code></li>
+            </ul>
+          </li>
+          <li>This is why you usually can’t declare one CPU to be definitively better than another.</li>
+          <li>Instruction Mix
+            <ul>
+              <li class="question">What instruction mix would make the “no offset” MIPS CPU better?
+                <ul>
+                  <li><code>n' = n*(1 + l)</code> where <code>l</code> is fraction of instructions that are lw.</li>
+                  <li>want n’p’ &lt; np</li>
+                  <li><code>n' = 1 + .85x</code></li>
+                  <li><code>725(1 + .85x)n &lt; 925n</code></li>
+                  <li><code>1 + .85x &lt; 1.28</code></li>
+                  <li><code>.85x &lt; .25</code></li>
+                  <li><code>x &lt; .33</code></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Should we change the number of registers?
+            <ul>
+              <li class="question">What would be the consequence of doubling the number of registers from 32 to 64 in MIPS?
+                <ul>
+                  <li>Fewer loads and stores</li>
+                  <li>slightly longer cycle time (muxes in RF have a little more
+work to do)</li>
+                  <li>Messed up ISA. ?? Why ??  (Ignore this for now)</li>
+                </ul>
+              </li>
+              <li class="question">Suppose (1) cycle time goes up by 25.  (2) 35% of instructions
+ are loads and stores.  What % of loads and stores must be removed?
+                <ul>
+                  <li>Want <code>95(.65n + .35xn) &lt; 925n</code></li>
+                  <li>True when <code>x &lt; .9248</code>.  This is max we can keep.</li>
+                  <li>Must remove at least 7.5%</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Back to <code>addi</code>.
+        <ul>
+          <li class="question">How many bits do we want?</li>
+          <li class="question">What are are our choices if we want a fixed-width instruction set?</li>
+          <li>“Make the Common Case Fast”</li>
+        </ul>
+      </li>
+      <li class="to-me">Talk about how design decisions are interconnected</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="multicycle-cpu">MultiCycle CPU</h2>
+
+<ul>
+  <li>Notice that the Single Cycle CPU wastes a lot of time.
+    <ul>
+      <li>Anything that’s not a load or store sits idle 20% of the time.</li>
+      <li>What if we could “tighten” CPU?</li>
+    </ul>
+  </li>
+  <li>Start on HH Chapter 7, slide 40</li>
+  <li>Microinstructions</li>
+  <li>Microcode</li>
+  <li>Facilitates CISC instructions.</li>
+  <li>Avoids duplicate hardware</li>
+  <li>Now CPI becomes important
+    <ul>
+      <li>Weighted average</li>
+      <li>MHz rating no longer primary descriptor of performance</li>
+      <li>Performance (? Can we make the numbers work ?)</li>
+    </ul>
+  </li>
+  <li>Notice that other parts still sit around when not in use</li>
+  <li>Performance
+    <ul>
+      <li class="question">What is CPI?</li>
+      <li class="question">Calculate CPI for instruction mix.  (4.12)</li>
+      <li class="question">Timing of MultiCycle CPU (325)</li>
+      <li>Is not faster than single cycle. (At least, not as presented in textbook.)</li>
+      <li class="question">What if clock time is optimal? (925/5 = 185) ?
+        <ul>
+          <li><code>185*4.12 = 762</code>; speedup of 1.21</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="question">What kind of CPI works with timing of 325? ?
+    <ul>
+      <li><code>925 / 325 = 2.84</code></li>
+    </ul>
+  </li>
+  <li class="question">What time needed for CPI of 4.12 ?</li>
+  <li class="question">Add a ‘one-instruction’ <code>addi</code> to multi cycle ?</li>
+  <li class="question">How many instructions might this reduce ?
+    <ul>
+      <li>A matter of guessing.  Say
+        <ul>
+          <li>2% of “regular” arithmetic</li>
+          <li>All <code>la</code> instructions.  (Say 2% of lw/sw)</li>
+          <li>Is about 2% overall.</li>
+          <li>Still not enough</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>What else could we add?
+    <ul>
+      <li>Intel-style R/M instructions</li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

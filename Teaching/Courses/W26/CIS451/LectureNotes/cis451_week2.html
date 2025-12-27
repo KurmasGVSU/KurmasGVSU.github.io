@@ -1,0 +1,287 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="cis-451-week-2">CIS 451 Week 2</h1>
+
+<h2 id="cisc-vs-risc">CISC vs. RISC</h2>
+
+<ul>
+  <li class="to-me">Re-read Stallings 15.4</li>
+  <li>Fewer slower instructions vs. more faster instructions</li>
+  <li class="question">What is potential benefit of fewer slower instructions?
+    <ul>
+      <li>Less repeated work (e.g., instruction fetch)</li>
+    </ul>
+  </li>
+  <li class="question">What is balance today?
+    <ul>
+      <li>Mostly RISC, with a few favorite CISC instructions.</li>
+    </ul>
+  </li>
+  <li>Arguments for CISC
+    <ol>
+      <li>Compiler simplification:  Compiler has less work to do since it
+needs to generate fewer instructions.
+        <ul>
+          <li><span class="question">What is the counter-argument?</span> 
+It difficult hard to program compilers to take advantage of esoteric instructions.</li>
+        </ul>
+      </li>
+      <li>CISC programs are smaller.
+        <ul>
+          <li><span class="question">What is the counter-argument?</span> Fewer instructions yes; but, those instructions
+tend to be larger.</li>
+          <li><span class="question"> Why do the instructions tend to be larger?</span>
+            <ul>
+              <li>More addressing modes and more use of memory access tend to require more bits.</li>
+              <li>More op-codes also requires more bits.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="performance">Performance</h2>
+
+<ul>
+  <li>Suppose you have a RISC and a CISC processor and are asked to decide which is “better?”<br />
+<span class="question">What makes one CPU “better” than another?</span>
+    <ul>
+      <li>Purchase Cost</li>
+      <li>Total cost of ownership</li>
+      <li>Throughput</li>
+      <li>Energy efficiency</li>
+      <li>Reliability</li>
+      <li>Speed / Time</li>
+    </ul>
+  </li>
+  <li class="question">What are the different times than can be measured when timing a
+  program?
+    <ul>
+      <li>Wall clock</li>
+      <li>CPU time (time when program has CPU, excluding when processes is blocked on I/O or cache misses)</li>
+      <li>Our model will be “wall clock” time since we’ll assume only
+one program running on CPU</li>
+    </ul>
+  </li>
+  <li>For CPUs we make it simple: latency — How fast can a CPU complete a
+given task.  (Task may be one user’s specific task, or processing a
+batch of a million Amazon orders.)</li>
+  <li>Throughput also common.
+    <ul>
+      <li class="question">What is danger of throughput?
+        <ul>
+          <li>Starvation for minority</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Performance is the inverse of time:  less time &lt;===&gt; better performance</li>
+  <li>Try to avoid using the term “increasing” and “decreasing”.  Notice
+  that increasing performance means decreasing execution time
+  (latency). Although well-defined, it can cause confusion.
+  “Improve” is a better term.</li>
+  <li>Avoid using percents
+    <ul>
+      <li>CPU A completes a task in 10 seconds</li>
+      <li>CPU B completes the same task in 15 seconds</li>
+      <li class="question">How much faster is A than B?
+        <ul>
+          <li>50% ?  (<code>(15-10) / 10</code> is 50%)</li>
+          <li>33% ?  (<code>(15 - 10)/ 15</code> is 33%)</li>
+        </ul>
+      </li>
+      <li>It’s better to use the term “Speedup”.
+        <ul>
+          <li>Speedup = <code>original_time / new_time</code></li>
+          <li>Switching from B to A results in a speedup of 1.5.</li>
+          <li>Switching from A to B results in a speedup of .666.</li>
+          <li>A speedup of &lt; 1 represents a slowdown.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="benchmarks">Benchmarks</h2>
+
+<ul>
+  <li>So, now, we time the RISC processor and time the CISC processor and see which one is faster.</li>
+  <li class="question">What’s missing?</li>
+  <li class="question">What programs do we time?</li>
+  <li>Ideally we could exactly reproduce what the user intends to do on that machine.
+    <ul>
+      <li>Called the “workload”</li>
+    </ul>
+  </li>
+  <li>In practice, we need to choose an approximation of the user’s real workload called a <em>bemchmark</em></li>
+  <li>Benchmarks: A set of programs <em>and input</em> that represent a workload.
+    <ul>
+      <li>Not a perfect representation; but, designed to be a reasonably
+close approximation.</li>
+      <li>Several types:
+        <ul>
+          <li>Kernels (short, focused tasks like matrix multiply)</li>
+          <li>Synthetic benchmarks (made up lists of tasks designed to stress the CPU)
+            <ul>
+              <li>TPC-C Database activities for transaction processing.</li>
+              <li>TPC-H Decision support queries</li>
+              <li>Dhrystone</li>
+            </ul>
+          </li>
+          <li>Benchmark suites – sets of real programs
+            <ul>
+              <li>SpecWeb</li>
+              <li>SpecInt (our “go-to” benchmark)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>SpecInt is a suite of programs that typify what we might do in EOS. (See Figure 1.17 on slide or in textbook.)</li>
+  <li class="question">How should we present results in a single number?</li>
+  <li class="question">What is the problem with the arithmetic mean? (i.e., “average”)
+    <ul>
+      <li>It overweights longer programs. Consider a benchmark with two programs:
+        <ul>
+          <li>P1 that takes about 10 hours to run on CPU A</li>
+          <li>P2 takes takes 1.5 hours to run on CPU A.</li>
+          <li>Suppose CPU A is 20% faster than B on P1 (i.e., B takes 12 hours), but</li>
+          <li>CPU A is 50% slower than CPU B (i.e., B takes 1 hour).</li>
+          <li class="question">Which CPU should be be considered “faster”?</li>
+        </ul>
+      </li>
+      <li>Solution:  Use ratios (present each program as “speedup of CPU A over CPU Y).
+        <ul>
+          <li><code>(time_a / time_y) / (time_b / time_y) = time_a / time_b</code></li>
+          <li>That gives <code>.86</code> and <code>1.5</code></li>
+          <li>(Notice how the time of the reference machine Y becomes irrelevant?)</li>
+        </ul>
+      </li>
+      <li class="question">Now, what do we do with those scores?</li>
+      <li>Arithmetic mean isn’t the right average. Consider
+        <ul>
+          <li>CPU A has tasks that take 2 hrs and 3 hrs respectively.</li>
+          <li>CPU B has tasks that take 3 hrs and 2 hrs respectively.</li>
+          <li>Ratios are <code>.666</code> and <code>1.5</code>.  Which CPU “wins” depends on which one ends up in the denominator.</li>
+          <li><strong>Geometric</strong> mean gives the expected result: The CPUs are equal.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="isa-instruction-set-architecture">ISA (Instruction Set Architecture)</h2>
+
+<p>Let’s think about how the design of an ISA (think “machine language”) matters.</p>
+
+<ul>
+  <li>Suppose you are designing a CPU from scratch.
+    <ul>
+      <li class="question">What is the first thing/feature/parameter you choose?</li>
+      <li>Probably the <em>word size</em>.
+        <ul>
+          <li class="question">How does the word size affect the rest of the CPU?</li>
+          <li class="question">What is the most common word size today?</li>
+          <li class="question">What drove the move from 32 to 64 bit machines?
+            <ul>
+              <li>Address space</li>
+            </ul>
+          </li>
+          <li class="question">Suppose moving to 64 bit word slows clock period by 5%.  What % of
+   instructions must be eliminated?  5%?
+            <ul>
+              <li>No. Remember 50% loss and 50% gain don’t cancel.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="question">How many registers should the CPU have?</li>
+      <li class="question">What are the consequences of many/few registers?
+        <ul>
+          <li>Performance (less RAM access)</li>
+          <li>More registers requires more resources.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Let’s design a basic instruction: <em>add</em>
+    <ul>
+      <li class="question">How many parameters?</li>
+      <li class="question">How few parameters can you have?</li>
+      <li class="question">What are benefits of many vs. few?</li>
+      <li class="question">What are benefits of one parameter?</li>
+      <li class="question">What are benefit of zero parameter?</li>
+    </ul>
+  </li>
+  <li>One parameter add is an <em>accumulator</em> based architecture.
+    <ul>
+      <li>Notice how this computer emphasized the simplicity of the machine over performance.</li>
+      <li>Compare this mindset to the typical mindset today.</li>
+    </ul>
+  </li>
+  <li>Zero parameter add is a stack-based architecture.
+    <ul>
+      <li>Not a bad idea, but never took off.</li>
+      <li>But, there is a stack based architecture today.</li>
+      <li><span class="question">What is it?</span>  (Java Virtual Machine)</li>
+      <li>Notice how ideas can come back in a new context.</li>
+      <li>He who anticipates when the time is right for an idea to come back has the potential to make millions.</li>
+      <li>Again, you may not use Computer Architecture <em>directly</em> in your first job; but, developing a sense of the big 
+ picture will pay off later in your career.  (Possibly even early in your career.)</li>
+    </ul>
+  </li>
+  <li>Instruction width:
+    <ul>
+      <li class="question">Design a machine instruction that does <code>add r1 &lt;= r2 + 6</code></li>
+      <li class="question">Which version of <code>add</code> needs more bits?</li>
+      <li>Fixed vs. variable width instructions.</li>
+      <li class="question">What are the benefits of each?
+        <ul>
+          <li>fixed:  Simpler hardware =&gt; potentially faster</li>
+          <li>variable: more flexible.  Possibly fewer instructions?</li>
+        </ul>
+      </li>
+      <li class="question">How do you know which one (fixed/variable) is “better”?
+        <ul>
+          <li>We’ll get back to that.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

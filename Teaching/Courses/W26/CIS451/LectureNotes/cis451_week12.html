@@ -1,0 +1,288 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="cis-451-week-12">CIS 451 Week 12</h1>
+
+<ul>
+  <li>Predication:  Marking instructions as conditional on some predicate.
+    <ul>
+      <li>Can be more efficient than flow control  (no mis-predicts)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="data-level-parallelism">Data-Level parallelism</h2>
+
+<ul>
+  <li>“If you were plowing a field, which would you rather use:  Two strong oxen, or 1024 chickens?”
+    <ul>
+      <li>Seymour Cray arguing that two powerful vector processors is better than many simple processors.</li>
+    </ul>
+  </li>
+  <li class="q">What does SIMD stand for?</li>
+  <li>SIMD is applying the same operation (instruction) to an entire vector of values.</li>
+  <li class="q">What kind of applications use SIMD?
+    <ul>
+      <li>Matrix-oriented scientific computing</li>
+      <li>Image processing</li>
+      <li>Sound processing</li>
+    </ul>
+  </li>
+  <li>SIMD is more energy efficient because there is less overhead (e.g., fetching and decoding operations)</li>
+  <li>Programmers can still (mostly) think sequentially (unlike more complex multi-threaded environments)</li>
+  <li>First SIMD approach was vector processors in the 1980s.
+    <ul>
+      <li>Key issues were
+        <ol>
+          <li>Cost of that many transistors</li>
+          <li>Cost of sufficient memory bandwidth to provide data to that many ALUs. (Especially given the need for )</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>Other key SIMD challenges
+    <ol>
+      <li>Stride in vectors that are not lined up with memory.
+        <ul>
+          <li>Consider matrix multiply.  Either the rows or the columns will go across memory.</li>
+          <li class="q">How can this affect cache?</li>
+          <li>Can cause problems with large block sizes, since entire block brought in for only one item.</li>
+          <li>One solution is to prepare special memory instructions that understand <em>stride</em> and bring only 
+the needed data into a vector.</li>
+          <li>Adds considerable complexity to memory system.</li>
+        </ul>
+      </li>
+      <li>Limited memory bandwidth
+        <ul>
+          <li>Mark which registers are unused so we don’t spend time sending them to memory on a context switch</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>Other vector processor instructions
+    <ul>
+      <li>AXPY:  a*X+y (where <code>a</code> is a scalar)</li>
+      <li>disable:  Disable all vector registers so they aren’t saved during a context switch.</li>
+      <li>vector mask:  Prevent operation from affecting some cells in the vector.
+        <ul>
+          <li>It’s one way to handle <code>if</code> statements.</li>
+          <li>A type of predication.</li>
+        </ul>
+      </li>
+      <li>Gather / Scatter for sparse matrices</li>
+    </ul>
+  </li>
+  <li>Next came x86 extensions
+    <ul>
+      <li>MMX</li>
+      <li>SSE</li>
+      <li>AVX</li>
+      <li>Focuses on floating point</li>
+      <li>Latest version 512 bits.  That’s 16, 32-bit ops</li>
+    </ul>
+  </li>
+  <li>At first, only basic vector ops:  add multiply
+    <ul>
+      <li>No scalar</li>
+      <li>No masking</li>
+    </ul>
+  </li>
+  <li>But, more complex ops have crept in over time.</li>
+  <li>Different op codes for different data sizes (8-bit, 16-bit, etc.)
+    <ul>
+      <li>Thus, large number of op codes added over time</li>
+      <li>They double every time data size doubles.</li>
+    </ul>
+  </li>
+  <li>At first, compilers couldn’t do much with MMX/SSE, etc.
+    <ul>
+      <li>Lack of more sophisticated ops</li>
+      <li>Only used to build specialized libraries in assembly.</li>
+    </ul>
+  </li>
+  <li>Modern compilers can automatically use AVX in <em>some</em> situations
+    <ul>
+      <li class="to-me">Look at AVX_Demo</li>
+      <li>It’s not difficult to write code that the compiler can’t automatically optimize</li>
+    </ul>
+  </li>
+  <li>Popular because they are cheap addition to existing hardware
+    <ul>
+      <li>Just divide up existing adders</li>
+      <li>No stride, so no memory complexities.</li>
+      <li>Only a few registers, so less context switch costs.</li>
+    </ul>
+  </li>
+  <li>Depending on application, performance either limited by
+    <ol>
+      <li>Total # of flops available</li>
+      <li>Memory bandwidth.</li>
+    </ol>
+  </li>
+  <li class="to-me">Look at AVX Assembly code</li>
+</ul>
+
+<h3 id="gpus">GPUs</h3>
+
+<ul>
+  <li><em>Many</em> Parallel ALUs</li>
+  <li>Several multithreaded SIMD processors.</li>
+  <li>Each SIMD processor has many (e.g., 32) “lanes”</li>
+  <li>Consider typical vector add loop</li>
+</ul>
+
+<pre><code>  for (int i = 0; i &lt; n; ++i) {
+    y[i] = a*x[i]+y[i] 
+  }
+</code></pre>
+
+<ul>
+  <li>Each iteration of the loop is conceptually a separate thread that can run in parallel with all the other “threads”.
+    <ul>
+      <li>We could, in theory, assign each thread to a lane, let them run in any order and synchronize at the end.</li>
+    </ul>
+  </li>
+  <li>However, each SIMD processor has only one Program Counter:  Threads must be executed in batches of 32.</li>
+  <li>We want to abstract away from the specifics of the GPU (so our code will run well on different GPUs.)
+    <ul>
+      <li>Therefore, we define a concept called “thread blocks”:  Groups of threads all sent to the same SIMD.</li>
+      <li>The GPU software itself will group each block’s threads into batches of <code>num_lanes</code>.  (Called “SIMD threads” by H&amp;P)</li>
+    </ul>
+  </li>
+  <li>CUDA Code:</li>
+</ul>
+
+<pre><code>   __host__
+    int nblocks = (n + 511) / 512;   // (We want something like (n / 512) + 1; but doesn't quite work.
+   daxpy&lt;&lt;nblocks, 512&gt;&gt;(n, 2.0, x, y);
+
+
+  __global__
+  void daxpy(int n, double a, double *x, double *y) {
+     int i = blockIdx.x * blockDim.y + threadIdx.x;
+     if (i &lt; n) y[i] = a*x[i] + y[i]
+  }
+</code></pre>
+
+<ul>
+  <li>We choose to put 512 threads into a thread block because
+    <ol>
+      <li>we want to be able to keep ALUs busy when other ops stall, and</li>
+      <li>it is a multiple of <code>num_lanes</code> (so three aren’t gaps.)</li>
+    </ol>
+  </li>
+  <li>Note, we don’t necessarily know the number of SIMD processors or lanes, but we can choose values that work 
+well for a variety of GPUs.</li>
+  <li>512 threads per thread block means <code>512/32 = 16</code> “SIMD threads” per block.</li>
+  <li>Because each thread is independent, it can be scheduled in any order.  Thus, the GPU scheduler 
+is like a superscalar scheduler:  It schedules SIMD threads as soon as all the dependencies are handled.
+    <ul>
+      <li>It has a “scoreboard”, which is an predecessor to Tomasulo’s algorithm.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Notice that threads are identified by <code>blockId</code> and <code>threadId</code>, not just <code>threadID</code> alone.</p>
+  </li>
+  <li class="to-me">Look at assembly code
+    <ul>
+      <li class="to-me">Note where stalls can happen after arithmetic</li>
+    </ul>
+  </li>
+  <li>Because “SIMD Threads” share a PC, their paths cannot diverge.
+    <ul>
+      <li>In other words, they can’t run different paths of a branch.</li>
+    </ul>
+  </li>
+  <li>In effect, branches are turned into predicated instructions.
+    <ul>
+      <li>With an IF-THEN group, those instructions loose 1/2 the “bandwidth”</li>
+      <li>Unless, they all go the same way.  Then the other branch is skipped.</li>
+      <li>Typical for checking for error conditions.</li>
+      <li>Or, like with if statement above, allows “odds” at end to not be a problem.</li>
+    </ul>
+  </li>
+  <li>Can have nested branches.
+    <ul>
+      <li>Then saved PCs go on a stack</li>
+      <li>But bandwidth drops accordingly to 25%, 12%, 6%, etc.</li>
+    </ul>
+  </li>
+  <li>Summary:  Each thread is either
+    <ol>
+      <li>Executing the same instruction as every other thread, or</li>
+      <li>Idle.</li>
+    </ol>
+  </li>
+</ul>
+
+<h4 id="gpu-instruction-set">GPU Instruction set</h4>
+<ul>
+  <li>PTX (Parallel Thread Execution)
+    <ul>
+      <li>Abstraction of “real” hardware instruction set</li>
+      <li>Real instruction set is kept hidden to promote compatibility</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="gpu-memory">GPU Memory:</h4>
+<ul>
+  <li>Each thread has private memory
+    <ul>
+      <li>Other threads have no access</li>
+      <li>Used for stacks, spilling registers</li>
+      <li>Generally kept in L1 and L2.</li>
+    </ul>
+  </li>
+  <li>Each SIMD Processor has <em>local memory</em>
+    <ul>
+      <li>Used for sharing across Thread Blocks</li>
+      <li>Tends to be small</li>
+      <li>Can’t share with other processors</li>
+    </ul>
+  </li>
+  <li>GPU Memory
+    <ul>
+      <li>Shared by all Thread Blocks</li>
+      <li>Example above used GPU Memory</li>
+      <li>Only memory accessible to the host</li>
+    </ul>
+  </li>
+  <li>Nearby threads should ideally have nearby memory accesses so they can be grouped together.</li>
+  <li>
+    <p>Newer chips are beginning to offer direct CPU to GPU connections to avoid the comparatively slower PCI bus.</p>
+  </li>
+  <li class="to-me">Step through loop unrolling lab.  Look closely at where the savings come from.</li>
+</ul>
+
+
+</main>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<html lang="en">
+<head>
+  <title>CIS 451</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="cis-451-week-10">CIS 451 Week 10</h1>
+
+<h2 id="more-superscalar-challenges">More superscalar challenges</h2>
+
+<p>Branch Prediction becomes critical</p>
+
+<ul>
+  <li>Branch-Target Buffer maps PC to expected next instruction</li>
+  <li>Does this even before the instruction is decoded
+    <ul>
+      <li>Typically only “taken” branches are stored</li>
+      <li>If PC not in BTB, then just move on</li>
+    </ul>
+  </li>
+  <li>Can improve performance even more if target <em>instruction</em> is stored.
+    <ul>
+      <li>Can make jumps take 0 cycles!</li>
+    </ul>
+  </li>
+  <li>Indirect jumps can be difficult to predict
+    <ul>
+      <li>function pointers</li>
+      <li>Virtual functions in C++?</li>
+      <li>return values (<code>jr $ra</code> in MIPS)</li>
+      <li>return values are the majority of indirect jumps</li>
+      <li>accuracy on return values can be as low as 60% for some programs
+        <ul>
+          <li>Range is 20% to 60% on SPECint 95</li>
+        </ul>
+      </li>
+      <li>Solution:  Keep a stack of return values in the CPU
+        <ul>
+          <li>In most cases, this is 100% accurate</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Hyperthreading:</p>
+
+<ul>
+  <li>Run two threads through same core to try and keep functional units full</li>
+  <li class="q">What hardware needs to be duplicated?
+    <ul>
+      <li>Registers
+        <ul>
+          <li>Including PC, status flags, etc</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="q">What hardware can be shared?</li>
+  <li class="q">What types of program benefit from this?</li>
+  <li class="q">Which ones don’t?</li>
+  <li><img src="SlideImages/hyperthreadingPerformance.png" alt="Hyperthread Performance" width="500px" /></li>
+</ul>
+
+<p>i7 Improvements over time</p>
+
+<ul>
+  <li><img src="SlideImages/i7CPIimprovements.png" alt="" width="500px" /></li>
+  <li><img src="SlideImages/i7ImprovementSource.png" alt="" width="500px" />
+    <ul>
+      <li>Mostly from better branch prediction and cache hit rates</li>
+      <li>Aggressive prefetching detracts from performance in some cases.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Fallacies and Pitfalls (From Chapter 3)</p>
+
+<ul>
+  <li>Sometimes bigger and dumber is better</li>
+  <li>Sometimes smarter is better</li>
+  <li>Fallacy: There is a lot of ILP available if we can only find it.
+    <ul>
+      <li><img src="SlideImages/availableILP.png" alt="" width="350px" /></li>
+      <li>Study from David Wall in 1993 assuming generous resources</li>
+      <li>Not believed by industry for many years:  They kept trying to “find” more ILP, but performance gains were modest.
+        <ul>
+          <li>I wonder if this is a case where ILP was the best “tools” were, so they kept pushing despite evidence to the
+ contrary.  (Government does this all the time.)</li>
+        </ul>
+      </li>
+      <li>Peak of attempts to leverage ILP was around 2000.</li>
+      <li>By 2005 focus shifted to multicore.</li>
+      <li>Notice that the shift to multi-core happened ahead of good tooling for writing programs that can leverage
+ multicore. (My Opinion)
+        <ul>
+          <li>Intel grants in mid-2000s</li>
+        </ul>
+      </li>
+      <li>Also focus on SIMD (both vector processing and GPUs.)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="shared-memory-multiprocessors">Shared Memory Multiprocessors</h2>
+
+<p>A few terms</p>
+
+<ul>
+  <li>Multiprocessor:  Many processors working together</li>
+  <li>Multicore: A multiprocessor where all the processors are on the same chip</li>
+  <li>Grain size: The amount of computation assigned to a thread.
+    <ul>
+      <li>Fine grain:  Many short tasks farmed out to threads (Think GPUs)</li>
+      <li>Coarse grain: A few threads that last a long time (Think typical multi-threaded programs)</li>
+      <li>Fine grain has the potential to exploit more parallelism; but, high overhead of setting up thread can limit
+ benefit.</li>
+    </ul>
+  </li>
+  <li>SMP: <em>symmetric</em> multiprocessor
+    <ul>
+      <li>Almost everything is identical.</li>
+      <li>All share access to same memory</li>
+      <li>Typical for small #  processors / cores (currently 32 or less)</li>
+      <li>Most (but not all) multicore processors are SMPs</li>
+      <li>Also called UMA: Uniform Memory Access</li>
+      <li class="to-me">Show slide below</li>
+    </ul>
+  </li>
+  <li>NUCA  Non-uniform Cache Access.
+    <ul>
+      <li>Distributed L3 cache.</li>
+      <li>Not typical.  (IBM Power8)</li>
+    </ul>
+  </li>
+  <li>DSM: Distributed Shared Memory
+    <ul>
+      <li>Typically groups of multicore chips: Cores see uniform access; but, memory distributed to different chips</li>
+      <li>Trying to connect memory equally to large number of chips causes a bottleneck.</li>
+      <li>Also called NUMA (Non-uniform memory access)</li>
+    </ul>
+  </li>
+  <li>In all cases memory is shared (same address space)
+    <ul>
+      <li>Contrast this to clusters of independent machines that communicate by
+ passing messages.</li>
+      <li>Note:  Not every address is shared</li>
+    </ul>
+  </li>
+  <li>Contrast “shared memory” with “message passing”</li>
+</ul>
+
+<p><img src="SlideImages/smt.png" alt="" width="350px" />
+<img src="SlideImages/distributedMemory.png" alt="" width="350px" /></p>
+
+<p>Review of high level model</p>
+
+<ul>
+  <li>Several cores on same chip</li>
+  <li>Each core has its own L1 and L2 cache</li>
+  <li>All share L3 cache and main memory</li>
+  <li>Threads run as independently as possible; but, when they need to coordinate (e.g., synchronize or share data),
+  they place information in a memory address that all threads are watching.</li>
+  <li>Key challenge:  When <code>P1</code> writes to address <code>loc</code>, then <code>P2</code> reads from <code>loc</code>, it needs to know if it can use the
+   value in its L1/L2 cache, or if it has to fetch updated data from L3 or main memory</li>
+</ul>
+
+<p>Given that updates to a memory location can’t be propagated instantly, we must consider two key issues</p>
+
+<h2 id="coherence-and-consistency">Coherence and Consistency</h2>
+
+<p>Coherence vs. Consistency</p>
+
+<ul>
+  <li>Coherent:  Which values may be returned by a read
+    <ul>
+      <li>(Think “logical” / “common sense”)</li>
+    </ul>
+  </li>
+  <li>Consistency:  <em>When</em> written values are applied</li>
+</ul>
+
+<p>A memory system is coherent if</p>
+
+<ul>
+  <li>On a given processor:  Write of <code>d</code> to <code>loc</code>, followed by a read of <code>loc</code> <span class="q">What should happen?</span>
+    <ul>
+      <li>returns<code>d</code>  (unless another write intervenes)</li>
+    </ul>
+  </li>
+  <li>Between processors:  Write of <code>d</code> to <code>loc</code> by <code>P1</code> followed by read of <code>loc</code> on <code>P2</code> 
+ <span class="q">What should happen?</span>
+    <ul>
+      <li>returns <code>d</code> <em>if enough time has passed</em> (unless there are intervening writes).</li>
+    </ul>
+  </li>
+  <li>Suppose both P1 and P2 write to <code>loc</code> at about the same time. <span class="q">What should happen?</span>
+    <ul>
+      <li>Writes to the same location are serialized:  All processors see the same write order.</li>
+      <li>This is true even if the writes are made by different processors.</li>
+      <li>called <em>write serialization</em></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Consistency:</p>
+
+<ul>
+  <li>It is not reasonable to expect writes to be visible everywhere immediately.</li>
+  <li>
+    <p>Consistency is <em>when</em> the write is visible.</p>
+  </li>
+  <li>Performance requires data <em>migrate</em> into a local cache. (i.e., keeping shared data in Main memory and/or L3 is not
+ an option.)</li>
+  <li>Need a way of updating data stored locally in caches
+    <ol>
+      <li>Directory based – Single source of truth for who has what data
+        <ul>
+          <li>Is often a bottleneck, unless distributed.</li>
+          <li>Distributed directories are complex.</li>
+        </ul>
+      </li>
+      <li>Snooping – Everybody keeps his own copy
+        <ul>
+          <li>Snoop the common data bus to keep his copy up-to-date</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="snooping">Snooping</h3>
+<ul>
+  <li>Either “Write Invalidate” or “Write update”</li>
+  <li>“Write Invalidate” protocol most common.
+    <ul>
+      <li>Caches watch traffic on shared memory bus and decide what data is valid or invalid (i.e., safe to use, or needs
+ to be re-fetched from L3 or main memory.)</li>
+      <li>When write goes by, if that value is cached,
+invalidate that cache element (next read needs to be a miss)</li>
+      <li>If two writes happen at the same time, whichever write gets the bus
+first “wins”.  Other write is invalidated and must start again.
+        <ul>
+          <li>Notice how this serializes writes as required by coherence</li>
+        </ul>
+      </li>
+      <li>Example:
+        <ul>
+          <li>A reads X</li>
+          <li>B reads X</li>
+          <li>A writes X, sends invalidation message</li>
+          <li>When B reads X, it must be a cache miss, which re-fectches the data.</li>
+          <li>Notice that A can write to X multiple times without causing bus traffic.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Write Update / Write Broadcast
+    <ul>
+      <li>Instead of invalidating cache, update other caches.
+        <ul>
+          <li>i.e., every write is broadcast (“shouted” to all other nodes)</li>
+          <li>In contrast, write invalidate can keep write local to L1/L2<br />
+until either data is evicted, or another node needs data</li>
+        </ul>
+      </li>
+      <li>Write Broadcast Tends to use too much bandwidth</li>
+      <li>Notice that an invalidate message need only contain address.  It need not contain all the data.</li>
+    </ul>
+  </li>
+  <li>Write through vs. write back
+    <ul>
+      <li>Write through is “easy”.  Cache misses served by Memory / L3</li>
+      <li>Write back more challenging:  Owner of “dirty” block
+must also snoop the bus and respond when read request for “their” block is seen.</li>
+      <li>You can see here why write Update can be expensive with a write back cache</li>
+      <li class="q">What is the main tradeoff for write through vs. write back
+        <ul>
+          <li>Memory bandwidth vs. access time</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Broadcasting an address on every write can take up bandwidth.
+    <ul>
+      <li>Not necessary if no other caches hold that data.</li>
+      <li>Blocks are, by default assumed to be shared.</li>
+      <li>Upon a write,
+        <ul>
+          <li>send an invalidation request (marks other blocks as invalid)</li>
+          <li>Mark the block as Modified (which implies exclusive)
+            <ul>
+              <li>This is just another bit in the cache similar to the invalid bit.</li>
+            </ul>
+          </li>
+          <li>Snoop for other reads to this value.  If seen, switch back to “shared”
+from exclusive.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Basic protocol MSI (Modified, Shared, Invalid)
+    <ul>
+      <li>The “Modified” state is called “exclusive” in textbook.</li>
+    </ul>
+  </li>
+  <li>Protocol is somewhat simple, but <em>only if operations are atomic</em></li>
+  <li>Extensions:
+    <ul>
+      <li>MESI  Add “exclusive” state
+        <ul>
+          <li>E (“exclusive”) means resident in one cache only.
+            <ul>
+              <li>If a cache issues a read, and no other caches respond, then placed in “E” state</li>
+              <li>If some other cache responds, then place in “S” state</li>
+            </ul>
+          </li>
+          <li class="q">What is the benefit?
+            <ul>
+              <li>No need for an invalidate on write</li>
+            </ul>
+          </li>
+          <li>Changed to “S” if somebody else reads</li>
+          <li class="q">What is the “cost” relative to MSI?
+            <ul>
+              <li>On a read, if all caches with a copy of the data reply, the bus can get crowded</li>
+            </ul>
+          </li>
+          <li><a href="https://en.wikipedia.org/wiki/MESI_protocol">https://en.wikipedia.org/wiki/MESI_protocol</a></li>
+        </ul>
+      </li>
+      <li>i7 uses a variant of MESI called “MESIF”
+        <ul>
+          <li>F stands for “forward” and provides a hint of who will handle a read request
+so the bus doesn’t get overloaded.</li>
+        </ul>
+      </li>
+      <li>MOESI:  Add “Owned” state
+        <ul>
+          <li>Blocks in the owned state are shared <em>and</em> dirty.</li>
+          <li>The owned state reduces the number of writes back to main memory.</li>
+          <li>“Owner” of a block is responsible for
+            <ol>
+              <li>Satisfying read requests (since it is the only block guaranteed to be up-to-date)</li>
+              <li>Updating main memory when necessary.</li>
+            </ol>
+          </li>
+          <li>AMD Opterons use MOESI</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="directory">Directory</h3>
+<ul>
+  <li class="q">Main limitation of Snoopy caches?
+    <ul>
+      <li>Bus bandwidth</li>
+    </ul>
+  </li>
+  <li>Once a multiprocessor grows large enough, snooping traffic can cause a burden on the individual caches that now
+must pay attention to every message.</li>
+  <li>Also, at some point all the cores together generate more traffic than any one bus can handle effectively.  Thus, 
+hierarchies emerge (e.g., 4-8 cores on a chip sharing one L3 and one Memory, with several chips.)
+    <ul>
+      <li>We don’t want to unnecessarily send traffic to all other cores.</li>
+    </ul>
+  </li>
+  <li>At this point, a Directory system becomes necessary:
+    <ul>
+      <li>Pay attention to who all has shared copies of the data, and target the messages there.</li>
+    </ul>
+  </li>
+  <li>In general, directories need to be distributed.</li>
+  <li>Directory keeps track of
+    <ul>
+      <li>Shared</li>
+      <li>Uncached</li>
+      <li>Modified</li>
+      <li>Which processors have a shared copy</li>
+    </ul>
+  </li>
+  <li>Protocol effectively identical to MSI.</li>
+  <li>Sample organization:  Use a directory to direct traffic to L3 cache of specific chips, use Snoopy cache on-chip
+ between those cores.</li>
+</ul>
+
+
+</main>
+</body>
+</html>
