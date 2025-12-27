@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generic Weekly Schedule</title>
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    #calendar {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    /* Rounded corners for events */
+    .fc-event {
+      border-radius: 8px !important;
+    }
+  </style>
+</head>
+<body>
+
+<div id="calendar"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const calendarEl = document.getElementById('calendar');
+
+   const Meeting = '#b186c4'
+   const OfficeHours = '#ffff00'
+
+
+
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+   weekends: false,
+    initialView: 'timeGridWeek',
+    slotDuration: '00:30:00',
+    slotMinTime: '08:00:00',
+    slotMaxTime: '17:00:00',
+    allDaySlot: false,
+    headerToolbar: { left: '', center: 'title', right: '' },
+    expandRows: true,
+    nowIndicator: false,
+    eventTextColor: '#000000',
+    events: [
+      // Monday (0=Sunday, 1=Monday, ...)
+      { title: 'CIS 452', daysOfWeek: [1], startTime: '12:00:00', endTime: '13:00:00', color: '#a8dadc' },
+      { title: 'Office Hours', daysOfWeek: [1], startTime: '13:00:00', endTime: '13:30:00', color: OfficeHours },
+      { title: 'Break', daysOfWeek: [1], startTime: '13:30:00', endTime: '14:00:00', color: '#caffbf' },
+      { title: 'Office Hours', daysOfWeek: [1], startTime: '16:00:00', endTime: '17:00:00', color: OfficeHours },
+
+      // Tuesday
+      { title: 'Dept. Meeting', daysOfWeek: [2], startTime: '11:30:00', endTime: '14:00:00', color: Meeting },
+      { title: 'Break', daysOfWeek: [2], startTime: '13:30:00', endTime: '14:00:00', color: '#caffbf' },
+
+      // Wednesday
+      { title: 'CIS 452 Lab', daysOfWeek: [3], startTime: '10:00:00', endTime: '12:00:00', color: '#a8dadc' },
+      { title: 'CIS 452', daysOfWeek: [3], startTime: '12:00:00', endTime: '13:00:00', color: '#a8dadc' },
+      { title: 'Office Hours', daysOfWeek: [3], startTime: '13:00:00', endTime: '13:30:00', color: OfficeHours },
+      { title: 'Break', daysOfWeek: [3], startTime: '13:30:00', endTime: '14:00:00', color: '#caffbf' },
+      { title: 'Office Hours', daysOfWeek: [3], startTime: '16:00:00', endTime: '17:00:00', color: OfficeHours },
+
+      // Thursday: no events
+
+      // Friday
+      { title: 'FSBC', daysOfWeek: [5], startTime: '12:00:00', endTime: '14:00:00', color: Meeting }
+    ]
+  });
+
+  calendar.render();
+});
+</script>
+
+</body>
+</html>

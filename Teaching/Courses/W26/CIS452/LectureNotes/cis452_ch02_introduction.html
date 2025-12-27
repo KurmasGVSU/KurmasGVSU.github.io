@@ -1,0 +1,351 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <p><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/intro.pdf">https://pages.cs.wisc.edu/~remzi/OSTEP/intro.pdf</a></p>
+
+<h1 id="introduction">Introduction</h1>
+
+<ul>
+  <li class="q">What is an Operating System? What does it do for us?
+    <ul>
+      <li class="to-me">No need for the complete list for now. Just get
+student ideas.</li>
+    </ul>
+  </li>
+  <li>Suppose I were to give you a computer and a compiler – nothing else
+(e.g., no operating system.)
+    <ul>
+      <li>Also, for now, suppose that you are only ever going to run one program
+at a time on this machine (e.g., high-powered weather simulation)</li>
+      <li class="q">What else do you need to make practical use of this machine?</li>
+    </ul>
+  </li>
+  <li>A standard library to handle things like printing, stdin, and writing
+to files (among <em>many</em> others)</li>
+  <li>Bigger picture: This standard library is an <em>abstraction</em> of the various
+devices: It abstracts the details of the various hardware devices so that
+    <ol>
+      <li>Programmers don’t have to worry about details that aren’t important
+(key to conveniently/efficiently writing code for a given machine).</li>
+      <li>Programmers can use a single <em>interface</em> to interact with a variety of
+devices. Thus, writing code for a variety of machines (or a variety
+of devices on one machine) is much more straightforward.
+(key to writing code for many machines — even if not at one time.
+This isn’t necessarily about portability, but rather the ability to
+write code efficiently.)</li>
+    </ol>
+  </li>
+  <li>Remember: One main aspect of abstraction is separating interface from
+implementation.</li>
+  <li>Let’s step up abstraction a level. Notice that we use the same interface
+for writing to files, the keyboard, other processes, a network connection
+(i.e., many languages have a concept of a Stream with a print method.
+The other end of the stream can be attached to a wide variety of sources
+and sinks) This is a kind of <em>virtualization</em>: A stream is not an actual
+physical resource, but an abstract concept that stands in for an underlying
+resource.</li>
+  <li>
+    <p><em>Virtualization</em> is the first key service of Operating Systems.</p>
+  </li>
+  <li>Suppose your program does a lot of reading and writing from the disk.
+    <ul>
+      <li class="q">What are some of the inefficiencies of running your single
+program on this computer?</li>
+      <li>The system is idle when the program has to pause to wait for I/O.</li>
+    </ul>
+  </li>
+  <li class="q">Propose a solution
+    <ul>
+      <li>When one program is blocked, run another.</li>
+    </ul>
+  </li>
+  <li>When we do this, we virtualize the CPU:  We present an abstraction of a CPU
+that is separate from the real CPU. There can be many more virtual CPUs than
+real CPUs.
+    <ul>
+      <li>When I was an undergrad, this was one CPU and many programs.</li>
+      <li>Today it is many CPUs (i.e, “core”) and many more programs.</li>
+    </ul>
+  </li>
+  <li class="q">When we virtualize a CPU, what other issues do we introduce?
+    <ul>
+      <li>Privacy / <em>Security</em></li>
+      <li><em>Concurrency</em> (Second key OS concept)</li>
+    </ul>
+  </li>
+  <li>Fourth main topic is <em>Persistence</em>.</li>
+</ul>
+
+<h2 id="protection">Protection</h2>
+
+<ul>
+  <li>
+    <p><em>Standard Library</em>: Library of commonly used code – makes the computer easy to use.</p>
+  </li>
+  <li>To allow different users to securely share a system, there needs to be enforced protection.</li>
+  <li>Some activity (e.g., opening files) must be restricted to the OS (or other trusted code).</li>
+  <li><em>System Calls</em> are a set of routines tha run “inside” the OS.</li>
+  <li>CPU must be in “protected” mode to execute certain instructions (e..g, I/O).</li>
+  <li class="to-me">Chapter 7 explains protected mode and how system calls work.</li>
+  <li class="to-me">
+    <p>talk about “user space” and “kernel space”.</p>
+  </li>
+  <li>I’ll tend to talk about the Standard Library as “user space” code
+and system calls as “kernel space” code – although that distinction
+isn’t strict.</li>
+</ul>
+
+<h2 id="virtual-memory">Virtual Memory</h2>
+
+<ul>
+  <li class="to-me">Run <code>./cpu "A"</code></li>
+  <li class="to-me">Now run <code>./cpu "A"&amp; ; ./cpu "B" &amp; ; ./cpu "C" &amp; ; ./cpu "D" &amp; ...</code></li>
+  <li>Think about how memory works in the MIPS CPU.</li>
+  <li>If these programs are running concurrently, they can’t all be using the same 
+memory addresses at the same time. Thus, in addition to “virtualizing” the CPU, 
+we also need to virtualize memory.
+    <ul>
+      <li>Each process’s <code>&amp;counter</code> needs to have a different physical memory location.</li>
+    </ul>
+  </li>
+  <li>How to virtualize memory (but share it when appropriate) is a major topic.</li>
+  <li>Absurdly high-level idea: Give each process a “base” register and make
+the address we see in the program an offset. (Obviously the real approach is more 
+complicated.)</li>
+</ul>
+
+<h2 id="concurrence">Concurrence</h2>
+
+<ul>
+  <li class="to-me">Run <code>./threads 1000</code></li>
+  <li class="to-me">Now run <code>./threads 100000</code></li>
+  <li class="to-me">Explain how <code>++counter</code> is not atomic.</li>
+</ul>
+
+<h2 id="design-considerations">Design Considerations</h2>
+
+<ul>
+  <li class="q">List some design considerations:
+    <ul>
+      <li>Easy to use</li>
+      <li>Minimal overhead</li>
+      <li>protection</li>
+      <li>isolation</li>
+      <li>reliability</li>
+      <li>energy efficiency</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="os-history">OS History</h1>
+
+<ul>
+  <li>Just libraries (programs run in batch mode “by hand”)</li>
+  <li>Protection (many people sharing a single machine)</li>
+  <li>Multi-programming (swap another program in when one blocked on I/O)
+    <ul>
+      <li>After all, computers were expensive.</li>
+      <li>UNIX</li>
+    </ul>
+  </li>
+  <li>PCs were a step backward (in terms of protection)
+    <ul>
+      <li>Assumed all programs owned by the same person; but,</li>
+      <li>A problem in one program could bring down the whole machine.</li>
+      <li>Windows didn’t get standard OS stuff back until Windows 95</li>
+      <li>MacOS not until OS X.</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

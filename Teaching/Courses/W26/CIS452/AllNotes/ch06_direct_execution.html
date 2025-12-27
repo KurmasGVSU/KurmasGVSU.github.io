@@ -1,0 +1,396 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <p><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf">https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf</a></p>
+
+<h1 id="direct-execution">Direct Execution</h1>
+
+<ul>
+  <li>Limited Direct Execution
+    <ul>
+      <li>Run the program directly
+        <ul>
+          <li>i.e., no interpretation / virtualization</li>
+          <li>But, Limit what the program can do.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Restricted operations:
+    <ul>
+      <li class="q">What should a user-provided process (e.g., 
+ C code an ordinary user writes can compiles) not 
+ be allowed to do?</li>
+      <li>I/O (could ignore / skip permissions checks)</li>
+      <li>Grant itself more resources (CPU time, disk quota, etc.)</li>
+      <li>Create new users</li>
+      <li>Change other people’s passwords.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="kernel-and-user-mode">Kernel and User mode</h2>
+
+<ul>
+  <li>Most CPUs have a feature whereby they can be set to a <em>privilege</em> level.</li>
+  <li>We will primary refer to two levels:  <em>kernel mode</em> and <em>user mode</em>
+    <ul>
+      <li><em>user mode</em> is for “ordinary” processes.</li>
+      <li><em>kernel mode</em> is for the operating system (and other trusted processes).</li>
+    </ul>
+  </li>
+  <li>Some hardware instructions (e.g., I/O instructions can only be executed while 
+the CPU is in kernel mode).</li>
+  <li>on x86,
+    <ul>
+      <li>“kernel mode” is also known as “Ring 0”.</li>
+      <li>“user mode” is “Ring 4”</li>
+      <li>No modern OS uses Rings 1 and 2.</li>
+    </ul>
+  </li>
+  <li>Certain memory addresses are only accessible while in Ring 0.</li>
+  <li>So, when your program is running, there are two sets of instructions in memory:
+    <ol>
+      <li>The instructions for your code (plus any libraries you use)</li>
+      <li>The instructions for the operating system: Code you call when you 
+want the OS to do something for you (e.g., I/O.)</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="example-broken-system">Example broken system:</h3>
+
+<ul>
+  <li>Reserve certain memory addresses for OS code (e..g, above 0x7FFF_FFFF).</li>
+  <li>Instructions located at these addresses are privileged.</li>
+  <li>Call OS code with a standard <code>jal</code>.</li>
+  <li class="q">What are some ways that this system can fail?
+    <ul>
+      <li>selectively jumping to the middle of a kernel routine can skip checks.</li>
+      <li>Could also trash kernel data, thereby harming other users.</li>
+    </ul>
+  </li>
+  <li class="q">Suggest other ideas.</li>
+</ul>
+
+<h3 id="traps">Traps</h3>
+
+<ul>
+  <li>There is a special instruction called a <code>trap</code> that
+    <ol>
+      <li>jumps to the beginning of an OS routine</li>
+      <li>places the CPU in “kernel mode”.</li>
+    </ol>
+  </li>
+  <li class="q">How do we define where these routines begin?
+    <ul>
+      <li>A trap table.</li>
+      <li>The trap instruction looks in a special register for the 
+location (memory address) of the handler.</li>
+      <li>This could be a  single register with a memory address
+(This is what MIPS does)</li>
+      <li>This could be an “array” of registers where a parameter
+tells us which one to run (this is what Intel does)</li>
+    </ul>
+  </li>
+  <li>In either case, the handler routine gathers any additional
+data from registers, then runs the OS code in privileged mode.</li>
+  <li>At the completion of the system call a special instruction 
+runs to
+    <ol>
+      <li>Put the CPU back in “user mode”</li>
+      <li>Return from the system call.</li>
+    </ol>
+  </li>
+  <li>
+    <p>The first thing a handler must do is save register values
+(and any other data) that might get clobbered by the handler.
+Some kernels have their own stack to store this data.</p>
+  </li>
+  <li class="q">How does this special register (or register array) get
+initialized?
+    <ul>
+      <li>When you boot up the CPU, it boots in privileged mode.</li>
+      <li>It loads the OS code (system call code) into the appropriate
+area of memory and also sets up the vector.</li>
+      <li>CPU gets switched to user mode before your first program starts running.</li>
+    </ul>
+  </li>
+  <li>This mechanism is not just for privilege changing. This same interrupt 
+mechanism is used for things like
+    <ol>
+      <li>Hardware interrupts (disk drive network card, etc.) requesting service.</li>
+      <li>Exceptions (divide by zero errors, invalid instructions,)</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="system-call-vs-library-function">System Call vs. Library Function</h3>
+
+<ul>
+  <li>When programming in C, system calls look like library functions.</li>
+  <li>That’s because the <em>are</em>.</li>
+  <li>When you want to make a <code>read</code> system call, you actually call a
+user-space function named <code>read</code> from the standard library.</li>
+  <li>This function, while running in user space, sets up the registers 
+as needed, then executes the <code>trap</code> instruction.  This switches the
+CPU to kernel mode and runs the privileged kernel code that does the read.</li>
+</ul>
+
+<h2 id="switching-between-processes">Switching Between Processes</h2>
+
+<ul>
+  <li>Option 1: Cooperative
+    <ul>
+      <li>Wait for process to make a <code>yield</code> system call.</li>
+    </ul>
+  </li>
+  <li class="q">How can this go wrong?
+    <ol>
+      <li>Maliciously refuse to yield.</li>
+      <li>Get stuck in an infinite loop.</li>
+    </ol>
+  </li>
+  <li class="q">What else can we do?
+    <ul>
+      <li>Set up a timer that periodically transfers control
+to the kernel. Kernel can check the time and swap
+processes when necessary.</li>
+    </ul>
+  </li>
+  <li>The timer is a <em>mechanism</em>.</li>
+  <li>The corresponding <em>policy</em> includes
+    <ul>
+      <li>How often the timer should go off?</li>
+      <li>Does the timer re-set when a program voluntarily yields?</li>
+      <li>Should the current process be switched?</li>
+      <li>Which process should run next?</li>
+    </ul>
+  </li>
+  <li>Notice that registers may be saved twice:
+    <ol>
+      <li>The interrupt causes registers to be saved.
+        <ul>
+          <li>This may be done automatically by the hardware.</li>
+          <li>Saved on the kernel stack</li>
+        </ul>
+      </li>
+      <li>If a context switch is made, then the registers are also saved
+In the process’s in-kernel data structure.</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="what-are-we-missing">What are we missing?</h2>
+<ul>
+  <li class="q">What details have we overlooked?
+    <ul>
+      <li>What happens if an interrupt is raised during an interrupt?</li>
+      <li>Interrupts are often prioritized, so lower-priority interrupts 
+must wait.
+        <ul>
+          <li class="q">What determines interrupt priority?</li>
+        </ul>
+      </li>
+      <li>Some interrupts may simply disable interrupts until the 
+service is complete.
+        <ul>
+          <li>This must be used sparingly.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+</main>
+</body>
+</html>

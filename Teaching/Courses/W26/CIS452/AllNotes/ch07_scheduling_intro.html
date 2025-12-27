@@ -1,0 +1,281 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="intro-to-scheduling">Intro to Scheduling</h1>
+
+<p>Beginning Assumptions (to be relaxed as we go)
+1 . Each job runs for the same amount of time
+2. All jobs arrive at the same time
+3. One started, each job runs to completion
+4. All jobs use CPU only
+5. The run-time of each job is known.</p>
+
+<p>(Not realistic; but, helpful to keep things simple as we get started.)</p>
+
+<h2 id="scheduling-metrics">Scheduling Metrics</h2>
+<ul>
+  <li class="q">Suggest some metrics to decide if a schedule is “good”.</li>
+  <li>Average turnaround time (arrival to completion)</li>
+  <li>Fairness</li>
+  <li>Response time (only applies to interactive)</li>
+</ul>
+
+<h2 id="schedules">Schedules</h2>
+
+<ul>
+  <li class="q">Suggest some scheduling algorithms</li>
+  <li>FIFO</li>
+  <li>
+    <p>SJF</p>
+  </li>
+  <li>SJF is optimal.</li>
+  <li class="q">
+    <p>Why? Make an informal argument</p>
+  </li>
+  <li>We can generalize this by allowing preemption.</li>
+  <li>Called STCF or Preemptive SJF</li>
+  <li>
+    <p>Also optimal</p>
+  </li>
+  <li>Now, lets consider interactive jobs.</li>
+  <li>STCF not good: Can leave people waiting a long time.</li>
+  <li class="q">So, what do we do? How do we measure what we want?</li>
+  <li>New metric: Response time (time to scheduled instead of time to completion)</li>
+</ul>
+
+<h2 id="round-robin">Round Robin</h2>
+<ul>
+  <li>Switch every <code>x</code> seconds.</li>
+  <li>The faster you switch, the shorter the response time.</li>
+  <li class="q">So, how fast should you switch?</li>
+  <li class="q">What is the problem with making the time slice too short?
+    <ul>
+      <li>Switching processes has an overhead. The more often you switch, the
+less time your CPU is doing “useful” work.</li>
+    </ul>
+  </li>
+  <li>The time needed for a context switch is independent of the time slice</li>
+  <li>Increasing the time slices <em>amortizes</em> the cost over more “real” work.</li>
+  <li>Cost of context switch is more than just the time needed to execute the switch
+    <ul>
+      <li>Invalidated caches</li>
+      <li>Invalidated TLBs</li>
+      <li>Branch predictors</li>
+    </ul>
+  </li>
+  <li>Notice that there is a tradeoff between minimizing turnaround time and response time</li>
+</ul>
+
+<h2 id="consider-io">Consider I/O</h2>
+
+<ul>
+  <li>Relax assumption 4 above: Process now alternate between using the CPU and waiting on I/O.
+    <ul>
+      <li class="to-me">Explain just how slow I/O is.</li>
+    </ul>
+  </li>
+  <li>Processes should give up the CPU when waiting on I/O.
+    <ul>
+      <li>Consider the case of a process that uses CPU for 10ms, then waits 10ms for I/O.
+We can double utilization if we “fill in the gaps”</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="thinking-ahead">Thinking ahead:</h2>
+<ul>
+  <li class="q">How can we balance the benefits of STCF and round robin?</li>
+  <li class="q">How do we handle the fact that we don’t know how long jobs will run?</li>
+</ul>
+
+</main>
+</body>
+</html>

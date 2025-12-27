@@ -1,0 +1,305 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="multi-level-feedback-queue">Multi-Level Feedback Queue</h1>
+
+<ul>
+  <li class="q">How can we balance the benefits of STCF and round robin?</li>
+  <li class="q">How do we handle the fact that we don’t know how long jobs will run?</li>
+  <li>
+    <p>In other words, how do we minimize turnaround time for CPU-bound jobs, but 
+minimize response time for interactive jobs.</p>
+  </li>
+  <li>Key idea: Learn from the past.</li>
+  <li class="q">What systems from CIS 351 do this?
+    <ul>
+      <li>Cache</li>
+      <li>Branch Prediction</li>
+    </ul>
+  </li>
+  <li>Basic structure:
+    <ul>
+      <li>Multiple queues</li>
+      <li>Within a single queue, processes go round-robin</li>
+      <li>The queues are prioritized: Only take processes from the highest priority non-empty queue.</li>
+    </ul>
+  </li>
+  <li>
+    <p>A process’s priority can change over time based on its observed behavior.</p>
+  </li>
+  <li class="q">What processes should have high priority?
+    <ul>
+      <li>Interactive processes</li>
+      <li>Processes that are “starving”.</li>
+    </ul>
+  </li>
+  <li class="q">How can we determine whether a process is interactive?
+    <ul>
+      <li>It blocks often</li>
+    </ul>
+  </li>
+  <li>Look at Figure 8.1:
+    <ul>
+      <li class="q">If Processes A and B are interactive, will C and D necessarily starve?</li>
+      <li>Maybe, but not necessarily. Humans are slow enough that both may be blocked waiting for input that C and/or D get a chance to run.</li>
+    </ul>
+  </li>
+  <li>Idea:
+    <ul>
+      <li>New process starts at high priority.</li>
+      <li>If process uses its entire time-slice without blocking, reduce its priority.</li>
+    </ul>
+  </li>
+  <li class="to-me">Look at Figure 8.3
+    <ul>
+      <li>Notice how, in the right figure, the grey process is still interactive
+but has a negligible effect on the total running time of black.</li>
+    </ul>
+  </li>
+  <li class="q">What are some problems?</li>
+  <li class="q">How can we “game” the system?
+    <ul>
+      <li>Starvation can occur if there are enough interactive processes.</li>
+      <li>What if a process does a lot of CPU “thinking” then becomes interactive again.
+        <ul>
+          <li class="q">Give an example</li>
+        </ul>
+      </li>
+      <li>We can game the system by issuing I/O at 99% of the time slice.
+        <ul>
+          <li class="q">What exactly is the problem with this? (Besides “unfair”)</li>
+          <li>The “worthless” I/O takes up time/resources, making the system less efficient for everybody
+in order to benefit one person.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Priority Boost: Simply re-set everyone to the highest priority periodically.</li>
+  <li class="q">How often?
+    <ul>
+      <li>No right answer. Set it empirically.</li>
+    </ul>
+  </li>
+  <li class="q">How can we avoid “gaming” the system?
+    <ul>
+      <li>Set a maximum time at each queue level.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="setting-time-slices">Setting time slices</h2>
+<ul>
+  <li class="q">Should all queues have the same time slice?</li>
+  <li class="q">If not, which ones should have short slice and which should have?
+    <ul>
+      <li>High-priority queues should have short slices to get interactive jobs back to the CPU
+as quickly as possible.</li>
+      <li>Low-priority queues have longer slices to provide more efficiency.</li>
+    </ul>
+  </li>
+  <li>Example: Solaris default values
+    <ul>
+      <li>60 queues</li>
+      <li>time slice times: 20ms to 100ms</li>
+      <li>Boost: every second</li>
+    </ul>
+  </li>
+  <li>Other options:
+    <ul>
+      <li>Reserving highest queues for OS and/or Real-time jobs</li>
+      <li>Allowing users to advice (e.g., <code>nice</code>)</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

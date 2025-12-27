@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CIS 452 --- Operating Systems</title>
+    <style>
+      
+.nobreak {
+    white-space: nowrap;
+}
+
+/* Formatting for instructions / code */
+
+code {
+    white-space: nowrap;
+}
+
+.inline-instruction {
+    background: #EEEEEE;
+    color: blueviolet;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+.terminal-output {
+    background-color: black;
+    color: #00FF00;
+    margin: 5px 50px 5px 25px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow: scroll;
+}
+
+.important {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #76d9f7;
+    border-radius: 5px;
+}
+
+.inline-important {
+    background: #EEEEEE;
+    color: #c80000;
+   /* white-space: nowrap; */
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+}
+
+/* Formatting for lists */
+
+dt {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 135%;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.listHeader {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Navigation */
+
+#nav {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #005d95;
+    /* "Laker blue is #0065a4, but fails ARIA contrast test.
+        Color above is as close as I can get
+        https://www.gvsu.edu/identity/web-12.htm#ColorScheme
+    */
+}
+
+#nav a {
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 90%;
+}
+
+#nav p {
+    margin-left: 10px;
+}
+
+#nav hr {
+    margin: 10px;
+}
+
+.nav-indent1 {
+    padding-left: 10px;
+}
+
+@media print {
+    #nav {
+        visibility: hidden;
+    }
+
+    #content {
+        left: 0;
+    }
+}
+
+/* A link that isn't displayed so that the
+   accessibility checker is happy.
+ */
+.bypass {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 9999;
+    color: black;
+}
+
+@media screen {
+    #content {
+        position: fixed;
+        margin-left: 10px;
+        margin-right: 10px;
+        left: 150px;
+        overflow: scroll;
+        height: 100%;
+    }
+}
+              .kielceAssignmentTable {
+           border-spacing: 35px 0;
+        }        
+
+        .kielceAssignmentTable tr th {
+          text-align: left;          
+        }
+
+        .kielceAssignmentTable tr td {
+          vertical-align: top;
+        }
+
+        .kielceAssignmentTable_due {
+           white-space:  nowrap;
+        }
+
+        .kielceAssignmentTable_title {
+            white-space: nowrap;
+        }
+
+        .exam {
+            background-color: lightgreen;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div id="nav">
+
+  <p><a target="_top" href="index.html">Course Home</a></p>
+
+  <p><a href="syllabus.html">Syllabus</a></p>
+
+  <p><a href="timeline.html">Timeline</a></p>
+
+<!-- 
+  <p><a href="learningObjectives.pdf">Learning Objectives</a></p>
+  -->
+
+  <!-- <p><a target="_top" data-klink="previousCourseURL">Previous Offering</a></p> -->
+
+  <!-- <p id="currentOffering" style="DISPLAY: none"><a target="_top" data-klink="currentCourseURL">Current Offering</a>
+  </p> -->
+
+  <!--
+  <p><a href="SampleCode" style="color:white"><fontsize="2"
+  face="arial,helvetica,sans-serif">SampleCode</font></a></p>
+  -->
+
+  <hr>
+
+  <p><a href='http://localhost:8000'>My Home</a></p>
+  <p><a href='http://localhost:8000/weeklySchedule.html'>My Schedule</a></p>
+
+</div>
+
+    <div id="content">
+      <div>
+        <h2 style="text-align: center">
+          <span>CIS 452 Operating Systems</span><br>
+          <span>Winter 2026</span>
+        </h2>
+      </div>
+      <dl>
+        <dt> Contact Information:</dt>
+        <dd><style>
+    .contactInfoTable {
+        width: 100%;
+    }
+
+    .contactInfoTable td {
+        border: 0;
+        margin: 3px;
+    }
+
+    .ciHeader {
+        font-weight: bold
+    }
+
+    .contactInfoTable td {
+        text-align: left;
+    }
+
+    .contactInfoTable td:nth-child(1) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(3) {
+        width: 100px;
+    }
+
+    .contactInfoTable td:nth-child(4) {
+        width: 250px;
+    }
+</style>
+
+<table class="contactInfoTable">
+    <tr>
+        <td class="ciHeader">Instructor:</td>
+        <td>Zachary Kurmas</td>
+        <td class="ciHeader">Office:</td>
+        <td>MAK C-2-316</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Phone:</td>
+        <td>(616)-331-8688</td>
+        <td class="ciHeader">Office Hours:</td>
+        <td>MW 1:00 - 1:30 (in-person)</td>
+    </tr>
+    <tr>
+        <td class="ciHeader">Home page:</td>
+        <td>
+            <a href='http://localhost:8000'><code>http://localhost:8000</code></a>
+        </td>
+        <td></td>
+        <td>MW 4:00 - 5:00 (online for CIS 351)</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Other times by appointment</td>
+    </tr>
+</table>
+
+<p>E-mail is the best way to contact me. During the week, expect a reply within 24 hours. Also, feel free to visit my
+    office any time the door is open, even if it isn't officially office hours.</p>
+
+</dd>
+        <dt>Course Documents:
+          <dd>
+            <ul>
+              <li><a href="syllabus.html">Syllabus</a></li>
+              <li><a target="_top" href="https://www.gvsu.edu/computing/academic-honesty-30.htm">CIS Academic Honesty Policy</a></li>
+            </ul>
+            <dt>Announcements:</dt>
+            <dd> I will post announcements at <a target="_top" href="https://piazza.com/gvsu/winter2026/cis452">Piazza</a>.
+              Please check there regularly.
+            </dd>
+            <dt>Discussion Board:</dt>
+            <dd>Please post questions about homework, projects, etc. to <a target="_top" href="https://piazza.com/gvsu/winter2026/cis452">Piazza</a>. Doing
+              so allows everybody to see the question and answer and saves me the time of answering the same question multiple
+              times. Other students can also answer your question, which may help you get a faster response.
+            </dd>
+
+            <dt>PrairieLearn:</dt>
+            <dd>To access the PrairieLearn module for this course, visit <a href='https://us.prairielearn.com/pl/course_instance/202078'><code>https://us.prairielearn.com/pl/course_instance/202078</code></a>.
+              Choose "Log in with Google" and use your GVSU gmail account credentials.
+            </dd>
+
+            <dt>Grades:</dt>
+            <dd>
+              I will push a grade report into your Lab 1 git repository about once per week.
+              <!-- I will post grades on <a target="_top" href="https://mybb.gvsu.edu">Blackboard</a>. -->
+            </dd>
+            <dt>Assignments:</dt>
+            <dd>
+                  <table class='kielceAssignmentTable'>
+      <tr>
+         <th>Due</th>
+         <th>Name</th>
+         <th>Details</th>
+      </tr>
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 14 Jan.</td>
+    <td class='kielceAssignmentTable_title'><a target='_blank' href='Homework/CIS452_IntroductoryQuestions.pdf'>First Day Survey</a></td>
+    <td class='kielceAssignmentTable_details'>Please submit a hard copy in class.</td>
+  </tr>
+
+</table>
+
+              <!-- <a href='Homework/sample.pdf'>Sample Quiz Questions</a> (will be updated throughout the semester). <a href='Homework/sample_solutions.pdf'>Solutions</a> -->
+            </dd>
+            <dt>Labs:
+              <dd>
+                    <table class='kielceAssignmentTable'>
+      <tr>
+         <th>Date</th>
+         <th>Name</th>
+         <th>Details</th>
+      </tr>
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 14 Jan.</td>
+    <td class='kielceAssignmentTable_title'>Lab 1: System Development Tools</td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 14 Jan.</td>
+    <td class='kielceAssignmentTable_title'>Lab 2: Process Management</td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+  <tr>    <td class='kielceAssignmentTable_due'>Wed. 28 Jan.</td>
+    <td class='kielceAssignmentTable_title'>Lab 3: Interprocess Communication</td>
+    <td class='kielceAssignmentTable_details'></td>
+  </tr>
+
+</table>
+
+                (Labs are due the following Monday, unless otherwise specified.)
+              </dd>
+              <dt>Text:</dt>
+              <dd>
+                The official textbook for this class is
+                <ul>
+                  <li style="padding-bottom: 0; margin-bottom: 0"><em>Operating Systems: Three Easy Pieces</em> by Remzi and Andrea Arpaci-Dusseau. ISBN: 198508659X <a href='https://pages.cs.wisc.edu/~remzi/OSTEP/'><code>https://pages.cs.wisc.edu/~remzi/OSTEP/</code></a></li>
+                </ul>
+                <p style="padding-top: 0; margin-top: 0;">This book is 
+                <a href='https://pages.cs.wisc.edu/~remzi/OSTEP/'>available for free online</a>.
+                You can also order a print copy for a reasonable prince. If you do, take care. The authors
+                update the online copy periodically. Make sure any print copy you order is not out of date.</p>
+
+                <p class='listHeader'>You may also find this text helpful:</p>
+                 <ul>
+                  <li style="padding-bottom: 0; margin-bottom: 0"><em>Operating System Concepts Essentials</em> by Silberschatz, Galvin, and Gagne. ISBN: 0470889209 </li>
+                </ul>
+                <p>It is available through the GVSU library.</p>
+
+
+
+              </dd>
+              <dt>Reference:</dt>
+              <dd>
+                <ul>
+                  <li><em>Coming Soon</em>
+                  </ul>
+                </dd>
+              </dl>
+              <hr>
+              <p>Updated Saturday, 27 December 2025, 2:04 PM</p>
+<a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
+            </div>
+          </body>
+        </html>
