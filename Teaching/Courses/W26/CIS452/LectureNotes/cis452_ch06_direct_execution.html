@@ -194,12 +194,18 @@
 <h1 id="direct-execution">Direct Execution</h1>
 
 <ul>
+  <li>Often when we virtualize something we add a layer of indirection.
+    <ul>
+      <li>That layer affects performance</li>
+      <li>Can’t afford to do that in this case (can’t afford to turn every instruction into two or more)</li>
+    </ul>
+  </li>
   <li>Limited Direct Execution
     <ul>
       <li>Run the program directly
         <ul>
           <li>i.e., no interpretation / virtualization</li>
-          <li>But, Limit what the program can do.</li>
+          <li>But, limit what the program can do.</li>
         </ul>
       </li>
     </ul>
@@ -207,7 +213,7 @@
   <li>Restricted operations:
     <ul>
       <li class="q">What should a user-provided process (e.g., 
- C code an ordinary user writes can compiles) not 
+ C code an ordinary user writes and compiles) not 
  be allowed to do?</li>
       <li>I/O (could ignore / skip permissions checks)</li>
       <li>Grant itself more resources (CPU time, disk quota, etc.)</li>

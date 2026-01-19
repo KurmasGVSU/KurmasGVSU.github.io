@@ -202,6 +202,7 @@
       <li><code>fork()</code> returns child pid to parent and 0 to child.</li>
     </ul>
   </li>
+  <li class="to-me">Show <code>p1.c</code></li>
 </ul>
 
 <h2 id="wait"><code>wait()</code></h2>
@@ -216,6 +217,7 @@
 (e.g., can wait on a specific process instead of waiting for any child to terminate)</li>
   <li>The return value in the return from <code>main</code> (or as a parameter to <code>exit</code>) is 
 made available to the parent indirectly through <code>wait</code></li>
+  <li class="to-me">Show <code>p2.c</code></li>
 </ul>
 
 <h2 id="exec"><code>exec()</code></h2>
@@ -234,14 +236,24 @@ replacing (most of) the memory and resetting the state.</li>
 right to <code>exec</code> when desired?
     <ul>
       <li>It provides the ability to alter the new program’s environment</li>
-      <li>Environment variables</li>
+      <li>Environment variables
+        <ul>
+          <li>(Processes can set using <code>setenv()</code>. Children inherit environment and pass it through <code>exec</code>)</li>
+        </ul>
+      </li>
       <li><code>stdin</code> / <code>stdout</code></li>
       <li>This is what makes file redirection work.</li>
     </ul>
   </li>
+  <li>Several versions of exec. Three basic modifiers:
+    <ul>
+      <li><code>l</code>:  Provide arguments as a list. Uses varargs like <code>printf</code> does.</li>
+      <li><code>v</code>:  Provide a pointer to an array (instead of a separate parameter for each argument)</li>
+      <li><code>p</code>:  Use the path.  (Otherwise you must specify an absolute path name)</li>
+      <li><code>e</code>:  Provide a custom environment (rather than passing the current environment)</li>
+    </ul>
+  </li>
 </ul>
-
-<h2 id="signals">Signals</h2>
 
 
 </main>

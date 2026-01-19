@@ -198,7 +198,7 @@
     <ul>
       <li>In today’s world, computing power is cheap enough that we no longer
 need to be careful and thoughtful about resource usage when writing
-most apps. Consequently, much of what you learn in other courses 
+most apps. (At least  not at first.) Consequently, much of what you learn in other courses 
 (CIS 351, data structures, networking, etc.) can feel “academic” 
 if not irrelevant. The operating system is an exception. Since it permeates 
 so much of what the computer does, small inefficiencies add up. 
@@ -218,7 +218,7 @@ student ideas.</li>
     <ul>
       <li>Also, for now, suppose that you are only ever going to run one program
 at a time on this machine (e.g., high-powered weather simulation)</li>
-      <li class="q">What else do you need to make practical use of this machine?</li>
+      <li class="q">What all do you need to make practical use of this machine?</li>
     </ul>
   </li>
   <li>A standard library to handle things like printing, stdin, and writing
@@ -280,13 +280,19 @@ real CPUs.
 <h2 id="protection">Protection</h2>
 
 <ul>
-  <li>
-    <p><em>Standard Library</em>: Library of commonly used code – makes the computer easy to use.</p>
-  </li>
+  <li><em>Standard Library</em>: Library of commonly used code – makes the computer easy to use.</li>
   <li>To allow different users to securely share a system, there needs to be enforced protection.</li>
-  <li>Some activity (e.g., opening files) must be restricted to the OS (or other trusted code).</li>
-  <li><em>System Calls</em> are a set of routines tha run “inside” the OS.</li>
-  <li>CPU must be in “protected” mode to execute certain instructions (e..g, I/O).</li>
+  <li>Some activity (e.g., opening files) must be restricted to the OS (or other trusted code).
+    <ul>
+      <li>At a fundamental level, there are a machine instructions that cause the CPU to read and write
+data from a hard disk.</li>
+      <li>We can’t trust “ordinary” users to write to code that use those instructions, because then 
+any user has access to read or modify anybody’s files.</li>
+      <li>Only code written by people we trust should be able to do this.</li>
+    </ul>
+  </li>
+  <li>Solution: CPU must be in “protected” mode to execute certain instructions (e..g, I/O).</li>
+  <li><em>System Calls</em> are a set of routines tha run “inside” the OS in protected mode.</li>
   <li class="to-me">Chapter 7 explains protected mode and how system calls work.</li>
   <li class="to-me">
     <p>talk about “user space” and “kernel space”.</p>
@@ -300,7 +306,7 @@ isn’t strict.</li>
 
 <ul>
   <li class="to-me">Run <code>./cpu "A"</code></li>
-  <li class="to-me">Now run <code>./cpu "A"&amp; ; ./cpu "B" &amp; ; ./cpu "C" &amp; ; ./cpu "D" &amp; ...</code></li>
+  <li class="to-me">Now run <code>./cpu "A" &amp;  ./cpu "B" &amp;  ./cpu "C" &amp;  ./cpu "D" &amp; ...</code></li>
   <li>Think about how memory works in the MIPS CPU.</li>
   <li>If these programs are running concurrently, they can’t all be using the same 
 memory addresses at the same time. Thus, in addition to “virtualizing” the CPU, 
