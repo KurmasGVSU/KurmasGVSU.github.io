@@ -250,6 +250,8 @@ the CPU is in kernel mode).</li>
 want the OS to do something for you (e.g., I/O.)</li>
     </ol>
   </li>
+  <li class="to-me">Show a memory map with separate user code and kernel code.</li>
+  <li class="to-me">Walk through the boot process.</li>
 </ul>
 
 <h3 id="example-broken-system">Example broken system:</h3>
@@ -329,6 +331,11 @@ user-space function named <code>read</code> from the standard library.</li>
   <li>This function, while running in user space, sets up the registers 
 as needed, then executes the <code>trap</code> instruction.  This switches the
 CPU to kernel mode and runs the privileged kernel code that does the read.</li>
+</ul>
+
+<h3 id="interrupts">Interrupts</h3>
+<ul>
+  <li class="to-me">Remind class how interrupts work.</li>
 </ul>
 
 <h2 id="switching-between-processes">Switching Between Processes</h2>

@@ -1,84 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Generic Weekly Schedule</title>
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-    }
-    #calendar {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    /* Rounded corners for events */
-    .fc-event {
-      border-radius: 8px !important;
-    }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Generic Weekly Schedule</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+      #calendar {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .fc-event {
+        border-radius: 8px !important;
+      }
+      .controls {
+        max-width: 900px;
+        margin: 20px auto;
+        text-align: right;
+      }
+      .pdf-button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 12px 24px;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      .pdf-button:hover {
+        background-color: #45a049;
+      }
+      .pdf-button:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Note: The schedule below contains weekly recurring events. It does not
+      contain any "one-off" meetings.
+    </p>
 
-   <p>Note: The schedule below contains weekly recurring events. It does not contain any "one-off" meetings.</p>
+    <div id="calendar"></div>
 
-      <div id="calendar"></div>
+    <div class="controls">
+      <button class="pdf-button" id="downloadPdf">Download as PDF</button>
+    </div>
 
+    <p>I am also teaching an asynchronous online section of CIS 351.</p>
 
-<p>I am also teaching an asynchronous online section of CIS 351.</p>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const calendarEl = document.getElementById("calendar");
 
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const calendarEl = document.getElementById('calendar');
+        const Meeting = "#b186c4";
+        const OfficeHours = "#ffff00";
 
-   const Meeting = '#b186c4'
-   const OfficeHours = '#ffff00'
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+          weekends: false,
+          initialView: "timeGridWeek",
+          slotDuration: "00:30:00",
+          slotMinTime: "08:00:00",
+          slotMaxTime: "17:00:00",
+          allDaySlot: false,
+          headerToolbar: { left: "", center: "title", right: "" },
+          expandRows: true,
+          nowIndicator: false,
+          eventTextColor: "#000000",
+          events: [
+            // Monday
+            {
+              title: "CIS 452",
+              daysOfWeek: [1],
+              startTime: "12:00:00",
+              endTime: "13:00:00",
+              color: "#a8dadc",
+            },
+            {
+              title: "Office Hours",
+              daysOfWeek: [1],
+              startTime: "13:00:00",
+              endTime: "13:30:00",
+              color: OfficeHours,
+            },
+            {
+              title: "Break",
+              daysOfWeek: [1],
+              startTime: "13:30:00",
+              endTime: "14:00:00",
+              color: "#caffbf",
+            },
+            {
+              title: "Office Hours (Zoom)",
+              daysOfWeek: [1],
+              startTime: "16:00:00",
+              endTime: "17:00:00",
+              color: OfficeHours,
+            },
+            {
+              title: "Language AI Meeting",
+              daysOfWeek: [1],
+              startTime: "14:30:00",
+              endTime: "15:30:00",
+              color: Meeting,
+            },
 
+            // Tuesday
+            {
+              title: "Dept. Meeting",
+              daysOfWeek: [2],
+              startTime: "11:30:00",
+              endTime: "14:00:00",
+              color: Meeting,
+            },
+            {
+              title: "Break",
+              daysOfWeek: [2],
+              startTime: "14:00:00",
+              endTime: "14:30:00",
+              color: "#caffbf",
+            },
 
+            // Wednesday
+            {
+              title: "CIS 452 Lab",
+              daysOfWeek: [3],
+              startTime: "10:00:00",
+              endTime: "12:00:00",
+              color: "#a8dadc",
+            },
+            {
+              title: "CIS 452",
+              daysOfWeek: [3],
+              startTime: "12:00:00",
+              endTime: "13:00:00",
+              color: "#a8dadc",
+            },
+            {
+              title: "Office Hours",
+              daysOfWeek: [3],
+              startTime: "13:00:00",
+              endTime: "13:30:00",
+              color: OfficeHours,
+            },
+            {
+              title: "Break",
+              daysOfWeek: [3],
+              startTime: "13:30:00",
+              endTime: "14:00:00",
+              color: "#caffbf",
+            },
+            {
+              title: "Meet with Dept. Chair",
+              daysOfWeek: [3],
+              startTime: "14:00:00",
+              endTime: "15:00:00",
+              color: Meeting,
+            },
+            {
+              title: "Office Hours (Zoom)",
+              daysOfWeek: [3],
+              startTime: "16:00:00",
+              endTime: "17:00:00",
+              color: OfficeHours,
+            },
 
-  const calendar = new FullCalendar.Calendar(calendarEl, {
-   weekends: false,
-    initialView: 'timeGridWeek',
-    slotDuration: '00:30:00',
-    slotMinTime: '08:00:00',
-    slotMaxTime: '17:00:00',
-    allDaySlot: false,
-    headerToolbar: { left: '', center: 'title', right: '' },
-    expandRows: true,
-    nowIndicator: false,
-    eventTextColor: '#000000',
-    events: [
-      // Monday (0=Sunday, 1=Monday, ...)
-      { title: 'CIS 452', daysOfWeek: [1], startTime: '12:00:00', endTime: '13:00:00', color: '#a8dadc' },
-      { title: 'Office Hours', daysOfWeek: [1], startTime: '13:00:00', endTime: '13:30:00', color: OfficeHours },
-      { title: 'Break', daysOfWeek: [1], startTime: '13:30:00', endTime: '14:00:00', color: '#caffbf' },
-{ title: 'Office Hours (Zoom)', daysOfWeek: [1], startTime: '16:00:00', endTime: '17:00:00', color: OfficeHours },
-      { title: 'Language AI Meeting', daysOfWeek: [1], startTime: '14:30:00', endTime: '15:30:00', color: Meeting },
+            // Friday
+            {
+              title: "FSBC",
+              daysOfWeek: [5],
+              startTime: "12:00:00",
+              endTime: "14:00:00",
+              color: Meeting,
+            },
+          ],
+        });
 
-      // Tuesday
-      { title: 'Dept. Meeting', daysOfWeek: [2], startTime: '11:30:00', endTime: '14:00:00', color: Meeting },
-      { title: 'Break', daysOfWeek: [2], startTime: '14:00:00', endTime: '14:30:00', color: '#caffbf' },
+        calendar.render();
 
-      // Wednesday
-      { title: 'CIS 452 Lab', daysOfWeek: [3], startTime: '10:00:00', endTime: '12:00:00', color: '#a8dadc' },
-      { title: 'CIS 452', daysOfWeek: [3], startTime: '12:00:00', endTime: '13:00:00', color: '#a8dadc' },
-      { title: 'Office Hours', daysOfWeek: [3], startTime: '13:00:00', endTime: '13:30:00', color: OfficeHours },
-{ title: 'Break', daysOfWeek: [3], startTime: '13:30:00', endTime: '14:00:00', color: '#caffbf' },
-      { title: 'Meet with Dept. Chair', daysOfWeek: [3], startTime: '14:00:00', endTime: '15:00:00', color: Meeting },
-      { title: 'Office Hours (Zoom)', daysOfWeek: [3], startTime: '16:00:00', endTime: '17:00:00', color: OfficeHours },
+        // PDF Download functionality
+        document
+          .getElementById("downloadPdf")
+          .addEventListener("click", async function () {
+            const button = this;
+            button.disabled = true;
+            button.textContent = "Generating PDF...";
 
-      // Thursday: no events
+            try {
+              const canvas = await html2canvas(calendarEl, {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                backgroundColor: "#ffffff",
+              });
 
-      // Friday
-      { title: 'FSBC', daysOfWeek: [5], startTime: '12:00:00', endTime: '14:00:00', color: Meeting }
-    ]
-  });
+              const imgData = canvas.toDataURL("image/png");
+              const { jsPDF } = window.jspdf;
+              const pdf = new jsPDF({
+                orientation: "landscape",
+                unit: "mm",
+                format: "a4",
+              });
 
-  calendar.render();
-});
-</script>
+              const pageWidth = 297; // A4 landscape width in mm
+              const pageHeight = 210; // A4 landscape height in mm
+              const margin = 10;
 
-</body>
+              const maxWidth = pageWidth - 2 * margin;
+              const maxHeight = pageHeight - 2 * margin;
+
+              // Calculate dimensions to fit the page while maintaining aspect ratio
+              let imgWidth = maxWidth;
+              let imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+              // If height is too tall, scale based on height instead
+              if (imgHeight > maxHeight) {
+                imgHeight = maxHeight;
+                imgWidth = (canvas.width * imgHeight) / canvas.height;
+              }
+
+              // Center the image on the page
+              const xPosition = (pageWidth - imgWidth) / 2;
+              const yPosition = (pageHeight - imgHeight) / 2;
+
+              pdf.addImage(
+                imgData,
+                "PNG",
+                xPosition,
+                yPosition,
+                imgWidth,
+                imgHeight,
+              );
+              pdf.save("weekly-schedule.pdf");
+            } catch (error) {
+              console.error("Error generating PDF:", error);
+              alert("Error generating PDF. Please try again.");
+            } finally {
+              button.disabled = false;
+              button.textContent = "Download as PDF";
+            }
+          });
+      });
+    </script>
+  </body>
 </html>

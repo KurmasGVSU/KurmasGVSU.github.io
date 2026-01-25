@@ -207,7 +207,7 @@ minimize response time for interactive jobs.</p>
   </li>
   <li>Basic structure:
     <ul>
-      <li>Multiple queues</li>
+      <li>Multiple queues (Figure 8.1: <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf">https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf</a>)</li>
       <li>Within a single queue, processes go round-robin</li>
       <li>The queues are prioritized: Only take processes from the highest priority non-empty queue.</li>
     </ul>
@@ -297,6 +297,8 @@ as quickly as possible.</li>
       <li>Reserving highest queues for OS and/or Real-time jobs</li>
       <li>Allowing users to advice (e.g., <code>nice</code>)</li>
     </ul>
+
+    <p>https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf</p>
   </li>
 </ul>
 
