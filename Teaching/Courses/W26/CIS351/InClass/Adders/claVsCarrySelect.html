@@ -4,13 +4,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Combinatorial Circuit with Choices</title>
+  <title>Advanced Adders</title>
   <style>
-  body {
-    -webkit-print-color-adjust: exact;
-  }
-
-
     li {
       padding-bottom: .5em;
     }
@@ -55,22 +50,20 @@
     padding-right: 5px;
   }
 
-  .answer, .answer-block {
-    background-color: lightgray;
-    padding: 4px;
-    margin: 4px;
-  }
-
-  .answer-block {
+  figure {
+    border: solid black 1px;
     display: inline-block;
   }
 
-  .big-answer {
-    padding-top: 6px;
+  figcaption {
+    text-align: center;
+    font-size: 125%;
   }
 
+  #f1, #f2 {
+    width: 500px;
+  }
 
-  
   </style>
 </head>
 
@@ -119,52 +112,36 @@
 <table class="assignmentHeader">
   <tr>
     <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
-    <td class="ah_middle_cell"><h1 class="ah_middle_content">Combinatorial Circuit with Choices</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Advanced Adders</h1></td>
     <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2026</h1></td>
   </tr>
 </table>
 
 
+<p>Remember: Designs like the carry-select and carry-lookahead adders are not "all-or-nothing".  
+For example, you can place carry-lookahead logic on only some of the full adders, thereby 
+limiting the size in exchange for time. (See Figure 1.)  
+Similarly, you can apply the carry-select pattern one time only. (See Figure 2.)</p>
+
+<figure>
+    <img id=f1 src='carryLookahead-oneOnly.png'>
+  <figcaption>Figure 1: Adder using only one carry lookahead input</figcaption>
+  </figure> 
+
+<figure>
+    <img id=f2 src='carrySelect_oneLevelOnly.png'>
+  <figcaption>Figure 2: Carry-Select applied at one level only</figcaption>
+  </figure> 
+
+<p>Suppose you begin with a 16-bit ripple-carry adder.  You want to make it faster, but can't afford a "full" carry-lookahead or carry-select adder,
+so, you decide to do "one step" only.</p>
 <ol>
-  <li>Design an 4-to-2 encoder.  (You may assume that exactly one input is always true.)
-    
-  </li>
-
-  <li>Design an 8-to-3 encoder. (You may assume that exactly one input is always true.)
-    <ul>
-      <li>How would you build it from "scratch"?
-    
-      </li>
-      <li>How would you build it using two 4-to-2 encoders?</li>
-    </ul>
-    </li>
-
-  <li>Design a circuit that takes 3 integers as input and returns the
-    largest of the three.  Assume you have a "greater than" subcircuit. (You may assume that
-    all three inputs are unique.)
-    
-  </li>
-
-  <li>Design a circuit that performs signed multiplication.  Assume you already have a circuit that performs unsigned multiplication.  Then add gates before and after this circuit to correctly handle the sign.
-    
-  </li>
-
-  <li>Design a circuit that
-  increments the hours and minutes on a 24-hour clock.  This circuit
-  has a 5-bit input representing hours and a 6 bit input representing
-  minutes.  It also has a five-bit output representing the updated
-  hour and a 6-bit output representing the updated minute. The outputs
-  should represent one minute after the inputs.  For example, if the
-  inputs are 6 and 10, then the outputs should be 6 and 11.  If the
-  inputs are 7 and 59, then the outputs should be 8 and 0.  If the
-  inputs are 23 and 59, then the outputs should be 0 and 0.
-    
-  </li>
-
-  
+  <li>Which design above will be faster (Figure 1 or Figure 2)?</li>
+  <li>Which design above will be smaller (Figure 1 or Figure 2)?</li>
 </ol>
 
-  
+
+
 <hr>
 <p>Updated Monday, 26 January 2026, 8:01 PM</p>
 <a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>

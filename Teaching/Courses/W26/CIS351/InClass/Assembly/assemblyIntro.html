@@ -4,13 +4,11 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Combinatorial Circuit with Choices</title>
+  <title>Intro to Assembly</title>
   <style>
   body {
     -webkit-print-color-adjust: exact;
   }
-
-
     li {
       padding-bottom: .5em;
     }
@@ -29,7 +27,11 @@
   }
 
   img {
-    vertical-align: middle;
+    vertical-align: top;
+  }
+
+  .mid-img {
+    vertical-align:  middle;
   }
 
  .bottom {
@@ -69,8 +71,6 @@
     padding-top: 6px;
   }
 
-
-  
   </style>
 </head>
 
@@ -119,54 +119,48 @@
 <table class="assignmentHeader">
   <tr>
     <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
-    <td class="ah_middle_cell"><h1 class="ah_middle_content">Combinatorial Circuit with Choices</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Intro to Assembly</h1></td>
     <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2026</h1></td>
   </tr>
 </table>
 
 
 <ol>
-  <li>Design an 4-to-2 encoder.  (You may assume that exactly one input is always true.)
-    
+  <li>Write the machine code that will perform this operation:  <code>add $10, $5, $3</code>
+  
   </li>
 
-  <li>Design an 8-to-3 encoder. (You may assume that exactly one input is always true.)
-    <ul>
-      <li>How would you build it from "scratch"?
-    
-      </li>
-      <li>How would you build it using two 4-to-2 encoders?</li>
-    </ul>
+  <li>What operation does this line of machine code perform: <code>0x012c1020 = 0000 0001 0010 1100 0001 0000 0010 0000</code>?
+
+ 
+  </li>
+
+  <li>Write an assembly function <code>parrotTrouble</code> that takes a Boolean and an int as input and returns <code>true</code> if the parrot is talking before 7:00
+  or after 20:59 (i.e., the hour is less than 7 or greater than 20.)
+  (This is <a href='https://codingbat.com/prob/p140449'>parrotTrouble</a> from CodingBat.)</li>
+
+  <li>What is the result of the following operations:
+     <ul>
+       <li><code>0xca and 0x63</code>  </li>
+       <li><code>0xca or 0x63</code>  </li>
+        <li><code>not 0x63</code>  </li>
+        <li><code>not 0x0</code>  </li>
+        <li><code>not 0x1</code>  </li>
+      </ul>
     </li>
 
-  <li>Design a circuit that takes 3 integers as input and returns the
-    largest of the three.  Assume you have a "greater than" subcircuit. (You may assume that
-    all three inputs are unique.)
-    
-  </li>
+    <li> Assume a register contains either 0 or 1.  Using <code>not</code> alone won't "flip" 1 to 0 and 0 to 1.
+    What operation can you add that will have the desired effect? 
+    </li>
 
-  <li>Design a circuit that performs signed multiplication.  Assume you already have a circuit that performs unsigned multiplication.  Then add gates before and after this circuit to correctly handle the sign.
-    
-  </li>
-
-  <li>Design a circuit that
-  increments the hours and minutes on a 24-hour clock.  This circuit
-  has a 5-bit input representing hours and a 6 bit input representing
-  minutes.  It also has a five-bit output representing the updated
-  hour and a 6-bit output representing the updated minute. The outputs
-  should represent one minute after the inputs.  For example, if the
-  inputs are 6 and 10, then the outputs should be 6 and 11.  If the
-  inputs are 7 and 59, then the outputs should be 8 and 0.  If the
-  inputs are 23 and 59, then the outputs should be 0 and 0.
-    
-  </li>
-
-  
+    <li>We'll say that a number is "teen" if it is in the range 13..19 inclusive. Write a function that takes two int values
+    as input and returns <code>true</code> if one or the other is teen, but not both.
+    (This is <a href='https://codingbat.com/prob/p165701'>loneTeen</a> from CodingBat.)</li>
+    </li>
 </ol>
 
-  
 <hr>
-<p>Updated Monday, 26 January 2026, 8:01 PM</p>
+<p>Updated Monday, 26 January 2026, 8:04 PM</p>
 <a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
 </body>
 </html>

@@ -4,13 +4,11 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Combinatorial Circuit with Choices</title>
+  <title>Assembly Loops</title>
   <style>
   body {
     -webkit-print-color-adjust: exact;
   }
-
-
     li {
       padding-bottom: .5em;
     }
@@ -29,7 +27,11 @@
   }
 
   img {
-    vertical-align: middle;
+    vertical-align: top;
+  }
+
+  .mid-img {
+    vertical-align:  middle;
   }
 
  .bottom {
@@ -69,8 +71,6 @@
     padding-top: 6px;
   }
 
-
-  
   </style>
 </head>
 
@@ -119,54 +119,28 @@
 <table class="assignmentHeader">
   <tr>
     <td class="ah_outside_cell ah_left_cell"><h1 class="ah_left_content">CIS 351</h1></td>
-    <td class="ah_middle_cell"><h1 class="ah_middle_content">Combinatorial Circuit with Choices</h1></td>
+    <td class="ah_middle_cell"><h1 class="ah_middle_content">Assembly Loops</h1></td>
     <td class="ah_outside ah_right_cell"><h1 class="ah_right_content">Winter 2026</h1></td>
   </tr>
 </table>
 
 
 <ol>
-  <li>Design an 4-to-2 encoder.  (You may assume that exactly one input is always true.)
-    
+  <li>Write an assembly function <code>sumArray(int[] array, int num_items)</code> that returns the sum of all the items in <code>array</code>.</li>
+  <li>Write an assembly function <code>cotains(int item, int[] array, int num_items)</code> that returns <code>true</code> if <code>array</code> contains <code>item</code>.</li>
+  <li>Write an assembly funciton <code>upcase(byte[] string)</code> that converts all the lower-case elements in <code>string</code> to upper-case.  Assume that the string is null-terminated.  Below are some helpful ASCII values:
+    <table>
+      <tr><td>A</td><td>65</td></tr>
+      <tr><td>z</td><td>90</td></tr>
+      <tr><td>a</td><td>97</td></tr>
+      <tr><td>z</td><td>122</td></tr>
+      </table>
   </li>
 
-  <li>Design an 8-to-3 encoder. (You may assume that exactly one input is always true.)
-    <ul>
-      <li>How would you build it from "scratch"?
-    
-      </li>
-      <li>How would you build it using two 4-to-2 encoders?</li>
-    </ul>
-    </li>
-
-  <li>Design a circuit that takes 3 integers as input and returns the
-    largest of the three.  Assume you have a "greater than" subcircuit. (You may assume that
-    all three inputs are unique.)
-    
-  </li>
-
-  <li>Design a circuit that performs signed multiplication.  Assume you already have a circuit that performs unsigned multiplication.  Then add gates before and after this circuit to correctly handle the sign.
-    
-  </li>
-
-  <li>Design a circuit that
-  increments the hours and minutes on a 24-hour clock.  This circuit
-  has a 5-bit input representing hours and a 6 bit input representing
-  minutes.  It also has a five-bit output representing the updated
-  hour and a 6-bit output representing the updated minute. The outputs
-  should represent one minute after the inputs.  For example, if the
-  inputs are 6 and 10, then the outputs should be 6 and 11.  If the
-  inputs are 7 and 59, then the outputs should be 8 and 0.  If the
-  inputs are 23 and 59, then the outputs should be 0 and 0.
-    
-  </li>
-
-  
 </ol>
 
-  
 <hr>
-<p>Updated Monday, 26 January 2026, 8:01 PM</p>
+<p>Updated Monday, 26 January 2026, 8:04 PM</p>
 <a href="https://validator.w3.org/check?url=referer"><img src='http://localhost:8000/Images/html5_validate_w3c.png' alt="W3c Validation" style="width: 75px; vertical-align: middle"></a>
 </body>
 </html>
