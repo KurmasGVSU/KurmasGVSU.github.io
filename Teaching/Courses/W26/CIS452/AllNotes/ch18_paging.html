@@ -1,0 +1,276 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="paging">Paging</h1>
+
+<ul>
+  <li>Key idea: Fixed size segments eliminate external fragmentation</li>
+  <li>They also provide a lot of flexibility</li>
+  <li>Fixed-size units are called <em>pages</em></li>
+  <li>The corresponding unit in physical memory is a <em>page frame</em></li>
+  <li>Any page can be placed in any frame.</li>
+  <li>Simply grab first frame from free list</li>
+  <li>Requires a per-process data structure called a <em>page table</em>
+    <ul>
+      <li>Used for address translations.</li>
+    </ul>
+  </li>
+  <li class="q">How do we efficiently do address translation?
+    <ul>
+      <li>Since pages are all the same size, it’s very similar to caching.</li>
+      <li>First <code>n</code> bits are a page number. Use that to look up the base value, 
+then add the offset.</li>
+    </ul>
+  </li>
+  <li>Note that the offset stays the same.</li>
+  <li class="q">Any guesses as to what the challenges are?</li>
+  <li>Consider a 32-bit address space with 4KB (2^12) byte pages.
+    <ul>
+      <li class="q">How is the address split?
+        <ul>
+          <li>20 bits for the page, 12 bits for the offset.</li>
+        </ul>
+      </li>
+      <li class="q">How bit is the page table? (What do you need to know to answer this question).
+        <ul>
+          <li>Assuming 4 byte (32 bit) page table entry, this is 4MB <em>per process</em></li>
+          <li>That’s 400MB if the system is running 100 processes.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="q">Where does this page table go?</li>
+  <li class="q">What are the implications of putting it in RAM
+    <ul>
+      <li>Every memory access requires a secondary memory access.</li>
+      <li>What about cache?</li>
+      <li>Remember L1 cache is only about 8KB.</li>
+    </ul>
+  </li>
+  <li>(For now, picture page table as stored in RAM that OS controls.)</li>
+  <li class="q">What data must be in the page table? (More than just frame).
+    <ul>
+      <li>Hint: Think of cache.</li>
+      <li>Valid bit. {: .q} Why?</li>
+    </ul>
+  </li>
+  <li class="q">What is the implication of not having a valid bit?
+    <ul>
+      <li>Protection could be violated.</li>
+    </ul>
+  </li>
+  <li>Other page table data:
+    <ul>
+      <li>Read (“allowed to read”) bit</li>
+      <li>Write bit (“Allowed to write”). (How might this be used?)</li>
+      <li>Execute bit. (How might this be used?)</li>
+      <li>Present bit (used later)</li>
+      <li>Dirty bit (used for page replacement)</li>
+      <li>Reference bit (“has been accessed”) (used for page replacement)</li>
+    </ul>
+
+    <h2 id="page-table-in-memory-is-even-worse">Page Table in Memory is even worse</h2>
+
+    <ul>
+      <li>Consider accessing memory using an in-memory page table</li>
+      <li>Suppose there is a hardware page table base register</li>
+      <li>Need to calculate the address of the base table entry (a few instructions)</li>
+      <li>Read the page table entry (which is a memory access itself)</li>
+      <li>Reconstruct the physical address</li>
+      <li>Must do this for each memory reference – which means every instruction access!</li>
+      <li>Bottom line: Every RAM access becomes two! And every instruction is at least one RAM access.</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

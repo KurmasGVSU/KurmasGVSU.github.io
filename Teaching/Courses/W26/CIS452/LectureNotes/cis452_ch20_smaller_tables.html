@@ -1,0 +1,306 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="smaller-tables">Smaller Tables</h1>
+
+<ul>
+  <li>Page tables are too big.
+    <ul>
+      <li>32GB address space with 4KB pages are about 4MB <em>per process</em>.</li>
+      <li>Run <code>ps auxw | wc -l</code> on a unix machine and see how many processes are running.</li>
+    </ul>
+  </li>
+  <li class="q">
+    <p>How can we reduce the size of page tables?</p>
+  </li>
+  <li>Bigger pages
+    <ul>
+      <li class="q">What happens to the page table size if we increase the page size to 16KB?</li>
+      <li>It reduces to 25% of the original size.  Not enough.</li>
+    </ul>
+  </li>
+  <li>Combining paging and segmentation.
+    <ul>
+      <li class="q">How would this work exactly? What would be the benefit?</li>
+      <li>Think about how the current, single page table works:
+        <ul>
+          <li>One register that points at the base of the page table.</li>
+          <li>Location of page table entry is <code>base + entry_size * virtual_page_number</code></li>
+        </ul>
+      </li>
+      <li>Suppose the page table had four “segments”, each with its own base register.</li>
+      <li class="q">What would be the advantage?
+        <ul>
+          <li>Each segment’s page table would need only be as large as necessary — no entries for “top” of the segment if it’s not in use.</li>
+        </ul>
+      </li>
+      <li>Top two bits of virtual address would identify the segment, then the next bits identify the virtual page within the segment.</li>
+      <li>Advantage:  Less unused space in the page table.</li>
+      <li class="q">What are the disadvantages?
+        <ul>
+          <li>We still have similar fragmentation issues (e.g., may still need to move segment should it need to grow)</li>
+        </ul>
+      </li>
+      <li>Notice that it also doesn’t remove all unused page table space: We can still have wasted space if the segment 
+is not densely packed.</li>
+    </ul>
+  </li>
+  <li>Notice the main issue: We want to avoid storing page table entries for pages that aren’t used — especially when there is a large block of unused entries.</li>
+  <li>Also notice that fixed-sized pages provided a partial solution: We didn’t need to allocate physical memory for unused areas of the virtual address space.</li>
+  <li class="q">What would be the analogous solution to avoid storing large unused regions of the page table?</li>
+</ul>
+
+<h2 id="multi-level-page-tables">Multi-level page tables</h2>
+
+<ul>
+  <li>What if we turned the linear page table into a tree?</li>
+  <li>We could simply skip unused branches.
+    <ul>
+      <li class="to-me">Draw a tree of depth 3 or 4 and erase several branches at different levels.</li>
+    </ul>
+  </li>
+  <li>We’ll start with just two levels:</li>
+  <li>Chop the page table up into page-sized (i.e., 4KB) units.</li>
+  <li>If every virtual page in that page-sized unit is unused, then don’t allocate that unit space in memory.</li>
+  <li>Call the top-level a <em>page directory</em>.
+    <ul>
+      <li>This either points to a page table entry, or is marked as not valid.</li>
+      <li>Original divide:  <code>20-12</code>.  New (one example) <code>10-10-12</code></li>
+      <li>Figure 20.3: <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/vm-smalltables.pdf">https://pages.cs.wisc.edu/~remzi/OSTEP/vm-smalltables.pdf</a></li>
+    </ul>
+  </li>
+  <li>Advantage: Much smaller page table.</li>
+  <li class="q">What are the disadvantages?
+    <ul>
+      <li>Two memory reads per TLB miss instead of one.</li>
+      <li>More complexity in general.</li>
+    </ul>
+  </li>
+  <li>This is an example of the time-space tradeoff.</li>
+  <li class="q">What are some other examples?
+    <ul>
+      <li>Building faster adders in CIS 351</li>
+      <li>Cache size (more cache takes up space but reduces AMAT).</li>
+      <li>Some algorithms make this tradeoff (e.g., dynamic programming)</li>
+    </ul>
+  </li>
+  <li>If we want all entities to fit in one physical frame, we may need additional levels.</li>
+  <li>Remember: We only need deal with this complexity when there is a TLB miss.</li>
+</ul>
+
+<h2 id="others">Others</h2>
+<ul>
+  <li>Inverted page tables: One entry per frame
+    <ul>
+      <li class="q">Why is this good?
+        <ul>
+          <li>In some sense, its optimal: It’s the fewest entries you can have (assuming you keep your RAM fully utilized)</li>
+        </ul>
+      </li>
+      <li class="q">What are the challenges?
+        <ul>
+          <li>Fining the entry for your virtual page.</li>
+        </ul>
+      </li>
+      <li class="q">Any ideas?
+        <ul>
+          <li>A hash table.</li>
+        </ul>
+      </li>
+      <li>The PowerPC used this.</li>
+    </ul>
+  </li>
+  <li>Swap page Tables to disk (almost like typical pages)</li>
+</ul>
+
+</main>
+</body>
+</html>
