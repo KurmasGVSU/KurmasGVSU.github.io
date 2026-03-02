@@ -1,0 +1,280 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="complete-vm-systems">Complete VM Systems.</h1>
+
+<h2 id="vaxvms">VAX/VMS</h2>
+<ul>
+  <li>VAX was from DEC.</li>
+  <li>VMS OS needed to run on a wide variety of hardware.</li>
+  <li>32-bit address space, 512 byte pages
+    <ul>
+      <li>(Yes, that’s small)</li>
+    </ul>
+  </li>
+  <li>Address space uses two bits for segment:
+    <ul>
+      <li>“bottom” half is “process space”</li>
+      <li>Code and heap that grows down</li>
+      <li>Stack that grows up.</li>
+      <li>“top” half is for OS.</li>
+    </ul>
+  </li>
+  <li>Page tables live in kernel space, and can be swapped out.</li>
+  <li>Translating virtual address is complicated
+    <ul>
+      <li>Consult system page table to get page containing process page table.</li>
+    </ul>
+  </li>
+  <li>VAX had hardware-managed TLBs</li>
+  <li>Page 0 is invalid to simplify null-pointer debugging.</li>
+  <li>Sharing the kernel segment with all processes simplifies things like copying 
+data to/from OS buffers to processes.</li>
+  <li>Each page has protection bits</li>
+  <li><em>No</em> reference bit</li>
+  <li>Second chance list:
+    <ul>
+      <li>If a process uses too many pages, one is chosen from a FIFO queue and 
+added to either a global clean or dirty list.</li>
+      <li>If the original process requests that page before it is evicted, it is 
+“saved” and no need to read from disk.</li>
+    </ul>
+  </li>
+  <li>Pages swapped in and out it clusters.</li>
+  <li>Demand zeroing.</li>
+  <li>Copy on write
+    <ul>
+      <li>When page copied (e.g., through <code>fork()</code>), only page table entry made.</li>
+      <li>Page only copied if one process tries to write.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="linux">Linux</h2>
+<ul>
+  <li>Page 0 is invalid</li>
+  <li>Kernel space is roughly upper 25% of vm space and is shared among processes
+(Much like vax)</li>
+  <li>Kernel has <em>kernel logical addresses</em> which map more-or less directly to physical addresses
+    <ul>
+      <li><code>0xC0000000 -&gt; 0x00000000</code></li>
+      <li>Contiguous kernel logical addresses are contiguous physical addresses.</li>
+      <li>Important for things like virtual memory.</li>
+    </ul>
+  </li>
+  <li><em>Kernel virtual addresses</em> mapped in a more traditional way</li>
+  <li>Useful for large buffers where contiguous memory would be hard to find.</li>
+  <li>x86 provides hardware-managed, multi-level page table with one table per process.
+    <ul>
+      <li>On context switch point privileged register at page table entry. Hardware MMU does the rest.</li>
+    </ul>
+  </li>
+  <li>64-bit x86 uses a four-level page table structure.</li>
+  <li>Only lower 48 bits used currently
+    <ul>
+      <li>64 Petabytes</li>
+    </ul>
+  </li>
+  <li>Lowest 12 bits offset into a page.</li>
+  <li>Middle 36 bits need to be translated: 9 bits per level.</li>
+  <li>As more bits needed, page table will eventually be six levels.</li>
+  <li>Linux supports “huge pages” (2MB, 1GB)
+    <ul>
+      <li>Main motivation: Better TLB behavior</li>
+      <li>Also shorter TLB miss path.</li>
+      <li>TLB misses can be up to 10% in some workloads.</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>
