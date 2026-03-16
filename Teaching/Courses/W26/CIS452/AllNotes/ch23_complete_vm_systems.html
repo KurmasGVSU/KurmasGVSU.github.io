@@ -273,7 +273,42 @@ added to either a global clean or dirty list.</li>
       <li>TLB misses can be up to 10% in some workloads.</li>
     </ul>
   </li>
+  <li>Linux uses the same system to cache pages in memory for all three types of disk data:
+    <ul>
+      <li>Memory mapped files</li>
+      <li>files accessed through <code>read</code> and <code>write</code></li>
+      <li>Memory pages from stack and heap.</li>
+    </ul>
+  </li>
 </ul>
+
+<h3 id="q-replacement-policy">2Q Replacement Policy</h3>
+
+<ul>
+  <li>LRU is good, but has some common pathological behavior 
+(i.e., chasing tail through large array).</li>
+  <li>2Q maintains two lists: <em>active</em> and <em>inactive</em>.
+    <ul>
+      <li>page promoted to active upon 2nd reference.</li>
+      <li>pages evicted from inactive list.</li>
+      <li>pages occasionally moved form active to inactive to keep balance approximately 1/3 to 2/3.</li>
+    </ul>
+  </li>
+  <li>Each list uses the clock algorithm for reasons discussed earlier.</li>
+</ul>
+
+<h3 id="security">Security</h3>
+<ul>
+  <li>To cut down on buffer overflow, <em>No Execute</em> bit: Can’t treat data on stack as code.</li>
+  <li>Return oriented programming; Manipulate the stack so that stack of return addresses cause 
+desired code to run.</li>
+  <li>ASLR:  Address Space Layout Randomization
+    <ul>
+      <li>If you print address of stack variable, it will be different every time.</li>
+    </ul>
+  </li>
+</ul>
+
 
 </main>
 </body>

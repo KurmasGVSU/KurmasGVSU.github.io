@@ -1,0 +1,429 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="locks">Locks</h1>
+
+<ul>
+  <li>Basic idea</li>
+</ul>
+
+<p><code>
+lock_t mutex;
+...
+lock(&amp;mutex);  // don't progress until lock is available.
+balance = balance + 1;
+unlock(&amp;mutex);
+</code></p>
+
+<ul>
+  <li>Using multiple locks can increase concurrence.</li>
+</ul>
+
+<h2 id="building-a-lock">Building a lock</h2>
+
+<ul>
+  <li>Need help from HW and OS.</li>
+  <li class="q">what are key criteria?
+    <ol>
+      <li>Mutual exclusion</li>
+      <li>Fairness (nobody starves)</li>
+      <li>Performance / Overhead</li>
+    </ol>
+  </li>
+  <li>Simple solution: Disable interrupts during critical section
+    <ul>
+      <li>Requires a lot of trust</li>
+      <li>could work in very limited situations</li>
+      <li>Bugs can bring down the entire machine.</li>
+      <li>If interrupts disabled too long, other problems arise</li>
+      <li>Only works on single CPUs.  (Why?)</li>
+    </ul>
+  </li>
+  <li>Attempt 2: Spin-wait</li>
+</ul>
+
+<p>```
+typedef struct __lock_t { int flag; } lock_t;</p>
+
+<p>void init(lock_t *mutex) {
+ // 0 -&gt; lock is available, 1 -&gt; held
+ mutex-&gt;flag = 0;
+}</p>
+
+<p>void lock(lock_t *mutex) {
+  while (mutex-&gt;flag == 1) // TEST the flag
+     ; // spin-wait (do nothing)
+  mutex-&gt;flag = 1; // now SET it!
+}</p>
+
+<p>void unlock(lock_t *mutex) {
+  mutex-&gt;flag = 0;
+}
+```</p>
+
+<ul>
+  <li class="q">Is this correct? Why or why not?
+    <ul>
+      <li>What happens if multiple threads are waiting and see <code>mutex-&gt;flag != 1</code>?</li>
+    </ul>
+  </li>
+  <li class="q">Is is this performant?
+    <ul>
+      <li>No. Spin wait is wasted time.</li>
+    </ul>
+  </li>
+  <li class="q">What is the consequence of spin waiting on a single CPU?
+    <ul>
+      <li>Effectively no concurrency during critical section.</li>
+    </ul>
+  </li>
+  <li class="q">What fundamental operation do we need to fix the correctness issue?
+    <ul>
+      <li>Atomic test-and-set (<code>xchg</code> “atomic exchange” on x86)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><code>
+int TestAndSet(int *old_ptr, int new) {
+  int old = *old_ptr; // fetch old value at old_ptr
+  *old_ptr = new; // store ’new’ into old_ptr
+  return old; // return the old value
+}
+</code></p>
+
+<p><code>
+; int TestAndSet(int *old_ptr, int new)
+; args: rdi = old_ptr, esi = new
+TestAndSet:
+    mov eax, esi        ; eax = new
+    xchg eax, [rdi]     ; atomically swap eax with *old_ptr
+                        ; eax now holds old value, *old_ptr = new
+    ret                 ; return old value in eax
+</code></p>
+
+<ul>
+  <li>Notice what’s going on here:
+    <ul>
+      <li>If you want a lock, pass a <code>1</code> as <code>new</code>.</li>
+      <li>Lock will be set upon completion.
+        <ul>
+          <li>Either already set, or will now be set.</li>
+        </ul>
+      </li>
+      <li>Returning <code>old</code> will tell you if the lock 
+was previously set, or if it was not set 
+(and is now yours).</li>
+    </ul>
+  </li>
+  <li><strong>Important</strong>: This only works if the function is <em>atomic</em>.
+    <ul>
+      <li>C code is just for illustrative purposes.</li>
+    </ul>
+  </li>
+  <li>Possible lock implementation using <code>TestAndSet</code>:</li>
+</ul>
+
+<p><code>
+void lock(lock_t *lock) {
+  while (TestAndSet(&amp;lock-&gt;flag, 1) == 1)
+     ; // spin-wait (do nothing)
+}
+</code></p>
+
+<ul>
+  <li>This is correct.</li>
+  <li class="q">Is it fair?  Why or why not?
+    <ul>
+      <li>Not fair.  Starvation is possible.</li>
+    </ul>
+  </li>
+  <li class="q">What about performance
+    <ul>
+      <li>Terrible on single CPU.</li>
+      <li>Not too bad when number of cores is similar to number of threads
+<em>if critical section is very small</em></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="petersons-algorithm">Peterson’s algorithm.</h2>
+
+<ul>
+  <li>It is possible in specific circumstances to implement a spin lock without
+special hardware:</li>
+</ul>
+
+<p>```
+int flag[2];
+int turn;</p>
+
+<p>void init() {
+   // indicate you intend to hold the lock w/ ’flag’
+   flag[0] = flag[1] = 0;
+   // whose turn is it? (thread 0 or 1)
+   turn = 0;
+}</p>
+
+<p>void lock() {
+   // ’self’ is the thread ID of caller
+   flag[self] = 1;
+   // make it other thread’s turn
+   turn = 1 - self;
+   while ((flag[1-self] == 1) &amp;&amp; (turn == 1 - self))
+      ; // spin-wait while it’s not your turn 
+}</p>
+
+<p>void unlock() {
+   // simply undo your intent
+   flag[self] = 0;
+}
+```</p>
+
+<ul>
+  <li class="q">Why is there no race condition?
+    <ul>
+      <li>Separate flags for each process.</li>
+    </ul>
+  </li>
+  <li class="q">
+    <p>Why do we need both <code>flag</code> and <code>turn</code>?</p>
+  </li>
+  <li>Compare and Swap
+    <ul>
+      <li>Similar, but more powerful than test and set.</li>
+      <li>(We’ll use the “extra” power later)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><code>
+int CompareAndSwap(int *ptr, int expected, int new) {
+  int original = *ptr;
+  if (original == expected)
+      *ptr = new;
+  return original;
+}
+</code></p>
+
+<ul>
+  <li>Load linked and store conditional
+    <ul>
+      <li>Used by Alpha, PowerPC, ARM, and MIPS</li>
+      <li>load linked is a typical load</li>
+      <li>store conditional only stores if no other stores have taken place.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><code>
+void lock(lock_t *lock) {
+  while (1) {
+    while (LoadLinked(&amp;lock-&gt;flag) == 1)
+         ; // spin until it’s zero
+    if (StoreConditional(&amp;lock-&gt;flag, 1) == 1)
+        return; // if set-to-1 was success: done
+    // otherwise: try again
+  }
+}
+</code>
+Alternatively,</p>
+
+<p><code>
+1 void lock(lock_t *lock) {
+2    while (LoadLinked(&amp;lock-&gt;flag) || !StoreConditional(&amp;lock-&gt;flag, 1))
+4       ; // spin
+5 }
+</code></p>
+
+</main>
+</body>
+</html>

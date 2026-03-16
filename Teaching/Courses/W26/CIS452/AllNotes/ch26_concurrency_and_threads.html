@@ -1,0 +1,296 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="concurrency-and-threads">Concurrency and Threads</h1>
+
+<ul>
+  <li>Threads – Two views:
+    <ol>
+      <li>A process with multiple Program Counters each of which is being 
+  fetched and executed from</li>
+      <li>A bunch of separate processes that share the same address space.</li>
+    </ol>
+  </li>
+  <li class="q">How is switching threads similar to switching processes?  How is it different?
+    <ul>
+      <li>Similar: Need to preserve PC and registers.</li>
+      <li>Different: No need to change page table.</li>
+    </ul>
+  </li>
+  <li class="q">Advantages and disadvantages of threads vs. processes:
+    <ul>
+      <li>Threads:
+        <ul>
+          <li>No cache/TLB effects of changing address space</li>
+          <li>Lower overhead of context switch</li>
+          <li>Easier communication (no need to involve OS)</li>
+          <li>You don’t have to give up the CPU if one thread blocks on I/O – just
+transfer to another thread.</li>
+          <li>Not obvious how to manage stack — need to allocate a fixed size.</li>
+        </ul>
+      </li>
+      <li>Processes:
+        <ul>
+          <li>Isolation:  A failure in one doesn’t bring down all.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Ordering controlled by scheduler.</li>
+  <li>Common situations
+    <ul>
+      <li>Create A</li>
+      <li>Create B</li>
+      <li>Run A</li>
+      <li>Run B</li>
+    </ul>
+  </li>
+  <li>Or
+    <ul>
+      <li>Create A</li>
+      <li>Run A</li>
+      <li>Create B</li>
+      <li>Run B.</li>
+    </ul>
+  </li>
+  <li>But, the following is possible (but unlikely)
+    <ul>
+      <li>Create A</li>
+      <li>Create B</li>
+      <li>Run B</li>
+      <li>Run A</li>
+    </ul>
+  </li>
+  <li>See this code &lt;/Users/kurmasz/TempDocuments/CIS452/Textbooks/OSTEP/ostep-code/threads-intro&gt;</li>
+  <li>Notice that for small runs, there are no errors.</li>
+  <li>At some point, errors creep in – a lot of errors.</li>
+  <li class="q">What’s going on?</li>
+  <li>This line: `	counter = counter + 1; // shared: only one` compiles to something like</li>
+</ul>
+
+<p><code>
+mov 0x8049a1c, %eax
+add $0x1, %eax
+mov %eax, 0x8049a1c
+</code></p>
+
+<ul>
+  <li class="to-me">Show how these can get interleaved.</li>
+  <li class="q">Why are there so few errors when loop is small?
+    <ul>
+      <li>Loop finishes before context switch</li>
+    </ul>
+  </li>
+  <li class="q">Why do errors get so large?
+    <ul>
+      <li>If thread A gets interrupted, many iterations of B could run before A gets 
+scheduled again. Think about what happens if B is squeezed in between lines 2 and 3.</li>
+    </ul>
+  </li>
+  <li><em>Race Condition</em>: A condition where the outcode depends on the timing of the code’s execution
+    <ul>
+      <li>From Claude: “A race condition is the window of time between when a thread reads shared state and when it writes it back — during which another thread can invalidate the read value.”</li>
+    </ul>
+  </li>
+  <li><em>Critical section</em>: A piece of code with a potential race condition.</li>
+  <li>General solution is to make operations <em>atomic</em>.</li>
+  <li>But, can’t implement every imaginable atomic operation in HW</li>
+  <li>Instead, need a few key <em>primitives</em> in HW in Operating system that provides
+ reasonably efficient mutual exclusion when necessary.</li>
+  <li>
+    <p>Efficiency requires threads be blockable and wakeable (Requires OS support.)</p>
+  </li>
+  <li class="to-me">Ask about problems with thread API (eg., <code>void*</code> as parameter)</li>
+</ul>
+
+</main>
+</body>
+</html>
