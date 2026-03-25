@@ -192,19 +192,19 @@
   <h1 id="locks">Locks</h1>
 
 <ul>
-  <li>Basic idea</li>
-</ul>
+  <li>
+    <p>Basic idea</p>
 
-<p><code>
-lock_t mutex;
+    <pre><code>lock_t mutex;
 ...
 lock(&amp;mutex);  // don't progress until lock is available.
 balance = balance + 1;
 unlock(&amp;mutex);
-</code></p>
-
-<ul>
-  <li>Using multiple locks can increase concurrence.</li>
+</code></pre>
+  </li>
+  <li>
+    <p>Using multiple locks can increase concurrence.</p>
+  </li>
 </ul>
 
 <h2 id="building-a-lock">Building a lock</h2>
@@ -227,29 +227,27 @@ unlock(&amp;mutex);
       <li>Only works on single CPUs.  (Why?)</li>
     </ul>
   </li>
-  <li>Attempt 2: Spin-wait</li>
-</ul>
+  <li>
+    <p>Attempt 2: Spin-wait</p>
 
-<p>```
-typedef struct __lock_t { int flag; } lock_t;</p>
-
-<p>void init(lock_t *mutex) {
+    <pre><code>typedef struct __lock_t { int flag; } lock_t;
+  
+void init(lock_t *mutex) {
  // 0 -&gt; lock is available, 1 -&gt; held
  mutex-&gt;flag = 0;
-}</p>
-
-<p>void lock(lock_t *mutex) {
+}
+  
+void lock(lock_t *mutex) {
   while (mutex-&gt;flag == 1) // TEST the flag
      ; // spin-wait (do nothing)
   mutex-&gt;flag = 1; // now SET it!
-}</p>
-
-<p>void unlock(lock_t *mutex) {
+}
+  
+void unlock(lock_t *mutex) {
   mutex-&gt;flag = 0;
 }
-```</p>
-
-<ul>
+</code></pre>
+  </li>
   <li class="q">Is this correct? Why or why not?
     <ul>
       <li>What happens if multiple threads are waiting and see <code>mutex-&gt;flag != 1</code>?</li>
@@ -269,28 +267,23 @@ typedef struct __lock_t { int flag; } lock_t;</p>
     <ul>
       <li>Atomic test-and-set (<code>xchg</code> “atomic exchange” on x86)</li>
     </ul>
-  </li>
-</ul>
 
-<p><code>
-int TestAndSet(int *old_ptr, int new) {
+    <pre><code>int TestAndSet(int *old_ptr, int new) {
   int old = *old_ptr; // fetch old value at old_ptr
   *old_ptr = new; // store ’new’ into old_ptr
   return old; // return the old value
 }
-</code></p>
+</code></pre>
 
-<p><code>
-; int TestAndSet(int *old_ptr, int new)
+    <pre><code>; int TestAndSet(int *old_ptr, int new)
 ; args: rdi = old_ptr, esi = new
 TestAndSet:
     mov eax, esi        ; eax = new
     xchg eax, [rdi]     ; atomically swap eax with *old_ptr
                         ; eax now holds old value, *old_ptr = new
     ret                 ; return old value in eax
-</code></p>
-
-<ul>
+</code></pre>
+  </li>
   <li>Notice what’s going on here:
     <ul>
       <li>If you want a lock, pass a <code>1</code> as <code>new</code>.</li>
@@ -309,17 +302,15 @@ was previously set, or if it was not set
       <li>C code is just for illustrative purposes.</li>
     </ul>
   </li>
-  <li>Possible lock implementation using <code>TestAndSet</code>:</li>
-</ul>
+  <li>
+    <p>Possible lock implementation using <code>TestAndSet</code>:</p>
 
-<p><code>
-void lock(lock_t *lock) {
+    <pre><code>void lock(lock_t *lock) {
   while (TestAndSet(&amp;lock-&gt;flag, 1) == 1)
      ; // spin-wait (do nothing)
 }
-</code></p>
-
-<ul>
+</code></pre>
+  </li>
   <li>This is correct.</li>
   <li class="q">Is it fair?  Why or why not?
     <ul>
@@ -333,79 +324,78 @@ void lock(lock_t *lock) {
 <em>if critical section is very small</em></li>
     </ul>
   </li>
+  <li class="q">Why is it important that the number of threads be &lt;= number of cores?</li>
 </ul>
 
 <h2 id="petersons-algorithm">Peterson’s algorithm.</h2>
 
 <ul>
-  <li>It is possible in specific circumstances to implement a spin lock without
-special hardware:</li>
-</ul>
+  <li>
+    <p>It is possible in specific circumstances to implement a spin lock without
+special hardware:</p>
 
-<p>```
-int flag[2];
-int turn;</p>
+    <p>~~~
+ int flag[2];
+ int turn;</p>
 
-<p>void init() {
-   // indicate you intend to hold the lock w/ ’flag’
-   flag[0] = flag[1] = 0;
-   // whose turn is it? (thread 0 or 1)
-   turn = 0;
-}</p>
+    <p>void init() {
+    // indicate you intend to hold the lock w/ ’flag’
+    flag[0] = flag[1] = 0;
+    // whose turn is it? (thread 0 or 1)
+    turn = 0;
+ }</p>
 
-<p>void lock() {
-   // ’self’ is the thread ID of caller
-   flag[self] = 1;
-   // make it other thread’s turn
-   turn = 1 - self;
-   while ((flag[1-self] == 1) &amp;&amp; (turn == 1 - self))
-      ; // spin-wait while it’s not your turn 
-}</p>
+    <p>void lock() {
+    // ’self’ is the thread ID of caller
+    flag[self] = 1;
+    // make it other thread’s turn
+    turn = 1 - self;
+    while ((flag[1-self] == 1) &amp;&amp; (turn == 1 - self))
+       ; // spin-wait while it’s not your turn 
+ }</p>
 
-<p>void unlock() {
-   // simply undo your intent
-   flag[self] = 0;
-}
-```</p>
-
-<ul>
+    <p>void unlock() {
+    // simply undo your intent
+    flag[self] = 0;
+ }
+ ~~~</p>
+  </li>
   <li class="q">Why is there no race condition?
     <ul>
       <li>Separate flags for each process.</li>
     </ul>
   </li>
-  <li class="q">
-    <p>Why do we need both <code>flag</code> and <code>turn</code>?</p>
+  <li class="q">Why do we need both <code>flag</code> and <code>turn</code>? (Why is <code>flag</code> not sufficient?)
+    <ul>
+      <li><code>flag</code> alone can lead to deadlock.</li>
+      <li>setting <code>turn</code> to the other process ensures progress.</li>
+      <li><code>turn</code> alone is not sufficient, because you could get stuck (i.e., violate progress)</li>
+    </ul>
   </li>
   <li>Compare and Swap
     <ul>
       <li>Similar, but more powerful than test and set.</li>
-      <li>(We’ll use the “extra” power later)</li>
-    </ul>
-  </li>
-</ul>
+      <li>
+        <p>(We’ll use the “extra” power later)</p>
 
-<p><code>
-int CompareAndSwap(int *ptr, int expected, int new) {
+        <pre><code>int CompareAndSwap(int *ptr, int expected, int new) {
   int original = *ptr;
   if (original == expected)
       *ptr = new;
   return original;
 }
-</code></p>
-
-<ul>
+</code></pre>
+      </li>
+    </ul>
+  </li>
   <li>Load linked and store conditional
     <ul>
       <li>Used by Alpha, PowerPC, ARM, and MIPS</li>
       <li>load linked is a typical load</li>
-      <li>store conditional only stores if no other stores have taken place.</li>
-    </ul>
-  </li>
-</ul>
+      <li>
+        <p>store conditional only stores if no other stores have taken place.</p>
 
-<p><code>
-void lock(lock_t *lock) {
+        <pre><code>void lock(lock_t *lock) {
   while (1) {
     while (LoadLinked(&amp;lock-&gt;flag) == 1)
          ; // spin until it’s zero
@@ -414,15 +404,90 @@ void lock(lock_t *lock) {
     // otherwise: try again
   }
 }
-</code>
-Alternatively,</p>
+</code></pre>
 
-<p><code>
-1 void lock(lock_t *lock) {
-2    while (LoadLinked(&amp;lock-&gt;flag) || !StoreConditional(&amp;lock-&gt;flag, 1))
-4       ; // spin
-5 }
-</code></p>
+        <p>Alternatively,</p>
+
+        <pre><code>void lock(lock_t *lock) {
+   while (LoadLinked(&amp;lock-&gt;flag) || !StoreConditional(&amp;lock-&gt;flag, 1))
+      ; // spin
+}
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Fetch-And-Add</p>
+
+    <pre><code>int FetchAndAdd(int *ptr) {
+  int old = *ptr;
+  *ptr = old + 1;
+  return old;
+}
+</code></pre>
+
+    <ul>
+      <li>Return value is the thread’s “turn”</li>
+      <li>Guarantees progress</li>
+    </ul>
+
+    <pre><code>typedef struct __lock_t {
+  int ticket;
+  int turn;
+  } lock_t;
+   
+  void lock_init(lock_t *lock) {
+  lock-&gt;ticket = 0;
+  lock-&gt;turn = 0;
+  }
+   
+  void lock(lock_t *lock) {
+  int myturn = FetchAndAdd(&amp;lock-&gt;ticket);
+  while (lock-&gt;turn != myturn)
+  ; // spin
+  }
+   
+  void unlock(lock_t *lock) {
+  lock-&gt;turn = lock-&gt;turn + 1;
+  }
+</code></pre>
+  </li>
+</ul>
+
+<h2 id="too-much-spinning">Too much spinning</h2>
+
+<ul>
+  <li>Notice that the solutions above do not require OS support – just the atomic HW primitive.</li>
+  <li>But, when there is contention, we can waste entire time slices.</li>
+  <li>Simple OS solution:  Call <code>yield</code> when you begin to spin.</li>
+  <li class="q">What are the limitations of this approach?
+    <ul>
+      <li>If there are many threads, and one gets preempted in a critical section, each other
+thread will likely get scheduled only to yield.  This is a lot of context switches
+for no progress.</li>
+      <li>It makes starvation more likely: While a process is off the CPU, another can come 
+in and grab the lock.</li>
+    </ul>
+  </li>
+  <li>Add a mechanism to block and unblock processes.</li>
+  <li>If a process begins to spin, add it to a queue, then</li>
+  <li>unblock in order.</li>
+  <li>Notice that there is still a spin lock, but it contains only a few instructions.</li>
+  <li>
+    <p>Probably of time slice expiring while in critical section is small.</p>
+  </li>
+  <li class="q">What happens if <code>park</code> is called before guard is released?</li>
+  <li class="q">When process waiting for a lock, flag is not set back to 1. Why?
+    <ul>
+      <li>Lock is handed directly to next process in line.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="two-phase-locks">Two-phase locks</h2>
+<ul>
+  <li>Spin for a fixed amount of time before “parking”</li>
+</ul>
 
 </main>
 </body>
