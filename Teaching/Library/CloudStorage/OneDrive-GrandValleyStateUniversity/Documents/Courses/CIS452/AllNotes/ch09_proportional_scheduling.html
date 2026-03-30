@@ -1,0 +1,367 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="chapter-9-proportional-scheduling">Chapter 9: Proportional Scheduling</h1>
+
+<ul>
+  <li>Instead of optimizing for response time, focus on getting a process 
+the desired percentage of CPU time.
+    <ul>
+      <li>“Proportional share”</li>
+      <li>“Fair share” (remember, “fair” does not necessarily mean “equal”)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="lottery-scheduling">“Lottery scheduling”</h2>
+
+<ul>
+  <li>Instead of fancy accounting, let’s use randomness.
+    <ul>
+      <li>One ticket per “share”.</li>
+      <li>Processes may have differing numbers of tickets.</li>
+    </ul>
+  </li>
+  <li>Ticket currency: Hand shares/tickets to users and let them allocate 
+the tickets among their processes.</li>
+  <li>Ticket transfer
+    <ul>
+      <li class="q">When might you want to give tickets to another process (potentially another user)?</li>
+      <li>When you are waiting on that process.</li>
+    </ul>
+  </li>
+  <li>Temporary ticket inflation
+    <ul>
+      <li>Works in an environment where processes all trust each other.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="implementation">Implementation</h3>
+
+<ul>
+  <li class="q">Describe an implementation.
+    <ul>
+      <li>After drawing a number, how do we figure out who gets to run?</li>
+      <li class="q">What is the big-O running time of this?</li>
+      <li class="q">What is the big-O space?</li>
+      <li class="q">Can we do better?</li>
+    </ul>
+  </li>
+  <li class="q">How to assign tickets?</li>
+</ul>
+
+<h2 id="stride-scheduling">Stride Scheduling</h2>
+
+<ul>
+  <li>Lottery can be simple, but doesn’t always produce the precise result — especially for short jobs.</li>
+  <li>Idea: Let <em>stride</em> as inversely proportional to number of tickets.
+    <ul>
+      <li>Consider 100, 50, and 250 tickets.</li>
+      <li>1/100, 1/50, 1/250</li>
+      <li>.01, .02, .004</li>
+      <li>Multiply by large integer to make things look nicer.  (Say, 10000)</li>
+      <li>100, 200, 40</li>
+    </ul>
+  </li>
+  <li>Use a value, called the <em>pass</em> value to count how often each process runs.
+    <ul>
+      <li>When a process runs, increment the pass value by the stride.</li>
+    </ul>
+  </li>
+  <li>Choose process with the lowest pass value.</li>
+  <li>
+    <p>Key idea: Processes with more “tickets” increase the pass value more slowly.</p>
+  </li>
+  <li class="q">. So, if stride is guaranteed to be fair, but lottery is just approximately fair, 
+what is the benefit of lottery?
+    <ul>
+      <li>Simplicity. No state to maintain.</li>
+      <li>Also, it’s not clear how to handle newly created processes.</li>
+      <li class="q">What’s the challenge with new processes?</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="linux-cfs">Linux CFS</h2>
+
+<ul>
+  <li>(Study shows that scheduling uses about 5% of overall datacenter CPU time.)</li>
+  <li>Completely Fair Scheduler</li>
+  <li>Basic idea: Track runtime. Run process with lowest accumulated runtime.</li>
+  <li class="q">How do interactive vs. compute-heavy jobs far in this system?
+    <ul>
+      <li>Interactive jobs do not accumulate much vtime before they block, so they 
+retain a high priority.</li>
+    </ul>
+  </li>
+  <li>How often to switch processes?</li>
+  <li>Idea: set parameter <code>sched_latency</code>, divide by number of processes.
+    <ul>
+      <li>e.g., if <code>sched_latency = 48</code> and <code>n = 4</code> switch every <code>48 / 4 = 12</code> ms.</li>
+    </ul>
+  </li>
+  <li>{. :q} What’s the problem?
+    <ul>
+      <li>What if <code>n</code> is so large that the time slice becomes absurdly small?</li>
+    </ul>
+  </li>
+  <li>There is a minimum time slice (say 6ms)</li>
+  <li>Note: OS “wakes up” and checks every 1ms or so. If there is no need to 
+change, then there isn’t a context switch.  So, this interrupt can be quite fast.</li>
+  <li class="q">How many instructions go by in 1 ms?
+    <ul>
+      <li>1 million on a 1GHz machine. (More if it is super scalar).</li>
+    </ul>
+  </li>
+  <li>So, if this interrupt takes 1000 instructions, it uses &lt; 0.1% of the CPU time.</li>
+</ul>
+
+<h3 id="favoring-processes">Favoring processes</h3>
+
+<ul>
+  <li>“Nice” level corresponds to a weight.</li>
+  <li>Higher priority processes get more weight, and thus a 
+higher percentage of <code>sched_latency</code></li>
+  <li><code>vruntime</code> is also scaled based on the nice value.</li>
+</ul>
+
+<h2 id="performance--run-time">Performance / run time</h2>
+
+<ul>
+  <li class="q">How can we implement CFS most efficiently?</li>
+  <li>Assume we have 10 jobs ordered by <code>vruntime</code>: 1 5 9 10 14 18 17 21 22 and 24.</li>
+  <li>Finding the next job to run is easy.</li>
+  <li class="q">What is the hard part?
+    <ul>
+      <li>Maintaining order after we update <code>vruntime</code></li>
+    </ul>
+  </li>
+  <li class="q">What is the cost of the obvious algorithm?
+    <ul>
+      <li><code>O(n)</code> to insert into the list.</li>
+    </ul>
+  </li>
+  <li class="q">Can’t we use binary search?
+    <ul>
+      <li>To find, yes, not to insert.</li>
+    </ul>
+  </li>
+  <li class="q">But what about a linked list?
+    <ul>
+      <li>Then binary search doesn’t work.</li>
+    </ul>
+  </li>
+  <li class="q">What about a binary tree?
+    <ul>
+      <li>Can get unbalanced.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="other-edge-cases">Other edge cases</h2>
+
+<ul>
+  <li class="q">What happens if a process is blocked for a long time?
+    <ul>
+      <li>It might be allowed to hog the CPU.</li>
+    </ul>
+  </li>
+  <li class="q">What can we do to fix this?
+    <ul>
+      <li>Bring it up to the minimum of other processes.</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,271 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="beyond-physical-memory-mechanisms">Beyond Physical Memory: Mechanisms</h1>
+
+<ul>
+  <li>Until now, we have assumed that memory used by every process fits in physical memory (all at once). 
+That’s not realistic.</li>
+  <li>Key idea: If no frame is available, move an unused frame to physical memory.
+    <ul>
+      <li>This is more or less the same idea as cache: Keep what you are using “close” 
+and put other stuff “far away”.</li>
+    </ul>
+  </li>
+  <li class="q">Differences?
+    <ul>
+      <li>Cache is small relative to main memory (8KB for L1 compared to 10s of GB).</li>
+      <li>Today, we only swap out a small percentage of RAM (e.g., 3GB out of 16GB).</li>
+      <li>RAM is about 100x slower than cache.</li>
+      <li>Disk is about 10,000 times slower than RAM.</li>
+    </ul>
+  </li>
+  <li>Compare “single address space” system to old-school <em>Overlays</em> that the 
+programmer had to manage by hand.</li>
+  <li>Swap space: Space on disk for vm pages.</li>
+  <li>Idea: Instead of swapping code pages out to the specific swap space, just dump 
+them and reload them from disk if necessary.
+    <ul>
+      <li class="q">Caveat?</li>
+      <li>You can’t delete a program while it is running.</li>
+    </ul>
+  </li>
+  <li>Add a <em>present</em> bit to the page table.
+    <ul>
+      <li>Set the present bit to 0 if the page is not in a page frame, but on disk instead.</li>
+    </ul>
+  </li>
+  <li>A <em>page fault</em> happens when a page is not present.</li>
+  <li>A page fault is handled by the operating system, not hardware
+    <ul>
+      <li>There are a lot of steps involved in doing the disk I/O and loading the
+resulting data into RAM.</li>
+    </ul>
+  </li>
+  <li>Often the page table entry can contain the location on disk if page isn’t present.</li>
+  <li>Process is blocked while page fault is handled. (Let’s other processes get work done.)</li>
+  <li class="q">What are the three possibilities with TLB miss:
+    <ol>
+      <li>Present and valid (Just grab frame number from the page table)</li>
+      <li>Valid and not present (Need to fetch page from swap space)</li>
+      <li>Invalid</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="optimization-keep-some-page-frames-free">Optimization: Keep some page frames free</h2>
+<ul>
+  <li>Waiting until memory is full makes page faults really slow:
+We’d need to wait for page to be written out, then new page read in.</li>
+  <li>Idea: Preemptively write pages out.</li>
+  <li>When number of free pages goes below the <em>low water mark</em>, start writing pages out to disk.
+    <ul>
+      <li>(This can even be done when the disk isn’t otherwise busy, giving priority to I/O from running processes).</li>
+    </ul>
+  </li>
+  <li>Stop writing pages out when a <em>high water mark</em> is reached.</li>
+  <li>To improve efficiency, write out a group of related pages
+    <ul>
+      <li>Likely to be evicted around the same time</li>
+      <li>Larger disk writes are more efficient.</li>
+    </ul>
+  </li>
+  <li>Key idea: Just because a page is written out, does not mean it is no longer present.
+    <ul>
+      <li>If the page is referenced before the page frame is needed, it is “saved”.  No page fault.</li>
+      <li>This is the idea of “major” and “minor” page faults from recent lab.</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>

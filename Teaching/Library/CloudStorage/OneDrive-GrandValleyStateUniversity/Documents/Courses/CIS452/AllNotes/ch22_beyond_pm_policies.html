@@ -1,0 +1,358 @@
+
+<html lang="en">
+<head>
+  <title>GVSU School of Computing</title>
+  <meta charset="utf-8">
+  <style>
+    .type-this {
+      background-color: #ffddff;
+      white-space: nowrap;
+    }
+
+    .to-me {
+      color: #0000ff;
+      font-size: 110%;
+    }
+
+    .question, .q {
+      color: #cc00cc;
+      font-size: 110%;
+    }
+
+    .question, .q > ul {
+      color: #000000;
+      font-size: 91%;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .listHeader {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    table.bottomBorders td {
+      border-bottom: 1px solid black;
+    }
+
+    .indent25 {
+      margin: 25px;
+    }
+
+  .strikethrough {
+      text-decoration: line-through;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px;
+    padding-right: 10px;
+  }
+
+    
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+    
+    .highlight {
+      display: inline-block;
+      background-color: #ffffff;
+    }
+
+    pre.highlight {
+      background-color: #f0f0f0;
+      padding-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<main id="content">
+  <h1 id="policies">Policies</h1>
+
+<ul>
+  <li class="q">How do we decide which page to evict?</li>
+  <li class="q">What is the goal of our page replacement algorithm?
+    <ul>
+      <li>Maximize hit rate.</li>
+      <li>Actually, it is to minimize AMAT – which is almost always tied to maximizing hit rate.</li>
+    </ul>
+  </li>
+  <li>Compare the AMAT for two different hit rates:
+    <ul>
+      <li>memory access time 100ns.</li>
+      <li>disk access time: 10ms (or 10,000,000ns)</li>
+      <li>With a 90% hit rate, <code>AMAT = 100 + .1 * 10,000,000 = 1,000,100ns</code> — about 1ms.
+        <ul>
+          <li>Think about that – the average memory access takes 1,000,000 instructions? That can’t be right.</li>
+        </ul>
+      </li>
+      <li>With a 99.9% hit rate, <code>AMAT= 100 + .001 * 10,000,000 = 10,100ns</code> — about 10 microseconds
+        <ul>
+          <li>100x faster, but still too slow!</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Optimal
+    <ul>
+      <li class="q">What is the optimal policy? How do we calculate it?</li>
+      <li class="q">Why can’t we use it?</li>
+    </ul>
+  </li>
+  <li>FIFO
+    <ul>
+      <li class="q">Why is this not a good policy?</li>
+    </ul>
+  </li>
+  <li>Belady’s Anomaly
+    <ul>
+      <li>1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5</li>
+      <li class="q">What is hit rate with 3 pages?</li>
+      <li class="q">What is hit rate with 4 pages?</li>
+    </ul>
+  </li>
+  <li>Stack property: Cache of size <code>N + 1</code> always includes pages from cache of size <code>N</code>.
+    <ul>
+      <li>Can’t suffer from Belady’s Anomaly.</li>
+    </ul>
+  </li>
+  <li>Random:
+    <ul>
+      <li class="q">Pros and cons?</li>
+    </ul>
+  </li>
+  <li>LRU
+    <ul>
+      <li>Remember, replacement is done in software, so pesudo-LRU not critical (as with hardware cache)</li>
+    </ul>
+  </li>
+  <li>Graphs <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf">https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf</a>
+    <ul>
+      <li>22.6 Random
+        <ul>
+          <li class="q">With no locality, why do all algorithms behave the same?</li>
+          <li class="q">Why is opt different?</li>
+        </ul>
+      </li>
+      <li>22.7 80/20
+        <ul>
+          <li>More locality to leverage</li>
+        </ul>
+      </li>
+      <li>22.8 Looping
+        <ul>
+          <li class="q">Why are LRU and FIFO identical?</li>
+          <li class="q">Wy is rand better?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="implementation">Implementation</h2>
+<ul>
+  <li class="q">What work must be done to implement each of the algorithms?
+    <ul>
+      <li>Random: “Just” draw a random number.</li>
+      <li>FIFO: Create a list on page replacement. (No work per access)</li>
+      <li>LRU: Work needed per access.</li>
+      <li>Naive LRU can be a performance bottleneck.</li>
+    </ul>
+  </li>
+  <li class="q">How can hardware support help (without putting everything in HW)
+    <ul>
+      <li>Remember, we want to allow OS designers flexibility to implement different policies.</li>
+    </ul>
+  </li>
+  <li>Idea: Have the hardware update a timestamp in page table upon each memory access.</li>
+</ul>
+
+<h2 id="approximating-lru">Approximating LRU</h2>
+
+<ul>
+  <li>Add a simple reference bit to the page table: Just set it whenever a page is referenced.</li>
+  <li>Idea: Don’t worry about precise LRU.  Just be sure to only evict pages that haven’t been 
+referenced.</li>
+  <li>Reset referenced bits to 0 when a page is evicted.
+    <ul>
+      <li>Since we have trapped into the OS, this isn’t a big deal.</li>
+    </ul>
+  </li>
+  <li>“Clock” algorithm:
+    <ul>
+      <li>Maintain a pointer that circles through the page table.</li>
+      <li>When a page must be evicted,</li>
+      <li>Circle through the page table.</li>
+      <li>If a page has a reference bit of 1, set it to 0 and move on.</li>
+      <li>If a page has a reference bit of 0, evict it.</li>
+      <li>If all pages have been referenced, pointer will circle around and evict the first page to 0.</li>
+    </ul>
+  </li>
+  <li>Notice:
+    <ul>
+      <li>Minimal accounting (a single bit set by hardware).</li>
+      <li>Don’t usually have to touch all the pages upon eviction.</li>
+      <li class="to-me">Figure 22.9 shows small difference with LRU.</li>
+    </ul>
+  </li>
+  <li>Modifications to clock:
+    <ul>
+      <li>Prefer evicting “clean” pages
+        <ul>
+          <li class="q">Why?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Other optimizations:
+    <ul>
+      <li>Demand paging (waiting until memory is accessed to bring it in)</li>
+      <li>Prefetching (predicting that a page will be accessed soon)</li>
+      <li>Writing clusters of pages out at once
+        <ul>
+          <li>This is more efficient than one page at a time.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="thrashing">Thrashing</h2>
+
+<ul>
+  <li>Repeatedly moving pages on and off disk – destroying speed.</li>
+  <li class="q">What can we do?
+    <ul>
+      <li>Intentionally “starve” some processes?</li>
+      <li>Or at least run processes in batches, limiting how often pages need to be 
+swapped out.</li>
+      <li>Kill a few memory intensive processes</li>
+    </ul>
+  </li>
+</ul>
+
+</main>
+</body>
+</html>
