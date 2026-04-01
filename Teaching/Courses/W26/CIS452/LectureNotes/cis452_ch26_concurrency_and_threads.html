@@ -253,16 +253,14 @@ transfer to another thread.</li>
   <li>Notice that for small runs, there are no errors.</li>
   <li>At some point, errors creep in – a lot of errors.</li>
   <li class="q">What’s going on?</li>
-  <li>This line: `	counter = counter + 1; // shared: only one` compiles to something like</li>
-</ul>
+  <li>
+    <p>This line: `	counter = counter + 1; // shared: only one` compiles to something like</p>
 
-<p><code>
-mov 0x8049a1c, %eax
+    <pre><code>mov 0x8049a1c, %eax
 add $0x1, %eax
 mov %eax, 0x8049a1c
-</code></p>
-
-<ul>
+</code></pre>
+  </li>
   <li class="to-me">Show how these can get interleaved.</li>
   <li class="q">Why are there so few errors when loop is small?
     <ul>

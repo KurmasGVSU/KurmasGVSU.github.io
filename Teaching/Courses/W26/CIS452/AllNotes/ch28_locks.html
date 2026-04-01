@@ -458,7 +458,12 @@ special hardware:</p>
 
 <ul>
   <li>Notice that the solutions above do not require OS support – just the atomic HW primitive.</li>
-  <li>But, when there is contention, we can waste entire time slices.</li>
+  <li>But we can waste entire time slices
+    <ul>
+      <li>when there is contention, and</li>
+      <li>especially when the lock is held for a long time.</li>
+    </ul>
+  </li>
   <li>Simple OS solution:  Call <code>yield</code> when you begin to spin.</li>
   <li class="q">What are the limitations of this approach?
     <ul>
@@ -469,17 +474,83 @@ for no progress.</li>
 in and grab the lock.</li>
     </ul>
   </li>
-  <li>Add a mechanism to block and unblock processes.</li>
+  <li>Solution:
+    <ul>
+      <li>Add a mechanism to block and unblock processes.</li>
+      <li>Maintain a queue</li>
+    </ul>
+  </li>
   <li>If a process begins to spin, add it to a queue, then</li>
   <li>unblock in order.</li>
   <li>Notice that there is still a spin lock, but it contains only a few instructions.</li>
   <li>
     <p>Probably of time slice expiring while in critical section is small.</p>
+
+    <p>~~~
+ typedef struct __lock_t {
+  int flag;
+  int guard;
+  queue_t *q;
+ } lock_t;</p>
+
+    <p>void lock_init(lock_t *m) {
+    m-&gt;flag = 0;
+    m-&gt;guard = 0;
+    queue_init(m-&gt;q);
+  }</p>
+
+    <p>void lock(lock_t *m) {
+    while (TestAndSet(&amp;m-&gt;guard, 1) == 1)
+       ; //acquire guard lock by spinning
+    if (m-&gt;flag == 0) {
+       m-&gt;flag = 1; // lock is acquired
+       m-&gt;guard = 0;
+    } else {
+      queue_add(m-&gt;q, gettid());
+      m-&gt;guard = 0;
+      park();
+    }
+  }</p>
+
+    <p>void unlock(lock_t *m) {
+    while (TestAndSet(&amp;m-&gt;guard, 1) == 1)
+       ; //acquire guard lock by spinning
+    if (queue_empty(m-&gt;q))
+       m-&gt;flag = 0; // let go of lock; no one wants it
+    else
+       unpark(queue_remove(m-&gt;q)); // hold lock (for next thread!)
+    m-&gt;guard = 0;
+  }
+ ~~~</p>
+  </li>
+  <li>Notice the use of a spin lock “guard” to protect code that sets up the “real” lock
+    <ul>
+      <li>This should be fine because it is only held for a few lines of code.</li>
+      <li>(“Fancier” approaches would require more cycles than just spinning.)</li>
+    </ul>
   </li>
   <li class="q">What happens if <code>park</code> is called before guard is released?</li>
   <li class="q">When process waiting for a lock, flag is not set back to 1. Why?
     <ul>
       <li>Lock is handed directly to next process in line.</li>
+    </ul>
+  </li>
+  <li class="q">Do you see any subtle race conditions here?</li>
+  <li class="q">Think about the interaction between checking the queue and parking/unparking?
+    <ol>
+      <li>Process A is running <code>lock</code>, adds itself to the queue, sets <code>guard</code> to 0, then gets 
+taken off the CPU.</li>
+      <li>Process B calls <code>unlock</code>, sees queue is not empty, signals Process A by calling <code>unpark</code>.</li>
+      <li>Process A gets scheduled again.  It’s next like of code is <code>park</code>.  However, the last
+process holding the lock already called <code>unpark(A)</code>. When A calls <code>park</code>, it will go to 
+sleep and not wake up because nobody knows to signal it.</li>
+    </ol>
+  </li>
+  <li>Solution:
+    <ul>
+      <li>Call <code>setPark()</code> before releasing the guard. If there is an intervening <code>unpark</code> then the system
+can handle it.</li>
+      <li>Build an atomic kernel call to release guard and park.</li>
     </ul>
   </li>
 </ul>
@@ -488,6 +559,8 @@ in and grab the lock.</li>
 <ul>
   <li>Spin for a fixed amount of time before “parking”</li>
 </ul>
+
+<h2 id="priority-inversion">Priority Inversion</h2>
 
 </main>
 </body>
