@@ -189,85 +189,105 @@
 </head>
 <body>
 <main id="content">
-  <p><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf">https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf</a></p>
-
-<h1 id="processes">Processes</h1>
+  <h1 id="semaphores">Semaphores</h1>
 
 <ul>
-  <li><em>Process</em>: A <em>running</em> program</li>
-  <li>The <em>program</em> itself is “lifeless”:  Just code sitting on a disk</li>
-  <li>To allow a computer to run more programs than CPUs “concurrently”, we “virtualize”
-the CPU: Each program “sees” a CPU and treats it as if it is the only program 
-running on that CPU.</li>
-  <li><em>Time sharing</em></li>
-  <li><em>Context switch</em>: Changing the program running on a CPU.</li>
-  <li class="q">How would you explain <em>Mechanism</em> vs. <em>Policy</em>?
+  <li>A semaphore combines locks and condition variables.</li>
+  <li>Invented by Dijkstra (of Dijkstra’s algorithm and 
+ “goto considered harmful”)</li>
+  <li>A semaphore is an object with an integer value.</li>
+  <li><code>sem_wait</code>:
     <ul>
-      <li>Mechanism: How to make something happen</li>
-      <li>Policy: The choice of what to do.</li>
+      <li>decrement the integer.</li>
+      <li>wait if value is negative</li>
+      <li>historically called <code>P</code></li>
     </ul>
   </li>
-  <li class="q">Apply mechanism vs policy to time sharing a CPU.
+  <li><code>sem_post</code>:
     <ul>
-      <li>Mechanism is the stuff that needs to happen so that one process
-can replace another on the CPU without either process knowing it 
-happens.</li>
-      <li>Policy includes things like choosing when to do a context switch.</li>
+      <li>increment the integer</li>
+      <li>wake one waiting thread.</li>
+      <li>historically called ‘V’</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="process-state">Process State</h2>
+<h2 id="binary-semaphores-locks">Binary semaphores (locks)</h2>
+
 <ul>
-  <li class="q">If we want to be able to switch processes, what all do we 
-need to preserve?
+  <li>Initialize semaphore to 1.</li>
+  <li>First to call <code>wait</code> decrements to 0 and moves on.</li>
+  <li>If second comes along, decrements to -1 so waits.</li>
+  <li>When first releases, count goes to 0 and second thread wakes.</li>
+  <li>If first finishes before second comes along, semaphore returns to 1
+allowing second to enter immediately.</li>
+  <li class="q">How to use semaphore to wait for child?
     <ul>
-      <li>Memory state (address space)</li>
-      <li>General purpose registers</li>
-      <li>Special purpose registers (Program counter, stack pointer, flags)</li>
-      <li>Open file handles</li>
-      <li>Current working directory</li>
-      <li>Other stuff</li>
+      <li>Binary semaphore set to 0.</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="process-api">Process API</h2>
+<h2 id="bounded-buffer">Bounded Buffer</h2>
+
 <ul>
-  <li class="q">What operations does an OS need to be able to take on processes?
+  <li>Use two semaphores, one for empty and one for full.</li>
+  <li>Works for one producer and one consumer.</li>
+  <li class="q">Fails for multiple producers and consumers.  Why?
     <ul>
-      <li>Create</li>
-      <li>Destroy</li>
-      <li>Wait</li>
-      <li>Status</li>
-      <li>Misc others (e.g., suspend)</li>
+      <li>Can’t fill/empty at the same time.  There’s a race condition.</li>
+    </ul>
+  </li>
+  <li>Solution: Need mutex.</li>
+  <li class="q">In figure 11, why doesn’t this work?
+    <ul>
+      <li>Deadlock</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="process-creation">Process Creation</h2>
+<h2 id="readerwriter-locks">Reader/Writer locks</h2>
+
 <ul>
-  <li>Load machine code from disk into memory</li>
-  <li>Initialize any static data 
-e.g., global constants.</li>
-  <li>Set up the stack and heap</li>
-  <li>Set up I/O (stdin, stdout)</li>
-  <li>Set PC to first instruction in <code>main</code></li>
+  <li>Imagine a database that is read and written my many different processes.</li>
+  <li class="q">What is interesting about getting the locking write for reading and writing?
+    <ul>
+      <li>Multiple reads allowed, but only one writer.</li>
+      <li>Writing also requires readers to be locked out.
+        <ul>
+          <li class="q">Why?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="q">So, what do we do?
+    <ul>
+      <li>Basic mutex for writing (can use a semaphore).</li>
+      <li>Count readers</li>
+      <li>First reader also obtains writelock, preventing writing.</li>
+      <li>Last reader releases writelock allowing writing again.</li>
+    </ul>
+  </li>
+  <li class="q">What’s the problem/limitation?
+    <ul>
+      <li>Writers can starve.</li>
+      <li>Two step process adds overhead.  Make sure that reader/writer lock is actually faster than simply doing 
+mutually exclusive reading.  (Hill’s Law)</li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="process-states">Process States</h2>
+<h2 id="dining-philosophers">Dining Philosophers</h2>
+
 <ul>
-  <li>Running</li>
-  <li>Ready</li>
-  <li>Blocked</li>
+  <li>“grab left” then “grab right” doesn’t work.</li>
+  <li class="q">Why?</li>
+  <li class="q">possible solutions?</li>
 </ul>
 
-<h2 id="data-structures">Data Structures</h2>
+<h2 id="thread-throttling">Thread Throttling</h2>
 <ul>
-  <li>OS needs to maintain a list of processes.</li>
-  <li>For each process, it needs to track the status, 
-and the “Process State” information listed above.</li>
-  <li class="to-me">Show Figure 4.5 on p8 <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf">https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf</a></li>
+  <li>Simply create a semaphore with the max number of concurrent threads.</li>
 </ul>
 
 </main>

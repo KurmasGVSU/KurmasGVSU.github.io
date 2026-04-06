@@ -206,7 +206,7 @@
       <li>Notice that the condition is checked in a <code>while</code> loop, not an <code>if</code>.</li>
     </ul>
   </li>
-  <li>{. q} Why is a lock necessary? What could go wrong in Figure 30.5
+  <li class="q">Why is a lock necessary? What could go wrong in Figure 30.5
     <ul>
       <li>Parent runs <code>if (done == 0)</code>, then swapped out.</li>
       <li>Child runs <code>done = 1; signal</code> (but no thread is listening)</li>
@@ -221,7 +221,7 @@ and avoid subtle bugs.
   </li>
 </ul>
 
-<h1 id="bounded-buffer--producer-consumer">Bounded Buffer / Producer Consumer</h1>
+<h2 id="bounded-buffer--producer-consumer">Bounded Buffer / Producer Consumer</h2>
 
 <ul>
   <li>One process adds to a buffer, the other removes from it.</li>
@@ -263,13 +263,23 @@ guarantee it.
   <li class="q">What is the other problem?
     <ul>
       <li>One consumer can wake another (See Figure 30.11).</li>
+      <li>If consumer 1 wakes consumer 2 instead of the producer, 
+both consumers are now stuck in the while loop waiting on production
+and neither will ever wake the producer.</li>
     </ul>
   </li>
   <li>Solution: Separate <code>empty</code> and <code>full</code> conditions.</li>
   <li>Now we can add more buffer slots.</li>
 </ul>
 
-<p>(Start with 30.3)</p>
+<h2 id="covering-conditions">Covering Conditions</h2>
+
+<ul>
+  <li>What happens if multiple threads are sleeping, but only one 
+can continue if woken up?  (See 30.15)</li>
+  <li>One solution: Wake everybody.</li>
+  <li>This is wasteful. Only use as a last resort.</li>
+</ul>
 
 </main>
 </body>
