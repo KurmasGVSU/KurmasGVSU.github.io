@@ -189,111 +189,47 @@
 </head>
 <body>
 <main id="content">
-  <h1 id="semaphores">Semaphores</h1>
+  <h1 id="raid">RAID</h1>
 
 <ul>
-  <li>A semaphore combines locks and condition variables.</li>
-  <li>Invented by Dijkstra (of Dijkstra’s algorithm and 
- “goto considered harmful”)</li>
-  <li>A semaphore is an object with an integer value.</li>
-  <li><code>sem_wait</code>:
+  <li>Scaling up single disks is difficult and risky
     <ul>
-      <li>decrement the integer.</li>
-      <li>wait if value is negative</li>
-      <li>historically called <code>P</code></li>
+      <li>Hard to keep larger disks spinning fast.</li>
+      <li>A failure can destroy a lot of data.</li>
     </ul>
   </li>
-  <li><code>sem_post</code>:
+  <li>Solution: An array of disks working together.</li>
+  <li>Transparent:  A RAID cluster can present the same 
+interface as a single disk.  No need to update OS
+to use RAID.</li>
+  <li>Simply striping data across disks is dangerous
     <ul>
-      <li>increment the integer</li>
-      <li>wake one waiting thread.</li>
-      <li>historically called <code>V</code></li>
+      <li>If any one disk fails, all data lost.</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="binary-semaphores-locks">Binary semaphores (locks)</h2>
+<h1 id="raid-levels">Raid Levels:</h1>
 
 <ul>
-  <li>Initialize semaphore to 1.</li>
-  <li>First to call <code>wait</code> decrements to 0 and moves on.</li>
-  <li>If second comes along, decrements to -1 so waits.</li>
-  <li>When first releases, count goes to 0 and second thread wakes.</li>
-  <li>If first finishes before second comes along, semaphore returns to 1
-allowing second to enter immediately.</li>
-  <li class="q">How to use semaphore to wait for child?
+  <li>Raid 0: Striping.
     <ul>
-      <li>Binary semaphore set to 0.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="bounded-buffer">Bounded Buffer</h2>
-
-<ul>
-  <li>Use two semaphores, one for empty and one for full.</li>
-  <li>Works for one producer and one consumer.</li>
-  <li class="q">Figure 11 Fails for multiple producers and consumers.  Why?
-    <ul>
-      <li>Can’t fill/empty at the same time.  There’s a race condition.</li>
-    </ul>
-  </li>
-  <li>Solution: Need mutex.</li>
-  <li class="q">In figure 11, why doesn’t this work?
-    <ul>
-      <li>Deadlock</li>
-    </ul>
-  </li>
-  <li>Figure 12 fixes the deadlock. But,
-    <ul>
-      <li class="q">What if multiple consumers get past <code>sem_wait</code>, then loose the CPU?</li>
-      <li>This can’t happen. There can’t be more consumers past the <code>sem_wait</code> then items in the buffer.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="readerwriter-locks">Reader/Writer locks</h2>
-
-<ul>
-  <li>Imagine a database that is read and written my many different processes.</li>
-  <li class="q">What is interesting about getting the locking write for reading and writing?
-    <ul>
-      <li>Multiple reads allowed, but only one writer.</li>
-      <li>Writing also requires readers to be locked out.
+      <li>Good performance</li>
+      <li>No redundancy</li>
+      <li>There is a tradeoff between chunk size and speed.
         <ul>
-          <li class="q">Why?</li>
+          <li>small chunks maximize parallel access</li>
+          <li>Large chunks allow multiple requests to run in parallel<br />
+(which means seek times can run in parallel)</li>
         </ul>
       </li>
     </ul>
   </li>
-  <li class="q">So, what do we do?
+  <li>Raid 1: Mirroring
     <ul>
-      <li>Basic mutex for writing (can use a semaphore).</li>
-      <li>Count readers</li>
-      <li>First reader also obtains writelock, preventing writing.</li>
-      <li>Last reader releases writelock allowing writing again.</li>
+      <li class="q">How do solve the consistent update problem?</li>
     </ul>
   </li>
-  <li class="q">What’s the problem/limitation?
-    <ul>
-      <li>Writers can starve.</li>
-      <li>Two step process adds overhead.  Make sure that reader/writer lock is actually faster than simply doing 
-mutually exclusive reading.  (Hill’s Law)</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="dining-philosophers">Dining Philosophers</h2>
-
-<ul>
-  <li>“grab left” then “grab right” doesn’t work.</li>
-  <li class="q">Why?</li>
-  <li class="q">possible solutions?</li>
-</ul>
-
-<h2 id="thread-throttling">Thread Throttling</h2>
-<ul>
-  <li>Simply create a semaphore with the max number of concurrent threads.</li>
 </ul>
 
 </main>

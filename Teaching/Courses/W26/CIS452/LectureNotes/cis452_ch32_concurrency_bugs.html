@@ -268,7 +268,72 @@
   </li>
   <li>Mutual exclusion
     <ul>
-      <li></li>
+      <li>Recall <code>CompareAndSwap</code>  (“CompareAndUpdate” might be a better name)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><code>c
+int CompareAndSwap(int *address, int expected, int new) {
+  if (*address == expected) {
+    *address = new;
+    return 1; // success
+  }
+  return 0; // failure
+}
+</code></p>
+
+<ul>
+  <li>Atomic increment using <code>CompareAndSwap</code> (remember I said this would be useful later)</li>
+</ul>
+
+<p><code>c
+ void AtomicIncrement(int *value, int amount) {
+   do {
+      int old = *value;
+4   } while (CompareAndSwap(value, old, old + amount) == 0);
+5 }
+</code></p>
+
+<ul>
+  <li>
+    <p>This is a spin wait, and livelock is technically possible (but exponentially unlikely)</p>
+  </li>
+  <li class="q">
+    <p>What is the race condition here?</p>
+  </li>
+</ul>
+
+<p><code>c
+void insert(int value) {
+  node_t *n = malloc(sizeof(node_t));
+  assert(n != NULL);
+  n-&gt;value = value;
+  pthread_mutex_lock(listlock); // begin critical section
+  n-&gt;next = head;
+  head = n;
+  pthread_mutex_unlock(listlock); // end critical section
+}
+</code>
+  * <code>CompareAndSwap</code> can obviate the need for a lock:</p>
+
+<p><code>c
+void insert(int value) {
+  node_t *n = malloc(sizeof(node_t));
+  assert(n != NULL);
+  n-&gt;value = value;
+  do {
+    n-&gt;next = head;
+  } while (CompareAndSwap(&amp;head, n-&gt;next, n) == 0);
+}
+</code>
+* Sometimes it’s possible to avoid deadlock by carefully assigning threads to CPUs.</p>
+
+<ul>
+  <li>Sometimes detection and recovery makes more sense than prevention.
+    <ul>
+      <li>If your CPU deadlocks only once per year, restarting isn’t really a big deal.</li>
+      <li>Some databases employ this approach.</li>
     </ul>
   </li>
 </ul>

@@ -189,111 +189,121 @@
 </head>
 <body>
 <main id="content">
-  <h1 id="semaphores">Semaphores</h1>
+  <h1 id="hard-disks">Hard Disks</h1>
 
 <ul>
-  <li>A semaphore combines locks and condition variables.</li>
-  <li>Invented by Dijkstra (of Dijkstra’s algorithm and 
- “goto considered harmful”)</li>
-  <li>A semaphore is an object with an integer value.</li>
-  <li><code>sem_wait</code>:
+  <li>Basic interface:  Sequence of sectors (typically 512 bytes).</li>
+  <li>A stack of spinning platters.
     <ul>
-      <li>decrement the integer.</li>
-      <li>wait if value is negative</li>
-      <li>historically called <code>P</code></li>
+      <li>Typically 7,200 to 15,000 RPM.</li>
+      <li>10000 RPM is 6ms per rotation.</li>
     </ul>
   </li>
-  <li><code>sem_post</code>:
+  <li>Each platter is a set of concentric circles called <em>tracks</em>.</li>
+  <li>read/write <em>head</em> is on the end of an <em>arm</em></li>
+</ul>
+
+<h2 id="components-of-latency">Components of latency</h2>
+<ul>
+  <li>Need to position the head over the right track (called <em>seek</em>)
     <ul>
-      <li>increment the integer</li>
-      <li>wake one waiting thread.</li>
-      <li>historically called <code>V</code></li>
+      <li>Speed up</li>
+      <li>coast</li>
+      <li>slow down</li>
+      <li>settle (0.5 to 2ms)</li>
+    </ul>
+  </li>
+  <li>Rotational latency (wait for platter to come underneath)
+    <ul>
+      <li>Average of 3ms on 10,000 RPM disk</li>
+    </ul>
+  </li>
+  <li>Transfer</li>
+</ul>
+
+<h2 id="interesting-geometry">Interesting geometry</h2>
+<ul>
+  <li>Logical sectors in neighboring tracks are offset.
+    <ul>
+      <li class="q">Why?</li>
+      <li>Head can’t move instantly.  Want the next sector to be under the 
+head when it settles on the text track.</li>
+      <li>See Figure 37.4</li>
+    </ul>
+  </li>
+  <li>Outer tracks are longer than inner tracks
+    <ul>
+      <li class="q">What are the consequences of this?</li>
+      <li>Either there are more sectors in the outer tracks, or</li>
+      <li>Sectors are less dense in the outer tracks.</li>
+      <li>At the same density, bits go by faster.</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="binary-semaphores-locks">Binary semaphores (locks)</h2>
-
+<h2 id="other">Other</h2>
 <ul>
-  <li>Initialize semaphore to 1.</li>
-  <li>First to call <code>wait</code> decrements to 0 and moves on.</li>
-  <li>If second comes along, decrements to -1 so waits.</li>
-  <li>When first releases, count goes to 0 and second thread wakes.</li>
-  <li>If first finishes before second comes along, semaphore returns to 1
-allowing second to enter immediately.</li>
-  <li class="q">How to use semaphore to wait for child?
+  <li><em>Track buffer</em>:  a cache</li>
+  <li><em>Write through</em> vs <em>write back</em>?
     <ul>
-      <li>Binary semaphore set to 0.</li>
+      <li class="q">Pros and cons</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="bounded-buffer">Bounded Buffer</h2>
-
+<h2 id="performance">Performance</h2>
 <ul>
-  <li>Use two semaphores, one for empty and one for full.</li>
-  <li>Works for one producer and one consumer.</li>
-  <li class="q">Figure 11 Fails for multiple producers and consumers.  Why?
-    <ul>
-      <li>Can’t fill/empty at the same time.  There’s a race condition.</li>
-    </ul>
-  </li>
-  <li>Solution: Need mutex.</li>
-  <li class="q">In figure 11, why doesn’t this work?
-    <ul>
-      <li>Deadlock</li>
-    </ul>
-  </li>
-  <li>Figure 12 fixes the deadlock. But,
-    <ul>
-      <li class="q">What if multiple consumers get past <code>sem_wait</code>, then loose the CPU?</li>
-      <li>This can’t happen. There can’t be more consumers past the <code>sem_wait</code> then items in the buffer.</li>
-    </ul>
-  </li>
+  <li>Transfer time is effectively nothing compared to the 
+time to physically move the disk.</li>
+  <li>Disks with transfer rates of over 100MB/s have effective
+I/O rates of random workloads of &lt; 1 MBs.</li>
+  <li>For a completely sequential workload, the I/O rates 
+jump to close to the transfer rate.</li>
+  <li>Thus data layout is critical to performance.</li>
 </ul>
 
-<h2 id="readerwriter-locks">Reader/Writer locks</h2>
+<h2 id="disk-scheduling">Disk Scheduling</h2>
 
 <ul>
-  <li>Imagine a database that is read and written my many different processes.</li>
-  <li class="q">What is interesting about getting the locking write for reading and writing?
+  <li>Suppose multiple requests come in while the disk is serving a previous request.
+When the current request is complete, what order should the queued requests be 
+served in?  Remember: Minimizing seek time and rotational latency has a huge 
+effect on performance.</li>
+  <li>SSTF: Shortest Seek Time First
     <ul>
-      <li>Multiple reads allowed, but only one writer.</li>
-      <li>Writing also requires readers to be locked out.
-        <ul>
-          <li class="q">Why?</li>
-        </ul>
-      </li>
+      <li>Challenge: OS does not have access to specific disk geometry</li>
+      <li>Can approximate with Nearest Block First</li>
+      <li>Starvation is possible</li>
     </ul>
   </li>
-  <li class="q">So, what do we do?
+  <li>Elevator (aka SCAN)
     <ul>
-      <li>Basic mutex for writing (can use a semaphore).</li>
-      <li>Count readers</li>
-      <li>First reader also obtains writelock, preventing writing.</li>
-      <li>Last reader releases writelock allowing writing again.</li>
+      <li>Just move head back and forth from outside to inside.</li>
     </ul>
   </li>
-  <li class="q">What’s the problem/limitation?
+  <li>C-SCAN (Circular scan)
     <ul>
-      <li>Writers can starve.</li>
-      <li>Two step process adds overhead.  Make sure that reader/writer lock is actually faster than simply doing 
-mutually exclusive reading.  (Hill’s Law)</li>
+      <li>Only go outside to inside</li>
+      <li>makes seek times more consistent</li>
+      <li>Can be important in real-time systems, or other
+systems where predictability is important.</li>
     </ul>
   </li>
-</ul>
-
-<h2 id="dining-philosophers">Dining Philosophers</h2>
-
-<ul>
-  <li>“grab left” then “grab right” doesn’t work.</li>
-  <li class="q">Why?</li>
-  <li class="q">possible solutions?</li>
-</ul>
-
-<h2 id="thread-throttling">Thread Throttling</h2>
-<ul>
-  <li>Simply create a semaphore with the max number of concurrent threads.</li>
+  <li>At first, OS did all the scheduling.</li>
+  <li>If we let disks do the scheduling 
+(i.e., accept multiple requests), 
+they can optimize better.</li>
+  <li>Hybrid: Disk has fix number of concurrent requests.
+OS needs to “guess” at best x requests to send in 
+parallel.</li>
+  <li>Overall efficiency can sometimes be improved by not 
+issuing requests immediately.
+    <ul>
+      <li>Think of a partially full taxi waiting a few minutes 
+before leaving the airport in case another customer 
+comes along with a nearby destination.</li>
+    </ul>
+  </li>
 </ul>
 
 </main>

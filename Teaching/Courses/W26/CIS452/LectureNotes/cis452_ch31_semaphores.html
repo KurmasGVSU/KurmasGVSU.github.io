@@ -207,7 +207,7 @@
     <ul>
       <li>increment the integer</li>
       <li>wake one waiting thread.</li>
-      <li>historically called ‘V’</li>
+      <li>historically called <code>V</code></li>
     </ul>
   </li>
 </ul>
@@ -233,7 +233,7 @@ allowing second to enter immediately.</li>
 <ul>
   <li>Use two semaphores, one for empty and one for full.</li>
   <li>Works for one producer and one consumer.</li>
-  <li class="q">Fails for multiple producers and consumers.  Why?
+  <li class="q">Figure 11 Fails for multiple producers and consumers.  Why?
     <ul>
       <li>Can’t fill/empty at the same time.  There’s a race condition.</li>
     </ul>
@@ -242,6 +242,12 @@ allowing second to enter immediately.</li>
   <li class="q">In figure 11, why doesn’t this work?
     <ul>
       <li>Deadlock</li>
+    </ul>
+  </li>
+  <li>Figure 12 fixes the deadlock. But,
+    <ul>
+      <li class="q">What if multiple consumers get past <code>sem_wait</code>, then loose the CPU?</li>
+      <li>This can’t happen. There can’t be more consumers past the <code>sem_wait</code> then items in the buffer.</li>
     </ul>
   </li>
 </ul>

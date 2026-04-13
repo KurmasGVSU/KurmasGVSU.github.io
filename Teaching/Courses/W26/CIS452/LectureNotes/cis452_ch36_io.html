@@ -189,111 +189,71 @@
 </head>
 <body>
 <main id="content">
-  <h1 id="semaphores">Semaphores</h1>
+  <h1 id="io">I/O</h1>
 
 <ul>
-  <li>A semaphore combines locks and condition variables.</li>
-  <li>Invented by Dijkstra (of Dijkstra’s algorithm and 
- “goto considered harmful”)</li>
-  <li>A semaphore is an object with an integer value.</li>
-  <li><code>sem_wait</code>:
+  <li>Busses tend to form a hierarchy</li>
+  <li>High-performance busses (e.g., memory) tend to be
     <ul>
-      <li>decrement the integer.</li>
-      <li>wait if value is negative</li>
-      <li>historically called <code>P</code></li>
+      <li>short and</li>
+      <li>expensive</li>
+      <li>plus less contention improves performance.</li>
     </ul>
   </li>
-  <li><code>sem_post</code>:
+  <li>
+    <p>When performance is less critical, we can use slower, longer, busses with more stuff attached.</p>
+  </li>
+  <li>Intel example
     <ul>
-      <li>increment the integer</li>
-      <li>wake one waiting thread.</li>
-      <li>historically called <code>V</code></li>
+      <li>Dedicated memory bus</li>
+      <li>Dedicated bus for graphics</li>
+      <li>Other I/O goes through an external chip using DMI.</li>
+      <li>Various busses/protocols attach to I/O chip (AT, SATA, eSATA, USB, PCIe, etc.)</li>
+    </ul>
+  </li>
+  <li>Common simple I/O Device:  Three registers
+    <ul>
+      <li>Status</li>
+      <li>Command</li>
+      <li>Data</li>
+    </ul>
+  </li>
+  <li>When the main CPU communicates directly with the device, it is <em>programmed I/O</em>
+    <ul>
+      <li>But, polling is inefficient</li>
+    </ul>
+  </li>
+  <li>Better idea: Interrupts
+    <ul>
+      <li>Put process to sleep,</li>
+      <li>wake it up when the device issues an interrupt.</li>
+      <li>(work best for slow devices)</li>
+    </ul>
+  </li>
+  <li>Direct Memory Access (DMA)
+    <ul>
+      <li>Programmed I/O takes up a lot of CPU time with trivial tasks</li>
+    </ul>
+  </li>
+  <li>Ports vs. Memory Mapped I/O
+    <ul>
+      <li>with MMIO, device ports are assigned memory addresses</li>
+      <li>I/O is now effectively just load/store.</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="binary-semaphores-locks">Binary semaphores (locks)</h2>
+<h2 id="device-driver">Device driver</h2>
 
 <ul>
-  <li>Initialize semaphore to 1.</li>
-  <li>First to call <code>wait</code> decrements to 0 and moves on.</li>
-  <li>If second comes along, decrements to -1 so waits.</li>
-  <li>When first releases, count goes to 0 and second thread wakes.</li>
-  <li>If first finishes before second comes along, semaphore returns to 1
-allowing second to enter immediately.</li>
-  <li class="q">How to use semaphore to wait for child?
+  <li>How do we abstract specific device interfaces to keep OS reasonably simple?</li>
+  <li>Device drivers.
     <ul>
-      <li>Binary semaphore set to 0.</li>
+      <li>One estimate is that 70% of OS code is in device drivers.</li>
+      <li>Device drivers are more likely to be buggy.</li>
     </ul>
   </li>
-</ul>
-
-<h2 id="bounded-buffer">Bounded Buffer</h2>
-
-<ul>
-  <li>Use two semaphores, one for empty and one for full.</li>
-  <li>Works for one producer and one consumer.</li>
-  <li class="q">Figure 11 Fails for multiple producers and consumers.  Why?
-    <ul>
-      <li>Can’t fill/empty at the same time.  There’s a race condition.</li>
-    </ul>
-  </li>
-  <li>Solution: Need mutex.</li>
-  <li class="q">In figure 11, why doesn’t this work?
-    <ul>
-      <li>Deadlock</li>
-    </ul>
-  </li>
-  <li>Figure 12 fixes the deadlock. But,
-    <ul>
-      <li class="q">What if multiple consumers get past <code>sem_wait</code>, then loose the CPU?</li>
-      <li>This can’t happen. There can’t be more consumers past the <code>sem_wait</code> then items in the buffer.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="readerwriter-locks">Reader/Writer locks</h2>
-
-<ul>
-  <li>Imagine a database that is read and written my many different processes.</li>
-  <li class="q">What is interesting about getting the locking write for reading and writing?
-    <ul>
-      <li>Multiple reads allowed, but only one writer.</li>
-      <li>Writing also requires readers to be locked out.
-        <ul>
-          <li class="q">Why?</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li class="q">So, what do we do?
-    <ul>
-      <li>Basic mutex for writing (can use a semaphore).</li>
-      <li>Count readers</li>
-      <li>First reader also obtains writelock, preventing writing.</li>
-      <li>Last reader releases writelock allowing writing again.</li>
-    </ul>
-  </li>
-  <li class="q">What’s the problem/limitation?
-    <ul>
-      <li>Writers can starve.</li>
-      <li>Two step process adds overhead.  Make sure that reader/writer lock is actually faster than simply doing 
-mutually exclusive reading.  (Hill’s Law)</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="dining-philosophers">Dining Philosophers</h2>
-
-<ul>
-  <li>“grab left” then “grab right” doesn’t work.</li>
-  <li class="q">Why?</li>
-  <li class="q">possible solutions?</li>
-</ul>
-
-<h2 id="thread-throttling">Thread Throttling</h2>
-<ul>
-  <li>Simply create a semaphore with the max number of concurrent threads.</li>
+  <li class="to-me">Look at Figure 36.4</li>
 </ul>
 
 </main>
