@@ -273,27 +273,25 @@
   </li>
 </ul>
 
-<p><code>c
-int CompareAndSwap(int *address, int expected, int new) {
-  if (*address == expected) {
-    *address = new;
-    return 1; // success
-  }
-  return 0; // failure
-}
-</code></p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">CompareAndSwap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">address</span><span class="p">,</span> <span class="kt">int</span> <span class="n">expected</span><span class="p">,</span> <span class="kt">int</span> <span class="n">new</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">address</span> <span class="o">==</span> <span class="n">expected</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">*</span><span class="n">address</span> <span class="o">=</span> <span class="n">new</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// success</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// failure</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <ul>
   <li>Atomic increment using <code>CompareAndSwap</code> (remember I said this would be useful later)</li>
 </ul>
 
-<p><code>c
- void AtomicIncrement(int *value, int amount) {
-   do {
-      int old = *value;
-4   } while (CompareAndSwap(value, old, old + amount) == 0);
-5 }
-</code></p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kt">void</span> <span class="nf">AtomicIncrement</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">value</span><span class="p">,</span> <span class="kt">int</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">do</span> <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">old</span> <span class="o">=</span> <span class="o">*</span><span class="n">value</span><span class="p">;</span>
+<span class="mi">4</span>   <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">CompareAndSwap</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="n">old</span> <span class="o">+</span> <span class="n">amount</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+<span class="mi">5</span> <span class="p">}</span>
+</code></pre></div></div>
 
 <ul>
   <li>
@@ -304,33 +302,35 @@ int CompareAndSwap(int *address, int expected, int new) {
   </li>
 </ul>
 
-<p><code>c
-void insert(int value) {
-  node_t *n = malloc(sizeof(node_t));
-  assert(n != NULL);
-  n-&gt;value = value;
-  pthread_mutex_lock(listlock); // begin critical section
-  n-&gt;next = head;
-  head = n;
-  pthread_mutex_unlock(listlock); // end critical section
-}
-</code>
-  * <code>CompareAndSwap</code> can obviate the need for a lock:</p>
-
-<p><code>c
-void insert(int value) {
-  node_t *n = malloc(sizeof(node_t));
-  assert(n != NULL);
-  n-&gt;value = value;
-  do {
-    n-&gt;next = head;
-  } while (CompareAndSwap(&amp;head, n-&gt;next, n) == 0);
-}
-</code>
-* Sometimes it’s possible to avoid deadlock by carefully assigning threads to CPUs.</p>
-
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">node_t</span> <span class="o">*</span><span class="n">n</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">node_t</span><span class="p">));</span>
+  <span class="n">assert</span><span class="p">(</span><span class="n">n</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">);</span>
+  <span class="n">n</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+  <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="n">listlock</span><span class="p">);</span> <span class="c1">// begin critical section</span>
+  <span class="n">n</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+  <span class="n">head</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+  <span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="n">listlock</span><span class="p">);</span> <span class="c1">// end critical section</span>
+<span class="p">}</span>
+</code></pre></div></div>
 <ul>
-  <li>Sometimes detection and recovery makes more sense than prevention.
+  <li><code>CompareAndSwap</code> can obviate the need for a lock:</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">node_t</span> <span class="o">*</span><span class="n">n</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">node_t</span><span class="p">));</span>
+  <span class="n">assert</span><span class="p">(</span><span class="n">n</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">);</span>
+  <span class="n">n</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+  <span class="k">do</span> <span class="p">{</span>
+    <span class="n">n</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">CompareAndSwap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>
+    <p>Sometimes it’s possible to avoid deadlock by carefully assigning threads to CPUs.</p>
+  </li>
+  <li>
+    <p>Sometimes detection and recovery makes more sense than prevention.</p>
     <ul>
       <li>If your CPU deadlocks only once per year, restarting isn’t really a big deal.</li>
       <li>Some databases employ this approach.</li>
