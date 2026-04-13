@@ -192,6 +192,14 @@
   <h1 id="io">I/O</h1>
 
 <ul>
+  <li class="q">What do you expect the main factors in bus performance are?
+    <ul>
+      <li>Length</li>
+      <li>Number of attached items</li>
+      <li>Traffic</li>
+      <li>Component quality</li>
+    </ul>
+  </li>
   <li>Busses tend to form a hierarchy</li>
   <li>High-performance busses (e.g., memory) tend to be
     <ul>
@@ -220,10 +228,10 @@
   </li>
   <li>When the main CPU communicates directly with the device, it is <em>programmed I/O</em>
     <ul>
-      <li>But, polling is inefficient</li>
+      <li>Programmed IO addresses devices through Ports</li>
     </ul>
   </li>
-  <li>Better idea: Interrupts
+  <li>Polling is inefficient. Better idea: Interrupts
     <ul>
       <li>Put process to sleep,</li>
       <li>wake it up when the device issues an interrupt.</li>

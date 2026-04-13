@@ -298,7 +298,7 @@
     <p>This is a spin wait, and livelock is technically possible (but exponentially unlikely)</p>
   </li>
   <li class="q">
-    <p>What is the race condition here?</p>
+    <p>What is the race condition here? (What exactly needs to be locked?)</p>
   </li>
 </ul>
 
@@ -306,10 +306,8 @@
   <span class="n">node_t</span> <span class="o">*</span><span class="n">n</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">node_t</span><span class="p">));</span>
   <span class="n">assert</span><span class="p">(</span><span class="n">n</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">);</span>
   <span class="n">n</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
-  <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="n">listlock</span><span class="p">);</span> <span class="c1">// begin critical section</span>
   <span class="n">n</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
   <span class="n">head</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
-  <span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="n">listlock</span><span class="p">);</span> <span class="c1">// end critical section</span>
 <span class="p">}</span>
 </code></pre></div></div>
 <ul>
