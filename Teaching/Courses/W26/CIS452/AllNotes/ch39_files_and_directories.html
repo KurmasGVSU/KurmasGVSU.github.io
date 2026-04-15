@@ -189,97 +189,16 @@
 </head>
 <body>
 <main id="content">
-  <h1 id="raid">RAID</h1>
+  <h1 id="files-and-directories">Files and Directories</h1>
 
 <ul>
-  <li>Scaling up single disks is difficult and risky
-    <ul>
-      <li>Hard to keep larger disks spinning fast.</li>
-      <li>A failure can destroy a lot of data.</li>
-    </ul>
-  </li>
-  <li>Solution: An array of disks working together.</li>
-  <li>Transparent:  A RAID cluster can present the same 
-interface as a single disk.  No need to update OS
-to use RAID.</li>
-  <li>Simply striping data across disks is dangerous
-    <ul>
-      <li>If any one disk fails, all data lost.</li>
-    </ul>
-  </li>
+  <li>A file is an abstraction of a named linear sequence of bytes.</li>
+  <li>Internal unique ID often called an <em>i node</em>.</li>
+  <li>Directory is a special kind of file that maps names to inodes.</li>
+  <li>Filename lives primarily in a directory.</li>
+  <li>Directories can nest forming a directory tree / directory hierarchy</li>
+  <li>Unix also maps other things (e.g., pipes, devices) onto hierarchy</li>
 </ul>
-
-<h1 id="raid-levels">Raid Levels:</h1>
-
-<ul>
-  <li>Raid 0: Striping.
-    <ul>
-      <li>Good performance</li>
-      <li>No redundancy</li>
-      <li>There is a tradeoff between chunk size and speed.
-        <ul>
-          <li>small chunks maximize parallel access</li>
-          <li>Large chunks allow multiple requests to run in parallel<br />
-(which means seek times can run in parallel)</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>Raid 1: Mirroring
-    <ul>
-      <li class="q">How many failures can be tolerated?
-        <ul>
-          <li>1 guaranteed, but could be more if they are on the same “half”</li>
-        </ul>
-      </li>
-      <li class="q">How does the writing speed of Raid 1 compare to a single disk?
-        <ul>
-          <li>More or less the same. (Slower of two disks)</li>
-        </ul>
-      </li>
-      <li class="q">How about the reading speed for a sequential workload?
-        <ul>
-          <li>Actually about the same. Even though you can read two blocks at once, 
-it takes about as much time to seek over a block as just to read it.</li>
-        </ul>
-      </li>
-      <li class="q">How about the reading speed for a random workload?
-        <ul>
-          <li>There is a speedup here because the seeks can happen in parallel.</li>
-        </ul>
-      </li>
-      <li class="q">How do solve the consistent update problem?</li>
-    </ul>
-  </li>
-  <li>Raid 4: Parity
-    <ul>
-      <li>Reading speedup of N - 1</li>
-      <li>Can tolerate 1 disk failure (never more)</li>
-      <li class="q">What must happen to write a single block?
-        <ul>
-          <li>We need to also update the parity block.</li>
-        </ul>
-      </li>
-      <li class="q">Must we read all the blocks in the stripe?
-        <ul>
-          <li>No.  Just load target block and parity block. (“subtractive”)</li>
-        </ul>
-      </li>
-      <li class="q">What is the biggest performance problem?
-        <ul>
-          <li>Parity disk is a “hot spot”</li>
-        </ul>
-      </li>
-      <li class="q">How to fix?</li>
-    </ul>
-  </li>
-  <li>Raid 5
-    <ul>
-      <li>Rotate the parity blocks around the stripe.</li>
-    </ul>
-  </li>
-</ul>
-
 
 </main>
 </body>

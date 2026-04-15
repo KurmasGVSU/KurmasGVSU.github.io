@@ -227,10 +227,59 @@ to use RAID.</li>
   </li>
   <li>Raid 1: Mirroring
     <ul>
+      <li class="q">How many failures can be tolerated?
+        <ul>
+          <li>1 guaranteed, but could be more if they are on the same “half”</li>
+        </ul>
+      </li>
+      <li class="q">How does the writing speed of Raid 1 compare to a single disk?
+        <ul>
+          <li>More or less the same. (Slower of two disks)</li>
+        </ul>
+      </li>
+      <li class="q">How about the reading speed for a sequential workload?
+        <ul>
+          <li>Actually about the same. Even though you can read two blocks at once, 
+it takes about as much time to seek over a block as just to read it.</li>
+        </ul>
+      </li>
+      <li class="q">How about the reading speed for a random workload?
+        <ul>
+          <li>There is a speedup here because the seeks can happen in parallel.</li>
+        </ul>
+      </li>
       <li class="q">How do solve the consistent update problem?</li>
     </ul>
   </li>
+  <li>Raid 4: Parity
+    <ul>
+      <li>Reading speedup of N - 1</li>
+      <li>Can tolerate 1 disk failure (never more)</li>
+      <li class="q">What must happen to write a single block?
+        <ul>
+          <li>We need to also update the parity block.</li>
+        </ul>
+      </li>
+      <li class="q">Must we read all the blocks in the stripe?
+        <ul>
+          <li>No.  Just load target block and parity block. (“subtractive”)</li>
+        </ul>
+      </li>
+      <li class="q">What is the biggest performance problem?
+        <ul>
+          <li>Parity disk is a “hot spot”</li>
+        </ul>
+      </li>
+      <li class="q">How to fix?</li>
+    </ul>
+  </li>
+  <li>Raid 5
+    <ul>
+      <li>Rotate the parity blocks around the stripe.</li>
+    </ul>
+  </li>
 </ul>
+
 
 </main>
 </body>
