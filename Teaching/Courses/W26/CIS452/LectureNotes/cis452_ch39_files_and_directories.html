@@ -197,7 +197,37 @@
   <li>Directory is a special kind of file that maps names to inodes.</li>
   <li>Filename lives primarily in a directory.</li>
   <li>Directories can nest forming a directory tree / directory hierarchy</li>
-  <li>Unix also maps other things (e.g., pipes, devices) onto hierarchy</li>
+  <li>
+    <p>Unix also maps other things (e.g., pipes, devices) onto hierarchy</p>
+  </li>
+  <li>Hard links
+    <ul>
+      <li>Multiple directory entries with same inode.</li>
+      <li>Can’t create a hard link to a directory
+        <ul>
+          <li class="q">Why?</li>
+          <li>It could create a cycle.</li>
+        </ul>
+      </li>
+      <li>Can’t create a hard link across file systems
+        <ul>
+          <li class="q">Why?</li>
+          <li>inodes aren’t the same.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Symbolic link
+    <ul>
+      <li>Essentially a file containing an absolute path name.</li>
+    </ul>
+  </li>
+  <li>Mounting
+    <ul>
+      <li>Make multiple file systems look like a single file system.</li>
+    </ul>
+  </li>
+  <li>Time of Check to Time of Use</li>
 </ul>
 
 </main>
