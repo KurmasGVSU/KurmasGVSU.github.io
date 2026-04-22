@@ -276,6 +276,15 @@ it takes about as much time to seek over a block as just to read it.</li>
   <li>Raid 5
     <ul>
       <li>Rotate the parity blocks around the stripe.</li>
+      <li>Raid 5 has what is called the “small write penalty”</li>
+      <li class="q">Why are random small writes much worse than large 
+sequential writes?
+        <ul>
+          <li>Each small random write requires two reads and two writes. 
+Sequential writes don’t have “extra” reads:  If all blocks in a stripe
+are written, then we can calculate the parity from the data to be written.</li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ul>

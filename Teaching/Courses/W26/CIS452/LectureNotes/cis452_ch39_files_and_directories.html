@@ -227,7 +227,18 @@
       <li>Make multiple file systems look like a single file system.</li>
     </ul>
   </li>
-  <li>Time of Check to Time of Use</li>
+  <li>Time of Check to Time of Use
+    <ul>
+      <li>The mail program runs as root (and can write to any file)</li>
+      <li>Mail comes in for user bob</li>
+      <li>mail program verifies that bob’s inbox is a regular file belonging to bob.</li>
+      <li>bob changes <code>/users/bob/inbox</code> to be a hard link to <code>/etc/password</code></li>
+      <li>mail proceeds with update to file</li>
+      <li>password file is trashed.</li>
+      <li>Could possibly be a security attack if content sent to <code>/etc/password</code> can be controlled precisely.</li>
+      <li>No simple solution to this problem.</li>
+    </ul>
+  </li>
 </ul>
 
 </main>
